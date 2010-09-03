@@ -22,6 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
     /** Creates new form MainFrame */
     public MainFrame() {
         initComponents();
+        jComboBox1.addActionListener(new ComboBoxActionListener(jLayeredPane1));
     }
 
     /** This method is called from within the constructor to
@@ -60,10 +61,12 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        treeScrollPane = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        CoverListScrollPane = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        CoverDetailsListScrollPane = new javax.swing.JScrollPane();
+        DetailsListScrollPane = new javax.swing.JScrollPane();
         jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -169,6 +172,7 @@ public class MainFrame extends javax.swing.JFrame {
         jButton5.setText("Hilfe");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setName("LangaugesComboBox"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -315,16 +319,35 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jScrollPane2.setBounds(0, 0, 230, 380);
-        jLayeredPane1.add(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane3.setBounds(0, 0, 2, 2);
-        jLayeredPane1.add(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane4.setBounds(0, 0, 2, 2);
-        jLayeredPane1.add(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane5.setBounds(0, 0, 2, 2);
-        jLayeredPane1.add(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        treeScrollPane.setName("Tree"); // NOI18N
+        treeScrollPane.setPreferredSize(new java.awt.Dimension(74, 322));
+        treeScrollPane.setViewportView(jTree1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        treeScrollPane.setBounds(0, 0, 217, 430);
+        jLayeredPane1.add(treeScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        CoverListScrollPane.setName("Cover"); // NOI18N
+
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        CoverListScrollPane.setViewportView(jList1);
+
+        CoverListScrollPane.setBounds(0, 0, 217, 430);
+        jLayeredPane1.add(CoverListScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        CoverDetailsListScrollPane.setName("Cover Details"); // NOI18N
+        CoverDetailsListScrollPane.setBounds(0, 0, 217, 430);
+        jLayeredPane1.add(CoverDetailsListScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        DetailsListScrollPane.setName("Details"); // NOI18N
+        DetailsListScrollPane.setBounds(0, 0, 217, 430);
+        jLayeredPane1.add(DetailsListScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tree", "Cover", "Cover Details", "Details" }));
+        jComboBox1.setName("ViewComboBox"); // NOI18N
 
         jButton1.setText("Hinzufügen");
 
@@ -332,13 +355,15 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, 0, 113, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jComboBox1, 0, 113, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addContainerGap())
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,11 +550,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jScrollPane8.setBounds(0, 0, 230, 380);
         jLayeredPane2.add(jScrollPane8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane9.setBounds(0, 0, 2, 2);
+        jScrollPane9.setBounds(0, 0, -1, -1);
         jLayeredPane2.add(jScrollPane9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane10.setBounds(0, 0, 2, 2);
+        jScrollPane10.setBounds(0, 0, -1, -1);
         jLayeredPane2.add(jScrollPane10, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane11.setBounds(0, 0, 2, 2);
+        jScrollPane11.setBounds(0, 0, -1, -1);
         jLayeredPane2.add(jScrollPane11, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -733,11 +758,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jScrollPane15.setBounds(0, 0, 230, 380);
         jLayeredPane3.add(jScrollPane15, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane16.setBounds(0, 0, 2, 2);
+        jScrollPane16.setBounds(0, 0, -1, -1);
         jLayeredPane3.add(jScrollPane16, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane17.setBounds(0, 0, 2, 2);
+        jScrollPane17.setBounds(0, 0, -1, -1);
         jLayeredPane3.add(jScrollPane17, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane18.setBounds(0, 0, 2, 2);
+        jScrollPane18.setBounds(0, 0, -1, -1);
         jLayeredPane3.add(jScrollPane18, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -978,6 +1003,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane CoverDetailsListScrollPane;
+    private javax.swing.JScrollPane CoverListScrollPane;
+    private javax.swing.JScrollPane DetailsListScrollPane;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1045,6 +1073,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
+    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1080,12 +1109,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -1098,6 +1123,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTree jTree1;
+    private javax.swing.JScrollPane treeScrollPane;
     // End of variables declaration//GEN-END:variables
 
 }
