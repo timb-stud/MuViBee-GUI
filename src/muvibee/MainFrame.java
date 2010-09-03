@@ -22,7 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
     /** Creates new form MainFrame */
     public MainFrame() {
         initComponents();
-        jComboBox1.addActionListener(new ComboBoxActionListener(jLayeredPane1));
+        jComboBox1.addActionListener(new ComboBoxActionListener(ViewBooks));
     }
 
     /** This method is called from within the constructor to
@@ -60,13 +60,13 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        treeScrollPane = new javax.swing.JScrollPane();
+        ViewBooks = new javax.swing.JLayeredPane();
+        treeBooksScrollPane = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
-        CoverListScrollPane = new javax.swing.JScrollPane();
+        CoverListBooksScrollPane = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
-        CoverDetailsListScrollPane = new javax.swing.JScrollPane();
-        DetailsListScrollPane = new javax.swing.JScrollPane();
+        CoverDetailsListBooksScrollPane = new javax.swing.JScrollPane();
+        DetailsListBooksScrollPane = new javax.swing.JScrollPane();
         jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -319,32 +319,32 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        treeScrollPane.setName("Tree"); // NOI18N
-        treeScrollPane.setPreferredSize(new java.awt.Dimension(74, 322));
-        treeScrollPane.setViewportView(jTree1);
+        treeBooksScrollPane.setName("Tree"); // NOI18N
+        treeBooksScrollPane.setPreferredSize(new java.awt.Dimension(74, 322));
+        treeBooksScrollPane.setViewportView(jTree1);
 
-        treeScrollPane.setBounds(0, 0, 217, 430);
-        jLayeredPane1.add(treeScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        treeBooksScrollPane.setBounds(0, 0, 217, 430);
+        ViewBooks.add(treeBooksScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        CoverListScrollPane.setName("Cover"); // NOI18N
+        CoverListBooksScrollPane.setName("Cover"); // NOI18N
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        CoverListScrollPane.setViewportView(jList1);
+        CoverListBooksScrollPane.setViewportView(jList1);
 
-        CoverListScrollPane.setBounds(0, 0, 217, 430);
-        jLayeredPane1.add(CoverListScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        CoverListBooksScrollPane.setBounds(0, 0, 217, 430);
+        ViewBooks.add(CoverListBooksScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        CoverDetailsListScrollPane.setName("Cover Details"); // NOI18N
-        CoverDetailsListScrollPane.setBounds(0, 0, 217, 430);
-        jLayeredPane1.add(CoverDetailsListScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        CoverDetailsListBooksScrollPane.setName("Cover Details"); // NOI18N
+        CoverDetailsListBooksScrollPane.setBounds(0, 0, 217, 430);
+        ViewBooks.add(CoverDetailsListBooksScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        DetailsListScrollPane.setName("Details"); // NOI18N
-        DetailsListScrollPane.setBounds(0, 0, 217, 430);
-        jLayeredPane1.add(DetailsListScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DetailsListBooksScrollPane.setName("Details"); // NOI18N
+        DetailsListBooksScrollPane.setBounds(0, 0, 217, 430);
+        ViewBooks.add(DetailsListBooksScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tree", "Cover", "Cover Details", "Details" }));
         jComboBox1.setName("ViewComboBox"); // NOI18N
@@ -358,7 +358,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(ViewBooks, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jComboBox1, 0, 113, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -368,7 +368,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(ViewBooks, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
@@ -457,8 +457,12 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -474,21 +478,17 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel12)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel8)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)))
+                            .addComponent(jLabel8))))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(jButton7)
+                    .addComponent(jButton6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -518,7 +518,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel5);
@@ -548,13 +548,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jScrollPane8.setBounds(0, 0, 230, 380);
+        jScrollPane8.setBounds(0, 0, 217, 430);
         jLayeredPane2.add(jScrollPane8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane9.setBounds(0, 0, -1, -1);
+        jScrollPane9.setBounds(0, 0, 217, 430);
         jLayeredPane2.add(jScrollPane9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane10.setBounds(0, 0, -1, -1);
+        jScrollPane10.setBounds(0, 0, 217, 430);
         jLayeredPane2.add(jScrollPane10, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane11.setBounds(0, 0, -1, -1);
+        jScrollPane11.setBounds(0, 0, 217, 430);
         jLayeredPane2.add(jScrollPane11, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -565,13 +565,15 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+            .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox3, 0, 113, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jComboBox3, 0, 113, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton8)))
                 .addContainerGap())
-            .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,6 +585,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        jPanel10.setPreferredSize(new java.awt.Dimension(539, 768));
 
         jLabel13.setText("jLabel2");
 
@@ -665,8 +669,12 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                    .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton10))
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -682,21 +690,17 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(jLabel21)
                             .addComponent(jLabel23)
                             .addComponent(jLabel22)
-                            .addComponent(jLabel19)))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10)))
+                            .addComponent(jLabel19))))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9)
                     .addComponent(jButton10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -726,7 +730,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jScrollPane12.setViewportView(jPanel10);
@@ -756,13 +760,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jScrollPane15.setBounds(0, 0, 230, 380);
+        jScrollPane15.setBounds(0, 0, 217, 430);
         jLayeredPane3.add(jScrollPane15, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane16.setBounds(0, 0, -1, -1);
+        jScrollPane16.setBounds(0, 0, 217, 430);
         jLayeredPane3.add(jScrollPane16, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane17.setBounds(0, 0, -1, -1);
+        jScrollPane17.setBounds(0, 0, 217, 430);
         jLayeredPane3.add(jScrollPane17, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jScrollPane18.setBounds(0, 0, -1, -1);
+        jScrollPane18.setBounds(0, 0, 217, 430);
         jLayeredPane3.add(jScrollPane18, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -775,11 +779,13 @@ public class MainFrame extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox4, 0, 113, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton11)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLayeredPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jComboBox4, 0, 113, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton11)))
                 .addContainerGap())
-            .addComponent(jLayeredPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -791,6 +797,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        jPanel14.setPreferredSize(new java.awt.Dimension(539, 768));
 
         jLabel24.setText("jLabel2");
 
@@ -873,8 +881,12 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
-                    .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jButton12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton13))
+                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                    .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -891,21 +903,17 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(jLabel33)
                             .addComponent(jLabel30)
                             .addComponent(jLabel27))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jButton12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton13)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+            .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton12)
                     .addComponent(jButton13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel25)
@@ -935,7 +943,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jScrollPane19.setViewportView(jPanel14);
@@ -1003,9 +1011,10 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane CoverDetailsListScrollPane;
-    private javax.swing.JScrollPane CoverListScrollPane;
-    private javax.swing.JScrollPane DetailsListScrollPane;
+    private javax.swing.JScrollPane CoverDetailsListBooksScrollPane;
+    private javax.swing.JScrollPane CoverListBooksScrollPane;
+    private javax.swing.JScrollPane DetailsListBooksScrollPane;
+    private javax.swing.JLayeredPane ViewBooks;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1070,7 +1079,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JList jList1;
@@ -1124,7 +1132,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTree jTree1;
-    private javax.swing.JScrollPane treeScrollPane;
+    private javax.swing.JScrollPane treeBooksScrollPane;
     // End of variables declaration//GEN-END:variables
 
 }
