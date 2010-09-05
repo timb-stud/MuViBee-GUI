@@ -22,7 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
     /** Creates new form MainFrame */
     public MainFrame() {
         initComponents();
-        viewBooksComboBox.addActionListener(new ComboBoxActionListener(viewBooksLayeredPane));
+        viewBookComboBox.addActionListener(new ComboBoxActionListener(viewBookLayeredPane));
         viewMusicComboBox.addActionListener(new ComboBoxActionListener(viewMusicLayeredPane));
     }
 
@@ -59,19 +59,19 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        booksPanel = new javax.swing.JPanel();
-        viewBooksPanel = new javax.swing.JPanel();
-        viewBooksLayeredPane = new javax.swing.JLayeredPane();
-        treeBooksScrollPane = new javax.swing.JScrollPane();
+        bookPanel = new javax.swing.JPanel();
+        viewBookPanel = new javax.swing.JPanel();
+        viewBookLayeredPane = new javax.swing.JLayeredPane();
+        treeBookScrollPane = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
-        CoverListBooksScrollPane = new javax.swing.JScrollPane();
+        CoverListBookScrollPane = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
-        CoverDetailsListBooksScrollPane = new javax.swing.JScrollPane();
-        DetailsListBooksScrollPane = new javax.swing.JScrollPane();
-        viewBooksComboBox = new javax.swing.JComboBox();
-        addBooksButton = new javax.swing.JButton();
-        itemBooksScrollPane = new javax.swing.JScrollPane();
-        itemBooksPanel = new javax.swing.JPanel();
+        CoverDetailsListBookScrollPane = new javax.swing.JScrollPane();
+        DetailsListBookScrollPane = new javax.swing.JScrollPane();
+        viewBookComboBox = new javax.swing.JComboBox();
+        addBookButton = new javax.swing.JButton();
+        itemBookScrollPane = new javax.swing.JScrollPane();
+        itemBookPanel = new javax.swing.JPanel();
         coverBookLabel = new javax.swing.JLabel();
         titleTextBookLabel = new javax.swing.JLabel();
         authorTextBookLabel = new javax.swing.JLabel();
@@ -127,7 +127,7 @@ public class MainFrame extends javax.swing.JFrame {
         jTextArea4 = new javax.swing.JTextArea();
         editMusicButton = new javax.swing.JButton();
         deleteMusicButton = new javax.swing.JButton();
-        jPanel12 = new javax.swing.JPanel();
+        videoPanel = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLayeredPane3 = new javax.swing.JLayeredPane();
         jScrollPane15 = new javax.swing.JScrollPane();
@@ -320,62 +320,62 @@ public class MainFrame extends javax.swing.JFrame {
 
         tabbedPane.addTab("Übersicht", overviewPanel);
 
-        viewBooksPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        viewBookPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        treeBooksScrollPane.setName("Tree"); // NOI18N
-        treeBooksScrollPane.setPreferredSize(new java.awt.Dimension(74, 322));
-        treeBooksScrollPane.setViewportView(jTree1);
+        treeBookScrollPane.setName("Tree"); // NOI18N
+        treeBookScrollPane.setPreferredSize(new java.awt.Dimension(74, 322));
+        treeBookScrollPane.setViewportView(jTree1);
 
-        treeBooksScrollPane.setBounds(0, 0, 217, 430);
-        viewBooksLayeredPane.add(treeBooksScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        treeBookScrollPane.setBounds(0, 0, 217, 430);
+        viewBookLayeredPane.add(treeBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        CoverListBooksScrollPane.setName("Cover"); // NOI18N
+        CoverListBookScrollPane.setName("Cover"); // NOI18N
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        CoverListBooksScrollPane.setViewportView(jList1);
+        CoverListBookScrollPane.setViewportView(jList1);
 
-        CoverListBooksScrollPane.setBounds(0, 0, 217, 430);
-        viewBooksLayeredPane.add(CoverListBooksScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        CoverListBookScrollPane.setBounds(0, 0, 217, 430);
+        viewBookLayeredPane.add(CoverListBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        CoverDetailsListBooksScrollPane.setName("Cover Details"); // NOI18N
-        CoverDetailsListBooksScrollPane.setBounds(0, 0, 217, 430);
-        viewBooksLayeredPane.add(CoverDetailsListBooksScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        CoverDetailsListBookScrollPane.setName("Cover Details"); // NOI18N
+        CoverDetailsListBookScrollPane.setBounds(0, 0, 217, 430);
+        viewBookLayeredPane.add(CoverDetailsListBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        DetailsListBooksScrollPane.setName("Details"); // NOI18N
-        DetailsListBooksScrollPane.setBounds(0, 0, 217, 430);
-        viewBooksLayeredPane.add(DetailsListBooksScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DetailsListBookScrollPane.setName("Details"); // NOI18N
+        DetailsListBookScrollPane.setBounds(0, 0, 217, 430);
+        viewBookLayeredPane.add(DetailsListBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        viewBooksComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tree", "Cover", "Cover Details", "Details" }));
-        viewBooksComboBox.setName("ViewComboBox"); // NOI18N
+        viewBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tree", "Cover", "Cover Details", "Details" }));
+        viewBookComboBox.setName("ViewComboBox"); // NOI18N
 
-        addBooksButton.setText("Hinzufügen");
+        addBookButton.setText("Hinzufügen");
 
-        javax.swing.GroupLayout viewBooksPanelLayout = new javax.swing.GroupLayout(viewBooksPanel);
-        viewBooksPanel.setLayout(viewBooksPanelLayout);
-        viewBooksPanelLayout.setHorizontalGroup(
-            viewBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewBooksPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout viewBookPanelLayout = new javax.swing.GroupLayout(viewBookPanel);
+        viewBookPanel.setLayout(viewBookPanelLayout);
+        viewBookPanelLayout.setHorizontalGroup(
+            viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewBookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(viewBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewBooksLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                    .addGroup(viewBooksPanelLayout.createSequentialGroup()
-                        .addComponent(viewBooksComboBox, 0, 113, Short.MAX_VALUE)
+                .addGroup(viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewBookLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addGroup(viewBookPanelLayout.createSequentialGroup()
+                        .addComponent(viewBookComboBox, 0, 113, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addBooksButton)))
+                        .addComponent(addBookButton)))
                 .addContainerGap())
         );
-        viewBooksPanelLayout.setVerticalGroup(
-            viewBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBooksPanelLayout.createSequentialGroup()
-                .addComponent(viewBooksLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+        viewBookPanelLayout.setVerticalGroup(
+            viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBookPanelLayout.createSequentialGroup()
+                .addComponent(viewBookLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(viewBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addBooksButton)
-                    .addComponent(viewBooksComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addBookButton)
+                    .addComponent(viewBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -453,25 +453,25 @@ public class MainFrame extends javax.swing.JFrame {
 
         deleteBookButton.setText("Löschen");
 
-        javax.swing.GroupLayout itemBooksPanelLayout = new javax.swing.GroupLayout(itemBooksPanel);
-        itemBooksPanel.setLayout(itemBooksPanelLayout);
-        itemBooksPanelLayout.setHorizontalGroup(
-            itemBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(itemBooksPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout itemBookPanelLayout = new javax.swing.GroupLayout(itemBookPanel);
+        itemBookPanel.setLayout(itemBookPanelLayout);
+        itemBookPanelLayout.setHorizontalGroup(
+            itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(itemBookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(itemBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(itemBooksPanelLayout.createSequentialGroup()
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(editBookButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteBookButton))
                     .addComponent(annotationBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                     .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                    .addGroup(itemBooksPanelLayout.createSequentialGroup()
-                        .addGroup(itemBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ratingBookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(itemBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(titleTextBookLabel)
                             .addComponent(authorTextBookLabel)
                             .addComponent(languageTextBookLabel)
@@ -484,16 +484,16 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(locationTextBookLabel))))
                 .addContainerGap())
         );
-        itemBooksPanelLayout.setVerticalGroup(
-            itemBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(itemBooksPanelLayout.createSequentialGroup()
+        itemBookPanelLayout.setVerticalGroup(
+            itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(itemBookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(itemBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteBookButton)
                     .addComponent(editBookButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(itemBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(itemBooksPanelLayout.createSequentialGroup()
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(titleTextBookLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(authorTextBookLabel)
@@ -511,8 +511,8 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(locationTextBookLabel))
                     .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(itemBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(itemBooksPanelLayout.createSequentialGroup()
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(borrowedToTextBookLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(borrowDateTextBookLabel))
@@ -524,30 +524,30 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        itemBooksScrollPane.setViewportView(itemBooksPanel);
+        itemBookScrollPane.setViewportView(itemBookPanel);
 
-        javax.swing.GroupLayout booksPanelLayout = new javax.swing.GroupLayout(booksPanel);
-        booksPanel.setLayout(booksPanelLayout);
-        booksPanelLayout.setHorizontalGroup(
-            booksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(booksPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout bookPanelLayout = new javax.swing.GroupLayout(bookPanel);
+        bookPanel.setLayout(bookPanelLayout);
+        bookPanelLayout.setHorizontalGroup(
+            bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(viewBooksPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(viewBookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itemBooksScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addComponent(itemBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        booksPanelLayout.setVerticalGroup(
-            booksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, booksPanelLayout.createSequentialGroup()
+        bookPanelLayout.setVerticalGroup(
+            bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(booksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(itemBooksScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
-                    .addComponent(viewBooksPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(itemBookScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                    .addComponent(viewBookPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        tabbedPane.addTab("Bücher", booksPanel);
+        tabbedPane.addTab("Bücher", bookPanel);
 
         viewMusicPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -969,28 +969,28 @@ public class MainFrame extends javax.swing.JFrame {
 
         jScrollPane19.setViewportView(jPanel14);
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        javax.swing.GroupLayout videoPanelLayout = new javax.swing.GroupLayout(videoPanel);
+        videoPanel.setLayout(videoPanelLayout);
+        videoPanelLayout.setHorizontalGroup(
+            videoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(videoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+        videoPanelLayout.setVerticalGroup(
+            videoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, videoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(videoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        tabbedPane.addTab("Videos", jPanel12);
+        tabbedPane.addTab("Videos", videoPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1032,21 +1032,21 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane CoverDetailsListBooksScrollPane;
+    private javax.swing.JScrollPane CoverDetailsListBookScrollPane;
     private javax.swing.JScrollPane CoverDetailsListMusicScrollPane;
-    private javax.swing.JScrollPane CoverListBooksScrollPane;
+    private javax.swing.JScrollPane CoverListBookScrollPane;
     private javax.swing.JScrollPane CoverListMusicScrollPane;
-    private javax.swing.JScrollPane DetailsListBooksScrollPane;
+    private javax.swing.JScrollPane DetailsListBookScrollPane;
     private javax.swing.JScrollPane DetailsListMusicScrollPane;
     private javax.swing.JButton aboutButton;
-    private javax.swing.JButton addBooksButton;
+    private javax.swing.JButton addBookButton;
     private javax.swing.JButton addMusicButton;
     private javax.swing.JButton advancedSearchButton;
     private javax.swing.JScrollPane annotationBookScrollPane;
     private javax.swing.JTextArea annotationBookTextArea;
     private javax.swing.JScrollPane annotationMusicScrollPane;
     private javax.swing.JLabel authorTextBookLabel;
-    private javax.swing.JPanel booksPanel;
+    private javax.swing.JPanel bookPanel;
     private javax.swing.JLabel borrowDateTextBookLabel;
     private javax.swing.JLabel borrowDateTextMusicLabel;
     private javax.swing.JLabel borrowedToTextBookLabel;
@@ -1070,8 +1070,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton helpButton;
     private javax.swing.JLabel interpretTextMusicLabel;
     private javax.swing.JLabel isbnTextBookLabel;
-    private javax.swing.JPanel itemBooksPanel;
-    private javax.swing.JScrollPane itemBooksScrollPane;
+    private javax.swing.JPanel itemBookPanel;
+    private javax.swing.JScrollPane itemBookScrollPane;
     private javax.swing.JPanel itemMusicPanel;
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JButton jButton11;
@@ -1104,7 +1104,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
@@ -1145,14 +1144,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton threeRatingpointsBookRadioButton;
     private javax.swing.JLabel titleTextBookLabel;
     private javax.swing.JLabel titleTextMusicLabel;
-    private javax.swing.JScrollPane treeBooksScrollPane;
+    private javax.swing.JScrollPane treeBookScrollPane;
     private javax.swing.JScrollPane treeMusicScrollPane;
     private javax.swing.JRadioButton twoRatingpointMusikRadioButton;
     private javax.swing.JRadioButton twoRatingpointsBookRadioButton;
     private javax.swing.JLabel typeTextMusicLabel;
-    private javax.swing.JComboBox viewBooksComboBox;
-    private javax.swing.JLayeredPane viewBooksLayeredPane;
-    private javax.swing.JPanel viewBooksPanel;
+    private javax.swing.JPanel videoPanel;
+    private javax.swing.JComboBox viewBookComboBox;
+    private javax.swing.JLayeredPane viewBookLayeredPane;
+    private javax.swing.JPanel viewBookPanel;
     private javax.swing.JComboBox viewMusicComboBox;
     private javax.swing.JLayeredPane viewMusicLayeredPane;
     private javax.swing.JPanel viewMusicPanel;
