@@ -183,7 +183,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="overviewPane">
+        <Container class="javax.swing.JPanel" name="overviewPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="&#xdc;bersicht">
@@ -330,7 +330,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="booksPane">
+        <Container class="javax.swing.JPanel" name="booksPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="B&#xfc;cher">
@@ -344,7 +344,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="viewBooksPane" min="-2" max="-2" attributes="0"/>
+                      <Component id="viewBooksPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="itemBooksScrollPane" pref="542" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -357,7 +357,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="itemBooksScrollPane" alignment="0" pref="467" max="32767" attributes="0"/>
-                          <Component id="viewBooksPane" alignment="0" max="32767" attributes="0"/>
+                          <Component id="viewBooksPanel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -365,7 +365,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="viewBooksPane">
+            <Container class="javax.swing.JPanel" name="viewBooksPanel">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -506,7 +506,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="itemBooksPane">
+                <Container class="javax.swing.JPanel" name="itemBooksPanel">
 
                   <Layout>
                     <DimensionLayout dim="0">
@@ -519,7 +519,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="deleteBookButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="annotationBookScrollPane7" alignment="0" pref="519" max="32767" attributes="0"/>
+                                  <Component id="annotationBookScrollPane" alignment="0" pref="519" max="32767" attributes="0"/>
                                   <Component id="descriptionBookScrollPane" alignment="0" pref="519" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -586,7 +586,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="descriptionBookScrollPane" min="-2" pref="228" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="annotationBookScrollPane7" min="-2" pref="217" max="-2" attributes="0"/>
+                              <Component id="annotationBookScrollPane" min="-2" pref="217" max="-2" attributes="0"/>
                               <EmptySpace pref="35" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -735,7 +735,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JScrollPane" name="annotationBookScrollPane7">
+                    <Container class="javax.swing.JScrollPane" name="annotationBookScrollPane">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
