@@ -515,29 +515,29 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="editBookButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="deleteBookButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane7" alignment="0" pref="519" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane6" alignment="0" pref="519" max="32767" attributes="0"/>
+                                  <Component id="annotationBookScrollPane7" alignment="0" pref="519" max="32767" attributes="0"/>
+                                  <Component id="descriptionBookScrollPane" alignment="0" pref="519" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel2" alignment="0" min="-2" pref="150" max="-2" attributes="1"/>
-                                          <Component id="jPanel7" alignment="0" min="-2" max="-2" attributes="1"/>
+                                          <Component id="coverBookLabel" alignment="0" min="-2" pref="150" max="-2" attributes="1"/>
+                                          <Component id="ratingBookPanel" alignment="0" min="-2" max="-2" attributes="1"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titelTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="authorTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="languageTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="isbnTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="eanTextBookLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="genreTextBookLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="releaseYearTextBookLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowDateTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedToTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="locationTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -550,105 +550,105 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="deleteBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="editBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="1">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="titelTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="authorTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="languageTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="isbnTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      <Component id="eanTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="genreTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      <Component id="releaseYearTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="locationTextBookLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel2" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="coverBookLabel" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                      <Component id="borrowedToTextBookLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                      <Component id="borrowDateTextBookLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ratingBookPanel" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane6" min="-2" pref="228" max="-2" attributes="0"/>
+                              <Component id="descriptionBookScrollPane" min="-2" pref="228" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane7" min="-2" pref="217" max="-2" attributes="0"/>
+                              <Component id="annotationBookScrollPane7" min="-2" pref="217" max="-2" attributes="0"/>
                               <EmptySpace pref="35" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel2">
+                    <Component class="javax.swing.JLabel" name="coverBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jLabel2"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel3">
+                    <Component class="javax.swing.JLabel" name="titelTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Titel"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel4">
+                    <Component class="javax.swing.JLabel" name="authorTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Autor"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel5">
+                    <Component class="javax.swing.JLabel" name="languageTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Sprache"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel6">
+                    <Component class="javax.swing.JLabel" name="isbnTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="ISBN"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel7">
+                    <Component class="javax.swing.JLabel" name="genreTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Genre"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel8">
+                    <Component class="javax.swing.JLabel" name="locationTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Standort"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel9">
+                    <Component class="javax.swing.JLabel" name="eanTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="EAN"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel10">
+                    <Component class="javax.swing.JLabel" name="releaseYearTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Erscheinungsjahr"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel11">
+                    <Component class="javax.swing.JLabel" name="borrowedToTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Verliehen"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel12">
+                    <Component class="javax.swing.JLabel" name="borrowDateTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Verleihdatum"/>
                       </Properties>
                     </Component>
-                    <Container class="javax.swing.JPanel" name="jPanel7">
+                    <Container class="javax.swing.JPanel" name="ratingBookPanel">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -662,11 +662,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="oneRatingpointBookRadioButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="twoRatingpointsBookRadioButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="threeRatingpointsBookRadioButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -676,9 +676,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="oneRatingpointBookRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="twoRatingpointsBookRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="threeRatingpointsBookRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -686,7 +686,7 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+                        <Component class="javax.swing.JRadioButton" name="oneRatingpointBookRadioButton">
                           <Properties>
                             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                               <ComponentRef name="buttonGroup1"/>
@@ -695,7 +695,7 @@
                             <Property name="actionCommand" type="java.lang.String" value="jRadioButton1"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+                        <Component class="javax.swing.JRadioButton" name="twoRatingpointsBookRadioButton">
                           <Properties>
                             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                               <ComponentRef name="buttonGroup1"/>
@@ -703,7 +703,7 @@
                             <Property name="text" type="java.lang.String" value="2"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+                        <Component class="javax.swing.JRadioButton" name="threeRatingpointsBookRadioButton">
                           <Properties>
                             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                               <ComponentRef name="buttonGroup1"/>
@@ -713,7 +713,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+                    <Container class="javax.swing.JScrollPane" name="descriptionBookScrollPane">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -727,7 +727,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="jTextArea1">
+                        <Component class="javax.swing.JTextArea" name="descriptionBookTextArea">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
@@ -735,7 +735,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane7">
+                    <Container class="javax.swing.JScrollPane" name="annotationBookScrollPane7">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -749,7 +749,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="jTextArea2">
+                        <Component class="javax.swing.JTextArea" name="annotationBookTextArea">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
@@ -757,12 +757,12 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="jButton6">
+                    <Component class="javax.swing.JButton" name="editBookButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Bearbeiten"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton7">
+                    <Component class="javax.swing.JButton" name="deleteBookButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
                       </Properties>
