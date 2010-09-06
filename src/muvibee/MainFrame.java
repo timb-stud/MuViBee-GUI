@@ -174,6 +174,7 @@ public class MainFrame extends javax.swing.JFrame {
         releaseYearTextVideoLabel = new javax.swing.JLabel();
         borrowedToTextVideoLabel = new javax.swing.JLabel();
         borrowDateTextVideoLabel = new javax.swing.JLabel();
+        borrowedUntilTextVideoLabel = new javax.swing.JLabel();
         ratingVideoPanel = new javax.swing.JPanel();
         oneRatingpointVideoRadioButton = new javax.swing.JRadioButton();
         twoRatingpointVideoRadioButton = new javax.swing.JRadioButton();
@@ -184,18 +185,17 @@ public class MainFrame extends javax.swing.JFrame {
         annotationVideoTextArea = new javax.swing.JTextArea();
         editVideoButton = new javax.swing.JButton();
         deleteVideoButton = new javax.swing.JButton();
-        jLabel47 = new javax.swing.JLabel();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
-        jTextField28 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
-        jTextField30 = new javax.swing.JTextField();
-        jTextField31 = new javax.swing.JTextField();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
+        titleVideoTextField = new javax.swing.JTextField();
+        directorVideoTextField = new javax.swing.JTextField();
+        actorsVideoTextField = new javax.swing.JTextField();
+        formatVideoTextField = new javax.swing.JTextField();
+        eanVideoTextField = new javax.swing.JTextField();
+        genreVideoTextField = new javax.swing.JTextField();
+        releaseYearVideoTextField = new javax.swing.JTextField();
+        locationVideoTextField = new javax.swing.JTextField();
+        borrowedToVideoTextField = new javax.swing.JTextField();
+        borrowDateVideoTextField = new javax.swing.JTextField();
+        borrowedUntilVideoTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList();
@@ -1014,6 +1014,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowDateTextVideoLabel.setText("Verleihdatum");
 
+        borrowedUntilTextVideoLabel.setText("Verliehen bis");
+
         ratingVideoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Bewertung"));
 
         buttonGroup1.add(oneRatingpointVideoRadioButton);
@@ -1066,29 +1068,27 @@ public class MainFrame extends javax.swing.JFrame {
 
         deleteVideoButton.setText("Löschen");
 
-        jLabel47.setText("Verliehen bis");
+        titleVideoTextField.setText("jTextField29");
 
-        jTextField23.setText("jTextField23");
+        directorVideoTextField.setText("jTextField28");
 
-        jTextField24.setText("jTextField24");
+        actorsVideoTextField.setText("jTextField27");
 
-        jTextField25.setText("jTextField25");
+        formatVideoTextField.setText("jTextField26");
 
-        jTextField26.setText("jTextField26");
+        eanVideoTextField.setText("jTextField25");
 
-        jTextField27.setText("jTextField27");
+        genreVideoTextField.setText("jTextField24");
 
-        jTextField28.setText("jTextField28");
+        releaseYearVideoTextField.setText("jTextField23");
 
-        jTextField29.setText("jTextField29");
+        locationVideoTextField.setText("jTextField30");
 
-        jTextField30.setText("jTextField30");
+        borrowedToVideoTextField.setText("jTextField31");
 
-        jTextField31.setText("jTextField31");
+        borrowDateVideoTextField.setText("jTextField32");
 
-        jTextField32.setText("jTextField32");
-
-        jTextField33.setText("jTextField33");
+        borrowedUntilVideoTextField.setText("jTextField33");
 
         javax.swing.GroupLayout itemVideoPanelLayout = new javax.swing.GroupLayout(itemVideoPanel);
         itemVideoPanel.setLayout(itemVideoPanelLayout);
@@ -1117,20 +1117,20 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(locationTextVideoLabel)
                             .addComponent(borrowedToTextVideoLabel)
                             .addComponent(borrowDateTextVideoLabel)
-                            .addComponent(jLabel47))
+                            .addComponent(borrowedUntilTextVideoLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField28, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField27, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField26, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField25, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField23, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField30, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField31, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField32, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField33, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jTextField29, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)))
+                            .addComponent(directorVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(actorsVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(formatVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(eanVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(genreVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(releaseYearVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(locationVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(borrowedToVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(borrowDateVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(borrowedUntilVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(titleVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)))
                     .addComponent(annotationVideoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                     .addComponent(descriptionVideoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE))
                 .addContainerGap())
@@ -1147,51 +1147,51 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(titleTextVideoLabel)
-                            .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(titleVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(directorTextVideoLabel)
-                            .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(directorVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(actorsTextVideoLabel)
-                            .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(actorsVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(formatTextVideoLabel)
-                            .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(formatVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(eanTextVideoLabel)
-                            .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(eanVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(genreTextVideoLabel)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(genreVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(releaseYearTextVideoLabel)
-                            .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(releaseYearVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(locationTextVideoLabel)
-                            .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(locationVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(coverVideoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowedToTextVideoLabel)
-                            .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(borrowedToVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowDateTextVideoLabel)
-                            .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(borrowDateVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(ratingVideoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel47)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(borrowedUntilTextVideoLabel)
+                    .addComponent(borrowedUntilVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descriptionVideoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1304,6 +1304,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutButton;
     private javax.swing.JLabel actorsTextVideoLabel;
+    private javax.swing.JTextField actorsVideoTextField;
     private javax.swing.JButton addBookButton;
     private javax.swing.JButton addMusicButton;
     private javax.swing.JButton addVideoButton;
@@ -1322,15 +1323,19 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel borrowDateTextBookLabel;
     private javax.swing.JLabel borrowDateTextMusicLabel;
     private javax.swing.JLabel borrowDateTextVideoLabel;
+    private javax.swing.JTextField borrowDateVideoTextField;
     private javax.swing.JTextField borrowedToBookTextField;
     private javax.swing.JTextField borrowedToMusicTextField;
     private javax.swing.JLabel borrowedToTextBookLabel;
     private javax.swing.JLabel borrowedToTextMusicLabel;
     private javax.swing.JLabel borrowedToTextVideoLabel;
+    private javax.swing.JTextField borrowedToVideoTextField;
     private javax.swing.JTextField borrowedUntilBookTextField;
     private javax.swing.JTextField borrowedUntilMusicTextField;
     private javax.swing.JLabel borrowedUntilTextBookLabel;
     private javax.swing.JLabel borrowedUntilTextMusikLabel;
+    private javax.swing.JLabel borrowedUntilTextVideoLabel;
+    private javax.swing.JTextField borrowedUntilVideoTextField;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel coverBookLabel;
     private javax.swing.JScrollPane coverDetailsListBookScrollPane;
@@ -1354,22 +1359,26 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane detailsListMusicScrollPane;
     private javax.swing.JScrollPane detailsListVideoScrollPane;
     private javax.swing.JLabel directorTextVideoLabel;
+    private javax.swing.JTextField directorVideoTextField;
     private javax.swing.JTextField eanBookTextField;
     private javax.swing.JTextField eanMusicTextField;
     private javax.swing.JLabel eanTextBookLabel;
     private javax.swing.JLabel eanTextMusicLabel;
     private javax.swing.JLabel eanTextVideoLabel;
+    private javax.swing.JTextField eanVideoTextField;
     private javax.swing.JButton editBookButton;
     private javax.swing.JButton editMusicButton;
     private javax.swing.JButton editVideoButton;
     private javax.swing.JTextField formatMusicTextField;
     private javax.swing.JLabel formatTextMusicLabel;
     private javax.swing.JLabel formatTextVideoLabel;
+    private javax.swing.JTextField formatVideoTextField;
     private javax.swing.JTextField genreBookTextField;
     private javax.swing.JTextField genreMusicTextField;
     private javax.swing.JLabel genreTextBookLabel;
     private javax.swing.JLabel genreTextMusicLabel;
     private javax.swing.JLabel genreTextVideoLabel;
+    private javax.swing.JTextField genreVideoTextField;
     private javax.swing.JPanel headPanel;
     private javax.swing.JButton helpButton;
     private javax.swing.JTextField interpretMusicTextField;
@@ -1396,23 +1405,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
     private javax.swing.JTextField languageBookTextField;
@@ -1423,6 +1420,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel locationTextBookLabel;
     private javax.swing.JLabel locationTextMusicLabel;
     private javax.swing.JLabel locationTextVideoLabel;
+    private javax.swing.JTextField locationVideoTextField;
     private javax.swing.JPanel musicPanel;
     private javax.swing.JRadioButton oneRatingpointBookRadioButton;
     private javax.swing.JRadioButton oneRatingpointMusikRadioButton;
@@ -1436,6 +1434,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField releaseYearTextField;
     private javax.swing.JLabel releaseYearTextMusicLabel;
     private javax.swing.JLabel releaseYearTextVideoLabel;
+    private javax.swing.JTextField releaseYearVideoTextField;
     private javax.swing.JButton removeSearchButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
@@ -1450,6 +1449,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel titleTextBookLabel;
     private javax.swing.JLabel titleTextMusicLabel;
     private javax.swing.JLabel titleTextVideoLabel;
+    private javax.swing.JTextField titleVideoTextField;
     private javax.swing.JScrollPane treeBookScrollPane;
     private javax.swing.JScrollPane treeMusicScrollPane;
     private javax.swing.JScrollPane treeVideoScrollPane;

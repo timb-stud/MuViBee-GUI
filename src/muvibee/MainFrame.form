@@ -1622,21 +1622,21 @@
                                           <Component id="locationTextVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="borrowedToTextVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="borrowDateTextVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedUntilTextVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextField28" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField27" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField26" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField25" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField24" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField23" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField30" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField31" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField32" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField33" alignment="0" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField29" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="directorVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="actorsVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="formatVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="eanVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="genreVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="releaseYearVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="locationVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="borrowedToVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="borrowDateVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="borrowedUntilVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="titleVideoTextField" alignment="0" pref="265" max="32767" attributes="1"/>
                                       </Group>
                                   </Group>
                                   <Component id="annotationVideoScrollPane" alignment="0" pref="519" max="32767" attributes="0"/>
@@ -1659,42 +1659,42 @@
                                   <Group type="102" alignment="0" attributes="1">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="titleTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="directorTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField28" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="directorVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="actorsTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField27" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="actorsVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="formatTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="eanTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField25" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="eanVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="genreTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="genreVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="releaseYearTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="releaseYearVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="locationTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField30" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="locationVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="coverVideoLabel" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
@@ -1704,20 +1704,20 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowedToTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField31" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedToVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowDateTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowDateVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="ratingVideoPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="borrowedUntilTextVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="borrowedUntilVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="descriptionVideoScrollPane" min="-2" pref="228" max="-2" attributes="0"/>
@@ -1782,6 +1782,11 @@
                     <Component class="javax.swing.JLabel" name="borrowDateTextVideoLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Verleihdatum"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="borrowedUntilTextVideoLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Verliehen bis"/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JPanel" name="ratingVideoPanel">
@@ -1903,62 +1908,57 @@
                         <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel47">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Verliehen bis"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField23">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField23"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField24">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField24"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField25">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField25"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField26">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField26"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField27">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField27"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField28">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField28"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField29">
+                    <Component class="javax.swing.JTextField" name="titleVideoTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField29"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField30">
+                    <Component class="javax.swing.JTextField" name="directorVideoTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField28"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="actorsVideoTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField27"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="formatVideoTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField26"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="eanVideoTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField25"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="genreVideoTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField24"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="releaseYearVideoTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField23"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="locationVideoTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField30"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField31">
+                    <Component class="javax.swing.JTextField" name="borrowedToVideoTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField31"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField32">
+                    <Component class="javax.swing.JTextField" name="borrowDateVideoTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField32"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField33">
+                    <Component class="javax.swing.JTextField" name="borrowedUntilVideoTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField33"/>
                       </Properties>
