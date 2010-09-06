@@ -111,6 +111,7 @@
                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -118,6 +119,7 @@
                       <Component id="jTextField7" alignment="0" pref="257" max="32767" attributes="1"/>
                       <Component id="jTextField5" alignment="0" pref="257" max="32767" attributes="1"/>
                       <Component id="jTextField8" alignment="0" pref="257" max="32767" attributes="1"/>
+                      <Component id="jTextField18" alignment="0" pref="257" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -155,6 +157,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField18" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -283,6 +287,16 @@
         <Component class="javax.swing.JTextField" name="jTextField8">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField8"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel19">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kommentar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField18">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jTextField18"/>
           </Properties>
         </Component>
       </SubComponents>
