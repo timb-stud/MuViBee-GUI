@@ -575,23 +575,22 @@
                                           <Component id="titleTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField11" alignment="0" pref="200" max="32767" attributes="1"/>
-                                          <Component id="jTextField10" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField9" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField8" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField1" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField2" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField3" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField4" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField5" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField6" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField7" alignment="0" max="32767" attributes="1"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTextField6" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField5" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField4" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField3" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField2" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField1" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField8" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField9" alignment="1" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField10" alignment="1" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField11" alignment="1" pref="251" max="32767" attributes="1"/>
+                                          <Component id="jTextField7" alignment="0" pref="251" max="32767" attributes="1"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="annotationBookScrollPane" alignment="0" pref="519" max="32767" attributes="0"/>
-                                  <Component id="descriptionBookScrollPane" alignment="0" pref="519" max="32767" attributes="0"/>
+                                  <Component id="annotationBookScrollPane" alignment="0" pref="505" max="32767" attributes="0"/>
+                                  <Component id="descriptionBookScrollPane" alignment="0" pref="505" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1120,44 +1119,41 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="genreTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="eanTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="typeTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="interpretTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedToTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowDateTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="releaseYearTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="locationTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="borrowedToTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="borrowDateTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="jTextField21" alignment="0" pref="198" max="32767" attributes="1"/>
-                                                  <Component id="jTextField22" alignment="0" pref="198" max="32767" attributes="1"/>
-                                                  <Component id="jTextField20" alignment="0" pref="198" max="32767" attributes="1"/>
+                                                  <Component id="jTextField22" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField21" alignment="1" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField19" alignment="1" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField17" alignment="1" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField16" alignment="1" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField15" alignment="1" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField14" alignment="1" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField13" alignment="1" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField20" alignment="1" pref="265" max="32767" attributes="1"/>
                                               </Group>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="releaseYearTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="genreTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="eanTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="formatTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="typeTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="interpretTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="locationTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="titleTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                          <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jTextField17" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="jTextField16" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="jTextField15" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="jTextField14" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="jTextField13" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="jTextField12" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="jTextField18" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="jTextField19" alignment="0" min="-2" pref="198" max="-2" attributes="1"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jTextField12" alignment="1" pref="265" max="32767" attributes="1"/>
+                                                  <Component id="jTextField18" alignment="0" pref="265" max="32767" attributes="1"/>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1666,18 +1662,18 @@
                                           <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField28" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField27" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField26" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField25" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField24" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField23" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField30" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField31" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField32" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField33" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField29" alignment="0" min="-2" pref="201" max="-2" attributes="1"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTextField28" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField27" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField26" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField25" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField24" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField23" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField30" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField31" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField32" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField33" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="jTextField29" alignment="0" pref="265" max="32767" attributes="1"/>
                                       </Group>
                                   </Group>
                                   <Component id="annotationVideoScrollPane" alignment="0" pref="519" max="32767" attributes="0"/>
