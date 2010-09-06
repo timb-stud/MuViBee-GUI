@@ -538,7 +538,7 @@
                                           <Component id="borrowDateTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="locationTextBookLabel" min="-2" max="-2" attributes="0"/>
                                           <Component id="releaseYearTextBookLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="borrowedUntilBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedUntilTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="genreTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="eanTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="isbnTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -638,7 +638,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="borrowedUntilBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="borrowedUntilTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="borrowedUntilBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -706,7 +706,7 @@
                         <Property name="text" type="java.lang.String" value="Verleihdatum"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="borrowedUntilBookLabel">
+                    <Component class="javax.swing.JLabel" name="borrowedUntilTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Verliehen bis"/>
                       </Properties>
@@ -1098,24 +1098,24 @@
                                           <Component id="interpretTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="borrowedToTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="borrowDateTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedUntilTextMusikLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="titleTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="releaseYearTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="locationTextMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jTextField22" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField21" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField19" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField17" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField16" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField15" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField14" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField13" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField20" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField12" alignment="1" pref="265" max="32767" attributes="1"/>
-                                          <Component id="jTextField18" alignment="0" pref="265" max="32767" attributes="1"/>
+                                          <Component id="borrowedUntilMusicTextField" pref="265" max="32767" attributes="1"/>
+                                          <Component id="borrowDateMusicTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="titleMusicTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="interpretMusicTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="typeMusicTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="formatMusicTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="eanMusicTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="genreMusicTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="borrowedToMusicTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="releaseYearTextField" alignment="1" pref="265" max="32767" attributes="1"/>
+                                          <Component id="locationMusicTextField" alignment="0" pref="265" max="32767" attributes="1"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1137,42 +1137,42 @@
                                   <Group type="102" attributes="1">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="titleTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="interpretTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="interpretMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="typeTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="typeMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="formatTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="eanTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="eanMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="genreTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="genreMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="releaseYearTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="releaseYearTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="locationTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="locationMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1181,20 +1181,20 @@
                                   <Group type="102" alignment="1" attributes="1">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowedToTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedToMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowDateTextMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowDateMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="ratingMusicPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="borrowedUntilTextMusikLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="borrowedUntilMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="descriptionMusicScrollPane" min="-2" pref="228" max="-2" attributes="0"/>
@@ -1259,6 +1259,11 @@
                     <Component class="javax.swing.JLabel" name="borrowDateTextMusicLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Verleihdatum"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="borrowedUntilTextMusikLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Verliehen bis"/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JPanel" name="ratingMusicPanel">
@@ -1380,62 +1385,57 @@
                         <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel33">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Verliehen bis"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField12">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField12"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField13">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField13"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField14">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField14"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField15">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField15"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField16">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField16"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField17">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField17"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField18">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField18"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField19">
+                    <Component class="javax.swing.JTextField" name="titleMusicTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField19"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField20">
+                    <Component class="javax.swing.JTextField" name="interpretMusicTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField17"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="typeMusicTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField16"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="formatMusicTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField15"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="eanMusicTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField14"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="genreMusicTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField13"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="releaseYearTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField12"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="locationMusicTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField18"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="borrowedToMusicTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField20"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField21">
+                    <Component class="javax.swing.JTextField" name="borrowDateMusicTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField21"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField22">
+                    <Component class="javax.swing.JTextField" name="borrowedUntilMusicTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField22"/>
                       </Properties>
