@@ -196,11 +196,11 @@ public class MainFrame extends javax.swing.JFrame {
         borrowedToVideoTextField = new javax.swing.JTextField();
         borrowDateVideoTextField = new javax.swing.JTextField();
         borrowedUntilVideoTextField = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        restorePanel = new javax.swing.JPanel();
+        restoreItemsScrollPane = new javax.swing.JScrollPane();
+        restoreItemsList = new javax.swing.JList();
+        restoreItemButton = new javax.swing.JButton();
+        deleteItemButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1224,43 +1224,43 @@ public class MainFrame extends javax.swing.JFrame {
 
         tabbedPane.addTab("Videos", videoPanel);
 
-        jList3.setModel(new javax.swing.AbstractListModel() {
+        restoreItemsList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList3);
+        restoreItemsScrollPane.setViewportView(restoreItemsList);
 
-        jButton2.setText("Wiederhestellen");
+        restoreItemButton.setText("Wiederhestellen");
 
-        jButton3.setText("jButton3");
+        deleteItemButton.setText("jButton3");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout restorePanelLayout = new javax.swing.GroupLayout(restorePanel);
+        restorePanel.setLayout(restorePanelLayout);
+        restorePanelLayout.setHorizontalGroup(
+            restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(restorePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(restoreItemsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+                    .addGroup(restorePanelLayout.createSequentialGroup()
+                        .addComponent(restoreItemButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)))
+                        .addComponent(deleteItemButton)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        restorePanelLayout.setVerticalGroup(
+            restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(restorePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(restoreItemsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)))
+                .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(restoreItemButton)
+                    .addComponent(deleteItemButton)))
         );
 
-        tabbedPane.addTab("Wiederherstellen", jPanel2);
+        tabbedPane.addTab("Wiederherstellen", restorePanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1347,6 +1347,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel coverMusicLabel;
     private javax.swing.JLabel coverVideoLabel;
     private javax.swing.JButton deleteBookButton;
+    private javax.swing.JButton deleteItemButton;
     private javax.swing.JButton deleteMusicButton;
     private javax.swing.JButton deleteVideoButton;
     private javax.swing.JScrollPane descriptionBookScrollPane;
@@ -1391,8 +1392,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JPanel itemVideoPanel;
     private javax.swing.JScrollPane itemVideoScrollPane;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -1407,9 +1406,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
-    private javax.swing.JList jList3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
     private javax.swing.JTextField languageBookTextField;
@@ -1436,6 +1432,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel releaseYearTextVideoLabel;
     private javax.swing.JTextField releaseYearVideoTextField;
     private javax.swing.JButton removeSearchButton;
+    private javax.swing.JButton restoreItemButton;
+    private javax.swing.JList restoreItemsList;
+    private javax.swing.JScrollPane restoreItemsScrollPane;
+    private javax.swing.JPanel restorePanel;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JLabel statusLabel;
