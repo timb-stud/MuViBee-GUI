@@ -538,7 +538,7 @@
                                           <Component id="borrowDateTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="locationTextBookLabel" min="-2" max="-2" attributes="0"/>
                                           <Component id="releaseYearTextBookLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedUntilBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="genreTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="eanTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="isbnTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -548,17 +548,17 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextField6" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField5" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField4" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField3" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField2" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField1" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField8" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField9" alignment="1" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField10" alignment="1" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField11" alignment="1" pref="251" max="32767" attributes="1"/>
-                                          <Component id="jTextField7" alignment="0" pref="251" max="32767" attributes="1"/>
+                                          <Component id="authorBookTextField" pref="251" max="32767" attributes="1"/>
+                                          <Component id="languageBookTextField" pref="251" max="32767" attributes="1"/>
+                                          <Component id="isbnBookTextField" pref="251" max="32767" attributes="1"/>
+                                          <Component id="eanBookTextField" pref="251" max="32767" attributes="1"/>
+                                          <Component id="genreBookTextField" pref="251" max="32767" attributes="1"/>
+                                          <Component id="releaseYearBookTextField" pref="251" max="32767" attributes="1"/>
+                                          <Component id="locationBookTextField" pref="251" max="32767" attributes="1"/>
+                                          <Component id="borrowedToBookTextField" alignment="1" pref="251" max="32767" attributes="1"/>
+                                          <Component id="borrowDateBookTextField" alignment="1" pref="251" max="32767" attributes="1"/>
+                                          <Component id="borrowedUntilBookTextField" alignment="1" pref="251" max="32767" attributes="1"/>
+                                          <Component id="titleBookTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                       </Group>
                                   </Group>
                                   <Component id="annotationBookScrollPane" alignment="0" pref="505" max="32767" attributes="0"/>
@@ -581,42 +581,42 @@
                                   <Group type="102" alignment="0" attributes="1">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="titleTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titleBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="authorTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="authorBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="languageTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="languageBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="isbnTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="isbnBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="eanTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="eanBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="genreTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="genreBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="releaseYearTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="releaseYearBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="locationTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="locationBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="coverBookLabel" min="-2" pref="150" max="-2" attributes="0"/>
@@ -626,20 +626,20 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowedToTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedToBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowDateTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowDateBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="ratingBookPanel" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="borrowedUntilBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="borrowedUntilBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="descriptionBookScrollPane" min="-2" pref="228" max="-2" attributes="0"/>
@@ -704,6 +704,11 @@
                     <Component class="javax.swing.JLabel" name="borrowDateTextBookLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Verleihdatum"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="borrowedUntilBookLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Verliehen bis"/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JPanel" name="ratingBookPanel">
@@ -825,62 +830,57 @@
                         <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel31">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Verliehen bis"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField1">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField1"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField2"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField3">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField3"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField4">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField4"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField5">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField5"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField6">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField6"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField7">
+                    <Component class="javax.swing.JTextField" name="titleBookTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField7"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField8">
+                    <Component class="javax.swing.JTextField" name="authorBookTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField6"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="languageBookTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField5"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="isbnBookTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField4"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="eanBookTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField3"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="genreBookTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="releaseYearBookTextField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField1"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="locationBookTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField8"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField9">
+                    <Component class="javax.swing.JTextField" name="borrowedToBookTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField9"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField10">
+                    <Component class="javax.swing.JTextField" name="borrowDateBookTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField10"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField11">
+                    <Component class="javax.swing.JTextField" name="borrowedUntilBookTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField11"/>
                       </Properties>

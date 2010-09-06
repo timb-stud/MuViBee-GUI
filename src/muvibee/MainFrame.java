@@ -84,6 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
         releaseYearTextBookLabel = new javax.swing.JLabel();
         borrowedToTextBookLabel = new javax.swing.JLabel();
         borrowDateTextBookLabel = new javax.swing.JLabel();
+        borrowedUntilBookLabel = new javax.swing.JLabel();
         ratingBookPanel = new javax.swing.JPanel();
         oneRatingpointBookRadioButton = new javax.swing.JRadioButton();
         twoRatingpointsBookRadioButton = new javax.swing.JRadioButton();
@@ -94,18 +95,17 @@ public class MainFrame extends javax.swing.JFrame {
         annotationBookTextArea = new javax.swing.JTextArea();
         editBookButton = new javax.swing.JButton();
         deleteBookButton = new javax.swing.JButton();
-        jLabel31 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        titleBookTextField = new javax.swing.JTextField();
+        authorBookTextField = new javax.swing.JTextField();
+        languageBookTextField = new javax.swing.JTextField();
+        isbnBookTextField = new javax.swing.JTextField();
+        eanBookTextField = new javax.swing.JTextField();
+        genreBookTextField = new javax.swing.JTextField();
+        releaseYearBookTextField = new javax.swing.JTextField();
+        locationBookTextField = new javax.swing.JTextField();
+        borrowedToBookTextField = new javax.swing.JTextField();
+        borrowDateBookTextField = new javax.swing.JTextField();
+        borrowedUntilBookTextField = new javax.swing.JTextField();
         musicPanel = new javax.swing.JPanel();
         viewMusicPanel = new javax.swing.JPanel();
         viewMusicLayeredPane = new javax.swing.JLayeredPane();
@@ -448,6 +448,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowDateTextBookLabel.setText("Verleihdatum");
 
+        borrowedUntilBookLabel.setText("Verliehen bis");
+
         ratingBookPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Bewertung"));
 
         buttonGroup1.add(oneRatingpointBookRadioButton);
@@ -500,29 +502,27 @@ public class MainFrame extends javax.swing.JFrame {
 
         deleteBookButton.setText("Löschen");
 
-        jLabel31.setText("Verliehen bis");
+        titleBookTextField.setText("jTextField7");
 
-        jTextField1.setText("jTextField1");
+        authorBookTextField.setText("jTextField6");
 
-        jTextField2.setText("jTextField2");
+        languageBookTextField.setText("jTextField5");
 
-        jTextField3.setText("jTextField3");
+        isbnBookTextField.setText("jTextField4");
 
-        jTextField4.setText("jTextField4");
+        eanBookTextField.setText("jTextField3");
 
-        jTextField5.setText("jTextField5");
+        genreBookTextField.setText("jTextField2");
 
-        jTextField6.setText("jTextField6");
+        releaseYearBookTextField.setText("jTextField1");
 
-        jTextField7.setText("jTextField7");
+        locationBookTextField.setText("jTextField8");
 
-        jTextField8.setText("jTextField8");
+        borrowedToBookTextField.setText("jTextField9");
 
-        jTextField9.setText("jTextField9");
+        borrowDateBookTextField.setText("jTextField10");
 
-        jTextField10.setText("jTextField10");
-
-        jTextField11.setText("jTextField11");
+        borrowedUntilBookTextField.setText("jTextField11");
 
         javax.swing.GroupLayout itemBookPanelLayout = new javax.swing.GroupLayout(itemBookPanel);
         itemBookPanel.setLayout(itemBookPanelLayout);
@@ -545,7 +545,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(borrowDateTextBookLabel)
                             .addComponent(locationTextBookLabel)
                             .addComponent(releaseYearTextBookLabel)
-                            .addComponent(jLabel31)
+                            .addComponent(borrowedUntilBookLabel)
                             .addComponent(genreTextBookLabel)
                             .addComponent(eanTextBookLabel)
                             .addComponent(isbnTextBookLabel)
@@ -554,17 +554,17 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(titleTextBookLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)))
+                            .addComponent(authorBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(languageBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(isbnBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(eanBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(genreBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(releaseYearBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(locationBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(borrowedToBookTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(borrowDateBookTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(borrowedUntilBookTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(titleBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)))
                     .addComponent(annotationBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                     .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE))
                 .addContainerGap())
@@ -581,51 +581,51 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(titleTextBookLabel)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(titleBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(authorTextBookLabel)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(authorBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(languageTextBookLabel)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(languageBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(isbnTextBookLabel)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(isbnBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(eanTextBookLabel)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(eanBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(genreTextBookLabel)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(genreBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(releaseYearTextBookLabel)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(releaseYearBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(locationTextBookLabel)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(locationBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowedToTextBookLabel)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(borrowedToBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowDateTextBookLabel)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(borrowDateBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(ratingBookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(borrowedUntilBookLabel)
+                    .addComponent(borrowedUntilBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1314,14 +1314,19 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea annotationMusicTextArea;
     private javax.swing.JScrollPane annotationVideoScrollPane;
     private javax.swing.JTextArea annotationVideoTextArea;
+    private javax.swing.JTextField authorBookTextField;
     private javax.swing.JLabel authorTextBookLabel;
     private javax.swing.JPanel bookPanel;
+    private javax.swing.JTextField borrowDateBookTextField;
     private javax.swing.JLabel borrowDateTextBookLabel;
     private javax.swing.JLabel borrowDateTextMusicLabel;
     private javax.swing.JLabel borrowDateTextVideoLabel;
+    private javax.swing.JTextField borrowedToBookTextField;
     private javax.swing.JLabel borrowedToTextBookLabel;
     private javax.swing.JLabel borrowedToTextMusicLabel;
     private javax.swing.JLabel borrowedToTextVideoLabel;
+    private javax.swing.JLabel borrowedUntilBookLabel;
+    private javax.swing.JTextField borrowedUntilBookTextField;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel coverBookLabel;
     private javax.swing.JScrollPane coverDetailsListBookScrollPane;
@@ -1345,6 +1350,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane detailsListMusicScrollPane;
     private javax.swing.JScrollPane detailsListVideoScrollPane;
     private javax.swing.JLabel directorTextVideoLabel;
+    private javax.swing.JTextField eanBookTextField;
     private javax.swing.JLabel eanTextBookLabel;
     private javax.swing.JLabel eanTextMusicLabel;
     private javax.swing.JLabel eanTextVideoLabel;
@@ -1353,12 +1359,14 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton editVideoButton;
     private javax.swing.JLabel formatTextMusicLabel;
     private javax.swing.JLabel formatTextVideoLabel;
+    private javax.swing.JTextField genreBookTextField;
     private javax.swing.JLabel genreTextBookLabel;
     private javax.swing.JLabel genreTextMusicLabel;
     private javax.swing.JLabel genreTextVideoLabel;
     private javax.swing.JPanel headPanel;
     private javax.swing.JButton helpButton;
     private javax.swing.JLabel interpretTextMusicLabel;
+    private javax.swing.JTextField isbnBookTextField;
     private javax.swing.JLabel isbnTextBookLabel;
     private javax.swing.JPanel itemBookPanel;
     private javax.swing.JScrollPane itemBookScrollPane;
@@ -1368,7 +1376,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemVideoScrollPane;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -1388,9 +1395,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList jList3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
@@ -1399,7 +1403,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
@@ -1410,21 +1413,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
+    private javax.swing.JTextField languageBookTextField;
     private javax.swing.JLabel languageTextBookLabel;
     private javax.swing.JComboBox languagesComboBox;
+    private javax.swing.JTextField locationBookTextField;
     private javax.swing.JLabel locationTextBookLabel;
     private javax.swing.JLabel locationTextMusicLabel;
     private javax.swing.JLabel locationTextVideoLabel;
@@ -1436,6 +1434,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel ratingBookPanel;
     private javax.swing.JPanel ratingMusicPanel;
     private javax.swing.JPanel ratingVideoPanel;
+    private javax.swing.JTextField releaseYearBookTextField;
     private javax.swing.JLabel releaseYearTextBookLabel;
     private javax.swing.JLabel releaseYearTextMusicLabel;
     private javax.swing.JLabel releaseYearTextVideoLabel;
@@ -1448,6 +1447,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton threeRatingpointMusikRadioButton;
     private javax.swing.JRadioButton threeRatingpointVideoRadioButton;
     private javax.swing.JRadioButton threeRatingpointsBookRadioButton;
+    private javax.swing.JTextField titleBookTextField;
     private javax.swing.JLabel titleTextBookLabel;
     private javax.swing.JLabel titleTextMusicLabel;
     private javax.swing.JLabel titleTextVideoLabel;
