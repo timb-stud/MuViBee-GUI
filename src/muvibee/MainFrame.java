@@ -43,7 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         advancedSearchButton = new javax.swing.JButton();
-        removeSearchButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         statusPanel = new javax.swing.JPanel();
         statusLabel = new javax.swing.JLabel();
         tabbedPane = new javax.swing.JTabbedPane();
@@ -104,8 +104,12 @@ public class MainFrame extends javax.swing.JFrame {
         releaseYearBookTextField = new javax.swing.JTextField();
         locationBookTextField = new javax.swing.JTextField();
         borrowedToBookTextField = new javax.swing.JTextField();
-        borrowDateBookTextField = new javax.swing.JTextField();
-        borrowedUntilBookTextField = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox2 = new javax.swing.JComboBox();
+        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         musicPanel = new javax.swing.JPanel();
         viewMusicPanel = new javax.swing.JPanel();
         viewMusicLayeredPane = new javax.swing.JLayeredPane();
@@ -218,7 +222,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         advancedSearchButton.setText("Erweiterte Suche");
 
-        removeSearchButton.setText("X");
+        jButton1.setText("X");
 
         javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
         headPanel.setLayout(headPanelLayout);
@@ -228,12 +232,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(removeSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(advancedSearchButton)
-                .addGap(156, 156, 156)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
                 .addComponent(languagesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(helpButton)
@@ -248,9 +252,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aboutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(languagesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(removeSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(languagesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(advancedSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -519,9 +523,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowedToBookTextField.setText("jTextField9");
 
-        borrowDateBookTextField.setText("jTextField10");
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setAutoscrolls(true);
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        borrowedUntilBookTextField.setText("jTextField11");
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jTextField1.setText("jTextField1");
+
+        jTextField2.setText("jTextField2");
 
         javax.swing.GroupLayout itemBookPanelLayout = new javax.swing.GroupLayout(itemBookPanel);
         itemBookPanel.setLayout(itemBookPanelLayout);
@@ -554,8 +568,18 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(releaseYearBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addComponent(locationBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addComponent(borrowedToBookTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(borrowDateBookTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(borrowedUntilBookTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)))
+                            .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
+                            .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))))
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(titleTextBookLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -615,11 +639,15 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowDateTextBookLabel)
-                            .addComponent(borrowDateBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowedUntilTextBookLabel)
-                            .addComponent(borrowedUntilBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1318,7 +1346,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField authorBookTextField;
     private javax.swing.JLabel authorTextBookLabel;
     private javax.swing.JPanel bookPanel;
-    private javax.swing.JTextField borrowDateBookTextField;
     private javax.swing.JTextField borrowDateMusicTextField;
     private javax.swing.JLabel borrowDateTextBookLabel;
     private javax.swing.JLabel borrowDateTextMusicLabel;
@@ -1330,7 +1357,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel borrowedToTextMusicLabel;
     private javax.swing.JLabel borrowedToTextVideoLabel;
     private javax.swing.JTextField borrowedToVideoTextField;
-    private javax.swing.JTextField borrowedUntilBookTextField;
     private javax.swing.JTextField borrowedUntilMusicTextField;
     private javax.swing.JLabel borrowedUntilTextBookLabel;
     private javax.swing.JLabel borrowedUntilTextMusikLabel;
@@ -1392,6 +1418,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JPanel itemVideoPanel;
     private javax.swing.JScrollPane itemVideoScrollPane;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -1406,6 +1437,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
     private javax.swing.JTextField languageBookTextField;
@@ -1431,7 +1464,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel releaseYearTextMusicLabel;
     private javax.swing.JLabel releaseYearTextVideoLabel;
     private javax.swing.JTextField releaseYearVideoTextField;
-    private javax.swing.JButton removeSearchButton;
     private javax.swing.JButton restoreItemButton;
     private javax.swing.JList restoreItemsList;
     private javax.swing.JScrollPane restoreItemsScrollPane;

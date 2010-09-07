@@ -62,12 +62,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="searchTextField" min="-2" pref="199" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="removeSearchButton" pref="50" max="32767" attributes="0"/>
+                  <Component id="jButton1" min="-2" pref="43" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="searchButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="advancedSearchButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                  <EmptySpace pref="163" max="32767" attributes="0"/>
                   <Component id="languagesComboBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="helpButton" min="-2" max="-2" attributes="0"/>
@@ -84,9 +84,9 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="aboutButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="helpButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="languagesComboBox" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="searchTextField" alignment="3" pref="33" max="32767" attributes="0"/>
-                      <Component id="removeSearchButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="languagesComboBox" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="searchButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="advancedSearchButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
@@ -134,7 +134,7 @@
             <Property name="text" type="java.lang.String" value="Erweiterte Suche"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="removeSearchButton">
+        <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="X"/>
           </Properties>
@@ -541,8 +541,20 @@
                                           <Component id="releaseYearBookTextField" pref="251" max="32767" attributes="1"/>
                                           <Component id="locationBookTextField" pref="251" max="32767" attributes="1"/>
                                           <Component id="borrowedToBookTextField" alignment="1" pref="251" max="32767" attributes="1"/>
-                                          <Component id="borrowDateBookTextField" alignment="1" pref="251" max="32767" attributes="1"/>
-                                          <Component id="borrowedUntilBookTextField" alignment="1" pref="251" max="32767" attributes="1"/>
+                                          <Group type="102" alignment="0" attributes="1">
+                                              <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jTextField2" pref="123" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jTextField1" pref="123" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -618,12 +630,16 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowDateTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="borrowDateBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowedUntilTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="borrowedUntilBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -869,14 +885,66 @@
                         <Property name="text" type="java.lang.String" value="jTextField9"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="borrowDateBookTextField">
+                    <Component class="javax.swing.JComboBox" name="jComboBox1">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField10"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                        <Property name="autoscrolls" type="boolean" value="true"/>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Standardcursor"/>
+                        </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="borrowedUntilBookTextField">
+                    <Component class="javax.swing.JComboBox" name="jComboBox2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField11"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox3">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox4">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="jTextField1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField1"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="jTextField2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField2"/>
                       </Properties>
                     </Component>
                   </SubComponents>
