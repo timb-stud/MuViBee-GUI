@@ -11,6 +11,8 @@
 
 package muvibee;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
 /**
@@ -22,8 +24,34 @@ public class MainFrame extends javax.swing.JFrame {
     /** Creates new form MainFrame */
     public MainFrame() {
         initComponents();
-        viewBookComboBox.addActionListener(new ComboBoxActionListener(viewBookLayeredPane));
-        viewMusicComboBox.addActionListener(new ComboBoxActionListener(viewMusicLayeredPane));
+        itemBookPanel.setVisible(false);
+        itemMusicPanel.setVisible(false);
+        itemVideoPanel.setVisible(false);
+
+        DefaultComboBoxModel cbBooksModel = new DefaultComboBoxModel();
+        cbBooksModel.addElement(treeBookScrollPane);// eigene toString
+        cbBooksModel.addElement(coverListBookScrollPane);// eigene toString
+        viewBookComboBox.setModel(cbBooksModel);
+
+        DefaultComboBoxModel cbMusicModel = new DefaultComboBoxModel();
+        cbMusicModel.addElement(treeMusicScrollPane);// eigene toString
+        cbMusicModel.addElement(coverListMusicScrollPane); // eigene toString
+        viewMusicComboBox.setModel(cbMusicModel);
+
+        DefaultComboBoxModel cbVideoModel = new DefaultComboBoxModel();
+        cbVideoModel.addElement(treeVideoScrollPane);// eigene toString
+        cbVideoModel.addElement(coverListVideoScrollPane);// eigene toString
+        viewVideoComboBox.setModel(cbVideoModel);
+
+        ComboBoxActionListener cbal = new ComboBoxActionListener(viewBookLayeredPane, viewMusicLayeredPane, viewVideoLayeredPane, viewBookComboBox, viewMusicComboBox, viewVideoComboBox, languagesComboBox);
+        viewBookComboBox.addActionListener(cbal);
+        viewMusicComboBox.addActionListener(cbal);
+        viewVideoComboBox.addActionListener(cbal);
+
+        AddActionListener aal = new AddActionListener(itemBookPanel, itemMusicPanel, itemVideoPanel, addBookButton, addMusicButton, addVideoButton);
+        addBookButton.addActionListener(aal);
+        addMusicButton.addActionListener(aal);
+        addVideoButton.addActionListener(aal);
     }
 
     /** This method is called from within the constructor to
@@ -160,7 +188,9 @@ public class MainFrame extends javax.swing.JFrame {
         viewVideoPanel = new javax.swing.JPanel();
         viewVideoLayeredPane = new javax.swing.JLayeredPane();
         treeVideoScrollPane = new javax.swing.JScrollPane();
+        jTree3 = new javax.swing.JTree();
         coverListVideoScrollPane = new javax.swing.JScrollPane();
+        jList3 = new javax.swing.JList();
         coverDetailsListVideoScrollPane = new javax.swing.JScrollPane();
         detailsListVideoScrollPane = new javax.swing.JScrollPane();
         viewVideoComboBox = new javax.swing.JComboBox();
@@ -399,10 +429,14 @@ public class MainFrame extends javax.swing.JFrame {
         detailsListBookScrollPane.setBounds(0, 0, 217, 430);
         viewBookLayeredPane.add(detailsListBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        viewBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tree", "Cover", "Cover Details", "Details" }));
         viewBookComboBox.setName("ViewComboBox"); // NOI18N
 
         addBookButton.setText("Hinzufügen");
+        addBookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBookButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout viewBookPanelLayout = new javax.swing.GroupLayout(viewBookPanel);
         viewBookPanel.setLayout(viewBookPanelLayout);
@@ -714,7 +748,6 @@ public class MainFrame extends javax.swing.JFrame {
         detailsListMusicScrollPane.setBounds(0, 0, 217, 430);
         viewMusicLayeredPane.add(detailsListMusicScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        viewMusicComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tree", "Cover", "Cover Details", "Details" }));
         viewMusicComboBox.setName("ViewComboBox"); // NOI18N
 
         addMusicButton.setText("Hinzufügen");
@@ -980,16 +1013,24 @@ public class MainFrame extends javax.swing.JFrame {
 
         viewVideoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        treeVideoScrollPane.setViewportView(jTree3);
+
         treeVideoScrollPane.setBounds(0, 0, 217, 430);
         viewVideoLayeredPane.add(treeVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jList3.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        coverListVideoScrollPane.setViewportView(jList3);
+
         coverListVideoScrollPane.setBounds(0, 0, 217, 430);
         viewVideoLayeredPane.add(coverListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
         coverDetailsListVideoScrollPane.setBounds(0, 0, 217, 430);
         viewVideoLayeredPane.add(coverDetailsListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
         detailsListVideoScrollPane.setBounds(0, 0, 217, 430);
         viewVideoLayeredPane.add(detailsListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        viewVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         addVideoButton.setText("Hinzufügen");
 
@@ -1317,6 +1358,10 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBookButtonActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1437,10 +1482,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
+    private javax.swing.JList jList3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
+    private javax.swing.JTree jTree3;
     private javax.swing.JTextField languageBookTextField;
     private javax.swing.JLabel languageTextBookLabel;
     private javax.swing.JComboBox languagesComboBox;

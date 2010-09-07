@@ -486,14 +486,6 @@
                 </Container>
                 <Component class="javax.swing.JComboBox" name="viewBookComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Tree"/>
-                        <StringItem index="1" value="Cover"/>
-                        <StringItem index="2" value="Cover Details"/>
-                        <StringItem index="3" value="Details"/>
-                      </StringArray>
-                    </Property>
                     <Property name="name" type="java.lang.String" value="ViewComboBox" noResource="true"/>
                   </Properties>
                 </Component>
@@ -501,6 +493,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hinzuf&#xfc;gen"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBookButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1105,12 +1100,7 @@
                 <Component class="javax.swing.JComboBox" name="viewMusicComboBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Tree"/>
-                        <StringItem index="1" value="Cover"/>
-                        <StringItem index="2" value="Cover Details"/>
-                        <StringItem index="3" value="Details"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="ViewComboBox" noResource="true"/>
                   </Properties>
@@ -1596,6 +1586,10 @@
                       </Constraints>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JTree" name="jTree3">
+                        </Component>
+                      </SubComponents>
                     </Container>
                     <Container class="javax.swing.JScrollPane" name="coverListVideoScrollPane">
                       <Constraints>
@@ -1605,6 +1599,21 @@
                       </Constraints>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JList" name="jList3">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                              <StringArray count="5">
+                                <StringItem index="0" value="Item 1"/>
+                                <StringItem index="1" value="Item 2"/>
+                                <StringItem index="2" value="Item 3"/>
+                                <StringItem index="3" value="Item 4"/>
+                                <StringItem index="4" value="Item 5"/>
+                              </StringArray>
+                            </Property>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
                     </Container>
                     <Container class="javax.swing.JScrollPane" name="coverDetailsListVideoScrollPane">
                       <Constraints>
@@ -1627,16 +1636,6 @@
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JComboBox" name="viewVideoComboBox">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="addVideoButton">
                   <Properties>
