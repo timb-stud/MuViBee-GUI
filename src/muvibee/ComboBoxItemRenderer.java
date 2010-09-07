@@ -19,20 +19,32 @@ import javax.swing.ListCellRenderer;
  * @author bline
  */
 public class ComboBoxItemRenderer extends JLabel implements ListCellRenderer {
-    protected DefaultListCellRenderer defaultRenderer = new DefaultListCellRenderer();
+    private  DefaultListCellRenderer defaultRenderer = new DefaultListCellRenderer();
 
+    public ComboBoxItemRenderer() {
+        
+    }
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         JLabel renderer = (JLabel) defaultRenderer
         .getListCellRendererComponent(list, value, index, isSelected,
             cellHasFocus);
         if (value instanceof JScrollPane) {
-            if (((JViewport) (((JScrollPane)value).getComponents()[0])).getComponent(0) instanceof JTree) {
+            if (((JScrollPane)value).getName().equals("Tree")) {
                 renderer.setText("Baum");
             } else {
-                renderer.setText("Liste");
+                if (((JScrollPane)value).getName().equals("Cover")) {
+                    renderer.setText("Cover");
+                } else {
+                    if (((JScrollPane)value).getName().equals("Cover Details")) {
+                        renderer.setText("Cover Details");
+                    } else {
+                        if (((JScrollPane)value).getName().equals("Details")) {
+                            renderer.setText("Details");
+                        }
+                    }
+                }
             }
-    }
+        }
         return renderer;
     }
-
 }

@@ -1020,10 +1020,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         viewVideoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        treeVideoScrollPane.setName("Tree"); // NOI18N
         treeVideoScrollPane.setViewportView(jTree3);
 
         treeVideoScrollPane.setBounds(0, 0, 217, 430);
         viewVideoLayeredPane.add(treeVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        coverListVideoScrollPane.setName("Cover"); // NOI18N
 
         jList3.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -1034,8 +1037,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         coverListVideoScrollPane.setBounds(0, 0, 217, 430);
         viewVideoLayeredPane.add(coverListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        coverDetailsListVideoScrollPane.setName("Cover Details"); // NOI18N
         coverDetailsListVideoScrollPane.setBounds(0, 0, 217, 430);
         viewVideoLayeredPane.add(coverDetailsListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        detailsListVideoScrollPane.setName("Details"); // NOI18N
         detailsListVideoScrollPane.setBounds(0, 0, 217, 430);
         viewVideoLayeredPane.add(detailsListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

@@ -1579,6 +1579,9 @@
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
                   <SubComponents>
                     <Container class="javax.swing.JScrollPane" name="treeVideoScrollPane">
+                      <Properties>
+                        <Property name="name" type="java.lang.String" value="Tree" noResource="true"/>
+                      </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
                           <JLayeredPaneConstraints x="0" y="0" width="217" height="430" layer="0" position="-1"/>
@@ -1592,6 +1595,9 @@
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JScrollPane" name="coverListVideoScrollPane">
+                      <Properties>
+                        <Property name="name" type="java.lang.String" value="Cover" noResource="true"/>
+                      </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
                           <JLayeredPaneConstraints x="0" y="0" width="217" height="430" layer="0" position="-1"/>
@@ -1616,6 +1622,9 @@
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JScrollPane" name="coverDetailsListVideoScrollPane">
+                      <Properties>
+                        <Property name="name" type="java.lang.String" value="Cover Details" noResource="true"/>
+                      </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
                           <JLayeredPaneConstraints x="0" y="0" width="217" height="430" layer="0" position="-1"/>
@@ -1625,6 +1634,9 @@
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                     </Container>
                     <Container class="javax.swing.JScrollPane" name="detailsListVideoScrollPane">
+                      <Properties>
+                        <Property name="name" type="java.lang.String" value="Details" noResource="true"/>
+                      </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
                           <JLayeredPaneConstraints x="0" y="0" width="217" height="430" layer="0" position="-1"/>
