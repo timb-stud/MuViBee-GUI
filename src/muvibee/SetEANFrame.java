@@ -23,7 +23,7 @@ public class SetEANFrame extends javax.swing.JFrame {
     /** Creates new form SetEANFrame */
     public SetEANFrame() {
         initComponents();
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); //Muss in Eclipse in Generated Code gesetzt werden
     }
 
     public void setPanel(JPanel p) {

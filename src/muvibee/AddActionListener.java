@@ -59,7 +59,9 @@ public class AddActionListener implements ActionListener {
              if (n == 0) {
                 setEANFrame.setVisible(true);
              } else {
-                p.setVisible(true);
+                if (n > 0) {
+                    p.setVisible(true);
+                 }
              }
 
         }

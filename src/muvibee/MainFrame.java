@@ -10,8 +10,6 @@
  */
 
 package muvibee;
-
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
@@ -32,17 +30,25 @@ public class MainFrame extends javax.swing.JFrame {
         cbBooksModel.addElement(treeBookScrollPane);// eigene toString
         cbBooksModel.addElement(coverListBookScrollPane);// eigene toString
         viewBookComboBox.setModel(cbBooksModel);
+        
 
         DefaultComboBoxModel cbMusicModel = new DefaultComboBoxModel();
         cbMusicModel.addElement(treeMusicScrollPane);// eigene toString
         cbMusicModel.addElement(coverListMusicScrollPane); // eigene toString
         viewMusicComboBox.setModel(cbMusicModel);
+        
 
         DefaultComboBoxModel cbVideoModel = new DefaultComboBoxModel();
         cbVideoModel.addElement(treeVideoScrollPane);// eigene toString
         cbVideoModel.addElement(coverListVideoScrollPane);// eigene toString
         viewVideoComboBox.setModel(cbVideoModel);
+        
 
+        ComboBoxItemRenderer cbRenderer = new ComboBoxItemRenderer();
+        viewBookComboBox.setRenderer(cbRenderer);
+        viewMusicComboBox.setRenderer(cbRenderer);
+        viewVideoComboBox.setRenderer(cbRenderer);
+        
         ComboBoxActionListener cbal = new ComboBoxActionListener(viewBookLayeredPane, viewMusicLayeredPane, viewVideoLayeredPane, viewBookComboBox, viewMusicComboBox, viewVideoComboBox, languagesComboBox);
         viewBookComboBox.addActionListener(cbal);
         viewMusicComboBox.addActionListener(cbal);
@@ -52,6 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
         addBookButton.addActionListener(aal);
         addMusicButton.addActionListener(aal);
         addVideoButton.addActionListener(aal);
+
     }
 
     /** This method is called from within the constructor to
