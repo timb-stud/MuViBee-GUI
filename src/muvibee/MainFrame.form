@@ -539,20 +539,20 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="borrowDayBookComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jComboBox3" pref="132" max="32767" attributes="0"/>
+                                                      <Component id="borrowMonthBookComboBox" pref="132" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="borrowedUntilDayBookComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jComboBox4" pref="132" max="32767" attributes="0"/>
+                                                      <Component id="borrowedUntilMonthBookComboBox" pref="132" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jTextField2" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
-                                                  <Component id="jTextField1" alignment="0" pref="51" max="32767" attributes="1"/>
+                                                  <Component id="borrowedUntilYearBookTextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+                                                  <Component id="borrowYearBookTextField" alignment="0" pref="51" max="32767" attributes="1"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -630,16 +630,16 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowDateTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowDayBookComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowMonthBookComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowYearBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="borrowedUntilTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedUntilDayBookComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedUntilMonthBookComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="borrowedUntilYearBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -885,7 +885,7 @@
                         <Property name="text" type="java.lang.String" value="jTextField9"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox1">
+                    <Component class="javax.swing.JComboBox" name="borrowDayBookComboBox">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -901,7 +901,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox2">
+                    <Component class="javax.swing.JComboBox" name="borrowedUntilDayBookComboBox">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -913,7 +913,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox3">
+                    <Component class="javax.swing.JComboBox" name="borrowMonthBookComboBox">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -925,7 +925,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox4">
+                    <Component class="javax.swing.JComboBox" name="borrowedUntilMonthBookComboBox">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
@@ -937,12 +937,12 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField1">
+                    <Component class="javax.swing.JTextField" name="borrowYearBookTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="2010"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField2">
+                    <Component class="javax.swing.JTextField" name="borrowedUntilYearBookTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField2"/>
                       </Properties>

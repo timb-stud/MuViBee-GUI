@@ -139,12 +139,12 @@ public class MainFrame extends javax.swing.JFrame {
         releaseYearBookTextField = new javax.swing.JTextField();
         locationBookTextField = new javax.swing.JTextField();
         borrowedToBookTextField = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        borrowDayBookComboBox = new javax.swing.JComboBox();
+        borrowedUntilDayBookComboBox = new javax.swing.JComboBox();
+        borrowMonthBookComboBox = new javax.swing.JComboBox();
+        borrowedUntilMonthBookComboBox = new javax.swing.JComboBox();
+        borrowYearBookTextField = new javax.swing.JTextField();
+        borrowedUntilYearBookTextField = new javax.swing.JTextField();
         musicPanel = new javax.swing.JPanel();
         viewMusicPanel = new javax.swing.JPanel();
         viewMusicLayeredPane = new javax.swing.JLayeredPane();
@@ -572,19 +572,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowedToBookTextField.setText("jTextField9");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setAutoscrolls(true);
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        borrowDayBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowDayBookComboBox.setAutoscrolls(true);
+        borrowDayBookComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowedUntilDayBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowMonthBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowedUntilMonthBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextField1.setText("2010");
+        borrowYearBookTextField.setText("2010");
 
-        jTextField2.setText("jTextField2");
+        borrowedUntilYearBookTextField.setText("jTextField2");
 
         javax.swing.GroupLayout itemBookPanelLayout = new javax.swing.GroupLayout(itemBookPanel);
         itemBookPanel.setLayout(itemBookPanelLayout);
@@ -620,17 +620,17 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemBookPanelLayout.createSequentialGroup()
                                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(itemBookPanelLayout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(borrowDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox3, 0, 132, Short.MAX_VALUE))
+                                        .addComponent(borrowMonthBookComboBox, 0, 132, Short.MAX_VALUE))
                                     .addGroup(itemBookPanelLayout.createSequentialGroup()
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(borrowedUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox4, 0, 132, Short.MAX_VALUE)))
+                                        .addComponent(borrowedUntilMonthBookComboBox, 0, 132, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, 0, 0, Short.MAX_VALUE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))))
+                                    .addComponent(borrowedUntilYearBookTextField, 0, 0, Short.MAX_VALUE)
+                                    .addComponent(borrowYearBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))))
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(titleTextBookLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -690,15 +690,15 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowDateTextBookLabel)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(borrowDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowMonthBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowYearBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowedUntilTextBookLabel)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(borrowedUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowedUntilMonthBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowedUntilYearBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1470,8 +1470,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel borrowDateMusicLabel;
     private javax.swing.JLabel borrowDateTextBookLabel;
     private javax.swing.JLabel borrowDateTextBookLabel2;
+    private javax.swing.JComboBox borrowDayBookComboBox;
     private javax.swing.JComboBox borrowDayComboBox;
+    private javax.swing.JComboBox borrowMonthBookComboBox;
     private javax.swing.JComboBox borrowMonthComboBox;
+    private javax.swing.JTextField borrowYearBookTextField;
     private javax.swing.JTextField borrowYearTextField;
     private javax.swing.JTextField borrowedToBookTextField;
     private javax.swing.JTextField borrowedToBookTextField2;
@@ -1479,11 +1482,14 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField borrowedToMusicTextField;
     private javax.swing.JLabel borrowedToTextBookLabel;
     private javax.swing.JLabel borrowedToTextBookLabel2;
+    private javax.swing.JComboBox borrowedUntilDayBookComboBox;
     private javax.swing.JComboBox borrowedUntilDayComboBox;
+    private javax.swing.JComboBox borrowedUntilMonthBookComboBox;
     private javax.swing.JComboBox borrowedUntilMonthComboBox;
     private javax.swing.JLabel borrowedUntilMusicLabel;
     private javax.swing.JLabel borrowedUntilTextBookLabel;
     private javax.swing.JLabel borrowedUntilTextBookLabel2;
+    private javax.swing.JTextField borrowedUntilYearBookTextField;
     private javax.swing.JTextField borrowedUntilYearTextField;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel coverBookLabel;
@@ -1538,13 +1544,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel itemMusicPanel;
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox10;
     private javax.swing.JComboBox jComboBox11;
     private javax.swing.JComboBox jComboBox12;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBox9;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -1561,8 +1563,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTree jTree1;
