@@ -478,6 +478,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        itemBookPanel.setPreferredSize(new java.awt.Dimension(518, 837));
+
         coverBookLabel.setText("jLabel2");
 
         titleTextBookLabel.setText("Titel");
@@ -794,6 +796,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        itemMusicPanel.setPreferredSize(new java.awt.Dimension(518, 837));
+
         coverMusicLabel.setText("jLabel2");
 
         titleMusicLabel.setText("Titel");
@@ -1107,6 +1111,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(viewVideoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        itemVideoPanel.setPreferredSize(new java.awt.Dimension(518, 837));
 
         coverVideoLabel.setText("jLabel2");
 
