@@ -833,7 +833,7 @@ public class MainFrame extends javax.swing.JFrame {
         viewMusicComboBox.setName("ViewComboBox"); // NOI18N
 
         addMusicButton.setText("Hinzufügen");
-        addMusicButton.setName("add msuic button"); // NOI18N
+        addMusicButton.setName("add music button"); // NOI18N
 
         javax.swing.GroupLayout viewMusicPanelLayout = new javax.swing.GroupLayout(viewMusicPanel);
         viewMusicPanel.setLayout(viewMusicPanelLayout);

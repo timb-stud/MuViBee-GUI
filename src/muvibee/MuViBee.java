@@ -94,22 +94,16 @@ public class MuViBee {
     }
 
     public void updateBookList() {
-        for (Book b : bookList) {
-            if (b == tmpBook) {
-                return;
-            }
+        if (!bookList.contains(tmpBook)) {
+            bookList.add(tmpBook);
         }
-        bookList.add(tmpBook);
     }
 
 
     public void updateVideoList() {
-        for (Video v : videoList) {
-            if (v == tmpVideo) {
-                return;
-            }
+        if (!videoList.contains(tmpVideo)) {
+            videoList.add(tmpVideo);
         }
-        videoList.add(tmpVideo);
     }
 
     public static void main(String args[]) {
