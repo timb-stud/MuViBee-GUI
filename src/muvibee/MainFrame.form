@@ -1157,8 +1157,6 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="authorMusicTextField1" alignment="0" pref="251" max="32767" attributes="1"/>
-                                          <Component id="languageMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
-                                          <Component id="isbnMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="eanMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="genreMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="releaseYearMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
@@ -1183,6 +1181,8 @@
                                                   <Component id="borrowYearTextField" alignment="0" pref="51" max="32767" attributes="1"/>
                                               </Group>
                                           </Group>
+                                          <Component id="jComboBox1" alignment="0" pref="251" max="32767" attributes="0"/>
+                                          <Component id="jComboBox2" alignment="0" pref="251" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -1223,12 +1223,12 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="languageMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="languageMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="isbnMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="isbnMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1301,17 +1301,17 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="authorMusicLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Autor"/>
+                        <Property name="text" type="java.lang.String" value="Interpret"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="languageMusicLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Sprache"/>
+                        <Property name="text" type="java.lang.String" value="Typ"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="isbnMusicLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="ISBN"/>
+                        <Property name="text" type="java.lang.String" value="Format"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="genreMusicLabel">
@@ -1478,16 +1478,6 @@
                         <Property name="text" type="java.lang.String" value="jTextField6"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="languageMusicTextField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField5"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="isbnMusicTextField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField4"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JTextField" name="eanMusicTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField3"/>
@@ -1573,6 +1563,31 @@
                     <Component class="javax.swing.JTextField" name="borrowedUntilYearTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox1">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox2">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="true"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1918,17 +1933,17 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="authorVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Autor"/>
+                        <Property name="text" type="java.lang.String" value="Regisseur"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="languageVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Sprache"/>
+                        <Property name="text" type="java.lang.String" value="Schauspieler"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="isbnVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="ISBN"/>
+                        <Property name="text" type="java.lang.String" value="Format"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="genreVideoLabel">

@@ -182,8 +182,6 @@ public class MainFrame extends javax.swing.JFrame {
         deleteMusicButton = new javax.swing.JButton();
         titleMusicTextField = new javax.swing.JTextField();
         authorMusicTextField1 = new javax.swing.JTextField();
-        languageMusicTextField = new javax.swing.JTextField();
-        isbnMusicTextField = new javax.swing.JTextField();
         eanMusicTextField = new javax.swing.JTextField();
         genreMusicTextField = new javax.swing.JTextField();
         releaseYearMusicTextField = new javax.swing.JTextField();
@@ -195,6 +193,8 @@ public class MainFrame extends javax.swing.JFrame {
         borrowedUntilMonthComboBox = new javax.swing.JComboBox();
         borrowYearTextField = new javax.swing.JTextField();
         borrowedUntilYearTextField = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox2 = new javax.swing.JComboBox();
         videoPanel = new javax.swing.JPanel();
         viewVideoPanel = new javax.swing.JPanel();
         viewVideoLayeredPane = new javax.swing.JLayeredPane();
@@ -802,11 +802,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         titleMusicLabel.setText("Titel");
 
-        authorMusicLabel.setText("Autor");
+        authorMusicLabel.setText("Interpret");
 
-        languageMusicLabel.setText("Sprache");
+        languageMusicLabel.setText("Typ");
 
-        isbnMusicLabel.setText("ISBN");
+        isbnMusicLabel.setText("Format");
 
         genreMusicLabel.setText("Genre");
 
@@ -878,10 +878,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         authorMusicTextField1.setText("jTextField6");
 
-        languageMusicTextField.setText("jTextField5");
-
-        isbnMusicTextField.setText("jTextField4");
-
         eanMusicTextField.setText("jTextField3");
 
         genreMusicTextField.setText("jTextField2");
@@ -905,6 +901,11 @@ public class MainFrame extends javax.swing.JFrame {
         borrowYearTextField.setText("2010");
 
         borrowedUntilYearTextField.setText("jTextField2");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox2.setEditable(true);
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout itemMusicPanelLayout = new javax.swing.GroupLayout(itemMusicPanel);
         itemMusicPanel.setLayout(itemMusicPanelLayout);
@@ -930,8 +931,6 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(authorMusicTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(languageMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(isbnMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addComponent(eanMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addComponent(genreMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addComponent(releaseYearMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
@@ -950,7 +949,9 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(borrowedUntilYearTextField, 0, 0, Short.MAX_VALUE)
-                                    .addComponent(borrowYearTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))))
+                                    .addComponent(borrowYearTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))
+                            .addComponent(jComboBox1, 0, 251, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, 251, Short.MAX_VALUE)))
                     .addGroup(itemMusicPanelLayout.createSequentialGroup()
                         .addComponent(titleMusicLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -982,11 +983,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(languageMusicLabel)
-                            .addComponent(languageMusicTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(isbnMusicLabel)
-                            .addComponent(isbnMusicTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(eanMusicLabel)
@@ -1118,11 +1119,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         titleVideoLabel.setText("Titel");
 
-        authorVideoLabel.setText("Autor");
+        authorVideoLabel.setText("Regisseur");
 
-        languageVideoLabel.setText("Sprache");
+        languageVideoLabel.setText("Schauspieler");
 
-        isbnVideoLabel.setText("ISBN");
+        isbnVideoLabel.setText("Format");
 
         genreVideoLabel.setText("Genre");
 
@@ -1545,7 +1546,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton helpButton;
     private javax.swing.JTextField isbnBookTextField;
     private javax.swing.JLabel isbnMusicLabel;
-    private javax.swing.JTextField isbnMusicTextField;
     private javax.swing.JLabel isbnTextBookLabel;
     private javax.swing.JLabel isbnVideoLabel;
     private javax.swing.JTextField isbnVideoTextField;
@@ -1556,6 +1556,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel itemVideoPanel;
     private javax.swing.JScrollPane itemVideoScrollPane;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -1576,7 +1578,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTree jTree3;
     private javax.swing.JTextField languageBookTextField;
     private javax.swing.JLabel languageMusicLabel;
-    private javax.swing.JTextField languageMusicTextField;
     private javax.swing.JLabel languageTextBookLabel;
     private javax.swing.JLabel languageVideoLabel;
     private javax.swing.JTextField languageVideoTextField;
