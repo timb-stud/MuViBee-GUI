@@ -5,9 +5,10 @@
 
 package muvibee;
 
-import java.awt.print.Book;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
 
@@ -20,9 +21,13 @@ public class MuViBee {
     private LinkedList<Music> musicList;
     private LinkedList<Video> videoList;
     private MainFrame mainFrame;
+    private AddDecisionFrame addDecisionFrame;
+    private Book tmpBook;
 
     public MuViBee() {
+        final MuViBee mvb = this;
 
+        addDecisionFrame = new AddDecisionFrame();
         //TODO adapterklasse für listen. siehe unten
         bookList = new LinkedList<Book>();
         musicList = new LinkedList<Music>();
@@ -30,10 +35,44 @@ public class MuViBee {
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
-                mainFrame = new MainFrame();
+                mainFrame = new MainFrame(mvb);
                 mainFrame.setVisible(true);
             }
         });
+    }
+
+    public int showDecisionFrame(){
+        Object[] options = {"EAN", "Selbst"};
+
+        return JOptionPane.showOptionDialog(mainFrame,
+                    "Wollen Sie das Medium selbst anlegen oder per EAN ?",
+                    "Bitte wählen",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+    }
+
+    public String showSetEANFrame(){
+        return (String)JOptionPane.showInputDialog(
+                    mainFrame,
+                    "Complete the sentence:\n"
+                    + "\"Green eggs and...\"",
+                    "Customized Dialog",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,
+                    "ham");
+    }
+
+    public void showBookItem(Book book){
+        mainFrame.setBookItem(book);
+        mainFrame.bookItemSetVisible(true);
+    }
+
+    public void setTmpBook(Book book) {
+        tmpBook = book;
     }
 
     public static void main(String args[]) {

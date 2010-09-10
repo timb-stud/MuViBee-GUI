@@ -8,66 +8,46 @@ package muvibee;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
+import muvibee.media.Book;
+
+
 
 /**
  *
  * @author bline
  */
 public class AddActionListener implements ActionListener {
-    private JScrollPane itemBooksPanel, itemMusicPanel, itemVideoPanel;
-    private JButton addBooksButton, addMusicButton, addVideoButton;
-    private SetEANFrame setEANFrame;
-    private Object[] options = {"EAN", "Selbst"};
-
-    public AddActionListener(JScrollPane itemBooksPanel, JScrollPane itemMusicPanel, JScrollPane itemVideoPanel, JButton addBooksButton, JButton addMusicButton, JButton addVideoButton) {
-        this.itemBooksPanel = itemBooksPanel;
-        this.itemMusicPanel = itemMusicPanel;
-        this.itemVideoPanel = itemVideoPanel;
-        this.addBooksButton = addBooksButton;
-        this.addMusicButton = addMusicButton;
-        this.addVideoButton = addVideoButton;
-        setEANFrame = new SetEANFrame();
+    private MuViBee mvb;
+    
+    public AddActionListener(MuViBee mvb) {
+        this.mvb = mvb; 
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() instanceof JButton) {
-            JScrollPane p = null;
-            JButton b = (JButton) e.getSource();
-            if (b == addBooksButton) {
-                p = itemBooksPanel;
-            } else {
-                if (b == addMusicButton) {
-                    p = itemMusicPanel;
-                } else {
-                    if (b == addVideoButton) {
-                        p = itemVideoPanel;
+        Object source = e.getSource();
+        if(source instanceof JButton){
+            JButton button = (JButton)source;
+            int decision = mvb.showDecisionFrame();
+            if(button.getName().equals("add book button")){
+                Book book;
+                if(decision == 0){
+                    String ean = mvb.showSetEANFrame();
+                    book = new Book("Test", "bla"); //TODO getBook(ean);
+                }else{
+                    book = new Book();
+                }
+                mvb.showBookItem(book);
+                mvb.setTmpBook(book);
+            }else{
+                if(button.getName().equals("add music button")){
+
+                }else{
+                    if(button.getName().equals("add video button")){
+
                     }
                 }
             }
-
-            setEANFrame.setJScrollPane(p);
-            int n = JOptionPane.showOptionDialog(p,
-                "Wollen Sie das Medium selbst anlegen oder per EAN ?",
-                "Bitte wählen",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                options,
-                options[0]);
-             if (n == 0) {
-                setEANFrame.setVisible(true);
-             } else {
-                if (n > 0) {
-                    p.setVisible(true);
-                    p.getParent().validate();
-                 }
-             }
-
         }
-
-
-
     }
+
 }

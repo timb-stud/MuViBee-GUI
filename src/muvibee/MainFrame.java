@@ -11,8 +11,9 @@
 
 package muvibee;
 import javax.swing.DefaultComboBoxModel;
+import muvibee.media.Book;
 import util.CoverDetailsList;
-import util.CoverDetailsListEntry;
+
 
 
 /**
@@ -22,7 +23,7 @@ import util.CoverDetailsListEntry;
 public class MainFrame extends javax.swing.JFrame {
 
     /** Creates new form MainFrame */
-    public MainFrame() {
+    public MainFrame(MuViBee mvb) {
         initComponents();
 
         CoverDetailsList coverDetailsBookList = new CoverDetailsList();
@@ -70,11 +71,23 @@ public class MainFrame extends javax.swing.JFrame {
         viewMusicComboBox.addActionListener(cbal);
         viewVideoComboBox.addActionListener(cbal);
 
-        AddActionListener aal = new AddActionListener(itemBookScrollPane, itemMusicScrollPane, itemVideoScrollPane, addBookButton, addMusicButton, addVideoButton);
+        AddActionListener aal = new AddActionListener(mvb);
         addBookButton.addActionListener(aal);
         addMusicButton.addActionListener(aal);
         addVideoButton.addActionListener(aal);
 
+    }
+
+    public void setBookItem(Book b){
+
+        titleBookTextField.setText(b.getTitle());
+        authorBookTextField.setText(b.getAuthor());
+        //TODO and so on....
+    }
+
+    public void bookItemSetVisible(boolean b) {
+        itemBookScrollPane.setVisible(b);
+        itemBookScrollPane.getParent().validate();
     }
 
     /** This method is called from within the constructor to
@@ -342,6 +355,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        tabbedPane.setName("add video button"); // NOI18N
+
         jLabel35.setText("jLabel35");
 
         jLabel36.setText("jLabel36");
@@ -463,6 +478,7 @@ public class MainFrame extends javax.swing.JFrame {
         viewBookComboBox.setName("ViewComboBox"); // NOI18N
 
         addBookButton.setText("Hinzufügen");
+        addBookButton.setName("add book button"); // NOI18N
         addBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBookButtonActionPerformed(evt);
@@ -786,6 +802,7 @@ public class MainFrame extends javax.swing.JFrame {
         viewMusicComboBox.setName("ViewComboBox"); // NOI18N
 
         addMusicButton.setText("Hinzufügen");
+        addMusicButton.setName("add msuic button"); // NOI18N
 
         javax.swing.GroupLayout viewMusicPanelLayout = new javax.swing.GroupLayout(viewMusicPanel);
         viewMusicPanel.setLayout(viewMusicPanelLayout);
@@ -1109,6 +1126,7 @@ public class MainFrame extends javax.swing.JFrame {
         viewVideoLayeredPane.add(detailsListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         addVideoButton.setText("Hinzufügen");
+        addVideoButton.setName("add video button"); // NOI18N
 
         javax.swing.GroupLayout viewVideoPanelLayout = new javax.swing.GroupLayout(viewVideoPanel);
         viewVideoPanel.setLayout(viewVideoPanelLayout);

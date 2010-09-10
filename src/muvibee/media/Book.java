@@ -9,6 +9,13 @@ public class Book extends Media {
 	private String language;
 	private String isbn;
 
+        public Book(){ }
+
+        public Book(String title, String author){
+            super(title);
+            this.author = author;
+        }
+
 	public Book(String author, String language, String isbn, String title,
 			String ean, String genre, int year, String location, String lendTo,
 			String lendDate, String backDate, int rating, String description,

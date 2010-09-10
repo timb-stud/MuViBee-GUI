@@ -21,7 +21,14 @@ public abstract class Media {
 	private BufferedImage cover;
 	private boolean isDeleted;
 
-	protected Media(String title, String ean, String genre, int year, String location, String lendTo,
+        public Media(){ }
+
+        public Media(String title){
+            this.title = title;
+        }
+
+
+	public Media(String title, String ean, String genre, int year, String location, String lendTo,
 			String lendDate, String backDate, int rating, String description,
 			String comment, BufferedImage cover, boolean isDeleted) {
 		this.title = title;

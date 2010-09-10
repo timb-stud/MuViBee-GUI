@@ -179,6 +179,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JTabbedPane" name="tabbedPane">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="add video button" noResource="true"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="MainFrame_jTabbedPane1"/>
       </AuxValues>
@@ -492,6 +495,7 @@
                 <Component class="javax.swing.JButton" name="addBookButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hinzuf&#xfc;gen"/>
+                    <Property name="name" type="java.lang.String" value="add book button" noResource="true"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBookButtonActionPerformed"/>
@@ -1118,6 +1122,7 @@
                 <Component class="javax.swing.JButton" name="addMusicButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hinzuf&#xfc;gen"/>
+                    <Property name="name" type="java.lang.String" value="add msuic button" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1754,6 +1759,7 @@
                 <Component class="javax.swing.JButton" name="addVideoButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hinzuf&#xfc;gen"/>
+                    <Property name="name" type="java.lang.String" value="add video button" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
