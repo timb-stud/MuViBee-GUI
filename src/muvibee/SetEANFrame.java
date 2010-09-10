@@ -12,21 +12,21 @@
 package muvibee;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
  * @author bline
  */
 public class SetEANFrame extends javax.swing.JFrame {
-    private JPanel p;
+    private JScrollPane p;
     /** Creates new form SetEANFrame */
     public SetEANFrame() {
         initComponents();
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); //Muss in Eclipse in Generated Code gesetzt werden
     }
 
-    public void setPanel(JPanel p) {
+    public void setJScrollPane(JScrollPane p) {
         this.p = p;
     }
     /** This method is called from within the constructor to
@@ -96,11 +96,14 @@ public class SetEANFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         p.setVisible(true);
+        p.getParent().validate();
         setVisible(false);
+        jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
+        jTextField1.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated

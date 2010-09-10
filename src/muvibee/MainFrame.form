@@ -1150,13 +1150,13 @@
                                           <Component id="borrowedUntilMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="genreMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="eanMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="isbnMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="languageMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="authorMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="typeMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="artistMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="authorMusicTextField1" alignment="0" pref="251" max="32767" attributes="1"/>
+                                          <Component id="artistMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="eanMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="genreMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="releaseYearMusicTextField" alignment="0" pref="251" max="32767" attributes="1"/>
@@ -1181,8 +1181,8 @@
                                                   <Component id="borrowYearTextField" alignment="0" pref="51" max="32767" attributes="1"/>
                                               </Group>
                                           </Group>
-                                          <Component id="jComboBox1" alignment="0" pref="251" max="32767" attributes="0"/>
-                                          <Component id="jComboBox2" alignment="0" pref="251" max="32767" attributes="0"/>
+                                          <Component id="typeMusicComboBox" alignment="0" pref="251" max="32767" attributes="0"/>
+                                          <Component id="formatMusicComboBox" alignment="0" pref="251" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -1217,18 +1217,18 @@
                                   <Component id="coverMusicLabel" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="authorMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="authorMusicTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="artistMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="artistMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="languageMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="typeMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="typeMusicComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="isbnMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatMusicComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1299,17 +1299,17 @@
                         <Property name="text" type="java.lang.String" value="Titel"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="authorMusicLabel">
+                    <Component class="javax.swing.JLabel" name="artistMusicLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Interpret"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="languageMusicLabel">
+                    <Component class="javax.swing.JLabel" name="typeMusicLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Typ"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="isbnMusicLabel">
+                    <Component class="javax.swing.JLabel" name="formatMusicLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Format"/>
                       </Properties>
@@ -1473,7 +1473,7 @@
                         <Property name="text" type="java.lang.String" value="jTextField7"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="authorMusicTextField1">
+                    <Component class="javax.swing.JTextField" name="artistMusicTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField6"/>
                       </Properties>
@@ -1562,11 +1562,12 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="borrowedUntilYearTextField">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField2"/>
+                        <Property name="text" type="java.lang.String" value="2010"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox1">
+                    <Component class="javax.swing.JComboBox" name="typeMusicComboBox">
                       <Properties>
+                        <Property name="editable" type="boolean" value="true"/>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
                             <StringItem index="0" value="Item 1"/>
@@ -1576,8 +1577,11 @@
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeMusicComboBoxActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox2">
+                    <Component class="javax.swing.JComboBox" name="formatMusicComboBox">
                       <Properties>
                         <Property name="editable" type="boolean" value="true"/>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1788,9 +1792,8 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="authorVideoTextField" alignment="0" pref="251" max="32767" attributes="1"/>
-                                          <Component id="languageVideoTextField" alignment="0" pref="251" max="32767" attributes="1"/>
-                                          <Component id="isbnVideoTextField" alignment="0" pref="251" max="32767" attributes="1"/>
+                                          <Component id="directorVideoTextField" alignment="0" pref="251" max="32767" attributes="1"/>
+                                          <Component id="actorsVideoTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="eanVideoTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="genreVideoTextField" alignment="0" pref="251" max="32767" attributes="1"/>
                                           <Component id="releaseYearVideoTextField" alignment="0" pref="251" max="32767" attributes="1"/>
@@ -1815,6 +1818,7 @@
                                                   <Component id="borrowYearVideoTextField" alignment="0" pref="51" max="32767" attributes="1"/>
                                               </Group>
                                           </Group>
+                                          <Component id="formatVideoComboBox" alignment="0" pref="251" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -1850,17 +1854,17 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="authorVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="authorVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="directorVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="languageVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="languageVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="actorsVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="isbnVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="isbnVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatVideoComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -2105,19 +2109,14 @@
                         <Property name="text" type="java.lang.String" value="jTextField7"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="authorVideoTextField">
+                    <Component class="javax.swing.JTextField" name="directorVideoTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField6"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="languageVideoTextField">
+                    <Component class="javax.swing.JTextField" name="actorsVideoTextField">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField5"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="isbnVideoTextField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField4"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="eanVideoTextField">
@@ -2207,6 +2206,19 @@
                         <Property name="text" type="java.lang.String" value="jTextField2"/>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JComboBox" name="formatVideoComboBox">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="true"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -2283,7 +2295,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="deleteItemButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton3"/>
+                <Property name="text" type="java.lang.String" value="Endg&#xfc;ltig l&#xf6;schen"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -24,16 +24,14 @@ public class ComboBoxActionListener implements ActionListener {
     private JComboBox viewBookComboBox;
     private JComboBox viewMusicComboBox;
     private JComboBox viewVideoComboBox;
-    private JComboBox languagesComboBox;
 
-    ComboBoxActionListener(JLayeredPane viewBookLayeredPane, JLayeredPane viewMusicLayeredPane, JLayeredPane viewVideoLayeredPane, JComboBox viewBookComboBox, JComboBox viewMusicComboBox, JComboBox viewVideoComboBox, JComboBox languagesComboBox) {
+    ComboBoxActionListener(JLayeredPane viewBookLayeredPane, JLayeredPane viewMusicLayeredPane, JLayeredPane viewVideoLayeredPane, JComboBox viewBookComboBox, JComboBox viewMusicComboBox, JComboBox viewVideoComboBox) {
         this.viewBookLayeredPane = viewBookLayeredPane;
         this.viewMusicLayeredPane = viewMusicLayeredPane;
         this.viewVideoLayeredPane = viewVideoLayeredPane;
         this.viewBookComboBox = viewBookComboBox;
         this.viewMusicComboBox = viewMusicComboBox;
         this.viewVideoComboBox = viewVideoComboBox;
-        this.languagesComboBox = languagesComboBox;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -47,14 +45,9 @@ public class ComboBoxActionListener implements ActionListener {
                 } else {
                     if (cb == viewVideoComboBox) {
                         viewVideoLayeredPane.setPosition((Component)cb.getSelectedItem(), 0);
-                    } else {
-                        if (cb == languagesComboBox) {
-                            //TODO
-                        }
                     }
+                  }
                 }
             }
         }
     }
-
-}

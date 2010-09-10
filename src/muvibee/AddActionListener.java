@@ -9,19 +9,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
  * @author bline
  */
 public class AddActionListener implements ActionListener {
-    private JPanel itemBooksPanel, itemMusicPanel, itemVideoPanel;
+    private JScrollPane itemBooksPanel, itemMusicPanel, itemVideoPanel;
     private JButton addBooksButton, addMusicButton, addVideoButton;
     private SetEANFrame setEANFrame;
     private Object[] options = {"EAN", "Selbst"};
 
-    public AddActionListener(JPanel itemBooksPanel, JPanel itemMusicPanel, JPanel itemVideoPanel, JButton addBooksButton, JButton addMusicButton, JButton addVideoButton) {
+    public AddActionListener(JScrollPane itemBooksPanel, JScrollPane itemMusicPanel, JScrollPane itemVideoPanel, JButton addBooksButton, JButton addMusicButton, JButton addVideoButton) {
         this.itemBooksPanel = itemBooksPanel;
         this.itemMusicPanel = itemMusicPanel;
         this.itemVideoPanel = itemVideoPanel;
@@ -33,7 +33,7 @@ public class AddActionListener implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() instanceof JButton) {
-            JPanel p = null;
+            JScrollPane p = null;
             JButton b = (JButton) e.getSource();
             if (b == addBooksButton) {
                 p = itemBooksPanel;
@@ -47,7 +47,7 @@ public class AddActionListener implements ActionListener {
                 }
             }
 
-            setEANFrame.setPanel(p);
+            setEANFrame.setJScrollPane(p);
             int n = JOptionPane.showOptionDialog(p,
                 "Wollen Sie das Medium selbst anlegen oder per EAN ?",
                 "Bitte wählen",
@@ -61,6 +61,7 @@ public class AddActionListener implements ActionListener {
              } else {
                 if (n > 0) {
                     p.setVisible(true);
+                    p.getParent().validate();
                  }
              }
 
