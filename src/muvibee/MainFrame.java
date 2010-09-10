@@ -12,6 +12,7 @@
 package muvibee;
 import javax.swing.DefaultComboBoxModel;
 import muvibee.media.Book;
+import muvibee.media.Video;
 import util.CoverDetailsList;
 
 
@@ -76,6 +77,11 @@ public class MainFrame extends javax.swing.JFrame {
         addMusicButton.addActionListener(aal);
         addVideoButton.addActionListener(aal);
 
+        SaveActionListener sal = new SaveActionListener(mvb);
+        editBookButton.addActionListener(sal);
+        editMusicButton.addActionListener(sal);
+        editVideoButton.addActionListener(sal);
+
     }
 
     public void setBookItem(Book b){
@@ -85,9 +91,33 @@ public class MainFrame extends javax.swing.JFrame {
         //TODO and so on....
     }
 
+    public void setVideoItem(Video video) {
+        titleVideoTextField.setText(video.getTitle());
+        actorsVideoTextField.setText(video.getActor());
+        //TODO and so on....
+    }
+
+
+    public void setBookItemInformation(Book book) {
+        book.setTitle(titleBookTextField.getText());
+        book.setAuthor(authorBookTextField.getText());
+    }
+
+    public void setVideoItemInformation(Video video) {
+        video.setTitle(titleVideoTextField.getText());
+        video.setActor(actorsVideoTextField.getText());
+    }
+
+    
     public void bookItemSetVisible(boolean b) {
         itemBookScrollPane.setVisible(b);
         itemBookScrollPane.getParent().validate();
+    }
+
+
+   public void videoItemSetVisible(boolean b) {
+        itemVideoScrollPane.setVisible(b);
+        itemVideoScrollPane.getParent().validate();
     }
 
     /** This method is called from within the constructor to
@@ -585,6 +615,7 @@ public class MainFrame extends javax.swing.JFrame {
         annotationBookScrollPane.setViewportView(annotationBookTextArea);
 
         editBookButton.setText("Speichern");
+        editBookButton.setName("save book button"); // NOI18N
 
         deleteBookButton.setText("Löschen");
 
@@ -904,6 +935,7 @@ public class MainFrame extends javax.swing.JFrame {
         annotationMusicScrollPane.setViewportView(annotationMusicTextArea);
 
         editMusicButton.setText("Speichern");
+        editMusicButton.setName("save music button"); // NOI18N
 
         deleteMusicButton.setText("Löschen");
 
@@ -1228,6 +1260,7 @@ public class MainFrame extends javax.swing.JFrame {
         annotationVideoScrollPane.setViewportView(annotationVideoTextArea);
 
         editVideoButton.setText("Speichern");
+        editVideoButton.setName("save video button"); // NOI18N
 
         deleteVideoButton.setText("Löschen");
 
@@ -1671,5 +1704,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLayeredPane viewVideoLayeredPane;
     private javax.swing.JPanel viewVideoPanel;
     // End of variables declaration//GEN-END:variables
+
+
+
 
 }

@@ -842,6 +842,7 @@
                     <Component class="javax.swing.JButton" name="editBookButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Speichern"/>
+                        <Property name="name" type="java.lang.String" value="save book button" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="deleteBookButton">
@@ -1466,6 +1467,7 @@
                     <Component class="javax.swing.JButton" name="editMusicButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Speichern"/>
+                        <Property name="name" type="java.lang.String" value="save music button" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="deleteMusicButton">
@@ -2103,6 +2105,7 @@
                     <Component class="javax.swing.JButton" name="editVideoButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Speichern"/>
+                        <Property name="name" type="java.lang.String" value="save video button" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="deleteVideoButton">

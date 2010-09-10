@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import muvibee.media.Book;
+import muvibee.media.Video;
 
 
 
@@ -43,7 +44,15 @@ public class AddActionListener implements ActionListener {
 
                 }else{
                     if(button.getName().equals("add video button")){
-
+                        Video video;
+                        if(decision == 0){
+                            String ean = mvb.showSetEANFrame();
+                            video = new Video("Test", "bla"); //TODO getBook(ean);
+                        }else{
+                            video = new Video();
+                        }
+                        mvb.showVideoItem(video);
+                        mvb.setTmpVideo(video);
                     }
                 }
             }

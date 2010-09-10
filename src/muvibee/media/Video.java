@@ -9,6 +9,14 @@ public class Video extends Media{
 	private String director;
 	private String actor;
 
+        public Video(){ }
+
+        public Video(String title, String actor){
+            super(title);
+            this.actor = actor;
+        }
+
+
 	public Video(String format, String director, String actor, String title,
 			String ean, String genre, int year, String location, String lendTo,
 			String lendDate, String backDate, int rating, String description,

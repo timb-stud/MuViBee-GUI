@@ -23,6 +23,7 @@ public class MuViBee {
     private MainFrame mainFrame;
     private AddDecisionFrame addDecisionFrame;
     private Book tmpBook;
+    private Video tmpVideo;
 
     public MuViBee() {
         final MuViBee mvb = this;
@@ -71,11 +72,54 @@ public class MuViBee {
         mainFrame.bookItemSetVisible(true);
     }
 
+    public void showVideoItem(Video video) {
+        mainFrame.setVideoItem(video);
+        mainFrame.videoItemSetVisible(true);
+    }
+
     public void setTmpBook(Book book) {
         tmpBook = book;
     }
 
-    public static void main(String args[]) {
-        new MuViBee();
+    public void setTmpVideo(Video video) {
+        tmpVideo = video;
     }
+
+    public void setTmpBookItemInformation() {
+        mainFrame.setBookItemInformation(tmpBook);
+    }
+
+    void setTmpVideoItemInformation() {
+        mainFrame.setVideoItemInformation(tmpVideo);
+    }
+
+    public void updateBookList() {
+        for (Book b : bookList) {
+            if (b == tmpBook) {
+                return;
+            }
+        }
+        bookList.add(tmpBook);
+    }
+
+
+    public void updateVideoList() {
+        for (Video v : videoList) {
+            if (v == tmpVideo) {
+                return;
+            }
+        }
+        videoList.add(tmpVideo);
+    }
+
+    public static void main(String args[]) {
+        MuViBee mvb = new MuViBee();
+    }
+
+
+
+
+
+
+
 }
