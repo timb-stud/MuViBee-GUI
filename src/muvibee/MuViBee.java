@@ -54,16 +54,16 @@ public class MuViBee {
                     options[0]);
     }
 
-    public String showSetEANFrame(){
+public String showEanInputFrame(){
         return (String)JOptionPane.showInputDialog(
                     mainFrame,
-                    "Complete the sentence:\n"
-                    + "\"Green eggs and...\"",
+                    "Bitte EAN eingeben:"
+                    + "",
                     "Customized Dialog",
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     null,
-                    "ham");
+                    "");
     }
 
     public void showBookItem(Book book){
