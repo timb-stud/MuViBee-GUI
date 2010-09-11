@@ -21,14 +21,12 @@ public class MuViBee {
     private LinkedList<Music> musicList;
     private LinkedList<Video> videoList;
     private MainFrame mainFrame;
-    private AddDecisionFrame addDecisionFrame;
     private Book tmpBook;
     private Video tmpVideo;
 
     public MuViBee() {
         final MuViBee mvb = this;
 
-        addDecisionFrame = new AddDecisionFrame();
         //TODO adapterklasse für listen. siehe unten
         bookList = new LinkedList<Book>();
         musicList = new LinkedList<Music>();
