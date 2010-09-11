@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import muvibee.media.Book;
+import muvibee.media.Music;
 import muvibee.media.Video;
 
 
@@ -41,7 +42,15 @@ public class AddActionListener implements ActionListener {
                 mvb.setTmpBook(book);
             }else{
                 if(button.getName().equals("add music button")){
-
+                    Music music;
+                    if(decision == 0){
+                        String ean = mvb.showSetEANFrame();
+                        music = new Music("Test", "bla"); //TODO getBook(ean);
+                    }else{
+                        music = new Music();
+                    }
+                    mvb.showMusicItem(music);
+                    mvb.setTmpMusic(music);
                 }else{
                     if(button.getName().equals("add video button")){
                         Video video;

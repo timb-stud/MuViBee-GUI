@@ -22,6 +22,7 @@ public class MuViBee {
     private LinkedList<Video> videoList;
     private MainFrame mainFrame;
     private Book tmpBook;
+    private Music tmpMusic;
     private Video tmpVideo;
 
     public MuViBee() {
@@ -70,6 +71,11 @@ public class MuViBee {
         mainFrame.bookItemSetVisible(true);
     }
 
+    public void showMusicItem(Music music){
+        mainFrame.setMusicItem(music);
+        mainFrame.musicItemSetVisible(true);
+    }
+
     public void showVideoItem(Video video) {
         mainFrame.setVideoItem(video);
         mainFrame.videoItemSetVisible(true);
@@ -77,6 +83,10 @@ public class MuViBee {
 
     public void setTmpBook(Book book) {
         tmpBook = book;
+    }
+    
+    public void setTmpMusic(Music music) {
+        tmpMusic = music;
     }
 
     public void setTmpVideo(Video video) {

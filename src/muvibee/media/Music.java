@@ -9,6 +9,13 @@ public class Music extends Media{
 	private String interpreter;
 	private String type;
 
+        public Music(){ }
+
+        public Music(String title, String interpreter){
+            super(title);
+            this.interpreter = interpreter;
+        }
+
 	public Music(String format, String interpreter, String type, String title,
 			String ean, String genre, int year, String location, String lendTo,
 			String lendDate, String backDate, int rating, String description,

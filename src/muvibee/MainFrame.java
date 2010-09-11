@@ -12,6 +12,7 @@
 package muvibee;
 import javax.swing.DefaultComboBoxModel;
 import muvibee.media.Book;
+import muvibee.media.Music;
 import muvibee.media.Video;
 import util.CoverDetailsList;
 
@@ -84,10 +85,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    public void setBookItem(Book b){
+    public void setBookItem(Book book){
 
-        titleBookTextField.setText(b.getTitle());
-        authorBookTextField.setText(b.getAuthor());
+        titleBookTextField.setText(book.getTitle());
+        authorBookTextField.setText(book.getAuthor());
+        //TODO and so on....
+    }
+
+    public void setMusicItem(Music music){
+
+        titleMusicTextField.setText(music.getTitle());
+        artistMusicTextField.setText(music.getInterpreter());
         //TODO and so on....
     }
 
@@ -112,6 +120,11 @@ public class MainFrame extends javax.swing.JFrame {
     public void bookItemSetVisible(boolean b) {
         itemBookScrollPane.setVisible(b);
         itemBookScrollPane.getParent().validate();
+    }
+
+    public void musicItemSetVisible(boolean b) {
+        itemMusicScrollPane.setVisible(b);
+        itemMusicScrollPane.getParent().validate();
     }
 
 

@@ -8,7 +8,6 @@ package muvibee;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import muvibee.media.Book;
 
 /**
  *
