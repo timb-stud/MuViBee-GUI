@@ -21,9 +21,9 @@ public class MuViBee {
     private LinkedList<Music> musicList;
     private LinkedList<Video> videoList;
     private MainFrame mainFrame;
-    private Book tmpBook;
-    private Music tmpMusic;
-    private Video tmpVideo;
+    private Book currentBook;
+    private Music currentMusic;
+    private Video currentVideo;
 
     public MuViBee() {
         final MuViBee mvb = this;
@@ -81,47 +81,41 @@ public String showEanInputFrame(){
         mainFrame.videoItemSetVisible(true);
     }
 
-    public void setTmpBook(Book book) {
-        tmpBook = book;
+    public void setCurrentBook(Book book) {
+        currentBook = book;
     }
     
-    public void setTmpMusic(Music music) {
-        tmpMusic = music;
+    public void setCurrentMusic(Music music) {
+        currentMusic = music;
     }
 
-    public void setTmpVideo(Video video) {
-        tmpVideo = video;
+    public void setCurrentVideo(Video video) {
+        currentVideo = video;
     }
 
-    public void setTmpBookItemInformation() {
-        mainFrame.setBookItemInformation(tmpBook);
+    public void setCurrentBookItemInformation() {
+        mainFrame.setBookItemInformation(currentBook);
     }
 
-    void setTmpVideoItemInformation() {
-        mainFrame.setVideoItemInformation(tmpVideo);
+    void setCurrentVideoItemInformation() {
+        mainFrame.setVideoItemInformation(currentVideo);
     }
 
     public void updateBookList() {
-        if (!bookList.contains(tmpBook)) {
-            bookList.add(tmpBook);
+        if (!bookList.contains(currentBook)) {
+            bookList.add(currentBook);
         }
     }
 
 
     public void updateVideoList() {
-        if (!videoList.contains(tmpVideo)) {
-            videoList.add(tmpVideo);
+        if (!videoList.contains(currentVideo)) {
+            videoList.add(currentVideo);
         }
     }
 
     public static void main(String args[]) {
         MuViBee mvb = new MuViBee();
     }
-
-
-
-
-
-
 
 }
