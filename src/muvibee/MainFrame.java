@@ -28,6 +28,37 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(MuViBee mvb) {
         initComponents();
 
+	//init dayComboBoxes
+	String[] days = new String[32];
+	days[0] = "Tag";
+	for(int i=1; i<32;i++)
+	    days[i] = String.valueOf(i+1);
+	borrowDayBookComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowedUntilDayBookComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowedUntilDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowedUntilDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
+
+	//init monthComboBoxes
+	String[] months = {"Monat", "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"};
+	borrowMonthBookComboBox.setModel(new DefaultComboBoxModel(months));
+	borrowedUntilMonthBookComboBox.setModel(new DefaultComboBoxModel(months));
+	borrowMonthMusicComboBox.setModel(new DefaultComboBoxModel(months));
+	borrowedUntilMonthMusicComboBox.setModel(new DefaultComboBoxModel(months));
+	borrowMonthVideoComboBox.setModel(new DefaultComboBoxModel(months));
+	borrowedUntilMonthVideoComboBox.setModel(new DefaultComboBoxModel(months));
+
+	//init typeComboBox
+	String[] types = {"", "Album", "Single", "Sampler"};
+	typeMusicComboBox.setModel(new DefaultComboBoxModel(types));
+
+	//init formatComboBoxes
+	String[] musicFormats = {"", "CD", "LP", "Kassette"};
+	String[] videoFormats = {"", "CD/DVD", "BlueRay", "VHS"};
+	formatMusicComboBox.setModel(new DefaultComboBoxModel(musicFormats));
+	formatVideoComboBox.setModel(new DefaultComboBoxModel(videoFormats));
+	
         CoverDetailsList coverDetailsBookList = new CoverDetailsList();
         CoverDetailsList coverDetailsMusicList = new CoverDetailsList();
         CoverDetailsList coverDetailsVideoList = new CoverDetailsList();
@@ -86,23 +117,151 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void setBookItem(Book book){
-
         titleBookTextField.setText(book.getTitle());
         authorBookTextField.setText(book.getAuthor());
-        //TODO and so on....
+	languageBookTextField.setText(book.getLanguage());
+	isbnBookTextField.setText(book.getIsbn());
+	eanBookTextField.setText(book.getEan());
+	genreBookTextField.setText(book.getGenre());
+	releaseYearBookTextField.setText(String.valueOf(book.getReleaseYear()));
+	locationBookTextField.setText(book.getLocation());
+	borrowedToBookTextField.setText(book.getLendTo());
+	borrowDayBookComboBox.setSelectedIndex(book.getLendDay());
+	borrowMonthBookComboBox.setSelectedIndex(book.getLendMonth());
+	borrowYearBookTextField.setText(String.valueOf(book.getLendYear()));
+	borrowedUntilDayBookComboBox.setSelectedIndex(book.getLendUntilDay());
+	borrowedUntilMonthBookComboBox.setSelectedIndex(book.getLendUntilMonth());
+	borrowedUntilYearBookTextField.setText(String.valueOf(book.getLendUntilYear()));
+	switch (book.getRating()) {
+	    case 1:
+		oneRatingpointBookRadioButton.setSelected(true);
+		break;
+	    case 2:
+		twoRatingpointsBookRadioButton.setSelected(true);
+		break;
+	    case 3:
+		threeRatingpointsBookRadioButton.setSelected(true);
+		break;
+	    default:
+		oneRatingpointBookRadioButton.setSelected(false);
+		twoRatingpointsBookRadioButton.setSelected(false);
+		threeRatingpointsBookRadioButton.setSelected(false);
+	}
+	descriptionBookTextArea.setText(book.getDescription());
+        annotationBookTextArea.setText(book.getComment());
     }
 
     public void setMusicItem(Music music){
-
         titleMusicTextField.setText(music.getTitle());
         artistMusicTextField.setText(music.getInterpreter());
-        //TODO and so on....
+
+	String type = music.getType();
+	if(type != null && !type.isEmpty()){
+	    int itemNumber = typeMusicComboBox.getItemCount();
+	    boolean found = false;
+	    for(int i=0; i < itemNumber; i++){
+		if(typeMusicComboBox.getItemAt(i).equals(type)){
+		    typeMusicComboBox.setSelectedIndex(i);
+		    found = true;
+		    break;
+		}
+	    }
+	    if(!found)
+		typeMusicComboBox.addItem(type);
+	}
+
+	String format = music.getFormat();
+	if(format != null && !format.isEmpty()){
+	    int itemNumber = formatMusicComboBox.getItemCount();
+	    boolean found = false;
+	    for(int i=0; i < itemNumber; i++){
+		if(formatMusicComboBox.getItemAt(i).equals(format)){
+		    formatMusicComboBox.setSelectedIndex(i);
+		    found = true;
+		    break;
+		}
+	    }
+	    if(!found)
+		formatMusicComboBox.addItem(format);
+	}
+	eanMusicTextField.setText(music.getEan());
+	genreMusicTextField.setText(music.getGenre());
+	releaseYearMusicTextField.setText(String.valueOf(music.getReleaseYear()));
+	locationMusicTextField.setText(music.getLocation());
+	borrowedToMusicTextField.setText(music.getLendTo());
+	borrowDayMusicComboBox.setSelectedIndex(music.getLendDay());
+	borrowMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
+	borrowYearMusicTextField.setText(String.valueOf(music.getLendYear()));
+	borrowedUntilDayMusicComboBox.setSelectedIndex(music.getLendUntilDay());
+	borrowedUntilMonthMusicComboBox.setSelectedIndex(music.getLendUntilMonth());
+	borrowedUntilYearMusicTextField.setText(String.valueOf(music.getLendUntilYear()));
+	switch (music.getRating()) {
+	    case 1:
+		oneRatingpointMusicRadioButton.setSelected(true);
+		break;
+	    case 2:
+		twoRatingpointsMusicRadioButton.setSelected(true);
+		break;
+	    case 3:
+		threeRatingpointsMusicRadioButton.setSelected(true);
+		break;
+	    default:
+		oneRatingpointMusicRadioButton.setSelected(false);
+		twoRatingpointsMusicRadioButton.setSelected(false);
+		threeRatingpointsMusicRadioButton.setSelected(false);
+	}
+	descriptionMusicTextArea.setText(music.getDescription());
+        annotationMusicTextArea.setText(music.getComment());
     }
 
     public void setVideoItem(Video video) {
         titleVideoTextField.setText(video.getTitle());
-        actorsVideoTextField.setText(video.getActor());
-        //TODO and so on....
+        directorVideoTextField.setText(video.getDirector());
+	actorsVideoTextField.setText(video.getActors());
+
+	String format = video.getFormat();
+	if(format != null && !format.isEmpty()){
+	    int itemNumber = formatVideoComboBox.getItemCount();
+	    boolean found = false;
+	    for(int i=0; i < itemNumber; i++){
+		if(formatVideoComboBox.getItemAt(i).equals(format)){
+		    formatVideoComboBox.setSelectedIndex(i);
+		    found = true;
+		    break;
+		}
+	    }
+	    if(!found)
+		formatVideoComboBox.addItem(format);
+	}
+
+	eanVideoTextField.setText(video.getEan());
+	genreVideoTextField.setText(video.getGenre());
+	releaseYearVideoTextField.setText(String.valueOf(video.getReleaseYear()));
+	locationVideoTextField.setText(video.getLocation());
+	borrowedToVideoTextField.setText(video.getLendTo());
+	borrowDayVideoComboBox.setSelectedIndex(video.getLendDay());
+	borrowMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
+	borrowYearVideoTextField.setText(String.valueOf(video.getLendYear()));
+	borrowedUntilDayVideoComboBox.setSelectedIndex(video.getLendUntilDay());
+	borrowedUntilMonthVideoComboBox.setSelectedIndex(video.getLendUntilMonth());
+	borrowedUntilYearVideoTextField.setText(String.valueOf(video.getLendUntilYear()));
+	switch (video.getRating()) {
+	    case 1:
+		oneRatingpointVideoRadioButton.setSelected(true);
+		break;
+	    case 2:
+		twoRatingpointsVideoRadioButton.setSelected(true);
+		break;
+	    case 3:
+		threeRatingpointsVideoRadioButton.setSelected(true);
+		break;
+	    default:
+		oneRatingpointVideoRadioButton.setSelected(false);
+		twoRatingpointsVideoRadioButton.setSelected(false);
+		threeRatingpointsVideoRadioButton.setSelected(false);
+	}
+	descriptionVideoTextArea.setText(video.getDescription());
+        annotationVideoTextArea.setText(video.getComment());
     }
 
 
@@ -113,7 +272,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setVideoItemInformation(Video video) {
         video.setTitle(titleVideoTextField.getText());
-        video.setActor(actorsVideoTextField.getText());
+        video.setActors(actorsVideoTextField.getText());
     }
 
     
@@ -259,12 +418,12 @@ public class MainFrame extends javax.swing.JFrame {
         releaseYearMusicTextField = new javax.swing.JTextField();
         locationMusicTextField = new javax.swing.JTextField();
         borrowedToMusicTextField = new javax.swing.JTextField();
-        borrowDayComboBox = new javax.swing.JComboBox();
-        borrowedUntilDayComboBox = new javax.swing.JComboBox();
-        borrowMonthComboBox = new javax.swing.JComboBox();
-        borrowedUntilMonthComboBox = new javax.swing.JComboBox();
-        borrowYearTextField = new javax.swing.JTextField();
-        borrowedUntilYearTextField = new javax.swing.JTextField();
+        borrowDayMusicComboBox = new javax.swing.JComboBox();
+        borrowedUntilDayMusicComboBox = new javax.swing.JComboBox();
+        borrowMonthMusicComboBox = new javax.swing.JComboBox();
+        borrowedUntilMonthMusicComboBox = new javax.swing.JComboBox();
+        borrowYearMusicTextField = new javax.swing.JTextField();
+        borrowedUntilYearMusicTextField = new javax.swing.JTextField();
         typeMusicComboBox = new javax.swing.JComboBox();
         formatMusicComboBox = new javax.swing.JComboBox();
         videoPanel = new javax.swing.JPanel();
@@ -650,11 +809,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowedToBookTextField.setText("jTextField9");
 
-        borrowDayBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowDayBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         borrowDayBookComboBox.setAutoscrolls(true);
         borrowDayBookComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        borrowedUntilDayBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowedUntilDayBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         borrowMonthBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -700,11 +859,11 @@ public class MainFrame extends javax.swing.JFrame {
                                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                                         .addComponent(borrowDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowMonthBookComboBox, 0, 132, Short.MAX_VALUE))
+                                        .addComponent(borrowMonthBookComboBox, 0, 160, Short.MAX_VALUE))
                                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                                         .addComponent(borrowedUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowedUntilMonthBookComboBox, 0, 132, Short.MAX_VALUE)))
+                                        .addComponent(borrowedUntilMonthBookComboBox, 0, 160, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(borrowedUntilYearBookTextField, 0, 0, Short.MAX_VALUE)
@@ -966,19 +1125,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowedToMusicTextField.setText("jTextField9");
 
-        borrowDayComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        borrowDayComboBox.setAutoscrolls(true);
-        borrowDayComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        borrowDayMusicComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        borrowDayMusicComboBox.setAutoscrolls(true);
+        borrowDayMusicComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        borrowedUntilDayComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowedUntilDayMusicComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        borrowMonthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowMonthMusicComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        borrowedUntilMonthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowedUntilMonthMusicComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        borrowYearTextField.setText("2010");
+        borrowYearMusicTextField.setText("2010");
 
-        borrowedUntilYearTextField.setText("2010");
+        borrowedUntilYearMusicTextField.setText("2010");
 
         typeMusicComboBox.setEditable(true);
         typeMusicComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1023,17 +1182,17 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemMusicPanelLayout.createSequentialGroup()
                                 .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(itemMusicPanelLayout.createSequentialGroup()
-                                        .addComponent(borrowDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(borrowDayMusicComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowMonthComboBox, 0, 132, Short.MAX_VALUE))
+                                        .addComponent(borrowMonthMusicComboBox, 0, 151, Short.MAX_VALUE))
                                     .addGroup(itemMusicPanelLayout.createSequentialGroup()
-                                        .addComponent(borrowedUntilDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(borrowedUntilDayMusicComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowedUntilMonthComboBox, 0, 132, Short.MAX_VALUE)))
+                                        .addComponent(borrowedUntilMonthMusicComboBox, 0, 151, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(borrowedUntilYearTextField, 0, 0, Short.MAX_VALUE)
-                                    .addComponent(borrowYearTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))
+                                    .addComponent(borrowedUntilYearMusicTextField, 0, 0, Short.MAX_VALUE)
+                                    .addComponent(borrowYearMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))
                             .addComponent(typeMusicComboBox, 0, 251, Short.MAX_VALUE)
                             .addComponent(formatMusicComboBox, 0, 251, Short.MAX_VALUE)))
                     .addGroup(itemMusicPanelLayout.createSequentialGroup()
@@ -1095,15 +1254,15 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowDateMusicLabel)
-                            .addComponent(borrowDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(borrowMonthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(borrowYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(borrowDayMusicComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowMonthMusicComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowYearMusicTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(borrowedUntilMusicLabel)
-                            .addComponent(borrowedUntilDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(borrowedUntilMonthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(borrowedUntilYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(borrowedUntilDayMusicComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowedUntilMonthMusicComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowedUntilYearMusicTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1293,11 +1452,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowedToVideoTextField.setText("jTextField9");
 
-        borrowDayVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowDayVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         borrowDayVideoComboBox.setAutoscrolls(true);
         borrowDayVideoComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        borrowedUntilDayVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        borrowedUntilDayVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         borrowMonthVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -1345,11 +1504,11 @@ public class MainFrame extends javax.swing.JFrame {
                                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                                         .addComponent(borrowDayVideoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowMonthVideoComboBox, 0, 132, Short.MAX_VALUE))
+                                        .addComponent(borrowMonthVideoComboBox, 0, 151, Short.MAX_VALUE))
                                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                                         .addComponent(borrowedUntilDayVideoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowedUntilMonthVideoComboBox, 0, 132, Short.MAX_VALUE)))
+                                        .addComponent(borrowedUntilMonthVideoComboBox, 0, 151, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(borrowedUntilYearVideoTextField, 0, 0, Short.MAX_VALUE)
@@ -1558,13 +1717,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel borrowDateTextBookLabel;
     private javax.swing.JLabel borrowDateVideoLabel;
     private javax.swing.JComboBox borrowDayBookComboBox;
-    private javax.swing.JComboBox borrowDayComboBox;
+    private javax.swing.JComboBox borrowDayMusicComboBox;
     private javax.swing.JComboBox borrowDayVideoComboBox;
     private javax.swing.JComboBox borrowMonthBookComboBox;
-    private javax.swing.JComboBox borrowMonthComboBox;
+    private javax.swing.JComboBox borrowMonthMusicComboBox;
     private javax.swing.JComboBox borrowMonthVideoComboBox;
     private javax.swing.JTextField borrowYearBookTextField;
-    private javax.swing.JTextField borrowYearTextField;
+    private javax.swing.JTextField borrowYearMusicTextField;
     private javax.swing.JTextField borrowYearVideoTextField;
     private javax.swing.JTextField borrowedToBookTextField;
     private javax.swing.JLabel borrowedToMusicLabel;
@@ -1573,16 +1732,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel borrowedToVideoLabel;
     private javax.swing.JTextField borrowedToVideoTextField;
     private javax.swing.JComboBox borrowedUntilDayBookComboBox;
-    private javax.swing.JComboBox borrowedUntilDayComboBox;
+    private javax.swing.JComboBox borrowedUntilDayMusicComboBox;
     private javax.swing.JComboBox borrowedUntilDayVideoComboBox;
     private javax.swing.JComboBox borrowedUntilMonthBookComboBox;
-    private javax.swing.JComboBox borrowedUntilMonthComboBox;
+    private javax.swing.JComboBox borrowedUntilMonthMusicComboBox;
     private javax.swing.JComboBox borrowedUntilMonthVideoComboBox;
     private javax.swing.JLabel borrowedUntilMusicLabel;
     private javax.swing.JLabel borrowedUntilTextBookLabel;
     private javax.swing.JLabel borrowedUntilVideoLabel;
     private javax.swing.JTextField borrowedUntilYearBookTextField;
-    private javax.swing.JTextField borrowedUntilYearTextField;
+    private javax.swing.JTextField borrowedUntilYearMusicTextField;
     private javax.swing.JTextField borrowedUntilYearVideoTextField;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel coverBookLabel;

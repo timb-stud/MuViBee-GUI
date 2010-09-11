@@ -7,17 +7,21 @@ import java.awt.image.BufferedImage;
 
 
 public abstract class Media {
-	private String title;
-	private String ean;
-	private String genre;
-	private int year;
-	private String location;
-	private String lendTo;
-	private String lendDate;
-	private String backDate;
-	private int rating;
-	private String description;
-	private String comment;
+	private String	title = new String();
+	private String	ean = new String();
+	private String	genre = new String();
+	private int	releaseYear;
+	private String	location = new String();
+	private String	lendTo = new String();
+	private int	lendDay;
+	private int	lendMonth;
+	private int	lendYear;
+	private int	lendUntilDay;
+	private int	lendUntilMonth;
+	private int	lendUntilYear;
+	private int	rating;
+	private String	description = new String();
+	private String	comment = new String();
 	private BufferedImage cover;
 	private boolean isDeleted;
 
@@ -28,17 +32,36 @@ public abstract class Media {
         }
 
 
-	public Media(String title, String ean, String genre, int year, String location, String lendTo,
-			String lendDate, String backDate, int rating, String description,
-			String comment, BufferedImage cover, boolean isDeleted) {
+	public Media(	String title,
+			String ean,
+			String genre,
+			int releaseYear,
+			String location,
+			String lendTo,
+			int lendDay, 
+			int lendMonth,
+			int lendYear,
+			int lendUntilDay,
+			int lendUntilMonth,
+			int lendUntilYear,
+			int rating,
+			String description,
+			String comment, 
+			BufferedImage cover,
+			boolean isDeleted) {
+	    
 		this.title = title;
 		this.ean = ean;
 		this.genre = genre;
-		this.year = year;
+		this.releaseYear = releaseYear;
 		this.location = location;
 		this.lendTo = lendTo;
-		this.lendDate = lendDate;
-		this.backDate = backDate;
+		this.lendDay = lendDay;
+		this.lendMonth = lendMonth;
+		this.lendYear = lendYear;
+		this.lendUntilDay = lendUntilDay;
+		this.lendUntilMonth = lendUntilMonth;
+		this.lendUntilYear = lendUntilYear;
 		this.rating = rating;
 		this.description = description;
 		this.comment = comment;
@@ -77,12 +100,12 @@ public abstract class Media {
 		this.genre = genre;
 	}
 
-	public int getYear() {
-		return year;
+	public int getReleaseYear() {
+		return releaseYear;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+	public void setReleaseYear(int releaseYear) {
+		this.releaseYear = releaseYear;
 	}
 
 	public String getLocation() {
@@ -101,20 +124,52 @@ public abstract class Media {
 		this.lendTo = lendTo;
 	}
 
-	public String getLendDate() {
-		return lendDate;
+	public int getLendDay() {
+	    return lendDay;
 	}
 
-	public void setLendDate(String lendDate) {
-		this.lendDate = lendDate;
+	public void setLendDay(int lendDay) {
+	    this.lendDay = lendDay;
 	}
 
-	public String getBackDate() {
-		return backDate;
+	public int getLendMonth() {
+	    return lendMonth;
 	}
 
-	public void setBackDate(String backDate) {
-		this.backDate = backDate;
+	public void setLendMonth(int lendMonth) {
+	    this.lendMonth = lendMonth;
+	}
+
+	public int getLendUntilDay() {
+	    return lendUntilDay;
+	}
+
+	public void setLendUntilDay(int lendUntilDay) {
+	    this.lendUntilDay = lendUntilDay;
+	}
+
+	public int getLendUntilMonth() {
+	    return lendUntilMonth;
+	}
+
+	public void setLendUntilMonth(int lendUntilMonth) {
+	    this.lendUntilMonth = lendUntilMonth;
+	}
+
+	public int getLendUntilYear() {
+	    return lendUntilYear;
+	}
+
+	public void setLendUntilYear(int lendUntilYear) {
+	    this.lendUntilYear = lendUntilYear;
+	}
+
+	public int getLendYear() {
+	    return lendYear;
+	}
+
+	public void setLendYear(int lendYear) {
+	    this.lendYear = lendYear;
 	}
 
 	public int getRating() {

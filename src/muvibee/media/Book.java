@@ -16,11 +16,44 @@ public class Book extends Media {
             this.author = author;
         }
 
-	public Book(String author, String language, String isbn, String title,
-			String ean, String genre, int year, String location, String lendTo,
-			String lendDate, String backDate, int rating, String description,
-			String comment, BufferedImage cover, boolean isDeleted) {
-		super(title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
+	public Book(String author, 
+		    String language,
+		    String isbn,
+		    String title,
+		    String ean,
+		    String genre,
+		    int year,
+		    String location,
+		    String lendTo,
+		    int lendDay,
+		    int lendMonth,
+		    int lendYear,
+		    int lendUntilDay,
+		    int lendUntilMonth,
+		    int lendUntilYear,
+		    int rating,
+		    String description,
+		    String comment,
+		    BufferedImage cover,
+		    boolean isDeleted) {
+
+	    		super(title,
+			ean,
+			genre,
+			year,
+			location,
+			lendTo,
+			lendDay,
+			lendMonth,
+			lendYear,
+			lendUntilDay,
+			lendUntilMonth,
+			lendUntilYear,
+			rating,
+			description,
+			comment,
+			cover,
+			isDeleted);
 		this.author = author;
 		this.language = language;
 		this.isbn = isbn;

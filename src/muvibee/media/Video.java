@@ -7,24 +7,57 @@ import java.awt.image.BufferedImage;
 public class Video extends Media{
 	private String format;
 	private String director;
-	private String actor;
+	private String actors;
 
         public Video(){ }
 
-        public Video(String title, String actor){
+        public Video(String title, String actors){
             super(title);
-            this.actor = actor;
+            this.actors = actors;
         }
 
 
-	public Video(String format, String director, String actor, String title,
-			String ean, String genre, int year, String location, String lendTo,
-			String lendDate, String backDate, int rating, String description,
-			String comment, BufferedImage cover, boolean isDeleted) {
-		super(title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
+	public Video(String format, 
+		    String director,
+		    String actors,
+		    String title,
+		    String ean,
+		    String genre,
+		    int year,
+		    String location,
+		    String lendTo,
+		    int lendDay,
+		    int lendMonth,
+		    int lendYear,
+		    int lendUntilDay,
+		    int lendUntilMonth,
+		    int lendUntilYear,
+		    int rating,
+		    String description,
+		    String comment,
+		    BufferedImage cover,
+		    boolean isDeleted) {
+		
+		super(title,
+			ean,
+			genre,
+			year,
+			location,
+			lendTo,
+			lendDay,
+			lendMonth,
+			lendYear,
+			lendUntilDay,
+			lendUntilMonth,
+			lendUntilYear,
+			rating,
+			description,
+			comment,
+			cover,
+			isDeleted);
 		this.format = format;
 		this.director = director;
-		this.actor = actor;
+		this.actors = actors;
 	}
 
 	public String getFormat() {
@@ -43,12 +76,12 @@ public class Video extends Media{
 		this.director = director;
 	}
 
-	public String getActor() {
-		return actor;
+	public String getActors() {
+		return actors;
 	}
 
-	public void setActor(String actor) {
-		this.actor = actor;
+	public void setActors(String actor) {
+		this.actors = actor;
 	}
 
 	@Override

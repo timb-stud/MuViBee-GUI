@@ -34,6 +34,9 @@ public class AddActionListener implements ActionListener {
                 Book book;
                 if(decision == 0){
                     String ean = mvb.showEanInputFrame();
+		    if(ean == null){
+			return ;
+		    }
                     book = new Book("Test", "bla"); //TODO getBook(ean);
                 }else{
                     book = new Book();
@@ -45,6 +48,9 @@ public class AddActionListener implements ActionListener {
                     Music music;
                     if(decision == 0){
                         String ean = mvb.showEanInputFrame();
+			if(ean == null){
+			    return ;
+			}
                         music = new Music("Test", "bla"); //TODO getBook(ean);
                     }else{
                         music = new Music();
@@ -56,6 +62,9 @@ public class AddActionListener implements ActionListener {
                         Video video;
                         if(decision == 0){
                             String ean = mvb.showEanInputFrame();
+			    if(ean == null){
+				return ;
+			    }
                             video = new Video("Test", "bla"); //TODO getBook(ean);
                         }else{
                             video = new Video();
