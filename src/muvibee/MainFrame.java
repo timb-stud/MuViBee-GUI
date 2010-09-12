@@ -10,6 +10,8 @@
  */
 
 package muvibee;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import muvibee.media.Book;
 import muvibee.media.Music;
@@ -32,7 +34,7 @@ public class MainFrame extends javax.swing.JFrame {
 	String[] days = new String[32];
 	days[0] = "Tag";
 	for(int i=1; i<32;i++)
-	    days[i] = String.valueOf(i+1);
+	    days[i] = String.valueOf(i);
 	borrowDayBookComboBox.setModel(new DefaultComboBoxModel(days));
 	borrowedUntilDayBookComboBox.setModel(new DefaultComboBoxModel(days));
 	borrowDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
@@ -266,13 +268,180 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     public void setBookItemInformation(Book book) {
-        book.setTitle(titleBookTextField.getText());
-        book.setAuthor(authorBookTextField.getText());
+	String title = titleBookTextField.getText().trim();
+	String author = authorBookTextField.getText().trim();
+	String language = languageBookTextField.getText().trim();
+	String isbn = isbnBookTextField.getText().trim();   //TODO Ueberpruefen!?!?
+	String ean = eanBookTextField.getText().trim();	    //TODO Ueberpruefen!?!?
+	String genre = genreBookTextField.getText().trim();
+	String releaseYear = releaseYearBookTextField.getText().trim();
+	String location = locationBookTextField.getText().trim();
+	String lendTo = borrowedToBookTextField.getText().trim();
+	int lendDay = borrowDayBookComboBox.getSelectedIndex();
+	int lendMonth = borrowMonthBookComboBox.getSelectedIndex();
+	String lendYear = borrowYearBookTextField.getText().trim();
+	int lendUntilDay = borrowedUntilDayBookComboBox.getSelectedIndex();
+	int lendUntilMonth = borrowedUntilMonthBookComboBox.getSelectedIndex();
+	String lendUntilYear = borrowedUntilYearBookTextField.getText().trim();
+	String description = descriptionBookTextArea.getText().trim();
+	String annotation = annotationBookTextArea.getText().trim();
+
+	//Rating
+	int rating = 0;
+	if(oneRatingpointBookRadioButton.isSelected())
+	    rating = 1;
+	else
+	    if(twoRatingpointsBookRadioButton.isSelected())
+		rating = 2;
+	    else
+		if(threeRatingpointsBookRadioButton.isSelected())
+		    rating = 3;
+
+	//year Test
+	try {
+	    int ry = TestUtils.validYear(releaseYear);
+	    int ly = TestUtils.validYear(lendYear);
+	    int luy = TestUtils.validYear(lendUntilYear);
+	    book.setTitle(title);
+	    book.setAuthor(author);
+	    book.setLanguage(language);
+	    book.setIsbn(isbn);
+	    book.setEan(ean);
+	    book.setGenre(genre);
+	    book.setReleaseYear(ry);
+	    book.setLocation(location);
+	    book.setLendTo(lendTo);
+	    book.setLendDay(lendDay);
+	    book.setLendMonth(lendMonth);
+	    book.setLendYear(ly);
+	    book.setLendUntilDay(lendUntilDay);
+	    book.setLendUntilMonth(lendUntilMonth);
+	    book.setLendUntilYear(luy);
+	    book.setRating(rating);
+	    book.setDescription(description);
+	    book.setComment(annotation);
+	} catch (NonValidYearException ex) {
+	    //TODO Fehlerausgabe
+	    statusLabel.setText("Ungueltiges Datum");
+	}
+    }
+
+    public void setMusicItemInformation(Music music){
+	String title = titleMusicTextField.getText().trim();
+	String artist = artistMusicTextField.getText().trim();
+	String type = typeMusicComboBox.getSelectedItem().toString().trim();
+	String format = formatMusicComboBox.getSelectedItem().toString().trim();
+	String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
+	String genre = genreMusicTextField.getText().trim();
+	String releaseYear = releaseYearMusicTextField.getText().trim();
+	String location = locationMusicTextField.getText().trim();
+	String lendTo = borrowedToMusicTextField.getText().trim();
+	int lendDay = borrowDayMusicComboBox.getSelectedIndex();
+	int lendMonth = borrowMonthMusicComboBox.getSelectedIndex();
+	String lendYear = borrowYearMusicTextField.getText().trim();
+	int lendUntilDay = borrowedUntilDayMusicComboBox.getSelectedIndex();
+	int lendUntilMonth = borrowedUntilMonthMusicComboBox.getSelectedIndex();
+	String lendUntilYear = borrowedUntilYearMusicTextField.getText().trim();
+	String description = descriptionMusicTextArea.getText().trim();
+	String annotation = annotationMusicTextArea.getText().trim();
+
+	//Rating
+	int rating = 0;
+	if(oneRatingpointMusicRadioButton.isSelected())
+	    rating = 1;
+	else
+	    if(twoRatingpointsMusicRadioButton.isSelected())
+		rating = 2;
+	    else
+		if(threeRatingpointsMusicRadioButton.isSelected())
+		    rating = 3;
+
+	//year Test
+	try {
+	    int ry = TestUtils.validYear(releaseYear);
+	    int ly = TestUtils.validYear(lendYear);
+	    int luy = TestUtils.validYear(lendUntilYear);
+	    music.setTitle(title);
+	    music.setInterpreter(artist);
+	    music.setType(type);
+	    music.setFormat(format);
+	    music.setEan(ean);
+	    music.setGenre(genre);
+	    music.setReleaseYear(ry);
+	    music.setLocation(location);
+	    music.setLendTo(lendTo);
+	    music.setLendDay(lendDay);
+	    music.setLendMonth(lendMonth);
+	    music.setLendYear(ly);
+	    music.setLendUntilDay(lendUntilDay);
+	    music.setLendUntilMonth(lendUntilMonth);
+	    music.setLendUntilYear(luy);
+	    music.setRating(rating);
+	    music.setDescription(description);
+	    music.setComment(annotation);
+	} catch (NonValidYearException ex) {
+	    //TODO Fehlerausgabe
+	    statusLabel.setText("Ungueltiges Datum");
+	}
     }
 
     public void setVideoItemInformation(Video video) {
-        video.setTitle(titleVideoTextField.getText());
-        video.setActors(actorsVideoTextField.getText());
+        String title = titleMusicTextField.getText().trim();
+	String director = directorVideoTextField.getText().trim();
+	String actors = actorsVideoTextField.getText().trim();
+	String format = formatVideoComboBox.getSelectedItem().toString().trim();
+	String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
+	String genre = genreMusicTextField.getText().trim();
+	String releaseYear = releaseYearMusicTextField.getText().trim();
+	String location = locationMusicTextField.getText().trim();
+	String lendTo = borrowedToMusicTextField.getText().trim();
+	int lendDay = borrowDayMusicComboBox.getSelectedIndex();
+	int lendMonth = borrowMonthMusicComboBox.getSelectedIndex();
+	String lendYear = borrowYearMusicTextField.getText().trim();
+	int lendUntilDay = borrowedUntilDayMusicComboBox.getSelectedIndex();
+	int lendUntilMonth = borrowedUntilMonthMusicComboBox.getSelectedIndex();
+	String lendUntilYear = borrowedUntilYearMusicTextField.getText().trim();
+	String description = descriptionMusicTextArea.getText().trim();
+	String annotation = annotationMusicTextArea.getText().trim();
+
+	//Rating
+	int rating = 0;
+	if(oneRatingpointMusicRadioButton.isSelected())
+	    rating = 1;
+	else
+	    if(twoRatingpointsMusicRadioButton.isSelected())
+		rating = 2;
+	    else
+		if(threeRatingpointsMusicRadioButton.isSelected())
+		    rating = 3;
+
+	//year Test
+	try {
+	    int ry = TestUtils.validYear(releaseYear);
+	    int ly = TestUtils.validYear(lendYear);
+	    int luy = TestUtils.validYear(lendUntilYear);
+	    video.setTitle(title);
+	    video.setDirector(director);
+	    video.setActors(actors);
+	    video.setFormat(format);
+	    video.setEan(ean);
+	    video.setGenre(genre);
+	    video.setReleaseYear(ry);
+	    video.setLocation(location);
+	    video.setLendTo(lendTo);
+	    video.setLendDay(lendDay);
+	    video.setLendMonth(lendMonth);
+	    video.setLendYear(ly);
+	    video.setLendUntilDay(lendUntilDay);
+	    video.setLendUntilMonth(lendUntilMonth);
+	    video.setLendUntilYear(luy);
+	    video.setRating(rating);
+	    video.setDescription(description);
+	    video.setComment(annotation);
+	} catch (NonValidYearException ex) {
+	    //TODO Fehlerausgabe
+	    statusLabel.setText("Ungueltiges Datum");
+	}
     }
 
     

@@ -97,6 +97,10 @@ public String showEanInputFrame(){
         mainFrame.setBookItemInformation(currentBook);
     }
 
+    public void setCurrentMusicItemInformation(){
+	mainFrame.setMusicItemInformation(currentMusic);
+    }
+
     void setCurrentVideoItemInformation() {
         mainFrame.setVideoItemInformation(currentVideo);
     }
@@ -107,6 +111,11 @@ public String showEanInputFrame(){
         }
     }
 
+    public void updateMusicList(){
+	if(!musicList.contains(currentMusic)){
+	    musicList.add(currentMusic);
+	}
+    }
 
     public void updateVideoList() {
         if (!videoList.contains(currentVideo)) {

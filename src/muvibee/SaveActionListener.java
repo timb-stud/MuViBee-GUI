@@ -29,7 +29,8 @@ public class SaveActionListener implements ActionListener {
                 mvb.updateBookList();
             } else {
                 if(button.getName().equals("save music button")){
-
+		    mvb.setCurrentMusicItemInformation();
+		    mvb.updateMusicList();
                 } else {
                     if(button.getName().equals("save video button")){
                         mvb.setCurrentVideoItemInformation();

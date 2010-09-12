@@ -550,12 +550,12 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="borrowDayBookComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="borrowMonthBookComboBox" pref="160" max="32767" attributes="0"/>
+                                                      <Component id="borrowMonthBookComboBox" pref="151" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="borrowedUntilDayBookComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="borrowedUntilMonthBookComboBox" pref="160" max="32767" attributes="0"/>
+                                                      <Component id="borrowedUntilMonthBookComboBox" pref="151" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
