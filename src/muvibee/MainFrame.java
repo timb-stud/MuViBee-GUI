@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
-import util.CoverDetailsList;
+import util.coverDetailsList.*;
 
 
 

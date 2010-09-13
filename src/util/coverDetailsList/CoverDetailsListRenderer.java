@@ -1,4 +1,4 @@
-package util;
+package util.coverDetailsList;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -14,27 +14,27 @@ public class CoverDetailsListRenderer implements ListCellRenderer {
 		private static final Color HIGHLIGHT_COLOR = new Color(200, 0, 225);
 		Border selectedBorder = BorderFactory.createLineBorder(HIGHLIGHT_COLOR,2);
 		Border normalBorder = BorderFactory.createEmptyBorder();
-
-
+	    
+	    
 	    public Component getListCellRendererComponent(
-                JList list,
-                Object value,
-                int index,
-                boolean isSelected,
-                boolean hasFocus)
+	    										JList list,
+	    										Object value,
+	    										int index,
+	    										boolean isSelected,
+	    										boolean hasFocus)
 	    {
 	    	JComponent component;
-
+	    	
 	    	if(value instanceof Component)
 	    		component = (JComponent)value;
 	    	else
 	    		component = new JPanel();
-
-	    	if(isSelected)
+	    	
+	    	if(isSelected) 
 	    		component.setBorder(selectedBorder);
-			else
+			else 
 				component.setBorder(normalBorder);
-
+		    
 		    return component;
 	    }
 }
