@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package muvibee;
+package muvibee.lists;
 
 import java.util.Collections;
 import java.util.Comparator;
