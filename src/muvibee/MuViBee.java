@@ -6,6 +6,7 @@
 package muvibee;
 
 
+import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import muvibee.lists.BookList;
@@ -171,7 +172,7 @@ public String showEanInputFrame(){
         currentDeletedMedia = null;
     }
 
-    void restoreCurrentDeletedMedia() {
+    public void restoreCurrentDeletedMedia() {
         if (currentDeletedMedia instanceof Book) {
             bookList.add(currentDeletedMedia);
         } else {

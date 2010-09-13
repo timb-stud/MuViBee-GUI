@@ -3,23 +3,25 @@
  * and open the template in the editor.
  */
 
-package muvibee;
+package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import muvibee.MuViBee;
 
 /**
  *
  * @author bline
  */
-public class RestoreListener implements ActionListener {
+public class FinalDeleteListener implements ActionListener{
     private MuViBee mvb;
-    public RestoreListener(MuViBee mvb) {
+
+    public FinalDeleteListener(MuViBee mvb) {
         this.mvb = mvb;
     }
 
     public void actionPerformed(ActionEvent e) {
-        mvb.restoreCurrentDeletedMedia();
+        mvb.removeCurrentDeletedMediaFromDeletedList();
     }
 
 }

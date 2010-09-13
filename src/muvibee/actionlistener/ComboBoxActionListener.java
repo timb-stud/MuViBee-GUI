@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package muvibee;
+package muvibee.actionlistener;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -25,7 +25,7 @@ public class ComboBoxActionListener implements ActionListener {
     private JComboBox viewMusicComboBox;
     private JComboBox viewVideoComboBox;
 
-    ComboBoxActionListener(JLayeredPane viewBookLayeredPane, JLayeredPane viewMusicLayeredPane, JLayeredPane viewVideoLayeredPane, JComboBox viewBookComboBox, JComboBox viewMusicComboBox, JComboBox viewVideoComboBox) {
+    public ComboBoxActionListener(JLayeredPane viewBookLayeredPane, JLayeredPane viewMusicLayeredPane, JLayeredPane viewVideoLayeredPane, JComboBox viewBookComboBox, JComboBox viewMusicComboBox, JComboBox viewVideoComboBox) {
         this.viewBookLayeredPane = viewBookLayeredPane;
         this.viewMusicLayeredPane = viewMusicLayeredPane;
         this.viewVideoLayeredPane = viewVideoLayeredPane;
