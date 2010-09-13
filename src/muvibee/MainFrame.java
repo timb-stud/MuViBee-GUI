@@ -13,6 +13,7 @@ package muvibee;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
@@ -116,6 +117,28 @@ public class MainFrame extends javax.swing.JFrame {
         editMusicButton.addActionListener(sal);
         editVideoButton.addActionListener(sal);
 
+        DeleteListener dl = new DeleteListener(mvb);
+        deleteBookButton.addActionListener(dl);
+        deleteMusicButton.addActionListener(dl);
+        deleteVideoButton.addActionListener(dl);
+
+        StatusBar sb = new StatusBar(StatusBarModel.getInstance());
+        javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
+        statusPanel.setLayout(statusPanelLayout);
+        statusPanelLayout.setHorizontalGroup(
+            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statusPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sb, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        statusPanelLayout.setVerticalGroup(
+            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statusPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sb, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .addContainerGap())
+        );
     }
 
     public void setBookItem(Book book){
@@ -322,7 +345,7 @@ public class MainFrame extends javax.swing.JFrame {
 	    book.setComment(annotation);
 	} catch (NonValidYearException ex) {
 	    //TODO Fehlerausgabe
-	    statusLabel.setText("Ungueltiges Datum");
+	    StatusBarModel.getInstance().setFailMessage("Ungueltiges Datum");
 	}
     }
 
@@ -381,7 +404,7 @@ public class MainFrame extends javax.swing.JFrame {
 	    music.setComment(annotation);
 	} catch (NonValidYearException ex) {
 	    //TODO Fehlerausgabe
-	    statusLabel.setText("Ungueltiges Datum");
+	    StatusBarModel.getInstance().setFailMessage("Ungueltiges Datum");
 	}
     }
 
@@ -440,7 +463,7 @@ public class MainFrame extends javax.swing.JFrame {
 	    video.setComment(annotation);
 	} catch (NonValidYearException ex) {
 	    //TODO Fehlerausgabe
-	    statusLabel.setText("Ungueltiges Datum");
+	    StatusBarModel.getInstance().setFailMessage("Ungueltiges Datum");
 	}
     }
 
@@ -480,7 +503,6 @@ public class MainFrame extends javax.swing.JFrame {
         advancedSearchButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         statusPanel = new javax.swing.JPanel();
-        statusLabel = new javax.swing.JLabel();
         tabbedPane = new javax.swing.JTabbedPane();
         overviewPanel = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
@@ -707,23 +729,15 @@ public class MainFrame extends javax.swing.JFrame {
 
         statusPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        statusLabel.setText("jLabel1");
-
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(statusPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 801, Short.MAX_VALUE)
         );
         statusPanelLayout.setVerticalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(statusPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(statusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 44, Short.MAX_VALUE)
         );
 
         tabbedPane.setName("add video button"); // NOI18N
@@ -959,6 +973,7 @@ public class MainFrame extends javax.swing.JFrame {
         editBookButton.setName("save book button"); // NOI18N
 
         deleteBookButton.setText("Löschen");
+        deleteBookButton.setName("deleteBook"); // NOI18N
 
         titleBookTextField.setText("jTextField7");
 
@@ -1028,11 +1043,11 @@ public class MainFrame extends javax.swing.JFrame {
                                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                                         .addComponent(borrowDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowMonthBookComboBox, 0, 160, Short.MAX_VALUE))
+                                        .addComponent(borrowMonthBookComboBox, 0, 151, Short.MAX_VALUE))
                                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                                         .addComponent(borrowedUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowedUntilMonthBookComboBox, 0, 160, Short.MAX_VALUE)))
+                                        .addComponent(borrowedUntilMonthBookComboBox, 0, 151, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(borrowedUntilYearBookTextField, 0, 0, Short.MAX_VALUE)
@@ -1279,6 +1294,7 @@ public class MainFrame extends javax.swing.JFrame {
         editMusicButton.setName("save music button"); // NOI18N
 
         deleteMusicButton.setText("Löschen");
+        deleteMusicButton.setName("deleteMusic"); // NOI18N
 
         titleMusicTextField.setText("jTextField7");
 
@@ -1604,6 +1620,7 @@ public class MainFrame extends javax.swing.JFrame {
         editVideoButton.setName("save video button"); // NOI18N
 
         deleteVideoButton.setText("Löschen");
+        deleteVideoButton.setName("deleteVideo"); // NOI18N
 
         titleVideoTextField.setText("jTextField7");
 
@@ -2014,7 +2031,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel restorePanel;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
-    private javax.swing.JLabel statusLabel;
     private javax.swing.JPanel statusPanel;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JRadioButton threeRatingpointsBookRadioButton;

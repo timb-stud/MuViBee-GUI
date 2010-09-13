@@ -6,9 +6,11 @@
 package muvibee;
 
 import java.util.LinkedList;
+import java.util.Observable;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import muvibee.media.Book;
+import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
 
@@ -20,6 +22,7 @@ public class MuViBee {
     private LinkedList<Book> bookList;
     private LinkedList<Music> musicList;
     private LinkedList<Video> videoList;
+    private LinkedList<Media> deletedMediaList;
     private MainFrame mainFrame;
     private Book currentBook;
     private Music currentMusic;
@@ -32,6 +35,7 @@ public class MuViBee {
         bookList = new LinkedList<Book>();
         musicList = new LinkedList<Music>();
         videoList = new LinkedList<Video>();
+        deletedMediaList = new LinkedList<Media>();
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
@@ -66,19 +70,27 @@ public String showEanInputFrame(){
                     "");
     }
 
-    public void showBookItem(Book book){
+    public void setBookItem(Book book){
         mainFrame.setBookItem(book);
-        mainFrame.bookItemSetVisible(true);
     }
 
-    public void showMusicItem(Music music){
+    public void setMusicItem(Music music){
         mainFrame.setMusicItem(music);
-        mainFrame.musicItemSetVisible(true);
     }
 
-    public void showVideoItem(Video video) {
+    public void setVideoItem(Video video) {
         mainFrame.setVideoItem(video);
-        mainFrame.videoItemSetVisible(true);
+    }
+
+    public void showBookItem(boolean b) {
+        mainFrame.bookItemSetVisible(b);
+    }
+
+    public void showMusicItem(boolean b) {
+        mainFrame.musicItemSetVisible(b);
+    }
+    public void showVideoItem(boolean b) {
+        mainFrame.videoItemSetVisible(b);
     }
 
     public void setCurrentBook(Book book) {
@@ -105,24 +117,44 @@ public String showEanInputFrame(){
         mainFrame.setVideoItemInformation(currentVideo);
     }
 
-    public void updateBookList() {
+    public void addCurrentBookToBookList() {
         if (!bookList.contains(currentBook)) {
             bookList.add(currentBook);
         }
     }
 
-    public void updateMusicList(){
+    public void addCurrentMusicToMusicList(){
 	if(!musicList.contains(currentMusic)){
 	    musicList.add(currentMusic);
 	}
     }
 
-    public void updateVideoList() {
+    public void addCurrentVideoToVideoList() {
         if (!videoList.contains(currentVideo)) {
             videoList.add(currentVideo);
         }
     }
 
+    public void removeCurrentBookFromBookList() {
+        if (bookList.remove(currentBook)) {
+            deletedMediaList.add(currentBook);
+            currentBook = null;
+        }
+    }
+
+    public void removeCurrentMusicFromMusicList() {
+        if (musicList.remove(currentMusic)) {
+            deletedMediaList.add(currentMusic);
+            currentMusic = null;
+        }
+    }
+
+    public void removeCurrentVideoFromVideoList() {
+        if (videoList.remove(currentVideo)) {
+            deletedMediaList.add(currentVideo);
+            currentVideo = null;
+        }
+    }
     public static void main(String args[]) {
         MuViBee mvb = new MuViBee();
     }

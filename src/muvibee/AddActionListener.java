@@ -41,7 +41,8 @@ public class AddActionListener implements ActionListener {
                 }else{
                     book = new Book();
                 }
-                mvb.showBookItem(book);
+                mvb.showBookItem(true);
+                mvb.setBookItem(book);
                 mvb.setCurrentBook(book);
             }else{
                 if(button.getName().equals("add music button")){
@@ -55,7 +56,8 @@ public class AddActionListener implements ActionListener {
                     }else{
                         music = new Music();
                     }
-                    mvb.showMusicItem(music);
+                    mvb.showMusicItem(true);
+                    mvb.setMusicItem(music);
                     mvb.setCurrentMusic(music);
                 }else{
                     if(button.getName().equals("add video button")){
@@ -69,7 +71,8 @@ public class AddActionListener implements ActionListener {
                         }else{
                             video = new Video();
                         }
-                        mvb.showVideoItem(video);
+                        mvb.showVideoItem(true);
+                        mvb.setVideoItem(video);
                         mvb.setCurrentVideo(video);
                     }
                 }

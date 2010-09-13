@@ -26,15 +26,15 @@ public class SaveActionListener implements ActionListener {
             JButton button = (JButton)source;
             if(button.getName().equals("save book button")){
                 mvb.setCurrentBookItemInformation();
-                mvb.updateBookList();
+                mvb.addCurrentBookToBookList();
             } else {
                 if(button.getName().equals("save music button")){
 		    mvb.setCurrentMusicItemInformation();
-		    mvb.updateMusicList();
+		    mvb.addCurrentMusicToMusicList();
                 } else {
                     if(button.getName().equals("save video button")){
                         mvb.setCurrentVideoItemInformation();
-                        mvb.updateVideoList();
+                        mvb.addCurrentVideoToVideoList();
                     }
                 }
             }

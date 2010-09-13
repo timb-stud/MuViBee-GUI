@@ -153,30 +153,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="statusLabel" pref="781" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="801" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="statusLabel" pref="22" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="statusLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
-          </Properties>
-        </Component>
-      </SubComponents>
     </Container>
     <Container class="javax.swing.JTabbedPane" name="tabbedPane">
       <Properties>
@@ -848,6 +833,7 @@
                     <Component class="javax.swing.JButton" name="deleteBookButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
+                        <Property name="name" type="java.lang.String" value="deleteBook" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="titleBookTextField">
@@ -1527,6 +1513,7 @@
                     <Component class="javax.swing.JButton" name="deleteMusicButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
+                        <Property name="name" type="java.lang.String" value="deleteMusic" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="titleMusicTextField">
@@ -2219,6 +2206,7 @@
                     <Component class="javax.swing.JButton" name="deleteVideoButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
+                        <Property name="name" type="java.lang.String" value="deleteVideo" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="titleVideoTextField">
