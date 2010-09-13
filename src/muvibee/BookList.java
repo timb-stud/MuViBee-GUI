@@ -5,7 +5,8 @@
 
 package muvibee;
 
-import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Comparator;
 import muvibee.media.Book;
 
 /**
@@ -18,6 +19,17 @@ public class BookList extends MediaList{
         this.setChanged();
         this.notifyObservers();
         return list.add(b);
+    }
+
+    public void sortByAuthor(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Book b1 = (Book)o1;
+                Book b2 = (Book)o2;
+                return b1.getAuthor().compareTo(b2.getAuthor());
+            }
+
+        });
     }
 
 }

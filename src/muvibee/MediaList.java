@@ -30,8 +30,16 @@ public class MediaList extends Observable{
         return list.add(m);
     }
 
+    public boolean contains(Media m){
+        return list.contains(m);
+    }
+
     public LinkedList<Media> getList() {
         return list;
+    }
+
+    public boolean remove(Media m){
+        return list.remove(m);
     }
 
     public void sortByTitle(){
