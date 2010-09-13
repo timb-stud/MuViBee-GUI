@@ -52,4 +52,71 @@ public class MediaList extends Observable{
 
         });
     }
+
+    public void sortByGenre(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Media m1 = (Media)o1;
+                Media m2 = (Media)o2;
+                return m1.getGenre().compareTo(m2.getGenre());
+            }
+
+        });
+    }
+
+    public void sortByReleaseYear(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Media m1 = (Media)o1;
+                Media m2 = (Media)o2;
+                return compareInt(m1.getReleaseYear(), (m2.getReleaseYear()));
+            }
+
+        });
+    }
+
+    public void sortByLocation(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Media m1 = (Media)o1;
+                Media m2 = (Media)o2;
+                return m1.getLocation().compareTo(m2.getLocation());
+            }
+
+        });
+    }
+
+
+    public void sortByLendTo(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Media m1 = (Media)o1;
+                Media m2 = (Media)o2;
+                return m1.getLendTo().compareTo(m2.getLendTo());
+            }
+
+        });
+    }
+
+   public void sortByRating(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Media m1 = (Media)o1;
+                Media m2 = (Media)o2;
+                return compareInt(m1.getRating(), (m2.getRating()));
+            }
+
+        });
+    }
+
+
+    private static int compareInt(int a, int b){
+		if (a == b)
+			return 0;
+		else if (a > b)
+			return 1;
+		else
+			return -1;
+	}
+
 }
