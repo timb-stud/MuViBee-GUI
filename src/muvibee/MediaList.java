@@ -64,17 +64,7 @@ public class MediaList extends Observable{
         sortedBy = "title";
     }
 
-    void resort() {
-       if (sortedBy.equals("title")) {
-           sortByTitle();
-       } else {
-           if (sortedBy.equals("EAN")) {
-               //TODO sortByEan();
-           } else {
-               //TODOif ()
-           }
-       }
-    }
+
 
     public void sortByGenre(){
         Collections.sort(list, new Comparator() {
@@ -85,6 +75,7 @@ public class MediaList extends Observable{
             }
 
         });
+        sortedBy = "genre";
     }
 
     public void sortByReleaseYear(){
@@ -96,6 +87,7 @@ public class MediaList extends Observable{
             }
 
         });
+        sortedBy = "release year";
     }
 
     public void sortByLocation(){
@@ -107,6 +99,7 @@ public class MediaList extends Observable{
             }
 
         });
+        sortedBy = "location";
     }
 
 
@@ -119,6 +112,7 @@ public class MediaList extends Observable{
             }
 
         });
+        sortedBy = "lendto";
     }
 
    public void sortByRating(){
@@ -130,6 +124,7 @@ public class MediaList extends Observable{
             }
 
         });
+        sortedBy = "rating";
     }
 
 
@@ -141,5 +136,17 @@ public class MediaList extends Observable{
 		else
 			return -1;
 	}
+
+    void resort() {
+       if (sortedBy.equals("title")) {
+           sortByTitle();
+       } else {
+           if (sortedBy.equals("EAN")) {
+               //TODO sortByEan();
+           } else {
+               //TODOif ()
+           }
+       }
+    }
 
 }
