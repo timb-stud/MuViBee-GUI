@@ -1,3 +1,4 @@
+
 package util.coverDetailsList;
 
 import java.awt.BorderLayout;
@@ -53,7 +54,7 @@ public class CoverDetailsList extends JPanel implements Observer{
 
         @Override
 	public void update(Observable list, Object media) {
-            LinkedList<Media> mList = ((MediaList<Media>) list).getList();
+            LinkedList<Media> mList = ((MediaList) list).getList();
             listModel.clear();
 
             for (Media m : mList){
