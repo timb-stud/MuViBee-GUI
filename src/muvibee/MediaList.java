@@ -5,7 +5,6 @@
 
 package muvibee;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -19,15 +18,18 @@ import muvibee.media.Media;
  */
 public class MediaList extends Observable{
     LinkedList<Media> list;
+    String sortedBy = "title";
 
     public MediaList() {
         list = new LinkedList<Media>();
     }
 
     public boolean add(Media m) {
+        boolean succ = list.add(m);
+        resort();
         this.setChanged();
         this.notifyObservers();
-        return list.add(m);
+        return succ;
     }
 
     public boolean contains(Media m){
@@ -39,9 +41,17 @@ public class MediaList extends Observable{
     }
 
     public boolean remove(Media m){
-        return list.remove(m);
+        boolean succ = list.remove(m);
+        resort();
+        this.setChanged();
+        this.notifyObservers();
+        return succ;
     }
 
+    public String getSortedBy() {
+        return sortedBy;
+    }
+    
     public void sortByTitle(){
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
@@ -51,5 +61,18 @@ public class MediaList extends Observable{
             }
 
         });
+        sortedBy = "title";
+    }
+
+    void resort() {
+       if (sortedBy.equals("title")) {
+           sortByTitle();
+       } else {
+           if (sortedBy.equals("EAN")) {
+               //TODO sortByEan();
+           } else {
+               //TODOif ()
+           }
+       }
     }
 }

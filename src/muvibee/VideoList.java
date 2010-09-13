@@ -7,32 +7,31 @@ package muvibee;
 
 import java.util.Collections;
 import java.util.Comparator;
-import muvibee.media.Book;
+import muvibee.media.Video;
 
 /**
  *
  * @author bline
  */
-public class BookList extends MediaList{
-
-    public boolean add(Book b) {
-        boolean succ = list.add(b);
+public class VideoList extends MediaList{
+    public boolean add(Video v) {
+        boolean succ = list.add(v);
         resort();
         this.setChanged();
         this.notifyObservers();
         return succ;
     }
 
-    public void sortByAuthor(){
+    public void sortByActors(){
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
-                Book b1 = (Book)o1;
-                Book b2 = (Book)o2;
-                return b1.getAuthor().compareTo(b2.getAuthor());
+                Video v1 = (Video)o1;
+                Video v2 = (Video)o2;
+                return v1.getActors().compareTo(v2.getActors());
             }
 
         });
-        sortedBy = "author";
+        sortedBy = "actors";
     }
 
     @Override
@@ -43,9 +42,8 @@ public class BookList extends MediaList{
            if (sortedBy.equals("EAN")) {
                //TODO sortByEan();
            } else {
-               //TODOif ()
+               //TODO if (...)
            }
        }
     }
-
 }

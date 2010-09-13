@@ -122,6 +122,12 @@ public class MainFrame extends javax.swing.JFrame {
         deleteMusicButton.addActionListener(dl);
         deleteVideoButton.addActionListener(dl);
 
+        FinalDeleteListener fdl = new FinalDeleteListener(mvb);
+        deleteItemButton.addActionListener(fdl);
+
+        RestoreListener rl = new RestoreListener(mvb);
+        restoreItemButton.addActionListener(rl);
+
         StatusBar sb = new StatusBar(StatusBarModel.getInstance());
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);

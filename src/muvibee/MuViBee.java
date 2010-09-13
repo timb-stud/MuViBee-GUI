@@ -5,7 +5,6 @@
 
 package muvibee;
 
-import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -19,23 +18,25 @@ import muvibee.media.Video;
  * @author bline
  */
 public class MuViBee {
-    private LinkedList<Book> bookList;
-    private LinkedList<Music> musicList;
-    private LinkedList<Video> videoList;
-    private LinkedList<Media> deletedMediaList;
+    private MediaList bookList;
+    private MediaList musicList;
+    private MediaList videoList;
+    private MediaList deletedMediaList;
+
     private MainFrame mainFrame;
     private Book currentBook;
     private Music currentMusic;
     private Video currentVideo;
+    private Media currentDeletedMedia;
 
     public MuViBee() {
         final MuViBee mvb = this;
 
         //TODO adapterklasse für listen. siehe unten
-        bookList = new LinkedList<Book>();
-        musicList = new LinkedList<Music>();
-        videoList = new LinkedList<Video>();
-        deletedMediaList = new LinkedList<Media>();
+        bookList = new BookList();
+        musicList = new MusicList();
+        videoList = new VideoList();
+        deletedMediaList = new MediaList();
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
@@ -105,6 +106,11 @@ public String showEanInputFrame(){
         currentVideo = video;
     }
 
+    //TODO wird in listenlistener der Gelöschtliste aufgerufen wenn auf item geklickt
+    public void setCurrentDeletedMedia(Media media) {
+        currentDeletedMedia = media;
+    }
+    
     public void setCurrentBookItemInformation() {
         mainFrame.setBookItemInformation(currentBook);
     }
@@ -113,7 +119,7 @@ public String showEanInputFrame(){
 	mainFrame.setMusicItemInformation(currentMusic);
     }
 
-    void setCurrentVideoItemInformation() {
+    public void setCurrentVideoItemInformation() {
         mainFrame.setVideoItemInformation(currentVideo);
     }
 
@@ -155,8 +161,33 @@ public String showEanInputFrame(){
             currentVideo = null;
         }
     }
+    
+    public void removeCurrentDeletedMediaFromDeletedList() {
+        deletedMediaList.remove(currentDeletedMedia);
+        currentDeletedMedia = null;
+    }
+
+    void restoreCurrentDeletedMedia() {
+        if (currentDeletedMedia instanceof Book) {
+            bookList.add(currentDeletedMedia);
+        } else {
+            if (currentDeletedMedia instanceof Music) {
+                musicList.add(currentDeletedMedia);
+            } else {
+                if (currentDeletedMedia instanceof Video) {
+                    videoList.add(currentDeletedMedia);
+                }
+            }
+        }
+        deletedMediaList.remove(currentDeletedMedia);
+    }
+
+
+
+
+
+
     public static void main(String args[]) {
         MuViBee mvb = new MuViBee();
     }
-
 }
