@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import muvibee.MediaList;
+import muvibee.lists.MediaList;
 
 import muvibee.media.*;
 

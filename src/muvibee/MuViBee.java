@@ -8,6 +8,10 @@ package muvibee;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import muvibee.lists.BookList;
+import muvibee.lists.MediaList;
+import muvibee.lists.MusicList;
+import muvibee.lists.VideoList;
 import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
