@@ -656,9 +656,6 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="coverBookLabel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jLabel2"/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleTextBookLabel">
                       <Properties>
@@ -1336,9 +1333,6 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="coverMusicLabel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jLabel2"/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleMusicLabel">
                       <Properties>
@@ -2029,9 +2023,6 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="coverVideoLabel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jLabel2"/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="titleVideoLabel">
                       <Properties>
