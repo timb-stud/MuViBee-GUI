@@ -6,7 +6,7 @@
 package muvibee;
 
 import java.util.LinkedList;
-import java.util.Observable;
+
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import muvibee.media.Book;
