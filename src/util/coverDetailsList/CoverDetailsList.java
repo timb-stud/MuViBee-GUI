@@ -2,6 +2,7 @@ package util.coverDetailsList;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import muvibee.MediaList;
 
 import muvibee.media.*;
 
@@ -49,14 +51,19 @@ public class CoverDetailsList extends JPanel implements Observer{
 	}
 
 
-	@Override
-	public void update(Observable arg0, Object media) {
-		if (media instanceof Book)
+        @Override
+	public void update(Observable list, Object media) {
+            LinkedList<Media> mList = ((MediaList<Media>) list).getList();
+            listModel.clear();
+
+            for (Media m : mList){
+                if (media instanceof Book)
 			listAdd(new CoverDetailsListEntryBook((Book)media));
 		else if (media instanceof Video)
 			listAdd(new CoverDetailsListEntryVideo((Video) media));
 		else if (media instanceof Music)
 			listAdd(new CoverDetailsListEntryMusic((Music) media));
+            }
 	}
 }
 
