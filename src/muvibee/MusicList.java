@@ -7,10 +7,13 @@ package muvibee;
 
 import java.util.Collections;
 import java.util.Comparator;
+import muvibee.MusicList.SortBy;
 import muvibee.media.Music;
 
 
 public class MusicList extends MediaList{
+
+    enum SortBy { TITLE, FORMAT, INTERPRETER, TYPE }; //Titel gibts schon in Medialist
 
     public boolean add(Music m) {
         boolean succ = list.add(m);
@@ -33,7 +36,7 @@ public class MusicList extends MediaList{
         sortedBy = "format";
     }
 
-    public void sortByInterpretert(){
+    public void sortByInterpreter(){
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
                 Music m1 = (Music)o1;
@@ -61,11 +64,30 @@ public class MusicList extends MediaList{
        if (sortedBy.equals("title")) {
            sortByTitle();
        } else {
-           if (sortedBy.equals("EAN")) {
+           if (sortedBy.equals("EAN")) { //nach EAN sortieren macht keinen Sinn
                //TODO sortByEan();
            } else {
                //TODOif ()
            }
        }
+    }
+
+    void resort2(SortBy sortBy) {
+        switch (sortBy){
+            case TITLE :
+                sortByTitle();
+                break;
+            case FORMAT :
+                sortByFormat();
+                break;
+            case INTERPRETER :
+                sortByInterpreter();
+                break;
+            case TYPE :
+                sortByType();
+                break;
+            default:
+               sortByTitle(); //default sortByTitle
+        }
     }
 }
