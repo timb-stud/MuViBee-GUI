@@ -118,7 +118,6 @@ public String showEanInputFrame(){
         showVideoItem(true);
     }
 
-    //TODO wird in listenlistener der Gelöschtliste aufgerufen wenn auf item geklickt
     public void setCurrentDeletedMedia(Media media) {
         currentDeletedMedia = media;
     }
@@ -209,6 +208,12 @@ public String showEanInputFrame(){
     public MediaList getVideoList() {
         return videoList;
     }
+
+    public MediaList getDeletedMediaList() {
+        return deletedMediaList;
+    }
+
+    
 
 
     public static void main(String args[]) {

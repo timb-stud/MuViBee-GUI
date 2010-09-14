@@ -140,6 +140,11 @@ public class MainFrame extends javax.swing.JFrame {
         RestoreListener rl = new RestoreListener(mvb);
         restoreItemButton.addActionListener(rl);
 
+        DeletedItemsList dil = new DeletedItemsList(mvb);
+        mvb.getDeletedMediaList().addObserver(dil);
+        restoreItemsScrollpane.setViewportView(dil);
+
+        
         StatusBar sb = new StatusBar(StatusBarModel.getInstance());
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
@@ -683,10 +688,9 @@ public class MainFrame extends javax.swing.JFrame {
         borrowedUntilYearVideoTextField = new javax.swing.JTextField();
         formatVideoComboBox = new javax.swing.JComboBox();
         restorePanel = new javax.swing.JPanel();
-        restoreItemsScrollPane = new javax.swing.JScrollPane();
-        restoreItemsList = new javax.swing.JList();
         restoreItemButton = new javax.swing.JButton();
         deleteItemButton = new javax.swing.JButton();
+        restoreItemsScrollpane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MuViBee");
@@ -1815,13 +1819,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         tabbedPane.addTab("Videos", videoPanel);
 
-        restoreItemsList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        restoreItemsScrollPane.setViewportView(restoreItemsList);
-
         restoreItemButton.setText("Wiederhestellen");
 
         deleteItemButton.setText("Endgültig löschen");
@@ -1833,7 +1830,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(restorePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(restoreItemsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                    .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
                     .addGroup(restorePanelLayout.createSequentialGroup()
                         .addComponent(restoreItemButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1842,10 +1839,10 @@ public class MainFrame extends javax.swing.JFrame {
         );
         restorePanelLayout.setVerticalGroup(
             restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(restorePanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, restorePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(restoreItemsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(restoreItemButton)
                     .addComponent(deleteItemButton)))
@@ -2035,8 +2032,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel releaseYearVideoLabel;
     private javax.swing.JTextField releaseYearVideoTextField;
     private javax.swing.JButton restoreItemButton;
-    private javax.swing.JList restoreItemsList;
-    private javax.swing.JScrollPane restoreItemsScrollPane;
+    private javax.swing.JScrollPane restoreItemsScrollpane;
     private javax.swing.JPanel restorePanel;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
