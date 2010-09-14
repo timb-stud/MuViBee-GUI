@@ -6,6 +6,7 @@
 package muvibee;
 
 
+import java.util.ResourceBundle;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
