@@ -3,11 +3,13 @@
  * and open the template in the editor.
  */
 
-package muvibee;
+package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import muvibee.EAN;
+import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
@@ -37,7 +39,7 @@ public class AddActionListener implements ActionListener {
 		    if(ean == null){
 			return ;
 		    }
-                    book = new Book("Test", "bla"); //TODO getBook(ean);
+                    book = (Book)EAN.searchEan(ean); //TODO getBook(ean);
                 }else{
                     book = new Book();
                 }
@@ -52,7 +54,7 @@ public class AddActionListener implements ActionListener {
 			if(ean == null){
 			    return ;
 			}
-                        music = new Music("Test", "bla"); //TODO getBook(ean);
+                        music = (Music)EAN.searchEan(ean);
                     }else{
                         music = new Music();
                     }
@@ -67,7 +69,7 @@ public class AddActionListener implements ActionListener {
 			    if(ean == null){
 				return ;
 			    }
-                            video = new Video("Test", "bla"); //TODO getBook(ean);
+                            video = (Video)EAN.searchEan(ean);
                         }else{
                             video = new Video();
                         }

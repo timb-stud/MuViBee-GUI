@@ -9,11 +9,19 @@
  * Created on 03.09.2010, 08:57:34
  */
 
-package muvibee;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+package muvibee.gui;
+import java.awt.image.BufferedImage;
+import muvibee.utils.TestUtils;
+import muvibee.utils.NonValidYearException;
+import muvibee.actionlistener.AddActionListener;
+import muvibee.actionlistener.ComboBoxActionListener;
+import muvibee.actionlistener.FinalDeleteListener;
+import muvibee.actionlistener.SaveActionListener;
+import muvibee.actionlistener.RestoreListener;
+import muvibee.actionlistener.DeleteListener;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
@@ -148,6 +156,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void setBookItem(Book book){
+	BufferedImage cover = book.getCover();
+	if(cover != null)
+	    coverBookLabel.setIcon(new ImageIcon(cover));
         titleBookTextField.setText(book.getTitle());
         authorBookTextField.setText(book.getAuthor());
 	languageBookTextField.setText(book.getLanguage());
@@ -183,6 +194,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void setMusicItem(Music music){
+	BufferedImage cover = music.getCover();
+	if(cover != null)
+	    coverMusicLabel.setIcon(new ImageIcon(cover));
         titleMusicTextField.setText(music.getTitle());
         artistMusicTextField.setText(music.getInterpreter());
 
@@ -246,6 +260,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void setVideoItem(Video video) {
+	BufferedImage cover = video.getCover();
+	if(cover != null)
+	    coverVideoLabel.setIcon(new ImageIcon(cover));
         titleVideoTextField.setText(video.getTitle());
         directorVideoTextField.setText(video.getDirector());
 	actorsVideoTextField.setText(video.getActors());
@@ -903,8 +920,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         itemBookPanel.setPreferredSize(new java.awt.Dimension(518, 837));
 
-        coverBookLabel.setText("jLabel2");
-
         titleTextBookLabel.setText("Titel");
 
         authorTextBookLabel.setText("Autor");
@@ -1223,8 +1238,6 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         itemMusicPanel.setPreferredSize(new java.awt.Dimension(518, 837));
-
-        coverMusicLabel.setText("jLabel2");
 
         titleMusicLabel.setText("Titel");
 
@@ -1549,8 +1562,6 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         itemVideoPanel.setPreferredSize(new java.awt.Dimension(518, 837));
-
-        coverVideoLabel.setText("jLabel2");
 
         titleVideoLabel.setText("Titel");
 

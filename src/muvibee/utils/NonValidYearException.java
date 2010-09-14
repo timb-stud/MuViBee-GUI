@@ -1,4 +1,4 @@
-package muvibee;
+package muvibee.utils;
 
 /**
  *

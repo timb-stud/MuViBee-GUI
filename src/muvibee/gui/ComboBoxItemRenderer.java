@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package muvibee;
+package muvibee.gui;
 
 import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;

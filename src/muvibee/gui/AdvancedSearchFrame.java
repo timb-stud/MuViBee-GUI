@@ -9,7 +9,7 @@
  * Created on 03.09.2010, 11:59:47
  */
 
-package muvibee;
+package muvibee.gui;
 
 /**
  *
