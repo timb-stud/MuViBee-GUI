@@ -317,7 +317,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
-    public void setBookItemInformation(Book book) {
+    public void setBookItemInformation(Book book) throws NonValidYearException {
 	String title = titleBookTextField.getText().trim();
 	String author = authorBookTextField.getText().trim();
 	String language = languageBookTextField.getText().trim();
@@ -348,35 +348,30 @@ public class MainFrame extends javax.swing.JFrame {
 		    rating = 3;
 
 	//year Test
-//	try {
-//	    int ry = TestUtils.validYear(releaseYear);
-//	    int ly = TestUtils.validYear(lendYear);
-//	    int luy = TestUtils.validYear(lendUntilYear);
+	    int ry = TestUtils.validYear(releaseYear);
+	    int ly = TestUtils.validYear(lendYear);
+	    int luy = TestUtils.validYear(lendUntilYear);
 	    book.setTitle(title);
 	    book.setAuthor(author);
 	    book.setLanguage(language);
 	    book.setIsbn(isbn);
 	    book.setEan(ean);
 	    book.setGenre(genre);
-//	    book.setReleaseYear(ry);
+	    book.setReleaseYear(ry);
 	    book.setLocation(location);
 	    book.setLendTo(lendTo);
 	    book.setLendDay(lendDay);
 	    book.setLendMonth(lendMonth);
-//	    book.setLendYear(ly);
+	    book.setLendYear(ly);
 	    book.setLendUntilDay(lendUntilDay);
 	    book.setLendUntilMonth(lendUntilMonth);
-//	    book.setLendUntilYear(luy);
+	    book.setLendUntilYear(luy);
 	    book.setRating(rating);
 	    book.setDescription(description);
 	    book.setComment(annotation);
-//	} catch (NonValidYearException ex) {
-//	    //TODO Fehlerausgabe
-//	    StatusBarModel.getInstance().setFailMessage("Ungueltiges Datum");
-//	}
     }
 
-    public void setMusicItemInformation(Music music){
+    public void setMusicItemInformation(Music music) throws NonValidYearException{
 	String title = titleMusicTextField.getText().trim();
 	String artist = artistMusicTextField.getText().trim();
 	String type = typeMusicComboBox.getSelectedItem().toString().trim();
@@ -407,7 +402,6 @@ public class MainFrame extends javax.swing.JFrame {
 		    rating = 3;
 
 	//year Test
-	try {
 	    int ry = TestUtils.validYear(releaseYear);
 	    int ly = TestUtils.validYear(lendYear);
 	    int luy = TestUtils.validYear(lendUntilYear);
@@ -429,44 +423,41 @@ public class MainFrame extends javax.swing.JFrame {
 	    music.setRating(rating);
 	    music.setDescription(description);
 	    music.setComment(annotation);
-	} catch (NonValidYearException ex) {
-	    //TODO Fehlerausgabe
-	    StatusBarModel.getInstance().setFailMessage("Ungueltiges Datum");
-	}
+
     }
 
-    public void setVideoItemInformation(Video video) {
-        String title = titleMusicTextField.getText().trim();
+    public void setVideoItemInformation(Video video) throws NonValidYearException {
+        String title = titleVideoTextField.getText().trim();
 	String director = directorVideoTextField.getText().trim();
 	String actors = actorsVideoTextField.getText().trim();
 	String format = formatVideoComboBox.getSelectedItem().toString().trim();
-	String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
-	String genre = genreMusicTextField.getText().trim();
-	String releaseYear = releaseYearMusicTextField.getText().trim();
-	String location = locationMusicTextField.getText().trim();
-	String lendTo = borrowedToMusicTextField.getText().trim();
-	int lendDay = borrowDayMusicComboBox.getSelectedIndex();
-	int lendMonth = borrowMonthMusicComboBox.getSelectedIndex();
-	String lendYear = borrowYearMusicTextField.getText().trim();
-	int lendUntilDay = borrowedUntilDayMusicComboBox.getSelectedIndex();
-	int lendUntilMonth = borrowedUntilMonthMusicComboBox.getSelectedIndex();
-	String lendUntilYear = borrowedUntilYearMusicTextField.getText().trim();
-	String description = descriptionMusicTextArea.getText().trim();
-	String annotation = annotationMusicTextArea.getText().trim();
+	String ean = eanVideoTextField.getText().trim();    //TODO Ueberpruefen!?!?
+	String genre = genreVideoTextField.getText().trim();
+	String releaseYear = releaseYearVideoTextField.getText().trim();
+	String location = locationVideoTextField.getText().trim();
+	String lendTo = borrowedToVideoTextField.getText().trim();
+	int lendDay = borrowDayVideoComboBox.getSelectedIndex();
+	int lendMonth = borrowMonthVideoComboBox.getSelectedIndex();
+	String lendYear = borrowYearVideoTextField.getText().trim();
+	int lendUntilDay = borrowedUntilDayVideoComboBox.getSelectedIndex();
+	int lendUntilMonth = borrowedUntilMonthVideoComboBox.getSelectedIndex();
+	String lendUntilYear = borrowedUntilYearVideoTextField.getText().trim();
+	String description = descriptionVideoTextArea.getText().trim();
+	String annotation = annotationVideoTextArea.getText().trim();
 
 	//Rating
 	int rating = 0;
-	if(oneRatingpointMusicRadioButton.isSelected())
+	if(oneRatingpointVideoRadioButton.isSelected())
 	    rating = 1;
 	else
-	    if(twoRatingpointsMusicRadioButton.isSelected())
+	    if(twoRatingpointsVideoRadioButton.isSelected())
 		rating = 2;
 	    else
-		if(threeRatingpointsMusicRadioButton.isSelected())
+		if(threeRatingpointsVideoRadioButton.isSelected())
 		    rating = 3;
 
 	//year Test
-	try {
+
 	    int ry = TestUtils.validYear(releaseYear);
 	    int ly = TestUtils.validYear(lendYear);
 	    int luy = TestUtils.validYear(lendUntilYear);
@@ -488,10 +479,7 @@ public class MainFrame extends javax.swing.JFrame {
 	    video.setRating(rating);
 	    video.setDescription(description);
 	    video.setComment(annotation);
-	} catch (NonValidYearException ex) {
-	    //TODO Fehlerausgabe
-	    StatusBarModel.getInstance().setFailMessage("Ungueltiges Datum");
-	}
+	
     }
 
     

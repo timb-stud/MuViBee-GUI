@@ -17,6 +17,7 @@ import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
+import muvibee.utils.NonValidYearException;
 
 /**
  *
@@ -76,39 +77,45 @@ public String showEanInputFrame(){
                     "");
     }
 
-    public void setBookItem(){
+    private void setBookItem(){
         mainFrame.setBookItem(currentBook);
     }
 
-    public void setMusicItem(){
+    private void setMusicItem(){
         mainFrame.setMusicItem(currentMusic);
     }
 
-    public void setVideoItem() {
+    private void setVideoItem() {
         mainFrame.setVideoItem(currentVideo);
     }
 
-    public void showBookItem(boolean b) {
+    private void showBookItem(boolean b) {
         mainFrame.bookItemSetVisible(b);
     }
 
-    public void showMusicItem(boolean b) {
+    private void showMusicItem(boolean b) {
         mainFrame.musicItemSetVisible(b);
     }
-    public void showVideoItem(boolean b) {
+    private void showVideoItem(boolean b) {
         mainFrame.videoItemSetVisible(b);
     }
 
     public void setCurrentBook(Book book) {
         currentBook = book;
+        setBookItem();
+        showBookItem(true);
     }
     
     public void setCurrentMusic(Music music) {
         currentMusic = music;
+        setMusicItem();
+        showMusicItem(true);
     }
 
     public void setCurrentVideo(Video video) {
         currentVideo = video;
+        setVideoItem();
+        showVideoItem(true);
     }
 
     //TODO wird in listenlistener der Gelöschtliste aufgerufen wenn auf item geklickt
@@ -116,15 +123,15 @@ public String showEanInputFrame(){
         currentDeletedMedia = media;
     }
     
-    public void setCurrentBookItemInformation() {
+    public void setCurrentBookItemInformation() throws NonValidYearException {
         mainFrame.setBookItemInformation(currentBook);
     }
 
-    public void setCurrentMusicItemInformation(){
+    public void setCurrentMusicItemInformation() throws NonValidYearException{
 	mainFrame.setMusicItemInformation(currentMusic);
     }
 
-    public void setCurrentVideoItemInformation() {
+    public void setCurrentVideoItemInformation() throws NonValidYearException {
         mainFrame.setVideoItemInformation(currentVideo);
     }
 
@@ -150,6 +157,7 @@ public String showEanInputFrame(){
         if (bookList.remove(currentBook)) {
             deletedMediaList.add(currentBook);
             currentBook = null;
+            showBookItem(false);
         }
     }
 
@@ -157,6 +165,7 @@ public String showEanInputFrame(){
         if (musicList.remove(currentMusic)) {
             deletedMediaList.add(currentMusic);
             currentMusic = null;
+            showMusicItem(false);
         }
     }
 
@@ -164,6 +173,7 @@ public String showEanInputFrame(){
         if (videoList.remove(currentVideo)) {
             deletedMediaList.add(currentVideo);
             currentVideo = null;
+            showVideoItem(false);
         }
     }
     

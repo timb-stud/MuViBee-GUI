@@ -45,16 +45,10 @@ public class CoverDetailsList extends JPanel implements Observer{
                                 Object object = listModel.getElementAt(list.getSelectedIndex());
                                 if (object instanceof CoverDetailsListEntryBook) {
                                     muvibee.setCurrentBook(((CoverDetailsListEntryBook) object).getBook());
-                                    muvibee.setBookItem();
-                                    muvibee.showBookItem(true);
                                 } else if (object instanceof CoverDetailsListEntryMusic) {
                                     muvibee.setCurrentMusic(((CoverDetailsListEntryMusic) object).getMusic());
-                                    muvibee.setMusicItem();
-                                    muvibee.showMusicItem(true);
                                 } else if ( object instanceof CoverDetailsListEntryVideo) {
                                     muvibee.setCurrentVideo(((CoverDetailsListEntryVideo) object).getVideo());
-                                    muvibee.setVideoItem();
-                                    muvibee.showVideoItem(true);
 
                                 }
                             }
@@ -70,7 +64,7 @@ public class CoverDetailsList extends JPanel implements Observer{
 	private void listAdd(CoverDetailsListEntry entry){
 		listModel.addElement(entry);
 		list.validate();
-                System.out.println("drinnen");
+                getParent().getParent().getParent().repaint();
 	}
 
 

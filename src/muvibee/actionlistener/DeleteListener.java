@@ -27,15 +27,12 @@ public class DeleteListener implements ActionListener{
             JButton button = (JButton)source;
             if(button.getName().equals("deleteBook")){
                 mvb.removeCurrentBookFromBookList();
-                mvb.showBookItem(false);
             } else {
                 if (button.getName().equals("deleteMusic")) {
                     mvb.removeCurrentMusicFromMusicList();
-                    mvb.showMusicItem(false);
                 } else {
                     if (button.getName().equals("deleteVideo")) {
                         mvb.removeCurrentVideoFromVideoList();
-                        mvb.showVideoItem(false);
                     }
                 }
             }

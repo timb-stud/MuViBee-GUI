@@ -7,8 +7,12 @@ package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import muvibee.MuViBee;
+import muvibee.gui.StatusBarModel;
+import muvibee.utils.NonValidYearException;
 
 /**
  *
@@ -26,15 +30,30 @@ public class SaveActionListener implements ActionListener {
         if(source instanceof JButton){
             JButton button = (JButton)source;
             if(button.getName().equals("save book button")){
+               try {
                 mvb.setCurrentBookItemInformation();
+               } catch (NonValidYearException ex) {
+                   StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
+                   return;
+               }
                 mvb.addCurrentBookToBookList();
             } else {
                 if(button.getName().equals("save music button")){
-		    mvb.setCurrentMusicItemInformation();
+		try {
+                    mvb.setCurrentMusicItemInformation();
+                } catch (NonValidYearException ex) {
+                   StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
+                   return;
+                }
 		    mvb.addCurrentMusicToMusicList();
                 } else {
                     if(button.getName().equals("save video button")){
-                        mvb.setCurrentVideoItemInformation();
+                        try {
+                            mvb.setCurrentVideoItemInformation();
+                        } catch (NonValidYearException ex) {
+                            StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
+                            return;
+                        }
                         mvb.addCurrentVideoToVideoList();
                     }
                 }
