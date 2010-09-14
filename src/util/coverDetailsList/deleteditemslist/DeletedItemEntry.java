@@ -45,7 +45,7 @@ public class DeletedItemEntry extends JPanel{
             label.setIcon(icon);
             add(label, BorderLayout.WEST);
 
-            JLabel text = new JLabel(media.getTitle() + ", " + media.getLendYear() + ", und so weiter");
+            JLabel text = new JLabel(" " + media.getTitle() + ", " + media.getLendYear() + ", und so weiter");
             add(text, BorderLayout.CENTER);
 	}
 
