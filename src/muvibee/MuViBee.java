@@ -6,6 +6,7 @@
 package muvibee;
 
 
+import java.util.LinkedList;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -33,7 +34,7 @@ public class MuViBee {
     private Book currentBook;
     private Music currentMusic;
     private Video currentVideo;
-    private Media currentDeletedMedia;
+    private Media[] currentDeletedMediaList;
 
     public MuViBee() {
         final MuViBee mvb = this;
@@ -118,8 +119,8 @@ public String showEanInputFrame(){
         showVideoItem(true);
     }
 
-    public void setCurrentDeletedMedia(Media media) {
-        currentDeletedMedia = media;
+    public void setCurrentDeletedMedia(Media[] medias) {
+        currentDeletedMediaList = medias;
     }
     
     public void setCurrentBookItemInformation() throws NonValidYearException {
@@ -177,24 +178,28 @@ public String showEanInputFrame(){
     }
     
     public void removeCurrentDeletedMediaFromDeletedList() {
-        deletedMediaList.remove(currentDeletedMedia);
-        currentDeletedMedia = null;
+        for (Media m : currentDeletedMediaList) {
+            deletedMediaList.remove(m);
+            m = null;
+        }
     }
 
     public void restoreCurrentDeletedMedia() {
-        if (currentDeletedMedia instanceof Book) {
-            bookList.add(currentDeletedMedia);
-        } else {
-            if (currentDeletedMedia instanceof Music) {
-                musicList.add(currentDeletedMedia);
+        for (Media m : currentDeletedMediaList) {
+            if (m instanceof Book) {
+                bookList.add(m);
             } else {
-                if (currentDeletedMedia instanceof Video) {
-                    videoList.add(currentDeletedMedia);
+                if (m instanceof Music) {
+                    musicList.add(m);
+                } else {
+                    if (m instanceof Video) {
+                        videoList.add(m);
+                    }
                 }
             }
+            deletedMediaList.remove(m);
+            m = null;
         }
-        deletedMediaList.remove(currentDeletedMedia);
-        currentDeletedMedia = null;
     }
 
     public MediaList getBookList() {
