@@ -34,12 +34,16 @@ public class DeletedItemsList extends JList implements Observer{
 	        addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
                             if(evt.getValueIsAdjusting()){
-                                Object object = listModel.getElementAt(getSelectedIndex());
-                                muvibee.setCurrentDeletedMedia(((DeletedItemEntry) object).getMedia());
+                                Media[] medias = new Media[getSelectedValues().length];
+                                for (int i = 0; i < medias.length; i++) {
+                                    medias[i] = ((DeletedItemEntry)getSelectedValues()[i]).getMedia();
+                                }
+                                    muvibee.setCurrentDeletedMedia(medias);
                             }
 	        	}
 	        });
 
+                getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 	        setPreferredSize(new Dimension(150,0));
 	}
 

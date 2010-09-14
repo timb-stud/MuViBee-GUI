@@ -59,7 +59,7 @@ public class MediaList extends Observable implements Observer{
         this.notifyObservers();
         return succ;
     }
-    
+
     public void sortByTitle(){
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
