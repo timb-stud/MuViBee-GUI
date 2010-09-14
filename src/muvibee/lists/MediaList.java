@@ -9,7 +9,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Observable;
+import muvibee.media.Book;
 import muvibee.media.Media;
+import muvibee.media.Music;
+import muvibee.media.Video;
 
 
 /**
@@ -17,8 +20,9 @@ import muvibee.media.Media;
  * @author bline
  */
 public class MediaList extends Observable{
+    enum sortTypes { DIRECTOR, LANGUAGE, TITLE, FORMAT, INTERPRETER, TYPE, ISBN, EAN, ACTORS, REGISSEUR, YEAR, GENRE, LOCATION, LENTTO, RATING, AUTHOR };
     LinkedList<Media> list;
-    String sortedBy = "title";
+    sortTypes sortedBy;
 
     public MediaList() {
         list = new LinkedList<Media>();
@@ -42,14 +46,9 @@ public class MediaList extends Observable{
 
     public boolean remove(Media m){
         boolean succ = list.remove(m);
-        resort();
         this.setChanged();
         this.notifyObservers();
         return succ;
-    }
-
-    public String getSortedBy() {
-        return sortedBy;
     }
     
     public void sortByTitle(){
@@ -61,7 +60,7 @@ public class MediaList extends Observable{
             }
 
         });
-        sortedBy = "title";
+        sortedBy = sortedBy.TITLE;
     }
 
 
@@ -75,7 +74,7 @@ public class MediaList extends Observable{
             }
 
         });
-        sortedBy = "genre";
+        sortedBy = sortedBy.GENRE;
     }
 
     public void sortByReleaseYear(){
@@ -87,7 +86,7 @@ public class MediaList extends Observable{
             }
 
         });
-        sortedBy = "release year";
+        sortedBy = sortedBy.YEAR;
     }
 
     public void sortByLocation(){
@@ -99,20 +98,20 @@ public class MediaList extends Observable{
             }
 
         });
-        sortedBy = "location";
+        sortedBy = sortedBy.LOCATION;
     }
 
 
-    public void sortByLendTo(){
+    public void sortByLentTo(){
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
                 Media m1 = (Media)o1;
                 Media m2 = (Media)o2;
-                return m1.getLendTo().compareTo(m2.getLendTo());
+                return m1.getLentTo().compareTo(m2.getLentTo());
             }
 
         });
-        sortedBy = "lendto";
+        sortedBy = sortedBy.LENTTO;
     }
 
    public void sortByRating(){
@@ -124,7 +123,88 @@ public class MediaList extends Observable{
             }
 
         });
-        sortedBy = "rating";
+        sortedBy = sortedBy.RATING;
+    }
+       public void sortByAuthor(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Book b1 = (Book)o1;
+                Book b2 = (Book)o2;
+                return b1.getAuthor().compareTo(b2.getAuthor());
+            }
+
+        });
+        sortedBy = sortedBy.AUTHOR;
+    }
+
+
+   public void sortByLanguage(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Book b1 = (Book)o1;
+                Book b2 = (Book)o2;
+                return (b1.getLanguage()).compareTo(b2.getLanguage());
+            }
+
+        });
+        sortedBy = sortedBy.LANGUAGE;
+    }
+
+       public void sortByFormat(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Music m1 = (Music)o1;
+                Music m2 = (Music)o2;
+                return m1.getFormat().compareTo(m2.getFormat());
+            }
+        });
+        sortedBy = sortedBy.FORMAT;
+    }
+
+    public void sortByInterpreter(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Music m1 = (Music)o1;
+                Music m2 = (Music)o2;
+                return m1.getInterpreter().compareTo(m2.getInterpreter());
+            }
+
+        });
+        sortedBy = sortedBy.INTERPRETER;
+    }
+
+    public void sortByType(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Music m1 = (Music)o1;
+                Music m2 = (Music)o2;
+                return m1.getType().compareTo(m2.getType());
+            }
+        });
+        sortedBy = sortedBy.TYPE;
+    }
+
+        public void sortByDirector(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Video v1 = (Video)o1;
+                Video v2 = (Video)o2;
+                return (v1.getDirector().compareTo(v2.getDirector()));
+            }
+        });
+        sortedBy = sortedBy.DIRECTOR;
+    }
+
+    public void sortByActors(){
+        Collections.sort(list, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Video v1 = (Video)o1;
+                Video v2 = (Video)o2;
+                return v1.getActors().compareTo(v2.getActors());
+            }
+
+        });
+        sortedBy = sortedBy.ACTORS;
     }
 
 
@@ -137,16 +217,40 @@ public class MediaList extends Observable{
 			return -1;
 	}
 
-    void resort() {
-       if (sortedBy.equals("title")) {
-           sortByTitle();
-       } else {
-           if (sortedBy.equals("EAN")) {
-               //TODO sortByEan();
-           } else {
-               //TODOif ()
-           }
-       }
+        void resort() {
+        switch (sortedBy){
+            case TITLE :
+                sortByTitle();
+                break;
+            case YEAR :
+                sortByReleaseYear();
+                break;
+            case GENRE:
+                sortByGenre();
+                break;
+            case RATING:
+                sortByRating();
+                break;
+            case LOCATION:
+                sortByLocation();
+                break;
+            case LENTTO:
+                sortByLentTo();
+                break;
+            case AUTHOR:
+                sortByAuthor();
+                break;
+            case LANGUAGE:
+                sortByLanguage();
+                break;
+            case TYPE:
+                sortByType();
+            case INTERPRETER:
+                sortByInterpreter();
+            case DIRECTOR:
+                sortByDirector();
+            default:
+               sortByTitle(); //default sortByTitle
+        }
     }
-
 }

@@ -116,7 +116,7 @@ public abstract class Media {
 		this.location = location;
 	}
 
-	public String getLendTo() {
+	public String getLentTo() {
 		return lendTo;
 	}
 
