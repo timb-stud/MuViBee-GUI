@@ -73,8 +73,6 @@ public class CoverDetailsList extends JPanel implements Observer{
             LinkedList<Media> mList = ((MediaList) list).getList();
             listModel.clear();
 
-            System.out.println("update");
-
             for (Media m : mList){
                 if (m instanceof Book)
 			listAdd(new CoverDetailsListEntryBook((Book)m));
