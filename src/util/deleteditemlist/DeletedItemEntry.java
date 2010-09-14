@@ -1,4 +1,4 @@
-package util.coverDetailsList.deleteditemslist;
+package util.deleteditemlist;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -46,7 +47,7 @@ public class DeletedItemEntry extends JPanel{
             label.setIcon(icon);
             add(label, BorderLayout.WEST);
 
-            JLabel text = new JLabel(" Titel: " + media.getTitle() + ", Genre: " + media.getGenre() + ", Jahr: " + media.getLendYear() + ", und so weiter");
+            JLabel text = new JLabel(" " + "title" + ": " + media.getTitle() + ", Genre: " + media.getGenre() + ", Jahr: " + media.getLendYear() + ", und so weiter");
             add(text, BorderLayout.CENTER);
 	}
 

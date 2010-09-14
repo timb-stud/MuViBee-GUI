@@ -10,7 +10,6 @@
  */
 
 package muvibee.gui;
-import util.coverDetailsList.deleteditemslist.DeletedItemsList;
 import java.awt.image.BufferedImage;
 import java.util.ResourceBundle;
 import muvibee.utils.TestUtils;
@@ -28,6 +27,7 @@ import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
 import util.coverDetailsList.*;
+import util.deleteditemlist.DeletedItemsList;
 
 
 
