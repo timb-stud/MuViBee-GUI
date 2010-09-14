@@ -10,6 +10,7 @@
  */
 
 package muvibee.gui;
+import util.coverDetailsList.deleteditemslist.DeletedItemsList;
 import java.awt.image.BufferedImage;
 import muvibee.utils.TestUtils;
 import muvibee.utils.NonValidYearException;
