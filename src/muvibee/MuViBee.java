@@ -24,9 +24,9 @@ import muvibee.utils.NonValidYearException;
  * @author bline
  */
 public class MuViBee {
-    private BookList bookList;
-    private MusicList musicList;
-    private VideoList videoList;
+    private MediaList bookList;
+    private MediaList musicList;
+    private MediaList videoList;
     private MediaList deletedMediaList;
 
     private MainFrame mainFrame;

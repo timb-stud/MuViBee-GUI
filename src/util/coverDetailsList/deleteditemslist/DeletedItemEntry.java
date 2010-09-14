@@ -1,6 +1,7 @@
 package util.coverDetailsList.deleteditemslist;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 
@@ -20,14 +21,24 @@ public class DeletedItemEntry extends JPanel{
 
 	public DeletedItemEntry(Media media) {
             this.media = media;
-            ImageIcon icon = null;
+            	BufferedImage dest = new BufferedImage(80, 80, BufferedImage.TYPE_INT_ARGB);
+
+		Graphics2D g2d = (Graphics2D) dest.createGraphics();
+		g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+                g2d.setColor(Color.red);
+                g2d.fillRect(0, 0, 80, 80);
+                g2d.setColor(Color.white);
+                g2d.drawString("Bild", 40, 40);
+		g2d.dispose();
+
+            ImageIcon icon = new ImageIcon(dest);
 
             // ----------------------
             // |       |             |
             // | Icon  | Titel, usw  |
             // |_______|_____________|
             setLayout(new BorderLayout());
-            setPreferredSize(new Dimension(300, 20));
+            setPreferredSize(new Dimension(300, 80));
 
             JLabel label = new JLabel();
             label.setIcon(icon);
