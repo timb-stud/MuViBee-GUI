@@ -40,7 +40,7 @@ public class DeletedItemsList extends JList implements Observer{
 	        	}
 	        });
 
-	        setPreferredSize(new Dimension(150,600));
+	        setPreferredSize(new Dimension(150,0));
 	}
 
 
@@ -48,6 +48,7 @@ public class DeletedItemsList extends JList implements Observer{
             listModel.addElement(entry);
             validate();
             getParent().getParent().getParent().repaint();
+            setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
 

@@ -18,6 +18,7 @@ import muvibee.media.Media;
 @SuppressWarnings("serial")
 public class DeletedItemEntry extends JPanel{
     private Media media;
+    private int ySize = 80;
 
 	public DeletedItemEntry(Media media) {
             this.media = media;
@@ -67,6 +68,10 @@ public class DeletedItemEntry extends JPanel{
 
     public Media getMedia() {
         return media;
+    }
+
+    public int getySize() {
+        return ySize;
     }
         
         

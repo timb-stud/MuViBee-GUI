@@ -55,8 +55,7 @@ public class CoverDetailsList extends JPanel implements Observer{
 	        	}
 	        });
  	        
-	        list.setPreferredSize(new Dimension(150,600));
-	        
+	        list.setPreferredSize(new Dimension(150,0));
 	        add(list, BorderLayout.NORTH);
 	}
 	
@@ -65,6 +64,7 @@ public class CoverDetailsList extends JPanel implements Observer{
 		listModel.addElement(entry);
 		list.validate();
                 getParent().getParent().getParent().repaint();
+                list.setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
 

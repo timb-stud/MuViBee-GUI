@@ -19,6 +19,7 @@ public class CoverDetailsListEntry extends JPanel{
 	private ImageIcon icon;
 	private String special;
 	private String title;
+        private int ySize = 80;
 	
 	public CoverDetailsListEntry(Media media, String special) {
                 if (media.getCover() != null)
@@ -34,7 +35,7 @@ public class CoverDetailsListEntry extends JPanel{
 		// |       | Info 1 |
 		// |_______|________|
 		setLayout(new GridLayout(1,2, -40,0));
-		setPreferredSize(new Dimension(10, 80));
+		setPreferredSize(new Dimension(10, ySize));
 		
 		JLabel label = new JLabel();
 		label.setIcon(icon);
@@ -81,4 +82,9 @@ public class CoverDetailsListEntry extends JPanel{
 		this.special = text;
 	}
 
+    public int getySize() {
+        return ySize;
+    }
+
+        
 }
