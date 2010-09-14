@@ -22,14 +22,14 @@ public class DeletedItemEntry extends JPanel{
 
 	public DeletedItemEntry(Media media) {
             this.media = media;
-            	BufferedImage dest = new BufferedImage(80, 80, BufferedImage.TYPE_INT_ARGB);
+            	BufferedImage dest = new BufferedImage(80, ySize, BufferedImage.TYPE_INT_ARGB);
 
 		Graphics2D g2d = (Graphics2D) dest.createGraphics();
 		g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
                 g2d.setColor(Color.red);
-                g2d.fillRect(0, 0, 80, 80);
+                g2d.fillRect(0, 0, 80, ySize);
                 g2d.setColor(Color.white);
-                g2d.drawString("Bild", 40, 40);
+                g2d.drawString("Bild", 0, ySize/2);
 		g2d.dispose();
 
             ImageIcon icon = new ImageIcon(dest);

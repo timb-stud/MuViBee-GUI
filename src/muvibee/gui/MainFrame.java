@@ -857,7 +857,7 @@ public class MainFrame extends javax.swing.JFrame {
         treeBookScrollPane.setPreferredSize(new java.awt.Dimension(74, 322));
         treeBookScrollPane.setViewportView(jTree1);
 
-        treeBookScrollPane.setBounds(0, 0, 217, 430);
+        treeBookScrollPane.setBounds(0, 0, 217, 365);
         viewBookLayeredPane.add(treeBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         coverListBookScrollPane.setName("Cover"); // NOI18N
@@ -869,15 +869,15 @@ public class MainFrame extends javax.swing.JFrame {
         });
         coverListBookScrollPane.setViewportView(jList1);
 
-        coverListBookScrollPane.setBounds(0, 0, 217, 430);
+        coverListBookScrollPane.setBounds(0, 0, 217, 365);
         viewBookLayeredPane.add(coverListBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         coverDetailsListBookScrollPane.setName("Cover Details"); // NOI18N
-        coverDetailsListBookScrollPane.setBounds(0, 0, 217, 430);
+        coverDetailsListBookScrollPane.setBounds(0, 0, 217, 365);
         viewBookLayeredPane.add(coverDetailsListBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         detailsListBookScrollPane.setName("Details"); // NOI18N
-        detailsListBookScrollPane.setBounds(0, 0, 217, 430);
+        detailsListBookScrollPane.setBounds(0, 0, 217, 365);
         viewBookLayeredPane.add(detailsListBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         viewBookComboBox.setName("ViewComboBox"); // NOI18N
@@ -1181,7 +1181,7 @@ public class MainFrame extends javax.swing.JFrame {
         treeMusicScrollPane.setName("Tree"); // NOI18N
         treeMusicScrollPane.setViewportView(jTree2);
 
-        treeMusicScrollPane.setBounds(0, 0, 217, 430);
+        treeMusicScrollPane.setBounds(0, 0, 217, 365);
         viewMusicLayeredPane.add(treeMusicScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         coverListMusicScrollPane.setName("Cover"); // NOI18N
@@ -1193,15 +1193,15 @@ public class MainFrame extends javax.swing.JFrame {
         });
         coverListMusicScrollPane.setViewportView(jList2);
 
-        coverListMusicScrollPane.setBounds(0, 0, 217, 430);
+        coverListMusicScrollPane.setBounds(0, 0, 217, 365);
         viewMusicLayeredPane.add(coverListMusicScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         coverDetailsListMusicScrollPane.setName("Cover Details"); // NOI18N
-        coverDetailsListMusicScrollPane.setBounds(0, 0, 217, 430);
+        coverDetailsListMusicScrollPane.setBounds(0, 0, 217, 365);
         viewMusicLayeredPane.add(coverDetailsListMusicScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         detailsListMusicScrollPane.setName("Details"); // NOI18N
-        detailsListMusicScrollPane.setBounds(0, 0, 217, 430);
+        detailsListMusicScrollPane.setBounds(0, 0, 217, 365);
         viewMusicLayeredPane.add(detailsListMusicScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         viewMusicComboBox.setName("ViewComboBox"); // NOI18N
@@ -1507,7 +1507,7 @@ public class MainFrame extends javax.swing.JFrame {
         treeVideoScrollPane.setName("Tree"); // NOI18N
         treeVideoScrollPane.setViewportView(jTree3);
 
-        treeVideoScrollPane.setBounds(0, 0, 217, 430);
+        treeVideoScrollPane.setBounds(0, 0, 217, 365);
         viewVideoLayeredPane.add(treeVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         coverListVideoScrollPane.setName("Cover"); // NOI18N
@@ -1519,15 +1519,15 @@ public class MainFrame extends javax.swing.JFrame {
         });
         coverListVideoScrollPane.setViewportView(jList3);
 
-        coverListVideoScrollPane.setBounds(0, 0, 217, 430);
+        coverListVideoScrollPane.setBounds(0, 0, 217, 365);
         viewVideoLayeredPane.add(coverListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         coverDetailsListVideoScrollPane.setName("Cover Details"); // NOI18N
-        coverDetailsListVideoScrollPane.setBounds(0, 0, 217, 430);
+        coverDetailsListVideoScrollPane.setBounds(0, 0, 217, 365);
         viewVideoLayeredPane.add(coverDetailsListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         detailsListVideoScrollPane.setName("Details"); // NOI18N
-        detailsListVideoScrollPane.setBounds(0, 0, 217, 430);
+        detailsListVideoScrollPane.setBounds(0, 0, 217, 365);
         viewVideoLayeredPane.add(detailsListVideoScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         addVideoButton.setText("Hinzufügen");
