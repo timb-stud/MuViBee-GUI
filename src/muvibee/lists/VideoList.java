@@ -5,8 +5,6 @@
 
 package muvibee.lists;
 
-import java.util.Collections;
-import java.util.Comparator;
 import muvibee.media.Video;
 
 

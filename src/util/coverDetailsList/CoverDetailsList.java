@@ -70,7 +70,6 @@ public class CoverDetailsList extends JPanel implements Observer{
 	private void listAdd(CoverDetailsListEntry entry){
 		listModel.addElement(entry);
 		list.validate();
-                System.out.println("drinnen");
 	}
 
 
@@ -78,8 +77,6 @@ public class CoverDetailsList extends JPanel implements Observer{
 	public void update(Observable list, Object o) {
             LinkedList<Media> mList = ((MediaList) list).getList();
             listModel.clear();
-
-            System.out.println("update");
 
             for (Media m : mList){
                 if (m instanceof Book)

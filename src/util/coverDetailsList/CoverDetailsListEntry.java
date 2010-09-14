@@ -29,9 +29,9 @@ public class CoverDetailsListEntry extends JPanel{
 		this.title = media.getTitle();	
 		
 		// -----------------
-		// |       | Info 1 |
-		// | Cover |________|
 		// |       | Titel  |
+		// | Cover |________|
+		// |       | Info 1 |
 		// |_______|________|
 		setLayout(new GridLayout(1,2, -40,0));
 		setPreferredSize(new Dimension(10, 80));
@@ -43,8 +43,8 @@ public class CoverDetailsListEntry extends JPanel{
 		JPanel info1_title = new JPanel(new GridLayout(2,1,0,-20));
 		JLabel info1Lbl = new JLabel(special);
 		JLabel titleLbl = new JLabel(title);
-		info1_title.add(info1Lbl);
-		info1_title.add(titleLbl);		
+		info1_title.add(titleLbl);
+                info1_title.add(info1Lbl);
 		add(info1_title);
 	}
 	
