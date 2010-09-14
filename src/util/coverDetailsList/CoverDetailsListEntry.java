@@ -1,5 +1,6 @@
 package util.coverDetailsList;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
@@ -36,6 +37,7 @@ public class CoverDetailsListEntry extends JPanel{
 		// |_______|________|
 		setLayout(new GridLayout(1,2, -40,0));
 		setPreferredSize(new Dimension(10, ySize));
+                setBackground(Color.white);
 		
 		JLabel label = new JLabel();
 		label.setIcon(icon);
@@ -46,6 +48,7 @@ public class CoverDetailsListEntry extends JPanel{
 		JLabel titleLbl = new JLabel(title);
 		info1_title.add(titleLbl);
                 info1_title.add(info1Lbl);
+                info1_title.setBackground(Color.white);
 		add(info1_title);
 	}
 	

@@ -39,13 +39,14 @@ public class DeletedItemEntry extends JPanel{
             // | Icon  | Titel, usw  |
             // |_______|_____________|
             setLayout(new BorderLayout());
-            setPreferredSize(new Dimension(300, 80));
-
+            setPreferredSize(new Dimension(300, ySize));
+            setBackground(Color.yellow);
+            
             JLabel label = new JLabel();
             label.setIcon(icon);
             add(label, BorderLayout.WEST);
 
-            JLabel text = new JLabel(" " + media.getTitle() + ", " + media.getLendYear() + ", und so weiter");
+            JLabel text = new JLabel(" Titel: " + media.getTitle() + ", Genre: " + media.getGenre() + ", Jahr: " + media.getLendYear() + ", und so weiter");
             add(text, BorderLayout.CENTER);
 	}
 
