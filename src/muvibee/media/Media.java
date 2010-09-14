@@ -3,11 +3,12 @@ package muvibee.media;
 
 
 import java.awt.image.BufferedImage;
+import java.util.Observable;
 
 
 
-public abstract class Media {
-	private String	title = new String();
+public abstract class Media extends Observable {
+	String	title = new String();
 	private String	ean = new String();
 	private String	genre = new String();
 	private int	releaseYear;
@@ -82,6 +83,8 @@ public abstract class Media {
 
 	public void setTitle(String title) {
 		this.title = title;
+                setChanged();
+                notifyObservers();
 	}
 
 	public String getEan() {
@@ -90,6 +93,8 @@ public abstract class Media {
 
 	public void setEan(String ean) {
 		this.ean = ean;
+                setChanged();
+                notifyObservers();
 	}
 
 	public String getGenre() {
@@ -98,6 +103,8 @@ public abstract class Media {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+                setChanged();
+                notifyObservers();
 	}
 
 	public int getReleaseYear() {

@@ -21,7 +21,10 @@ public class CoverDetailsListEntry extends JPanel{
 	private String title;
 	
 	public CoverDetailsListEntry(Media media, String special) {
-		this.icon = resizeIcon(70, 70, media.getCover());
+                if (media.getCover() != null)
+                    this.icon = resizeIcon(70, 70, media.getCover());
+                else
+                    this.icon = null;
 		this.special = special;
 		this.title = media.getTitle();	
 		
@@ -50,7 +53,7 @@ public class CoverDetailsListEntry extends JPanel{
 	private ImageIcon resizeIcon(int width, int height, BufferedImage image) {
 		ImageIcon result = null;
 		BufferedImage dest = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-		
+
 		AffineTransform trans = AffineTransform.getScaleInstance((double)width/image.getWidth(), (double)height/image.getHeight());
 		
 		Graphics2D g2d = (Graphics2D) dest.createGraphics();

@@ -5,10 +5,12 @@
 
 package muvibee.lists;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Observable;
+import java.util.Observer;
 import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
@@ -19,21 +21,29 @@ import muvibee.media.Video;
  *
  * @author bline
  */
-public class MediaList extends Observable{
-    enum sortTypes { DIRECTOR, LANGUAGE, TITLE, FORMAT, INTERPRETER, TYPE, ISBN, EAN, ACTORS, REGISSEUR, YEAR, GENRE, LOCATION, LENTTO, RATING, AUTHOR };
+public class MediaList extends Observable implements Observer{
+
+    enum SortTypes { DIRECTOR, LANGUAGE, TITLE, FORMAT, INTERPRETER, TYPE, ISBN, EAN, ACTORS, REGISSEUR, YEAR, GENRE, LOCATION, LENTTO, RATING, AUTHOR };
     LinkedList<Media> list;
-    sortTypes sortedBy;
+    SortTypes sortedBy;
 
     public MediaList() {
         list = new LinkedList<Media>();
+        sortedBy = sortedBy.TITLE;
     }
 
     public boolean add(Media m) {
         boolean succ = list.add(m);
         resort();
+        m.addObserver(this);
         this.setChanged();
         this.notifyObservers();
         return succ;
+    }
+
+    public void update(Observable o, Object arg) {
+        setChanged();
+        notifyObservers();
     }
 
     public boolean contains(Media m){

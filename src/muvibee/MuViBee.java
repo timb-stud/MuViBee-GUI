@@ -23,9 +23,9 @@ import muvibee.media.Video;
  * @author bline
  */
 public class MuViBee {
-    private MediaList bookList;
-    private MediaList musicList;
-    private MediaList videoList;
+    private BookList bookList;
+    private MusicList musicList;
+    private VideoList videoList;
     private MediaList deletedMediaList;
 
     private MainFrame mainFrame;
@@ -76,16 +76,16 @@ public String showEanInputFrame(){
                     "");
     }
 
-    public void setBookItem(Book book){
-        mainFrame.setBookItem(book);
+    public void setBookItem(){
+        mainFrame.setBookItem(currentBook);
     }
 
-    public void setMusicItem(Music music){
-        mainFrame.setMusicItem(music);
+    public void setMusicItem(){
+        mainFrame.setMusicItem(currentMusic);
     }
 
-    public void setVideoItem(Video video) {
-        mainFrame.setVideoItem(video);
+    public void setVideoItem() {
+        mainFrame.setVideoItem(currentVideo);
     }
 
     public void showBookItem(boolean b) {
@@ -188,12 +188,21 @@ public String showEanInputFrame(){
         currentDeletedMedia = null;
     }
 
+    public MediaList getBookList() {
+        return bookList;
+    }
 
+    public MediaList getMusicList() {
+        return musicList;
+    }
 
-
+    public MediaList getVideoList() {
+        return videoList;
+    }
 
 
     public static void main(String args[]) {
         MuViBee mvb = new MuViBee();
     }
+
 }

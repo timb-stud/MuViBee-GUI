@@ -13,6 +13,7 @@ import muvibee.media.Music;
 public class MusicList extends MediaList{
     public boolean add(Music m) {
         boolean succ = list.add(m);
+        m.addObserver(this);
         resort();
         this.setChanged();
         this.notifyObservers();

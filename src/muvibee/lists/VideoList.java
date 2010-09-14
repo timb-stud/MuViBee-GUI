@@ -14,6 +14,7 @@ public class VideoList extends MediaList{
     public boolean add(Video v) {
         boolean succ = list.add(v);
         resort();
+        v.addObserver(this);
         this.setChanged();
         this.notifyObservers();
         return succ;

@@ -18,6 +18,7 @@ public class BookList extends MediaList{
     public boolean add(Book b) {
         boolean succ = list.add(b);
         resort();
+        b.addObserver(this);
         this.setChanged();
         this.notifyObservers();
         return succ;

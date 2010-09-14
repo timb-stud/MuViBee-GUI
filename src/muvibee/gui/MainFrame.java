@@ -70,10 +70,14 @@ public class MainFrame extends javax.swing.JFrame {
 	formatMusicComboBox.setModel(new DefaultComboBoxModel(musicFormats));
 	formatVideoComboBox.setModel(new DefaultComboBoxModel(videoFormats));
 	
-        CoverDetailsList coverDetailsBookList = new CoverDetailsList();
-        CoverDetailsList coverDetailsMusicList = new CoverDetailsList();
-        CoverDetailsList coverDetailsVideoList = new CoverDetailsList();
+        CoverDetailsList coverDetailsBookList = new CoverDetailsList(mvb);
+        mvb.getBookList().addObserver(coverDetailsBookList);
+        CoverDetailsList coverDetailsMusicList = new CoverDetailsList(mvb);
+        mvb.getMusicList().addObserver(coverDetailsMusicList);
+        CoverDetailsList coverDetailsVideoList = new CoverDetailsList(mvb);
+        mvb.getVideoList().addObserver(coverDetailsVideoList);
 
+        
         coverDetailsListBookScrollPane.setViewportView(coverDetailsBookList);
         coverDetailsListMusicScrollPane.setViewportView(coverDetailsMusicList);
         coverDetailsListVideoScrollPane.setViewportView(coverDetailsVideoList);
@@ -344,32 +348,32 @@ public class MainFrame extends javax.swing.JFrame {
 		    rating = 3;
 
 	//year Test
-	try {
-	    int ry = TestUtils.validYear(releaseYear);
-	    int ly = TestUtils.validYear(lendYear);
-	    int luy = TestUtils.validYear(lendUntilYear);
+//	try {
+//	    int ry = TestUtils.validYear(releaseYear);
+//	    int ly = TestUtils.validYear(lendYear);
+//	    int luy = TestUtils.validYear(lendUntilYear);
 	    book.setTitle(title);
 	    book.setAuthor(author);
 	    book.setLanguage(language);
 	    book.setIsbn(isbn);
 	    book.setEan(ean);
 	    book.setGenre(genre);
-	    book.setReleaseYear(ry);
+//	    book.setReleaseYear(ry);
 	    book.setLocation(location);
 	    book.setLendTo(lendTo);
 	    book.setLendDay(lendDay);
 	    book.setLendMonth(lendMonth);
-	    book.setLendYear(ly);
+//	    book.setLendYear(ly);
 	    book.setLendUntilDay(lendUntilDay);
 	    book.setLendUntilMonth(lendUntilMonth);
-	    book.setLendUntilYear(luy);
+//	    book.setLendUntilYear(luy);
 	    book.setRating(rating);
 	    book.setDescription(description);
 	    book.setComment(annotation);
-	} catch (NonValidYearException ex) {
-	    //TODO Fehlerausgabe
-	    StatusBarModel.getInstance().setFailMessage("Ungueltiges Datum");
-	}
+//	} catch (NonValidYearException ex) {
+//	    //TODO Fehlerausgabe
+//	    StatusBarModel.getInstance().setFailMessage("Ungueltiges Datum");
+//	}
     }
 
     public void setMusicItemInformation(Music music){

@@ -2,6 +2,7 @@
 package util.coverDetailsList;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -13,10 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import muvibee.lists.BookList;
+import muvibee.MuViBee;
 import muvibee.lists.MediaList;
-import muvibee.lists.MusicList;
-import muvibee.lists.VideoList;
 
 import muvibee.media.*;
 
@@ -25,8 +24,11 @@ public class CoverDetailsList extends JPanel implements Observer{
 	DefaultListModel  listModel;
 	CoverDetailsListRenderer lcr;
 	JList list;
-	
-	public CoverDetailsList(MediaList mediaList) {
+
+
+	public CoverDetailsList(final MuViBee muvibee) {
+
+//           
                 setLayout(new BorderLayout());
 		
 		listModel = new DefaultListModel();
@@ -39,9 +41,23 @@ public class CoverDetailsList extends JPanel implements Observer{
  	        
 	        list.addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
-                            if(evt.getValueIsAdjusting())
-                                mediaList.getList().get(list.getSelectedIndex());
-//	        		System.out.println("Feld: " + list.getSelectedIndex() + " " + (evt.getValueIsAdjusting()?"PREP":"SEL"));
+                            if(evt.getValueIsAdjusting()){
+                                Object object = listModel.getElementAt(list.getSelectedIndex());
+                                if (object instanceof CoverDetailsListEntryBook) {
+                                    muvibee.setCurrentBook(((CoverDetailsListEntryBook) object).getBook());
+                                    muvibee.setBookItem();
+                                    muvibee.showBookItem(true);
+                                } else if (object instanceof CoverDetailsListEntryMusic) {
+                                    muvibee.setCurrentMusic(((CoverDetailsListEntryMusic) object).getMusic());
+                                    muvibee.setMusicItem();
+                                    muvibee.showMusicItem(true);
+                                } else if ( object instanceof CoverDetailsListEntryVideo) {
+                                    muvibee.setCurrentVideo(((CoverDetailsListEntryVideo) object).getVideo());
+                                    muvibee.setVideoItem();
+                                    muvibee.showVideoItem(true);
+
+                                }
+                            }
 	        	}
 	        });
  	        
@@ -54,21 +70,26 @@ public class CoverDetailsList extends JPanel implements Observer{
 	private void listAdd(CoverDetailsListEntry entry){
 		listModel.addElement(entry);
 		list.validate();
+                System.out.println("drinnen");
 	}
 
 
         @Override
-	public void update(Observable list, Object media) {
+	public void update(Observable list, Object o) {
             LinkedList<Media> mList = ((MediaList) list).getList();
             listModel.clear();
 
+            System.out.println("update");
+
             for (Media m : mList){
-                if (media instanceof Book)
-			listAdd(new CoverDetailsListEntryBook((Book)media));
-		else if (media instanceof Video)
-			listAdd(new CoverDetailsListEntryVideo((Video) media));
-		else if (media instanceof Music)
-			listAdd(new CoverDetailsListEntryMusic((Music) media));
+                if (m instanceof Book)
+			listAdd(new CoverDetailsListEntryBook((Book)m));
+		else if (m instanceof Video)
+			listAdd(new CoverDetailsListEntryVideo((Video) m));
+		else if (m instanceof Music)
+			listAdd(new CoverDetailsListEntryMusic((Music) m));
+                else
+                    System.out.println("nix von allem");
             }
 	}
 }
