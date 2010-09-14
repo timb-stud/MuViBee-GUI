@@ -93,6 +93,7 @@ public class MainFrame extends javax.swing.JFrame {
         cbBooksModel.addElement(treeBookScrollPane);// eigene toString
         cbBooksModel.addElement(coverListBookScrollPane);// eigene toString
         cbBooksModel.addElement(coverDetailsListBookScrollPane);
+        cbBooksModel.addElement(detailsListBookScrollPane);
         viewBookComboBox.setModel(cbBooksModel);
         
 
@@ -100,6 +101,7 @@ public class MainFrame extends javax.swing.JFrame {
         cbMusicModel.addElement(treeMusicScrollPane);// eigene toString
         cbMusicModel.addElement(coverListMusicScrollPane); // eigene toString
         cbMusicModel.addElement(coverDetailsListMusicScrollPane);
+        cbMusicModel.addElement(detailsListMusicScrollPane);
         viewMusicComboBox.setModel(cbMusicModel);
         
 
@@ -107,6 +109,7 @@ public class MainFrame extends javax.swing.JFrame {
         cbVideoModel.addElement(treeVideoScrollPane);// eigene toString
         cbVideoModel.addElement(coverListVideoScrollPane);// eigene toString
         cbVideoModel.addElement(coverDetailsListVideoScrollPane);
+        cbVideoModel.addElement(detailsListVideoScrollPane);
         viewVideoComboBox.setModel(cbVideoModel);
         
 

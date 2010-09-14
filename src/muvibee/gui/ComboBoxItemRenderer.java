@@ -10,8 +10,6 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.JTree;
-import javax.swing.JViewport;
 import javax.swing.ListCellRenderer;
 
 /**
