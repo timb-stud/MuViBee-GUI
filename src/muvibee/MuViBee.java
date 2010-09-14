@@ -185,6 +185,7 @@ public String showEanInputFrame(){
             }
         }
         deletedMediaList.remove(currentDeletedMedia);
+        currentDeletedMedia = null;
     }
 
 

@@ -167,7 +167,7 @@ public class MainFrame extends javax.swing.JFrame {
 	genreBookTextField.setText(book.getGenre());
 	releaseYearBookTextField.setText(String.valueOf(book.getReleaseYear()));
 	locationBookTextField.setText(book.getLocation());
-	borrowedToBookTextField.setText(book.getLendTo());
+	borrowedToBookTextField.setText(book.getLentTo());
 	borrowDayBookComboBox.setSelectedIndex(book.getLendDay());
 	borrowMonthBookComboBox.setSelectedIndex(book.getLendMonth());
 	borrowYearBookTextField.setText(String.valueOf(book.getLendYear()));
@@ -233,7 +233,7 @@ public class MainFrame extends javax.swing.JFrame {
 	genreMusicTextField.setText(music.getGenre());
 	releaseYearMusicTextField.setText(String.valueOf(music.getReleaseYear()));
 	locationMusicTextField.setText(music.getLocation());
-	borrowedToMusicTextField.setText(music.getLendTo());
+	borrowedToMusicTextField.setText(music.getLentTo());
 	borrowDayMusicComboBox.setSelectedIndex(music.getLendDay());
 	borrowMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
 	borrowYearMusicTextField.setText(String.valueOf(music.getLendYear()));
@@ -286,7 +286,7 @@ public class MainFrame extends javax.swing.JFrame {
 	genreVideoTextField.setText(video.getGenre());
 	releaseYearVideoTextField.setText(String.valueOf(video.getReleaseYear()));
 	locationVideoTextField.setText(video.getLocation());
-	borrowedToVideoTextField.setText(video.getLendTo());
+	borrowedToVideoTextField.setText(video.getLentTo());
 	borrowDayVideoComboBox.setSelectedIndex(video.getLendDay());
 	borrowMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
 	borrowYearVideoTextField.setText(String.valueOf(video.getLendYear()));
