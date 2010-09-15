@@ -11,6 +11,7 @@
 
 package muvibee.gui;
 import java.awt.image.BufferedImage;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import muvibee.utils.TestUtils;
 import muvibee.utils.NonValidYearException;
@@ -40,8 +41,6 @@ import util.detailsList.DetailsList;
  * @author bline
  */
 public class MainFrame extends javax.swing.JFrame {
-
-    private ResourceBundle bundle = ResourceBundle.getBundle("muvibee.resources.MuViBee");
 
     private void createCoverList(MuViBee mvb){
         CoverList coverListBook = new CoverList(mvb);
@@ -183,6 +182,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     public final void reloadLabels(){
+        ResourceBundle bundle = ResourceBundle.getBundle("muvibee.resources.MuViBee");
         setTitle(bundle.getString("title"));
         searchButton.setText(bundle.getString("searchButton"));
         advancedSearchButton.setText(bundle.getString("advancedSearchButton"));
