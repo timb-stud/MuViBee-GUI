@@ -512,8 +512,14 @@ public class MainFrame extends javax.swing.JFrame {
     public void setMusicItemInformation(Music music) throws NonValidYearException{
 	String title = titleMusicTextField.getText().trim();
 	String artist = artistMusicTextField.getText().trim();
-	String type = typeMusicComboBox.getSelectedItem().toString().trim();
-	String format = formatMusicComboBox.getSelectedItem().toString().trim();
+	Object selectedType = typeMusicComboBox.getSelectedItem();
+        String type = null;
+        if(selectedType != null)
+            type = selectedType.toString().trim();
+        Object selectedFormat = formatMusicComboBox.getSelectedItem();
+        String format = null;
+        if(selectedFormat != null)
+            format = selectedFormat.toString().trim();
 	String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
 	String genre = genreMusicTextField.getText().trim();
 	String releaseYear = releaseYearMusicTextField.getText().trim();
@@ -568,7 +574,10 @@ public class MainFrame extends javax.swing.JFrame {
         String title = titleVideoTextField.getText().trim();
 	String director = directorVideoTextField.getText().trim();
 	String actors = actorsVideoTextField.getText().trim();
-	String format = formatVideoComboBox.getSelectedItem().toString().trim();
+        Object selectedFormat = formatVideoComboBox.getSelectedItem();
+        String format = null;
+        if(selectedFormat != null)
+            format = selectedFormat.toString().trim();
 	String ean = eanVideoTextField.getText().trim();    //TODO Ueberpruefen!?!?
 	String genre = genreVideoTextField.getText().trim();
 	String releaseYear = releaseYearVideoTextField.getText().trim();
