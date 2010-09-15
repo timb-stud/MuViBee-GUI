@@ -209,12 +209,15 @@ public String showEanInputFrame(){
         for (Media m : currentDeletedMediaList) {
             if (m instanceof Book) {
                 filterBookList.add(m);
+                bookList.add((Book) m);
             } else {
                 if (m instanceof Music) {
                     filterMusicList.add(m);
+                    musicList.add((Music) m);
                 } else {
                     if (m instanceof Video) {
                         filterVideoList.add(m);
+                        videoList.add((Video) m);
                     }
                 }
             }
@@ -272,12 +275,12 @@ public String showEanInputFrame(){
         }
         for (Music m : musicList) {
             if (!m.matches(str)) {
-                filterBookList.remove(m);
+                filterMusicList.remove(m);
             }
         }
         for (Video v : videoList) {
             if (!v.matches(str)) {
-                filterBookList.remove(v);
+                filterVideoList.remove(v);
             }
         }
     }
