@@ -60,7 +60,7 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
 		// Simple Icon List
 		if (value instanceof CoverListEntry) {
                     CoverListEntry entry = (CoverListEntry) value;
-                    if (!(CoverList.itemCounter == 0) && (entry != null)) {
+                    if (entry != null) {
                             setIcon(entry.getIcon());
                     }
 		}
