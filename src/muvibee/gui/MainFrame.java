@@ -92,7 +92,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         createDetailsList(mvb);
         createCoverDetailsList(mvb);
-        createCoverList(mvb);
+     //   createCoverList(mvb);
+
 
         itemBookScrollPane.setVisible(false);
         itemMusicScrollPane.setVisible(false);
