@@ -7,17 +7,15 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import muvibee.utils.ResizeImageIcon;
 
 public abstract class Media extends Observable {
 
-    private String title = new String();
-    private String ean = new String();
-    private String genre = new String();
+    private String title = "";
+    private String ean = "";
+    private String genre = "";
     private int releaseYear = -1;
-    private String location = new String();
-    private String lendTo = new String();
+    private String location = "";
+    private String lendTo = "";
     private int lendDay = 0;
     private int lendMonth = 0;
     private int lendYear = -1;
@@ -25,8 +23,8 @@ public abstract class Media extends Observable {
     private int lendUntilMonth = 0;
     private int lendUntilYear = -1;
     private int rating = 0;
-    private String description = new String();
-    private String comment = new String();
+    private String description = "";
+    private String comment = "";
     private BufferedImage cover;
     private boolean isDeleted;
 
