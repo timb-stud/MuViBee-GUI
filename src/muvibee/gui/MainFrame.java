@@ -221,15 +221,28 @@ public class MainFrame extends javax.swing.JFrame {
 	isbnBookTextField.setText(book.getIsbn());
 	eanBookTextField.setText(book.getEan());
 	genreBookTextField.setText(book.getGenre());
-	releaseYearBookTextField.setText(String.valueOf(book.getReleaseYear()));
+        int releaseYear = book.getReleaseYear();
+        if(releaseYear > -1)
+            releaseYearBookTextField.setText(String.valueOf(releaseYear));
+        else
+            releaseYearBookTextField.setText("");
 	locationBookTextField.setText(book.getLocation());
 	borrowedToBookTextField.setText(book.getLentTo());
 	borrowDayBookComboBox.setSelectedIndex(book.getLendDay());
 	borrowMonthBookComboBox.setSelectedIndex(book.getLendMonth());
-	borrowYearBookTextField.setText(String.valueOf(book.getLendYear()));
+        int borrowYear = book.getLendYear();
+        if(borrowYear > -1)
+            borrowYearBookTextField.setText(String.valueOf(borrowYear));
+        else
+            borrowYearBookTextField.setText("");
 	borrowedUntilDayBookComboBox.setSelectedIndex(book.getLendUntilDay());
 	borrowedUntilMonthBookComboBox.setSelectedIndex(book.getLendUntilMonth());
-	borrowedUntilYearBookTextField.setText(String.valueOf(book.getLendUntilYear()));
+        int borrowedUntilYear = book.getLendUntilYear();
+        if(borrowedUntilYear > -1)
+            borrowedUntilYearBookTextField.setText(String.valueOf(borrowedUntilYear));
+        else
+            borrowedUntilYearBookTextField.setText("");
+
 	switch (book.getRating()) {
 	    case 1:
 		oneRatingpointBookRadioButton.setSelected(true);
@@ -287,15 +300,28 @@ public class MainFrame extends javax.swing.JFrame {
 	}
 	eanMusicTextField.setText(music.getEan());
 	genreMusicTextField.setText(music.getGenre());
-	releaseYearMusicTextField.setText(String.valueOf(music.getReleaseYear()));
+        int releaseYear = music.getReleaseYear();
+        if(releaseYear > -1)
+            releaseYearMusicTextField.setText(String.valueOf(releaseYear));
+        else
+            releaseYearMusicTextField.setText("");
 	locationMusicTextField.setText(music.getLocation());
 	borrowedToMusicTextField.setText(music.getLentTo());
 	borrowDayMusicComboBox.setSelectedIndex(music.getLendDay());
 	borrowMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
-	borrowYearMusicTextField.setText(String.valueOf(music.getLendYear()));
+        int borrowYear = music.getLendYear();
+        if(borrowYear > -1)
+            borrowYearMusicTextField.setText(String.valueOf(borrowYear));
+        else
+            borrowYearMusicTextField.setText("");
 	borrowedUntilDayMusicComboBox.setSelectedIndex(music.getLendUntilDay());
 	borrowedUntilMonthMusicComboBox.setSelectedIndex(music.getLendUntilMonth());
-	borrowedUntilYearMusicTextField.setText(String.valueOf(music.getLendUntilYear()));
+        int borrowedUntilYear = music.getLendUntilYear();
+        if(borrowedUntilYear > -1)
+            borrowedUntilYearMusicTextField.setText(String.valueOf(borrowedUntilYear));
+        else
+            borrowedUntilYearMusicTextField.setText("");
+        
 	switch (music.getRating()) {
 	    case 1:
 		oneRatingpointMusicRadioButton.setSelected(true);
@@ -340,15 +366,28 @@ public class MainFrame extends javax.swing.JFrame {
 
 	eanVideoTextField.setText(video.getEan());
 	genreVideoTextField.setText(video.getGenre());
-	releaseYearVideoTextField.setText(String.valueOf(video.getReleaseYear()));
+        int releaseYear = video.getReleaseYear();
+        if(releaseYear > -1)
+            releaseYearVideoTextField.setText(String.valueOf(releaseYear));
+        else
+            releaseYearVideoTextField.setText("");
 	locationVideoTextField.setText(video.getLocation());
 	borrowedToVideoTextField.setText(video.getLentTo());
 	borrowDayVideoComboBox.setSelectedIndex(video.getLendDay());
 	borrowMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
-	borrowYearVideoTextField.setText(String.valueOf(video.getLendYear()));
+        int borrowYear = video.getLendYear();
+        if(borrowYear > -1)
+            borrowYearVideoTextField.setText(String.valueOf(borrowYear));
+        else
+            borrowYearVideoTextField.setText("");
 	borrowedUntilDayVideoComboBox.setSelectedIndex(video.getLendUntilDay());
 	borrowedUntilMonthVideoComboBox.setSelectedIndex(video.getLendUntilMonth());
-	borrowedUntilYearVideoTextField.setText(String.valueOf(video.getLendUntilYear()));
+        int borrowedUntilYear = video.getLendUntilYear();
+        if(borrowedUntilYear > -1)
+            borrowedUntilYearVideoTextField.setText(String.valueOf(borrowedUntilYear));
+        else
+            borrowedUntilYearVideoTextField.setText("");
+        
 	switch (video.getRating()) {
 	    case 1:
 		oneRatingpointVideoRadioButton.setSelected(true);
