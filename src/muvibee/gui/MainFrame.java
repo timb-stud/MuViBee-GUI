@@ -30,6 +30,7 @@ import muvibee.actionlistener.SearchActionListener;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
+import muvibee.utils.ResizeImageIcon;
 import util.coversList.CoverList;
 import util.coverDetailsList.*;
 import util.deleteditemlist.DeletedItemsList;
@@ -239,7 +240,7 @@ public class MainFrame extends javax.swing.JFrame {
     public void setBookItem(Book book){
 	BufferedImage cover = book.getCover();
 	if(cover != null)
-	    coverBookLabel.setIcon(new ImageIcon(cover));
+	    coverBookLabel.setIcon(ResizeImageIcon.resizeIcon(140, 160, cover));
         titleBookTextField.setText(book.getTitle());
         authorBookTextField.setText(book.getAuthor());
 	languageBookTextField.setText(book.getLanguage());
