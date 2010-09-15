@@ -52,6 +52,13 @@ public class MuViBee {
         });
     }
 
+    public int showSignOverFrame(){
+        return JOptionPane.showConfirmDialog(mainFrame,
+                    "Möchten Sie die Änderungen speichern ?",
+                    "Bitte wählen",
+                    JOptionPane.YES_NO_OPTION);
+    }
+
     public int showDecisionFrame(){
         Object[] options = {"EAN", "Selbst"};
 

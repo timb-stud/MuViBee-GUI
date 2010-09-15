@@ -26,6 +26,7 @@ import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
+import util.cover.CoverList;
 import util.coverDetailsList.*;
 import util.deleteditemlist.DeletedItemsList;
 
@@ -39,12 +40,21 @@ public class MainFrame extends javax.swing.JFrame {
 
     private ResourceBundle bundle = ResourceBundle.getBundle("muvibee.resources.MuViBee");
 
-    /** Creates new form MainFrame */
-    public MainFrame(MuViBee mvb) {
-        initComponents();
+    private void createCoverList(MuViBee mvb){
+        CoverList coverListBook = new CoverList(mvb);
+        mvb.getBookList().addObserver(coverListBook);
+        CoverList coverListMusic = new CoverList(mvb);
+        mvb.getMusicList().addObserver(coverListMusic);
+        CoverList coverListVideo = new CoverList(mvb);
+        mvb.getVideoList().addObserver(coverListVideo);
 
-        reloadLabels();
-        
+        coverListBookScrollPane.setViewportView(coverListBook);
+        coverListMusicScrollPane.setViewportView(coverListMusic);
+        coverListVideoScrollPane.setViewportView(coverListVideo);
+    }
+
+
+    private void createCoverDetailsList(MuViBee mvb){
         CoverDetailsList coverDetailsBookList = new CoverDetailsList(mvb);
         mvb.getBookList().addObserver(coverDetailsBookList);
         CoverDetailsList coverDetailsMusicList = new CoverDetailsList(mvb);
@@ -52,10 +62,19 @@ public class MainFrame extends javax.swing.JFrame {
         CoverDetailsList coverDetailsVideoList = new CoverDetailsList(mvb);
         mvb.getVideoList().addObserver(coverDetailsVideoList);
 
-        
         coverDetailsListBookScrollPane.setViewportView(coverDetailsBookList);
         coverDetailsListMusicScrollPane.setViewportView(coverDetailsMusicList);
         coverDetailsListVideoScrollPane.setViewportView(coverDetailsVideoList);
+    }
+
+
+    /** Creates new form MainFrame */
+    public MainFrame(MuViBee mvb) {
+        initComponents();
+
+        reloadLabels();
+        
+        createCoverDetailsList(mvb);
 
         itemBookScrollPane.setVisible(false);
         itemMusicScrollPane.setVisible(false);
