@@ -1,6 +1,7 @@
 package util.coversList;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +28,6 @@ public class CoverList extends JList implements Observer{
 	
 	public CoverList(final MuViBee muvibee) {
 		listModel = new DefaultListModel();
-	    
 	   	setModel(listModel);
 	   	setLayoutOrientation(JList.HORIZONTAL_WRAP);
 	   	setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -57,7 +57,7 @@ public class CoverList extends JList implements Observer{
 	private void listAdd(CoverListEntry entry){
 		listModel.addElement(entry);
 		validate();
-                getParent().getParent().getParent().repaint();
+               //getParent().getParent().getParent().repaint();
                 setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
