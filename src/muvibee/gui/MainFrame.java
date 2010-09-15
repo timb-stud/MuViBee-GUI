@@ -11,8 +11,8 @@
 
 package muvibee.gui;
 import java.awt.image.BufferedImage;
-import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.ComboBoxModel;
 import muvibee.utils.TestUtils;
 import muvibee.utils.NonValidYearException;
 import muvibee.actionlistener.AddActionListener;
@@ -25,6 +25,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import muvibee.MuViBee;
 import muvibee.actionlistener.DeleteSearchActionListener;
+import muvibee.actionlistener.LanguageActionListener;
 import muvibee.actionlistener.SearchActionListener;
 import muvibee.media.Book;
 import muvibee.media.Music;
@@ -97,6 +98,12 @@ public class MainFrame extends javax.swing.JFrame {
         itemBookScrollPane.setVisible(false);
         itemMusicScrollPane.setVisible(false);
         itemVideoScrollPane.setVisible(false);
+
+        //init languageComboBox
+        languagesComboBox.addActionListener(new LanguageActionListener(mvb));
+        String[] languages = {"en", "de", "ru", "tr"};
+        ComboBoxModel cbm = new DefaultComboBoxModel(languages);
+        languagesComboBox.setModel(cbm);
 
         DefaultComboBoxModel cbBooksModel = new DefaultComboBoxModel();
         cbBooksModel.addElement(treeBookScrollPane);// eigene toString
@@ -226,6 +233,7 @@ public class MainFrame extends javax.swing.JFrame {
 	String[] videoFormats = {"", "CD/DVD", "BlueRay", "VHS"};
 	formatMusicComboBox.setModel(new DefaultComboBoxModel(musicFormats));
 	formatVideoComboBox.setModel(new DefaultComboBoxModel(videoFormats));
+
     }
 
     public void setBookItem(Book book){

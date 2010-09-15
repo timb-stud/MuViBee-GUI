@@ -288,4 +288,8 @@ public String showEanInputFrame(){
         }
     }
 
+    public void reloadLabels(){
+        mainFrame.reloadLabels(mainBundlePath);
+    }
+
 }
