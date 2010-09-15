@@ -25,17 +25,17 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
 		
 		case SIMPLE_LIST :
 			setOpaque(true);
-	        Border listGap = BorderFactory.createLineBorder(Color.GREEN, 1);
-	        this.setBorder(listGap);
+                        Border listGap = BorderFactory.createLineBorder(Color.GREEN, 1);
+                        this.setBorder(listGap);
 			break;
 			
 		case ICON_LIST :
 			setOpaque(true);
-	        Border compound = BorderFactory.createCompoundBorder(
+                        Border compound = BorderFactory.createCompoundBorder(
 	        		BorderFactory.createRaisedBevelBorder(), BorderFactory.createLoweredBevelBorder());
-	        Border iconGap = BorderFactory.createCompoundBorder(
-	        		BorderFactory.createLineBorder(Color.WHITE, 5), compound);
-	        this.setBorder(iconGap);
+                        Border iconGap = BorderFactory.createCompoundBorder(
+	        		BorderFactory.createLineBorder(Color.red, 5), compound);
+                        this.setBorder(iconGap);
 			break;
 		
 		case DETAIL_ICON_LIST :
@@ -61,19 +61,20 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
 		// Simple Icon List
 		if (value instanceof CoverListEntry) {
                     CoverListEntry entry = (CoverListEntry) value;
-                    if (!(CoverList.itemCounter == 0) && (entry != null)) {
-                            setIcon(entry.getIcon());
+                    if ((entry != null)) {
+                            setIcon(entry.getIcon());                            
                     }
+                    setBorder(BorderFactory.createLineBorder(Color.red, 5));
 		}
 		
 		// Simple List
-		if (value instanceof Entry) {
-                    Entry entry = (Entry) value;
-                    if (entry != null) {
-                            setText(entry.getTitle() + " | " + entry.getAuthor());
-                            setFont(list.getFont().deriveFont(Font.BOLD, 14));
-                    }
-		}
+//		if (value instanceof Entry) {
+//                    Entry entry = (Entry) value;
+//                    if (entry != null) {
+//                            setText(entry.getTitle() + " | " + entry.getAuthor());
+//                            setFont(list.getFont().deriveFont(Font.BOLD, 14));
+//                    }
+//		}
 		
 		// Detailed Icon List
 //		if (value instanceof ListEntry) {

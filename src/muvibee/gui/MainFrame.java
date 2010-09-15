@@ -77,6 +77,7 @@ public class MainFrame extends javax.swing.JFrame {
         reloadLabels();
         
         createCoverDetailsList(mvb);
+        createCoverList(mvb);
 
         itemBookScrollPane.setVisible(false);
         itemMusicScrollPane.setVisible(false);
@@ -637,7 +638,6 @@ public class MainFrame extends javax.swing.JFrame {
         treeBookScrollPane = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         coverListBookScrollPane = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
         coverDetailsListBookScrollPane = new javax.swing.JScrollPane();
         detailsListBookScrollPane = new javax.swing.JScrollPane();
         viewBookComboBox = new javax.swing.JComboBox();
@@ -952,14 +952,6 @@ public class MainFrame extends javax.swing.JFrame {
         viewBookLayeredPane.add(treeBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         coverListBookScrollPane.setName("Cover"); // NOI18N
-
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        coverListBookScrollPane.setViewportView(jList1);
-
         coverListBookScrollPane.setBounds(0, 0, 217, 365);
         viewBookLayeredPane.add(coverListBookScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -2093,7 +2085,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JList jList3;
     private javax.swing.JTree jTree1;
