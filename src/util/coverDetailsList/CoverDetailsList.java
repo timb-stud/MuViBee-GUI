@@ -10,7 +10,6 @@ import java.util.Observer;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -20,29 +19,30 @@ import muvibee.lists.MediaList;
 import muvibee.media.*;
 
 @SuppressWarnings("serial")
-public class CoverDetailsList extends JPanel implements Observer{
+public class CoverDetailsList extends JList implements Observer{
 	DefaultListModel  listModel;
 	CoverDetailsListRenderer lcr;
-	JList list;
+
 
 
 	public CoverDetailsList(final MuViBee muvibee) {
 
 //           
-                setLayout(new BorderLayout());
+
 		
 		listModel = new DefaultListModel();
 		lcr = new CoverDetailsListRenderer();
- 	        list = new JList(listModel);
- 	        list.setCellRenderer(lcr);
- 	        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
- 	        list.setLayoutOrientation(JList.VERTICAL);
- 	        list.setVisibleRowCount(10);
+
+                setModel(listModel);
+ 	        setCellRenderer(lcr);
+ 	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+ 	        setLayoutOrientation(JList.VERTICAL);
+ 	        setVisibleRowCount(10);
  	        
-	        list.addListSelectionListener(new ListSelectionListener() {
+	        addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
                             if(evt.getValueIsAdjusting()){
-                                Object object = listModel.getElementAt(list.getSelectedIndex());
+                                Object object = listModel.getElementAt(getSelectedIndex());
                                 if (object instanceof CoverDetailsListEntryBook) {
                                     muvibee.setCurrentBook(((CoverDetailsListEntryBook) object).getBook());
                                 } else if (object instanceof CoverDetailsListEntryMusic) {
@@ -55,16 +55,16 @@ public class CoverDetailsList extends JPanel implements Observer{
 	        	}
 	        });
  	        
-	        list.setPreferredSize(new Dimension(150,0));
-	        add(list, BorderLayout.NORTH);
+	        setPreferredSize(new Dimension(150,0));
+
 	}
 	
 	
 	private void listAdd(CoverDetailsListEntry entry){
 		listModel.addElement(entry);
-		list.validate();
+		validate();
                 getParent().getParent().getParent().repaint();
-                list.setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
+                setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
 

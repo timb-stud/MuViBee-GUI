@@ -246,13 +246,13 @@ public String showEanInputFrame(){
 
     public void resetFilterLists() {
         filterBookList.getList().clear();
-        filterBookList.getList().addAll(bookList);
+        filterBookList.addAll(bookList);
 
         filterMusicList.getList().clear();
-        filterMusicList.getList().addAll(musicList);
+        filterMusicList.addAll(musicList);
 
         filterVideoList.getList().clear();
-        filterVideoList.getList().addAll(videoList);
+        filterVideoList.addAll(videoList);
     }
 
     public void search() {
