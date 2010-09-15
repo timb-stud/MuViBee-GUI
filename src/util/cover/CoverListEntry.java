@@ -1,5 +1,6 @@
 package util.cover;
 
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
@@ -48,6 +49,7 @@ public class CoverListEntry extends JLabel {
             return ySize;
         }
 
+    @Override
         public ImageIcon getIcon() {
             return this.icon;
         }
