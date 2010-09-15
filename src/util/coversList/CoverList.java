@@ -59,6 +59,7 @@ public class CoverList extends JPanel implements Observer{
                             }
 	        	}
 	        });
+                add(list);
 	}
 	
 	private void listAdd(CoverListEntry entry){
