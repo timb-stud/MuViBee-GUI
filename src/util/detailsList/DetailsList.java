@@ -68,7 +68,7 @@ public class DetailsList extends JList implements Observer{
 
             for (Media m : mList){
                 if (m instanceof Book)
-			listAdd(new DetailsListEntryBook((Book)m));
+			listAdd(new DetailsListEntryBook((Book) m));
 		else if (m instanceof Video)
 			listAdd(new DetailsListEntryVideo((Video) m));
 		else if (m instanceof Music)

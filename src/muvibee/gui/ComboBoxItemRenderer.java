@@ -30,13 +30,13 @@ public class ComboBoxItemRenderer extends JLabel implements ListCellRenderer {
             if (((JScrollPane)value).getName().equals("Tree")) {
                 renderer.setText("Baum");
             } else {
-                if (((JScrollPane)value).getName().equals("Cover")) {
+                if (((JScrollPane)value).getName().equals("cover")) {
                     renderer.setText("Cover");
                 } else {
-                    if (((JScrollPane)value).getName().equals("Cover Details")) {
+                    if (((JScrollPane)value).getName().equals("cover details")) {
                         renderer.setText("Cover Details");
                     } else {
-                        if (((JScrollPane)value).getName().equals("Details")) {
+                        if (((JScrollPane)value).getName().equals("details")) {
                             renderer.setText("Details");
                         }
                     }
