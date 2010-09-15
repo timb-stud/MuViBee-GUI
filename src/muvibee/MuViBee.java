@@ -39,6 +39,8 @@ public class MuViBee {
     private Video currentVideo;
     private Media[] currentDeletedMediaList;
 
+    private String mainBundlePath = "muvibee.resources.MuViBee";
+
     public MuViBee() {
         final MuViBee mvb = this;
 
@@ -242,8 +244,9 @@ public String showEanInputFrame(){
         return deletedMediaList;
     }
 
-    
-
+    public String getMainBundlePath() {
+        return mainBundlePath;
+    }
 
     public static void main(String args[]) {
         MuViBee mvb = new MuViBee();
@@ -283,6 +286,10 @@ public String showEanInputFrame(){
                 filterVideoList.remove(v);
             }
         }
+    }
+
+    public void reloadLabels(){
+        mainFrame.reloadLabels(mainBundlePath);
     }
 
 }

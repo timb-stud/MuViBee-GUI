@@ -12,6 +12,7 @@
 package muvibee.gui;
 import java.awt.image.BufferedImage;
 import java.util.ResourceBundle;
+import javax.swing.ComboBoxModel;
 import muvibee.utils.TestUtils;
 import muvibee.utils.NonValidYearException;
 import muvibee.actionlistener.AddActionListener;
@@ -24,6 +25,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import muvibee.MuViBee;
 import muvibee.actionlistener.DeleteSearchActionListener;
+import muvibee.actionlistener.LanguageActionListener;
 import muvibee.actionlistener.SearchActionListener;
 import muvibee.media.Book;
 import muvibee.media.Music;
@@ -40,8 +42,6 @@ import util.detailsList.DetailsList;
  * @author bline
  */
 public class MainFrame extends javax.swing.JFrame {
-
-    private ResourceBundle bundle = ResourceBundle.getBundle("muvibee.resources.MuViBee");
 
     private void createCoverList(MuViBee mvb){
         CoverList coverListBook = new CoverList(mvb);
@@ -88,7 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(MuViBee mvb) {
         initComponents();
 
-        reloadLabels();
+        reloadLabels(mvb.getMainBundlePath());
 
         createDetailsList(mvb);
         createCoverDetailsList(mvb);
@@ -98,6 +98,12 @@ public class MainFrame extends javax.swing.JFrame {
         itemBookScrollPane.setVisible(false);
         itemMusicScrollPane.setVisible(false);
         itemVideoScrollPane.setVisible(false);
+
+        //init languageComboBox
+        languagesComboBox.addActionListener(new LanguageActionListener(mvb));
+        String[] languages = {"en", "de", "ru", "tr"};
+        ComboBoxModel cbm = new DefaultComboBoxModel(languages);
+        languagesComboBox.setModel(cbm);
 
         DefaultComboBoxModel cbBooksModel = new DefaultComboBoxModel();
         cbBooksModel.addElement(treeBookScrollPane);// eigene toString
@@ -182,7 +188,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
-    public final void reloadLabels(){
+    public final void reloadLabels(String bundlePath){
+        ResourceBundle bundle = ResourceBundle.getBundle(bundlePath);
         setTitle(bundle.getString("title"));
         searchButton.setText(bundle.getString("searchButton"));
         advancedSearchButton.setText(bundle.getString("advancedSearchButton"));
@@ -226,6 +233,7 @@ public class MainFrame extends javax.swing.JFrame {
 	String[] videoFormats = {"", "CD/DVD", "BlueRay", "VHS"};
 	formatMusicComboBox.setModel(new DefaultComboBoxModel(musicFormats));
 	formatVideoComboBox.setModel(new DefaultComboBoxModel(videoFormats));
+
     }
 
     public void setBookItem(Book book){
