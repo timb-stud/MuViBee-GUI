@@ -29,7 +29,7 @@ public class SaveActionListener implements ActionListener {
             JButton button = (JButton)source;
             if(button.getName().equals("save book button")){
                try {
-                mvb.setCurrentBookItemInformation();
+                    mvb.setCurrentBookItemInformation();
                } catch (NonValidYearException ex) {
                    StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
                    return;

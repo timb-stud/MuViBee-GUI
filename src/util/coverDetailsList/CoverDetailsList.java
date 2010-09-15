@@ -1,8 +1,6 @@
 
 package util.coverDetailsList;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -24,12 +22,7 @@ public class CoverDetailsList extends JList implements Observer{
 	CoverDetailsListRenderer lcr;
 
 
-
-	public CoverDetailsList(final MuViBee muvibee) {
-
-//           
-
-		
+	public CoverDetailsList(final MuViBee muvibee) {	
 		listModel = new DefaultListModel();
 		lcr = new CoverDetailsListRenderer();
 

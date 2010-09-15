@@ -85,9 +85,8 @@ public class CoverDetailsListEntry extends JPanel{
 		this.special = text;
 	}
 
-    public int getySize() {
-        return ySize;
-    }
-
+        public int getySize() {
+            return ySize;
+        }
         
 }
