@@ -60,6 +60,11 @@ public class Video extends Media{
 		this.actors = actors;
 	}
 
+        @Override
+        public boolean matches(String str) {
+            return super.matches(str) || format.contains(str) || director.contains(str) || actors.contains(str);
+        }
+
 	public String getFormat() {
 		return format;
 	}

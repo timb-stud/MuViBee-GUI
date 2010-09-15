@@ -62,7 +62,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="searchTextField" min="-2" pref="199" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="deleteSearchButton" min="-2" pref="43" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="searchButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
                       <Component id="helpButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="searchTextField" alignment="3" pref="33" max="32767" attributes="0"/>
                       <Component id="languagesComboBox" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="deleteSearchButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="searchButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="advancedSearchButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
@@ -131,7 +131,7 @@
             <Property name="text" type="java.lang.String" value="Erweiterte Suche"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="deleteSearchButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="X"/>
           </Properties>

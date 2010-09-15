@@ -59,6 +59,12 @@ public class Book extends Media {
 		this.isbn = isbn;
 	}
 
+        @Override
+        public boolean matches(String str) {
+            return super.matches(str) || author.contains(str) || language.contains(str);
+        }
+        //TODO equals
+
 	public String getAuthor() {
 		return author;
 	}

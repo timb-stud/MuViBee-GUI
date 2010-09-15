@@ -70,6 +70,8 @@ public abstract class Media extends Observable {
 		this.isDeleted = isDeleted;
 	}
 
+        //TODO equals
+
 	public abstract String toString();
 
 	public void insertIntoDB() {
@@ -218,5 +220,10 @@ public abstract class Media extends Observable {
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+
+        //TODO monate/tage vergleich
+        public boolean matches(String str) {
+            return title.contains(str) || genre.contains(str) || location.contains(str) || lendTo.contains(str) || description.contains(str) || comment.contains(str);
+        }
 
 }

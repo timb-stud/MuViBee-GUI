@@ -6,6 +6,7 @@
 package muvibee;
 
 
+import java.util.LinkedList;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -24,9 +25,12 @@ import muvibee.utils.NonValidYearException;
  * @author bline
  */
 public class MuViBee {
-    private MediaList bookList;
-    private MediaList musicList;
-    private MediaList videoList;
+    private LinkedList<Book> bookList;
+    private LinkedList<Music> musicList;
+    private LinkedList<Video> videoList;
+    private MediaList filterBookList;
+    private MediaList filterMusicList;
+    private MediaList filterVideoList;
     private MediaList deletedMediaList;
 
     private MainFrame mainFrame;
@@ -39,10 +43,15 @@ public class MuViBee {
         final MuViBee mvb = this;
 
         //TODO adapterklasse für listen. siehe unten
-        bookList = new BookList();
-        musicList = new MusicList();
-        videoList = new VideoList();
+        filterBookList = new BookList();
+        filterMusicList = new MusicList();
+        filterVideoList = new VideoList();
         deletedMediaList = new MediaList();
+
+        bookList = new LinkedList<Book>();
+        musicList = new LinkedList<Music>();
+        videoList = new LinkedList<Video>();
+
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
@@ -134,43 +143,49 @@ public String showEanInputFrame(){
         mainFrame.setVideoItemInformation(currentVideo);
     }
 
-    public void addCurrentBookToBookList() {
-        if (!bookList.contains(currentBook)) {
+    public void addCurrentBookToBookLists() {
+        if (!filterBookList.contains(currentBook)) {
+            filterBookList.add(currentBook);
             bookList.add(currentBook);
         }
     }
 
-    public void addCurrentMusicToMusicList(){
-	if(!musicList.contains(currentMusic)){
-	    musicList.add(currentMusic);
+    public void addCurrentMusicToMusicLists(){
+	if(!filterMusicList.contains(currentMusic)){
+	    filterMusicList.add(currentMusic);
+            musicList.add(currentMusic);
 	}
     }
 
-    public void addCurrentVideoToVideoList() {
-        if (!videoList.contains(currentVideo)) {
+    public void addCurrentVideoToVideoLists() {
+        if (!filterVideoList.contains(currentVideo)) {
+            filterVideoList.add(currentVideo);
             videoList.add(currentVideo);
         }
     }
 
-    public void removeCurrentBookFromBookList() {
+    public void removeCurrentBookFromBookLists() {
         if (bookList.remove(currentBook)) {
             deletedMediaList.add(currentBook);
+            filterBookList.remove(currentBook);
             currentBook = null;
             showBookItem(false);
         }
     }
 
-    public void removeCurrentMusicFromMusicList() {
+    public void removeCurrentMusicFromMusicLists() {
         if (musicList.remove(currentMusic)) {
             deletedMediaList.add(currentMusic);
+            filterMusicList.remove(currentMusic);
             currentMusic = null;
             showMusicItem(false);
         }
     }
 
-    public void removeCurrentVideoFromVideoList() {
+    public void removeCurrentVideoFromVideoLists() {
         if (videoList.remove(currentVideo)) {
             deletedMediaList.add(currentVideo);
+            filterVideoList.remove(currentVideo);
             currentVideo = null;
             showVideoItem(false);
         }
@@ -186,13 +201,13 @@ public String showEanInputFrame(){
     public void restoreCurrentDeletedMedia() {
         for (Media m : currentDeletedMediaList) {
             if (m instanceof Book) {
-                bookList.add(m);
+                filterBookList.add(m);
             } else {
                 if (m instanceof Music) {
-                    musicList.add(m);
+                    filterMusicList.add(m);
                 } else {
                     if (m instanceof Video) {
-                        videoList.add(m);
+                        filterVideoList.add(m);
                     }
                 }
             }
@@ -202,15 +217,15 @@ public String showEanInputFrame(){
     }
 
     public MediaList getBookList() {
-        return bookList;
+        return filterBookList;
     }
 
     public MediaList getMusicList() {
-        return musicList;
+        return filterMusicList;
     }
 
     public MediaList getVideoList() {
-        return videoList;
+        return filterVideoList;
     }
 
     public MediaList getDeletedMediaList() {
@@ -222,6 +237,42 @@ public String showEanInputFrame(){
 
     public static void main(String args[]) {
         MuViBee mvb = new MuViBee();
+    }
+
+    public void resetSearch() {
+        mainFrame.resetSearch();
+        resetFilterLists();
+    }
+
+    public void resetFilterLists() {
+        filterBookList.getList().clear();
+        filterBookList.getList().addAll(bookList);
+
+        filterMusicList.getList().clear();
+        filterMusicList.getList().addAll(musicList);
+
+        filterVideoList.getList().clear();
+        filterVideoList.getList().addAll(videoList);
+    }
+
+    public void search() {
+        String str = mainFrame.getSearchString();
+        resetFilterLists();
+        for (Book b : bookList) {
+            if (!b.matches(str)) {
+                filterBookList.remove(b);
+            }
+        }
+        for (Music m : musicList) {
+            if (!m.matches(str)) {
+                filterBookList.remove(m);
+            }
+        }
+        for (Video v : videoList) {
+            if (!v.matches(str)) {
+                filterBookList.remove(v);
+            }
+        }
     }
 
 }

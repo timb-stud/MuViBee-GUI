@@ -5,6 +5,7 @@
 
 package muvibee.lists;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -38,6 +39,13 @@ public class MediaList extends Observable implements Observer{
         this.setChanged();
         this.notifyObservers();
         return succ;
+    }
+
+    public void addAll(Collection c) {
+        list.addAll(c);
+        resort();
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void update(Observable o, Object arg) {
@@ -226,6 +234,7 @@ public class MediaList extends Observable implements Observer{
 			return -1;
 	}
 
+    //TODO in unnaklasse oberklasse resort uffrufe gemischt
         void resort() {
         switch (sortedBy){
             case TITLE :

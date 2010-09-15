@@ -59,6 +59,11 @@ public class Music extends Media{
 		this.type = type;
 	}
 
+        @Override
+        public boolean matches(String str) {
+            return super.matches(str) || format.contains(str) || interpreter.contains(str) || type.contains(str);
+        }
+
 	public String getFormat() {
 		return format;
 	}
