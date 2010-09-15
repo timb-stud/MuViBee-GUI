@@ -1,10 +1,13 @@
-package util.cover;
+package util.coversList;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.Border;
 
@@ -21,17 +24,17 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
 		
 		case SIMPLE_LIST :
 			setOpaque(true);
-                        Border listGap = BorderFactory.createLineBorder(Color.GREEN, 1);
-                        this.setBorder(listGap);
+	        Border listGap = BorderFactory.createLineBorder(Color.GREEN, 1);
+	        this.setBorder(listGap);
 			break;
 			
 		case ICON_LIST :
 			setOpaque(true);
-                        Border compound = BorderFactory.createCompoundBorder(
+	        Border compound = BorderFactory.createCompoundBorder(
 	        		BorderFactory.createRaisedBevelBorder(), BorderFactory.createLoweredBevelBorder());
-                        Border iconGap = BorderFactory.createCompoundBorder(
-	        		BorderFactory.createLineBorder(Color.red, 5), compound);
-                        this.setBorder(iconGap);
+	        Border iconGap = BorderFactory.createCompoundBorder(
+	        		BorderFactory.createLineBorder(Color.WHITE, 5), compound);
+	        this.setBorder(iconGap);
 			break;
 		
 		case DETAIL_ICON_LIST :
@@ -57,13 +60,12 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
 		// Simple Icon List
 		if (value instanceof CoverListEntry) {
                     CoverListEntry entry = (CoverListEntry) value;
-                    if ((entry != null)) {
-                            setIcon(entry.getIcon());                            
+                    if (!(CoverList.itemCounter == 0) && (entry != null)) {
+                            setIcon(entry.getIcon());
                     }
-                    setBorder(BorderFactory.createLineBorder(Color.red, 5));
 		}
 		
-		// Simple List
+//		// Simple List
 //		if (value instanceof Entry) {
 //                    Entry entry = (Entry) value;
 //                    if (entry != null) {
@@ -71,7 +73,7 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
 //                            setFont(list.getFont().deriveFont(Font.BOLD, 14));
 //                    }
 //		}
-		
+//
 		// Detailed Icon List
 //		if (value instanceof ListEntry) {
 //			Component le = (ListEntry) value;

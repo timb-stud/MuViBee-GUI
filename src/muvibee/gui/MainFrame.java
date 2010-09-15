@@ -28,9 +28,10 @@ import muvibee.actionlistener.SearchActionListener;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
-import util.cover.CoverList;
+import util.coversList.CoverList;
 import util.coverDetailsList.*;
 import util.deleteditemlist.DeletedItemsList;
+import util.detailsList.DetailsList;
 
 
 
@@ -55,6 +56,19 @@ public class MainFrame extends javax.swing.JFrame {
         coverListVideoScrollPane.setViewportView(coverListVideo);
     }
 
+    private void createDetailsList(MuViBee mvb){
+        DetailsList detailsListBook = new DetailsList(mvb);
+        mvb.getBookList().addObserver(detailsListBook);
+        DetailsList detailsListMusic = new DetailsList(mvb);
+        mvb.getBookList().addObserver(detailsListMusic);
+        DetailsList detailsListVideo = new DetailsList(mvb);
+        mvb.getBookList().addObserver(detailsListVideo);
+
+        detailsListBookScrollPane.setViewportView(detailsListBook);
+        detailsListMusicScrollPane.setViewportView(detailsListMusic);
+        detailsListVideoScrollPane.setViewportView(detailsListVideo);
+    }
+
 
     private void createCoverDetailsList(MuViBee mvb){
         CoverDetailsList coverDetailsBookList = new CoverDetailsList(mvb);
@@ -75,7 +89,8 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
 
         reloadLabels();
-        
+
+        createDetailsList(mvb);
         createCoverDetailsList(mvb);
         createCoverList(mvb);
 
