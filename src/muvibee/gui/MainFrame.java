@@ -23,6 +23,7 @@ import muvibee.actionlistener.RestoreListener;
 import muvibee.actionlistener.DeleteListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import muvibee.MuViBee;
 import muvibee.actionlistener.DeleteSearchActionListener;
 import muvibee.actionlistener.LanguageActionListener;
@@ -88,8 +89,6 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(MuViBee mvb) {
         initComponents();
 
-        reloadLabels(mvb.getMainBundlePath());
-
         createDetailsList(mvb);
         createCoverDetailsList(mvb);
         createCoverList(mvb);
@@ -104,6 +103,18 @@ public class MainFrame extends javax.swing.JFrame {
         String[] languages = {"en", "de", "ru", "tr"};
         ComboBoxModel cbm = new DefaultComboBoxModel(languages);
         languagesComboBox.setModel(cbm);
+
+        //init dayComboBoxes
+	String[] days = new String[32];
+        days[0] = "lol";
+	for(int i=1; i<32;i++)
+	    days[i] = String.valueOf(i);
+	borrowDayBookComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowedUntilDayBookComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowedUntilDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
+	borrowedUntilDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
 
         DefaultComboBoxModel cbBooksModel = new DefaultComboBoxModel();
         cbBooksModel.addElement(treeBookScrollPane);// eigene toString
@@ -185,6 +196,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sb, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        reloadLabels(mvb.getMainBundlePath());
     }
 
 
@@ -202,37 +215,55 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setTitleAt(4, bundle.getString("restoreTab"));
 
 
-        //Das hier muss noch umgewandelt werden
-        //init dayComboBoxes
-	String[] days = new String[32];
-	days[0] = "Tag";
-	for(int i=1; i<32;i++)
-	    days[i] = String.valueOf(i);
-	borrowDayBookComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayBookComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
+        String day = bundle.getString("dayComboBox");
+        updateDayComboBoxLabel(borrowDayBookComboBox, day);
+        updateDayComboBoxLabel(borrowedUntilDayBookComboBox, day);
+        updateDayComboBoxLabel(borrowDayMusicComboBox, day);
+        updateDayComboBoxLabel(borrowedUntilDayMusicComboBox, day);
+        updateDayComboBoxLabel(borrowDayVideoComboBox, day);
+        updateDayComboBoxLabel(borrowedUntilDayVideoComboBox, day);
 
-	//init monthComboBoxes
-	String[] months = {"Monat", "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"};
-	borrowMonthBookComboBox.setModel(new DefaultComboBoxModel(months));
-	borrowedUntilMonthBookComboBox.setModel(new DefaultComboBoxModel(months));
-	borrowMonthMusicComboBox.setModel(new DefaultComboBoxModel(months));
-	borrowedUntilMonthMusicComboBox.setModel(new DefaultComboBoxModel(months));
-	borrowMonthVideoComboBox.setModel(new DefaultComboBoxModel(months));
-	borrowedUntilMonthVideoComboBox.setModel(new DefaultComboBoxModel(months));
+        
+	String[] months = new String[13];
+        months[0] = bundle.getString("monthComboBox");
+        months[1] = bundle.getString("januaryComboBox");
+        months[2] = bundle.getString("februaryComboBox");
+        months[3] = bundle.getString("marchComboBox");
+        months[4] = bundle.getString("aprilComboBox");
+        months[5] = bundle.getString("mayComboBox");
+        months[6] = bundle.getString("juneComboBox");
+        months[7] = bundle.getString("julyComboBox");
+        months[8] = bundle.getString("augustComboBox");
+        months[9] = bundle.getString("septemberComboBox");
+        months[10] = bundle.getString("octoberComboBox");
+        months[11] = bundle.getString("novemberComboBox");
+        months[12] = bundle.getString("decemberComboBox");
+	updateMonthComboBoxLabels(borrowMonthBookComboBox, months);
+	updateMonthComboBoxLabels(borrowedUntilMonthBookComboBox, months);
+	updateMonthComboBoxLabels(borrowMonthMusicComboBox, months);
+	updateMonthComboBoxLabels(borrowedUntilMonthMusicComboBox, months);
+	updateMonthComboBoxLabels(borrowMonthVideoComboBox, months);
+	updateMonthComboBoxLabels(borrowedUntilMonthVideoComboBox, months);
 
-	//init typeComboBox
-	String[] types = {"", "Album", "Single", "Sampler"};
-	typeMusicComboBox.setModel(new DefaultComboBoxModel(types));
 
-	//init formatComboBoxes
-	String[] musicFormats = {"", "CD", "LP", "Kassette"};
-	String[] videoFormats = {"", "CD/DVD", "BlueRay", "VHS"};
-	formatMusicComboBox.setModel(new DefaultComboBoxModel(musicFormats));
-	formatVideoComboBox.setModel(new DefaultComboBoxModel(videoFormats));
+        Object selectedItem = typeMusicComboBox.getSelectedItem();
+        typeMusicComboBox.removeAllItems();
+        typeMusicComboBox.addItem(bundle.getString("album"));
+        typeMusicComboBox.addItem(bundle.getString("single"));
+        typeMusicComboBox.addItem(bundle.getString("sampler"));
+        typeMusicComboBox.setSelectedItem(selectedItem);
+
+
+	String[] musicFormats = new String[3];
+        musicFormats[0] = bundle.getString("cd");
+        musicFormats[1] = bundle.getString("lp");
+        musicFormats[2] = bundle.getString("cassette");
+	String[] videoFormats = new String[3];
+        videoFormats[0] = bundle.getString("cd/dvd");
+        videoFormats[1] = bundle.getString("blu-ray");
+        videoFormats[2] = bundle.getString("vhs");
+	updateFormatComboBox(formatMusicComboBox, musicFormats);
+	updateFormatComboBox(formatVideoComboBox, videoFormats);
 
     }
 
@@ -294,35 +325,9 @@ public class MainFrame extends javax.swing.JFrame {
         titleMusicTextField.setText(music.getTitle());
         artistMusicTextField.setText(music.getInterpreter());
 
-	String type = music.getType();
-	if(type != null && !type.isEmpty()){
-	    int itemNumber = typeMusicComboBox.getItemCount();
-	    boolean found = false;
-	    for(int i=0; i < itemNumber; i++){
-		if(typeMusicComboBox.getItemAt(i).equals(type)){
-		    typeMusicComboBox.setSelectedIndex(i);
-		    found = true;
-		    break;
-		}
-	    }
-	    if(!found)
-		typeMusicComboBox.addItem(type);
-	}
+        typeMusicComboBox.setSelectedItem(music.getType());
+        formatMusicComboBox.setSelectedItem(music.getFormat());
 
-	String format = music.getFormat();
-	if(format != null && !format.isEmpty()){
-	    int itemNumber = formatMusicComboBox.getItemCount();
-	    boolean found = false;
-	    for(int i=0; i < itemNumber; i++){
-		if(formatMusicComboBox.getItemAt(i).equals(format)){
-		    formatMusicComboBox.setSelectedIndex(i);
-		    found = true;
-		    break;
-		}
-	    }
-	    if(!found)
-		formatMusicComboBox.addItem(format);
-	}
 	eanMusicTextField.setText(music.getEan());
 	genreMusicTextField.setText(music.getGenre());
         int releaseYear = music.getReleaseYear();
@@ -373,22 +378,7 @@ public class MainFrame extends javax.swing.JFrame {
         titleVideoTextField.setText(video.getTitle());
         directorVideoTextField.setText(video.getDirector());
 	actorsVideoTextField.setText(video.getActors());
-
-	String format = video.getFormat();
-	if(format != null && !format.isEmpty()){
-	    int itemNumber = formatVideoComboBox.getItemCount();
-	    boolean found = false;
-	    for(int i=0; i < itemNumber; i++){
-		if(formatVideoComboBox.getItemAt(i).equals(format)){
-		    formatVideoComboBox.setSelectedIndex(i);
-		    found = true;
-		    break;
-		}
-	    }
-	    if(!found)
-		formatVideoComboBox.addItem(format);
-	}
-
+        formatVideoComboBox.setSelectedItem(video.getFormat());
 	eanVideoTextField.setText(video.getEan());
 	genreVideoTextField.setText(video.getGenre());
         int releaseYear = video.getReleaseYear();
@@ -621,6 +611,30 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void resetSearch() {
         searchTextField.setText("");
+    }
+
+    public void updateDayComboBoxLabel(JComboBox cb, String label){
+        int selectedIndex = cb.getSelectedIndex();
+        cb.removeItemAt(0);
+        cb.insertItemAt(label, 0);
+        cb.setSelectedIndex(selectedIndex);
+    }
+
+    public void updateMonthComboBoxLabels(JComboBox cb, String[] months){
+        int selectedIndex = cb.getSelectedIndex();
+        cb.removeAllItems();
+        for(int i=0; i<months.length; i++)
+            cb.addItem(months[i]);
+        cb.setSelectedIndex(selectedIndex);
+    }
+
+    public void updateFormatComboBox(JComboBox cb, String[] formats){
+        Object selectedItem = cb.getSelectedItem();
+        cb.removeAllItems();
+        for(int i=0; i< formats.length; i++){
+            cb.addItem(formats[i]);
+        }
+        cb.setSelectedItem(selectedItem);
     }
 
     /** This method is called from within the constructor to
@@ -2173,9 +2187,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLayeredPane viewVideoLayeredPane;
     private javax.swing.JPanel viewVideoPanel;
     // End of variables declaration//GEN-END:variables
-
-
-
 
 
 }

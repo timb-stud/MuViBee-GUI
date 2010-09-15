@@ -5,7 +5,6 @@
 
 package muvibee.actionlistener;
 
-import com.sun.org.apache.xerces.internal.dom.DeepNodeListImpl;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import muvibee.MuViBee;
