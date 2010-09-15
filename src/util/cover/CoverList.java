@@ -39,7 +39,7 @@ public class CoverList extends JPanel implements Observer{
 	   	
 		CoverListRenderer cr = new CoverListRenderer(CoverListRenderer.rendererType.ICON_LIST);
 		cr.setPreferredSize(new Dimension(100, 120));
-		list.setCellRenderer(cr);		
+		list.setCellRenderer(cr);
 		list.setVisibleRowCount(-1);
 
                 list.addListSelectionListener(new ListSelectionListener() {
@@ -57,7 +57,7 @@ public class CoverList extends JPanel implements Observer{
                             }
 	        	}
 	        });
-                add(list, BorderLayout.CENTER);
+                add(list);
 	}
 	
 	private void listAdd(CoverListEntry entry){

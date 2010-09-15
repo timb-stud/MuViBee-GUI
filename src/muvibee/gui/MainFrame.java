@@ -77,7 +77,8 @@ public class MainFrame extends javax.swing.JFrame {
         reloadLabels();
         
         createCoverDetailsList(mvb);
-     //   createCoverList(mvb);
+        createCoverList(mvb);
+
 
 
         itemBookScrollPane.setVisible(false);
