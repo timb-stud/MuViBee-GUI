@@ -19,7 +19,7 @@ public class DetailsListEntry extends JPanel{
 	
 	private String special;
 	private String title;
-        private int ySize = 80;
+        private int ySize = 50;
 	
 	public DetailsListEntry(Media media, String special) {
 		this.special = special;
@@ -31,12 +31,12 @@ public class DetailsListEntry extends JPanel{
 		// |    Info 1      |
 		// |________________|
                 
-		setLayout(new GridLayout(1,2, -40, -20));
+		setLayout(new GridLayout(2,1, +10, -10));
 		setPreferredSize(new Dimension(10, ySize));
                 setBackground(Color.white);
-		
-		add(new JLabel(special));
+
                 add(new JLabel(title));
+		add(new JLabel(special));
 	}
 	
 
