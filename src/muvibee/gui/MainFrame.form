@@ -418,6 +418,7 @@
                     </Container>
                     <Container class="javax.swing.JScrollPane" name="coverListBookScrollPane">
                       <Properties>
+                        <Property name="verticalScrollBarPolicy" type="int" value="22"/>
                         <Property name="name" type="java.lang.String" value="Cover" noResource="true"/>
                       </Properties>
                       <Constraints>
