@@ -1,7 +1,12 @@
 package muvibee.media;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 public abstract class Media extends Observable {
 
@@ -166,7 +171,14 @@ public abstract class Media extends Observable {
     }
 
     public void setCover(BufferedImage cover) {
-        this.cover = cover;
+        if (cover != null)
+            this.cover = cover;
+        else
+            try {
+            this.cover = ImageIO.read(new File("resources/Biene.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Media.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public boolean isDeleted() {

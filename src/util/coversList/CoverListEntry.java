@@ -14,7 +14,7 @@ public class CoverListEntry extends JLabel {
 
 	private ImageIcon icon;
         private Media media;
-        private int ySize = 80;
+        private int ySize = 100;
 
         public CoverListEntry(Media media) {
             this.media = media;

@@ -477,6 +477,7 @@ public class MainFrame extends javax.swing.JFrame {
 	    book.setRating(rating);
 	    book.setDescription(description);
 	    book.setComment(annotation);
+            book.setCover(null);
     }
 
     public void setMusicItemInformation(Music music) throws NonValidYearException{
