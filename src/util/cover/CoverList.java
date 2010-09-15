@@ -23,11 +23,9 @@ import muvibee.media.Video;
 
 public class CoverList extends JPanel implements Observer{
 
-	static JList list;
-	static DefaultListModel listModel;
-	int iconCounter = 1;
-	
-	protected static int itemCounter = 0;
+	JList list;
+	DefaultListModel listModel;
+
 	
 	public CoverList(final MuViBee muvibee) {
 
@@ -59,6 +57,7 @@ public class CoverList extends JPanel implements Observer{
                             }
 	        	}
 	        });
+                add(list, BorderLayout.CENTER);
 	}
 	
 	private void listAdd(CoverListEntry entry){

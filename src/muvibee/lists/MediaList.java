@@ -5,6 +5,7 @@
 
 package muvibee.lists;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -38,6 +39,13 @@ public class MediaList extends Observable implements Observer{
         this.setChanged();
         this.notifyObservers();
         return succ;
+    }
+
+    public void addAll(Collection c) {
+        list.addAll(c);
+        resort();
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void update(Observable o, Object arg) {
@@ -135,88 +143,6 @@ public class MediaList extends Observable implements Observer{
         });
         sortedBy = sortedBy.RATING;
     }
-       public void sortByAuthor(){
-        Collections.sort(list, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                Book b1 = (Book)o1;
-                Book b2 = (Book)o2;
-                return b1.getAuthor().compareTo(b2.getAuthor());
-            }
-
-        });
-        sortedBy = sortedBy.AUTHOR;
-    }
-
-
-   public void sortByLanguage(){
-        Collections.sort(list, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                Book b1 = (Book)o1;
-                Book b2 = (Book)o2;
-                return (b1.getLanguage()).compareTo(b2.getLanguage());
-            }
-
-        });
-        sortedBy = sortedBy.LANGUAGE;
-    }
-
-       public void sortByFormat(){
-        Collections.sort(list, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                Music m1 = (Music)o1;
-                Music m2 = (Music)o2;
-                return m1.getFormat().compareTo(m2.getFormat());
-            }
-        });
-        sortedBy = sortedBy.FORMAT;
-    }
-
-    public void sortByInterpreter(){
-        Collections.sort(list, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                Music m1 = (Music)o1;
-                Music m2 = (Music)o2;
-                return m1.getInterpreter().compareTo(m2.getInterpreter());
-            }
-
-        });
-        sortedBy = sortedBy.INTERPRETER;
-    }
-
-    public void sortByType(){
-        Collections.sort(list, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                Music m1 = (Music)o1;
-                Music m2 = (Music)o2;
-                return m1.getType().compareTo(m2.getType());
-            }
-        });
-        sortedBy = sortedBy.TYPE;
-    }
-
-        public void sortByDirector(){
-        Collections.sort(list, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                Video v1 = (Video)o1;
-                Video v2 = (Video)o2;
-                return (v1.getDirector().compareTo(v2.getDirector()));
-            }
-        });
-        sortedBy = sortedBy.DIRECTOR;
-    }
-
-    public void sortByActors(){
-        Collections.sort(list, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                Video v1 = (Video)o1;
-                Video v2 = (Video)o2;
-                return v1.getActors().compareTo(v2.getActors());
-            }
-
-        });
-        sortedBy = sortedBy.ACTORS;
-    }
-
 
     private static int compareInt(int a, int b){
 		if (a == b)
@@ -227,7 +153,7 @@ public class MediaList extends Observable implements Observer{
 			return -1;
 	}
 
-        void resort() {
+        boolean resort() {
         switch (sortedBy){
             case TITLE :
                 sortByTitle();
@@ -247,20 +173,9 @@ public class MediaList extends Observable implements Observer{
             case LENTTO:
                 sortByLentTo();
                 break;
-            case AUTHOR:
-                sortByAuthor();
-                break;
-            case LANGUAGE:
-                sortByLanguage();
-                break;
-            case TYPE:
-                sortByType();
-            case INTERPRETER:
-                sortByInterpreter();
-            case DIRECTOR:
-                sortByDirector();
             default:
-               sortByTitle(); //default sortByTitle
+               return true;
         }
+        return false;
     }
 }

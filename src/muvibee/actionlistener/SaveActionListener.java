@@ -34,7 +34,7 @@ public class SaveActionListener implements ActionListener {
                    StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
                    return;
                }
-                mvb.addCurrentBookToBookList();
+                mvb.addCurrentBookToBookLists();
             } else {
                 if(button.getName().equals("save music button")){
 		try {
@@ -43,7 +43,7 @@ public class SaveActionListener implements ActionListener {
                    StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
                    return;
                 }
-		    mvb.addCurrentMusicToMusicList();
+		    mvb.addCurrentMusicToMusicLists();
                 } else {
                     if(button.getName().equals("save video button")){
                         try {
@@ -52,7 +52,7 @@ public class SaveActionListener implements ActionListener {
                             StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
                             return;
                         }
-                        mvb.addCurrentVideoToVideoList();
+                        mvb.addCurrentVideoToVideoLists();
                     }
                 }
             }

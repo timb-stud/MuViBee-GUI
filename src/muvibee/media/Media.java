@@ -1,222 +1,189 @@
 package muvibee.media;
 
-
-
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 
-
-
 public abstract class Media extends Observable {
-	String	title = new String();
-	private String	ean = new String();
-	private String	genre = new String();
-	private int	releaseYear;
-	private String	location = new String();
-	private String	lendTo = new String();
-	private int	lendDay;
-	private int	lendMonth;
-	private int	lendYear;
-	private int	lendUntilDay;
-	private int	lendUntilMonth;
-	private int	lendUntilYear;
-	private int	rating;
-	private String	description = new String();
-	private String	comment = new String();
-	private BufferedImage cover;
-	private boolean isDeleted;
 
-        public Media(){ }
+    private String title = new String();
+    private String ean = new String();
+    private String genre = new String();
+    private int releaseYear = -1;
+    private String location = new String();
+    private String lendTo = new String();
+    private int lendDay = 0;
+    private int lendMonth = 0;
+    private int lendYear = -1;
+    private int lendUntilDay = 0;
+    private int lendUntilMonth = 0;
+    private int lendUntilYear = -1;
+    private int rating = 0;
+    private String description = new String();
+    private String comment = new String();
+    private BufferedImage cover;
+    private boolean isDeleted;
 
-        public Media(String title){
-            this.title = title;
-        }
+    public Media() {
+    }
 
+    public Media(String title) {
+        this.title = title;
+    }
 
-	public Media(	String title,
-			String ean,
-			String genre,
-			int releaseYear,
-			String location,
-			String lendTo,
-			int lendDay, 
-			int lendMonth,
-			int lendYear,
-			int lendUntilDay,
-			int lendUntilMonth,
-			int lendUntilYear,
-			int rating,
-			String description,
-			String comment, 
-			BufferedImage cover,
-			boolean isDeleted) {
-	    
-		this.title = title;
-		this.ean = ean;
-		this.genre = genre;
-		this.releaseYear = releaseYear;
-		this.location = location;
-		this.lendTo = lendTo;
-		this.lendDay = lendDay;
-		this.lendMonth = lendMonth;
-		this.lendYear = lendYear;
-		this.lendUntilDay = lendUntilDay;
-		this.lendUntilMonth = lendUntilMonth;
-		this.lendUntilYear = lendUntilYear;
-		this.rating = rating;
-		this.description = description;
-		this.comment = comment;
-		this.cover = cover;
-		this.isDeleted = isDeleted;
-	}
+    //TODO equals
+    public void insertIntoDB() {
+        //DBInsertor.insertIntoDB(this);
+    }
 
-	public abstract String toString();
+    public String getTitle() {
+        return title;
+    }
 
-	public void insertIntoDB() {
-		//DBInsertor.insertIntoDB(this);
-	}
+    public void setTitle(String title) {
+        this.title = title;
+        setChanged();
+        notifyObservers();
+    }
 
+    public String getEan() {
+        return ean;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setEan(String ean) {
+        this.ean = ean;
+        setChanged();
+        notifyObservers();
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-                setChanged();
-                notifyObservers();
-	}
+    public String getGenre() {
+        return genre;
+    }
 
-	public String getEan() {
-		return ean;
-	}
+    public void setGenre(String genre) {
+        this.genre = genre;
+        setChanged();
+        notifyObservers();
+    }
 
-	public void setEan(String ean) {
-		this.ean = ean;
-                setChanged();
-                notifyObservers();
-	}
+    public int getReleaseYear() {
+        return releaseYear;
+    }
 
-	public String getGenre() {
-		return genre;
-	}
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
 
-	public void setGenre(String genre) {
-		this.genre = genre;
-                setChanged();
-                notifyObservers();
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public int getReleaseYear() {
-		return releaseYear;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public void setReleaseYear(int releaseYear) {
-		this.releaseYear = releaseYear;
-	}
+    public String getLentTo() {
+        return lendTo;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public void setLendTo(String lendTo) {
+        this.lendTo = lendTo;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public int getLendDay() {
+        return lendDay;
+    }
 
-	public String getLentTo() {
-		return lendTo;
-	}
+    public void setLendDay(int lendDay) {
+        this.lendDay = lendDay;
+    }
 
-	public void setLendTo(String lendTo) {
-		this.lendTo = lendTo;
-	}
+    public int getLendMonth() {
+        return lendMonth;
+    }
 
-	public int getLendDay() {
-	    return lendDay;
-	}
+    public void setLendMonth(int lendMonth) {
+        this.lendMonth = lendMonth;
+    }
 
-	public void setLendDay(int lendDay) {
-	    this.lendDay = lendDay;
-	}
+    public int getLendUntilDay() {
+        return lendUntilDay;
+    }
 
-	public int getLendMonth() {
-	    return lendMonth;
-	}
+    public void setLendUntilDay(int lendUntilDay) {
+        this.lendUntilDay = lendUntilDay;
+    }
 
-	public void setLendMonth(int lendMonth) {
-	    this.lendMonth = lendMonth;
-	}
+    public int getLendUntilMonth() {
+        return lendUntilMonth;
+    }
 
-	public int getLendUntilDay() {
-	    return lendUntilDay;
-	}
+    public void setLendUntilMonth(int lendUntilMonth) {
+        this.lendUntilMonth = lendUntilMonth;
+    }
 
-	public void setLendUntilDay(int lendUntilDay) {
-	    this.lendUntilDay = lendUntilDay;
-	}
+    public int getLendUntilYear() {
+        return lendUntilYear;
+    }
 
-	public int getLendUntilMonth() {
-	    return lendUntilMonth;
-	}
+    public void setLendUntilYear(int lendUntilYear) {
+        this.lendUntilYear = lendUntilYear;
+    }
 
-	public void setLendUntilMonth(int lendUntilMonth) {
-	    this.lendUntilMonth = lendUntilMonth;
-	}
+    public int getLendYear() {
+        return lendYear;
+    }
 
-	public int getLendUntilYear() {
-	    return lendUntilYear;
-	}
+    public void setLendYear(int lendYear) {
+        this.lendYear = lendYear;
+    }
 
-	public void setLendUntilYear(int lendUntilYear) {
-	    this.lendUntilYear = lendUntilYear;
-	}
+    public int getRating() {
+        return rating;
+    }
 
-	public int getLendYear() {
-	    return lendYear;
-	}
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
-	public void setLendYear(int lendYear) {
-	    this.lendYear = lendYear;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public int getRating() {
-		return rating;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
+    public String getComment() {
+        return comment;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public BufferedImage getCover() {
+        return cover;
+    }
 
-	public String getComment() {
-		return comment;
-	}
+    public void setCover(BufferedImage cover) {
+        this.cover = cover;
+    }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+    public boolean isDeleted() {
+        return isDeleted;
+    }
 
-	public BufferedImage getCover() {
-		return cover;
-	}
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 
-	public void setCover(BufferedImage cover) {
-		this.cover = cover;
-	}
+    //TODO monate/tage vergleich
+    public boolean matches(String str) {
+        return title.contains(str) || genre.contains(str) || location.contains(str) || lendTo.contains(str) || description.contains(str) || comment.contains(str);
+    }
 
-	public boolean isDeleted() {
-		return isDeleted;
-	}
-
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
-	}
-
+    @Override
+    public String toString() {
+        return title;
+    }
 }

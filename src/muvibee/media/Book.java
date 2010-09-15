@@ -1,91 +1,46 @@
 package muvibee.media;
 
-
-
-import java.awt.image.BufferedImage;
-
 public class Book extends Media {
-	private String author;
-	private String language;
-	private String isbn;
 
-        public Book(){ }
+    private String author;
+    private String language;
+    private String isbn;
 
-        public Book(String title, String author){
-            super(title);
-            this.author = author;
-        }
+    public Book() {
+    }
 
-	public Book(String author, 
-		    String language,
-		    String isbn,
-		    String title,
-		    String ean,
-		    String genre,
-		    int year,
-		    String location,
-		    String lendTo,
-		    int lendDay,
-		    int lendMonth,
-		    int lendYear,
-		    int lendUntilDay,
-		    int lendUntilMonth,
-		    int lendUntilYear,
-		    int rating,
-		    String description,
-		    String comment,
-		    BufferedImage cover,
-		    boolean isDeleted) {
+    public Book(String title, String author) {
+        super(title);
+        this.author = author;
+    }
 
-	    		super(title,
-			ean,
-			genre,
-			year,
-			location,
-			lendTo,
-			lendDay,
-			lendMonth,
-			lendYear,
-			lendUntilDay,
-			lendUntilMonth,
-			lendUntilYear,
-			rating,
-			description,
-			comment,
-			cover,
-			isDeleted);
-		this.author = author;
-		this.language = language;
-		this.isbn = isbn;
-	}
+    @Override
+    public boolean matches(String str) {
+        return super.matches(str) || author.contains(str) || language.contains(str);
+    }
+    //TODO equals
 
-	public String getAuthor() {
-		return author;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	public String getLanguage() {
-		return language;
-	}
+    public String getLanguage() {
+        return language;
+    }
 
-	public void setLanguage(String language) {
-		this.language = language;
-	}
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
-	public String getIsbn() {
-		return isbn;
-	}
+    public String getIsbn() {
+        return isbn;
+    }
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return title;
-	}
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 }
