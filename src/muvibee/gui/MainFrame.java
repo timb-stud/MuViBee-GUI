@@ -87,7 +87,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(MuViBee mvb) {
         initComponents();
 
-        reloadLabels();
+        reloadLabels(mvb.getMainBundlePath());
 
         createDetailsList(mvb);
         createCoverDetailsList(mvb);
@@ -181,8 +181,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
-    public final void reloadLabels(){
-        ResourceBundle bundle = ResourceBundle.getBundle("muvibee.resources.MuViBee");
+    public final void reloadLabels(String bundlePath){
+        ResourceBundle bundle = ResourceBundle.getBundle(bundlePath);
         setTitle(bundle.getString("title"));
         searchButton.setText(bundle.getString("searchButton"));
         advancedSearchButton.setText(bundle.getString("advancedSearchButton"));
