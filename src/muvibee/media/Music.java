@@ -1,5 +1,7 @@
 package muvibee.media;
 
+import java.awt.image.BufferedImage;
+
 public class Music extends Media {
 
     private String format = "";
@@ -9,8 +11,8 @@ public class Music extends Media {
     public Music() {
     }
 
-    public Music(String title, String interpreter) {
-        super(title);
+    public Music(String title, String ean, String releaseYear, BufferedImage cover, String interpreter) {
+        super(title, ean, releaseYear, cover);
         this.interpreter = interpreter;
     }
 

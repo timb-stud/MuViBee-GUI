@@ -31,8 +31,14 @@ public abstract class Media extends Observable {
     public Media() {
     }
 
-    public Media(String title) {
+    public Media(String title, String ean, String releaseYear, BufferedImage cover) {
         this.title = title;
+        this.ean = ean;
+        if (releaseYear.indexOf("-") != -1) {
+            releaseYear = releaseYear.substring(0, releaseYear.indexOf("-"));
+        }
+        this.releaseYear = Integer.parseInt(releaseYear);
+        this.cover = cover;
     }
 
     //TODO equals
