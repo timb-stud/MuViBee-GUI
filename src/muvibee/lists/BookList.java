@@ -4,9 +4,11 @@
  */
 package muvibee.lists;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import muvibee.media.Book;
+import muvibee.media.Media;
 
 /**
  *
@@ -14,7 +16,24 @@ import muvibee.media.Book;
  */
 public class BookList extends MediaList {
 
-    //TODO add und allAll und mögl.weise andere müssen für alle listen implementiert werden wegen resort()
+    @Override
+    public boolean add(Media m) {
+        boolean succ = list.add(m);
+        resort();
+        m.addObserver(this);
+        this.setChanged();
+        this.notifyObservers();
+        return succ;
+    }
+
+    @Override
+    public void addAll(Collection c) {
+        list.addAll(c);
+        resort();
+        this.setChanged();
+        this.notifyObservers();
+    }
+
     public void sortByAuthor() {
         Collections.sort(list, new Comparator() {
 
@@ -25,6 +44,8 @@ public class BookList extends MediaList {
             }
         });
         sortedBy = sortedBy.AUTHOR;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void sortByLanguage() {
@@ -37,6 +58,8 @@ public class BookList extends MediaList {
             }
         });
         sortedBy = sortedBy.LANGUAGE;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     @Override

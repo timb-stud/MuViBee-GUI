@@ -79,6 +79,8 @@ public class MediaList extends Observable implements Observer{
 
         });
         sortedBy = sortedBy.TITLE;
+        this.setChanged();
+        this.notifyObservers();
     }
 
 
@@ -93,6 +95,8 @@ public class MediaList extends Observable implements Observer{
 
         });
         sortedBy = sortedBy.GENRE;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void sortByReleaseYear(){
@@ -105,6 +109,8 @@ public class MediaList extends Observable implements Observer{
 
         });
         sortedBy = sortedBy.YEAR;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void sortByLocation(){
@@ -117,6 +123,8 @@ public class MediaList extends Observable implements Observer{
 
         });
         sortedBy = sortedBy.LOCATION;
+        this.setChanged();
+        this.notifyObservers();
     }
 
 
@@ -130,6 +138,8 @@ public class MediaList extends Observable implements Observer{
 
         });
         sortedBy = sortedBy.LENTTO;
+        this.setChanged();
+        this.notifyObservers();
     }
 
    public void sortByRating(){
@@ -142,6 +152,8 @@ public class MediaList extends Observable implements Observer{
 
         });
         sortedBy = sortedBy.RATING;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     private static int compareInt(int a, int b){
