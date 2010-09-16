@@ -21,6 +21,11 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     /** A return status code - returned if OK button has been pressed */
     public static final int RET_OK = 1;
 
+    public AdvancedSearchDialog(java.awt.Frame parent,String title, boolean modal){
+        super(parent, title, modal);
+        initComponents();
+    }
+
     /** Creates new form AdvancedSearchDialog */
     public AdvancedSearchDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -380,6 +385,11 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         searchButton.setText("Suchen");
 
         cancelButton.setText("Abbrechen");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -428,27 +438,14 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         doClose(RET_CANCEL);
     }//GEN-LAST:event_closeDialog
 
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        doClose(RET_CANCEL);
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
     private void doClose(int retStatus) {
         returnStatus = retStatus;
         setVisible(false);
         dispose();
-    }
-
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                AdvancedSearchDialog dialog = new AdvancedSearchDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

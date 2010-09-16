@@ -7,9 +7,12 @@ package muvibee;
 
 
 import java.util.LinkedList;
+import java.util.ResourceBundle;
+import javax.swing.JDialog;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import muvibee.gui.AdvancedSearchDialog;
 import muvibee.lists.BookList;
 import muvibee.lists.MediaList;
 import muvibee.lists.MusicList;
@@ -137,6 +140,11 @@ public class MuViBee {
                     null,
                     null,
                     "");
+    }
+
+    public void showAdvancedSearchDialog(){
+        ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
+        AdvancedSearchDialog dialog = new AdvancedSearchDialog(mainFrame, bundle.getString("advancedSearchDialogTitle"), true);
     }
 
     private void setBookItem(){
