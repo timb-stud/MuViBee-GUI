@@ -26,7 +26,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import muvibee.MuViBee;
-import muvibee.actionlistener.DeleteSearchActionListener;
+import muvibee.actionlistener.ResetSearchActionListener;
 import muvibee.actionlistener.LanguageActionListener;
 import muvibee.actionlistener.SearchActionListener;
 import muvibee.media.Book;
@@ -208,7 +208,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         searchButton.addActionListener(new SearchActionListener(mvb));
         
-        deleteSearchButton.addActionListener(new DeleteSearchActionListener(mvb));
+        deleteSearchButton.addActionListener(new ResetSearchActionListener(mvb));
         
         StatusBar sb = new StatusBar(StatusBarModel.getInstance());
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
