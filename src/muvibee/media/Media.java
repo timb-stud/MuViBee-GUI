@@ -175,10 +175,10 @@ public abstract class Media extends Observable {
             this.cover = cover;
         else
             try {
-            this.cover = ImageIO.read(new File("resources/Biene.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Media.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                this.cover = ImageIO.read(new File("resources/Biene.png"));
+            } catch (IOException ex) {
+                Logger.getLogger(Media.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     public boolean isDeleted() {
