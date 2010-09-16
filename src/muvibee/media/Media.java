@@ -15,7 +15,7 @@ public abstract class Media extends Observable {
     private String genre = "";
     private int releaseYear = -1;
     private String location = "";
-    private String lendTo = "";
+    private String lentTo = "";
     private int lendDay = 0;
     private int lendMonth = 0;
     private int lendYear = -1;
@@ -93,11 +93,11 @@ public abstract class Media extends Observable {
     }
 
     public String getLentTo() {
-        return lendTo;
+        return lentTo;
     }
 
     public void setLendTo(String lendTo) {
-        this.lendTo = lendTo;
+        this.lentTo = lendTo;
     }
 
     public int getLendDay() {
@@ -181,10 +181,10 @@ public abstract class Media extends Observable {
             this.cover = cover;
         else
             try {
-            this.cover = ImageIO.read(new File("resources/Biene.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Media.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                this.cover = ImageIO.read(new File("resources/Biene.png"));
+            } catch (IOException ex) {
+                Logger.getLogger(Media.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     public boolean isDeleted() {
@@ -198,14 +198,14 @@ public abstract class Media extends Observable {
     //TODO monate/tage vergleich
     public boolean matches(String str) {
         return title.contains(str) || genre.contains(str) 
-                || location.contains(str) || lendTo.contains(str)
+                || location.contains(str) || lentTo.contains(str)
                 || description.contains(str) || comment.contains(str);
     }
 
     public boolean matches(Media m){
         return title.contains(m.title) && ean.contains(m.ean)
                 && genre.contains(m.genre) && releaseYear == m.releaseYear
-                && location.contains(m.location) && lendTo.contains(m.lendTo)
+                && location.contains(m.location) && lentTo.contains(m.lentTo)
                 && lendDay == m.lendDay && lendMonth == m.getLendMonth()
                 && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
                 && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear

@@ -36,7 +36,7 @@ public class CoverDetailsListEntry extends JPanel{
 		// | Cover |________|
 		// |       | Info 1 |
 		// |_______|________|
-		setLayout(new GridLayout(1,2, -40,0));
+		setLayout(new GridLayout(1,2, -375,0));
 		setPreferredSize(new Dimension(10, ySize));
                 setBackground(Color.white);
 		
