@@ -10,6 +10,7 @@
  */
 
 package muvibee.gui;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ResourceBundle;
 import javax.swing.ComboBoxModel;
@@ -202,6 +203,9 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setTitleAt(3, bundle.getString("videoTab"));
         tabbedPane.setTitleAt(4, bundle.getString("restoreTab"));
 
+        tabbedPane.setBackgroundAt(1, Color.CYAN);
+        tabbedPane.setBackgroundAt(2, Color.RED);
+        tabbedPane.setBackgroundAt(3, Color.GREEN);
 
         //Das hier muss noch umgewandelt werden
         //init dayComboBoxes
