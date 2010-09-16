@@ -15,7 +15,7 @@ public abstract class Media extends Observable {
     private String genre = "";
     private int releaseYear = -1;
     private String location = "";
-    private String lendTo = "";
+    private String lentTo = "";
     private int lendDay = 0;
     private int lendMonth = 0;
     private int lendYear = -1;
@@ -87,11 +87,11 @@ public abstract class Media extends Observable {
     }
 
     public String getLentTo() {
-        return lendTo;
+        return lentTo;
     }
 
     public void setLendTo(String lendTo) {
-        this.lendTo = lendTo;
+        this.lentTo = lendTo;
     }
 
     public int getLendDay() {
@@ -191,7 +191,7 @@ public abstract class Media extends Observable {
 
     //TODO monate/tage vergleich
     public boolean matches(String str) {
-        return title.contains(str) || genre.contains(str) || location.contains(str) || lendTo.contains(str) || description.contains(str) || comment.contains(str);
+        return title.contains(str) || genre.contains(str) || location.contains(str) || lentTo.contains(str) || description.contains(str) || comment.contains(str);
     }
 
     @Override
