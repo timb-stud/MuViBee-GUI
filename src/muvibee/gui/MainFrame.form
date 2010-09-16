@@ -35,7 +35,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="headPanel" alignment="1" max="32767" attributes="0"/>
                   <Component id="statusPanel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="tabbedPane" alignment="0" max="32767" attributes="0"/>
+                  <Component id="tabbedPane" alignment="0" pref="1102" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -334,9 +334,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="viewBookPanel" pref="500" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="itemBookScrollPane" min="-2" pref="559" max="-2" attributes="0"/>
+                      <Component id="viewBookPanel" pref="494" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="hideBookButton" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="itemBookScrollPane" min="-2" pref="548" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -347,6 +349,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="viewBookPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="hideBookButton" alignment="0" pref="414" max="32767" attributes="0"/>
                           <Component id="itemBookScrollPane" alignment="0" pref="414" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -376,9 +379,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="bookCardPanel" alignment="0" pref="478" max="32767" attributes="0"/>
+                              <Component id="bookCardPanel" alignment="0" pref="472" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewBookComboBox" pref="385" max="32767" attributes="0"/>
+                                  <Component id="viewBookComboBox" pref="379" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -391,7 +394,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="bookCardPanel" pref="361" max="32767" attributes="0"/>
+                          <Component id="bookCardPanel" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
@@ -449,67 +452,67 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="coverBookLabel" min="-2" pref="150" max="-2" attributes="1"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="borrowedToTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="borrowDateTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="locationTextBookLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="releaseYearTextBookLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="borrowedUntilTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="genreTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eanTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="isbnTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="languageTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="authorTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="authorBookTextField" pref="266" max="32767" attributes="1"/>
-                                          <Component id="languageBookTextField" pref="266" max="32767" attributes="1"/>
-                                          <Component id="isbnBookTextField" pref="266" max="32767" attributes="1"/>
-                                          <Component id="eanBookTextField" pref="266" max="32767" attributes="1"/>
-                                          <Component id="genreBookTextField" pref="266" max="32767" attributes="1"/>
-                                          <Component id="releaseYearBookTextField" pref="266" max="32767" attributes="1"/>
-                                          <Component id="locationBookTextField" pref="266" max="32767" attributes="1"/>
-                                          <Component id="borrowedToBookTextField" alignment="1" pref="266" max="32767" attributes="1"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="borrowDayBookComboBox" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="borrowMonthBookComboBox" pref="166" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="borrowedUntilDayBookComboBox" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="borrowedUntilMonthBookComboBox" pref="166" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="borrowedUntilYearBookTextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
-                                                  <Component id="borrowYearBookTextField" alignment="0" pref="51" max="32767" attributes="1"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="titleTextBookLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="titleBookTextField" pref="490" max="32767" attributes="1"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="ratingBookPanel" min="-2" max="-2" attributes="1"/>
-                                      <EmptySpace pref="152" max="32767" attributes="0"/>
-                                      <Component id="hideBookButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="232" max="32767" attributes="0"/>
                                       <Component id="editBookButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="deleteBookButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="descriptionBookScrollPane" alignment="1" pref="520" max="32767" attributes="0"/>
-                                  <Component id="annotationBookScrollPane" alignment="0" pref="520" max="32767" attributes="0"/>
+                                  <Component id="descriptionBookScrollPane" alignment="1" pref="509" max="32767" attributes="0"/>
+                                  <Component id="annotationBookScrollPane" alignment="0" pref="509" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="titleTextBookLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="coverBookLabel" min="-2" pref="120" max="-2" attributes="1"/>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="borrowedToTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="borrowDateTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="locationTextBookLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="releaseYearTextBookLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="borrowedUntilTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="genreTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="eanTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="isbnTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="languageTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="authorTextBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="authorBookTextField" pref="255" max="32767" attributes="1"/>
+                                                  <Component id="languageBookTextField" pref="255" max="32767" attributes="1"/>
+                                                  <Component id="isbnBookTextField" pref="255" max="32767" attributes="1"/>
+                                                  <Component id="eanBookTextField" pref="255" max="32767" attributes="1"/>
+                                                  <Component id="genreBookTextField" pref="255" max="32767" attributes="1"/>
+                                                  <Component id="releaseYearBookTextField" pref="255" max="32767" attributes="1"/>
+                                                  <Component id="locationBookTextField" pref="255" max="32767" attributes="1"/>
+                                                  <Component id="borrowedToBookTextField" alignment="1" pref="255" max="32767" attributes="1"/>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="borrowDayBookComboBox" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="borrowMonthBookComboBox" pref="155" max="32767" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="borrowedUntilDayBookComboBox" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="borrowedUntilMonthBookComboBox" pref="155" max="32767" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="borrowedUntilYearBookTextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+                                                          <Component id="borrowYearBookTextField" alignment="0" pref="51" max="32767" attributes="1"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Component id="titleBookTextField" alignment="0" pref="479" max="32767" attributes="1"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -525,7 +528,6 @@
                               </Group>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="coverBookLabel" min="-2" pref="150" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="authorTextBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -581,13 +583,13 @@
                                           <Component id="borrowedUntilYearBookTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Component id="coverBookLabel" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="deleteBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="editBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="hideBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="ratingBookPanel" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -940,16 +942,24 @@
                         <Property name="text" type="java.lang.String" value="jTextField2"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="hideBookButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Verstecken"/>
-                        <Property name="name" type="java.lang.String" value="hide book" noResource="true"/>
-                      </Properties>
-                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="hideBookButton">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&gt;"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+                <Property name="name" type="java.lang.String" value="hide book" noResource="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="musicPanel">
@@ -1756,7 +1766,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="ratingVideoPanel" min="-2" max="-2" attributes="1"/>
                                       <EmptySpace pref="152" max="32767" attributes="0"/>
-                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="hideVideoButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="editVideoButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1841,7 +1851,7 @@
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="deleteVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="editVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="hideVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="ratingVideoPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2202,7 +2212,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton1">
+                    <Component class="javax.swing.JButton" name="hideVideoButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Verstecken"/>
                       </Properties>

@@ -156,6 +156,10 @@ public class MainFrame extends javax.swing.JFrame {
         itemMusicScrollPane.setVisible(false);
         itemVideoScrollPane.setVisible(false);
 
+        hideBookButton.setVisible(false);
+        hideMusicButton.setVisible(false);
+        hideVideoButton.setVisible(false);
+
         //init languageComboBox
         languagesComboBox.addActionListener(new LanguageActionListener(mvb));
         String[] languages = {"en", "de", "ru", "tr"};
@@ -660,17 +664,20 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void bookItemSetVisible(boolean b) {
         itemBookScrollPane.setVisible(b);
+        hideBookButton.setVisible(b);
         itemBookScrollPane.getParent().validate();
     }
 
     public void musicItemSetVisible(boolean b) {
         itemMusicScrollPane.setVisible(b);
+        hideMusicButton.setVisible(b);
         itemMusicScrollPane.getParent().validate();
     }
 
 
    public void videoItemSetVisible(boolean b) {
         itemVideoScrollPane.setVisible(b);
+        hideVideoButton.setVisible(b);
         itemVideoScrollPane.getParent().validate();
     }
 
@@ -873,7 +880,7 @@ public class MainFrame extends javax.swing.JFrame {
         borrowYearVideoTextField = new javax.swing.JTextField();
         borrowedUntilYearVideoTextField = new javax.swing.JTextField();
         formatVideoComboBox = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        hideVideoButton = new javax.swing.JButton();
         restorePanel = new javax.swing.JPanel();
         restoreItemButton = new javax.swing.JButton();
         deleteItemButton = new javax.swing.JButton();
@@ -1065,9 +1072,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bookCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                    .addComponent(bookCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                     .addGroup(viewBookPanelLayout.createSequentialGroup()
-                        .addComponent(viewBookComboBox, 0, 385, Short.MAX_VALUE)
+                        .addComponent(viewBookComboBox, 0, 379, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addBookButton)))
                 .addContainerGap())
@@ -1076,7 +1083,7 @@ public class MainFrame extends javax.swing.JFrame {
             viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewBookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bookCardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                .addComponent(bookCardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(addBookButton)
@@ -1194,9 +1201,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowedUntilYearBookTextField.setText("jTextField2");
 
-        hideBookButton.setText("Verstecken");
-        hideBookButton.setName("hide book"); // NOI18N
-
         javax.swing.GroupLayout itemBookPanelLayout = new javax.swing.GroupLayout(itemBookPanel);
         itemBookPanel.setLayout(itemBookPanelLayout);
         itemBookPanelLayout.setHorizontalGroup(
@@ -1205,57 +1209,56 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
-                        .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(borrowedToTextBookLabel)
-                            .addComponent(borrowDateTextBookLabel)
-                            .addComponent(locationTextBookLabel)
-                            .addComponent(releaseYearTextBookLabel)
-                            .addComponent(borrowedUntilTextBookLabel)
-                            .addComponent(genreTextBookLabel)
-                            .addComponent(eanTextBookLabel)
-                            .addComponent(isbnTextBookLabel)
-                            .addComponent(languageTextBookLabel)
-                            .addComponent(authorTextBookLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(authorBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(languageBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(isbnBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(eanBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(genreBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(releaseYearBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(locationBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(borrowedToBookTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemBookPanelLayout.createSequentialGroup()
-                                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(itemBookPanelLayout.createSequentialGroup()
-                                        .addComponent(borrowDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowMonthBookComboBox, 0, 166, Short.MAX_VALUE))
-                                    .addGroup(itemBookPanelLayout.createSequentialGroup()
-                                        .addComponent(borrowedUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(borrowedUntilMonthBookComboBox, 0, 166, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(borrowedUntilYearBookTextField, 0, 0, Short.MAX_VALUE)
-                                    .addComponent(borrowYearBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))))
-                    .addGroup(itemBookPanelLayout.createSequentialGroup()
-                        .addComponent(titleTextBookLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(titleBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
-                    .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(ratingBookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                        .addComponent(hideBookButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                         .addComponent(editBookButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteBookButton))
-                    .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-                    .addComponent(annotationBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
+                    .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addComponent(annotationBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
+                        .addComponent(titleTextBookLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(borrowedToTextBookLabel)
+                                    .addComponent(borrowDateTextBookLabel)
+                                    .addComponent(locationTextBookLabel)
+                                    .addComponent(releaseYearTextBookLabel)
+                                    .addComponent(borrowedUntilTextBookLabel)
+                                    .addComponent(genreTextBookLabel)
+                                    .addComponent(eanTextBookLabel)
+                                    .addComponent(isbnTextBookLabel)
+                                    .addComponent(languageTextBookLabel)
+                                    .addComponent(authorTextBookLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(authorBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(languageBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(isbnBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(eanBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(genreBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(releaseYearBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(locationBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(borrowedToBookTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemBookPanelLayout.createSequentialGroup()
+                                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                                .addComponent(borrowDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(borrowMonthBookComboBox, 0, 155, Short.MAX_VALUE))
+                                            .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                                .addComponent(borrowedUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(borrowedUntilMonthBookComboBox, 0, 155, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(borrowedUntilYearBookTextField, 0, 0, Short.MAX_VALUE)
+                                            .addComponent(borrowYearBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)))))
+                            .addComponent(titleBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         itemBookPanelLayout.setVerticalGroup(
@@ -1267,7 +1270,6 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(titleBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(authorTextBookLabel)
@@ -1311,13 +1313,13 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(borrowedUntilTextBookLabel)
                             .addComponent(borrowedUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(borrowedUntilMonthBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(borrowedUntilYearBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(borrowedUntilYearBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(deleteBookButton)
-                        .addComponent(editBookButton)
-                        .addComponent(hideBookButton))
+                        .addComponent(editBookButton))
                     .addComponent(ratingBookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1328,15 +1330,22 @@ public class MainFrame extends javax.swing.JFrame {
 
         itemBookScrollPane.setViewportView(itemBookPanel);
 
+        hideBookButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        hideBookButton.setText(">");
+        hideBookButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        hideBookButton.setName("hide book"); // NOI18N
+
         javax.swing.GroupLayout bookPanelLayout = new javax.swing.GroupLayout(bookPanel);
         bookPanel.setLayout(bookPanelLayout);
         bookPanelLayout.setHorizontalGroup(
             bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(viewBookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(itemBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(viewBookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hideBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(itemBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         bookPanelLayout.setVerticalGroup(
@@ -1345,6 +1354,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(viewBookPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hideBookButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                     .addComponent(itemBookScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1805,7 +1815,7 @@ public class MainFrame extends javax.swing.JFrame {
         formatVideoComboBox.setEditable(true);
         formatVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("Verstecken");
+        hideVideoButton.setText("Verstecken");
 
         javax.swing.GroupLayout itemVideoPanelLayout = new javax.swing.GroupLayout(itemVideoPanel);
         itemVideoPanel.setLayout(itemVideoPanelLayout);
@@ -1859,7 +1869,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addComponent(ratingVideoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(hideVideoButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editVideoButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1927,7 +1937,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(deleteVideoButton)
                         .addComponent(editVideoButton)
-                        .addComponent(jButton1))
+                        .addComponent(hideVideoButton))
                     .addComponent(ratingVideoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(descriptionVideoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2001,7 +2011,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(headPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(statusPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tabbedPane))
+                    .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1102, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -2120,6 +2130,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton helpButton;
     private javax.swing.JButton hideBookButton;
     private javax.swing.JButton hideMusicButton;
+    private javax.swing.JButton hideVideoButton;
     private javax.swing.JTextField isbnBookTextField;
     private javax.swing.JLabel isbnTextBookLabel;
     private javax.swing.JLabel isbnVideoLabel;
@@ -2129,7 +2140,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JPanel itemVideoPanel;
     private javax.swing.JScrollPane itemVideoScrollPane;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
