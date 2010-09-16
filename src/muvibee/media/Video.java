@@ -2,9 +2,9 @@ package muvibee.media;
 
 public class Video extends Media {
 
-    private String format;
-    private String director;
-    private String actors;
+    private String format = "";
+    private String director = "";
+    private String actors = "";
 
     public Video() {
     }

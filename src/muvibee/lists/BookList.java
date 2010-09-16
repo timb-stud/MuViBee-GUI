@@ -14,6 +14,7 @@ import muvibee.media.Book;
  */
 public class BookList extends MediaList {
 
+    //TODO add und allAll und mögl.weise andere müssen für alle listen implementiert werden wegen resort()
     public void sortByAuthor() {
         Collections.sort(list, new Comparator() {
 

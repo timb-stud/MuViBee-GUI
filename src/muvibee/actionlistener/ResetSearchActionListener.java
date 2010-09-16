@@ -13,9 +13,9 @@ import muvibee.MuViBee;
  *
  * @author bline
  */
-public class DeleteSearchActionListener implements ActionListener {
+public class ResetSearchActionListener implements ActionListener {
     private MuViBee mvb;
-    public DeleteSearchActionListener(MuViBee mvb) {
+    public ResetSearchActionListener(MuViBee mvb) {
         this.mvb = mvb;
     }
 

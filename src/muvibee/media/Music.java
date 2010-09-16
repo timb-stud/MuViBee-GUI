@@ -2,9 +2,9 @@ package muvibee.media;
 
 public class Music extends Media {
 
-    private String format;
-    private String interpreter;
-    private String type;
+    private String format = "";
+    private String interpreter = "";
+    private String type = "";
 
     public Music() {
     }

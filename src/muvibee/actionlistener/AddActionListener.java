@@ -31,7 +31,7 @@ public class AddActionListener implements ActionListener {
         Object source = e.getSource();
         if(source instanceof JButton){
             JButton button = (JButton)source;
-            int decision = mvb.showDecisionFrame();
+            int decision = mvb.showSelfEANDecisionFrame();
             if (decision >= 0) {
                 mvb.resetSearch();
                 if(button.getName().equals("add book button")){

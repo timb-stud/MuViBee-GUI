@@ -70,7 +70,7 @@ public class MuViBee {
                     JOptionPane.YES_NO_OPTION);
     }
 
-    public int showDecisionFrame(){
+    public int showSelfEANDecisionFrame(){
         Object[] options = {"EAN", "Selbst"};
 
         return JOptionPane.showOptionDialog(mainFrame,
@@ -83,7 +83,33 @@ public class MuViBee {
                     options[0]);
     }
 
-public String showEanInputFrame(){
+        public int showSaveChangeDecisionFrame(){
+        Object[] options = {"Ändern", "Abbrechen"};
+
+        return JOptionPane.showOptionDialog(mainFrame,
+                    "Wollen Sie das Medium ändern ?",
+                    "Bitte wählen",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+    }
+
+    public int showSaveAddDecisionFrame(){
+        Object[] options = {"Hinzufügen", "Abbrechen"};
+
+        return JOptionPane.showOptionDialog(mainFrame,
+                    "Wollen Sie das Medium hinzufügen ?",
+                    "Bitte wählen",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+    }
+
+    public String showEanInputFrame(){
         return (String)JOptionPane.showInputDialog(
                     mainFrame,
                     "Bitte EAN eingeben:"
@@ -140,34 +166,67 @@ public String showEanInputFrame(){
         currentDeletedMediaList = medias;
     }
     
-    public void setCurrentBookItemInformation() throws NonValidYearException {
-        mainFrame.setBookItemInformation(currentBook);
+    public boolean setCurrentBookItemInformation() throws NonValidYearException {
+        if (bookList.contains(currentBook)) {
+            if (showSaveChangeDecisionFrame() == 0) {
+                mainFrame.setBookItemInformation(currentBook);
+                return true;
+            }
+        } else {
+            if (showSaveAddDecisionFrame() == 0) {
+                mainFrame.setBookItemInformation(currentBook);
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void setCurrentMusicItemInformation() throws NonValidYearException{
-	mainFrame.setMusicItemInformation(currentMusic);
+    public boolean setCurrentMusicItemInformation() throws NonValidYearException{
+	if (musicList.contains(currentMusic)) {
+            if (showSaveChangeDecisionFrame() == 0) {
+                mainFrame.setMusicItemInformation(currentMusic);
+                return true;
+            }
+        } else {
+            if (showSaveAddDecisionFrame() == 0) {
+                mainFrame.setMusicItemInformation(currentMusic);
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void setCurrentVideoItemInformation() throws NonValidYearException {
-        mainFrame.setVideoItemInformation(currentVideo);
+    public boolean setCurrentVideoItemInformation() throws NonValidYearException {
+        if (videoList.contains(currentVideo)) {
+            if (showSaveChangeDecisionFrame() == 0) {
+                mainFrame.setVideoItemInformation(currentVideo);
+                return true;
+            }
+        } else {
+            if (showSaveAddDecisionFrame() == 0) {
+                mainFrame.setVideoItemInformation(currentVideo);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void addCurrentBookToBookLists() {
-        if (!filterBookList.contains(currentBook)) {
+        if (!bookList.contains(currentBook)) {
             filterBookList.add(currentBook);
             bookList.add(currentBook);
         }
     }
 
     public void addCurrentMusicToMusicLists(){
-	if(!filterMusicList.contains(currentMusic)){
+	if(!musicList.contains(currentMusic)){
 	    filterMusicList.add(currentMusic);
             musicList.add(currentMusic);
 	}
     }
 
     public void addCurrentVideoToVideoLists() {
-        if (!filterVideoList.contains(currentVideo)) {
+        if (!videoList.contains(currentVideo)) {
             filterVideoList.add(currentVideo);
             videoList.add(currentVideo);
         }

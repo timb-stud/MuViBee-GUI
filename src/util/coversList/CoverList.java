@@ -1,6 +1,7 @@
 package util.coversList;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,30 +22,25 @@ import muvibee.media.Music;
 import muvibee.media.Video;
 
 
-public class CoverList extends JPanel implements Observer{
+public class CoverList extends JList implements Observer{
 
-	JList list;
 	DefaultListModel listModel;
 	
 	public CoverList(final MuViBee muvibee) {
-
-		setLayout(new BorderLayout());
 		listModel = new DefaultListModel();
-	    
-	   	list = new JList();
-	   	list.setModel(listModel);
-	   	list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-	   	list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-	   	
+	   	setModel(listModel);
+	   	setLayoutOrientation(JList.HORIZONTAL_WRAP);
+	   	setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
 		CoverListRenderer cr = new CoverListRenderer(CoverListRenderer.rendererType.ICON_LIST);
 		cr.setPreferredSize(new Dimension(100, 120));
-		list.setCellRenderer(cr);		
-		list.setVisibleRowCount(-1);
+		setCellRenderer(cr);
+		setVisibleRowCount(-1);
 
-                list.addListSelectionListener(new ListSelectionListener() {
+                addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
                             if(evt.getValueIsAdjusting()){
-                                Media media = ((CoverListEntry) listModel.getElementAt(list.getSelectedIndex())).getMedia();
+                                Media media = ((CoverListEntry) listModel.getElementAt(getSelectedIndex())).getMedia();
 
                                 if (media instanceof Book) {
                                     muvibee.setCurrentBook((Book) media);
@@ -56,14 +52,13 @@ public class CoverList extends JPanel implements Observer{
                             }
 	        	}
 	        });
-                add(list, BorderLayout.CENTER);
 	}
 	
 	private void listAdd(CoverListEntry entry){
 		listModel.addElement(entry);
-		list.validate();
-                getParent().getParent().getParent().repaint();
-                list.setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
+		validate();
+               //getParent().getParent().getParent().repaint();
+                setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
 

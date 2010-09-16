@@ -56,7 +56,7 @@ public class CoverDetailsList extends JList implements Observer{
 	private void listAdd(CoverDetailsListEntry entry){
 		listModel.addElement(entry);
 		validate();
-                getParent().getParent().getParent().repaint();
+                //getParent().getParent().getParent().repaint();
                 setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 

@@ -9,7 +9,6 @@ import java.util.Observer;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -56,7 +55,7 @@ public class DetailsList extends JList implements Observer{
 	private void listAdd(DetailsListEntry entry){
 		listModel.addElement(entry);
 		validate();
-                getParent().getParent().getParent().repaint();
+                //getParent().getParent().getParent().repaint();
                 setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 

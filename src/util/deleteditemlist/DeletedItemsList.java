@@ -51,7 +51,7 @@ public class DeletedItemsList extends JList implements Observer{
 	private void listAdd(DeletedItemEntry entry){
             listModel.addElement(entry);
             validate();
-            getParent().getParent().getParent().repaint();
+            //getParent().getParent().getParent().repaint();
             setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
