@@ -235,7 +235,9 @@ public class MainFrame extends javax.swing.JFrame {
         mvb.getDeletedMediaList().addObserver(dil);
         restoreItemsScrollpane.setViewportView(dil);
 
-        searchButton.addActionListener(new SearchActionListener(mvb));
+        SearchActionListener searchActionListener = new SearchActionListener(mvb);
+        searchButton.addActionListener(searchActionListener);
+        advancedSearchButton.addActionListener(searchActionListener);
         
         deleteSearchButton.addActionListener(new ResetSearchActionListener(mvb));
 
@@ -562,7 +564,6 @@ public class MainFrame extends javax.swing.JFrame {
 	    book.setRating(rating);
 	    book.setDescription(description);
 	    book.setComment(annotation);
-            book.setCover(null);
     }
 
     public void setMusicItemInformation(Music music) throws NonValidYearException{

@@ -197,7 +197,19 @@ public abstract class Media extends Observable {
 
     //TODO monate/tage vergleich
     public boolean matches(String str) {
-        return title.contains(str) || genre.contains(str) || location.contains(str) || lendTo.contains(str) || description.contains(str) || comment.contains(str);
+        return title.contains(str) || genre.contains(str) 
+                || location.contains(str) || lendTo.contains(str)
+                || description.contains(str) || comment.contains(str);
+    }
+
+    public boolean matches(Media m){
+        return title.contains(m.title) && ean.contains(m.ean)
+                && genre.contains(m.genre) && releaseYear == m.releaseYear
+                && location.contains(m.location) && lendTo.contains(m.lendTo)
+                && lendDay == m.lendDay && lendMonth == m.getLendMonth()
+                && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
+                && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear
+                && rating == m.rating && comment.contains(m.comment);
     }
 
     @Override

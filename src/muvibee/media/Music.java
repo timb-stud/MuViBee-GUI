@@ -21,6 +21,11 @@ public class Music extends Media {
         return super.matches(str) || format.contains(str) || interpreter.contains(str) || type.contains(str);
     }
 
+    public boolean matches(Music m){
+        return super.matches(m) && format.contains(m.format)
+                && interpreter.contains(m.interpreter) && type.contains(m.type);
+    }
+
     public String getFormat() {
         return format;
     }

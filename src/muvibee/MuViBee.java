@@ -13,6 +13,8 @@ import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import muvibee.gui.AdvancedSearchDialog;
+import muvibee.gui.StatusBar;
+import muvibee.gui.StatusBarModel;
 import muvibee.lists.BookList;
 import muvibee.lists.MediaList;
 import muvibee.lists.MusicList;
@@ -145,6 +147,19 @@ public class MuViBee {
     public void showAdvancedSearchDialog(){
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         AdvancedSearchDialog dialog = new AdvancedSearchDialog(mainFrame, bundle.getString("advancedSearchDialogTitle"), true);
+        dialog.setLocationRelativeTo(mainFrame);
+        dialog.setVisible(true);
+        int returnStatus = dialog.getReturnStatus();
+        if(returnStatus == AdvancedSearchDialog.RET_ILLEGAL_YEAR){
+            StatusBarModel.getInstance().setFailMessage(bundle.getString("illegalYear"));
+        }else{
+            if(returnStatus == AdvancedSearchDialog.RET_OK){
+                Book b = dialog.getBook();
+                Music m = dialog.getMusic();
+                Video v = dialog.getVideo();
+                advancedSearch(b, m, v);
+            }
+        }
     }
 
     private void setBookItem(){
@@ -372,6 +387,25 @@ public class MuViBee {
         }
         for (Video v : videoList) {
             if (!v.matches(str)) {
+                filterVideoList.remove(v);
+            }
+        }
+    }
+
+    public void advancedSearch(Book book, Music music, Video video){
+        resetFilterLists();
+        for (Book b : bookList) {
+            if (!b.matches(book)) {
+                filterBookList.remove(b);
+            }
+        }
+        for (Music m : musicList) {
+            if (!m.matches(music)) {
+                filterMusicList.remove(m);
+            }
+        }
+        for (Video v : videoList) {
+            if (!v.matches(video)) {
                 filterVideoList.remove(v);
             }
         }

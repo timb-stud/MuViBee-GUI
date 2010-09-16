@@ -11,6 +11,12 @@
 
 package muvibee.gui;
 
+import muvibee.media.Book;
+import muvibee.media.Music;
+import muvibee.media.Video;
+import muvibee.utils.NonValidYearException;
+import muvibee.utils.TestUtils;
+
 /**
  *
  * @author tim
@@ -20,6 +26,11 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     public static final int RET_CANCEL = 0;
     /** A return status code - returned if OK button has been pressed */
     public static final int RET_OK = 1;
+    public static final int RET_ILLEGAL_YEAR = -1;
+
+    private Book book;
+    private Music music;
+    private Video video;
 
     public AdvancedSearchDialog(java.awt.Frame parent,String title, boolean modal){
         super(parent, title, modal);
@@ -36,6 +47,20 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     public int getReturnStatus() {
         return returnStatus;
     }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public Music getMusic() {
+        return music;
+    }
+
+    public Video getVideo() {
+        return video;
+    }
+
+   
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -383,6 +408,11 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         );
 
         searchButton.setText("Suchen");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Abbrechen");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -441,6 +471,132 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         doClose(RET_CANCEL);
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        int returnCode = RET_OK;
+
+        String title = titleTextField.getText().trim();
+        String ean = eanTextField.getText().trim();	    //TODO Ueberpruefen!?!?
+        String genre = genreTextField.getText().trim();
+        Object selectedReleaseYear = releaseYearComboBox.getSelectedItem();
+        String releaseYear = "";
+        if(selectedReleaseYear != null)
+            releaseYear = selectedReleaseYear.toString().trim();
+        String location = locationTextField.getText().trim();
+        String lendTo = lentToTextField.getText().trim();
+        int lendDay = lentDayComboBox.getSelectedIndex();
+        int lendMonth = lentMonthComboBox.getSelectedIndex();
+        Object selectedLentYear = lentYearComboBox.getSelectedItem();
+        String lentYear = "";
+        if(selectedLentYear != null)
+            lentYear = selectedLentYear.toString().trim();
+        int lendUntilDay = lentUntilDayComboBox.getSelectedIndex();
+        int lendUntilMonth = lentUntilMonthComboBox.getSelectedIndex();
+        Object selectedLentUntilYear = lentUntilYearComboBox.getSelectedItem();
+        String lentUntilYear = "";
+        if(selectedLentUntilYear != null)
+            lentUntilYear = selectedLentUntilYear.toString().trim();
+        String annotation = annotationTextField.getText().trim();
+        
+        //Rating
+        int rating = 0;
+        if (ratingOneRadioButton.isSelected()) {
+            rating = 1;
+        } else if (ratingOneRadioButton.isSelected()) {
+            rating = 2;
+        } else if (ratingOneRadioButton.isSelected()) {
+            rating = 3;
+        }
+
+        String author = authorTextField.getText().trim();
+        String language = languageTextField.getText().trim();
+        String isbn = isbnTextField.getText().trim();   //TODO Ueberpruefen!?!?
+
+        String artist = artistTextField.getText().trim();
+        Object selectedType = typeComboBox.getSelectedItem();
+        String type = "";
+        if(selectedType != null)
+            type = selectedType.toString().trim();
+        Object selectedMusicFormat = musicFormatComboBox.getSelectedItem();
+        String musicFormat = "";
+        if(selectedMusicFormat != null)
+            musicFormat = selectedMusicFormat.toString().trim();
+
+        String director = directorTextField.getText().trim();
+        String actors = actorsTextField.getText().trim();
+        Object selectedVideoFormat = videoFormatComboBox.getSelectedItem();
+        String videoFormat = "";
+        if (selectedVideoFormat != null) {
+            videoFormat = selectedVideoFormat.toString().trim();
+        }
+
+
+        try {
+            int ry = TestUtils.validYear(releaseYear);
+            int ly = TestUtils.validYear(lentYear);
+            int luy = TestUtils.validYear(lentUntilYear);
+            book = new Book();
+            book.setTitle(title);
+            book.setAuthor(author);
+            book.setLanguage(language);
+            book.setIsbn(isbn);
+            book.setEan(ean);
+            book.setGenre(genre);
+            book.setReleaseYear(ry);
+            book.setLocation(location);
+            book.setLendTo(lendTo);
+            book.setLendDay(lendDay);
+            book.setLendMonth(lendMonth);
+            book.setLendYear(ly);
+            book.setLendUntilDay(lendUntilDay);
+            book.setLendUntilMonth(lendUntilMonth);
+            book.setLendUntilYear(luy);
+            book.setRating(rating);
+            book.setComment(annotation);
+
+            music = new Music();
+            music.setTitle(title);
+            music.setInterpreter(artist);
+            music.setType(type);
+            music.setFormat(musicFormat);
+            music.setEan(ean);
+            music.setGenre(genre);
+            music.setReleaseYear(ry);
+            music.setLocation(location);
+            music.setLendTo(lendTo);
+            music.setLendDay(lendDay);
+            music.setLendMonth(lendMonth);
+            music.setLendYear(ly);
+            music.setLendUntilDay(lendUntilDay);
+            music.setLendUntilMonth(lendUntilMonth);
+            music.setLendUntilYear(luy);
+            music.setRating(rating);
+            music.setComment(annotation);
+
+            video = new Video();
+            video.setTitle(title);
+            video.setDirector(director);
+            video.setActors(actors);
+            video.setFormat(videoFormat);
+            video.setEan(ean);
+            video.setGenre(genre);
+            video.setReleaseYear(ry);
+            video.setLocation(location);
+            video.setLendTo(lendTo);
+            video.setLendDay(lendDay);
+            video.setLendMonth(lendMonth);
+            video.setLendYear(ly);
+            video.setLendUntilDay(lendUntilDay);
+            video.setLendUntilMonth(lendUntilMonth);
+            video.setLendUntilYear(luy);
+            video.setRating(rating);
+            video.setComment(annotation);
+        } catch (NonValidYearException e) {
+            returnCode = RET_ILLEGAL_YEAR;
+        }
+
+        doClose(returnCode);
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     private void doClose(int retStatus) {
         returnStatus = retStatus;

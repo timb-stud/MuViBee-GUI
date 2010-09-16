@@ -22,6 +22,12 @@ public class Book extends Media {
     public boolean matches(String str) {
         return super.matches(str) || author.contains(str) || language.contains(str);
     }
+
+    public boolean matches(Book b){
+        return super.matches(b) && author.contains(b.author)
+                && language.contains(b.language) && isbn.contains(b.isbn);
+    }
+
     //TODO equals
 
     public String getAuthor() {

@@ -13,12 +13,16 @@ public class Video extends Media {
 
     public Video(String title, String ean, String releaseYear, BufferedImage cover) {
         super(title, ean, releaseYear, cover);
-        this.actors = actors;
     }
 
     @Override
     public boolean matches(String str) {
         return super.matches(str) || format.contains(str) || director.contains(str) || actors.contains(str);
+    }
+
+    public boolean matches(Video v){
+        return super.matches(v) && format.contains(v.format)
+                && director.contains(v.director) && actors.contains(v.actors);
     }
 
     public String getFormat() {

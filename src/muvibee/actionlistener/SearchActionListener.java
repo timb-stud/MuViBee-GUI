@@ -7,6 +7,7 @@ package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import muvibee.MuViBee;
 
 /**
@@ -21,7 +22,17 @@ public class SearchActionListener implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        mvb.search();
+        Object o = e.getSource();
+        if(o instanceof JButton){
+            JButton button = (JButton)o;
+            if(button.getName().equals("searchButton")){
+                mvb.search();
+            }else{
+                if(button.getName().equals("advancedSearchButton")){
+                    mvb.showAdvancedSearchDialog();
+                }
+            }
+        }
     }
 
 }
