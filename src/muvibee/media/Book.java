@@ -1,5 +1,7 @@
 package muvibee.media;
 
+import java.awt.image.BufferedImage;
+
 public class Book extends Media {
 
     private String author;
@@ -9,9 +11,11 @@ public class Book extends Media {
     public Book() {
     }
 
-    public Book(String title, String author) {
-        super(title);
+    public Book(String title, String ean, String releaseYear, BufferedImage cover, String author, String isbn, String language) {
+        super(title, ean, releaseYear, cover);
         this.author = author;
+        this.isbn = isbn;
+        this.language = language;
     }
 
     @Override

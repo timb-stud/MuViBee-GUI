@@ -1,5 +1,7 @@
 package muvibee.media;
 
+import java.awt.image.BufferedImage;
+
 public class Video extends Media {
 
     private String format = "";
@@ -9,8 +11,8 @@ public class Video extends Media {
     public Video() {
     }
 
-    public Video(String title, String actors) {
-        super(title);
+    public Video(String title, String ean, String releaseYear, BufferedImage cover) {
+        super(title, ean, releaseYear, cover);
         this.actors = actors;
     }
 

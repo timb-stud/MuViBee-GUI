@@ -71,14 +71,12 @@ public class EAN {
 	private static Media checkRequest(InputStream inputStream) throws XMLStreamException, FactoryConfigurationError, MalformedURLException, IOException {
 		String error = null;
 		String title = null;
-		String publisher = null;
 		String artist = null;
 		String author = null;
 		String isbn = null;
 		String language = null;
 		String productGroup = null;
-		String numberOfPagesOrDisc = null;
-		String theatricalReleaseDate = null;
+		String releaseYear = null;
 		String ean = null;
 		BufferedImage cover = null;
 
@@ -96,9 +94,6 @@ public class EAN {
 				if (xmlStreamReader.getLocalName().equals("Title")) {
 					title = xmlStreamReader.getElementText();
 				}
-				if (xmlStreamReader.getLocalName().equals("Publisher")) {
-					publisher = xmlStreamReader.getElementText();
-				}
 				if (xmlStreamReader.getLocalName().equals("Artist")) {
 					artist = xmlStreamReader.getElementText();
 				}
@@ -114,20 +109,14 @@ public class EAN {
 				if (xmlStreamReader.getLocalName().equals("ProductGroup")) {
 					productGroup = xmlStreamReader.getElementText();
 				}
-				if (xmlStreamReader.getLocalName().equals("NumberOfPages")) {
-					numberOfPagesOrDisc = xmlStreamReader.getElementText();
-				}
-				if (xmlStreamReader.getLocalName().equals("NumberOfDiscs")) {
-					numberOfPagesOrDisc = xmlStreamReader.getElementText();
-				}
 				if (xmlStreamReader.getLocalName().equals("TheatricalReleaseDate")) {
-					theatricalReleaseDate = xmlStreamReader.getElementText();
+					releaseYear = xmlStreamReader.getElementText();
 				}
 				if (xmlStreamReader.getLocalName().equals("PublicationDate")) {
-					theatricalReleaseDate = xmlStreamReader.getElementText();
+					releaseYear = xmlStreamReader.getElementText();
 				}
 				if (xmlStreamReader.getLocalName().equals("ReleaseDate")) {
-					theatricalReleaseDate = xmlStreamReader.getElementText();
+					releaseYear = xmlStreamReader.getElementText();
 				}
 				if (xmlStreamReader.getLocalName().equals("EAN")) {
 					ean = xmlStreamReader.getElementText();
@@ -147,25 +136,15 @@ public class EAN {
 		xmlStreamReader.close();
 		if (error == null) {
 			if (productGroup.equals("DVD") || productGroup.equals("Video")) {
-				Video v = new Video();
-				v.setTitle(title);
-				v.setCover(cover);
-				v.setActors(artist);
-				v.setDirector(author);
+				Video v = new Video(title, ean, releaseYear, cover);
 				System.out.println("EAN_FOUND");
 				return v;
 			} else if (productGroup.equals("Music")) {
-				Music m = new Music();
-				m.setTitle(title);
-				m.setCover(cover);
-				m.setInterpreter(artist);
+				Music m = new Music(title, ean, releaseYear, cover, artist);
 				System.out.println("EAN_FOUND");
 				return m;
 			} else if (productGroup.equals("Book")) {
-				Book b = new Book();
-				b.setTitle(title);
-				b.setCover(cover);
-				b.setAuthor(author);
+				Book b = new Book(title, ean, releaseYear, cover, author, isbn, language);
 				System.out.println("EAN_FOUND");
 				return b;
 			} else {
