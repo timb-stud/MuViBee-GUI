@@ -133,15 +133,19 @@ public class MuViBee {
         mainFrame.setVideoItem(currentVideo);
     }
 
-    private void showBookItem(boolean b) {
+    public void showBookItem(boolean b) {
         mainFrame.bookItemSetVisible(b);
     }
 
-    private void showMusicItem(boolean b) {
+    public void showMusicItem(boolean b) {
         mainFrame.musicItemSetVisible(b);
     }
-    private void showVideoItem(boolean b) {
+    public void showVideoItem(boolean b) {
         mainFrame.videoItemSetVisible(b);
+    }
+
+    public void unselectLists() {
+        mainFrame.unselectLists();
     }
 
     public void setCurrentBook(Book book) {

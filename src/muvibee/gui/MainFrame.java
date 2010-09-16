@@ -27,6 +27,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import muvibee.MuViBee;
+import muvibee.actionlistener.HideActionListener;
 import muvibee.actionlistener.ResetSearchActionListener;
 import muvibee.actionlistener.LanguageActionListener;
 import muvibee.actionlistener.SearchActionListener;
@@ -48,11 +49,11 @@ import util.detailsList.DetailsList;
 public class MainFrame extends javax.swing.JFrame {
 
     private void createCoverList(MuViBee mvb){
-        CoverList coverListBook = new CoverList(mvb);
+        coverListBook = new CoverList(mvb);
         mvb.getBookList().addObserver(coverListBook);
-        CoverList coverListMusic = new CoverList(mvb);
+        coverListMusic = new CoverList(mvb);
         mvb.getMusicList().addObserver(coverListMusic);
-        CoverList coverListVideo = new CoverList(mvb);
+        coverListVideo = new CoverList(mvb);
         mvb.getVideoList().addObserver(coverListVideo);
 
         coverListBookScrollPane.setViewportView(coverListBook);
@@ -61,11 +62,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void createDetailsList(MuViBee mvb){
-        DetailsList detailsListBook = new DetailsList(mvb);
+        detailsListBook = new DetailsList(mvb);
         mvb.getBookList().addObserver(detailsListBook);
-        DetailsList detailsListMusic = new DetailsList(mvb);
+        detailsListMusic = new DetailsList(mvb);
         mvb.getMusicList().addObserver(detailsListMusic);
-        DetailsList detailsListVideo = new DetailsList(mvb);
+        detailsListVideo = new DetailsList(mvb);
         mvb.getVideoList().addObserver(detailsListVideo);
 
         detailsListBookScrollPane.setViewportView(detailsListBook);
@@ -73,13 +74,22 @@ public class MainFrame extends javax.swing.JFrame {
         detailsListVideoScrollPane.setViewportView(detailsListVideo);
     }
 
+    private CoverList coverListBook;
+    private CoverList coverListMusic;
+    private CoverList coverListVideo;
+    private CoverDetailsList coverDetailsBookList;
+    private CoverDetailsList coverDetailsMusicList;
+    private CoverDetailsList coverDetailsVideoList;
+    private DetailsList detailsListBook;
+    private DetailsList detailsListMusic;
+    private DetailsList detailsListVideo;
 
     private void createCoverDetailsList(MuViBee mvb){
-        CoverDetailsList coverDetailsBookList = new CoverDetailsList(mvb);
+        coverDetailsBookList = new CoverDetailsList(mvb);
         mvb.getBookList().addObserver(coverDetailsBookList);
-        CoverDetailsList coverDetailsMusicList = new CoverDetailsList(mvb);
+        coverDetailsMusicList = new CoverDetailsList(mvb);
         mvb.getMusicList().addObserver(coverDetailsMusicList);
-        CoverDetailsList coverDetailsVideoList = new CoverDetailsList(mvb);
+        coverDetailsVideoList = new CoverDetailsList(mvb);
         mvb.getVideoList().addObserver(coverDetailsVideoList);
 
         coverDetailsListBookScrollPane.setViewportView(coverDetailsBookList);
@@ -87,6 +97,19 @@ public class MainFrame extends javax.swing.JFrame {
         coverDetailsListVideoScrollPane.setViewportView(coverDetailsVideoList);
     }
 
+    public void unselectLists() {
+        coverListBook.clearSelection();
+        coverListMusic.clearSelection();
+        coverListVideo.clearSelection();
+
+        coverDetailsBookList.clearSelection();
+        coverDetailsMusicList.clearSelection();
+        coverDetailsVideoList.clearSelection();
+
+        detailsListBook.clearSelection();
+        detailsListMusic.clearSelection();
+        detailsListVideo.clearSelection();
+    }
 
     /** Creates new form MainFrame */
     public MainFrame(MuViBee mvb) {
@@ -210,7 +233,8 @@ public class MainFrame extends javax.swing.JFrame {
         searchButton.addActionListener(new SearchActionListener(mvb));
         
         deleteSearchButton.addActionListener(new ResetSearchActionListener(mvb));
-        
+
+        hideBookButton.addActionListener(new HideActionListener((mvb)));
         StatusBar sb = new StatusBar(StatusBarModel.getInstance());
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
@@ -759,6 +783,7 @@ public class MainFrame extends javax.swing.JFrame {
         borrowedUntilMonthBookComboBox = new javax.swing.JComboBox();
         borrowYearBookTextField = new javax.swing.JTextField();
         borrowedUntilYearBookTextField = new javax.swing.JTextField();
+        hideBookButton = new javax.swing.JButton();
         musicPanel = new javax.swing.JPanel();
         viewMusicPanel = new javax.swing.JPanel();
         viewMusicComboBox = new javax.swing.JComboBox();
@@ -803,6 +828,7 @@ public class MainFrame extends javax.swing.JFrame {
         borrowedUntilYearMusicTextField = new javax.swing.JTextField();
         typeMusicComboBox = new javax.swing.JComboBox();
         formatMusicComboBox = new javax.swing.JComboBox();
+        hideMusicButton = new javax.swing.JButton();
         videoPanel = new javax.swing.JPanel();
         viewVideoPanel = new javax.swing.JPanel();
         viewVideoComboBox = new javax.swing.JComboBox();
@@ -847,6 +873,7 @@ public class MainFrame extends javax.swing.JFrame {
         borrowYearVideoTextField = new javax.swing.JTextField();
         borrowedUntilYearVideoTextField = new javax.swing.JTextField();
         formatVideoComboBox = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
         restorePanel = new javax.swing.JPanel();
         restoreItemButton = new javax.swing.JButton();
         deleteItemButton = new javax.swing.JButton();
@@ -1167,6 +1194,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         borrowedUntilYearBookTextField.setText("jTextField2");
 
+        hideBookButton.setText("Verstecken");
+        hideBookButton.setName("hide book"); // NOI18N
+
         javax.swing.GroupLayout itemBookPanelLayout = new javax.swing.GroupLayout(itemBookPanel);
         itemBookPanel.setLayout(itemBookPanelLayout);
         itemBookPanelLayout.setHorizontalGroup(
@@ -1218,7 +1248,9 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(titleBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(ratingBookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                        .addComponent(hideBookButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editBookButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteBookButton))
@@ -1284,7 +1316,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(deleteBookButton)
-                        .addComponent(editBookButton))
+                        .addComponent(editBookButton)
+                        .addComponent(hideBookButton))
                     .addComponent(ratingBookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1471,6 +1504,8 @@ public class MainFrame extends javax.swing.JFrame {
         formatMusicComboBox.setEditable(true);
         formatMusicComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        hideMusicButton.setText("Verstecken");
+
         javax.swing.GroupLayout itemMusicPanelLayout = new javax.swing.GroupLayout(itemMusicPanel);
         itemMusicPanel.setLayout(itemMusicPanelLayout);
         itemMusicPanelLayout.setHorizontalGroup(
@@ -1522,7 +1557,9 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(titleMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
                     .addGroup(itemMusicPanelLayout.createSequentialGroup()
                         .addComponent(ratingMusicPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                        .addComponent(hideMusicButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editMusicButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteMusicButton))
@@ -1588,7 +1625,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(deleteMusicButton)
-                        .addComponent(editMusicButton))
+                        .addComponent(editMusicButton)
+                        .addComponent(hideMusicButton))
                     .addComponent(ratingMusicPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(descriptionMusicScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1767,6 +1805,8 @@ public class MainFrame extends javax.swing.JFrame {
         formatVideoComboBox.setEditable(true);
         formatVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jButton1.setText("Verstecken");
+
         javax.swing.GroupLayout itemVideoPanelLayout = new javax.swing.GroupLayout(itemVideoPanel);
         itemVideoPanel.setLayout(itemVideoPanelLayout);
         itemVideoPanelLayout.setHorizontalGroup(
@@ -1818,7 +1858,9 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(titleVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addComponent(ratingVideoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editVideoButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteVideoButton))
@@ -1884,7 +1926,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(deleteVideoButton)
-                        .addComponent(editVideoButton))
+                        .addComponent(editVideoButton)
+                        .addComponent(jButton1))
                     .addComponent(ratingVideoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(descriptionVideoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2075,6 +2118,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField genreVideoTextField;
     private javax.swing.JPanel headPanel;
     private javax.swing.JButton helpButton;
+    private javax.swing.JButton hideBookButton;
+    private javax.swing.JButton hideMusicButton;
     private javax.swing.JTextField isbnBookTextField;
     private javax.swing.JLabel isbnTextBookLabel;
     private javax.swing.JLabel isbnVideoLabel;
@@ -2084,6 +2129,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JPanel itemVideoPanel;
     private javax.swing.JScrollPane itemVideoScrollPane;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;

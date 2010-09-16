@@ -501,7 +501,9 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="ratingBookPanel" min="-2" max="-2" attributes="1"/>
-                                      <EmptySpace pref="243" max="32767" attributes="0"/>
+                                      <EmptySpace pref="152" max="32767" attributes="0"/>
+                                      <Component id="hideBookButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="editBookButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="deleteBookButton" min="-2" max="-2" attributes="0"/>
@@ -585,6 +587,7 @@
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="deleteBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="editBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="hideBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="ratingBookPanel" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -937,6 +940,12 @@
                         <Property name="text" type="java.lang.String" value="jTextField2"/>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JButton" name="hideBookButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Verstecken"/>
+                        <Property name="name" type="java.lang.String" value="hide book" noResource="true"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -1113,7 +1122,9 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="ratingMusicPanel" min="-2" max="-2" attributes="1"/>
-                                      <EmptySpace pref="243" max="32767" attributes="0"/>
+                                      <EmptySpace pref="152" max="32767" attributes="0"/>
+                                      <Component id="hideMusicButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="editMusicButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="deleteMusicButton" min="-2" max="-2" attributes="0"/>
@@ -1197,6 +1208,7 @@
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="deleteMusicButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="editMusicButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="hideMusicButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="ratingMusicPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1568,6 +1580,11 @@
                         </Property>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JButton" name="hideMusicButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Verstecken"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -1738,7 +1755,9 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="ratingVideoPanel" min="-2" max="-2" attributes="1"/>
-                                      <EmptySpace pref="243" max="32767" attributes="0"/>
+                                      <EmptySpace pref="152" max="32767" attributes="0"/>
+                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="editVideoButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="deleteVideoButton" min="-2" max="-2" attributes="0"/>
@@ -1822,6 +1841,7 @@
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="deleteVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="editVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="ratingVideoPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2180,6 +2200,11 @@
                             <StringItem index="3" value="Item 4"/>
                           </StringArray>
                         </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButton1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Verstecken"/>
                       </Properties>
                     </Component>
                   </SubComponents>
