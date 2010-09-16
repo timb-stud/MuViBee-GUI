@@ -4,12 +4,30 @@
  */
 package muvibee.lists;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import muvibee.media.Media;
 import muvibee.media.Video;
 
 public class VideoList extends MediaList {
+    @Override
+    public boolean add(Media m) {
+        boolean succ = list.add(m);
+        resort();
+        m.addObserver(this);
+        this.setChanged();
+        this.notifyObservers();
+        return succ;
+    }
 
+    @Override
+    public void addAll(Collection c) {
+        list.addAll(c);
+        resort();
+        this.setChanged();
+        this.notifyObservers();
+    }
     public void sortByDirector() {
         Collections.sort(list, new Comparator() {
 

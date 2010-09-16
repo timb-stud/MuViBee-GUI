@@ -379,6 +379,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                               <Component id="bookCardPanel" alignment="0" pref="472" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="viewBookComboBox" pref="379" max="32767" attributes="0"/>
@@ -394,7 +395,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="bookCardPanel" max="32767" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="bookCardPanel" pref="294" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
@@ -422,6 +425,11 @@
                 </Component>
                 <Container class="javax.swing.JPanel" name="bookCardPanel">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder/>
+                      </Border>
+                    </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[0, 0]"/>
                     </Property>
@@ -431,6 +439,81 @@
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel1">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Sortieren nach"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortBookTitleButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortBookGenreButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortBookRatingButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortBookAuthorButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortBookLanguageButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="97" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="sortBookTitleButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortBookGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortBookRatingButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortBookAuthorButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortBookLanguageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JToggleButton" name="sortBookTitleButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Titel"/>
+                        <Property name="name" type="java.lang.String" value="sort book title" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortBookGenreButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Genre"/>
+                        <Property name="name" type="java.lang.String" value="sort book genre" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortBookRatingButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Bewertung"/>
+                        <Property name="name" type="java.lang.String" value="sort book rating" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortBookAuthorButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Autor"/>
+                        <Property name="name" type="java.lang.String" value="sort book author" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortBookLanguageButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Sprache"/>
+                        <Property name="name" type="java.lang.String" value="sort book language" noResource="true"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
@@ -977,8 +1060,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="viewMusicPanel" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="itemMusicScrollPane" min="-2" pref="559" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="hideMusicButton" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="itemMusicScrollPane" min="-2" pref="548" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -989,6 +1074,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="viewMusicPanel" alignment="1" max="32767" attributes="0"/>
+                          <Component id="hideMusicButton" alignment="0" pref="414" max="32767" attributes="0"/>
                           <Component id="itemMusicScrollPane" alignment="1" pref="414" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1015,12 +1101,13 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="musicCardPanel" alignment="0" pref="478" max="32767" attributes="0"/>
+                              <Component id="musicCardPanel" alignment="0" pref="472" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewMusicComboBox" pref="385" max="32767" attributes="0"/>
+                                  <Component id="viewMusicComboBox" pref="379" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addMusicButton" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1030,7 +1117,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="musicCardPanel" pref="361" max="32767" attributes="0"/>
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="musicCardPanel" pref="294" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="addMusicButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1057,8 +1146,90 @@
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="musicCardPanel">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder/>
+                      </Border>
+                    </Property>
+                  </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel2">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Sortieren nach"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortMusicTitleButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortMusicGenreButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortMusicRatingButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortMusicInterpeterButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortMusicTypeButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="111" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="sortMusicGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortMusicRatingButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortMusicInterpeterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortMusicTypeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortMusicTitleButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JToggleButton" name="sortMusicTitleButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Titel"/>
+                        <Property name="name" type="java.lang.String" value="sort music title" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortMusicGenreButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Genre"/>
+                        <Property name="name" type="java.lang.String" value="sort music genre" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortMusicRatingButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Rating"/>
+                        <Property name="name" type="java.lang.String" value="sort music rating" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortMusicInterpeterButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Interpreter"/>
+                        <Property name="name" type="java.lang.String" value="sort music interpreter" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortMusicTypeButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Typ"/>
+                        <Property name="name" type="java.lang.String" value="sort music type" noResource="true"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
@@ -1096,23 +1267,23 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="artistMusicTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="eanMusicTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="genreMusicTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="releaseYearMusicTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="locationMusicTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="borrowedToMusicTextField" alignment="1" pref="266" max="32767" attributes="1"/>
+                                          <Component id="artistMusicTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="eanMusicTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="genreMusicTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="releaseYearMusicTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="locationMusicTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="borrowedToMusicTextField" alignment="1" pref="255" max="32767" attributes="1"/>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="borrowDayMusicComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="borrowMonthMusicComboBox" pref="166" max="32767" attributes="0"/>
+                                                      <Component id="borrowMonthMusicComboBox" pref="155" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="borrowedUntilDayMusicComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="borrowedUntilMonthMusicComboBox" pref="166" max="32767" attributes="0"/>
+                                                      <Component id="borrowedUntilMonthMusicComboBox" pref="155" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -1121,26 +1292,24 @@
                                                   <Component id="borrowYearMusicTextField" alignment="0" pref="51" max="32767" attributes="1"/>
                                               </Group>
                                           </Group>
-                                          <Component id="typeMusicComboBox" alignment="0" pref="266" max="32767" attributes="0"/>
-                                          <Component id="formatMusicComboBox" alignment="0" pref="266" max="32767" attributes="0"/>
+                                          <Component id="typeMusicComboBox" alignment="0" pref="255" max="32767" attributes="0"/>
+                                          <Component id="formatMusicComboBox" alignment="0" pref="255" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="titleMusicLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="titleMusicTextField" pref="490" max="32767" attributes="1"/>
+                                      <Component id="titleMusicTextField" pref="479" max="32767" attributes="1"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="ratingMusicPanel" min="-2" max="-2" attributes="1"/>
-                                      <EmptySpace pref="152" max="32767" attributes="0"/>
-                                      <Component id="hideMusicButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="232" max="32767" attributes="0"/>
                                       <Component id="editMusicButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="deleteMusicButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="descriptionMusicScrollPane" alignment="1" pref="520" max="32767" attributes="0"/>
-                                  <Component id="annotationMusicScrollPane" alignment="0" pref="520" max="32767" attributes="0"/>
+                                  <Component id="descriptionMusicScrollPane" alignment="1" pref="509" max="32767" attributes="0"/>
+                                  <Component id="annotationMusicScrollPane" alignment="0" pref="509" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1218,7 +1387,6 @@
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="deleteMusicButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="editMusicButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="hideMusicButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="ratingMusicPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1590,15 +1758,21 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="hideMusicButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Verstecken"/>
-                      </Properties>
-                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="hideMusicButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&gt;"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+                <Property name="name" type="java.lang.String" value="hide music" noResource="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="videoPanel">
@@ -1616,8 +1790,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="viewVideoPanel" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="itemVideoScrollPane" min="-2" pref="559" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="hideVideoButton" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="itemVideoScrollPane" min="-2" pref="548" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1628,6 +1804,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="viewVideoPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="hideVideoButton" alignment="1" pref="414" max="32767" attributes="0"/>
                           <Component id="itemVideoScrollPane" alignment="0" pref="414" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1654,9 +1831,10 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="videoCardPanel" alignment="0" pref="478" max="32767" attributes="0"/>
+                              <Component id="videoCardPanel" alignment="0" pref="472" max="32767" attributes="0"/>
+                              <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewVideoComboBox" pref="385" max="32767" attributes="0"/>
+                                  <Component id="viewVideoComboBox" pref="379" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addVideoButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1669,7 +1847,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="videoCardPanel" pref="361" max="32767" attributes="0"/>
+                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="videoCardPanel" pref="294" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="addVideoButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1690,8 +1870,90 @@
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="videoCardPanel">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder/>
+                      </Border>
+                    </Property>
+                  </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel3">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Sortieren nach"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortVideoTitleButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortVideoGenreButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortVideoRatingButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortVideoRegisseurButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sortVideoActorsButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="77" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="sortVideoTitleButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortVideoGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortVideoRatingButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortVideoRegisseurButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortVideoActorsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JToggleButton" name="sortVideoTitleButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Titel"/>
+                        <Property name="name" type="java.lang.String" value="sort video title" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortVideoGenreButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Genre"/>
+                        <Property name="name" type="java.lang.String" value="sort video genre" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortVideoRatingButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Rating"/>
+                        <Property name="name" type="java.lang.String" value="sort video rating" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortVideoRegisseurButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Regisseur"/>
+                        <Property name="name" type="java.lang.String" value="sort video regisseur" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToggleButton" name="sortVideoActorsButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Schauspieler"/>
+                        <Property name="name" type="java.lang.String" value="sort video actors" noResource="true"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
@@ -1729,24 +1991,24 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="directorVideoTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="actorsVideoTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="eanVideoTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="genreVideoTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="releaseYearVideoTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="locationVideoTextField" alignment="0" pref="266" max="32767" attributes="1"/>
-                                          <Component id="borrowedToVideoTextField" alignment="1" pref="266" max="32767" attributes="1"/>
+                                          <Component id="directorVideoTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="actorsVideoTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="eanVideoTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="genreVideoTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="releaseYearVideoTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="locationVideoTextField" alignment="0" pref="255" max="32767" attributes="1"/>
+                                          <Component id="borrowedToVideoTextField" alignment="1" pref="255" max="32767" attributes="1"/>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="borrowDayVideoComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="borrowMonthVideoComboBox" pref="166" max="32767" attributes="0"/>
+                                                      <Component id="borrowMonthVideoComboBox" pref="155" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="borrowedUntilDayVideoComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="borrowedUntilMonthVideoComboBox" pref="166" max="32767" attributes="0"/>
+                                                      <Component id="borrowedUntilMonthVideoComboBox" pref="155" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -1755,25 +2017,23 @@
                                                   <Component id="borrowYearVideoTextField" alignment="0" pref="51" max="32767" attributes="1"/>
                                               </Group>
                                           </Group>
-                                          <Component id="formatVideoComboBox" alignment="0" pref="266" max="32767" attributes="0"/>
+                                          <Component id="formatVideoComboBox" alignment="0" pref="255" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="titleVideoLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="titleVideoTextField" pref="490" max="32767" attributes="1"/>
+                                      <Component id="titleVideoTextField" pref="479" max="32767" attributes="1"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="ratingVideoPanel" min="-2" max="-2" attributes="1"/>
-                                      <EmptySpace pref="152" max="32767" attributes="0"/>
-                                      <Component id="hideVideoButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="232" max="32767" attributes="0"/>
                                       <Component id="editVideoButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="deleteVideoButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="descriptionVideoScrollPane" alignment="1" pref="520" max="32767" attributes="0"/>
-                                  <Component id="annotationVideoScrollPane" alignment="0" pref="520" max="32767" attributes="0"/>
+                                  <Component id="descriptionVideoScrollPane" alignment="1" pref="509" max="32767" attributes="0"/>
+                                  <Component id="annotationVideoScrollPane" alignment="0" pref="509" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1851,7 +2111,6 @@
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="deleteVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="editVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="hideVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="ratingVideoPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2212,15 +2471,21 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="hideVideoButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Verstecken"/>
-                      </Properties>
-                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="hideVideoButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&gt;"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+                <Property name="name" type="java.lang.String" value="hide video" noResource="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="restorePanel">

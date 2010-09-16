@@ -28,9 +28,9 @@ public class MuViBee {
     private LinkedList<Book> bookList;
     private LinkedList<Music> musicList;
     private LinkedList<Video> videoList;
-    private MediaList filterBookList;
-    private MediaList filterMusicList;
-    private MediaList filterVideoList;
+    private BookList filterBookList;
+    private MusicList filterMusicList;
+    private VideoList filterVideoList;
     private MediaList deletedMediaList;
 
     private MainFrame mainFrame;
@@ -38,6 +38,24 @@ public class MuViBee {
     private Music currentMusic;
     private Video currentVideo;
     private Media[] currentDeletedMediaList;
+
+    private int sortBookByTitle = 0;
+    private int sortBookByGenre = 0;
+    private int sortBookByRating = 0;
+    private int sortBookByAuthor = 0;
+    private int sortBookByLanguage = 0;
+
+    private int sortMusicByTitle = 0;
+    private int sortMusicByGenre = 0;
+    private int sortMusicByRating = 0;
+    private int sortMusicByType = 0;
+    private int sortMusicByInterpreter = 0;
+
+    private int sortVideoByTitle = 0;
+    private int sortVideoByGenre = 0;
+    private int sortVideoByRating = 0;
+    private int sortVideoByActors = 0;
+    private int sortVideoByRegisseur = 0;
 
     private String mainBundlePath = "muvibee.resources.MuViBee";
 
@@ -355,4 +373,186 @@ public class MuViBee {
         mainFrame.reloadLabels(mainBundlePath);
     }
 
+    public void sortBooksByTitle() {
+        if (sortBookByTitle == 0) {
+            sortBookByTitle = 1;
+        } else {
+            sortBookByTitle = 0;
+        }
+        sortLists();
+    }
+
+    public void sortBooksByGenre() {
+        if (sortBookByGenre == 0) {
+            sortBookByGenre = 1;
+        } else {
+            sortBookByGenre = 0;
+        }
+        sortLists();
+    }
+
+    public void sortBooksByRating() {
+        if (sortBookByRating == 0) {
+            sortBookByRating = 1;
+        } else {
+            sortBookByRating = 0;
+        }
+        sortLists();
+    }
+
+    public void sortMusicByTitle() {
+        if (sortMusicByTitle == 0) {
+            sortMusicByTitle = 1;
+        } else {
+            sortMusicByTitle = 0;
+        }
+        sortLists();
+    }
+
+    public void sortMusicByGenre() {
+        if (sortMusicByGenre == 0) {
+            sortMusicByGenre = 1;
+        } else {
+            sortMusicByGenre = 0;
+        }
+        sortLists();
+    }
+
+    public void sortMusicByRating() {
+        if (sortMusicByRating == 0) {
+            sortMusicByRating = 1;
+        } else {
+            sortMusicByRating = 0;
+        }
+        sortLists();
+    }
+
+    public void sortVideoByTitle() {
+        if (sortVideoByTitle == 0) {
+            sortVideoByTitle = 1;
+        } else {
+            sortVideoByTitle = 0;
+        }
+        sortLists();
+    }
+
+    public void sortVideoByGenre() {
+        if (sortVideoByGenre == 0) {
+            sortVideoByGenre = 1;
+        } else {
+            sortVideoByGenre = 0;
+        }
+        sortLists();
+    }
+
+    public void sortVideoByRating() {
+        if (sortVideoByRating == 0) {
+            sortVideoByRating = 1;
+        } else {
+            sortVideoByRating = 0;
+        }
+        sortLists();
+    }
+
+    public void sortBookByAuthor() {
+        if (sortBookByAuthor == 0) {
+            sortBookByAuthor = 1;
+        } else {
+            sortBookByAuthor = 0;
+        }
+        sortLists();
+    }
+
+    public void sortBookByLanguage() {
+        if (sortBookByLanguage == 0) {
+            sortBookByLanguage = 1;
+        } else {
+            sortBookByLanguage = 0;
+        }
+        sortLists();
+    }
+
+    public void sortMusicByType() {
+        if (sortMusicByType == 0) {
+            sortMusicByType = 1;
+        } else {
+            sortMusicByType = 0;
+        }
+        sortLists();
+    }
+
+    public void sortMusicByInterpreter() {
+        if (sortMusicByInterpreter == 0) {
+            sortMusicByInterpreter = 1;
+        } else {
+            sortMusicByInterpreter = 0;
+        }
+        sortLists();
+    }
+
+    public void sortVideoByRegisseur() {
+        if (sortVideoByRegisseur == 0) {
+            sortVideoByRegisseur = 1;
+        } else {
+            sortVideoByRegisseur = 0;
+        }
+        sortLists();
+    }
+
+    public void sortVideoByActors() {
+        if (sortVideoByActors == 0) {
+            sortVideoByActors = 1;
+        } else {
+            sortVideoByActors = 0;
+        }
+        sortLists();
+    }
+
+    public void sortLists() {
+        if (sortBookByTitle == 1) {
+            filterBookList.sortByTitle();
+        }
+        if (sortBookByGenre == 1) {
+            filterBookList.sortByGenre();
+        }
+        if (sortBookByRating == 1) {
+            filterBookList.sortByRating();
+        }
+        if (sortMusicByTitle == 1) {
+            filterMusicList.sortByTitle();
+        }
+        if (sortMusicByGenre == 1) {
+            filterMusicList.sortByGenre();
+        }
+        if (sortMusicByRating == 1) {
+            filterMusicList.sortByRating();
+        }
+        if (sortVideoByTitle == 1) {
+            filterVideoList.sortByTitle();
+        }
+        if (sortVideoByGenre == 1) {
+            filterVideoList.sortByGenre();
+        }
+        if (sortVideoByRating == 1) {
+            filterVideoList.sortByRating();
+        }
+        if (sortBookByAuthor == 1) {
+            filterBookList.sortByAuthor();
+        }
+        if (sortBookByLanguage == 1) {
+            filterBookList.sortByLanguage();
+        }
+        if (sortMusicByType == 1) {
+            filterMusicList.sortByType();
+        }
+        if (sortMusicByInterpreter == 1) {
+            filterMusicList.sortByInterpreter();
+        }
+        if (sortVideoByRegisseur == 1) {
+            filterVideoList.sortByDirector();
+        }
+        if (sortVideoByActors == 1) {
+            filterVideoList.sortByActors();
+        }
+    }
 }
