@@ -48,7 +48,7 @@ public class CoverDetailsList extends JList implements Observer{
 	        	}
 	        });
  	        
-	        setPreferredSize(new Dimension(150,0));
+	      //  setPreferredSize(new Dimension(150,0));
 
 	}
 	
