@@ -146,7 +146,8 @@ public class MuViBee {
 
     public void showAdvancedSearchDialog(){
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
-        AdvancedSearchDialog dialog = new AdvancedSearchDialog(mainFrame, bundle.getString("advancedSearchDialogTitle"), true);
+        AdvancedSearchDialog dialog = new AdvancedSearchDialog(mainFrame, 
+                bundle.getString("advancedSearchDialogTitle"), true, this);
         dialog.setLocationRelativeTo(mainFrame);
         dialog.setVisible(true);
         int returnStatus = dialog.getReturnStatus();
