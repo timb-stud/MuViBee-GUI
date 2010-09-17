@@ -11,6 +11,10 @@
 
 package muvibee.gui;
 
+import java.util.ResourceBundle;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
@@ -31,16 +35,32 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     private Book book;
     private Music music;
     private Video video;
+    private MuViBee mvb;
 
-    public AdvancedSearchDialog(java.awt.Frame parent,String title, boolean modal){
+    public AdvancedSearchDialog(java.awt.Frame parent,String title, boolean modal, MuViBee mvb){
         super(parent, title, modal);
+        this.mvb = mvb;
         initComponents();
-    }
 
-    /** Creates new form AdvancedSearchDialog */
-    public AdvancedSearchDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
+        String[] days = new String[32];
+        days[0] = "";
+	for(int i=1; i<32;i++)
+	    days[i] = String.valueOf(i);
+	lentDayComboBox.setModel(new DefaultComboBoxModel(days));
+        lentUntilDayComboBox.setModel(new DefaultComboBoxModel(days));
+        String[] emptyArray = {""};
+        lentMonthComboBox.setModel(new DefaultComboBoxModel(emptyArray));
+        lentUntilMonthComboBox.setModel(new DefaultComboBoxModel(emptyArray));
+        String[] years = new String[63];
+        for(int i=0;i<years.length;i++)
+            years[i] = String.valueOf(2012 - i);
+        releaseYearComboBox.setModel(new DefaultComboBoxModel(years));
+        releaseYearComboBox.setSelectedIndex(-1);
+        lentYearComboBox.setModel(new DefaultComboBoxModel(years));
+        lentYearComboBox.setSelectedIndex(-1);
+        lentUntilYearComboBox.setModel(new DefaultComboBoxModel(years));
+        lentUntilYearComboBox.setSelectedIndex(-1);
+        reloadLabels();
     }
 
     /** @return the return status of this dialog - one of RET_OK or RET_CANCEL */
@@ -60,7 +80,62 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         return video;
     }
 
-   
+    public final void reloadLabels(){
+        ResourceBundle bundle = ResourceBundle.getBundle(mvb.getMainBundlePath());
+        String day = bundle.getString("dayComboBox");
+        updateComboBoxLabel(lentDayComboBox, day);
+        updateComboBoxLabel(lentUntilDayComboBox, day);
+
+        String[] months = new String[13];
+        months[0] = bundle.getString("monthComboBox");
+        months[1] = bundle.getString("januaryComboBox");
+        months[2] = bundle.getString("februaryComboBox");
+        months[3] = bundle.getString("marchComboBox");
+        months[4] = bundle.getString("aprilComboBox");
+        months[5] = bundle.getString("mayComboBox");
+        months[6] = bundle.getString("juneComboBox");
+        months[7] = bundle.getString("julyComboBox");
+        months[8] = bundle.getString("augustComboBox");
+        months[9] = bundle.getString("septemberComboBox");
+        months[10] = bundle.getString("octoberComboBox");
+        months[11] = bundle.getString("novemberComboBox");
+        months[12] = bundle.getString("decemberComboBox");
+
+        updateComboBoxLabels(lentMonthComboBox, months);
+	updateComboBoxLabels(lentUntilMonthComboBox, months);
+
+        String[] types = new String[3];
+        types[0] = bundle.getString("album");
+        types[0] = bundle.getString("sampler");
+        types[0] = bundle.getString("single");
+        updateComboBoxLabels(typeComboBox, types);
+
+	String[] musicFormats = new String[3];
+        musicFormats[0] = bundle.getString("cd");
+        musicFormats[1] = bundle.getString("lp");
+        musicFormats[2] = bundle.getString("cassette");
+	String[] videoFormats = new String[3];
+        videoFormats[0] = bundle.getString("cd/dvd");
+        videoFormats[1] = bundle.getString("blu-ray");
+        videoFormats[2] = bundle.getString("vhs");
+	updateComboBoxLabels(musicFormatComboBox, musicFormats);
+	updateComboBoxLabels(videoFormatComboBox, videoFormats);
+    }
+
+    public void updateComboBoxLabel(JComboBox cb, String label){
+        int selectedIndex = cb.getSelectedIndex();
+        cb.removeItemAt(0);
+        cb.insertItemAt(label, 0);
+        cb.setSelectedIndex(selectedIndex);
+    }
+
+    public void updateComboBoxLabels(JComboBox cb, String[] labels){
+        int selectedIndex = cb.getSelectedIndex();
+        cb.removeAllItems();
+        for(int i=0; i<labels.length; i++)
+            cb.addItem(labels[i]);
+        cb.setSelectedIndex(selectedIndex);
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -109,7 +184,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         musicPanel = new javax.swing.JPanel();
         artistLabel = new javax.swing.JLabel();
         typeLabel = new javax.swing.JLabel();
-        musikFormatLabel = new javax.swing.JLabel();
+        musicFormatLabel = new javax.swing.JLabel();
         artistTextField = new javax.swing.JTextField();
         typeComboBox = new javax.swing.JComboBox();
         musicFormatComboBox = new javax.swing.JComboBox();
@@ -160,6 +235,8 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
 
         ratingButtonGroup.add(ratingThreeRadioButton);
         ratingThreeRadioButton.setText("3");
+
+        releaseYearComboBox.setEditable(true);
 
         lentYearComboBox.setEditable(true);
 
@@ -323,7 +400,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
 
         typeLabel.setText("Typ");
 
-        musikFormatLabel.setText("Format");
+        musicFormatLabel.setText("Format");
 
         typeComboBox.setEditable(true);
 
@@ -338,7 +415,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                 .addGroup(musicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(artistLabel)
                     .addComponent(typeLabel)
-                    .addComponent(musikFormatLabel))
+                    .addComponent(musicFormatLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(musicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(typeComboBox, 0, 160, Short.MAX_VALUE)
@@ -358,7 +435,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                     .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(musicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(musikFormatLabel)
+                    .addComponent(musicFormatLabel)
                     .addComponent(musicFormatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -639,8 +716,8 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     private javax.swing.JTextField locationTextField;
     private javax.swing.JPanel mediaPanel;
     private javax.swing.JComboBox musicFormatComboBox;
+    private javax.swing.JLabel musicFormatLabel;
     private javax.swing.JPanel musicPanel;
-    private javax.swing.JLabel musikFormatLabel;
     private javax.swing.ButtonGroup ratingButtonGroup;
     private javax.swing.JLabel ratingLabel;
     private javax.swing.JRadioButton ratingOneRadioButton;

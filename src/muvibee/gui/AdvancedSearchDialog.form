@@ -312,6 +312,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="releaseYearComboBox">
           <Properties>
+            <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -455,7 +456,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="artistLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="typeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="musikFormatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="musicFormatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -481,7 +482,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="musikFormatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="musicFormatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="musicFormatComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -500,7 +501,7 @@
             <Property name="text" type="java.lang.String" value="Typ"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="musikFormatLabel">
+        <Component class="javax.swing.JLabel" name="musicFormatLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Format"/>
           </Properties>
