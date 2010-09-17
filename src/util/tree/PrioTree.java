@@ -16,6 +16,8 @@ import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
 import muvibee.lists.MediaList;
 import muvibee.media.Media;
 import muvibee.utils.SortTypes;
@@ -28,18 +30,14 @@ public class PrioTree extends JTree implements Observer {
 
     private final String OTHER = "sonstige";
 
-    DefaultMutableTreeNode root;
-    DefaultMutableTreeNode lastAdded = root;
-//    DefaultMutableTreeNode stageOneChild;
-//    DefaultMutableTreeNode stageTwoChild;
-//    DefaultMutableTreeNode stageThreeChild;
+    DefaultMutableTreeNode root ;
+    DefaultMutableTreeNode lastAdded;
+    TreeModel treeModel;
 
     public PrioTree() {
-         root =  new DefaultMutableTreeNode("Root");
-//        stageOneChild = new DefaultMutableTreeNode();
-//        stageTwoChild = new DefaultMutableTreeNode();
-//        stageThreeChild = new DefaultMutableTreeNode();;
+         super();
 
+//         root = (DefaultMutableTreeNode) getModel().getRoot();
         expandRow(1);
 
         //tree.addTreeSelectionListener(new TreeSelectionListener() {
@@ -54,38 +52,19 @@ public class PrioTree extends JTree implements Observer {
     }
 
 
-    private boolean containsChild (int level, DefaultMutableTreeNode child){
-        System.out.println("neuer Knoten: " + child);
-        System.out.println("einfuegen in: " + lastAdded);
+    private boolean containsChild (DefaultMutableTreeNode child){
         int to = lastAdded.getChildCount();
-        for (int i = 0; i <= to; i++)
-            if (to != 0)
+        for (int i = 0; i < to; i++)
                if (lastAdded.getChildAt(i).equals(child))
-                   return false;
+                   return true;
 
-        return true;
+        return false;
     }
-
-
-//    private DefaultMutableTreeNode stage(int i){
-//        switch (i){
-//            case 0:
-//                return root;
-//            case 1:
-//                return root.getNextNode();
-//            case 2:
-//                return root.getNextNode().getNextNode();
-//            case 3:
-//                return root.getNextNode().getNextNode().getNextNode();
-//        }
-//        return null;
-//    }
 
 
     public void createTree(MediaList mediaList, SortTypes[] sortedBy) {
         Object o = null;
         DefaultMutableTreeNode newNode;
-        int level = 0;
 
         for (Media m : mediaList.getList()){
             lastAdded = root;
@@ -113,23 +92,25 @@ public class PrioTree extends JTree implements Observer {
                        o = m.getTitle();
                 }
 
-                if (o.equals(null))
+                if (o.equals("") || o.equals(-1))
                     newNode = new DefaultMutableTreeNode(OTHER);
                 else
                     newNode = new DefaultMutableTreeNode(o);
 
-                if (!(containsChild(level, newNode))){
+                if (!(containsChild(newNode))){
                     lastAdded.add(newNode);
                     lastAdded = newNode;
                 }
-
-                level++;
             }
         }
     }
 
     @Override
     public void update(Observable list, Object o) {
+        root = new DefaultMutableTreeNode("Root");
+        treeModel = new DefaultTreeModel(root);
+        setModel(treeModel);
+
         SortTypes[] sortedBy;
         if (o == null)
            sortedBy = new SortTypes[]{SortTypes.GENRE, SortTypes.YEAR, SortTypes.TITLE };
