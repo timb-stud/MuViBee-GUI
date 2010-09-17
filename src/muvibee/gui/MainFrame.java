@@ -1806,7 +1806,7 @@ public class MainFrame extends javax.swing.JFrame {
         itemMusicScrollPane.setViewportView(itemMusicPanel);
 
         hideMusicButton.setText(">");
-        hideMusicButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        hideMusicButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         hideMusicButton.setName("hide music"); // NOI18N
 
         javax.swing.GroupLayout musicPanelLayout = new javax.swing.GroupLayout(musicPanel);
@@ -2158,7 +2158,7 @@ public class MainFrame extends javax.swing.JFrame {
         itemVideoScrollPane.setViewportView(itemVideoPanel);
 
         hideVideoButton.setText(">");
-        hideVideoButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        hideVideoButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         hideVideoButton.setName("hide video"); // NOI18N
 
         javax.swing.GroupLayout videoPanelLayout = new javax.swing.GroupLayout(videoPanel);
