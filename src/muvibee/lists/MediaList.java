@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package muvibee.lists;
 
 import java.util.Collection;
@@ -15,15 +14,15 @@ import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
-
+import muvibee.utils.SortTypes;
 
 /**
  *
  * @author bline
  */
-public class MediaList extends Observable implements Observer{
+public class MediaList extends Observable implements Observer {
 
-    enum SortTypes { DIRECTOR, LANGUAGE, TITLE, FORMAT, INTERPRETER, TYPE, ISBN, EAN, ACTORS, REGISSEUR, YEAR, GENRE, LOCATION, LENTTO, RATING, AUTHOR };
+//    enum SortTypes { DIRECTOR, LANGUAGE, TITLE, FORMAT, INTERPRETER, TYPE, ISBN, EAN, ACTORS, REGISSEUR, YEAR, GENRE, LOCATION, LENTTO, RATING, AUTHOR };
     LinkedList<Media> list;
     SortTypes sortedBy;
 
@@ -38,6 +37,7 @@ public class MediaList extends Observable implements Observer{
         m.addObserver(this);
         this.setChanged();
         this.notifyObservers();
+//        this.notifyObservers(new SortTypes[]{SortTypes.GENRE, SortTypes.YEAR, SortTypes.TITLE });
         return succ;
     }
 
@@ -46,6 +46,7 @@ public class MediaList extends Observable implements Observer{
         resort();
         this.setChanged();
         this.notifyObservers();
+//        this.notifyObservers(new SortTypes[]{SortTypes.GENRE, SortTypes.YEAR, SortTypes.TITLE });
     }
 
     public void update(Observable o, Object arg) {
@@ -54,7 +55,7 @@ public class MediaList extends Observable implements Observer{
         notifyObservers();
     }
 
-    public boolean contains(Media m){
+    public boolean contains(Media m) {
         return list.contains(m);
     }
 
@@ -62,115 +63,113 @@ public class MediaList extends Observable implements Observer{
         return list;
     }
 
-    public boolean remove(Media m){
+    public boolean remove(Media m) {
         boolean succ = list.remove(m);
         this.setChanged();
         this.notifyObservers();
         return succ;
     }
 
-    public void sortByTitle(){
+    public void sortByTitle() {
         Collections.sort(list, new Comparator() {
+
             public int compare(Object o1, Object o2) {
-                Media m1 = (Media)o1;
-                Media m2 = (Media)o2;
+                Media m1 = (Media) o1;
+                Media m2 = (Media) o2;
                 return m1.getTitle().compareTo(m2.getTitle());
             }
-
         });
         sortedBy = sortedBy.TITLE;
         this.setChanged();
         this.notifyObservers();
     }
 
-
-
-    public void sortByGenre(){
+    public void sortByGenre() {
         Collections.sort(list, new Comparator() {
+
             public int compare(Object o1, Object o2) {
-                Media m1 = (Media)o1;
-                Media m2 = (Media)o2;
+                Media m1 = (Media) o1;
+                Media m2 = (Media) o2;
                 return m1.getGenre().compareTo(m2.getGenre());
             }
-
         });
         sortedBy = sortedBy.GENRE;
         this.setChanged();
         this.notifyObservers();
     }
 
-    public void sortByReleaseYear(){
+    public void sortByReleaseYear() {
         Collections.sort(list, new Comparator() {
+
             public int compare(Object o1, Object o2) {
-                Media m1 = (Media)o1;
-                Media m2 = (Media)o2;
+                Media m1 = (Media) o1;
+                Media m2 = (Media) o2;
                 return compareInt(m1.getReleaseYear(), (m2.getReleaseYear()));
             }
-
         });
         sortedBy = sortedBy.YEAR;
         this.setChanged();
         this.notifyObservers();
     }
 
-    public void sortByLocation(){
+    public void sortByLocation() {
         Collections.sort(list, new Comparator() {
+
             public int compare(Object o1, Object o2) {
-                Media m1 = (Media)o1;
-                Media m2 = (Media)o2;
+                Media m1 = (Media) o1;
+                Media m2 = (Media) o2;
                 return m1.getLocation().compareTo(m2.getLocation());
             }
-
         });
         sortedBy = sortedBy.LOCATION;
         this.setChanged();
         this.notifyObservers();
     }
 
-
-    public void sortByLentTo(){
+    public void sortByLentTo() {
         Collections.sort(list, new Comparator() {
+
             public int compare(Object o1, Object o2) {
-                Media m1 = (Media)o1;
-                Media m2 = (Media)o2;
+                Media m1 = (Media) o1;
+                Media m2 = (Media) o2;
                 return m1.getLentTo().compareTo(m2.getLentTo());
             }
-
         });
         sortedBy = sortedBy.LENTTO;
         this.setChanged();
         this.notifyObservers();
     }
 
-   public void sortByRating(){
+    public void sortByRating() {
         Collections.sort(list, new Comparator() {
+
             public int compare(Object o1, Object o2) {
-                Media m1 = (Media)o1;
-                Media m2 = (Media)o2;
+                Media m1 = (Media) o1;
+                Media m2 = (Media) o2;
                 return compareInt(m1.getRating(), (m2.getRating()));
             }
-
         });
         sortedBy = sortedBy.RATING;
         this.setChanged();
         this.notifyObservers();
     }
 
-    private static int compareInt(int a, int b){
-		if (a == b)
-			return 0;
-		else if (a > b)
-			return 1;
-		else
-			return -1;
-	}
+    private static int compareInt(int a, int b) {
+        if (a == b) {
+            return 0;
+        } else if (a > b) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
 
-        boolean resort() {
-        switch (sortedBy){
-            case TITLE :
+    boolean resort() {
+        switch (sortedBy) {
+            case TITLE:
                 sortByTitle();
                 break;
-            case YEAR :
+            case YEAR:
                 sortByReleaseYear();
                 break;
             case GENRE:
@@ -186,7 +185,7 @@ public class MediaList extends Observable implements Observer{
                 sortByLentTo();
                 break;
             default:
-               return true;
+                return true;
         }
         return false;
     }
