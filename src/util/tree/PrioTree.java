@@ -29,18 +29,18 @@ public class PrioTree extends JTree implements Observer {
     private final String OTHER = "sonstige";
 
     DefaultMutableTreeNode root;
-    DefaultMutableTreeNode stageOneChild;
-    DefaultMutableTreeNode stageTwoChild;
-    DefaultMutableTreeNode stageThreeChild;
+    DefaultMutableTreeNode lastAdded = root;
+//    DefaultMutableTreeNode stageOneChild;
+//    DefaultMutableTreeNode stageTwoChild;
+//    DefaultMutableTreeNode stageThreeChild;
 
     public PrioTree() {
-        //setLayout(new FlowLayout());
-        //setPreferredSize(new Dimension(150, 600));
+         root =  new DefaultMutableTreeNode("Root");
+//        stageOneChild = new DefaultMutableTreeNode();
+//        stageTwoChild = new DefaultMutableTreeNode();
+//        stageThreeChild = new DefaultMutableTreeNode();;
 
-        //JTree tree = new JTree(root);
-        //tree.expandRow(1); // Expand children to illustrate leaf icons
         expandRow(1);
-        //JScrollPane pane1 = new JScrollPane(tree);
 
         //tree.addTreeSelectionListener(new TreeSelectionListener() {
         addTreeSelectionListener(new TreeSelectionListener() {
@@ -51,61 +51,46 @@ public class PrioTree extends JTree implements Observer {
                 }
             }
         });
-
-        //add(pane1);
-        // pane1.setBorder(BorderFactory.createTitledBorder("TreeTitle"));
-    }
-
-
-    public void newRoot(DefaultMutableTreeNode child) {
-        root.add(child);
-    }
-
-    public void newStageOneChild(DefaultMutableTreeNode child) {
-        stageOneChild.add(child);
-    }
-
-    public void newStageTwoChild(DefaultMutableTreeNode child) {
-        stageTwoChild.add(child);
-    }
-
-    public void newStageThreeChild(DefaultMutableTreeNode child) {
-        stageThreeChild.add(child);
     }
 
 
     private boolean containsChild (int level, DefaultMutableTreeNode child){
-        for (int i = 0; i < stage(level).getChildCount(); i++)
-            if (stage(level).getChildAt(i).equals(child))
-                return false;
+        System.out.println("neuer Knoten: " + child);
+        System.out.println("einfuegen in: " + lastAdded);
+        int to = lastAdded.getChildCount();
+        for (int i = 0; i <= to; i++)
+            if (to != 0)
+               if (lastAdded.getChildAt(i).equals(child))
+                   return false;
 
         return true;
     }
 
 
-    private DefaultMutableTreeNode stage(int i){
-        switch (i){
-            case 0:
-                return root;
-            case 1:
-                return stageOneChild;
-            case 2:
-                return stageTwoChild;
-            case 3:
-                return stageThreeChild;
-        }
-        return null;
-    }
+//    private DefaultMutableTreeNode stage(int i){
+//        switch (i){
+//            case 0:
+//                return root;
+//            case 1:
+//                return root.getNextNode();
+//            case 2:
+//                return root.getNextNode().getNextNode();
+//            case 3:
+//                return root.getNextNode().getNextNode().getNextNode();
+//        }
+//        return null;
+//    }
 
 
-    public void createTree(MediaList mediaList, SortTypes[] sortBy) {
+    public void createTree(MediaList mediaList, SortTypes[] sortedBy) {
         Object o = null;
         DefaultMutableTreeNode newNode;
         int level = 0;
 
         for (Media m : mediaList.getList()){
-            for (SortTypes sortedBy : sortBy){
-                switch (sortedBy){
+            lastAdded = root;
+            for (SortTypes sortBy : sortedBy){
+                switch (sortBy){
                     case TITLE :
                         o = m.getTitle();
                         break;
@@ -133,8 +118,10 @@ public class PrioTree extends JTree implements Observer {
                 else
                     newNode = new DefaultMutableTreeNode(o);
 
-                if (!(containsChild(level, newNode)))
-                    stage(level).add(newNode);
+                if (!(containsChild(level, newNode))){
+                    lastAdded.add(newNode);
+                    lastAdded = newNode;
+                }
 
                 level++;
             }
@@ -142,9 +129,14 @@ public class PrioTree extends JTree implements Observer {
     }
 
     @Override
-    public void update(Observable list, Object sortBy) {
+    public void update(Observable list, Object o) {
+        SortTypes[] sortedBy;
+        if (o == null)
+           sortedBy = new SortTypes[]{SortTypes.GENRE, SortTypes.YEAR, SortTypes.TITLE };
+        else
+           sortedBy =  (SortTypes[]) o;
+
         MediaList mediaList = ((MediaList) list);
-        root =  new DefaultMutableTreeNode("Root");
-        createTree(mediaList,(SortTypes[]) sortBy);
+        createTree(mediaList,sortedBy);
     }
 }

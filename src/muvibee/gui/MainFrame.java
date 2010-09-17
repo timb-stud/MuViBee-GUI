@@ -77,6 +77,9 @@ public class MainFrame extends javax.swing.JFrame {
         prioTreeVideo = new PrioTree();
         mvb.getVideoList().addObserver(prioTreeVideo);
 
+        treeBookScrollPane.setViewportView(prioTreeBook);
+        treeMusicScrollPane.setViewportView(prioTreeMusic);
+        treeVideoScrollPane.setViewportView(prioTreeVideo);
     }
 
     private void createDetailsList(MuViBee mvb){
