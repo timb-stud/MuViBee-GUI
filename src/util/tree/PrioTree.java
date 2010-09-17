@@ -64,7 +64,7 @@ public class PrioTree extends JTree implements Observer {
 
     public void createTree(MediaList mediaList, SortTypes[] sortedBy) {
         Object o = null;
-        DefaultMutableTreeNode newNode;
+        DefaultMutableTreeNode child;
 
         for (Media m : mediaList.getList()){
             lastAdded = root;
@@ -93,13 +93,13 @@ public class PrioTree extends JTree implements Observer {
                 }
 
                 if (o.equals("") || o.equals(-1))
-                    newNode = new DefaultMutableTreeNode(OTHER);
+                    child = new DefaultMutableTreeNode(OTHER);
                 else
-                    newNode = new DefaultMutableTreeNode(o);
+                    child = new DefaultMutableTreeNode(o);
 
-                if (!(containsChild(newNode))){
-                    lastAdded.add(newNode);
-                    lastAdded = newNode;
+                if (!(containsChild(child))){
+                    lastAdded.add(child);
+                    lastAdded = child;
                 }
             }
         }
