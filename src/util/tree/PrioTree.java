@@ -24,7 +24,7 @@ import muvibee.utils.SortTypes;
  *
  * @author christian
  */
-public class PrioTree extends JPanel implements Observer {
+public class PrioTree extends JTree implements Observer {
 
     private final String OTHER = "sonstige";
 
@@ -34,15 +34,16 @@ public class PrioTree extends JPanel implements Observer {
     DefaultMutableTreeNode stageThreeChild;
 
     public PrioTree() {
-        setLayout(new FlowLayout());
-        setPreferredSize(new Dimension(150, 600));
+        //setLayout(new FlowLayout());
+        //setPreferredSize(new Dimension(150, 600));
 
-        JTree tree = new JTree(root);
-        tree.expandRow(1); // Expand children to illustrate leaf icons
-        JScrollPane pane1 = new JScrollPane(tree);
+        //JTree tree = new JTree(root);
+        //tree.expandRow(1); // Expand children to illustrate leaf icons
+        expandRow(1);
+        //JScrollPane pane1 = new JScrollPane(tree);
 
-        tree.addTreeSelectionListener(new TreeSelectionListener() {
-
+        //tree.addTreeSelectionListener(new TreeSelectionListener() {
+        addTreeSelectionListener(new TreeSelectionListener() {
             public void valueChanged(TreeSelectionEvent e) {
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) e.getPath().getLastPathComponent();
                 if (node.isLeaf()) {
@@ -51,7 +52,7 @@ public class PrioTree extends JPanel implements Observer {
             }
         });
 
-        add(pane1);
+        //add(pane1);
         // pane1.setBorder(BorderFactory.createTitledBorder("TreeTitle"));
     }
 

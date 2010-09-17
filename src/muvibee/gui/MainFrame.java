@@ -15,8 +15,6 @@ import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import muvibee.utils.TestUtils;
 import muvibee.utils.NonValidYearException;
@@ -71,7 +69,7 @@ public class MainFrame extends javax.swing.JFrame {
         coverListVideoScrollPane.setViewportView(coverListVideo);
     }
 
-    private void createTreeView(MuViBee mvb){
+    private void createTree(MuViBee mvb){
         prioTreeBook = new PrioTree();
         mvb.getBookList().addObserver(prioTreeBook);
         prioTreeMusic = new PrioTree();
@@ -94,18 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
         detailsListVideoScrollPane.setViewportView(detailsListVideo);
     }
 
-    private CoverList coverListBook;
-    private CoverList coverListMusic;
-    private CoverList coverListVideo;
-    private CoverDetailsList coverDetailsBookList;
-    private CoverDetailsList coverDetailsMusicList;
-    private CoverDetailsList coverDetailsVideoList;
-    private DetailsList detailsListBook;
-    private DetailsList detailsListMusic;
-    private DetailsList detailsListVideo;
-    private PrioTree prioTreeBook;
-    private PrioTree prioTreeMusic;
-    private PrioTree prioTreeVideo;
+
 
     private void createCoverDetailsList(MuViBee mvb){
         coverDetailsBookList = new CoverDetailsList(mvb);
@@ -175,34 +162,45 @@ public class MainFrame extends javax.swing.JFrame {
         coverDetailsListVideoScrollPane = new JScrollPane();
         detailsListVideoScrollPane = new JScrollPane();
         coverListVideoScrollPane = new JScrollPane();
+        treeBookScrollPane = new JScrollPane();
+        treeMusicScrollPane = new JScrollPane();
+        treeVideoScrollPane = new JScrollPane();
+
 
         coverDetailsListBookScrollPane.setName("cover details");
         detailsListBookScrollPane.setName("details");
         coverListBookScrollPane.setName("cover");
+        treeBookScrollPane.setName("tree");
         
         coverDetailsListMusicScrollPane.setName("cover details");
         detailsListMusicScrollPane.setName("details");
         coverListMusicScrollPane.setName("cover");
+        treeMusicScrollPane.setName("tree");
         
         coverDetailsListVideoScrollPane.setName("cover details");
         detailsListVideoScrollPane.setName("details");
         coverListVideoScrollPane.setName("cover");
+        treeVideoScrollPane.setName("tree");
 
         bookCardPanel.add(coverDetailsListBookScrollPane, "cover details");
         bookCardPanel.add(detailsListBookScrollPane, "details");
         bookCardPanel.add(coverListBookScrollPane, "cover");
+        bookCardPanel.add(treeBookScrollPane, "tree");
 
         musicCardPanel.add(coverDetailsListMusicScrollPane, "cover details");
         musicCardPanel.add(detailsListMusicScrollPane, "details");
         musicCardPanel.add(coverListMusicScrollPane, "cover");
+        musicCardPanel.add(treeMusicScrollPane, "tree");
 
         videoCardPanel.add(coverDetailsListVideoScrollPane, "cover details");
         videoCardPanel.add(detailsListVideoScrollPane, "details");
         videoCardPanel.add(coverListVideoScrollPane, "cover");
+        videoCardPanel.add(treeVideoScrollPane, "tree");
 
         createDetailsList(mvb);
         createCoverDetailsList(mvb);
         createCoverList(mvb);
+        createTree(mvb);
 
         itemBookScrollPane.setVisible(false);
         itemMusicScrollPane.setVisible(false);
@@ -234,6 +232,7 @@ public class MainFrame extends javax.swing.JFrame {
         cbBooksModel.addElement(coverDetailsListBookScrollPane);
         cbBooksModel.addElement(coverListBookScrollPane);
         cbBooksModel.addElement(detailsListBookScrollPane);
+        cbBooksModel.addElement(treeBookScrollPane);
         viewBookComboBox.setModel(cbBooksModel);
         
 
@@ -241,6 +240,7 @@ public class MainFrame extends javax.swing.JFrame {
         cbMusicModel.addElement(coverDetailsListMusicScrollPane);
         cbMusicModel.addElement(coverListMusicScrollPane);
         cbMusicModel.addElement(detailsListMusicScrollPane);
+        cbMusicModel.addElement(treeMusicScrollPane);
         viewMusicComboBox.setModel(cbMusicModel);
         
 
@@ -248,6 +248,7 @@ public class MainFrame extends javax.swing.JFrame {
         cbVideoModel.addElement(coverDetailsListVideoScrollPane);
         cbVideoModel.addElement(coverListVideoScrollPane);
         cbVideoModel.addElement(detailsListVideoScrollPane);
+        cbVideoModel.addElement(treeVideoScrollPane);
         viewVideoComboBox.setModel(cbVideoModel);
         
 
@@ -2453,6 +2454,23 @@ public class MainFrame extends javax.swing.JFrame {
     private JScrollPane coverDetailsListVideoScrollPane;
     private JScrollPane detailsListVideoScrollPane;
     private JScrollPane coverListVideoScrollPane;
+    private JScrollPane treeBookScrollPane;
+    private JScrollPane treeMusicScrollPane;
+    private JScrollPane treeVideoScrollPane;
+    private CoverList coverListBook;
+    private CoverList coverListMusic;
+    private CoverList coverListVideo;
+    private CoverDetailsList coverDetailsBookList;
+    private CoverDetailsList coverDetailsMusicList;
+    private CoverDetailsList coverDetailsVideoList;
+    private DetailsList detailsListBook;
+    private DetailsList detailsListMusic;
+    private DetailsList detailsListVideo;
+    private PrioTree prioTreeBook;
+    private PrioTree prioTreeMusic;
+    private PrioTree prioTreeVideo;
+
+
 
 
 
