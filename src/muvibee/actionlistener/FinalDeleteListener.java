@@ -22,6 +22,7 @@ public class FinalDeleteListener implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         mvb.removeCurrentDeletedMediaFromDeletedList();
+        mvb.setOverviewInformation();
     }
 
 }

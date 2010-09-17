@@ -21,6 +21,7 @@ public class RestoreListener implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         mvb.restoreCurrentDeletedMedia();
+        mvb.setOverviewInformation();
     }
 
 }

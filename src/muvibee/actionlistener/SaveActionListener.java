@@ -56,6 +56,7 @@ public class SaveActionListener implements ActionListener {
                     }
                 }
             }
+            mvb.setOverviewInformation();
         }
     }
 

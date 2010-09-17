@@ -149,6 +149,7 @@ public class MainFrame extends javax.swing.JFrame {
             // handle exception
         } 
         initComponents();
+        setOverviewInformation(mvb);
         coverDetailsListBookScrollPane = new JScrollPane();
         detailsListBookScrollPane = new JScrollPane();
         coverListBookScrollPane = new JScrollPane();
@@ -320,6 +321,30 @@ public class MainFrame extends javax.swing.JFrame {
         reloadLabels(mvb.getMainBundlePath());
     }
 
+    public void setOverviewInformation(MuViBee mvb) {
+        int lentToBooks = mvb.getLentToBook();
+        int lentToMusic = mvb.getLentToMusic();
+        int lentToVideos = mvb.getLentToVideo();
+
+        int numberBooks = mvb.getNumberOfBooks();
+        int numberMusic = mvb.getNumberOfMusic();
+        int numberVideos = mvb.getNumberOfVideo();
+
+        int deletedBooks = mvb.getNumberOfDeletedBooks();
+        int deletedMusic = mvb.getNumberOfDeletedMusic();
+        int deletedVideos = mvb.getNumberOfDeletedVideos();
+
+
+        jTable1.getModel().setValueAt(numberBooks, 0, 1);
+        jTable1.getModel().setValueAt(numberMusic, 1, 1);
+        jTable1.getModel().setValueAt(numberVideos, 2, 1);
+        jTable1.getModel().setValueAt(lentToBooks, 0, 2);
+        jTable1.getModel().setValueAt(lentToMusic, 1, 2);
+        jTable1.getModel().setValueAt(lentToVideos, 2, 2);
+        jTable1.getModel().setValueAt(deletedBooks, 0, 3);
+        jTable1.getModel().setValueAt(deletedMusic, 1, 3);
+        jTable1.getModel().setValueAt(deletedVideos, 2, 3);
+    }
 
     public final void reloadLabels(String bundlePath){
         ResourceBundle bundle = ResourceBundle.getBundle(bundlePath);
@@ -793,18 +818,8 @@ public class MainFrame extends javax.swing.JFrame {
         statusPanel = new javax.swing.JPanel();
         tabbedPane = new javax.swing.JTabbedPane();
         overviewPanel = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         bookPanel = new javax.swing.JPanel();
         viewBookPanel = new javax.swing.JPanel();
         viewBookComboBox = new javax.swing.JComboBox();
@@ -1037,29 +1052,28 @@ public class MainFrame extends javax.swing.JFrame {
 
         tabbedPane.setName("add video button"); // NOI18N
 
-        jLabel35.setText("jLabel35");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Bücher", "", null, null},
+                {"Musik", null, null, null},
+                {"Videos", null, null, null}
+            },
+            new String [] {
+                "Medium", "Anzahl", "Ausgeliehen", "Gelöscht"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jLabel36.setText("jLabel36");
-
-        jLabel37.setText("jLabel37");
-
-        jLabel38.setText("jLabel38");
-
-        jLabel39.setText("jLabel39");
-
-        jLabel40.setText("jLabel40");
-
-        jLabel41.setText("jLabel41");
-
-        jLabel42.setText("jLabel42");
-
-        jLabel43.setText("jLabel43");
-
-        jLabel44.setText("jLabel44");
-
-        jLabel45.setText("jLabel45");
-
-        jLabel46.setText("jLabel46");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.setRowHeight(64);
+        jTable1.setSelectionBackground(new java.awt.Color(153, 204, 255));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout overviewPanelLayout = new javax.swing.GroupLayout(overviewPanel);
         overviewPanel.setLayout(overviewPanelLayout);
@@ -1067,61 +1081,15 @@ public class MainFrame extends javax.swing.JFrame {
             overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35)
-                    .addGroup(overviewPanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel37)
-                            .addComponent(jLabel36)))
-                    .addComponent(jLabel38)
-                    .addGroup(overviewPanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel40)
-                            .addComponent(jLabel39)))
-                    .addComponent(jLabel41)
-                    .addGroup(overviewPanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel43)
-                            .addComponent(jLabel42)))
-                    .addComponent(jLabel44)
-                    .addGroup(overviewPanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel46)
-                            .addComponent(jLabel45))))
-                .addContainerGap(1044, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1084, Short.MAX_VALUE)
+                .addContainerGap())
         );
         overviewPanelLayout.setVerticalGroup(
             overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel35)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel36)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel37)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel39)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel40)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel42)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel43)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel44)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel45)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel46)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabbedPane.addTab("Übersicht", overviewPanel);
@@ -2370,21 +2338,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JPanel itemVideoPanel;
     private javax.swing.JScrollPane itemVideoScrollPane;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField languageBookTextField;
     private javax.swing.JLabel languageTextBookLabel;
     private javax.swing.JLabel languageVideoLabel;
@@ -2464,5 +2422,7 @@ public class MainFrame extends javax.swing.JFrame {
     private JScrollPane coverDetailsListVideoScrollPane;
     private JScrollPane detailsListVideoScrollPane;
     private JScrollPane coverListVideoScrollPane;
+
+
 
 }

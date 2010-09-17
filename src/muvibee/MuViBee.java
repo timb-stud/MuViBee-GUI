@@ -597,4 +597,80 @@ public class MuViBee {
             filterVideoList.sortByActors();
         }
     }
+
+    public int getLentToBook() {
+        int sum = 0;
+        for (Book b: bookList) {
+            if (!b.getLentTo().isEmpty()) {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    public int getLentToMusic() {
+        int sum = 0;
+        for (Music m: musicList) {
+            if (!m.getLentTo().isEmpty()) {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    public int getLentToVideo() {
+        int sum = 0;
+        for (Video v: videoList) {
+            if (!v.getLentTo().isEmpty()) {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    public int getNumberOfBooks() {
+        return bookList.size();
+    }
+
+    public int getNumberOfMusic() {
+        return musicList.size();
+    }
+
+    public int getNumberOfVideo() {
+        return videoList.size();
+    }
+
+    public void setOverviewInformation() {
+        mainFrame.setOverviewInformation(this);
+    }
+
+    public int getNumberOfDeletedBooks() {
+        int sum = 0;
+        for (Media m : deletedMediaList.getList()) {
+            if (m instanceof Book) {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    public int getNumberOfDeletedMusic() {
+        int sum = 0;
+        for (Media m : deletedMediaList.getList()) {
+            if (m instanceof Music) {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    public int getNumberOfDeletedVideos() {
+        int sum = 0;
+        for (Media m : deletedMediaList.getList()) {
+            if (m instanceof Video) {
+                sum++;
+            }
+        }
+        return sum;
+    }
 }

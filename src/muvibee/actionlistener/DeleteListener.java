@@ -36,6 +36,7 @@ public class DeleteListener implements ActionListener{
                     }
                 }
             }
+            mvb.setOverviewInformation();
         }
     }
 
