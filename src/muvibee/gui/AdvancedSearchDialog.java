@@ -11,10 +11,10 @@
 
 package muvibee.gui;
 
-import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import muvibee.MuViBee;
 import muvibee.media.Book;
@@ -62,6 +62,9 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         lentYearComboBox.setSelectedIndex(-1);
         lentUntilYearComboBox.setModel(new DefaultComboBoxModel(years));
         lentUntilYearComboBox.setSelectedIndex(-1);
+
+        setLentFieldsEnabled(false);
+        
         reloadLabels();
     }
 
@@ -95,10 +98,12 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         eanLabel.setText(bundle.getString("eanLabel"));
         genreLabel.setText(bundle.getString("genreLabel"));
         releaseYearLabel.setText(bundle.getString("releaseYearLabel"));
+        isLentLabel.setText(bundle.getString("isLentLabel"));
         lentToLabel.setText(bundle.getString("lentToLabel"));
         lentDateLabel.setText(bundle.getString("lentDateLabel"));
         lentUntilDateLabel.setText(bundle.getString("lentUntilDateLabel"));
         locationLabel.setText(bundle.getString("locationLabel"));
+        descriptionLabel.setText(bundle.getString("descriptionLabel"));
         annotationLabel.setText(bundle.getString("annotationLabel"));
         authorLabel.setText(bundle.getString("authorLabel"));
         isbnLabel.setText(bundle.getString("isbnLabel"));
@@ -168,6 +173,19 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         cb.setSelectedIndex(selectedIndex);
     }
 
+    public void setLentFieldsEnabled(boolean b){
+        lentToLabel.setEnabled(b);
+        lentToTextField.setEnabled(b);
+        lentDateLabel.setEnabled(b);
+        lentDayComboBox.setEnabled(b);
+        lentMonthComboBox.setEnabled(b);
+        lentYearComboBox.setEnabled(b);
+        lentUntilDateLabel.setEnabled(b);
+        lentUntilDayComboBox.setEnabled(b);
+        lentUntilMonthComboBox.setEnabled(b);
+        lentUntilYearComboBox.setEnabled(b);
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -184,11 +202,14 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         eanLabel = new javax.swing.JLabel();
         genreLabel = new javax.swing.JLabel();
         releaseYearLabel = new javax.swing.JLabel();
+        isLentLabel = new javax.swing.JLabel();
         lentToLabel = new javax.swing.JLabel();
         lentDateLabel = new javax.swing.JLabel();
         lentUntilDateLabel = new javax.swing.JLabel();
         locationLabel = new javax.swing.JLabel();
+        descriptionLabel = new javax.swing.JLabel();
         annotationLabel = new javax.swing.JLabel();
+        isLentCheckBox = new javax.swing.JCheckBox();
         ratingOneRadioButton = new javax.swing.JRadioButton();
         ratingTwoRadioButton = new javax.swing.JRadioButton();
         ratingThreeRadioButton = new javax.swing.JRadioButton();
@@ -198,6 +219,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         genreTextField = new javax.swing.JTextField();
         lentToTextField = new javax.swing.JTextField();
         locationTextField = new javax.swing.JTextField();
+        descriptionTextField = new javax.swing.JTextField();
         annotationTextField = new javax.swing.JTextField();
         releaseYearComboBox = new javax.swing.JComboBox();
         lentDayComboBox = new javax.swing.JComboBox();
@@ -249,6 +271,8 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
 
         releaseYearLabel.setText("Erscheinungsjahr");
 
+        isLentLabel.setText("Verliehen");
+
         lentToLabel.setText("Verliehen an");
 
         lentDateLabel.setText("Verleihdatum");
@@ -257,7 +281,15 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
 
         locationLabel.setText("Standort");
 
+        descriptionLabel.setText("Beschreibung");
+
         annotationLabel.setText("Kommentar");
+
+        isLentCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isLentCheckBoxActionPerformed(evt);
+            }
+        });
 
         ratingButtonGroup.add(ratingOneRadioButton);
         ratingOneRadioButton.setText("1");
@@ -288,7 +320,8 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                     .addComponent(ratingLabel)
                     .addComponent(eanLabel)
                     .addComponent(genreLabel)
-                    .addComponent(releaseYearLabel))
+                    .addComponent(releaseYearLabel)
+                    .addComponent(locationLabel))
                 .addGap(13, 13, 13)
                 .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(mediaPanelLayout.createSequentialGroup()
@@ -298,9 +331,6 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                             .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
-                        .addComponent(releaseYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
                         .addComponent(ratingOneRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ratingTwoRadioButton)
@@ -308,45 +338,63 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                         .addComponent(ratingThreeRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ratingNoneRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lentToLabel)
-                    .addComponent(lentDateLabel)
-                    .addComponent(locationLabel)
-                    .addComponent(lentUntilDateLabel)
-                    .addComponent(annotationLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
+                        .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(locationTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(releaseYearComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 223, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)))
                 .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(annotationLabel, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lentToTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                            .addComponent(locationTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                            .addComponent(annotationTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lentDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lentMonthComboBox, 0, 172, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lentYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mediaPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lentUntilDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lentUntilMonthComboBox, 0, 172, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lentUntilYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(mediaPanelLayout.createSequentialGroup()
+                                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lentToLabel)
+                                    .addComponent(lentDateLabel)
+                                    .addComponent(lentUntilDateLabel)
+                                    .addComponent(descriptionLabel))
+                                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lentDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lentMonthComboBox, 0, 181, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lentYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(lentToTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(descriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                                            .addGroup(mediaPanelLayout.createSequentialGroup()
+                                                .addComponent(lentUntilDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lentUntilMonthComboBox, 0, 181, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lentUntilYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(annotationTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)))))
+                            .addGroup(mediaPanelLayout.createSequentialGroup()
+                                .addComponent(isLentLabel)
+                                .addGap(37, 37, 37)
+                                .addComponent(isLentCheckBox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         mediaPanelLayout.setVerticalGroup(
             mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mediaPanelLayout.createSequentialGroup()
-                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleLabel)
+                    .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(isLentLabel)
+                    .addComponent(isLentCheckBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(mediaPanelLayout.createSequentialGroup()
-                        .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(titleLabel)
-                            .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(ratingOneRadioButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -361,13 +409,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(genreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(genreLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(releaseYearLabel)
-                            .addComponent(annotationLabel)
-                            .addComponent(annotationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(releaseYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(genreLabel)))
                     .addGroup(mediaPanelLayout.createSequentialGroup()
                         .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lentToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,12 +425,20 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                             .addComponent(lentUntilDateLabel)
                             .addComponent(lentUntilDayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lentUntilMonthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lentUntilYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(locationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(locationLabel))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lentUntilYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(releaseYearLabel)
+                    .addComponent(releaseYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descriptionLabel)
+                    .addComponent(descriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(locationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(locationLabel)
+                    .addComponent(annotationLabel)
+                    .addComponent(annotationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         bookPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Bücher"));
@@ -476,7 +526,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                 .addGroup(musicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(musicFormatLabel)
                     .addComponent(musicFormatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         videoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Videos"));
@@ -541,40 +591,38 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mediaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(bookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(musicPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(videoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(mediaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cancelButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchButton)))
+                        .addComponent(searchButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(musicPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(videoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(mediaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(musicPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(videoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchButton)
-                            .addComponent(cancelButton)))
-                    .addComponent(bookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(musicPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(videoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchButton)
+                    .addComponent(cancelButton))
                 .addContainerGap())
         );
 
@@ -601,6 +649,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         if(selectedReleaseYear != null)
             releaseYear = selectedReleaseYear.toString().trim();
         String location = locationTextField.getText().trim();
+        boolean isLent = isLentCheckBox.isSelected();
         String lendTo = lentToTextField.getText().trim();
         int lendDay = lentDayComboBox.getSelectedIndex();
         int lendMonth = lentMonthComboBox.getSelectedIndex();
@@ -614,6 +663,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         String lentUntilYear = "";
         if(selectedLentUntilYear != null)
             lentUntilYear = selectedLentUntilYear.toString().trim();
+        String description = descriptionTextField.getText().trim();
         String annotation = annotationTextField.getText().trim();
         
         //Rating
@@ -648,7 +698,6 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             videoFormat = selectedVideoFormat.toString().trim();
         }
 
-
         try {
             int ry = TestUtils.validYear(releaseYear);
             int ly = TestUtils.validYear(lentYear);
@@ -662,6 +711,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             book.setGenre(genre);
             book.setReleaseYear(ry);
             book.setLocation(location);
+            book.setIsLent(isLent);
             book.setLendTo(lendTo);
             book.setLendDay(lendDay);
             book.setLendMonth(lendMonth);
@@ -670,6 +720,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             book.setLendUntilMonth(lendUntilMonth);
             book.setLendUntilYear(luy);
             book.setRating(rating);
+            book.setDescription(description);
             book.setComment(annotation);
 
             music = new Music();
@@ -681,6 +732,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             music.setGenre(genre);
             music.setReleaseYear(ry);
             music.setLocation(location);
+            music.setIsLent(isLent);
             music.setLendTo(lendTo);
             music.setLendDay(lendDay);
             music.setLendMonth(lendMonth);
@@ -689,6 +741,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             music.setLendUntilMonth(lendUntilMonth);
             music.setLendUntilYear(luy);
             music.setRating(rating);
+            music.setDescription(description);
             music.setComment(annotation);
 
             video = new Video();
@@ -700,6 +753,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             video.setGenre(genre);
             video.setReleaseYear(ry);
             video.setLocation(location);
+            video.setIsLent(isLent);
             video.setLendTo(lendTo);
             video.setLendDay(lendDay);
             video.setLendMonth(lendMonth);
@@ -708,6 +762,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             video.setLendUntilMonth(lendUntilMonth);
             video.setLendUntilYear(luy);
             video.setRating(rating);
+            video.setDescription(description);
             video.setComment(annotation);
         } catch (NonValidYearException e) {
             returnCode = RET_ILLEGAL_YEAR;
@@ -715,6 +770,14 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
 
         doClose(returnCode);
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void isLentCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isLentCheckBoxActionPerformed
+        Object o = evt.getSource();
+        if(o instanceof JCheckBox){
+            JCheckBox checkBox = (JCheckBox)o;
+            setLentFieldsEnabled(checkBox.isSelected());
+        }
+    }//GEN-LAST:event_isLentCheckBoxActionPerformed
 
     private void doClose(int retStatus) {
         returnStatus = retStatus;
@@ -733,12 +796,16 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     private javax.swing.JTextField authorTextField;
     private javax.swing.JPanel bookPanel;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel descriptionLabel;
+    private javax.swing.JTextField descriptionTextField;
     private javax.swing.JLabel directorLabel;
     private javax.swing.JTextField directorTextField;
     private javax.swing.JLabel eanLabel;
     private javax.swing.JTextField eanTextField;
     private javax.swing.JLabel genreLabel;
     private javax.swing.JTextField genreTextField;
+    private javax.swing.JCheckBox isLentCheckBox;
+    private javax.swing.JLabel isLentLabel;
     private javax.swing.JLabel isbnLabel;
     private javax.swing.JTextField isbnTextField;
     private javax.swing.JLabel languageLabel;

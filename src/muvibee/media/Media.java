@@ -15,6 +15,7 @@ public abstract class Media extends Observable {
     private String genre = "";
     private int releaseYear = -1;
     private String location = "";
+    private boolean isLent = false;
     private String lentTo = "";
     private int lendDay = 0;
     private int lendMonth = 0;
@@ -90,6 +91,14 @@ public abstract class Media extends Observable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public boolean isIsLent() {
+        return isLent;
+    }
+
+    public void setIsLent(boolean isLent) {
+        this.isLent = isLent;
     }
 
     public String getLentTo() {
@@ -205,7 +214,8 @@ public abstract class Media extends Observable {
     public boolean matches(Media m){
         return title.contains(m.title) && ean.contains(m.ean)
                 && genre.contains(m.genre) && releaseYear == m.releaseYear
-                && location.contains(m.location) && lentTo.contains(m.lentTo)
+                && location.contains(m.location) && isLent == m.isLent
+                && lentTo.contains(m.lentTo)
                 && lendDay == m.lendDay && lendMonth == m.getLendMonth()
                 && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
                 && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear
