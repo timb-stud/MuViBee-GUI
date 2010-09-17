@@ -48,6 +48,7 @@ import util.coversList.CoverList;
 import util.coverDetailsList.*;
 import util.deleteditemlist.DeletedItemsList;
 import util.detailsList.DetailsList;
+import util.tree.PrioTree;
 
 
 
@@ -68,6 +69,16 @@ public class MainFrame extends javax.swing.JFrame {
         coverListBookScrollPane.setViewportView(coverListBook);
         coverListMusicScrollPane.setViewportView(coverListMusic);
         coverListVideoScrollPane.setViewportView(coverListVideo);
+    }
+
+    private void createTreeView(MuViBee mvb){
+        prioTreeBook = new PrioTree();
+        mvb.getBookList().addObserver(prioTreeBook);
+        prioTreeMusic = new PrioTree();
+        mvb.getMusicList().addObserver(prioTreeMusic);
+        prioTreeVideo = new PrioTree();
+        mvb.getVideoList().addObserver(prioTreeVideo);
+
     }
 
     private void createDetailsList(MuViBee mvb){
@@ -92,6 +103,9 @@ public class MainFrame extends javax.swing.JFrame {
     private DetailsList detailsListBook;
     private DetailsList detailsListMusic;
     private DetailsList detailsListVideo;
+    private PrioTree prioTreeBook;
+    private PrioTree prioTreeMusic;
+    private PrioTree prioTreeVideo;
 
     private void createCoverDetailsList(MuViBee mvb){
         coverDetailsBookList = new CoverDetailsList(mvb);

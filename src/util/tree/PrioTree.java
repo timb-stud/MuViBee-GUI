@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -16,12 +18,15 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import muvibee.lists.MediaList;
 import muvibee.media.Media;
+import muvibee.utils.SortTypes;
 
 /**
  *
  * @author christian
  */
-public class PrioTree extends JPanel {
+public class PrioTree extends JPanel implements Observer {
+
+    private final String OTHER = "sonstige";
 
     DefaultMutableTreeNode root;
     DefaultMutableTreeNode stageOneChild;
@@ -68,42 +73,77 @@ public class PrioTree extends JPanel {
     }
 
 
-    private boolean containsChild (DefaultMutableTreeNode node, DefaultMutableTreeNode child){
-        for (int i = 0; i < node.getChildCount(); i++)
-            return (node.getChildAt(i).equals(child));
+    private boolean containsChild (int level, DefaultMutableTreeNode child){
+        for (int i = 0; i < stage(level).getChildCount(); i++)
+            if (stage(level).getChildAt(i).equals(child))
+                return false;
 
         return true;
     }
 
 
-    public static void createTree(MediaList mediaList, int[] sortBy) {
+    private DefaultMutableTreeNode stage(int i){
+        switch (i){
+            case 0:
+                return root;
+            case 1:
+                return stageOneChild;
+            case 2:
+                return stageTwoChild;
+            case 3:
+                return stageThreeChild;
+        }
+        return null;
+    }
+
+
+    public void createTree(MediaList mediaList, SortTypes[] sortBy) {
+        Object o = null;
+        DefaultMutableTreeNode newNode;
+        int level = 0;
+
         for (Media m : mediaList.getList()){
-            for (int i : sortBy){
-                switch (i) {
-                    case 1:
+            for (SortTypes sortedBy : sortBy){
+                switch (sortedBy){
+                    case TITLE :
+                        o = m.getTitle();
                         break;
-                    case 2:
+                    case YEAR :
+                        o = m.getReleaseYear();
                         break;
-                    case 3:
+                    case GENRE:
+                        o = m.getGenre();
+                        break;
+                    case RATING:
+                        o = m.getRating();
+                        break;
+                    case LOCATION:
+                        o = m.getLocation();
+                        break;
+                    case LENTTO:
+                        o = m.getLentTo();
                         break;
                     default:
-                        ;
+                       o = m.getTitle();
                 }
+
+                if (o.equals(null))
+                    newNode = new DefaultMutableTreeNode(OTHER);
+                else
+                    newNode = new DefaultMutableTreeNode(o);
+
+                if (!(containsChild(level, newNode)))
+                    stage(level).add(newNode);
+
+                level++;
             }
         }
     }
 
-    private String sortList(MediaList mediaList, int sortedBy) {
-        switch (sortedBy) {
-            case 1:
-
-                mediaList.sortByReleaseYear();
-                break;
-            case 2:
-                break;
-            default:
-                ;
-        }
-        return null;
+    @Override
+    public void update(Observable list, Object sortBy) {
+        MediaList mediaList = ((MediaList) list);
+        root =  new DefaultMutableTreeNode("Root");
+        createTree(mediaList,(SortTypes[]) sortBy);
     }
 }

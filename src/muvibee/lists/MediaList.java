@@ -15,6 +15,7 @@ import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
+import muvibee.utils.SortTypes;
 
 
 /**
@@ -23,7 +24,7 @@ import muvibee.media.Video;
  */
 public class MediaList extends Observable implements Observer{
 
-    enum SortTypes { DIRECTOR, LANGUAGE, TITLE, FORMAT, INTERPRETER, TYPE, ISBN, EAN, ACTORS, REGISSEUR, YEAR, GENRE, LOCATION, LENTTO, RATING, AUTHOR };
+//    enum SortTypes { DIRECTOR, LANGUAGE, TITLE, FORMAT, INTERPRETER, TYPE, ISBN, EAN, ACTORS, REGISSEUR, YEAR, GENRE, LOCATION, LENTTO, RATING, AUTHOR };
     LinkedList<Media> list;
     SortTypes sortedBy;
 
@@ -38,6 +39,7 @@ public class MediaList extends Observable implements Observer{
         m.addObserver(this);
         this.setChanged();
         this.notifyObservers();
+//        this.notifyObservers(new SortTypes[]{SortTypes.GENRE, SortTypes.YEAR, SortTypes.TITLE });
         return succ;
     }
 
