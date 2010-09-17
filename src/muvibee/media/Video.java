@@ -11,8 +11,25 @@ public class Video extends Media {
     public Video() {
     }
 
-    public Video(String title, String ean, String releaseYear, BufferedImage cover) {
+    public Video(String title, String ean, String releaseYear, BufferedImage cover, String binding, String actors, String director) {
         super(title, ean, releaseYear, cover);
+        if (actors != null) {
+            this.actors = actors;
+        }
+        if (director != null) {
+            this.director = director;
+        }
+        if (binding != null) {
+            if (binding.equals("Videokassette")) {
+                this.format = "vhs";
+            } else {
+                if (binding.contains("Blu-ray")) {
+                    this.format = "blu-ray";
+                } else {
+                    this.format = "cd/dvd";
+                }
+            }
+        }
     }
 
     @Override

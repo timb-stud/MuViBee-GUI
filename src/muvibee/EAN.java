@@ -54,7 +54,7 @@ public class EAN {
     }
 
 	private static InputStream request(long ean) throws IOException {
-		URL url = new URL("http://free.apisigning.com/onca/xml"
+		URL url = new URL("http://de.free.apisigning.com/onca/xml"
 				+ "?Service=AWSECommerceService"
 				+ "&AWSAccessKeyId=AKIAJX2W3VC3FH2N6J7A"
 				+ "&Operation=ItemLookup"
@@ -73,11 +73,14 @@ public class EAN {
 		String title = null;
 		String artist = null;
 		String author = null;
+                String actor = null;
+                String director = null;
 		String isbn = null;
 		String language = null;
 		String productGroup = null;
 		String releaseYear = null;
 		String ean = null;
+                String binding = null;
 		BufferedImage cover = null;
 
 		XMLStreamReader xmlStreamReader = XMLInputFactory.newInstance()
@@ -100,6 +103,20 @@ public class EAN {
 				if (xmlStreamReader.getLocalName().equals("Author")) {
 					author = xmlStreamReader.getElementText();
 				}
+                                if (xmlStreamReader.getLocalName().equals("Actor")) {
+                                    if (actor == null) {
+                                        actor =  xmlStreamReader.getElementText();
+                                    } else {
+					actor =  actor + ", " + xmlStreamReader.getElementText();
+                                    }
+				}
+				if (xmlStreamReader.getLocalName().equals("Director")) {
+                                    if (director == null) {
+                                        director =  xmlStreamReader.getElementText();
+                                    } else {
+					director =  director + ", " + xmlStreamReader.getElementText();
+                                    }
+				}
 				if (xmlStreamReader.getLocalName().equals("ISBN")) {
 					isbn = xmlStreamReader.getElementText();
 				}
@@ -121,6 +138,9 @@ public class EAN {
 				if (xmlStreamReader.getLocalName().equals("EAN")) {
 					ean = xmlStreamReader.getElementText();
 				}
+                                if (xmlStreamReader.getLocalName().equals("Binding")) {
+					binding = xmlStreamReader.getElementText();
+				}
 				if (xmlStreamReader.getLocalName().equals("URL")) {
 					if (i == 2) {
 						String urlCover = xmlStreamReader.getElementText();
@@ -136,11 +156,15 @@ public class EAN {
 		xmlStreamReader.close();
 		if (error == null) {
 			if (productGroup.equals("DVD") || productGroup.equals("Video")) {
-				Video v = new Video(title, ean, releaseYear, cover);
+				Video v = new Video(title, ean, releaseYear, cover, binding, actor, director);
 				System.out.println("EAN_FOUND");
 				return v;
 			} else if (productGroup.equals("Music")) {
-				Music m = new Music(title, ean, releaseYear, cover, artist);
+				Music m = new Music(title, ean, releaseYear, cover, artist, binding);
+				System.out.println("EAN_FOUND");
+				return m;
+                        } else if (productGroup.equals("Book") && (binding.equals("Hörkassette") || binding.contains("Musikkassette"))) {
+				Music m = new Music(title, ean, releaseYear, cover, artist, binding);
 				System.out.println("EAN_FOUND");
 				return m;
 			} else if (productGroup.equals("Book")) {
