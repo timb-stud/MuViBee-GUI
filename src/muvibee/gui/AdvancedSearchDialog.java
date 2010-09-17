@@ -11,7 +11,9 @@
 
 package muvibee.gui;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import muvibee.MuViBee;
@@ -82,6 +84,35 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
 
     public final void reloadLabels(){
         ResourceBundle bundle = ResourceBundle.getBundle(mvb.getMainBundlePath());
+
+        mediaPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("mediaPanelASD")));
+        bookPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("bookPanelASD")));
+        musicPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("musicPanelASD")));
+        videoPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("videoPanelASD")));
+        
+        titleLabel.setText(bundle.getString("titleLabel"));
+        ratingLabel.setText(bundle.getString("ratingLabel"));
+        eanLabel.setText(bundle.getString("eanLabel"));
+        genreLabel.setText(bundle.getString("genreLabel"));
+        releaseYearLabel.setText(bundle.getString("releaseYearLabel"));
+        lentToLabel.setText(bundle.getString("lentToLabel"));
+        lentDateLabel.setText(bundle.getString("lentDateLabel"));
+        lentUntilDateLabel.setText(bundle.getString("lentUntilDateLabel"));
+        locationLabel.setText(bundle.getString("locationLabel"));
+        annotationLabel.setText(bundle.getString("annotationLabel"));
+        authorLabel.setText(bundle.getString("authorLabel"));
+        isbnLabel.setText(bundle.getString("isbnLabel"));
+        languageLabel.setText(bundle.getString("languageLabel"));
+        artistLabel.setText(bundle.getString("artistLabel"));
+        typeLabel.setText(bundle.getString("typeLabel"));
+        musicFormatLabel.setText(bundle.getString("formatLabel"));
+        directorLabel.setText(bundle.getString("directorLabel"));
+        actorsLabel.setText(bundle.getString("actorsLabel"));
+        videoFormatLabel.setText(bundle.getString("formatLabel"));
+
+        ratingNoneRadioButton.setSelected(true);
+        ratingNoneRadioButton.setText(bundle.getString("noRating"));
+
         String day = bundle.getString("dayComboBox");
         updateComboBoxLabel(lentDayComboBox, day);
         updateComboBoxLabel(lentUntilDayComboBox, day);
@@ -106,8 +137,8 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
 
         String[] types = new String[3];
         types[0] = bundle.getString("album");
-        types[0] = bundle.getString("sampler");
-        types[0] = bundle.getString("single");
+        types[1] = bundle.getString("sampler");
+        types[2] = bundle.getString("single");
         updateComboBoxLabels(typeComboBox, types);
 
 	String[] musicFormats = new String[3];
@@ -161,6 +192,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         ratingOneRadioButton = new javax.swing.JRadioButton();
         ratingTwoRadioButton = new javax.swing.JRadioButton();
         ratingThreeRadioButton = new javax.swing.JRadioButton();
+        ratingNoneRadioButton = new javax.swing.JRadioButton();
         titleTextField = new javax.swing.JTextField();
         eanTextField = new javax.swing.JTextField();
         genreTextField = new javax.swing.JTextField();
@@ -236,6 +268,9 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         ratingButtonGroup.add(ratingThreeRadioButton);
         ratingThreeRadioButton.setText("3");
 
+        ratingButtonGroup.add(ratingNoneRadioButton);
+        ratingNoneRadioButton.setText("keine");
+
         releaseYearComboBox.setEditable(true);
 
         lentYearComboBox.setEditable(true);
@@ -254,23 +289,26 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                     .addComponent(eanLabel)
                     .addComponent(genreLabel)
                     .addComponent(releaseYearLabel))
-                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(13, 13, 13)
+                .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(mediaPanelLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
                         .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(genreTextField)
                             .addComponent(eanTextField)
-                            .addGroup(mediaPanelLayout.createSequentialGroup()
-                                .addComponent(ratingOneRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ratingTwoRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ratingThreeRadioButton))
-                            .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(mediaPanelLayout.createSequentialGroup()
+                            .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
+                        .addComponent(releaseYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mediaPanelLayout.createSequentialGroup()
+                        .addComponent(ratingOneRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(releaseYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(ratingTwoRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ratingThreeRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ratingNoneRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lentToLabel)
                     .addComponent(lentDateLabel)
@@ -313,7 +351,8 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
                             .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(ratingOneRadioButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(ratingTwoRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ratingThreeRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ratingThreeRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ratingNoneRadioButton))
                             .addComponent(ratingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mediaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -503,16 +542,18 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mediaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(musicPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(videoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mediaPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(bookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(musicPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(videoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(cancelButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchButton)))
@@ -720,6 +761,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     private javax.swing.JPanel musicPanel;
     private javax.swing.ButtonGroup ratingButtonGroup;
     private javax.swing.JLabel ratingLabel;
+    private javax.swing.JRadioButton ratingNoneRadioButton;
     private javax.swing.JRadioButton ratingOneRadioButton;
     private javax.swing.JRadioButton ratingThreeRadioButton;
     private javax.swing.JRadioButton ratingTwoRadioButton;
