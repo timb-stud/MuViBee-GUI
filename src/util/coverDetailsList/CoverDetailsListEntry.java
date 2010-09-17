@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import muvibee.media.Media;
+import muvibee.utils.ResizeImageIcon;
 
 @SuppressWarnings("serial")
 public class CoverDetailsListEntry extends JPanel{
@@ -24,7 +25,7 @@ public class CoverDetailsListEntry extends JPanel{
 	
 	public CoverDetailsListEntry(Media media, String special) {
                 if (media.getCover() != null)
-                    this.icon = resizeIcon(70, 70, media.getCover());
+                    this.icon = ResizeImageIcon.resizeIcon(70, 80, media.getCover());
                 else
                     this.icon = null;
 		this.special = special;
@@ -35,7 +36,7 @@ public class CoverDetailsListEntry extends JPanel{
 		// | Cover |________|
 		// |       | Info 1 |
 		// |_______|________|
-		setLayout(new GridLayout(1,2, -40,0));
+		setLayout(new GridLayout(1,2, -375,0));
 		setPreferredSize(new Dimension(10, ySize));
                 setBackground(Color.white);
 		
@@ -85,9 +86,8 @@ public class CoverDetailsListEntry extends JPanel{
 		this.special = text;
 	}
 
-    public int getySize() {
-        return ySize;
-    }
-
+        public int getySize() {
+            return ySize;
+        }
         
 }

@@ -14,29 +14,28 @@ import muvibee.MuViBee;
  *
  * @author bline
  */
-public class DeleteListener implements ActionListener{
+public class HideActionListener implements ActionListener{
     private MuViBee mvb;
-
-    public DeleteListener(MuViBee mvb) {
+    
+    public HideActionListener(MuViBee mvb) {
         this.mvb = mvb;
     }
-
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if(source instanceof JButton){
             JButton button = (JButton)source;
-            if(button.getName().equals("deleteBook")){
-                mvb.removeCurrentBookFromBookLists();
+            if(button.getName().equals("hide book")){
+                mvb.showBookItem(false);
             } else {
-                if (button.getName().equals("deleteMusic")) {
-                    mvb.removeCurrentMusicFromMusicLists();
+                if (button.getName().equals("hide music")) {
+                    mvb.showMusicItem(false);
                 } else {
-                    if (button.getName().equals("deleteVideo")) {
-                        mvb.removeCurrentVideoFromVideoLists();
+                    if (button.getName().equals("hide video")) {
+                        mvb.showVideoItem(false);
                     }
                 }
             }
-            mvb.setOverviewInformation();
+            mvb.unselectLists();
         }
     }
 

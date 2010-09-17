@@ -29,33 +29,34 @@ public class SaveActionListener implements ActionListener {
             JButton button = (JButton)source;
             if(button.getName().equals("save book button")){
                try {
-                mvb.setCurrentBookItemInformation();
+                    if(!mvb.setCurrentBookItemInformation()) return;
                } catch (NonValidYearException ex) {
                    StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
                    return;
                }
-                mvb.addCurrentBookToBookList();
+                mvb.addCurrentBookToBookLists();
             } else {
                 if(button.getName().equals("save music button")){
 		try {
-                    mvb.setCurrentMusicItemInformation();
+                    if(!mvb.setCurrentMusicItemInformation()) return;
                 } catch (NonValidYearException ex) {
                    StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
                    return;
                 }
-		    mvb.addCurrentMusicToMusicList();
+		    mvb.addCurrentMusicToMusicLists();
                 } else {
                     if(button.getName().equals("save video button")){
                         try {
-                            mvb.setCurrentVideoItemInformation();
+                            if(!mvb.setCurrentVideoItemInformation()) return;
                         } catch (NonValidYearException ex) {
                             StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
                             return;
                         }
-                        mvb.addCurrentVideoToVideoList();
+                        mvb.addCurrentVideoToVideoLists();
                     }
                 }
             }
+            mvb.setOverviewInformation();
         }
     }
 

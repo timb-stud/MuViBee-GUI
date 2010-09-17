@@ -13,15 +13,14 @@ import muvibee.MuViBee;
  *
  * @author bline
  */
-public class RestoreListener implements ActionListener {
+public class DeleteSearchActionListener implements ActionListener {
     private MuViBee mvb;
-    public RestoreListener(MuViBee mvb) {
+    public DeleteSearchActionListener(MuViBee mvb) {
         this.mvb = mvb;
     }
 
     public void actionPerformed(ActionEvent e) {
-        mvb.restoreCurrentDeletedMedia();
-        mvb.setOverviewInformation();
+        mvb.resetSearch();
     }
 
 }

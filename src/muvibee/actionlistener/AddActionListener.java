@@ -31,45 +31,48 @@ public class AddActionListener implements ActionListener {
         Object source = e.getSource();
         if(source instanceof JButton){
             JButton button = (JButton)source;
-            int decision = mvb.showDecisionFrame();
-            if(button.getName().equals("add book button")){
-                Book book;
-                if(decision == 0){
-                    String ean = mvb.showEanInputFrame();
-		    if(ean == null){
-			return ;
-		    }
-                    book = (Book)EAN.searchEan(ean); //TODO getBook(ean);
-                }else{
-                    book = new Book();
-                }
-                mvb.setCurrentBook(book);
-            }else{
-                if(button.getName().equals("add music button")){
-                    Music music;
+            int decision = mvb.showSelfEANDecisionFrame();
+            if (decision >= 0) {
+                mvb.resetSearch();
+                if(button.getName().equals("add book button")){
+                    Book book;
                     if(decision == 0){
                         String ean = mvb.showEanInputFrame();
-			if(ean == null){
-			    return ;
-			}
-                        music = (Music)EAN.searchEan(ean);
+                        if(ean == null){
+                            return ;
+                        }
+                        book = (Book)EAN.searchEan(ean); //TODO getBook(ean);
                     }else{
-                        music = new Music();
+                        book = new Book();
                     }
-                    mvb.setCurrentMusic(music);
+                    mvb.setCurrentBook(book);
                 }else{
-                    if(button.getName().equals("add video button")){
-                        Video video;
+                    if(button.getName().equals("add music button")){
+                        Music music;
                         if(decision == 0){
                             String ean = mvb.showEanInputFrame();
-			    if(ean == null){
-				return ;
-			    }
-                            video = (Video)EAN.searchEan(ean);
+                            if(ean == null){
+                                return ;
+                            }
+                            music = (Music)EAN.searchEan(ean);
                         }else{
-                            video = new Video();
+                            music = new Music();
                         }
-                        mvb.setCurrentVideo(video);
+                        mvb.setCurrentMusic(music);
+                    }else{
+                        if(button.getName().equals("add video button")){
+                            Video video;
+                            if(decision == 0){
+                                String ean = mvb.showEanInputFrame();
+                                if(ean == null){
+                                    return ;
+                                }
+                                video = (Video)EAN.searchEan(ean);
+                            }else{
+                                video = new Video();
+                            }
+                            mvb.setCurrentVideo(video);
+                        }
                     }
                 }
             }

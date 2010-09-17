@@ -1,92 +1,68 @@
 package muvibee.media;
 
-
-
 import java.awt.image.BufferedImage;
 
-public class Video extends Media{
-	private String format;
-	private String director;
-	private String actors;
+public class Video extends Media {
 
-        public Video(){ }
+    private String format = "";
+    private String director = "";
+    private String actors = "";
 
-        public Video(String title, String actors){
-            super(title);
+    public Video() {
+    }
+
+    public Video(String title, String ean, String releaseYear, BufferedImage cover, String binding, String actors, String director) {
+        super(title, ean, releaseYear, cover);
+        if (actors != null) {
             this.actors = actors;
         }
+        if (director != null) {
+            this.director = director;
+        }
+        if (binding != null) {
+            if (binding.equals("Videokassette")) {
+                this.format = "vhs";
+            } else {
+                if (binding.contains("Blu-ray")) {
+                    this.format = "blu-ray";
+                } else {
+                    this.format = "cd/dvd";
+                }
+            }
+        }
+    }
 
+    @Override
+    public boolean matches(String str) {
+        return super.matches(str) || format.contains(str) || director.contains(str) || actors.contains(str);
+    }
 
-	public Video(String format, 
-		    String director,
-		    String actors,
-		    String title,
-		    String ean,
-		    String genre,
-		    int year,
-		    String location,
-		    String lendTo,
-		    int lendDay,
-		    int lendMonth,
-		    int lendYear,
-		    int lendUntilDay,
-		    int lendUntilMonth,
-		    int lendUntilYear,
-		    int rating,
-		    String description,
-		    String comment,
-		    BufferedImage cover,
-		    boolean isDeleted) {
-		
-		super(title,
-			ean,
-			genre,
-			year,
-			location,
-			lendTo,
-			lendDay,
-			lendMonth,
-			lendYear,
-			lendUntilDay,
-			lendUntilMonth,
-			lendUntilYear,
-			rating,
-			description,
-			comment,
-			cover,
-			isDeleted);
-		this.format = format;
-		this.director = director;
-		this.actors = actors;
-	}
+    public boolean matches(Video v){
+        return super.matches(v) && format.contains(v.format)
+                && director.contains(v.director) && actors.contains(v.actors);
+    }
 
-	public String getFormat() {
-		return format;
-	}
+    public String getFormat() {
+        return format;
+    }
 
-	public void setFormat(String format) {
-		this.format = format;
-	}
+    public void setFormat(String format) {
+        this.format = format;
+    }
 
-	public String getDirector() {
-		return director;
-	}
+    public String getDirector() {
+        return director;
+    }
 
-	public void setDirector(String director) {
-		this.director = director;
-	}
+    public void setDirector(String director) {
+        this.director = director;
+    }
 
-	public String getActors() {
-		return actors;
-	}
+    public String getActors() {
+        return actors;
+    }
 
-	public void setActors(String actor) {
-		this.actors = actor;
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setActors(String actor) {
+        this.actors = actor;
+    }
 }

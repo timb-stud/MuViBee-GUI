@@ -2,33 +2,32 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package muvibee.actionlistener;
 
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
-import javax.swing.JLayeredPane;
-
-
+import javax.swing.JPanel;
 
 /**
  *
  * @author bline
  */
 public class ComboBoxActionListener implements ActionListener {
-    private JLayeredPane viewBookLayeredPane;
-    private JLayeredPane viewMusicLayeredPane;
-    private JLayeredPane viewVideoLayeredPane;
+
+    private JPanel bookCardPanel;
+    private JPanel musicCardPanel;
+    private JPanel videoCardPanel;
     private JComboBox viewBookComboBox;
     private JComboBox viewMusicComboBox;
     private JComboBox viewVideoComboBox;
 
-    public ComboBoxActionListener(JLayeredPane viewBookLayeredPane, JLayeredPane viewMusicLayeredPane, JLayeredPane viewVideoLayeredPane, JComboBox viewBookComboBox, JComboBox viewMusicComboBox, JComboBox viewVideoComboBox) {
-        this.viewBookLayeredPane = viewBookLayeredPane;
-        this.viewMusicLayeredPane = viewMusicLayeredPane;
-        this.viewVideoLayeredPane = viewVideoLayeredPane;
+    public ComboBoxActionListener(JPanel bookCardPanel, JPanel musicCardPanel, JPanel videoCardPanel, JComboBox viewBookComboBox, JComboBox viewMusicComboBox, JComboBox viewVideoComboBox) {
+        this.bookCardPanel = bookCardPanel;
+        this.musicCardPanel = musicCardPanel;
+        this.videoCardPanel = videoCardPanel;
         this.viewBookComboBox = viewBookComboBox;
         this.viewMusicComboBox = viewMusicComboBox;
         this.viewVideoComboBox = viewVideoComboBox;
@@ -38,16 +37,16 @@ public class ComboBoxActionListener implements ActionListener {
         if (e.getSource() instanceof JComboBox) {
             JComboBox cb = (JComboBox) e.getSource();
             if (cb == viewBookComboBox) {
-                viewBookLayeredPane.setPosition((Component)cb.getSelectedItem(), 0);
+                ((CardLayout)bookCardPanel.getLayout()).show(bookCardPanel, ((Component)cb.getSelectedItem()).getName());
             } else {
                 if (cb == viewMusicComboBox) {
-                    viewMusicLayeredPane.setPosition((Component)cb.getSelectedItem(), 0);
+                    ((CardLayout)musicCardPanel.getLayout()).show(musicCardPanel, ((Component)cb.getSelectedItem()).getName());
                 } else {
                     if (cb == viewVideoComboBox) {
-                        viewVideoLayeredPane.setPosition((Component)cb.getSelectedItem(), 0);
+                        ((CardLayout)videoCardPanel.getLayout()).show(videoCardPanel, ((Component)cb.getSelectedItem()).getName());
                     }
-                  }
                 }
             }
         }
     }
+}

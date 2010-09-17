@@ -12,9 +12,11 @@ package muvibee.utils;
 public class TestUtils {
 
     public static int validYear(String year) throws NonValidYearException{
-	try{
+	if(year.isEmpty())
+            return -1;
+        try{
 	    int y = Integer.parseInt(year);
-	    	if(y > 0 && y < 3000)
+	    	if(y >= 0 && y < 3000)
 		    return y;
 		else
 		    throw new NonValidYearException();

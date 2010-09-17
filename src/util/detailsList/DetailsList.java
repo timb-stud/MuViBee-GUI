@@ -1,6 +1,7 @@
 
-package util.coverDetailsList;
+package util.detailsList;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -17,43 +18,41 @@ import muvibee.lists.MediaList;
 import muvibee.media.*;
 
 @SuppressWarnings("serial")
-public class CoverDetailsList extends JList implements Observer{
+public class DetailsList extends JList implements Observer{
 	DefaultListModel  listModel;
-	CoverDetailsListRenderer lcr;
+	DetailsListRenderer lcr;
 
+	public DetailsList(final MuViBee muvibee) {
 
-	public CoverDetailsList(final MuViBee muvibee) {	
+                setLayout(new BorderLayout());
+		
 		listModel = new DefaultListModel();
-		lcr = new CoverDetailsListRenderer();
-
-                setModel(listModel);
+		lcr = new DetailsListRenderer();
  	        setCellRenderer(lcr);
  	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
  	        setLayoutOrientation(JList.VERTICAL);
  	        setVisibleRowCount(10);
+                setModel(listModel);
  	        
 	        addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
                             if(evt.getValueIsAdjusting()){
                                 Object object = listModel.getElementAt(getSelectedIndex());
-                                if (object instanceof CoverDetailsListEntryBook) {
-                                    muvibee.setCurrentBook(((CoverDetailsListEntryBook) object).getBook());
-                                } else if (object instanceof CoverDetailsListEntryMusic) {
-                                    muvibee.setCurrentMusic(((CoverDetailsListEntryMusic) object).getMusic());
-                                } else if ( object instanceof CoverDetailsListEntryVideo) {
-                                    muvibee.setCurrentVideo(((CoverDetailsListEntryVideo) object).getVideo());
+                                if (object instanceof DetailsListEntryBook) {
+                                    muvibee.setCurrentBook(((DetailsListEntryBook) object).getBook());
+                                } else if (object instanceof DetailsListEntryMusic) {
+                                    muvibee.setCurrentMusic(((DetailsListEntryMusic) object).getMusic());
+                                } else if ( object instanceof DetailsListEntryVideo) {
+                                    muvibee.setCurrentVideo(((DetailsListEntryVideo) object).getVideo());
 
                                 }
                             }
 	        	}
 	        });
- 	        
-	        setPreferredSize(new Dimension(150,0));
-
 	}
 	
 	
-	private void listAdd(CoverDetailsListEntry entry){
+	private void listAdd(DetailsListEntry entry){
 		listModel.addElement(entry);
 		validate();
                 //getParent().getParent().getParent().repaint();
@@ -68,11 +67,11 @@ public class CoverDetailsList extends JList implements Observer{
 
             for (Media m : mList){
                 if (m instanceof Book)
-			listAdd(new CoverDetailsListEntryBook((Book)m));
+			listAdd(new DetailsListEntryBook((Book) m));
 		else if (m instanceof Video)
-			listAdd(new CoverDetailsListEntryVideo((Video) m));
+			listAdd(new DetailsListEntryVideo((Video) m));
 		else if (m instanceof Music)
-			listAdd(new CoverDetailsListEntryMusic((Music) m));
+			listAdd(new DetailsListEntryMusic((Music) m));
                 else
                     System.out.println("nix von allem");
             }

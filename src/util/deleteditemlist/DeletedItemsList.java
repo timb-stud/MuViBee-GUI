@@ -1,5 +1,5 @@
 
-package util.coverDetailsList;
+package util.deleteditemlist;
 import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -14,6 +14,7 @@ import muvibee.MuViBee;
 import muvibee.lists.MediaList;
 
 import muvibee.media.*;
+import util.coverDetailsList.CoverDetailsListRenderer;
 
 @SuppressWarnings("serial")
 public class DeletedItemsList extends JList implements Observer{
@@ -33,20 +34,25 @@ public class DeletedItemsList extends JList implements Observer{
 	        addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
                             if(evt.getValueIsAdjusting()){
-                                Object object = listModel.getElementAt(getSelectedIndex());
-                                muvibee.setCurrentDeletedMedia(((DeletedItemEntry) object).getMedia());
+                                Media[] medias = new Media[getSelectedValues().length];
+                                for (int i = 0; i < medias.length; i++) {
+                                    medias[i] = ((DeletedItemEntry)getSelectedValues()[i]).getMedia();
+                                }
+                                muvibee.setCurrentDeletedMedia(medias);
                             }
 	        	}
 	        });
 
-	        setPreferredSize(new Dimension(150,600));
+                getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+	        setPreferredSize(new Dimension(150,0));
 	}
 
 
 	private void listAdd(DeletedItemEntry entry){
             listModel.addElement(entry);
             validate();
-            getParent().getParent().getParent().repaint();
+            //getParent().getParent().getParent().repaint();
+            setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
 
