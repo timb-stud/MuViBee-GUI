@@ -11,6 +11,7 @@
 
 package muvibee.gui;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.util.ResourceBundle;
@@ -32,6 +33,7 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.TableCellRenderer;
 import muvibee.MuViBee;
 import muvibee.actionlistener.HideActionListener;
 import muvibee.actionlistener.ResetSearchActionListener;
@@ -819,7 +821,19 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane = new javax.swing.JTabbedPane();
         overviewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1 =        new javax.swing.JTable(){
+            //prepareRenderer überschreiben:
+            @Override public Component prepareRenderer(final TableCellRenderer renderer,
+                final int row, final int column) {
+                Component c = super.prepareRenderer(renderer, row, column);
+                if(c instanceof javax.swing.JLabel){
+                    javax.swing.JLabel label = (javax.swing.JLabel)c;
+                    label.setHorizontalAlignment(javax.swing.JLabel.LEFT);
+                    label.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+                }
+                return c;
+            }
+        };
         bookPanel = new javax.swing.JPanel();
         viewBookPanel = new javax.swing.JPanel();
         viewBookComboBox = new javax.swing.JComboBox();
@@ -1052,6 +1066,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         tabbedPane.setName("add video button"); // NOI18N
 
+        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Bücher", "", null, null},
@@ -1072,7 +1088,8 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jTable1.setColumnSelectionAllowed(true);
         jTable1.setRowHeight(64);
-        jTable1.setSelectionBackground(new java.awt.Color(153, 204, 255));
+        jTable1.setSelectionBackground(new java.awt.Color(235, 232, 238));
+        jTable1.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout overviewPanelLayout = new javax.swing.GroupLayout(overviewPanel);
@@ -1789,7 +1806,7 @@ public class MainFrame extends javax.swing.JFrame {
         itemMusicScrollPane.setViewportView(itemMusicPanel);
 
         hideMusicButton.setText(">");
-        hideMusicButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        hideMusicButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         hideMusicButton.setName("hide music"); // NOI18N
 
         javax.swing.GroupLayout musicPanelLayout = new javax.swing.GroupLayout(musicPanel);
@@ -2141,7 +2158,7 @@ public class MainFrame extends javax.swing.JFrame {
         itemVideoScrollPane.setViewportView(itemVideoPanel);
 
         hideVideoButton.setText(">");
-        hideVideoButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        hideVideoButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         hideVideoButton.setName("hide video"); // NOI18N
 
         javax.swing.GroupLayout videoPanelLayout = new javax.swing.GroupLayout(videoPanel);

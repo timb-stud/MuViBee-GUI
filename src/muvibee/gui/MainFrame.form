@@ -214,6 +214,14 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                        <BevelBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="12" style="0"/>
+                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="3">
                         <Column editable="false" title="Medium" type="java.lang.Object">
@@ -233,9 +241,15 @@
                     <Property name="columnSelectionAllowed" type="boolean" value="true"/>
                     <Property name="rowHeight" type="int" value="64"/>
                     <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="99" type="rgb"/>
+                      <Color blue="ee" green="e8" red="eb" type="rgb"/>
+                    </Property>
+                    <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="       new javax.swing.JTable(){&#xd;&#xa;            //prepareRenderer &#xfc;berschreiben:&#xd;&#xa;            @Override public Component prepareRenderer(final TableCellRenderer renderer,&#xd;&#xa;            final int row, final int column) {&#xd;&#xa;                Component c = super.prepareRenderer(renderer, row, column);&#xd;&#xa;                if(c instanceof javax.swing.JLabel){&#xd;&#xa;                    javax.swing.JLabel label = (javax.swing.JLabel)c;&#xd;&#xa;                    label.setHorizontalAlignment(javax.swing.JLabel.LEFT);&#xd;&#xa;                    label.setHorizontalAlignment(javax.swing.JLabel.CENTER);&#xd;&#xa;                }&#xd;&#xa;                return c;&#xd;&#xa;            }&#xd;&#xa;        };"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -1699,8 +1713,8 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="hide music" noResource="true"/>
@@ -2418,8 +2432,8 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="hide video" noResource="true"/>
