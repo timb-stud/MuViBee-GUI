@@ -29,21 +29,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="mediaPanel" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="bookPanel" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="musicPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="videoPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="mediaPanel" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bookPanel" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="musicPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="videoPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -53,22 +56,18 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="mediaPanel" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="musicPanel" alignment="1" max="32767" attributes="1"/>
-                          <Component id="videoPanel" alignment="1" max="32767" attributes="1"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="bookPanel" min="-2" max="-2" attributes="1"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="musicPanel" alignment="0" max="32767" attributes="1"/>
+                  <Component id="bookPanel" alignment="0" max="32767" attributes="1"/>
+                  <Component id="videoPanel" alignment="1" min="-2" max="-2" attributes="1"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -88,7 +87,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="titleLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -96,60 +95,84 @@
                       <Component id="eanLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="genreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="releaseYearLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="locationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="genreTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="eanTextField" alignment="0" max="32767" attributes="1"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="ratingOneRadioButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ratingTwoRadioButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ratingThreeRadioButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="titleTextField" alignment="0" min="-2" pref="223" max="-2" attributes="1"/>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="1">
+                          <Component id="ratingOneRadioButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="releaseYearComboBox" min="-2" pref="224" max="-2" attributes="0"/>
+                          <Component id="ratingTwoRadioButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ratingThreeRadioButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ratingNoneRadioButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lentToLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lentDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="locationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lentUntilDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="annotationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="locationTextField" alignment="0" max="32767" attributes="1"/>
+                              <Component id="releaseYearComboBox" alignment="0" pref="223" max="32767" attributes="1"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="annotationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lentToTextField" alignment="0" pref="333" max="32767" attributes="1"/>
-                              <Component id="locationTextField" alignment="0" pref="333" max="32767" attributes="1"/>
-                              <Component id="annotationTextField" alignment="0" pref="333" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lentToLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lentDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lentUntilDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="descriptionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lentDayComboBox" min="-2" pref="67" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lentMonthComboBox" pref="181" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lentYearComboBox" min="-2" pref="83" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                          <Component id="lentToTextField" pref="342" max="32767" attributes="1"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="descriptionTextField" alignment="0" pref="343" max="32767" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lentUntilDayComboBox" min="-2" pref="67" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="lentUntilMonthComboBox" pref="181" max="32767" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="lentUntilYearComboBox" min="-2" pref="83" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="annotationTextField" alignment="1" pref="343" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="isLentLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="isLentCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="325" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lentDayComboBox" min="-2" pref="67" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lentMonthComboBox" pref="172" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lentYearComboBox" min="-2" pref="83" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lentUntilDayComboBox" min="-2" pref="67" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lentUntilMonthComboBox" pref="172" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lentUntilYearComboBox" min="-2" pref="83" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -159,18 +182,21 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="titleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="titleTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="titleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="titleTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="isLentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="isLentCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="ratingOneRadioButton" alignment="3" max="32767" attributes="1"/>
                                   <Component id="ratingTwoRadioButton" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                   <Component id="ratingThreeRadioButton" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="ratingNoneRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="ratingLabel" alignment="0" max="32767" attributes="1"/>
                           </Group>
@@ -184,15 +210,8 @@
                               <Component id="genreTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="genreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="releaseYearLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="annotationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="annotationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="releaseYearComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lentToTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lentToLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -211,14 +230,23 @@
                               <Component id="lentUntilMonthComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lentUntilYearComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="locationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="locationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="releaseYearLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="releaseYearComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="descriptionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="descriptionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="locationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="locationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="annotationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="annotationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -249,6 +277,11 @@
             <Property name="text" type="java.lang.String" value="Erscheinungsjahr"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="isLentLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Verliehen"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="lentToLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Verliehen an"/>
@@ -269,10 +302,20 @@
             <Property name="text" type="java.lang.String" value="Standort"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="descriptionLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Beschreibung"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="annotationLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Kommentar"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="isLentCheckBox">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="isLentCheckBoxActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="ratingOneRadioButton">
           <Properties>
@@ -298,6 +341,14 @@
             <Property name="text" type="java.lang.String" value="3"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JRadioButton" name="ratingNoneRadioButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="ratingButtonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="keine"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JTextField" name="titleTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="eanTextField">
@@ -307,6 +358,8 @@
         <Component class="javax.swing.JTextField" name="lentToTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="locationTextField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="descriptionTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="annotationTextField">
         </Component>
@@ -485,7 +538,7 @@
                       <Component id="musicFormatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="musicFormatComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
