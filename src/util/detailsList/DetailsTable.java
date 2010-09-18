@@ -45,7 +45,6 @@ public class DetailsTable extends JTable implements Observer{
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting()){
                     Media media = mediaList.getList().get(getSelectedRow());
-
                     if (media instanceof Book) {
                         muvibee.setCurrentBook((Book) media);
                     } else if (media instanceof Music) {
@@ -61,6 +60,7 @@ public class DetailsTable extends JTable implements Observer{
 
     private void setColumnData(MediaList mediaList){
         String[] title = new String[mediaList.getList().size()];
+        String[] mediaSpecial = new String[mediaList.getList().size()];
         String[] genre = new String[mediaList.getList().size()];
         String[] location = new String[mediaList.getList().size()];
         String[] year = new String[mediaList.getList().size()];
@@ -68,16 +68,30 @@ public class DetailsTable extends JTable implements Observer{
 
         for (Media m : mediaList.getList()){
             title[i] = m.getTitle();
+            mediaSpecial[i] = getMediaSpecial(m);
             genre[i] = m.getGenre();
             year[i] =  "" + m.getReleaseYear();
             location[i] = m.getLocation();
             i++;
         }
         dtm.addColumn("Title", title);
+        dtm.addColumn("Name fehlt", title);
         dtm.addColumn("Genre", genre);
         dtm.addColumn("ReleaseYear", year);
         dtm.addColumn("Location", location);
     }
+
+    private String getMediaSpecial(Media m) {
+        if (m instanceof Book) {
+            return ((Book) m).getAuthor();
+        } else if (m instanceof Music) {
+            return ((Music) m).getInterpreter();
+        } else if (m instanceof Video) {
+            return ((Video) m).getActors();
+        }
+        return null;
+    }
+
 
 //    private void setData(MediaList mediaList) {
 //        int i = 0;

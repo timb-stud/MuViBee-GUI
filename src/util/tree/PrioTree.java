@@ -38,10 +38,10 @@ public class PrioTree extends JTree implements Observer {
 
         addTreeSelectionListener(new TreeSelectionListener() {
             public void valueChanged(TreeSelectionEvent e) {
-                Node node = (Node) e.getPath().getLastPathComponent();
-                if (node.isLeaf()) {
-                    System.out.println(node.getMedia());
-                    if (node.getMedia() instanceof Book) {
+                DefaultMutableTreeNode defaultnode = (DefaultMutableTreeNode) e.getPath().getLastPathComponent();
+                if (defaultnode.isLeaf()) {
+                    Node node = (Node) defaultnode;
+                    if ((node.getMedia()) instanceof Book) {
                         muvibee.setCurrentBook((Book) node.getMedia());
                     } else if (node.getMedia() instanceof Music) {
                         muvibee.setCurrentMusic((Music) node.getMedia());

@@ -18,7 +18,7 @@ public class Node extends DefaultMutableTreeNode{
 
     public Node(Object o, Media m) {
         super(o);
-
+        this.media = m;
     }
 
     public Media getMedia() {
