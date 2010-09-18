@@ -45,7 +45,7 @@ import muvibee.utils.ResizeImageIcon;
 import util.coversList.CoverList;
 import util.coverDetailsList.*;
 import util.deleteditemlist.DeletedItemsList;
-import util.detailsList.DetailsList;
+import util.detailsList.*;
 import util.tree.PrioTree;
 
 
@@ -95,7 +95,18 @@ public class MainFrame extends javax.swing.JFrame {
         detailsListVideoScrollPane.setViewportView(detailsListVideo);
     }
 
+    private void createDetailsTable(MuViBee mvb){
+        detailsTableBook = new DetailsTable();
+        mvb.getBookList().addObserver(detailsTableBook);
+        detailsTableMusic = new DetailsTable();
+        mvb.getMusicList().addObserver(detailsTableMusic);
+        detailsTableVideo = new DetailsTable();
+        mvb.getVideoList().addObserver(detailsTableVideo);
 
+        detailsListBookScrollPane.setViewportView(detailsTableBook);
+        detailsListMusicScrollPane.setViewportView(detailsTableMusic);
+        detailsListVideoScrollPane.setViewportView(detailsTableVideo);
+    }
 
     private void createCoverDetailsList(MuViBee mvb){
         coverDetailsBookList = new CoverDetailsList(mvb);
@@ -200,10 +211,11 @@ public class MainFrame extends javax.swing.JFrame {
         videoCardPanel.add(coverListVideoScrollPane, "cover");
         videoCardPanel.add(treeVideoScrollPane, "tree");
 
-        createDetailsList(mvb);
+//        createDetailsList(mvb);
         createCoverDetailsList(mvb);
         createCoverList(mvb);
         createTree(mvb);
+        createDetailsTable(mvb);
 
         itemBookScrollPane.setVisible(false);
         itemMusicScrollPane.setVisible(false);
@@ -2472,9 +2484,9 @@ public class MainFrame extends javax.swing.JFrame {
     private PrioTree prioTreeBook;
     private PrioTree prioTreeMusic;
     private PrioTree prioTreeVideo;
-
-
-
+    private DetailsTable detailsTableBook;
+    private DetailsTable detailsTableMusic;
+    private DetailsTable detailsTableVideo;
 
 
 }
