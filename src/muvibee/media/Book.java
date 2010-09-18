@@ -36,8 +36,6 @@ public class Book extends Media {
 
     public void setAuthor(String author) {
         this.author = author;
-        setChanged();
-        notifyObservers();
     }
 
     public String getLanguage() {
@@ -46,8 +44,6 @@ public class Book extends Media {
 
     public void setLanguage(String language) {
         this.language = language;
-        setChanged();
-        notifyObservers();
     }
 
     public String getIsbn() {
@@ -56,7 +52,5 @@ public class Book extends Media {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-        setChanged();
-        notifyObservers();
     }
 }

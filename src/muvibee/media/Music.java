@@ -41,8 +41,6 @@ public class Music extends Media {
 
     public void setFormat(String format) {
         this.format = format;
-        setChanged();
-        notifyObservers();
     }
 
     public String getInterpreter() {
@@ -51,8 +49,6 @@ public class Music extends Media {
 
     public void setInterpreter(String interpreter) {
         this.interpreter = interpreter;
-        setChanged();
-        notifyObservers();
     }
 
     public String getType() {
@@ -61,7 +57,5 @@ public class Music extends Media {
 
     public void setType(String type) {
         this.type = type;
-        setChanged();
-        notifyObservers();
     }
 }

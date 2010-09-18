@@ -648,6 +648,7 @@ public class MainFrame extends javax.swing.JFrame {
 	    book.setRating(rating);
 	    book.setDescription(description);
 	    book.setComment(annotation);
+            book.updateObservers();
     }
 
     public void setMusicItemInformation(Music music) throws NonValidYearException{
@@ -708,6 +709,7 @@ public class MainFrame extends javax.swing.JFrame {
 	    music.setRating(rating);
 	    music.setDescription(description);
 	    music.setComment(annotation);
+            music.updateObservers();
 
     }
 
@@ -767,7 +769,7 @@ public class MainFrame extends javax.swing.JFrame {
 	    video.setRating(rating);
 	    video.setDescription(description);
 	    video.setComment(annotation);
-	
+            video.updateObservers();
     }
 
     
