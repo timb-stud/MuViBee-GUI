@@ -83,6 +83,8 @@ public abstract class Media extends Observable {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
+        setChanged();
+        notifyObservers();
     }
 
     public String getLocation() {
@@ -91,6 +93,8 @@ public abstract class Media extends Observable {
 
     public void setLocation(String location) {
         this.location = location;
+        setChanged();
+        notifyObservers();
     }
 
     public boolean isIsLent() {
@@ -99,6 +103,8 @@ public abstract class Media extends Observable {
 
     public void setIsLent(boolean isLent) {
         this.isLent = isLent;
+        setChanged();
+        notifyObservers();
     }
 
     public String getLentTo() {
@@ -107,6 +113,8 @@ public abstract class Media extends Observable {
 
     public void setLendTo(String lendTo) {
         this.lentTo = lendTo;
+        setChanged();
+        notifyObservers();
     }
 
     public int getLendDay() {
@@ -115,6 +123,8 @@ public abstract class Media extends Observable {
 
     public void setLendDay(int lendDay) {
         this.lendDay = lendDay;
+        setChanged();
+        notifyObservers();
     }
 
     public int getLendMonth() {
@@ -123,6 +133,8 @@ public abstract class Media extends Observable {
 
     public void setLendMonth(int lendMonth) {
         this.lendMonth = lendMonth;
+        setChanged();
+        notifyObservers();
     }
 
     public int getLendUntilDay() {
@@ -131,6 +143,8 @@ public abstract class Media extends Observable {
 
     public void setLendUntilDay(int lendUntilDay) {
         this.lendUntilDay = lendUntilDay;
+        setChanged();
+        notifyObservers();
     }
 
     public int getLendUntilMonth() {
@@ -139,6 +153,8 @@ public abstract class Media extends Observable {
 
     public void setLendUntilMonth(int lendUntilMonth) {
         this.lendUntilMonth = lendUntilMonth;
+        setChanged();
+        notifyObservers();
     }
 
     public int getLendUntilYear() {
@@ -147,6 +163,8 @@ public abstract class Media extends Observable {
 
     public void setLendUntilYear(int lendUntilYear) {
         this.lendUntilYear = lendUntilYear;
+        setChanged();
+        notifyObservers();
     }
 
     public int getLendYear() {
@@ -155,6 +173,8 @@ public abstract class Media extends Observable {
 
     public void setLendYear(int lendYear) {
         this.lendYear = lendYear;
+        setChanged();
+        notifyObservers();
     }
 
     public int getRating() {
@@ -163,6 +183,8 @@ public abstract class Media extends Observable {
 
     public void setRating(int rating) {
         this.rating = rating;
+        setChanged();
+        notifyObservers();
     }
 
     public String getDescription() {
@@ -171,6 +193,8 @@ public abstract class Media extends Observable {
 
     public void setDescription(String description) {
         this.description = description;
+        setChanged();
+        notifyObservers();
     }
 
     public String getComment() {
@@ -179,6 +203,8 @@ public abstract class Media extends Observable {
 
     public void setComment(String comment) {
         this.comment = comment;
+        setChanged();
+        notifyObservers();
     }
 
     public BufferedImage getCover() {
@@ -194,6 +220,8 @@ public abstract class Media extends Observable {
             } catch (IOException ex) {
                 Logger.getLogger(Media.class.getName()).log(Level.SEVERE, null, ex);
             }
+        setChanged();
+        notifyObservers();
     }
 
     public boolean isDeleted() {
@@ -202,6 +230,8 @@ public abstract class Media extends Observable {
 
     public void setDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
+        setChanged();
+        notifyObservers();
     }
 
     //TODO monate/tage vergleich
