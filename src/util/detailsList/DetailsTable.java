@@ -25,12 +25,6 @@ import muvibee.media.Video;
  * @author Christian
  */
 public class DetailsTable extends JTable implements Observer{
-
-//    String[] columnNames = {"Title",
-//                        "Author",
-//                        "Genre",
-//                        "Release Year",
-//                        "Location"};
     DefaultTableModel dtm;
     MediaList mediaList;
 
@@ -44,13 +38,15 @@ public class DetailsTable extends JTable implements Observer{
         getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting()){
-                    Media media = mediaList.getList().get(getSelectedRow());
-                    if (media instanceof Book) {
-                        muvibee.setCurrentBook((Book) media);
-                    } else if (media instanceof Music) {
-                        muvibee.setCurrentMusic((Music) media);
-                    } else if (media instanceof Video) {
-                        muvibee.setCurrentVideo((Video) media);
+                    if (getSelectedRow() != -1){
+                        Media media = mediaList.getList().get(getSelectedRow());
+                        if (media instanceof Book) {
+                            muvibee.setCurrentBook((Book) media);
+                        } else if (media instanceof Music) {
+                            muvibee.setCurrentMusic((Music) media);
+                        } else if (media instanceof Video) {
+                            muvibee.setCurrentVideo((Video) media);
+                        }
                     }
                 }
             }
@@ -64,49 +60,33 @@ public class DetailsTable extends JTable implements Observer{
         String[] genre = new String[mediaList.getList().size()];
         String[] location = new String[mediaList.getList().size()];
         String[] year = new String[mediaList.getList().size()];
+        String special = "n/a";
         int i = 0;
 
         for (Media m : mediaList.getList()){
+            if (m instanceof Book) {
+                mediaSpecial[i] = ((Book) m).getAuthor();
+                special = "Author";
+            } else if (m instanceof Music) {
+                mediaSpecial[i] = ((Music) m).getInterpreter();
+                special = "Interpreter";
+            } else if (m instanceof Video) {
+                mediaSpecial[i] = ((Video) m).getActors();
+                special = "Actors";
+            }
+
             title[i] = m.getTitle();
-            mediaSpecial[i] = getMediaSpecial(m);
             genre[i] = m.getGenre();
             year[i] =  "" + m.getReleaseYear();
             location[i] = m.getLocation();
             i++;
         }
         dtm.addColumn("Title", title);
-        dtm.addColumn("Name fehlt", title);
+        dtm.addColumn(special, mediaSpecial);
         dtm.addColumn("Genre", genre);
         dtm.addColumn("ReleaseYear", year);
         dtm.addColumn("Location", location);
     }
-
-    private String getMediaSpecial(Media m) {
-        if (m instanceof Book) {
-            return ((Book) m).getAuthor();
-        } else if (m instanceof Music) {
-            return ((Music) m).getInterpreter();
-        } else if (m instanceof Video) {
-            return ((Video) m).getActors();
-        }
-        return null;
-    }
-
-
-//    private void setData(MediaList mediaList) {
-//        int i = 0;
-//
-//        for (Media m : mediaList.getList()){
-//            for (int j = 0; j < columnNames.length; j++){
-//                dtm.setValueAt(m.getTitle(), i, j);
-//                dtm.setValueAt(m.getEan(), i, j);
-//                dtm.setValueAt(m.getGenre(), i, j);
-//                dtm.setValueAt(m.getReleaseYear(), i, j);
-//                dtm.setValueAt(m.getLocation(), i, j);
-//            }
-//            i++;
-//        }
-//    }
 
     public void update(Observable list, Object arg) {
         mediaList = ((MediaList) list);

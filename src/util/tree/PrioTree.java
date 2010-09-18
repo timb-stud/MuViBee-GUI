@@ -9,7 +9,6 @@ import java.util.Observer;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import muvibee.MuViBee;
@@ -28,8 +27,8 @@ public class PrioTree extends JTree implements Observer {
 
     private final String OTHER = "sonstige";
 
-    DefaultMutableTreeNode root ;
-    DefaultMutableTreeNode lastAdded;
+    Node root ;
+    Node lastAdded;
     TreeModel treeModel;
 
     public PrioTree(final MuViBee muvibee) {
@@ -38,9 +37,8 @@ public class PrioTree extends JTree implements Observer {
 
         addTreeSelectionListener(new TreeSelectionListener() {
             public void valueChanged(TreeSelectionEvent e) {
-                DefaultMutableTreeNode defaultnode = (DefaultMutableTreeNode) e.getPath().getLastPathComponent();
-                if (defaultnode.isLeaf()) {
-                    Node node = (Node) defaultnode;
+                Node node = (Node) e.getPath().getLastPathComponent();
+                if (node.isLeaf()) {
                     if ((node.getMedia()) instanceof Book) {
                         muvibee.setCurrentBook((Book) node.getMedia());
                     } else if (node.getMedia() instanceof Music) {
@@ -54,19 +52,20 @@ public class PrioTree extends JTree implements Observer {
     }
 
 
-    private boolean containsChild (DefaultMutableTreeNode child){
+    private boolean containsChild (Node child){
         int to = lastAdded.getChildCount();
-        for (int i = 0; i < to; i++)
-               if (lastAdded.getChildAt(i).equals(child))
+        for (int i = 0; i < to; i++){
+               if (((Node)lastAdded.getChildAt(i)).equals(child)){
                    return true;
-
+            }
+        }
         return false;
     }
 
 
     public void createTree(MediaList mediaList, SortTypes[] sortedBy) {
         Object o = null;
-        DefaultMutableTreeNode child;
+        Node child;
 
         for (Media m : mediaList.getList()){
             lastAdded = root;
@@ -101,15 +100,15 @@ public class PrioTree extends JTree implements Observer {
 
                 if (!(containsChild(child))){
                     lastAdded.add(child);
-                    lastAdded = child;
                 }
+                lastAdded = child;
             }
         }
     }
 
     @Override
     public void update(Observable list, Object o) {
-        root = new DefaultMutableTreeNode("Root");
+        root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
 
