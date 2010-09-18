@@ -189,7 +189,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="1084" max="32767" attributes="0"/>
+                      <Component id="overviewScrollPane" pref="1084" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -198,21 +198,21 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="474" max="32767" attributes="0"/>
+                      <Component id="overviewScrollPane" pref="474" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+            <Container class="javax.swing.JScrollPane" name="overviewScrollPane">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="overviewTable">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -320,7 +320,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="sortPanelBooks" alignment="0" max="32767" attributes="0"/>
                               <Component id="bookCardPanel" alignment="0" pref="483" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="viewBookComboBox" pref="390" max="32767" attributes="0"/>
@@ -336,7 +336,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="sortPanelBooks" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="bookCardPanel" pref="348" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -381,7 +381,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel1">
+                <Container class="javax.swing.JPanel" name="sortPanelBooks">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -1054,7 +1054,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addMusicButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="sortPanelMusic" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1064,7 +1064,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="sortPanelMusic" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="musicCardPanel" pref="348" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1103,7 +1103,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel2">
+                <Container class="javax.swing.JPanel" name="sortPanelMusic">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -1785,7 +1785,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="videoCardPanel" alignment="0" pref="483" max="32767" attributes="0"/>
-                              <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="sortPanelVideo" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="viewVideoComboBox" pref="390" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1800,7 +1800,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sortPanelVideo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="videoCardPanel" pref="348" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1833,7 +1833,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel3">
+                <Container class="javax.swing.JPanel" name="sortPanelVideo">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">

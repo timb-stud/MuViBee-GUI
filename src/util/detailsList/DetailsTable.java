@@ -44,13 +44,15 @@ public class DetailsTable extends JTable implements Observer{
         getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting()){
-                    Media media = mediaList.getList().get(getSelectedRow());
-                    if (media instanceof Book) {
-                        muvibee.setCurrentBook((Book) media);
-                    } else if (media instanceof Music) {
-                        muvibee.setCurrentMusic((Music) media);
-                    } else if (media instanceof Video) {
-                        muvibee.setCurrentVideo((Video) media);
+                    if (getSelectedRow() >= 0) { //hier wird selectedrow auf -1 gesetzt was zu nehm fehler führt. das passiert immer, wenn man eine zelle anklickt und dann zb auf hinzufügen drückt. dann verliert die zelle den focus und dieser listener wird mit -1 ausgelöst(man siehts am hellblauen rand der zelle).
+                        Media media = mediaList.getList().get(getSelectedRow());
+                        if (media instanceof Book) {
+                            muvibee.setCurrentBook((Book) media);
+                        } else if (media instanceof Music) {
+                            muvibee.setCurrentMusic((Music) media);
+                        } else if (media instanceof Video) {
+                            muvibee.setCurrentVideo((Video) media);
+                        }
                     }
                 }
             }
