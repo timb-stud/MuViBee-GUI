@@ -4,22 +4,20 @@
  */
 package util.tree;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
+import muvibee.MuViBee;
 import muvibee.lists.MediaList;
+import muvibee.media.Book;
 import muvibee.media.Media;
+import muvibee.media.Music;
+import muvibee.media.Video;
 import muvibee.utils.SortTypes;
 
 /**
@@ -34,18 +32,22 @@ public class PrioTree extends JTree implements Observer {
     DefaultMutableTreeNode lastAdded;
     TreeModel treeModel;
 
-    public PrioTree() {
+    public PrioTree(final MuViBee muvibee) {
          super();
-
-//         root = (DefaultMutableTreeNode) getModel().getRoot();
         expandRow(1);
 
-        //tree.addTreeSelectionListener(new TreeSelectionListener() {
         addTreeSelectionListener(new TreeSelectionListener() {
             public void valueChanged(TreeSelectionEvent e) {
-                DefaultMutableTreeNode node = (DefaultMutableTreeNode) e.getPath().getLastPathComponent();
+                Node node = (Node) e.getPath().getLastPathComponent();
                 if (node.isLeaf()) {
-                    System.out.println("You selected: " + node);
+                    System.out.println(node.getMedia());
+                    if (node.getMedia() instanceof Book) {
+                        muvibee.setCurrentBook((Book) node.getMedia());
+                    } else if (node.getMedia() instanceof Music) {
+                        muvibee.setCurrentMusic((Music) node.getMedia());
+                    } else if (node.getMedia() instanceof Video) {
+                        muvibee.setCurrentVideo((Video) node.getMedia());
+                    }
                 }
             }
         });
@@ -93,9 +95,9 @@ public class PrioTree extends JTree implements Observer {
                 }
 
                 if (o.equals("") || o.equals(-1))
-                    child = new DefaultMutableTreeNode(OTHER);
+                    child = new Node(OTHER, m);
                 else
-                    child = new DefaultMutableTreeNode(o);
+                    child = new Node(o, m);
 
                 if (!(containsChild(child))){
                     lastAdded.add(child);

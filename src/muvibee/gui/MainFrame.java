@@ -70,11 +70,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void createTree(MuViBee mvb){
-        prioTreeBook = new PrioTree();
+        prioTreeBook = new PrioTree(mvb);
         mvb.getBookList().addObserver(prioTreeBook);
-        prioTreeMusic = new PrioTree();
+        prioTreeMusic = new PrioTree(mvb);
         mvb.getMusicList().addObserver(prioTreeMusic);
-        prioTreeVideo = new PrioTree();
+        prioTreeVideo = new PrioTree(mvb);
         mvb.getVideoList().addObserver(prioTreeVideo);
 
         treeBookScrollPane.setViewportView(prioTreeBook);
@@ -84,11 +84,11 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     private void createDetailsTable(MuViBee mvb){
-        detailsTableBook = new DetailsTable();
+        detailsTableBook = new DetailsTable(mvb);
         mvb.getBookList().addObserver(detailsTableBook);
-        detailsTableMusic = new DetailsTable();
+        detailsTableMusic = new DetailsTable(mvb);
         mvb.getMusicList().addObserver(detailsTableMusic);
-        detailsTableVideo = new DetailsTable();
+        detailsTableVideo = new DetailsTable(mvb);
         mvb.getVideoList().addObserver(detailsTableVideo);
 
         detailsListBookScrollPane.setViewportView(detailsTableBook);
