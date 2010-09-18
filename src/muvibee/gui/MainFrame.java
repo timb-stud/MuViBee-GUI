@@ -82,18 +82,6 @@ public class MainFrame extends javax.swing.JFrame {
         treeVideoScrollPane.setViewportView(prioTreeVideo);
     }
 
-    private void createDetailsList(MuViBee mvb){
-        detailsListBook = new DetailsList(mvb);
-        mvb.getBookList().addObserver(detailsListBook);
-        detailsListMusic = new DetailsList(mvb);
-        mvb.getMusicList().addObserver(detailsListMusic);
-        detailsListVideo = new DetailsList(mvb);
-        mvb.getVideoList().addObserver(detailsListVideo);
-
-        detailsListBookScrollPane.setViewportView(detailsListBook);
-        detailsListMusicScrollPane.setViewportView(detailsListMusic);
-        detailsListVideoScrollPane.setViewportView(detailsListVideo);
-    }
 
     private void createDetailsTable(MuViBee mvb){
         detailsTableBook = new DetailsTable();
@@ -129,10 +117,6 @@ public class MainFrame extends javax.swing.JFrame {
         coverDetailsBookList.clearSelection();
         coverDetailsMusicList.clearSelection();
         coverDetailsVideoList.clearSelection();
-
-        detailsListBook.clearSelection();
-        detailsListMusic.clearSelection();
-        detailsListVideo.clearSelection();
     }
 
     /** Creates new form MainFrame */
@@ -449,8 +433,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setBookItem(Book book){
 	BufferedImage cover = book.getCover();
-	if(cover != null)
+	if(cover != null) {
 	    coverBookLabel.setIcon(ResizeImageIcon.resizeIcon(140, 160, cover));
+        } else {
+            coverBookLabel.setIcon(null);
+        }
         titleBookTextField.setText(book.getTitle());
         authorBookTextField.setText(book.getAuthor());
 	languageBookTextField.setText(book.getLanguage());
@@ -500,8 +487,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setMusicItem(Music music){
 	BufferedImage cover = music.getCover();
-	if(cover != null)
+	if(cover != null) {
 	    coverMusicLabel.setIcon(new ImageIcon(cover));
+        } else {
+            coverMusicLabel.setIcon(null);
+        }
         titleMusicTextField.setText(music.getTitle());
         artistMusicTextField.setText(music.getInterpreter());
 
@@ -553,8 +543,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setVideoItem(Video video) {
 	BufferedImage cover = video.getCover();
-	if(cover != null)
+	if(cover != null) {
 	    coverVideoLabel.setIcon(new ImageIcon(cover));
+        } else {
+            coverVideoLabel.setIcon(null);
+        }
         titleVideoTextField.setText(video.getTitle());
         directorVideoTextField.setText(video.getDirector());
 	actorsVideoTextField.setText(video.getActors());
@@ -2478,9 +2471,6 @@ public class MainFrame extends javax.swing.JFrame {
     private CoverDetailsList coverDetailsBookList;
     private CoverDetailsList coverDetailsMusicList;
     private CoverDetailsList coverDetailsVideoList;
-    private DetailsList detailsListBook;
-    private DetailsList detailsListMusic;
-    private DetailsList detailsListVideo;
     private PrioTree prioTreeBook;
     private PrioTree prioTreeMusic;
     private PrioTree prioTreeVideo;
