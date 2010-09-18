@@ -48,8 +48,6 @@ public class Video extends Media {
 
     public void setFormat(String format) {
         this.format = format;
-        setChanged();
-        notifyObservers();
     }
 
     public String getDirector() {
@@ -58,8 +56,6 @@ public class Video extends Media {
 
     public void setDirector(String director) {
         this.director = director;
-        setChanged();
-        notifyObservers();
     }
 
     public String getActors() {
@@ -68,7 +64,5 @@ public class Video extends Media {
 
     public void setActors(String actor) {
         this.actors = actor;
-        setChanged();
-        notifyObservers();
     }
 }
