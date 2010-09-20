@@ -17,8 +17,8 @@ import muvibee.media.Video;
 
 public class DBInsertor {
 	private final static String SQL_INSERT_BOOK  = "INSERT INTO books (ID, title, ean, genre, year, location, lendto, lenddate, backdate, rating, description, comment, cover, author, language, isbn, isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final static String SQL_INSERT_MUSIC = "INSERT INTO music (ID, title, ean, genre, year, location, lendto, lenddate, backdate, rating, description, comment, cover, format, interpreter, type, isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final static String SQL_INSERT_VIDEO = "INSERT INTO video (ID, title, ean, genre, year, location, lendto, lenddate, backdate, rating, description, comment, cover, format, director, actor, isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final static String SQL_INSERT_MUSIC = "INSERT INTO music (ID, title, ean, genre, year, location, lendto, lenddate, backdate, rating, description, comment, cover, format, interpreter, type, isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final static String SQL_INSERT_VIDEO = "INSERT INTO video (ID, title, ean, genre, year, location, lendto, lenddate, backdate, rating, description, comment, cover, format, director, actor, isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	private static Connection con = null;
 
@@ -48,6 +48,7 @@ public class DBInsertor {
             ps.setInt(4, b.getReleaseYear());
             ps.setString(5, b.getLocation());
             ps.setString(6, b.getLentTo());
+            System.out.println("Datum: " + b.getLendDate());
             ps.setString(7, b.getLendDate());
             ps.setString(8, b.getLendUntiDate());
             ps.setInt(9, b.getRating());

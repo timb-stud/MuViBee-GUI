@@ -42,7 +42,7 @@ import muvibee.media.Video;
 public class DBSelector {
 	private final static String SQL_GET_BOOKS  	= "SELECT * FROM books WHERE isdeleted = ? ";
 	private final static String SQL_GET_MUSIC  	= "SELECT * FROM music WHERE isdeleted = ? ";
-	private final static String SQL_GET_VIDEOS  = "SELECT * FROM video WHERE isdeleted = ? ";
+	private final static String SQL_GET_VIDEOS      = "SELECT * FROM video WHERE isdeleted = ? ";
 	private final static String SQL_ORDER_BY	= " ORDER BY title";
 
 	private static Connection con = null;
