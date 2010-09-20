@@ -8,12 +8,12 @@ package muvibee;
 
 import java.util.LinkedList;
 import java.util.ResourceBundle;
-import javax.swing.JDialog;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import muvibee.gui.AboutDialog;
 import muvibee.gui.AdvancedSearchDialog;
-import muvibee.gui.StatusBar;
+import muvibee.gui.HelpDialog;
 import muvibee.gui.StatusBarModel;
 import muvibee.lists.BookList;
 import muvibee.lists.MediaList;
@@ -23,7 +23,6 @@ import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
-import muvibee.utils.NonValidYearException;
 import muvibee.utils.SortTypes;
 
 /**
@@ -164,6 +163,19 @@ public class MuViBee {
         }
     }
 
+
+    public void showAboutDialog(){
+        AboutDialog dialog = new AboutDialog(mainFrame);
+        dialog.setLocationRelativeTo(mainFrame);
+        dialog.setVisible(true);
+    }
+
+    public void showHelpDialog(){
+        HelpDialog helpDialog = new HelpDialog(mainFrame);
+        helpDialog.setLocationRelativeTo(mainFrame);
+        helpDialog.setVisible(true);
+    }
+
     private void setBookItem(){
         mainFrame.setBookItem(currentBook);
     }
@@ -213,7 +225,7 @@ public class MuViBee {
         currentDeletedMediaList = medias;
     }
     
-    public boolean setCurrentBookItemInformation() throws NonValidYearException {
+    public boolean setCurrentBookItemInformation() throws IllegalYearException {
         if (bookList.contains(currentBook)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setBookItemInformation(currentBook);
@@ -228,7 +240,7 @@ public class MuViBee {
         return false;
     }
 
-    public boolean setCurrentMusicItemInformation() throws NonValidYearException{
+    public boolean setCurrentMusicItemInformation() throws IllegalYearException {
 	if (musicList.contains(currentMusic)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setMusicItemInformation(currentMusic);
@@ -243,7 +255,7 @@ public class MuViBee {
         return false;
     }
 
-    public boolean setCurrentVideoItemInformation() throws NonValidYearException {
+    public boolean setCurrentVideoItemInformation() throws IllegalYearException {
         if (videoList.contains(currentVideo)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setVideoItemInformation(currentVideo);

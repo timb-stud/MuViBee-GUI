@@ -7,10 +7,12 @@ package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import muvibee.IllegalYearException;
 import muvibee.MuViBee;
 import muvibee.gui.StatusBarModel;
-import muvibee.utils.NonValidYearException;
 
 /**
  *
@@ -28,29 +30,32 @@ public class SaveActionListener implements ActionListener {
         if(source instanceof JButton){
             JButton button = (JButton)source;
             if(button.getName().equals("save book button")){
-               try {
-                    if(!mvb.setCurrentBookItemInformation()) return;
-               } catch (NonValidYearException ex) {
-                   StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
-                   return;
-               }
+                try {
+                    if (!mvb.setCurrentBookItemInformation()) {
+                        return;
+                    }
+                } catch (IllegalYearException ex) {
+                    StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
+                }
                 mvb.addCurrentBookToBookLists();
             } else {
                 if(button.getName().equals("save music button")){
-		try {
-                    if(!mvb.setCurrentMusicItemInformation()) return;
-                } catch (NonValidYearException ex) {
-                   StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
-                   return;
-                }
+                    try {
+                        if (!mvb.setCurrentMusicItemInformation()) {
+                            return;
+                        }
+                    } catch (IllegalYearException ex) {
+                        StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
+                    }
 		    mvb.addCurrentMusicToMusicLists();
                 } else {
                     if(button.getName().equals("save video button")){
                         try {
-                            if(!mvb.setCurrentVideoItemInformation()) return;
-                        } catch (NonValidYearException ex) {
-                            StatusBarModel.getInstance().setFailMessage("Ungüliges Jahr");
-                            return;
+                            if (!mvb.setCurrentVideoItemInformation()) {
+                                return;
+                            }
+                        } catch (IllegalYearException ex) {
+                            StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
                         }
                         mvb.addCurrentVideoToVideoLists();
                     }

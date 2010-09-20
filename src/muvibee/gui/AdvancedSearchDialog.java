@@ -16,12 +16,11 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import muvibee.IllegalYearException;
 import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
-import muvibee.utils.NonValidYearException;
-import muvibee.utils.TestUtils;
 
 /**
  *
@@ -184,6 +183,21 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         lentUntilDayComboBox.setEnabled(b);
         lentUntilMonthComboBox.setEnabled(b);
         lentUntilYearComboBox.setEnabled(b);
+    }
+
+        public int getYear(JComboBox cb) throws IllegalYearException {
+        if(cb.getSelectedIndex() == 0)
+            return -1;
+        Object selectedYear = cb.getSelectedItem();
+        String yearS = "";
+        if (selectedYear != null) {
+            yearS = selectedYear.toString().trim();
+        }
+        try{
+            return Integer.parseInt(yearS);
+        }catch(NumberFormatException e){
+            throw new IllegalYearException();
+        }
     }
 
     /** This method is called from within the constructor to
@@ -644,28 +658,16 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         String title = titleTextField.getText().trim();
         String ean = eanTextField.getText().trim();	    //TODO Ueberpruefen!?!?
         String genre = genreTextField.getText().trim();
-        Object selectedReleaseYear = releaseYearComboBox.getSelectedItem();
-        String releaseYear = "";
-        if(selectedReleaseYear != null)
-            releaseYear = selectedReleaseYear.toString().trim();
         String location = locationTextField.getText().trim();
         boolean isLent = isLentCheckBox.isSelected();
         String lendTo = lentToTextField.getText().trim();
         int lendDay = lentDayComboBox.getSelectedIndex();
         int lendMonth = lentMonthComboBox.getSelectedIndex();
-        Object selectedLentYear = lentYearComboBox.getSelectedItem();
-        String lentYear = "";
-        if(selectedLentYear != null)
-            lentYear = selectedLentYear.toString().trim();
         int lendUntilDay = lentUntilDayComboBox.getSelectedIndex();
         int lendUntilMonth = lentUntilMonthComboBox.getSelectedIndex();
-        Object selectedLentUntilYear = lentUntilYearComboBox.getSelectedItem();
-        String lentUntilYear = "";
-        if(selectedLentUntilYear != null)
-            lentUntilYear = selectedLentUntilYear.toString().trim();
         String description = descriptionTextField.getText().trim();
         String annotation = annotationTextField.getText().trim();
-        
+
         //Rating
         int rating = 0;
         if (ratingOneRadioButton.isSelected()) {
@@ -683,12 +685,14 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         String artist = artistTextField.getText().trim();
         Object selectedType = typeComboBox.getSelectedItem();
         String type = "";
-        if(selectedType != null)
+        if (selectedType != null) {
             type = selectedType.toString().trim();
+        }
         Object selectedMusicFormat = musicFormatComboBox.getSelectedItem();
         String musicFormat = "";
-        if(selectedMusicFormat != null)
+        if (selectedMusicFormat != null) {
             musicFormat = selectedMusicFormat.toString().trim();
+        }
 
         String director = directorTextField.getText().trim();
         String actors = actorsTextField.getText().trim();
@@ -698,75 +702,79 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             videoFormat = selectedVideoFormat.toString().trim();
         }
 
+        int releaseYear = -1;
+        int lentYear = -1;
+        int lentUntilYear = -1;
+
         try {
-            int ry = TestUtils.validYear(releaseYear);
-            int ly = TestUtils.validYear(lentYear);
-            int luy = TestUtils.validYear(lentUntilYear);
-            book = new Book();
-            book.setTitle(title);
-            book.setAuthor(author);
-            book.setLanguage(language);
-            book.setIsbn(isbn);
-            book.setEan(ean);
-            book.setGenre(genre);
-            book.setReleaseYear(ry);
-            book.setLocation(location);
-            book.setIsLent(isLent);
-            book.setLendTo(lendTo);
-            book.setLendDay(lendDay);
-            book.setLendMonth(lendMonth);
-            book.setLendYear(ly);
-            book.setLendUntilDay(lendUntilDay);
-            book.setLendUntilMonth(lendUntilMonth);
-            book.setLendUntilYear(luy);
-            book.setRating(rating);
-            book.setDescription(description);
-            book.setComment(annotation);
-
-            music = new Music();
-            music.setTitle(title);
-            music.setInterpreter(artist);
-            music.setType(type);
-            music.setFormat(musicFormat);
-            music.setEan(ean);
-            music.setGenre(genre);
-            music.setReleaseYear(ry);
-            music.setLocation(location);
-            music.setIsLent(isLent);
-            music.setLendTo(lendTo);
-            music.setLendDay(lendDay);
-            music.setLendMonth(lendMonth);
-            music.setLendYear(ly);
-            music.setLendUntilDay(lendUntilDay);
-            music.setLendUntilMonth(lendUntilMonth);
-            music.setLendUntilYear(luy);
-            music.setRating(rating);
-            music.setDescription(description);
-            music.setComment(annotation);
-
-            video = new Video();
-            video.setTitle(title);
-            video.setDirector(director);
-            video.setActors(actors);
-            video.setFormat(videoFormat);
-            video.setEan(ean);
-            video.setGenre(genre);
-            video.setReleaseYear(ry);
-            video.setLocation(location);
-            video.setIsLent(isLent);
-            video.setLendTo(lendTo);
-            video.setLendDay(lendDay);
-            video.setLendMonth(lendMonth);
-            video.setLendYear(ly);
-            video.setLendUntilDay(lendUntilDay);
-            video.setLendUntilMonth(lendUntilMonth);
-            video.setLendUntilYear(luy);
-            video.setRating(rating);
-            video.setDescription(description);
-            video.setComment(annotation);
-        } catch (NonValidYearException e) {
+            releaseYear = getYear(releaseYearComboBox);
+            lentYear = getYear(lentYearComboBox);
+            lentUntilYear = getYear(lentUntilYearComboBox);
+        } catch (IllegalYearException e) {
             returnCode = RET_ILLEGAL_YEAR;
         }
+        book = new Book();
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setLanguage(language);
+        book.setIsbn(isbn);
+        book.setEan(ean);
+        book.setGenre(genre);
+        book.setReleaseYear(releaseYear);
+        book.setLocation(location);
+        book.setIsLent(isLent);
+        book.setLendTo(lendTo);
+        book.setLendDay(lendDay);
+        book.setLendMonth(lendMonth);
+        book.setLendYear(lentYear);
+        book.setLendUntilDay(lendUntilDay);
+        book.setLendUntilMonth(lendUntilMonth);
+        book.setLendUntilYear(lentUntilYear);
+        book.setRating(rating);
+        book.setDescription(description);
+        book.setComment(annotation);
+
+        music = new Music();
+        music.setTitle(title);
+        music.setInterpreter(artist);
+        music.setType(type);
+        music.setFormat(musicFormat);
+        music.setEan(ean);
+        music.setGenre(genre);
+        music.setReleaseYear(releaseYear);
+        music.setLocation(location);
+        music.setIsLent(isLent);
+        music.setLendTo(lendTo);
+        music.setLendDay(lendDay);
+        music.setLendMonth(lendMonth);
+        music.setLendYear(lentYear);
+        music.setLendUntilDay(lendUntilDay);
+        music.setLendUntilMonth(lendUntilMonth);
+        music.setLendUntilYear(lentUntilYear);
+        music.setRating(rating);
+        music.setDescription(description);
+        music.setComment(annotation);
+
+        video = new Video();
+        video.setTitle(title);
+        video.setDirector(director);
+        video.setActors(actors);
+        video.setFormat(videoFormat);
+        video.setEan(ean);
+        video.setGenre(genre);
+        video.setReleaseYear(releaseYear);
+        video.setLocation(location);
+        video.setIsLent(isLent);
+        video.setLendTo(lendTo);
+        video.setLendDay(lendDay);
+        video.setLendMonth(lendMonth);
+        video.setLendYear(lentUntilYear);
+        video.setLendUntilDay(lendUntilDay);
+        video.setLendUntilMonth(lendUntilMonth);
+        video.setLendUntilYear(lentUntilYear);
+        video.setRating(rating);
+        video.setDescription(description);
+        video.setComment(annotation);
 
         doClose(returnCode);
     }//GEN-LAST:event_searchButtonActionPerformed
