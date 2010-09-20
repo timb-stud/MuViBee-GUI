@@ -16,8 +16,8 @@ public enum SortTypes {
      FORMAT,
      INTERPRETER,
      TYPE,
-     ISBN,
-     EAN,
+     ISBN, //
+     EAN, //
      ACTORS,
      REGISSEUR,
      YEAR,
