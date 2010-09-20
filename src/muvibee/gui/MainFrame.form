@@ -1836,8 +1836,8 @@
                                                   <Component id="locationVideoTextField" alignment="0" pref="257" max="32767" attributes="0"/>
                                                   <Component id="releaseYearVideoComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="eanVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                  <Component id="authorVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                  <Component id="languageVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="directorVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="actorsVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
                                                   <Component id="genreVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
                                                   <Component id="lentToVideoTextField" alignment="1" pref="257" max="32767" attributes="0"/>
                                                   <Component id="formatVideoComboBox" alignment="1" pref="257" max="32767" attributes="0"/>
@@ -1886,12 +1886,12 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="directorVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="authorVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="directorVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="actorsVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="languageVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="actorsVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -2058,9 +2058,9 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="titleVideoTextField">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="authorVideoTextField">
+                    <Component class="javax.swing.JTextField" name="directorVideoTextField">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="languageVideoTextField">
+                    <Component class="javax.swing.JTextField" name="actorsVideoTextField">
                     </Component>
                     <Component class="javax.swing.JTextField" name="eanVideoTextField">
                     </Component>

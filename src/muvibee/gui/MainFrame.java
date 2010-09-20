@@ -225,15 +225,15 @@ public class MainFrame extends javax.swing.JFrame {
 
         //init dayComboBoxes
 	String[] days = new String[32];
-        days[0] = "lol";
+        days[0] = "";
 	for(int i=1; i<32;i++)
 	    days[i] = String.valueOf(i);
-	borrowDayBookComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayBookComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
+	lentDayBookComboBox.setModel(new DefaultComboBoxModel(days));
+	lentUntilDayBookComboBox.setModel(new DefaultComboBoxModel(days));
+	lentDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
+	lentUntilDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
+	lentDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
+	lentUntilDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
 
         DefaultComboBoxModel cbBooksModel = new DefaultComboBoxModel();
         cbBooksModel.addElement(coverDetailsListBookScrollPane);
@@ -275,9 +275,9 @@ public class MainFrame extends javax.swing.JFrame {
         addVideoButton.addActionListener(aal);
 
         SaveActionListener sal = new SaveActionListener(mvb);
-        editBookButton.addActionListener(sal);
-        editMusicButton.addActionListener(sal);
-        editVideoButton.addActionListener(sal);
+        saveBookButton.addActionListener(sal);
+        saveMusicButton.addActionListener(sal);
+        saveVideoButton.addActionListener(sal);
 
         DeleteListener dl = new DeleteListener(mvb);
         deleteBookButton.addActionListener(dl);
@@ -345,7 +345,7 @@ public class MainFrame extends javax.swing.JFrame {
         reloadLabels(mvb.getMainBundlePath());
     }
 
-    public void setOverviewInformation(MuViBee mvb) {
+    public final void setOverviewInformation(MuViBee mvb) {
         int lentToBooks = mvb.getLentToBook();
         int lentToMusic = mvb.getLentToMusic();
         int lentToVideos = mvb.getLentToVideo();
@@ -388,12 +388,12 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setBackgroundAt(3, Color.GREEN);
 
         String day = bundle.getString("dayComboBox");
-        updateDayComboBoxLabel(borrowDayBookComboBox, day);
-        updateDayComboBoxLabel(borrowedUntilDayBookComboBox, day);
-        updateDayComboBoxLabel(borrowDayMusicComboBox, day);
-        updateDayComboBoxLabel(borrowedUntilDayMusicComboBox, day);
-        updateDayComboBoxLabel(borrowDayVideoComboBox, day);
-        updateDayComboBoxLabel(borrowedUntilDayVideoComboBox, day);
+        updateDayComboBoxLabel(lentDayBookComboBox, day);
+        updateDayComboBoxLabel(lentUntilDayBookComboBox, day);
+        updateDayComboBoxLabel(lentDayMusicComboBox, day);
+        updateDayComboBoxLabel(lentUntilDayMusicComboBox, day);
+        updateDayComboBoxLabel(lentDayVideoComboBox, day);
+        updateDayComboBoxLabel(lentUntilDayVideoComboBox, day);
 
         
 	String[] months = new String[13];
@@ -410,12 +410,12 @@ public class MainFrame extends javax.swing.JFrame {
         months[10] = bundle.getString("octoberComboBox");
         months[11] = bundle.getString("novemberComboBox");
         months[12] = bundle.getString("decemberComboBox");
-	updateMonthComboBoxLabels(borrowMonthBookComboBox, months);
-	updateMonthComboBoxLabels(borrowedUntilMonthBookComboBox, months);
-	updateMonthComboBoxLabels(borrowMonthMusicComboBox, months);
-	updateMonthComboBoxLabels(borrowedUntilMonthMusicComboBox, months);
-	updateMonthComboBoxLabels(borrowMonthVideoComboBox, months);
-	updateMonthComboBoxLabels(borrowedUntilMonthVideoComboBox, months);
+	updateMonthComboBoxLabels(lentMonthBookComboBox, months);
+	updateMonthComboBoxLabels(lentUntilMonthBookComboBox, months);
+	updateMonthComboBoxLabels(lentMonthMusicComboBox, months);
+	updateMonthComboBoxLabels(lentUntilMonthMusicComboBox, months);
+	updateMonthComboBoxLabels(lentMonthVideoComboBox, months);
+	updateMonthComboBoxLabels(lentUntilMonthVideoComboBox, months);
 
 
         Object selectedItem = typeMusicComboBox.getSelectedItem();
@@ -439,64 +439,68 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    public void setBookItem(Book book){
-	BufferedImage cover = book.getCover();
-	if(cover != null) {
-	    coverBookLabel.setIcon(ResizeImageIcon.resizeIcon(140, 160, cover));
+    public void setBookItem(Book book) {
+        BufferedImage cover = book.getCover();
+        if (cover != null) {
+            coverBookLabel.setIcon(ResizeImageIcon.resizeIcon(140, 160, cover));
         } else {
             coverBookLabel.setIcon(null);
         }
         titleBookTextField.setText(book.getTitle());
         authorBookTextField.setText(book.getAuthor());
-	languageBookTextField.setText(book.getLanguage());
-	isbnBookTextField.setText(book.getIsbn());
-	eanBookTextField.setText(book.getEan());
-	genreBookTextField.setText(book.getGenre());
+        languageBookTextField.setText(book.getLanguage());
+        isbnBookTextField.setText(book.getIsbn());
+        eanBookTextField.setText(book.getEan());
+        genreBookTextField.setText(book.getGenre());
         int releaseYear = book.getReleaseYear();
-        if(releaseYear > -1)
-            releaseYearBookTextField.setText(String.valueOf(releaseYear));
-        else
-            releaseYearBookTextField.setText("");
-	locationBookTextField.setText(book.getLocation());
-	borrowedToBookTextField.setText(book.getLentTo());
-	borrowDayBookComboBox.setSelectedIndex(book.getLendDay());
-	borrowMonthBookComboBox.setSelectedIndex(book.getLendMonth());
-        int borrowYear = book.getLendYear();
-        if(borrowYear > -1)
-            borrowYearBookTextField.setText(String.valueOf(borrowYear));
-        else
-            borrowYearBookTextField.setText("");
-	borrowedUntilDayBookComboBox.setSelectedIndex(book.getLendUntilDay());
-	borrowedUntilMonthBookComboBox.setSelectedIndex(book.getLendUntilMonth());
-        int borrowedUntilYear = book.getLendUntilYear();
-        if(borrowedUntilYear > -1)
-            borrowedUntilYearBookTextField.setText(String.valueOf(borrowedUntilYear));
-        else
-            borrowedUntilYearBookTextField.setText("");
+        if (releaseYear > -1) {
+            releaseYearBookComboBox.setSelectedItem(releaseYear);
+        } else {
+            releaseYearBookComboBox.setSelectedItem("");
+        }
+        locationBookTextField.setText(book.getLocation());
+        lentToBookTextField.setText(book.getLentTo());
+        lentDayBookComboBox.setSelectedIndex(book.getLendDay());
+        lentMonthBookComboBox.setSelectedIndex(book.getLendMonth());
+        int lentYear = book.getLendYear();
+        if (lentYear > -1) {
+            lentYearBookComboBox.setSelectedItem(lentYear);
+        } else {
+            lentYearBookComboBox.setSelectedItem("");
+        }
+        lentUntilDayBookComboBox.setSelectedIndex(book.getLendUntilDay());
+        lentUntilMonthBookComboBox.setSelectedIndex(book.getLendUntilMonth());
+        int lentUntilYear = book.getLendUntilYear();
+        if (lentUntilYear > -1) {
+            lentUntilYearBookComboBox.setSelectedItem(lentYear);
+        } else {
+            lentUntilYearBookComboBox.setSelectedItem(lentYear);
+        }
 
-	switch (book.getRating()) {
-	    case 1:
-		oneRatingpointBookRadioButton.setSelected(true);
-		break;
-	    case 2:
-		twoRatingpointsBookRadioButton.setSelected(true);
-		break;
-	    case 3:
-		threeRatingpointsBookRadioButton.setSelected(true);
-		break;
-	    default:
-		oneRatingpointBookRadioButton.setSelected(false);
-		twoRatingpointsBookRadioButton.setSelected(false);
-		threeRatingpointsBookRadioButton.setSelected(false);
-	}
-	descriptionBookTextArea.setText(book.getDescription());
+        switch (book.getRating()) {
+            case 0:
+                ratingNoneBookRadioButton.setSelected(true);
+                break;
+            case 1:
+                ratingOneBookRadioButton.setSelected(true);
+                break;
+            case 2:
+                ratingTwoBookRadioButton.setSelected(true);
+                break;
+            case 3:
+                ratingThreeBookRadioButton.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("Illegal Rating Value");
+        }
+        descriptionBookTextArea.setText(book.getDescription());
         annotationBookTextArea.setText(book.getComment());
     }
 
-    public void setMusicItem(Music music){
-	BufferedImage cover = music.getCover();
-	if(cover != null) {
-	    coverMusicLabel.setIcon(new ImageIcon(cover));
+    public void setMusicItem(Music music) {
+        BufferedImage cover = music.getCover();
+        if (cover != null) {
+            coverMusicLabel.setIcon(new ImageIcon(cover));
         } else {
             coverMusicLabel.setIcon(null);
         }
@@ -506,157 +510,170 @@ public class MainFrame extends javax.swing.JFrame {
         typeMusicComboBox.setSelectedItem(music.getType());
         formatMusicComboBox.setSelectedItem(music.getFormat());
 
-	eanMusicTextField.setText(music.getEan());
-	genreMusicTextField.setText(music.getGenre());
+        eanMusicTextField.setText(music.getEan());
+        genreMusicTextField.setText(music.getGenre());
         int releaseYear = music.getReleaseYear();
-        if(releaseYear > -1)
-            releaseYearMusicTextField.setText(String.valueOf(releaseYear));
-        else
-            releaseYearMusicTextField.setText("");
-	locationMusicTextField.setText(music.getLocation());
-	borrowedToMusicTextField.setText(music.getLentTo());
-	borrowDayMusicComboBox.setSelectedIndex(music.getLendDay());
-	borrowMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
+        if (releaseYear > -1) {
+            releaseYearMusicComboBox.setSelectedItem(releaseYear);
+        } else {
+            releaseYearMusicComboBox.setSelectedItem("");
+        }
+        locationMusicTextField.setText(music.getLocation());
+        lentToMusicTextField.setText(music.getLentTo());
+        lentDayMusicComboBox.setSelectedIndex(music.getLendDay());
+        lentMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
         int borrowYear = music.getLendYear();
-        if(borrowYear > -1)
-            borrowYearMusicTextField.setText(String.valueOf(borrowYear));
-        else
-            borrowYearMusicTextField.setText("");
-	borrowedUntilDayMusicComboBox.setSelectedIndex(music.getLendUntilDay());
-	borrowedUntilMonthMusicComboBox.setSelectedIndex(music.getLendUntilMonth());
+        if (borrowYear > -1) {
+            lentYearMusicComboBox.setSelectedItem(borrowYear);
+        } else {
+            lentYearMusicComboBox.setSelectedItem("");
+        }
+        lentUntilDayMusicComboBox.setSelectedIndex(music.getLendUntilDay());
+        lentUntilMonthMusicComboBox.setSelectedIndex(music.getLendUntilMonth());
         int borrowedUntilYear = music.getLendUntilYear();
-        if(borrowedUntilYear > -1)
-            borrowedUntilYearMusicTextField.setText(String.valueOf(borrowedUntilYear));
-        else
-            borrowedUntilYearMusicTextField.setText("");
-        
-	switch (music.getRating()) {
-	    case 1:
-		oneRatingpointMusicRadioButton.setSelected(true);
-		break;
-	    case 2:
-		twoRatingpointsMusicRadioButton.setSelected(true);
-		break;
-	    case 3:
-		threeRatingpointsMusicRadioButton.setSelected(true);
-		break;
-	    default:
-		oneRatingpointMusicRadioButton.setSelected(false);
-		twoRatingpointsMusicRadioButton.setSelected(false);
-		threeRatingpointsMusicRadioButton.setSelected(false);
-	}
-	descriptionMusicTextArea.setText(music.getDescription());
+        if (borrowedUntilYear > -1) {
+            lentYearMusicComboBox.setSelectedItem(borrowedUntilYear);
+        } else {
+            lentYearMusicComboBox.setSelectedItem("");
+        }
+
+        switch (music.getRating()) {
+            case 1:
+                ratingOneMusicRadioButton.setSelected(true);
+                break;
+            case 2:
+                ratingTwoMusicRadioButton.setSelected(true);
+                break;
+            case 3:
+                ratingThreeMusicRadioButton.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("Illegal Rating Value");
+        }
+        descriptionMusicTextArea.setText(music.getDescription());
         annotationMusicTextArea.setText(music.getComment());
     }
 
     public void setVideoItem(Video video) {
-	BufferedImage cover = video.getCover();
-	if(cover != null) {
-	    coverVideoLabel.setIcon(new ImageIcon(cover));
+        BufferedImage cover = video.getCover();
+        if (cover != null) {
+            coverVideoLabel.setIcon(new ImageIcon(cover));
         } else {
             coverVideoLabel.setIcon(null);
         }
         titleVideoTextField.setText(video.getTitle());
         directorVideoTextField.setText(video.getDirector());
-	actorsVideoTextField.setText(video.getActors());
+        actorsVideoTextField.setText(video.getActors());
         formatVideoComboBox.setSelectedItem(video.getFormat());
-	eanVideoTextField.setText(video.getEan());
-	genreVideoTextField.setText(video.getGenre());
+        eanVideoTextField.setText(video.getEan());
+        genreVideoTextField.setText(video.getGenre());
         int releaseYear = video.getReleaseYear();
-        if(releaseYear > -1)
-            releaseYearVideoTextField.setText(String.valueOf(releaseYear));
-        else
-            releaseYearVideoTextField.setText("");
-	locationVideoTextField.setText(video.getLocation());
-	borrowedToVideoTextField.setText(video.getLentTo());
-	borrowDayVideoComboBox.setSelectedIndex(video.getLendDay());
-	borrowMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
-        int borrowYear = video.getLendYear();
-        if(borrowYear > -1)
-            borrowYearVideoTextField.setText(String.valueOf(borrowYear));
-        else
-            borrowYearVideoTextField.setText("");
-	borrowedUntilDayVideoComboBox.setSelectedIndex(video.getLendUntilDay());
-	borrowedUntilMonthVideoComboBox.setSelectedIndex(video.getLendUntilMonth());
-        int borrowedUntilYear = video.getLendUntilYear();
-        if(borrowedUntilYear > -1)
-            borrowedUntilYearVideoTextField.setText(String.valueOf(borrowedUntilYear));
-        else
-            borrowedUntilYearVideoTextField.setText("");
-        
-	switch (video.getRating()) {
-	    case 1:
-		oneRatingpointVideoRadioButton.setSelected(true);
-		break;
-	    case 2:
-		twoRatingpointsVideoRadioButton.setSelected(true);
-		break;
-	    case 3:
-		threeRatingpointsVideoRadioButton.setSelected(true);
-		break;
-	    default:
-		oneRatingpointVideoRadioButton.setSelected(false);
-		twoRatingpointsVideoRadioButton.setSelected(false);
-		threeRatingpointsVideoRadioButton.setSelected(false);
-	}
-	descriptionVideoTextArea.setText(video.getDescription());
+        if (releaseYear > -1) {
+            releaseYearVideoComboBox.setSelectedItem(releaseYear);
+        } else {
+            releaseYearVideoComboBox.setSelectedItem("");
+        }
+        locationVideoTextField.setText(video.getLocation());
+        lentToVideoTextField.setText(video.getLentTo());
+        lentDayVideoComboBox.setSelectedIndex(video.getLendDay());
+        lentMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
+        int lentYear = video.getLendYear();
+        if (lentYear > -1) {
+            lentYearVideoComboBox.setSelectedItem(lentYear);
+        } else {
+            lentYearVideoComboBox.setSelectedItem("");
+        }
+        lentUntilDayVideoComboBox.setSelectedIndex(video.getLendUntilDay());
+        lentUntilMonthVideoComboBox.setSelectedIndex(video.getLendUntilMonth());
+        int lentUntilYear = video.getLendUntilYear();
+        if (lentUntilYear > -1) {
+            lentUntilYearVideoComboBox.setSelectedItem(lentYear);
+        } else {
+            lentUntilYearVideoComboBox.setSelectedItem("");
+        }
+
+        switch (video.getRating()) {
+            case 1:
+                ratingOneVideoRadioButton.setSelected(true);
+                break;
+            case 2:
+                ratingOneVideoRadioButton.setSelected(true);
+                break;
+            case 3:
+                ratingOneVideoRadioButton.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("Illegal Rating Value");
+        }
+        descriptionVideoTextArea.setText(video.getDescription());
         annotationVideoTextArea.setText(video.getComment());
     }
 
 
     public void setBookItemInformation(Book book) throws NonValidYearException {
-	String title = titleBookTextField.getText().trim();
-	String author = authorBookTextField.getText().trim();
-	String language = languageBookTextField.getText().trim();
-	String isbn = isbnBookTextField.getText().trim();   //TODO Ueberpruefen!?!?
-	String ean = eanBookTextField.getText().trim();	    //TODO Ueberpruefen!?!?
-	String genre = genreBookTextField.getText().trim();
-	String releaseYear = releaseYearBookTextField.getText().trim();
-	String location = locationBookTextField.getText().trim();
-	String lendTo = borrowedToBookTextField.getText().trim();
-	int lendDay = borrowDayBookComboBox.getSelectedIndex();
-	int lendMonth = borrowMonthBookComboBox.getSelectedIndex();
-	String lendYear = borrowYearBookTextField.getText().trim();
-	int lendUntilDay = borrowedUntilDayBookComboBox.getSelectedIndex();
-	int lendUntilMonth = borrowedUntilMonthBookComboBox.getSelectedIndex();
-	String lendUntilYear = borrowedUntilYearBookTextField.getText().trim();
-	String description = descriptionBookTextArea.getText().trim();
-	String annotation = annotationBookTextArea.getText().trim();
+        String title = titleBookTextField.getText().trim();
+        String author = authorBookTextField.getText().trim();
+        String language = languageBookTextField.getText().trim();
+        String isbn = isbnBookTextField.getText().trim();   //TODO Ueberpruefen!?!?
+        String ean = eanBookTextField.getText().trim();	    //TODO Ueberpruefen!?!?
+        String genre = genreBookTextField.getText().trim();
+        Object selectedReleaseYear = releaseYearBookComboBox.getSelectedItem();
+        String releaseYear = "";
+        if (selectedReleaseYear != null) {
+            releaseYear = selectedReleaseYear.toString().trim();
+        }
+        String location = locationBookTextField.getText().trim();
+        String lendTo = lentToBookTextField.getText().trim();
+        int lendDay = lentDayBookComboBox.getSelectedIndex();
+        int lendMonth = lentMonthBookComboBox.getSelectedIndex();
+        Object selectedLentYear = lentYearBookComboBox.getSelectedItem();
+        String lentYear = "";
+        if (selectedLentYear != null) {
+            lentYear = selectedLentYear.toString().trim();
+        }
+        int lendUntilDay = lentUntilDayBookComboBox.getSelectedIndex();
+        int lendUntilMonth = lentUntilMonthBookComboBox.getSelectedIndex();
+        Object selectedLentUntilYear = lentUntilYearBookComboBox.getSelectedItem();
+        String lentUntilYear = "";
+        if (selectedLentUntilYear != null) {
+            lentUntilYear = selectedLentUntilYear.toString().trim();
+        }
+        String description = descriptionBookTextArea.getText().trim();
+        String annotation = annotationBookTextArea.getText().trim();
 
-	//Rating
-	int rating = 0;
-	if(oneRatingpointBookRadioButton.isSelected())
-	    rating = 1;
-	else
-	    if(twoRatingpointsBookRadioButton.isSelected())
-		rating = 2;
-	    else
-		if(threeRatingpointsBookRadioButton.isSelected())
-		    rating = 3;
+        //Rating
+        int rating = 0;
+        if (ratingOneBookRadioButton.isSelected()) {
+            rating = 1;
+        } else if (ratingTwoBookRadioButton.isSelected()) {
+            rating = 2;
+        } else if (ratingThreeBookRadioButton.isSelected()) {
+            rating = 3;
+        }
 
-	//year Test
-	    int ry = TestUtils.validYear(releaseYear);
-	    int ly = TestUtils.validYear(lendYear);
-	    int luy = TestUtils.validYear(lendUntilYear);
-	    book.setTitle(title);
-	    book.setAuthor(author);
-	    book.setLanguage(language);
-	    book.setIsbn(isbn);
-	    book.setEan(ean);
-	    book.setGenre(genre);
-	    book.setReleaseYear(ry);
-	    book.setLocation(location);
-	    book.setLendTo(lendTo);
-	    book.setLendDay(lendDay);
-	    book.setLendMonth(lendMonth);
-	    book.setLendYear(ly);
-	    book.setLendUntilDay(lendUntilDay);
-	    book.setLendUntilMonth(lendUntilMonth);
-	    book.setLendUntilYear(luy);
-	    book.setRating(rating);
-	    book.setDescription(description);
-	    book.setComment(annotation);
-            book.updateObservers();
+        //year Test
+        int ry = TestUtils.validYear(releaseYear);
+        int ly = TestUtils.validYear(lentYear);
+        int luy = TestUtils.validYear(lentUntilYear);
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setLanguage(language);
+        book.setIsbn(isbn);
+        book.setEan(ean);
+        book.setGenre(genre);
+        book.setReleaseYear(ry);
+        book.setLocation(location);
+        book.setLendTo(lendTo);
+        book.setLendDay(lendDay);
+        book.setLendMonth(lendMonth);
+        book.setLendYear(ly);
+        book.setLendUntilDay(lendUntilDay);
+        book.setLendUntilMonth(lendUntilMonth);
+        book.setLendUntilYear(luy);
+        book.setRating(rating);
+        book.setDescription(description);
+        book.setComment(annotation);
+        book.updateObservers();
     }
 
     public void setMusicItemInformation(Music music) throws NonValidYearException{
@@ -1011,8 +1028,8 @@ public class MainFrame extends javax.swing.JFrame {
         descriptionVideoLabel = new javax.swing.JLabel();
         annotationVideoLabel = new javax.swing.JLabel();
         titleVideoTextField = new javax.swing.JTextField();
-        authorVideoTextField = new javax.swing.JTextField();
-        languageVideoTextField = new javax.swing.JTextField();
+        directorVideoTextField = new javax.swing.JTextField();
+        actorsVideoTextField = new javax.swing.JTextField();
         eanVideoTextField = new javax.swing.JTextField();
         genreVideoTextField = new javax.swing.JTextField();
         releaseYearVideoComboBox = new javax.swing.JComboBox();
@@ -2078,8 +2095,8 @@ public class MainFrame extends javax.swing.JFrame {
                                     .addComponent(locationVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                                     .addComponent(releaseYearVideoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(eanVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(authorVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(languageVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                    .addComponent(directorVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                    .addComponent(actorsVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                                     .addComponent(genreVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                                     .addComponent(lentToVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                                     .addComponent(formatVideoComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 257, Short.MAX_VALUE))))
@@ -2115,11 +2132,11 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(directorVideoLabel)
-                            .addComponent(authorVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(directorVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(actorsVideoLabel)
-                            .addComponent(languageVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(actorsVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(formatVideoLabel)
@@ -2284,6 +2301,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutButton;
     private javax.swing.JLabel actorsVideoLabel;
+    private javax.swing.JTextField actorsVideoTextField;
     private javax.swing.JButton addBookButton;
     private javax.swing.JButton addMusicButton;
     private javax.swing.JButton addVideoButton;
@@ -2300,7 +2318,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField artistMusicTextField;
     private javax.swing.JLabel authorBookLabel;
     private javax.swing.JTextField authorBookTextField;
-    private javax.swing.JTextField authorVideoTextField;
     private javax.swing.JPanel bookCardPanel;
     private javax.swing.JPanel bookPanel;
     private javax.swing.ButtonGroup bookRatingButtonGroup;
@@ -2322,6 +2339,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane descriptionVideoScrollPane;
     private javax.swing.JTextArea descriptionVideoTextArea;
     private javax.swing.JLabel directorVideoLabel;
+    private javax.swing.JTextField directorVideoTextField;
     private javax.swing.JLabel eanBookLabel;
     private javax.swing.JTextField eanBookTextField;
     private javax.swing.JLabel eanMusicLabel;
@@ -2354,7 +2372,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemVideoScrollPane;
     private javax.swing.JLabel languageBookLabel;
     private javax.swing.JTextField languageBookTextField;
-    private javax.swing.JTextField languageVideoTextField;
     private javax.swing.JComboBox languagesComboBox;
     private javax.swing.JCheckBox lentBookCheckBox;
     private javax.swing.JLabel lentBookLabel;
