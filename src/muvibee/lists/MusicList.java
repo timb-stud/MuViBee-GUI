@@ -72,7 +72,7 @@ public class MusicList extends MediaList {
     @Override
     public boolean resort() {
         if (super.resort()) {
-            for (SortTypes st : sortedBy) {
+            for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
                 switch (st) {
                     case TYPE:
                         sortByType();
