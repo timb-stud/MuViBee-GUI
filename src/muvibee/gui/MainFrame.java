@@ -676,65 +676,78 @@ public class MainFrame extends javax.swing.JFrame {
         book.updateObservers();
     }
 
-    public void setMusicItemInformation(Music music) throws NonValidYearException{
-	String title = titleMusicTextField.getText().trim();
-	String artist = artistMusicTextField.getText().trim();
-	Object selectedType = typeMusicComboBox.getSelectedItem();
+    public void setMusicItemInformation(Music music) throws NonValidYearException {
+        String title = titleMusicTextField.getText().trim();
+        String artist = artistMusicTextField.getText().trim();
+        Object selectedType = typeMusicComboBox.getSelectedItem();
         String type = null;
-        if(selectedType != null)
+        if (selectedType != null) {
             type = selectedType.toString().trim();
+        }
         Object selectedFormat = formatMusicComboBox.getSelectedItem();
         String format = null;
-        if(selectedFormat != null)
+        if (selectedFormat != null) {
             format = selectedFormat.toString().trim();
-	String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
-	String genre = genreMusicTextField.getText().trim();
-	String releaseYear = releaseYearMusicTextField.getText().trim();
-	String location = locationMusicTextField.getText().trim();
-	String lendTo = borrowedToMusicTextField.getText().trim();
-	int lendDay = borrowDayMusicComboBox.getSelectedIndex();
-	int lendMonth = borrowMonthMusicComboBox.getSelectedIndex();
-	String lendYear = borrowYearMusicTextField.getText().trim();
-	int lendUntilDay = borrowedUntilDayMusicComboBox.getSelectedIndex();
-	int lendUntilMonth = borrowedUntilMonthMusicComboBox.getSelectedIndex();
-	String lendUntilYear = borrowedUntilYearMusicTextField.getText().trim();
-	String description = descriptionMusicTextArea.getText().trim();
-	String annotation = annotationMusicTextArea.getText().trim();
+        }
+        String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
+        String genre = genreMusicTextField.getText().trim();
+        Object selectedReleaseYear = releaseYearMusicComboBox.getSelectedItem();
+        String releaseYear = "";
+        if (selectedReleaseYear != null) {
+            releaseYear = selectedReleaseYear.toString().trim();
+        }
+        String location = locationMusicTextField.getText().trim();
+        String lendTo = lentToMusicTextField.getText().trim();
+        int lendDay = lentDayMusicComboBox.getSelectedIndex();
+        int lendMonth = lentMonthMusicComboBox.getSelectedIndex();
+        Object selectedLentYear = lentYearMusicComboBox.getSelectedItem();
+        String lentYear = "";
+        if (selectedLentYear != null) {
+            lentYear = selectedLentYear.toString().trim();
+        }
+        int lendUntilDay = lentUntilDayMusicComboBox.getSelectedIndex();
+        int lendUntilMonth = lentUntilMonthMusicComboBox.getSelectedIndex();
+        Object selectedLentUntilYear = lentUntilYearMusicComboBox.getSelectedItem();
+        String lentUntilYear = "";
+        if (selectedLentUntilYear != null) {
+            lentUntilYear = selectedLentUntilYear.toString().trim();
+        }
+        String description = descriptionMusicTextArea.getText().trim();
+        String annotation = annotationMusicTextArea.getText().trim();
 
-	//Rating
-	int rating = 0;
-	if(oneRatingpointMusicRadioButton.isSelected())
-	    rating = 1;
-	else
-	    if(twoRatingpointsMusicRadioButton.isSelected())
-		rating = 2;
-	    else
-		if(threeRatingpointsMusicRadioButton.isSelected())
-		    rating = 3;
+        //Rating
+        int rating = 0;
+        if (ratingOneMusicRadioButton.isSelected()) {
+            rating = 1;
+        } else if (ratingOneMusicRadioButton.isSelected()) {
+            rating = 2;
+        } else if (ratingOneMusicRadioButton.isSelected()) {
+            rating = 3;
+        }
 
-	//year Test
-	    int ry = TestUtils.validYear(releaseYear);
-	    int ly = TestUtils.validYear(lendYear);
-	    int luy = TestUtils.validYear(lendUntilYear);
-	    music.setTitle(title);
-	    music.setInterpreter(artist);
-	    music.setType(type);
-	    music.setFormat(format);
-	    music.setEan(ean);
-	    music.setGenre(genre);
-	    music.setReleaseYear(ry);
-	    music.setLocation(location);
-	    music.setLendTo(lendTo);
-	    music.setLendDay(lendDay);
-	    music.setLendMonth(lendMonth);
-	    music.setLendYear(ly);
-	    music.setLendUntilDay(lendUntilDay);
-	    music.setLendUntilMonth(lendUntilMonth);
-	    music.setLendUntilYear(luy);
-	    music.setRating(rating);
-	    music.setDescription(description);
-	    music.setComment(annotation);
-            music.updateObservers();
+        //year Test
+        int ry = TestUtils.validYear(releaseYear);
+        int ly = TestUtils.validYear(lentYear);
+        int luy = TestUtils.validYear(lentUntilYear);
+        music.setTitle(title);
+        music.setInterpreter(artist);
+        music.setType(type);
+        music.setFormat(format);
+        music.setEan(ean);
+        music.setGenre(genre);
+        music.setReleaseYear(ry);
+        music.setLocation(location);
+        music.setLendTo(lendTo);
+        music.setLendDay(lendDay);
+        music.setLendMonth(lendMonth);
+        music.setLendYear(ly);
+        music.setLendUntilDay(lendUntilDay);
+        music.setLendUntilMonth(lendUntilMonth);
+        music.setLendUntilYear(luy);
+        music.setRating(rating);
+        music.setDescription(description);
+        music.setComment(annotation);
+        music.updateObservers();
 
     }
 
@@ -748,34 +761,46 @@ public class MainFrame extends javax.swing.JFrame {
             format = selectedFormat.toString().trim();
 	String ean = eanVideoTextField.getText().trim();    //TODO Ueberpruefen!?!?
 	String genre = genreVideoTextField.getText().trim();
-	String releaseYear = releaseYearVideoTextField.getText().trim();
+        Object selectedReleaseYear = releaseYearVideoComboBox.getSelectedItem();
+        String releaseYear = "";
+        if (selectedReleaseYear != null) {
+            releaseYear = selectedReleaseYear.toString().trim();
+        }
 	String location = locationVideoTextField.getText().trim();
-	String lendTo = borrowedToVideoTextField.getText().trim();
-	int lendDay = borrowDayVideoComboBox.getSelectedIndex();
-	int lendMonth = borrowMonthVideoComboBox.getSelectedIndex();
-	String lendYear = borrowYearVideoTextField.getText().trim();
-	int lendUntilDay = borrowedUntilDayVideoComboBox.getSelectedIndex();
-	int lendUntilMonth = borrowedUntilMonthVideoComboBox.getSelectedIndex();
-	String lendUntilYear = borrowedUntilYearVideoTextField.getText().trim();
+	String lendTo = lentToVideoTextField.getText().trim();
+	int lendDay = lentDayVideoComboBox.getSelectedIndex();
+	int lendMonth = lentMonthVideoComboBox.getSelectedIndex();
+        Object selectedLentYear = lentYearVideoComboBox.getSelectedItem();
+        String lentYear = "";
+        if (selectedLentYear != null) {
+            lentYear = selectedLentYear.toString().trim();
+        }
+	int lendUntilDay = lentUntilDayVideoComboBox.getSelectedIndex();
+	int lendUntilMonth = lentUntilMonthVideoComboBox.getSelectedIndex();
+        Object selectedLentUntilYear = lentUntilYearVideoComboBox.getSelectedItem();
+        String lentUntilYear = "";
+        if (selectedLentUntilYear != null) {
+            lentUntilYear = selectedLentUntilYear.toString().trim();
+        }
 	String description = descriptionVideoTextArea.getText().trim();
 	String annotation = annotationVideoTextArea.getText().trim();
 
 	//Rating
 	int rating = 0;
-	if(oneRatingpointVideoRadioButton.isSelected())
+	if(ratingOneVideoRadioButton.isSelected())
 	    rating = 1;
 	else
-	    if(twoRatingpointsVideoRadioButton.isSelected())
+	    if(ratingOneVideoRadioButton.isSelected())
 		rating = 2;
 	    else
-		if(threeRatingpointsVideoRadioButton.isSelected())
+		if(ratingOneVideoRadioButton.isSelected())
 		    rating = 3;
 
 	//year Test
 
 	    int ry = TestUtils.validYear(releaseYear);
-	    int ly = TestUtils.validYear(lendYear);
-	    int luy = TestUtils.validYear(lendUntilYear);
+	    int ly = TestUtils.validYear(lentYear);
+	    int luy = TestUtils.validYear(lentUntilYear);
 	    video.setTitle(title);
 	    video.setDirector(director);
 	    video.setActors(actors);
