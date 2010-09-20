@@ -2,7 +2,11 @@
 
 <Form version="1.6" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    <Component class="javax.swing.ButtonGroup" name="bookRatingButtonGroup">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="musicRatingButtonGroup">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="videoRatingButtonGroup">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -830,21 +834,33 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingOneBookRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="bookRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="1"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingTwoBookRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="bookRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="2"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingThreeBookRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="bookRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="3"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingNoneBookRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="bookRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="keine"/>
                       </Properties>
                     </Component>
@@ -1125,11 +1141,11 @@
                                               <Component id="coverMusicLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="languageMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="typeMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="releaseYearMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="locationMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="authorMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="isbnMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="interpretMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="formatMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="eanMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="genreMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="ratingMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1147,35 +1163,31 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="lentUntilYearMusicComboBox" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lentDayMusicComboBox" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lentMonthMusicComboBox" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lentYearMusicComboBox" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                          <Component id="lentMusicCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="ratingOneMusicRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingTwoMusicRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingThreeMusicRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingNoneMusicRadioButton" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="locationMusicTextField" alignment="0" pref="257" max="32767" attributes="0"/>
-                                                          <Component id="releaseYearMusicComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="eanMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="authorMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="isbnMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="languageMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="genreMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="lentToMusicTextField" alignment="1" pref="257" max="32767" attributes="0"/>
-                                                      </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lentDayMusicComboBox" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="lentMonthMusicComboBox" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="lentYearMusicComboBox" min="-2" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="lentMusicCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="ratingOneMusicRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingTwoMusicRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingThreeMusicRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingNoneMusicRadioButton" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="locationMusicTextField" alignment="0" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="releaseYearMusicComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="eanMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="artistMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="genreMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="lentToMusicTextField" alignment="1" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="typeMusicComboBox" alignment="1" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="formatMusicComboBox" alignment="1" pref="257" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1220,18 +1232,18 @@
                                   <Component id="coverMusicLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="authorMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="authorMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="interpretMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="artistMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="languageMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="languageMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="typeMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="typeMusicComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="isbnMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="isbnMusicTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatMusicLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatMusicComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1321,19 +1333,19 @@
                         <Property name="text" type="java.lang.String" value="Titel"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="authorMusicLabel">
+                    <Component class="javax.swing.JLabel" name="interpretMusicLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Autor"/>
+                        <Property name="text" type="java.lang.String" value="Interpret"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="languageMusicLabel">
+                    <Component class="javax.swing.JLabel" name="typeMusicLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Sprache"/>
+                        <Property name="text" type="java.lang.String" value="Typ"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="isbnMusicLabel">
+                    <Component class="javax.swing.JLabel" name="formatMusicLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="ISBN"/>
+                        <Property name="text" type="java.lang.String" value="Format"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="eanMusicLabel">
@@ -1393,11 +1405,21 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="titleMusicTextField">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="authorMusicTextField">
+                    <Component class="javax.swing.JTextField" name="artistMusicTextField">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="languageMusicTextField">
+                    <Component class="javax.swing.JComboBox" name="typeMusicComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="isbnMusicTextField">
+                    <Component class="javax.swing.JComboBox" name="formatMusicComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="eanMusicTextField">
                     </Component>
@@ -1474,21 +1496,33 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingOneMusicRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="musicRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="1"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingTwoMusicRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="musicRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="2"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingThreeMusicRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="musicRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="3"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingNoneMusicRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="musicRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="keine"/>
                       </Properties>
                     </Component>
@@ -1746,7 +1780,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -1760,11 +1794,11 @@
                                               <Component id="coverVideoLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="languageVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="actorsVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="releaseYearVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="locationVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="authorVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="isbnVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="directorVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="formatVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="eanVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="genreVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="ratingVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1782,35 +1816,31 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="lentUntilYearVideoComboBox" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lentDayVideoComboBox" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lentMonthVideoComboBox" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lentYearVideoComboBox" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                          <Component id="lentVideoCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="ratingOneVideoRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingTwoVideoRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingThreeVideoRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingNoneVideoRadioButton" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="locationVideoTextField" alignment="0" pref="257" max="32767" attributes="0"/>
-                                                          <Component id="releaseYearVideoComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="eanVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="authorVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="isbnVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="languageVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="genreVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="lentToVideoTextField" alignment="1" pref="257" max="32767" attributes="0"/>
-                                                      </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lentDayVideoComboBox" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="lentMonthVideoComboBox" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="lentYearVideoComboBox" min="-2" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="lentVideoCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="ratingOneVideoRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingTwoVideoRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingThreeVideoRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingNoneVideoRadioButton" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="locationVideoTextField" alignment="0" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="releaseYearVideoComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="eanVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="authorVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="languageVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="genreVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="lentToVideoTextField" alignment="1" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="formatVideoComboBox" alignment="1" pref="257" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1834,12 +1864,8 @@
                                       <Component id="annotationVideoLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="451" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="annotationVideoScrollPane" pref="510" max="32767" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="descriptionVideoScrollPane1" pref="510" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1859,18 +1885,18 @@
                                   <Component id="coverVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="authorVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="directorVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="authorVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="languageVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="actorsVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="languageVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="isbnVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="isbnVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatVideoComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1937,8 +1963,6 @@
                               <Component id="descriptionVideoLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="descriptionVideoScrollPane" min="-2" pref="144" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="descriptionVideoScrollPane1" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="annotationVideoLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1962,19 +1986,19 @@
                         <Property name="text" type="java.lang.String" value="Titel"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="authorVideoLabel">
+                    <Component class="javax.swing.JLabel" name="directorVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Autor"/>
+                        <Property name="text" type="java.lang.String" value="Regisseur"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="languageVideoLabel">
+                    <Component class="javax.swing.JLabel" name="actorsVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Sprache"/>
+                        <Property name="text" type="java.lang.String" value="Schauspieler"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="isbnVideoLabel">
+                    <Component class="javax.swing.JLabel" name="formatVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="ISBN"/>
+                        <Property name="text" type="java.lang.String" value="Format"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="eanVideoLabel">
@@ -2037,8 +2061,6 @@
                     <Component class="javax.swing.JTextField" name="authorVideoTextField">
                     </Component>
                     <Component class="javax.swing.JTextField" name="languageVideoTextField">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="isbnVideoTextField">
                     </Component>
                     <Component class="javax.swing.JTextField" name="eanVideoTextField">
                     </Component>
@@ -2115,21 +2137,33 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingOneVideoRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="videoRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="1"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingTwoVideoRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="videoRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="2"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingThreeVideoRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="videoRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="3"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="ratingNoneVideoRadioButton">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="videoRatingButtonGroup"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="keine"/>
                       </Properties>
                     </Component>
@@ -2173,21 +2207,13 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JScrollPane" name="descriptionVideoScrollPane1">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="descriptionVideoTextArea1">
-                          <Properties>
-                            <Property name="columns" type="int" value="20"/>
-                            <Property name="rows" type="int" value="5"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
+                    <Component class="javax.swing.JComboBox" name="formatVideoComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
