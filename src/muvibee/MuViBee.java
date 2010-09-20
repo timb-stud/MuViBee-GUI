@@ -628,12 +628,15 @@ public class MuViBee {
         }else {
             filterVideoList.removeSort(SortTypes.ACTORS);
         }
+        filterBookList.updateObserver();
+        filterMusicList.updateObserver();
+        filterVideoList.updateObserver();
     }
 
     public int getLentToBook() {
         int sum = 0;
         for (Book b: bookList) {
-            if (!b.getLentTo().isEmpty()) {
+            if (!b.isIsLent()) {
                 sum++;
             }
         }
@@ -643,7 +646,7 @@ public class MuViBee {
     public int getLentToMusic() {
         int sum = 0;
         for (Music m: musicList) {
-            if (!m.getLentTo().isEmpty()) {
+            if (!m.isIsLent()) {
                 sum++;
             }
         }
@@ -653,7 +656,7 @@ public class MuViBee {
     public int getLentToVideo() {
         int sum = 0;
         for (Video v: videoList) {
-            if (!v.getLentTo().isEmpty()) {
+            if (!v.isIsLent()) {
                 sum++;
             }
         }

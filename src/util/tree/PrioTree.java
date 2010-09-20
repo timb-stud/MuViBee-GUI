@@ -4,6 +4,7 @@
  */
 package util.tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
@@ -70,7 +71,7 @@ public class PrioTree extends JTree implements Observer {
     }
 
 
-    public void createTree(MediaList mediaList, LinkedList<SortTypes> sortedBy) {
+    public void createTree(MediaList mediaList,ArrayList<SortTypes> sortedBy) {
         ResourceBundle bundle = ResourceBundle.getBundle(mvb.getMainBundlePath());
         final String OTHER = bundle.getString("OTHER_PRIO_TREE");
         Object o = null;
@@ -134,7 +135,7 @@ public class PrioTree extends JTree implements Observer {
         setModel(treeModel);
 
         MediaList mediaList = ((MediaList) list);
-        LinkedList<SortTypes> sortedBy = mediaList.getSortedBy();
+        ArrayList<SortTypes> sortedBy = mediaList.getSortedBy();
         createTree(mediaList,sortedBy);
     }
 }

@@ -17,8 +17,7 @@ public class VideoList extends MediaList {
         boolean succ = list.add(m);
         resort();
         m.addObserver(this);
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
         return succ;
     }
 
@@ -26,8 +25,7 @@ public class VideoList extends MediaList {
     public void addAll(Collection c) {
         list.addAll(c);
         resort();
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
     }
     public void sortByDirector() {
         Collections.sort(list, new Comparator() {
@@ -38,7 +36,9 @@ public class VideoList extends MediaList {
                 return (v1.getDirector().compareTo(v2.getDirector()));
             }
         });
-        sortedBy.add(SortTypes.DIRECTOR);
+        if (!sortedBy.contains(SortTypes.DIRECTOR)) {
+            sortedBy.add(SortTypes.DIRECTOR);
+        }
     }
 
     public void sortByActors() {
@@ -50,7 +50,9 @@ public class VideoList extends MediaList {
                 return v1.getActors().compareTo(v2.getActors());
             }
         });
-        sortedBy.add(SortTypes.ACTORS);
+        if (!sortedBy.contains(SortTypes.ACTORS)) {
+            sortedBy.add(SortTypes.ACTORS);
+        }
     }
 
     public void sortByFormat() {
@@ -62,13 +64,15 @@ public class VideoList extends MediaList {
                 return m1.getFormat().compareTo(m2.getFormat());
             }
         });
-        sortedBy.add(SortTypes.FORMAT);
+        if (!sortedBy.contains(SortTypes.FORMAT)) {
+            sortedBy.add(SortTypes.FORMAT);
+        }
     }
 
     @Override
     public boolean resort() {
         if (super.resort()) {
-            for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
+            for (SortTypes st : sortedBy) {
                 switch (st) {
                     case DIRECTOR:
                         sortByDirector();
@@ -82,9 +86,9 @@ public class VideoList extends MediaList {
                     default:
                         sortByTitle();
                         return true;
+                    }
                 }
             }
-        }
         return false;
     }
 }

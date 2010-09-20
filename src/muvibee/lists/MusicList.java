@@ -18,8 +18,7 @@ public class MusicList extends MediaList {
         boolean succ = list.add(m);
         resort();
         m.addObserver(this);
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
         return succ;
     }
 
@@ -27,8 +26,7 @@ public class MusicList extends MediaList {
     public void addAll(Collection c) {
         list.addAll(c);
         resort();
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
     }
     public void sortByType() {
         Collections.sort(list, new Comparator() {
@@ -39,7 +37,9 @@ public class MusicList extends MediaList {
                 return m1.getType().compareTo(m2.getType());
             }
         });
-        sortedBy.add(SortTypes.TYPE);
+        if (!sortedBy.contains(SortTypes.TYPE)) {
+            sortedBy.add(SortTypes.TYPE);
+        }
     }
 
     public void sortByInterpreter() {
@@ -51,7 +51,9 @@ public class MusicList extends MediaList {
                 return m1.getInterpreter().compareTo(m2.getInterpreter());
             }
         });
-        sortedBy.add(SortTypes.INTERPRETER);
+        if (!sortedBy.contains(SortTypes.INTERPRETER)) {
+            sortedBy.add(SortTypes.INTERPRETER);
+        }
     }
 
     public void sortByFormat() {
@@ -63,7 +65,9 @@ public class MusicList extends MediaList {
                 return m1.getFormat().compareTo(m2.getFormat());
             }
         });
-        sortedBy.add(SortTypes.FORMAT);
+        if (!sortedBy.contains(SortTypes.FORMAT)) {
+            sortedBy.add(SortTypes.FORMAT);
+        }
     }
 
 
@@ -72,23 +76,23 @@ public class MusicList extends MediaList {
     @Override
     public boolean resort() {
         if (super.resort()) {
-            for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
+            for (SortTypes st : sortedBy) {
                 switch (st) {
-                    case TYPE:
-                        sortByType();
-                        break;
-                    case INTERPRETER:
-                        sortByInterpreter();
-                        break;
-                    case FORMAT:
-                        sortByFormat();
-                        break;
-                    default:
-                        sortByTitle();
-                        return true;
+                        case TYPE:
+                            sortByType();
+                            break;
+                        case INTERPRETER:
+                            sortByInterpreter();
+                            break;
+                        case FORMAT:
+                            sortByFormat();
+                            break;
+                        default:
+                            sortByTitle();
+                            return true;
+                    }
                 }
             }
-        }
         return false;
     }
 }

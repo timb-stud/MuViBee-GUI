@@ -4,16 +4,14 @@
  */
 package muvibee.lists;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
-import muvibee.media.Book;
 import muvibee.media.Media;
-import muvibee.media.Music;
-import muvibee.media.Video;
 import muvibee.utils.SortTypes;
 
 /**
@@ -23,10 +21,10 @@ import muvibee.utils.SortTypes;
 public class MediaList extends Observable implements Observer {
 
     LinkedList<Media> list;
-    LinkedList<SortTypes> sortedBy;
+    ArrayList<SortTypes> sortedBy;
 
     public MediaList() {
-        sortedBy = new LinkedList<SortTypes>();
+        sortedBy = new ArrayList<SortTypes>();
         list = new LinkedList<Media>();
         sortedBy.add(SortTypes.TITLE);
     }
@@ -35,22 +33,19 @@ public class MediaList extends Observable implements Observer {
         boolean succ = list.add(m);
         resort();
         m.addObserver(this);
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
         return succ;
     }
 
     public void addAll(Collection c) {
         list.addAll(c);
         resort();
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
     }
 
     public void update(Observable o, Object arg) {
         resort();
-        setChanged();
-        notifyObservers();
+        updateObserver();
     }
 
     public boolean contains(Media m) {
@@ -63,8 +58,7 @@ public class MediaList extends Observable implements Observer {
 
     public boolean remove(Media m) {
         boolean succ = list.remove(m);
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
         return succ;
     }
 
@@ -77,9 +71,9 @@ public class MediaList extends Observable implements Observer {
                 return m1.getTitle().compareTo(m2.getTitle());
             }
         });
-        sortedBy.add(SortTypes.TITLE);
-        this.setChanged();
-        this.notifyObservers();
+        if (!sortedBy.contains(SortTypes.TITLE)) {
+            sortedBy.add(SortTypes.TITLE);
+        }
     }
 
     public void sortByGenre() {
@@ -91,9 +85,9 @@ public class MediaList extends Observable implements Observer {
                 return m1.getGenre().compareTo(m2.getGenre());
             }
         });
-        sortedBy.add(SortTypes.GENRE);
-        this.setChanged();
-        this.notifyObservers();
+        if (!sortedBy.contains(SortTypes.GENRE)) {
+            sortedBy.add(SortTypes.GENRE);
+        }
     }
 
     public void sortByReleaseYear() {
@@ -105,9 +99,9 @@ public class MediaList extends Observable implements Observer {
                 return compareInt(m1.getReleaseYear(), (m2.getReleaseYear()));
             }
         });
-        sortedBy.add(SortTypes.YEAR);
-        this.setChanged();
-        this.notifyObservers();
+        if (!sortedBy.contains(SortTypes.YEAR)) {
+            sortedBy.add(SortTypes.YEAR);
+        }
     }
 
     public void sortByLocation() {
@@ -119,9 +113,9 @@ public class MediaList extends Observable implements Observer {
                 return m1.getLocation().compareTo(m2.getLocation());
             }
         });
-        sortedBy.add(SortTypes.LOCATION);
-        this.setChanged();
-        this.notifyObservers();
+        if (!sortedBy.contains(SortTypes.LOCATION)) {
+            sortedBy.add(SortTypes.LOCATION);
+        }
     }
 
     public void sortByLentTo() {
@@ -133,9 +127,9 @@ public class MediaList extends Observable implements Observer {
                 return m1.getLentTo().compareTo(m2.getLentTo());
             }
         });
-        sortedBy.add(SortTypes.LENTTO);
-        this.setChanged();
-        this.notifyObservers();
+        if (!sortedBy.contains(SortTypes.LENTTO)) {
+            sortedBy.add(SortTypes.LENTTO);
+        }
     }
 
     public void sortByRating() {
@@ -147,9 +141,9 @@ public class MediaList extends Observable implements Observer {
                 return compareInt(m1.getRating(), (m2.getRating()));
             }
         });
-        sortedBy.add(SortTypes.RATING);
-        this.setChanged();
-        this.notifyObservers();
+        if (!sortedBy.contains(SortTypes.RATING)) {
+            sortedBy.add(SortTypes.RATING);
+        }
     }
 
     private static int compareInt(int a, int b) {
@@ -162,8 +156,13 @@ public class MediaList extends Observable implements Observer {
         }
     }
 
+    public void updateObserver() {
+        setChanged();
+        notifyObservers();
+    }
+
     boolean resort() {
-        for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
+        for (SortTypes st : sortedBy) {
             switch (st) {
                 case TITLE:
                     sortByTitle();
@@ -213,7 +212,7 @@ public class MediaList extends Observable implements Observer {
         }
     }
 
-    public LinkedList<SortTypes> getSortedBy() {
+    public ArrayList<SortTypes> getSortedBy() {
         return sortedBy;
     }
     
