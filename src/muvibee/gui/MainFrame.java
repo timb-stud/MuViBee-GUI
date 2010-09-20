@@ -33,6 +33,8 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.TableCellRenderer;
 import muvibee.MuViBee;
+import muvibee.actionlistener.AboutActionListener;
+import muvibee.actionlistener.HelpActionListener;
 import muvibee.actionlistener.HideActionListener;
 import muvibee.actionlistener.ResetSearchActionListener;
 import muvibee.actionlistener.LanguageActionListener;
@@ -297,6 +299,12 @@ public class MainFrame extends javax.swing.JFrame {
         SearchActionListener searchActionListener = new SearchActionListener(mvb);
         searchButton.addActionListener(searchActionListener);
         advancedSearchButton.addActionListener(searchActionListener);
+
+        AboutActionListener aboutActionListener = new AboutActionListener(mvb);
+        aboutButton.addActionListener(aboutActionListener);
+
+        HelpActionListener helpActionListner = new HelpActionListener(mvb);
+        helpButton.addActionListener(helpActionListner);
         
         deleteSearchButton.addActionListener(new ResetSearchActionListener(mvb));
 
