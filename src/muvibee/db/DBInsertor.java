@@ -26,15 +26,14 @@ public class DBInsertor {
 		try {
 			con = DBConnector.getConnection();
 			if (m instanceof Book) {
-                            System.out.println("habe buch gefunden");
-				insertBook((Book)m);
+                            insertBook((Book)m);
 			}
-//			if (m instanceof Music) {
-//				insertMusic((Music)m);
-//			}
-//			if (m instanceof Video) {
-//				insertVideo((Video)m);
-//			}
+			if (m instanceof Music) {
+                            insertMusic((Music)m);
+			}
+			if (m instanceof Video) {
+                            insertVideo((Video)m);
+			}
 			con.prepareStatement("SHUTDOWN").execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -42,20 +41,15 @@ public class DBInsertor {
 	}
 
 	private static void insertBook(Book b) throws SQLException {
-            System.out.println("drin");
             PreparedStatement ps = con.prepareStatement(SQL_INSERT_BOOK);
-                        System.out.println(ps.toString());
-
             ps.setString(1, b.getTitle());
             ps.setString(2, b.getEan());
             ps.setString(3, b.getGenre());
             ps.setInt(4, b.getReleaseYear());
             ps.setString(5, b.getLocation());
-                        System.out.println(ps.toString());
-
             ps.setString(6, b.getLentTo());
-            ps.setString(7, "2010-01-01");
-            ps.setString(8, "2010-01-01");
+            ps.setString(7, b.getLendDate());
+            ps.setString(8, b.getLendUntiDate());
             ps.setInt(9, b.getRating());
             ps.setString(10, b.getDescription());
             ps.setString(11, b.getComment());
@@ -64,67 +58,55 @@ public class DBInsertor {
             ps.setString(14, b.getLanguage());
             ps.setString(15, b.getIsbn());
             ps.setBoolean(16, b.isDeleted());
-            System.out.println(ps.toString());
             ps.executeUpdate();
             System.out.println("Book added");
 	}
 
-//	private static void insertMusic(Music m) throws SQLException {
-//		PreparedStatement ps = con.prepareStatement(SQL_SELECT_MUSIC);
-//		ps.setInt(1, m.hashCode());
-//		ResultSet rs = ps.executeQuery();
-//		if (!rs.next()) {
-//			ps = con.prepareStatement(SQL_INSERT_MUSIC);
-//			ps.setInt(1, m.hashCode());
-//			ps.setString(2, m.getTitle());
-//			ps.setString(3, m.getEan());
-//			ps.setString(4, m.getGenre());
-////			ps.setInt(5, m.getYear());
-//			ps.setString(6, m.getLocation());
-//			//ps.setString(7, m.getLendTo());
-//			//ps.setString(8, m.getLendDate());
-//			//ps.setString(9, m.getBackDate());
-//			ps.setInt(10, m.getRating());
-//			ps.setString(11, m.getDescription());
-//			ps.setString(12, m.getComment());
-//			ps.setString(13, imageWriteToFile(m.getCover()));
-//			ps.setString(14, m.getFormat());
-//			ps.setString(15, m.getInterpreter());
-//			ps.setString(16, m.getType());
-//			ps.setBoolean(17, m.isDeleted());
-//			ps.executeUpdate();
-//			System.out.println("Music added");
-//
-//		}
-//	}
-//
-//	private static void insertVideo(Video v) throws SQLException {
-//		PreparedStatement ps = con.prepareStatement(SQL_SELECT_VIDEO);
-//		ps.setInt(1, v.hashCode());
-//		ResultSet rs = ps.executeQuery();
-//		if (!rs.next()) {
-//			ps = con.prepareStatement(SQL_INSERT_VIDEO);
-//			ps.setInt(1, v.hashCode());
-//			ps.setString(2, v.getTitle());
-//			ps.setString(3, v.getEan());
-//			ps.setString(4, v.getGenre());
-//			//ps.setInt(5, v.getYear());
-//			ps.setString(6, v.getLocation());
-//			//ps.setString(7, v.getLendTo());
-//			//ps.setString(8, v.getLendDate());
-//			//ps.setString(9, v.getBackDate());
-//			ps.setInt(10, v.getRating());
-//			ps.setString(11, v.getDescription());
-//			ps.setString(12, v.getComment());
-//			ps.setString(13, imageWriteToFile(v.getCover()));
-//			ps.setString(14, v.getFormat());
-//			ps.setString(15, v.getDirector());
-//			//ps.setString(16, v.getActor());
-//			ps.setBoolean(17, v.isDeleted());
-//			ps.executeUpdate();
-//			System.out.println("Video added");
-//		}
-//	}
+	private static void insertMusic(Music m) throws SQLException {
+
+            PreparedStatement ps = con.prepareStatement(SQL_INSERT_MUSIC);
+            ps.setString(1, m.getTitle());
+            ps.setString(2, m.getEan());
+            ps.setString(3, m.getGenre());
+            ps.setInt(4, m.getReleaseYear());
+            ps.setString(5, m.getLocation());
+            ps.setString(6, m.getLentTo());
+            ps.setString(7, m.getLendDate());
+            ps.setString(8, m.getLendUntiDate());
+            ps.setInt(9, m.getRating());
+            ps.setString(10, m.getDescription());
+            ps.setString(11, m.getComment());
+            ps.setString(12, imageWriteToFile(m.getCover()));
+            ps.setString(13, m.getFormat());
+            ps.setString(14, m.getInterpreter());
+            ps.setString(15, m.getType());
+            ps.setBoolean(16, m.isDeleted());
+            ps.executeUpdate();
+            System.out.println("Music added");
+
+	}
+
+	private static void insertVideo(Video v) throws SQLException {
+	PreparedStatement ps = con.prepareStatement(SQL_INSERT_MUSIC);
+            ps.setString(1, v.getTitle());
+            ps.setString(2, v.getEan());
+            ps.setString(3, v.getGenre());
+            ps.setInt(4, v.getReleaseYear());
+            ps.setString(5, v.getLocation());
+            ps.setString(6, v.getLentTo());
+            ps.setString(7, v.getLendDate());
+            ps.setString(8, v.getLendUntiDate());
+            ps.setInt(9, v.getRating());
+            ps.setString(10, v.getDescription());
+            ps.setString(11, v.getComment());
+            ps.setString(12, imageWriteToFile(v.getCover()));
+            ps.setString(13, v.getFormat());
+            ps.setString(14, v.getDirector());
+            ps.setString(15, v.getActors());
+            ps.setBoolean(16, v.isDeleted());
+            ps.executeUpdate();
+            System.out.println("Video added");
+        }
 	
 	private static String imageWriteToFile(BufferedImage i)  {
 		String path = "data/images/" + i.hashCode() + ".jpg";

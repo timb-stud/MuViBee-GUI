@@ -11,7 +11,7 @@ import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-import java.awt.print.Book;
+import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
 
@@ -56,110 +56,113 @@ public class DBSelector {
 	}
 	
 	public void selectMedia(Boolean isDeleted, String orderBy) {
-		try {
-			if (orderBy == null || orderBy.compareTo("") == 0 || orderBy.compareTo(" ") == 0 || orderBy.compareTo("none") == 0) {
-				orderBy = SQL_ORDER_BY;
-			}
-			con = DBConnector.getConnection();
-			PreparedStatement psBook = null;
-			PreparedStatement psMusic = null;
-			PreparedStatement psVideo = null;
-			psBook 	= con.prepareStatement(SQL_GET_BOOKS + orderBy);
-			psMusic = con.prepareStatement(SQL_GET_MUSIC + orderBy);
-			psVideo = con.prepareStatement(SQL_GET_VIDEOS + orderBy);
-			psBook.setBoolean(1, isDeleted);
-			psMusic.setBoolean(1, isDeleted);
-			psVideo.setBoolean(1, isDeleted);
-			ResultSet rsBook = psBook.executeQuery();
-			ResultSet rsMusic = psMusic.executeQuery();
-			ResultSet rsVideo = psVideo.executeQuery();
-			CreateBookList(rsBook);
-			CreateMusicList(rsMusic);
-			CreateVideoList(rsVideo);
-			con.prepareStatement("SHUTDOWN").execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            try {
+                if (orderBy == null || orderBy.compareTo("") == 0
+                                    || orderBy.compareTo(" ") == 0
+                                    || orderBy.compareTo("none") == 0) {
+                        orderBy = SQL_ORDER_BY;
+                }
+                con = DBConnector.getConnection();
+                PreparedStatement psBook = null;
+                PreparedStatement psMusic = null;
+                PreparedStatement psVideo = null;
+                psBook 	= con.prepareStatement(SQL_GET_BOOKS + orderBy);
+                psMusic = con.prepareStatement(SQL_GET_MUSIC + orderBy);
+                psVideo = con.prepareStatement(SQL_GET_VIDEOS + orderBy);
+                psBook.setBoolean(1, isDeleted);
+                psMusic.setBoolean(1, isDeleted);
+                psVideo.setBoolean(1, isDeleted);
+                ResultSet rsBook = psBook.executeQuery();
+                ResultSet rsMusic = psMusic.executeQuery();
+                ResultSet rsVideo = psVideo.executeQuery();
+                CreateBookList(rsBook);
+                CreateMusicList(rsMusic);
+                CreateVideoList(rsVideo);
+                con.prepareStatement("SHUTDOWN").execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 		
 	}
 
 	private void CreateBookList(ResultSet rs) throws SQLException, IOException {
-		bookList = new LinkedList<Book>();
-		while (rs.next()) {
-			int ID 				= rs.getInt(1);
-			String title 		= rs.getString(2);
-			String ean 			= rs.getString(3);
-			String genre 		= rs.getString(4);
-			int year 			= rs.getInt(5);
-			String location 	= rs.getString(6);
-			String lendTo 		= rs.getString(7);
-			String lendDate 	= rs.getString(8);
-			String backDate 	= rs.getString(9);
-			int rating	 		= rs.getInt(10);
-			String description 	= rs.getString(11);
-			String comment 		= rs.getString(12);
-			String imagepath 	= rs.getString(13);
-			BufferedImage cover = ImageIO.read(new File(imagepath));
-			String author 	= rs.getString(14);
-			String language = rs.getString(15);
-			String isbn 	= rs.getString(16);
-			Boolean isDeleted 	= rs.getBoolean(17);
-			//Book b = new Book(ID, author, language, isbn, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
-			//bookList.add(b);
-			
-		}
+            bookList = new LinkedList<Book>();
+            while (rs.next()) {
+                Book b = new Book();
+                b.setID(rs.getInt(1));
+                b.setTitle(rs.getString(2));
+                b.setEan(rs.getString(3));
+                b.setGenre(rs.getString(4));
+                b.setReleaseYear(rs.getInt(5));
+                b.setLocation(rs.getString(6));
+                b.setLendTo(rs.getString(7));
+                b.setLendDate(rs.getString(8));
+                b.setLendUntilDate(rs.getString(9));
+                b.setRating(rs.getInt(10));
+                b.setDescription(rs.getString(11));
+                b.setComment(rs.getString(12));
+                BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                b.setCover(cover);
+                b.setAuthor(rs.getString(14));
+                b.setLanguage(rs.getString(15));
+                b.setLanguage(rs.getString(16));
+                b.setDeleted(rs.getBoolean(17));
+                bookList.add(b);
+
+            }
 	}
 	private void CreateMusicList(ResultSet rs) throws SQLException, IOException {
-		musicList = new LinkedList<Music>();
-		while (rs.next()) {
-			int ID 				= rs.getInt(1);
-			String title 		= rs.getString(2);
-			String ean 			= rs.getString(3);
-			String genre 		= rs.getString(4);
-			int year 			= rs.getInt(5);
-			String location 	= rs.getString(6);
-			String lendTo 		= rs.getString(7);
-			String lendDate 	= rs.getString(8);
-			String backDate 	= rs.getString(9);
-			int rating	 		= rs.getInt(10);
-			String description 	= rs.getString(11);
-			String comment 		= rs.getString(12);
-			String imagepath 	= rs.getString(13);
-			BufferedImage cover = ImageIO.read(new File(imagepath));
-			Boolean isDeleted 	= rs.getBoolean(17);
-			String format 		= rs.getString(14);
-			String interpreter 	= rs.getString(15);
-			String type			= rs.getString(16);	
-			//Music m = new Music(ID, format, interpreter, type, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
-			//musicList.add(m);
-		}
+            musicList = new LinkedList<Music>();
+            while (rs.next()) {
+                Music m = new Music();
+                m.setID(rs.getInt(1));
+                m.setTitle(rs.getString(2));
+                m.setEan(rs.getString(3));
+                m.setGenre(rs.getString(4));
+                m.setReleaseYear(rs.getInt(5));
+                m.setLocation(rs.getString(6));
+                m.setLendTo(rs.getString(7));
+                m.setLendDate(rs.getString(8));
+                m.setLendUntilDate(rs.getString(9));
+                m.setRating(rs.getInt(10));
+                m.setDescription(rs.getString(11));
+                m.setComment(rs.getString(12));
+                BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                m.setCover(cover);
+                m.setFormat(rs.getString(14));
+                m.setInterpreter(rs.getString(15));
+                m.setType(rs.getString(16));
+                m.setDeleted(rs.getBoolean(17));
+                musicList.add(m);
+
+            }
 	}
 	private void CreateVideoList(ResultSet rs) throws SQLException, IOException {
-		videoList = new LinkedList<Video>();
-		while (rs.next()) {
-			int ID 				= rs.getInt(1);
-			String title 		= rs.getString(2);
-			String ean 			= rs.getString(3);
-			String genre 		= rs.getString(4);
-			int year 			= rs.getInt(5);
-			String location 	= rs.getString(6);
-			String lendTo 		= rs.getString(7);
-			String lendDate 	= rs.getString(8);
-			String backDate 	= rs.getString(9);
-			int rating	 		= rs.getInt(10);
-			String description 	= rs.getString(11);
-			String comment 		= rs.getString(12);
-			String imagepath 	= rs.getString(13);
-			BufferedImage cover = ImageIO.read(new File(imagepath));
-			Boolean isDeleted 	= rs.getBoolean(17);
-			String format 	= rs.getString(14);
-			String director = rs.getString(15);
-			String actor 	= rs.getString(16);	
-			//Video v = new Video(ID, format, director, actor, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
-			//videoList.add(v);
-		}
+            videoList = new LinkedList<Video>();
+            while (rs.next()) {
+                Video v = new Video();
+                v.setID(rs.getInt(1));
+                v.setTitle(rs.getString(2));
+                v.setEan(rs.getString(3));
+                v.setGenre(rs.getString(4));
+                v.setReleaseYear(rs.getInt(5));
+                v.setLocation(rs.getString(6));
+                v.setLendTo(rs.getString(7));
+                v.setLendDate(rs.getString(8));
+                v.setLendUntilDate(rs.getString(9));
+                v.setRating(rs.getInt(10));
+                v.setDescription(rs.getString(11));
+                v.setComment(rs.getString(12));
+                BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                v.setCover(cover);
+                v.setFormat(rs.getString(14));
+                v.setDirector(rs.getString(15));
+                v.setActors(rs.getString(16));
+                v.setDeleted(rs.getBoolean(17));
+                videoList.add(v);
+            }
 	}
 
 	public static LinkedList<Book> getBookList() {
