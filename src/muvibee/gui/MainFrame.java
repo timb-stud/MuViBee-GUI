@@ -841,7 +841,9 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        bookRatingButtonGroup = new javax.swing.ButtonGroup();
+        musicRatingButtonGroup = new javax.swing.ButtonGroup();
+        videoRatingButtonGroup = new javax.swing.ButtonGroup();
         headPanel = new javax.swing.JPanel();
         aboutButton = new javax.swing.JButton();
         helpButton = new javax.swing.JButton();
@@ -1300,12 +1302,16 @@ public class MainFrame extends javax.swing.JFrame {
 
         lentUntilYearBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
 
+        bookRatingButtonGroup.add(ratingOneBookRadioButton);
         ratingOneBookRadioButton.setText("1");
 
+        bookRatingButtonGroup.add(ratingTwoBookRadioButton);
         ratingTwoBookRadioButton.setText("2");
 
+        bookRatingButtonGroup.add(ratingThreeBookRadioButton);
         ratingThreeBookRadioButton.setText("3");
 
+        bookRatingButtonGroup.add(ratingNoneBookRadioButton);
         ratingNoneBookRadioButton.setText("keine");
 
         deleteBookButton.setText("Löschen");
@@ -1647,12 +1653,16 @@ public class MainFrame extends javax.swing.JFrame {
 
         lentUntilYearMusicComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
 
+        musicRatingButtonGroup.add(ratingOneMusicRadioButton);
         ratingOneMusicRadioButton.setText("1");
 
+        musicRatingButtonGroup.add(ratingTwoMusicRadioButton);
         ratingTwoMusicRadioButton.setText("2");
 
+        musicRatingButtonGroup.add(ratingThreeMusicRadioButton);
         ratingThreeMusicRadioButton.setText("3");
 
+        musicRatingButtonGroup.add(ratingNoneMusicRadioButton);
         ratingNoneMusicRadioButton.setText("keine");
 
         deleteMusicButton.setText("Löschen");
@@ -1989,12 +1999,16 @@ public class MainFrame extends javax.swing.JFrame {
 
         lentUntilYearVideoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
 
+        videoRatingButtonGroup.add(ratingOneVideoRadioButton);
         ratingOneVideoRadioButton.setText("1");
 
+        videoRatingButtonGroup.add(ratingTwoVideoRadioButton);
         ratingTwoVideoRadioButton.setText("2");
 
+        videoRatingButtonGroup.add(ratingThreeVideoRadioButton);
         ratingThreeVideoRadioButton.setText("3");
 
+        videoRatingButtonGroup.add(ratingNoneVideoRadioButton);
         ratingNoneVideoRadioButton.setText("keine");
 
         deleteVideoButton.setText("Löschen");
@@ -2289,7 +2303,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField authorVideoTextField;
     private javax.swing.JPanel bookCardPanel;
     private javax.swing.JPanel bookPanel;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup bookRatingButtonGroup;
     private javax.swing.JLabel coverBookLabel;
     private javax.swing.JLabel coverMusicLabel;
     private javax.swing.JLabel coverVideoLabel;
@@ -2386,6 +2400,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField locationVideoTextField;
     private javax.swing.JPanel musicCardPanel;
     private javax.swing.JPanel musicPanel;
+    private javax.swing.ButtonGroup musicRatingButtonGroup;
     private javax.swing.JPanel overviewPanel;
     private javax.swing.JScrollPane overviewScrollPane;
     private javax.swing.JTable overviewTable;
@@ -2448,6 +2463,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel typeMusicLabel;
     private javax.swing.JPanel videoCardPanel;
     private javax.swing.JPanel videoPanel;
+    private javax.swing.ButtonGroup videoRatingButtonGroup;
     private javax.swing.JComboBox viewBookComboBox;
     private javax.swing.JPanel viewBookPanel;
     private javax.swing.JComboBox viewMusicComboBox;
