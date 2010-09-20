@@ -36,14 +36,8 @@ public class VideoList extends MediaList {
                 return (v1.getDirector().compareTo(v2.getDirector()));
             }
         });
-<<<<<<< HEAD
         if (!sortedBy.contains(SortTypes.DIRECTOR))
             sortedBy.add(SortTypes.DIRECTOR);
-=======
-        if (!sortedBy.contains(SortTypes.DIRECTOR)) {
-            sortedBy.add(SortTypes.DIRECTOR);
-        }
->>>>>>> c0c0f1c9c79aa7d3a285aaa57f8625caa7e9bb45
     }
 
     public void sortByActors() {
@@ -55,14 +49,8 @@ public class VideoList extends MediaList {
                 return v1.getActors().compareTo(v2.getActors());
             }
         });
-<<<<<<< HEAD
         if (!sortedBy.contains(SortTypes.ACTORS))
             sortedBy.add(SortTypes.ACTORS);
-=======
-        if (!sortedBy.contains(SortTypes.ACTORS)) {
-            sortedBy.add(SortTypes.ACTORS);
-        }
->>>>>>> c0c0f1c9c79aa7d3a285aaa57f8625caa7e9bb45
     }
 
     public void sortByFormat() {
@@ -74,14 +62,8 @@ public class VideoList extends MediaList {
                 return m1.getFormat().compareTo(m2.getFormat());
             }
         });
-<<<<<<< HEAD
         if (!sortedBy.contains(SortTypes.FORMAT))
             sortedBy.add(SortTypes.FORMAT);
-=======
-        if (!sortedBy.contains(SortTypes.FORMAT)) {
-            sortedBy.add(SortTypes.FORMAT);
-        }
->>>>>>> c0c0f1c9c79aa7d3a285aaa57f8625caa7e9bb45
     }
 
     @Override
