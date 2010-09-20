@@ -12,7 +12,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import muvibee.MuViBee;
 import muvibee.lists.MediaList;
 import muvibee.media.Book;
@@ -51,7 +50,7 @@ public class DetailsTable extends JTable implements Observer{
                 }
             }
         });
-        
+
     }
 
     private void setColumnData(MediaList mediaList){

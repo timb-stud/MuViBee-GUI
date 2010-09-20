@@ -32,7 +32,10 @@ public class PrioTree extends JTree implements Observer {
     TreeModel treeModel;
 
     public PrioTree(final MuViBee muvibee) {
-         super();
+        super();
+        root = new Node("Root", null);
+        treeModel = new DefaultTreeModel(root);
+        setModel(treeModel);
         expandRow(1);
 
         addTreeSelectionListener(new TreeSelectionListener() {
