@@ -488,9 +488,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setYear(int year, JComboBox cb){
         if(year > -1){
-            cb.setSelectedItem(year);
+            cb.setSelectedItem(String.valueOf(year));
         }else{
-            cb.setSelectedItem("");
+            cb.setSelectedIndex(0);
         }
     }
 
