@@ -160,7 +160,7 @@ public abstract class Media extends Observable {
         return lendUntilDay;
     }
 
-    public String getLendUntiDate() {
+    public String getLendUntilDate() {
         return this.lendUntilYear + "-" + this.lendUntilMonth + "-" + this.lendUntilDay;
     }
 

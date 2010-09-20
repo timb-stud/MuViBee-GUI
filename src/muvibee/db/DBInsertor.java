@@ -48,9 +48,8 @@ public class DBInsertor {
             ps.setInt(4, b.getReleaseYear());
             ps.setString(5, b.getLocation());
             ps.setString(6, b.getLentTo());
-            System.out.println("Datum: " + b.getLendDate());
             ps.setString(7, b.getLendDate());
-            ps.setString(8, b.getLendUntiDate());
+            ps.setString(8, b.getLendUntilDate());
             ps.setInt(9, b.getRating());
             ps.setString(10, b.getDescription());
             ps.setString(11, b.getComment());
@@ -73,7 +72,7 @@ public class DBInsertor {
             ps.setString(5, m.getLocation());
             ps.setString(6, m.getLentTo());
             ps.setString(7, m.getLendDate());
-            ps.setString(8, m.getLendUntiDate());
+            ps.setString(8, m.getLendUntilDate());
             ps.setInt(9, m.getRating());
             ps.setString(10, m.getDescription());
             ps.setString(11, m.getComment());
@@ -96,7 +95,7 @@ public class DBInsertor {
             ps.setString(5, v.getLocation());
             ps.setString(6, v.getLentTo());
             ps.setString(7, v.getLendDate());
-            ps.setString(8, v.getLendUntiDate());
+            ps.setString(8, v.getLendUntilDate());
             ps.setInt(9, v.getRating());
             ps.setString(10, v.getDescription());
             ps.setString(11, v.getComment());

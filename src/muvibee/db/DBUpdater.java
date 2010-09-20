@@ -44,11 +44,11 @@ public class DBUpdater {
 			ps.setString(1, m.getTitle());
 			ps.setString(2, m.getEan());
 			ps.setString(3, m.getGenre());
-			//ps.setInt(4, m.getYear());
+			ps.setInt(4, m.getReleaseYear());
 			ps.setString(5, m.getLocation());
-			//ps.setString(6, m.getLendTo());
-			//ps.setString(7, m.getLendDate());
-			//ps.setString(8, m.getBackDate());
+			ps.setString(6, m.getLentTo());
+			ps.setString(7, m.getLendDate());
+			ps.setString(8, m.getLendUntilDate());
 			ps.setInt(9, m.getRating());
 			ps.setString(10, m.getDescription());
 			ps.setString(11, m.getComment());
@@ -66,10 +66,10 @@ public class DBUpdater {
 			if (m instanceof Video) {
 				ps.setString(13, ((Video)m).getFormat());
 				ps.setString(14, ((Video)m).getDirector());
-				//ps.setString(15, ((Video)m).getActor());
+				ps.setString(15, ((Video)m).getActors());
 			}
 			ps.setBoolean(16, m.isDeleted());
-			//ps.setInt(17, m.getID());
+			ps.setInt(17, m.getID());
 			ps.executeUpdate();
 			con.prepareStatement("SHUTDOWN").execute();
 		} catch (SQLException e) {
