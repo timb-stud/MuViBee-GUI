@@ -190,6 +190,29 @@ public class MediaList extends Observable implements Observer {
         return false;
     }
 
+    public void removeSort(SortTypes sortTypes) {
+        switch (sortTypes) {
+            case TITLE:
+                sortedBy.remove(sortTypes.TITLE);
+                break;
+            case YEAR:
+                sortedBy.remove(sortTypes.YEAR);
+                break;
+            case GENRE:
+                sortedBy.remove(sortTypes.GENRE);
+                break;
+            case RATING:
+                sortedBy.remove(sortTypes.RATING);
+                break;
+            case LOCATION:
+                sortedBy.remove(sortTypes.LOCATION);
+                break;
+            case LENTTO:
+                sortedBy.remove(sortTypes.LENTTO);
+                break;
+        }
+    }
+
     public LinkedList<SortTypes> getSortedBy() {
         return sortedBy;
     }
