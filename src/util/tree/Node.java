@@ -26,6 +26,6 @@ public class Node extends DefaultMutableTreeNode{
     }
 
     public boolean equals(Node node){
-        return (this.media.equals(node.getMedia()))?true:false;
+        return (this.getUserObject().equals(node.getUserObject()))?true:false;
     }
 }
