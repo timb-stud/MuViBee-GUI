@@ -8,6 +8,7 @@ import java.sql.SQLException;
  * @author Yassir Klos, Tobias Lana
  */
 public class DBConnector {
+
 	/**
 	 * Erstellt eine Verbindung mit der internen HSQL Datenbank
 	 * 
@@ -15,7 +16,6 @@ public class DBConnector {
 	 * @throws SQLException
 	 * @throws MySQLException
 	 */
-
 	public static Connection getConnection() throws SQLException {
         try {
 			Class.forName("org.hsqldb.jdbcDriver").newInstance();
@@ -26,7 +26,6 @@ public class DBConnector {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-                    System.out.println("Bin im DB Connector");
 		Connection con = DriverManager.getConnection("jdbc:hsqldb:file:./data/database/muvibee", "SA", "");
 		con.setAutoCommit(true);
 		return con;
