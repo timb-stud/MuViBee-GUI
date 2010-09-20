@@ -20,8 +20,6 @@ import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
-import muvibee.utils.NonValidYearException;
-import muvibee.utils.TestUtils;
 
 /**
  *
