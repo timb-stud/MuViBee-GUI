@@ -16,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import muvibee.IllegalYearException;
 import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
@@ -182,6 +183,21 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         lentUntilDayComboBox.setEnabled(b);
         lentUntilMonthComboBox.setEnabled(b);
         lentUntilYearComboBox.setEnabled(b);
+    }
+
+        public int getYear(JComboBox cb) throws IllegalYearException {
+        if(cb.getSelectedIndex() == 0)
+            return -1;
+        Object selectedYear = cb.getSelectedItem();
+        String yearS = "";
+        if (selectedYear != null) {
+            yearS = selectedYear.toString().trim();
+        }
+        try{
+            return Integer.parseInt(yearS);
+        }catch(NumberFormatException e){
+            throw new IllegalYearException();
+        }
     }
 
     /** This method is called from within the constructor to
@@ -642,10 +658,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         String title = titleTextField.getText().trim();
         String ean = eanTextField.getText().trim();	    //TODO Ueberpruefen!?!?
         String genre = genreTextField.getText().trim();
-        Object selectedReleaseYear = releaseYearComboBox.getSelectedItem();
-        String releaseYear = "";
-        if(selectedReleaseYear != null)
-            releaseYear = selectedReleaseYear.toString().trim();
+        int releaseYear = getYear(releaseYearComboBox);
         String location = locationTextField.getText().trim();
         boolean isLent = isLentCheckBox.isSelected();
         String lendTo = lentToTextField.getText().trim();
@@ -697,9 +710,6 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         }
 
         try {
-            int ry = TestUtils.validYear(releaseYear);
-            int ly = TestUtils.validYear(lentYear);
-            int luy = TestUtils.validYear(lentUntilYear);
             book = new Book();
             book.setTitle(title);
             book.setAuthor(author);
@@ -762,7 +772,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             video.setRating(rating);
             video.setDescription(description);
             video.setComment(annotation);
-        } catch (NonValidYearException e) {
+        } catch (IllegalYearException e) {
             returnCode = RET_ILLEGAL_YEAR;
         }
 

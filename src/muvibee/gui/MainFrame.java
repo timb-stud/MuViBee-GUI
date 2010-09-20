@@ -626,6 +626,7 @@ public class MainFrame extends javax.swing.JFrame {
         String genre = genreBookTextField.getText().trim();
         int releaseYear = getYear(releaseYearBookComboBox);
         String location = locationBookTextField.getText().trim();
+        boolean lent = lentBookCheckBox.isSelected();
         String lendTo = lentToBookTextField.getText().trim();
         int lendDay = lentDayBookComboBox.getSelectedIndex();
         int lendMonth = lentMonthBookComboBox.getSelectedIndex();
@@ -654,6 +655,7 @@ public class MainFrame extends javax.swing.JFrame {
         book.setGenre(genre);
         book.setReleaseYear(releaseYear);
         book.setLocation(location);
+        book.setIsLent(lent);
         book.setLendTo(lendTo);
         book.setLendDay(lendDay);
         book.setLendMonth(lendMonth);
@@ -684,6 +686,7 @@ public class MainFrame extends javax.swing.JFrame {
         String genre = genreMusicTextField.getText().trim();
         int releaseYear = getYear(releaseYearMusicComboBox);
         String location = locationMusicTextField.getText().trim();
+        boolean lent = lentMusicCheckBox.isSelected();
         String lendTo = lentToMusicTextField.getText().trim();
         int lendDay = lentDayMusicComboBox.getSelectedIndex();
         int lendMonth = lentMonthMusicComboBox.getSelectedIndex();
@@ -712,6 +715,7 @@ public class MainFrame extends javax.swing.JFrame {
         music.setGenre(genre);
         music.setReleaseYear(releaseYear);
         music.setLocation(location);
+        music.setIsLent(lent);
         music.setLendTo(lendTo);
         music.setLendDay(lendDay);
         music.setLendMonth(lendMonth);
@@ -739,6 +743,7 @@ public class MainFrame extends javax.swing.JFrame {
         String genre = genreVideoTextField.getText().trim();
         int releaseYear = getYear(releaseYearVideoComboBox);
         String location = locationVideoTextField.getText().trim();
+        boolean lent = lentVideoCheckBox.isSelected();
         String lendTo = lentToVideoTextField.getText().trim();
         int lendDay = lentDayVideoComboBox.getSelectedIndex();
         int lendMonth = lentMonthVideoComboBox.getSelectedIndex();
@@ -768,6 +773,7 @@ public class MainFrame extends javax.swing.JFrame {
         video.setGenre(genre);
         video.setReleaseYear(releaseYear);
         video.setLocation(location);
+        video.setIsLent(lent);
         video.setLendTo(lendTo);
         video.setLendDay(lendDay);
         video.setLendMonth(lendMonth);
