@@ -1140,7 +1140,6 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="formatMusicComboBox" pref="257" max="32767" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="lentUntilDayMusicComboBox" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
@@ -1171,7 +1170,8 @@
                                                   <Component id="artistMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
                                                   <Component id="genreMusicTextField" alignment="1" pref="257" max="32767" attributes="1"/>
                                                   <Component id="lentToMusicTextField" alignment="1" pref="257" max="32767" attributes="0"/>
-                                                  <Component id="typeMusicComboBox" alignment="0" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="typeMusicComboBox" alignment="1" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="formatMusicComboBox" alignment="1" pref="257" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1766,11 +1766,11 @@
                                               <Component id="coverVideoLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="languageVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="actorsVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="releaseYearVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="locationVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="authorVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="isbnVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="directorVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="formatVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="eanVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="genreVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="ratingVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1788,35 +1788,31 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="lentUntilYearVideoComboBox" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lentDayVideoComboBox" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lentMonthVideoComboBox" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lentYearVideoComboBox" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                          <Component id="lentVideoCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="ratingOneVideoRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingTwoVideoRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingThreeVideoRadioButton" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="ratingNoneVideoRadioButton" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="locationVideoTextField" alignment="0" pref="257" max="32767" attributes="0"/>
-                                                          <Component id="releaseYearVideoComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="eanVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="authorVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="isbnVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="languageVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="genreVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
-                                                          <Component id="lentToVideoTextField" alignment="1" pref="257" max="32767" attributes="0"/>
-                                                      </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lentDayVideoComboBox" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="lentMonthVideoComboBox" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="lentYearVideoComboBox" min="-2" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="lentVideoCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="ratingOneVideoRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingTwoVideoRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingThreeVideoRadioButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ratingNoneVideoRadioButton" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="locationVideoTextField" alignment="0" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="releaseYearVideoComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="eanVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="authorVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="languageVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="genreVideoTextField" alignment="1" pref="257" max="32767" attributes="1"/>
+                                                  <Component id="lentToVideoTextField" alignment="1" pref="257" max="32767" attributes="0"/>
+                                                  <Component id="formatVideoComboBox" alignment="1" pref="257" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1865,18 +1861,18 @@
                                   <Component id="coverVideoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="authorVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="directorVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="authorVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="languageVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="actorsVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="languageVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="isbnVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="isbnVideoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatVideoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="formatVideoComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1968,19 +1964,19 @@
                         <Property name="text" type="java.lang.String" value="Titel"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="authorVideoLabel">
+                    <Component class="javax.swing.JLabel" name="directorVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Autor"/>
+                        <Property name="text" type="java.lang.String" value="Regisseur"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="languageVideoLabel">
+                    <Component class="javax.swing.JLabel" name="actorsVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Sprache"/>
+                        <Property name="text" type="java.lang.String" value="Schauspieler"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="isbnVideoLabel">
+                    <Component class="javax.swing.JLabel" name="formatVideoLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="ISBN"/>
+                        <Property name="text" type="java.lang.String" value="Format"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="eanVideoLabel">
@@ -2043,8 +2039,6 @@
                     <Component class="javax.swing.JTextField" name="authorVideoTextField">
                     </Component>
                     <Component class="javax.swing.JTextField" name="languageVideoTextField">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="isbnVideoTextField">
                     </Component>
                     <Component class="javax.swing.JTextField" name="eanVideoTextField">
                     </Component>
@@ -2194,6 +2188,13 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JComboBox" name="formatVideoComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
