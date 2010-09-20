@@ -30,6 +30,7 @@ public class DetailsTable extends JTable implements Observer{
     public DetailsTable(final MuViBee muvibee) {
         super();
         dtm = new DefaultTableModel();
+
         setModel(dtm);
         setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setEnabled(true);
@@ -51,6 +52,11 @@ public class DetailsTable extends JTable implements Observer{
             }
         });
 
+    }
+
+    @Override
+    public boolean isCellEditable(int row, int col){
+        return false;
     }
 
     private void setColumnData(MediaList mediaList){

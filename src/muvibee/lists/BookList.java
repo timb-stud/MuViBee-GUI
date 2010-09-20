@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import muvibee.media.Book;
 import muvibee.media.Media;
+import muvibee.utils.SortTypes;
 
 /**
  *
@@ -43,7 +44,7 @@ public class BookList extends MediaList {
                 return b1.getAuthor().compareTo(b2.getAuthor());
             }
         });
-        sortedBy = sortedBy.AUTHOR;
+        sortedBy.add(SortTypes.AUTHOR);
         this.setChanged();
         this.notifyObservers();
     }
@@ -57,24 +58,26 @@ public class BookList extends MediaList {
                 return (b1.getLanguage()).compareTo(b2.getLanguage());
             }
         });
-        sortedBy = sortedBy.LANGUAGE;
+        sortedBy.add(SortTypes.LANGUAGE);
         this.setChanged();
         this.notifyObservers();
     }
 
     @Override
     public boolean resort() {
-        if (super.resort()) {
-            switch (sortedBy) {
-                case AUTHOR:
-                    sortByAuthor();
-                    break;
-                case LANGUAGE:
-                    sortByLanguage();
-                    break;
-                default:
-                    sortByTitle();
-                    return true;
+        for (SortTypes st : sortedBy) {
+            if (super.resort()) {
+                switch (st) {
+                    case AUTHOR:
+                        sortByAuthor();
+                        break;
+                    case LANGUAGE:
+                        sortByLanguage();
+                        break;
+                    default:
+                        sortByTitle();
+                        return true;
+                }
             }
         }
         return false;

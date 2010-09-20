@@ -10,6 +10,7 @@ import java.util.Comparator;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
+import muvibee.utils.SortTypes;
 
 public class MusicList extends MediaList {
     @Override
@@ -38,7 +39,7 @@ public class MusicList extends MediaList {
                 return m1.getType().compareTo(m2.getType());
             }
         });
-        sortedBy = sortedBy.TYPE;
+        sortedBy.add(SortTypes.TYPE);
     }
 
     public void sortByInterpreter() {
@@ -50,7 +51,7 @@ public class MusicList extends MediaList {
                 return m1.getInterpreter().compareTo(m2.getInterpreter());
             }
         });
-        sortedBy = sortedBy.INTERPRETER;
+        sortedBy.add(SortTypes.INTERPRETER);
     }
 
     public void sortByFormat() {
@@ -62,7 +63,7 @@ public class MusicList extends MediaList {
                 return m1.getFormat().compareTo(m2.getFormat());
             }
         });
-        sortedBy = sortedBy.FORMAT;
+        sortedBy.add(SortTypes.FORMAT);
     }
 
 
@@ -71,19 +72,21 @@ public class MusicList extends MediaList {
     @Override
     public boolean resort() {
         if (super.resort()) {
-            switch (sortedBy) {
-                case TYPE:
-                    sortByType();
-                    break;
-                case INTERPRETER:
-                    sortByInterpreter();
-                    break;
-                case FORMAT:
-                    sortByFormat();
-                    break;
-                default:
-                    sortByTitle();
-                    return true;
+            for (SortTypes st : sortedBy) {
+                switch (st) {
+                    case TYPE:
+                        sortByType();
+                        break;
+                    case INTERPRETER:
+                        sortByInterpreter();
+                        break;
+                    case FORMAT:
+                        sortByFormat();
+                        break;
+                    default:
+                        sortByTitle();
+                        return true;
+                }
             }
         }
         return false;
