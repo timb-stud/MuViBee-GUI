@@ -467,6 +467,11 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="itemBookPanel">
+                  <Properties>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[500, 759]"/>
+                    </Property>
+                  </Properties>
 
                   <Layout>
                     <DimensionLayout dim="0">
@@ -1125,6 +1130,11 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="itemMusicPanel">
+                  <Properties>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[500, 759]"/>
+                    </Property>
+                  </Properties>
 
                   <Layout>
                     <DimensionLayout dim="0">
@@ -1780,6 +1790,11 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="itemVideoPanel">
+                  <Properties>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[500, 759]"/>
+                    </Property>
+                  </Properties>
 
                   <Layout>
                     <DimensionLayout dim="0">
@@ -2256,7 +2271,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="restoreItemButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="deleteItemButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="restoreEverythingButton" min="-2" pref="136" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="deleteItemButton" min="-2" pref="137" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -2272,6 +2289,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="restoreItemButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="deleteItemButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="restoreEverythingButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -2281,6 +2299,7 @@
             <Component class="javax.swing.JButton" name="restoreItemButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Wiederhestellen"/>
+                <Property name="name" type="java.lang.String" value="restore" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="deleteItemButton">
@@ -2292,6 +2311,12 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
             </Container>
+            <Component class="javax.swing.JButton" name="restoreEverythingButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alles wiederherstellen"/>
+                <Property name="name" type="java.lang.String" value="restore everything" noResource="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

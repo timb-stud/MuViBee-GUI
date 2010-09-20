@@ -6,8 +6,11 @@
 package muvibee;
 
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionListener;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -24,6 +27,8 @@ import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
 import muvibee.utils.SortTypes;
+import util.deleteditemlist.DeletedItemEntry;
+import util.deleteditemlist.DeletedItemsList;
 
 /**
  *
@@ -648,7 +653,7 @@ public class MuViBee {
     public int getLentToBook() {
         int sum = 0;
         for (Book b: bookList) {
-            if (!b.isIsLent()) {
+            if (b.isIsLent()) {
                 sum++;
             }
         }
@@ -658,7 +663,7 @@ public class MuViBee {
     public int getLentToMusic() {
         int sum = 0;
         for (Music m: musicList) {
-            if (!m.isIsLent()) {
+            if (m.isIsLent()) {
                 sum++;
             }
         }
@@ -668,7 +673,7 @@ public class MuViBee {
     public int getLentToVideo() {
         int sum = 0;
         for (Video v: videoList) {
-            if (!v.isIsLent()) {
+            if (v.isIsLent()) {
                 sum++;
             }
         }
@@ -719,5 +724,18 @@ public class MuViBee {
             }
         }
         return sum;
+    }
+
+    public DeletedItemsList getDeletedList() {
+        return mainFrame.getDeletedList();
+    }
+    
+
+    public void fillCurrentDeletedMedia(DeletedItemsList deletedList) {
+        Media[] medias = new Media[deletedList.getSelectedValues().length];
+        for (int i = 0; i < medias.length; i++) {
+            medias[i] = ((DeletedItemEntry)deletedList.getSelectedValues()[i]).getMedia();
+        }
+        setCurrentDeletedMedia(medias);
     }
 }
