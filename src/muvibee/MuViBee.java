@@ -11,7 +11,9 @@ import java.util.ResourceBundle;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import muvibee.gui.AboutDialog;
 import muvibee.gui.AdvancedSearchDialog;
+import muvibee.gui.HelpDialog;
 import muvibee.gui.StatusBarModel;
 import muvibee.lists.BookList;
 import muvibee.lists.MediaList;
@@ -159,6 +161,19 @@ public class MuViBee {
                 advancedSearch(b, m, v);
             }
         }
+    }
+
+
+    public void showAboutDialog(){
+        AboutDialog dialog = new AboutDialog(mainFrame);
+        dialog.setLocationRelativeTo(mainFrame);
+        dialog.setVisible(true);
+    }
+
+    public void showHelpDialog(){
+        HelpDialog helpDialog = new HelpDialog(mainFrame);
+        helpDialog.setLocationRelativeTo(mainFrame);
+        helpDialog.setVisible(true);
     }
 
     private void setBookItem(){
