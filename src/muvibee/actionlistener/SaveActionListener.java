@@ -7,8 +7,12 @@ package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import muvibee.IllegalYearException;
 import muvibee.MuViBee;
+import muvibee.gui.StatusBarModel;
 
 /**
  *
@@ -26,15 +30,33 @@ public class SaveActionListener implements ActionListener {
         if(source instanceof JButton){
             JButton button = (JButton)source;
             if(button.getName().equals("save book button")){
-                if(!mvb.setCurrentBookItemInformation()) return;
+                try {
+                    if (!mvb.setCurrentBookItemInformation()) {
+                        return;
+                    }
+                } catch (IllegalYearException ex) {
+                    StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
+                }
                 mvb.addCurrentBookToBookLists();
             } else {
                 if(button.getName().equals("save music button")){
-                    if(!mvb.setCurrentMusicItemInformation()) return;
+                    try {
+                        if (!mvb.setCurrentMusicItemInformation()) {
+                            return;
+                        }
+                    } catch (IllegalYearException ex) {
+                        StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
+                    }
 		    mvb.addCurrentMusicToMusicLists();
                 } else {
                     if(button.getName().equals("save video button")){
-                        if(!mvb.setCurrentVideoItemInformation()) return;
+                        try {
+                            if (!mvb.setCurrentVideoItemInformation()) {
+                                return;
+                            }
+                        } catch (IllegalYearException ex) {
+                            StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
+                        }
                         mvb.addCurrentVideoToVideoLists();
                     }
                 }

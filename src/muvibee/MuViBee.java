@@ -225,7 +225,7 @@ public class MuViBee {
         currentDeletedMediaList = medias;
     }
     
-    public boolean setCurrentBookItemInformation() {
+    public boolean setCurrentBookItemInformation() throws IllegalYearException {
         if (bookList.contains(currentBook)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setBookItemInformation(currentBook);
@@ -240,7 +240,7 @@ public class MuViBee {
         return false;
     }
 
-    public boolean setCurrentMusicItemInformation() {
+    public boolean setCurrentMusicItemInformation() throws IllegalYearException {
 	if (musicList.contains(currentMusic)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setMusicItemInformation(currentMusic);
@@ -255,7 +255,7 @@ public class MuViBee {
         return false;
     }
 
-    public boolean setCurrentVideoItemInformation() {
+    public boolean setCurrentVideoItemInformation() throws IllegalYearException {
         if (videoList.contains(currentVideo)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setVideoItemInformation(currentVideo);
