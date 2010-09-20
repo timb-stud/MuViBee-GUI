@@ -44,7 +44,8 @@ public class BookList extends MediaList {
                 return b1.getAuthor().compareTo(b2.getAuthor());
             }
         });
-        sortedBy.add(SortTypes.AUTHOR);
+        if (!sortedBy.contains(SortTypes.AUTHOR))
+            sortedBy.add(SortTypes.AUTHOR);
         this.setChanged();
         this.notifyObservers();
     }
@@ -58,7 +59,8 @@ public class BookList extends MediaList {
                 return (b1.getLanguage()).compareTo(b2.getLanguage());
             }
         });
-        sortedBy.add(SortTypes.LANGUAGE);
+        if (!sortedBy.contains(SortTypes.LANGUAGE))
+            sortedBy.add(SortTypes.LANGUAGE);
         this.setChanged();
         this.notifyObservers();
     }

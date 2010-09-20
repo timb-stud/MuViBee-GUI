@@ -31,11 +31,10 @@ public class PrioTree extends JTree implements Observer {
     Node root ;
     Node lastAdded;
     TreeModel treeModel;
-    MuViBee mvb;
 
     public PrioTree(final MuViBee muvibee) {
         super();
-        this.mvb = muvibee;
+
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
@@ -71,8 +70,8 @@ public class PrioTree extends JTree implements Observer {
 
 
     public void createTree(MediaList mediaList, LinkedList<SortTypes> sortedBy) {
-        ResourceBundle bundle = ResourceBundle.getBundle(mvb.getMainBundlePath());
-        final String OTHER = bundle.getString("OTHER_PRIO_TREE");
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
+        final String OTHER = bundle.getString("other_PrioTree");
         Object o = null;
         Node child;
 

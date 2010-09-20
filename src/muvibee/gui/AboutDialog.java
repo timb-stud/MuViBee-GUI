@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ResourceBundle;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import muvibee.MuViBee;
 
 /**
  *
@@ -27,13 +29,17 @@ import javax.swing.event.HyperlinkListener;
 public class AboutDialog extends JDialog{
 
     public AboutDialog(JFrame parent) {
-            super(parent, "Help Dialog", true);
+        super(parent, "Help Dialog", true);
+
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
+        String close = bundle.getString("close");
+
         final JDialog dialog = this;
         setSize(300, 300);
 //        setLocationRelativeTo(null);
 
         JPanel panel = new JPanel(new BorderLayout());
-        JButton b = new JButton("Close");
+        JButton b = new JButton(close);
         final JEditorPane ep = new JEditorPane();
 //        JScrollPane sb = new JScrollPane(ep);
 

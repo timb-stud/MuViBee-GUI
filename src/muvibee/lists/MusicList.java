@@ -39,7 +39,8 @@ public class MusicList extends MediaList {
                 return m1.getType().compareTo(m2.getType());
             }
         });
-        sortedBy.add(SortTypes.TYPE);
+        if (!sortedBy.contains(SortTypes.TYPE))
+            sortedBy.add(SortTypes.TYPE);
     }
 
     public void sortByInterpreter() {
@@ -51,7 +52,8 @@ public class MusicList extends MediaList {
                 return m1.getInterpreter().compareTo(m2.getInterpreter());
             }
         });
-        sortedBy.add(SortTypes.INTERPRETER);
+        if (!sortedBy.contains(SortTypes.INTERPRETER))
+            sortedBy.add(SortTypes.INTERPRETER);
     }
 
     public void sortByFormat() {
@@ -63,7 +65,8 @@ public class MusicList extends MediaList {
                 return m1.getFormat().compareTo(m2.getFormat());
             }
         });
-        sortedBy.add(SortTypes.FORMAT);
+        if (!sortedBy.contains(SortTypes.FORMAT))
+            sortedBy.add(SortTypes.FORMAT);
     }
 
 

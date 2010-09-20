@@ -220,7 +220,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         //init languageComboBox
         languagesComboBox.addActionListener(new LanguageActionListener(mvb));
-        String[] languages = {"en", "de", "ru", "tr"};
+        String[] languages = {"en", "de", "ro","ru", "tr"};
         ComboBoxModel cbm = new DefaultComboBoxModel(languages);
         languagesComboBox.setModel(cbm);
 

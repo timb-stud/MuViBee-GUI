@@ -28,7 +28,8 @@ public class MediaList extends Observable implements Observer {
     public MediaList() {
         sortedBy = new LinkedList<SortTypes>();
         list = new LinkedList<Media>();
-        sortedBy.add(SortTypes.TITLE);
+        if (!sortedBy.contains(SortTypes.TITLE))
+            sortedBy.add(SortTypes.TITLE);
     }
 
     public boolean add(Media m) {
@@ -77,7 +78,8 @@ public class MediaList extends Observable implements Observer {
                 return m1.getTitle().compareTo(m2.getTitle());
             }
         });
-        sortedBy.add(SortTypes.TITLE);
+        if (!sortedBy.contains(SortTypes.TITLE))
+            sortedBy.add(SortTypes.TITLE);
         this.setChanged();
         this.notifyObservers();
     }
@@ -91,7 +93,8 @@ public class MediaList extends Observable implements Observer {
                 return m1.getGenre().compareTo(m2.getGenre());
             }
         });
-        sortedBy.add(SortTypes.GENRE);
+        if (!sortedBy.contains(SortTypes.GENRE))
+            sortedBy.add(SortTypes.GENRE);
         this.setChanged();
         this.notifyObservers();
     }
@@ -105,7 +108,8 @@ public class MediaList extends Observable implements Observer {
                 return compareInt(m1.getReleaseYear(), (m2.getReleaseYear()));
             }
         });
-        sortedBy.add(SortTypes.YEAR);
+        if (!sortedBy.contains(SortTypes.YEAR))
+            sortedBy.add(SortTypes.YEAR);
         this.setChanged();
         this.notifyObservers();
     }
@@ -119,7 +123,8 @@ public class MediaList extends Observable implements Observer {
                 return m1.getLocation().compareTo(m2.getLocation());
             }
         });
-        sortedBy.add(SortTypes.LOCATION);
+        if (!sortedBy.contains(SortTypes.LOCATION))
+            sortedBy.add(SortTypes.LOCATION);
         this.setChanged();
         this.notifyObservers();
     }
@@ -133,7 +138,8 @@ public class MediaList extends Observable implements Observer {
                 return m1.getLentTo().compareTo(m2.getLentTo());
             }
         });
-        sortedBy.add(SortTypes.LENTTO);
+        if (!sortedBy.contains(SortTypes.LENTTO))
+            sortedBy.add(SortTypes.LENTTO);
         this.setChanged();
         this.notifyObservers();
     }
@@ -147,7 +153,8 @@ public class MediaList extends Observable implements Observer {
                 return compareInt(m1.getRating(), (m2.getRating()));
             }
         });
-        sortedBy.add(SortTypes.RATING);
+        if (!sortedBy.contains(SortTypes.RATING))
+            sortedBy.add(SortTypes.RATING);
         this.setChanged();
         this.notifyObservers();
     }

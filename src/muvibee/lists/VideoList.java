@@ -38,7 +38,8 @@ public class VideoList extends MediaList {
                 return (v1.getDirector().compareTo(v2.getDirector()));
             }
         });
-        sortedBy.add(SortTypes.DIRECTOR);
+        if (!sortedBy.contains(SortTypes.DIRECTOR))
+            sortedBy.add(SortTypes.DIRECTOR);
     }
 
     public void sortByActors() {
@@ -50,7 +51,8 @@ public class VideoList extends MediaList {
                 return v1.getActors().compareTo(v2.getActors());
             }
         });
-        sortedBy.add(SortTypes.ACTORS);
+        if (!sortedBy.contains(SortTypes.ACTORS))
+            sortedBy.add(SortTypes.ACTORS);
     }
 
     public void sortByFormat() {
@@ -62,7 +64,8 @@ public class VideoList extends MediaList {
                 return m1.getFormat().compareTo(m2.getFormat());
             }
         });
-        sortedBy.add(SortTypes.FORMAT);
+        if (!sortedBy.contains(SortTypes.FORMAT))
+            sortedBy.add(SortTypes.FORMAT);
     }
 
     @Override

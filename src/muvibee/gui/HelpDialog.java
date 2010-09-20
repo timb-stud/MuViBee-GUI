@@ -9,6 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.ResourceBundle;
+import muvibee.MuViBee;
 
 /**
  *
@@ -22,8 +24,11 @@ public class HelpDialog extends JDialog {
         setSize(500, 500);
 //        setLocationRelativeTo(null);
 
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
+        String close = bundle.getString("close");
+
         JPanel panel = new JPanel(new BorderLayout());
-        JButton b = new JButton("Close");
+        JButton b = new JButton(close);
         final JEditorPane ep = new JEditorPane();
         JScrollPane sb = new JScrollPane(ep);
 
@@ -41,7 +46,7 @@ public class HelpDialog extends JDialog {
         });
 
         try {
-            ep.setPage(getClass().getResource("help.html"));
+            ep.setPage(getClass().getResource("/Resources/HTML/help.html"));
         } catch (IOException e) {
             e.printStackTrace();
         }
