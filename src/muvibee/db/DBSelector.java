@@ -11,11 +11,9 @@ import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-import de.muvibee.database.DBConnector;
-import de.muvibee.media.Book;
-import de.muvibee.media.Music;
-import de.muvibee.media.Video;
-import de.muvibee.playground.cr.Compare;
+import java.awt.print.Book;
+import muvibee.media.Music;
+import muvibee.media.Video;
 
 /**
  * @author tobiaslana
@@ -108,8 +106,8 @@ public class DBSelector {
 			String language = rs.getString(15);
 			String isbn 	= rs.getString(16);
 			Boolean isDeleted 	= rs.getBoolean(17);
-			Book b = new Book(ID, author, language, isbn, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
-			bookList.add(b);
+			//Book b = new Book(ID, author, language, isbn, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
+			//bookList.add(b);
 			
 		}
 	}
@@ -134,8 +132,8 @@ public class DBSelector {
 			String format 		= rs.getString(14);
 			String interpreter 	= rs.getString(15);
 			String type			= rs.getString(16);	
-			Music m = new Music(ID, format, interpreter, type, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
-			musicList.add(m);
+			//Music m = new Music(ID, format, interpreter, type, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
+			//musicList.add(m);
 		}
 	}
 	private void CreateVideoList(ResultSet rs) throws SQLException, IOException {
@@ -159,8 +157,8 @@ public class DBSelector {
 			String format 	= rs.getString(14);
 			String director = rs.getString(15);
 			String actor 	= rs.getString(16);	
-			Video v = new Video(ID, format, director, actor, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
-			videoList.add(v);
+			//Video v = new Video(ID, format, director, actor, title, ean, genre, year, location, lendTo, lendDate, backDate, rating, description, comment, cover, isDeleted);
+			//videoList.add(v);
 		}
 	}
 
