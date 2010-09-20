@@ -26,6 +26,7 @@ public class MediaList extends Observable implements Observer {
     LinkedList<SortTypes> sortedBy;
 
     public MediaList() {
+        sortedBy = new LinkedList<SortTypes>();
         list = new LinkedList<Media>();
         sortedBy.add(SortTypes.TITLE);
     }
@@ -162,7 +163,7 @@ public class MediaList extends Observable implements Observer {
     }
 
     boolean resort() {
-        for (SortTypes st : sortedBy) {
+        for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
             switch (st) {
                 case TITLE:
                     sortByTitle();

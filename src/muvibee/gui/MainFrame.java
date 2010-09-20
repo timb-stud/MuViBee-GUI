@@ -225,15 +225,15 @@ public class MainFrame extends javax.swing.JFrame {
 
         //init dayComboBoxes
 	String[] days = new String[32];
-        days[0] = "lol";
+        days[0] = "";
 	for(int i=1; i<32;i++)
 	    days[i] = String.valueOf(i);
-	borrowDayBookComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayBookComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
-	borrowedUntilDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
+	lentDayBookComboBox.setModel(new DefaultComboBoxModel(days));
+	lentUntilDayBookComboBox.setModel(new DefaultComboBoxModel(days));
+	lentDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
+	lentUntilDayMusicComboBox.setModel(new DefaultComboBoxModel(days));
+	lentDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
+	lentUntilDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
 
         DefaultComboBoxModel cbBooksModel = new DefaultComboBoxModel();
         cbBooksModel.addElement(coverDetailsListBookScrollPane);
@@ -275,9 +275,9 @@ public class MainFrame extends javax.swing.JFrame {
         addVideoButton.addActionListener(aal);
 
         SaveActionListener sal = new SaveActionListener(mvb);
-        editBookButton.addActionListener(sal);
-        editMusicButton.addActionListener(sal);
-        editVideoButton.addActionListener(sal);
+        saveBookButton.addActionListener(sal);
+        saveMusicButton.addActionListener(sal);
+        saveVideoButton.addActionListener(sal);
 
         DeleteListener dl = new DeleteListener(mvb);
         deleteBookButton.addActionListener(dl);
@@ -345,7 +345,7 @@ public class MainFrame extends javax.swing.JFrame {
         reloadLabels(mvb.getMainBundlePath());
     }
 
-    public void setOverviewInformation(MuViBee mvb) {
+    public final void setOverviewInformation(MuViBee mvb) {
         int lentToBooks = mvb.getLentToBook();
         int lentToMusic = mvb.getLentToMusic();
         int lentToVideos = mvb.getLentToVideo();
@@ -388,12 +388,12 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setBackgroundAt(3, Color.GREEN);
 
         String day = bundle.getString("dayComboBox");
-        updateDayComboBoxLabel(borrowDayBookComboBox, day);
-        updateDayComboBoxLabel(borrowedUntilDayBookComboBox, day);
-        updateDayComboBoxLabel(borrowDayMusicComboBox, day);
-        updateDayComboBoxLabel(borrowedUntilDayMusicComboBox, day);
-        updateDayComboBoxLabel(borrowDayVideoComboBox, day);
-        updateDayComboBoxLabel(borrowedUntilDayVideoComboBox, day);
+        updateDayComboBoxLabel(lentDayBookComboBox, day);
+        updateDayComboBoxLabel(lentUntilDayBookComboBox, day);
+        updateDayComboBoxLabel(lentDayMusicComboBox, day);
+        updateDayComboBoxLabel(lentUntilDayMusicComboBox, day);
+        updateDayComboBoxLabel(lentDayVideoComboBox, day);
+        updateDayComboBoxLabel(lentUntilDayVideoComboBox, day);
 
         
 	String[] months = new String[13];
@@ -410,12 +410,12 @@ public class MainFrame extends javax.swing.JFrame {
         months[10] = bundle.getString("octoberComboBox");
         months[11] = bundle.getString("novemberComboBox");
         months[12] = bundle.getString("decemberComboBox");
-	updateMonthComboBoxLabels(borrowMonthBookComboBox, months);
-	updateMonthComboBoxLabels(borrowedUntilMonthBookComboBox, months);
-	updateMonthComboBoxLabels(borrowMonthMusicComboBox, months);
-	updateMonthComboBoxLabels(borrowedUntilMonthMusicComboBox, months);
-	updateMonthComboBoxLabels(borrowMonthVideoComboBox, months);
-	updateMonthComboBoxLabels(borrowedUntilMonthVideoComboBox, months);
+	updateMonthComboBoxLabels(lentMonthBookComboBox, months);
+	updateMonthComboBoxLabels(lentUntilMonthBookComboBox, months);
+	updateMonthComboBoxLabels(lentMonthMusicComboBox, months);
+	updateMonthComboBoxLabels(lentUntilMonthMusicComboBox, months);
+	updateMonthComboBoxLabels(lentMonthVideoComboBox, months);
+	updateMonthComboBoxLabels(lentUntilMonthVideoComboBox, months);
 
 
         Object selectedItem = typeMusicComboBox.getSelectedItem();
@@ -439,64 +439,68 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    public void setBookItem(Book book){
-	BufferedImage cover = book.getCover();
-	if(cover != null) {
-	    coverBookLabel.setIcon(ResizeImageIcon.resizeIcon(140, 160, cover));
+    public void setBookItem(Book book) {
+        BufferedImage cover = book.getCover();
+        if (cover != null) {
+            coverBookLabel.setIcon(ResizeImageIcon.resizeIcon(140, 160, cover));
         } else {
             coverBookLabel.setIcon(null);
         }
         titleBookTextField.setText(book.getTitle());
         authorBookTextField.setText(book.getAuthor());
-	languageBookTextField.setText(book.getLanguage());
-	isbnBookTextField.setText(book.getIsbn());
-	eanBookTextField.setText(book.getEan());
-	genreBookTextField.setText(book.getGenre());
+        languageBookTextField.setText(book.getLanguage());
+        isbnBookTextField.setText(book.getIsbn());
+        eanBookTextField.setText(book.getEan());
+        genreBookTextField.setText(book.getGenre());
         int releaseYear = book.getReleaseYear();
-        if(releaseYear > -1)
-            releaseYearBookTextField.setText(String.valueOf(releaseYear));
-        else
-            releaseYearBookTextField.setText("");
-	locationBookTextField.setText(book.getLocation());
-	borrowedToBookTextField.setText(book.getLentTo());
-	borrowDayBookComboBox.setSelectedIndex(book.getLendDay());
-	borrowMonthBookComboBox.setSelectedIndex(book.getLendMonth());
-        int borrowYear = book.getLendYear();
-        if(borrowYear > -1)
-            borrowYearBookTextField.setText(String.valueOf(borrowYear));
-        else
-            borrowYearBookTextField.setText("");
-	borrowedUntilDayBookComboBox.setSelectedIndex(book.getLendUntilDay());
-	borrowedUntilMonthBookComboBox.setSelectedIndex(book.getLendUntilMonth());
-        int borrowedUntilYear = book.getLendUntilYear();
-        if(borrowedUntilYear > -1)
-            borrowedUntilYearBookTextField.setText(String.valueOf(borrowedUntilYear));
-        else
-            borrowedUntilYearBookTextField.setText("");
+        if (releaseYear > -1) {
+            releaseYearBookComboBox.setSelectedItem(releaseYear);
+        } else {
+            releaseYearBookComboBox.setSelectedItem("");
+        }
+        locationBookTextField.setText(book.getLocation());
+        lentToBookTextField.setText(book.getLentTo());
+        lentDayBookComboBox.setSelectedIndex(book.getLendDay());
+        lentMonthBookComboBox.setSelectedIndex(book.getLendMonth());
+        int lentYear = book.getLendYear();
+        if (lentYear > -1) {
+            lentYearBookComboBox.setSelectedItem(lentYear);
+        } else {
+            lentYearBookComboBox.setSelectedItem("");
+        }
+        lentUntilDayBookComboBox.setSelectedIndex(book.getLendUntilDay());
+        lentUntilMonthBookComboBox.setSelectedIndex(book.getLendUntilMonth());
+        int lentUntilYear = book.getLendUntilYear();
+        if (lentUntilYear > -1) {
+            lentUntilYearBookComboBox.setSelectedItem(lentYear);
+        } else {
+            lentUntilYearBookComboBox.setSelectedItem(lentYear);
+        }
 
-	switch (book.getRating()) {
-	    case 1:
-		oneRatingpointBookRadioButton.setSelected(true);
-		break;
-	    case 2:
-		twoRatingpointsBookRadioButton.setSelected(true);
-		break;
-	    case 3:
-		threeRatingpointsBookRadioButton.setSelected(true);
-		break;
-	    default:
-		oneRatingpointBookRadioButton.setSelected(false);
-		twoRatingpointsBookRadioButton.setSelected(false);
-		threeRatingpointsBookRadioButton.setSelected(false);
-	}
-	descriptionBookTextArea.setText(book.getDescription());
+        switch (book.getRating()) {
+            case 0:
+                ratingNoneBookRadioButton.setSelected(true);
+                break;
+            case 1:
+                ratingOneBookRadioButton.setSelected(true);
+                break;
+            case 2:
+                ratingTwoBookRadioButton.setSelected(true);
+                break;
+            case 3:
+                ratingThreeBookRadioButton.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("Illegal Rating Value");
+        }
+        descriptionBookTextArea.setText(book.getDescription());
         annotationBookTextArea.setText(book.getComment());
     }
 
-    public void setMusicItem(Music music){
-	BufferedImage cover = music.getCover();
-	if(cover != null) {
-	    coverMusicLabel.setIcon(new ImageIcon(cover));
+    public void setMusicItem(Music music) {
+        BufferedImage cover = music.getCover();
+        if (cover != null) {
+            coverMusicLabel.setIcon(new ImageIcon(cover));
         } else {
             coverMusicLabel.setIcon(null);
         }
@@ -506,218 +510,244 @@ public class MainFrame extends javax.swing.JFrame {
         typeMusicComboBox.setSelectedItem(music.getType());
         formatMusicComboBox.setSelectedItem(music.getFormat());
 
-	eanMusicTextField.setText(music.getEan());
-	genreMusicTextField.setText(music.getGenre());
+        eanMusicTextField.setText(music.getEan());
+        genreMusicTextField.setText(music.getGenre());
         int releaseYear = music.getReleaseYear();
-        if(releaseYear > -1)
-            releaseYearMusicTextField.setText(String.valueOf(releaseYear));
-        else
-            releaseYearMusicTextField.setText("");
-	locationMusicTextField.setText(music.getLocation());
-	borrowedToMusicTextField.setText(music.getLentTo());
-	borrowDayMusicComboBox.setSelectedIndex(music.getLendDay());
-	borrowMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
+        if (releaseYear > -1) {
+            releaseYearMusicComboBox.setSelectedItem(releaseYear);
+        } else {
+            releaseYearMusicComboBox.setSelectedItem("");
+        }
+        locationMusicTextField.setText(music.getLocation());
+        lentToMusicTextField.setText(music.getLentTo());
+        lentDayMusicComboBox.setSelectedIndex(music.getLendDay());
+        lentMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
         int borrowYear = music.getLendYear();
-        if(borrowYear > -1)
-            borrowYearMusicTextField.setText(String.valueOf(borrowYear));
-        else
-            borrowYearMusicTextField.setText("");
-	borrowedUntilDayMusicComboBox.setSelectedIndex(music.getLendUntilDay());
-	borrowedUntilMonthMusicComboBox.setSelectedIndex(music.getLendUntilMonth());
+        if (borrowYear > -1) {
+            lentYearMusicComboBox.setSelectedItem(borrowYear);
+        } else {
+            lentYearMusicComboBox.setSelectedItem("");
+        }
+        lentUntilDayMusicComboBox.setSelectedIndex(music.getLendUntilDay());
+        lentUntilMonthMusicComboBox.setSelectedIndex(music.getLendUntilMonth());
         int borrowedUntilYear = music.getLendUntilYear();
-        if(borrowedUntilYear > -1)
-            borrowedUntilYearMusicTextField.setText(String.valueOf(borrowedUntilYear));
-        else
-            borrowedUntilYearMusicTextField.setText("");
-        
-	switch (music.getRating()) {
-	    case 1:
-		oneRatingpointMusicRadioButton.setSelected(true);
-		break;
-	    case 2:
-		twoRatingpointsMusicRadioButton.setSelected(true);
-		break;
-	    case 3:
-		threeRatingpointsMusicRadioButton.setSelected(true);
-		break;
-	    default:
-		oneRatingpointMusicRadioButton.setSelected(false);
-		twoRatingpointsMusicRadioButton.setSelected(false);
-		threeRatingpointsMusicRadioButton.setSelected(false);
-	}
-	descriptionMusicTextArea.setText(music.getDescription());
+        if (borrowedUntilYear > -1) {
+            lentYearMusicComboBox.setSelectedItem(borrowedUntilYear);
+        } else {
+            lentYearMusicComboBox.setSelectedItem("");
+        }
+
+        switch (music.getRating()) {
+            case 1:
+                ratingOneMusicRadioButton.setSelected(true);
+                break;
+            case 2:
+                ratingTwoMusicRadioButton.setSelected(true);
+                break;
+            case 3:
+                ratingThreeMusicRadioButton.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("Illegal Rating Value");
+        }
+        descriptionMusicTextArea.setText(music.getDescription());
         annotationMusicTextArea.setText(music.getComment());
     }
 
     public void setVideoItem(Video video) {
-	BufferedImage cover = video.getCover();
-	if(cover != null) {
-	    coverVideoLabel.setIcon(new ImageIcon(cover));
+        BufferedImage cover = video.getCover();
+        if (cover != null) {
+            coverVideoLabel.setIcon(new ImageIcon(cover));
         } else {
             coverVideoLabel.setIcon(null);
         }
         titleVideoTextField.setText(video.getTitle());
         directorVideoTextField.setText(video.getDirector());
-	actorsVideoTextField.setText(video.getActors());
+        actorsVideoTextField.setText(video.getActors());
         formatVideoComboBox.setSelectedItem(video.getFormat());
-	eanVideoTextField.setText(video.getEan());
-	genreVideoTextField.setText(video.getGenre());
+        eanVideoTextField.setText(video.getEan());
+        genreVideoTextField.setText(video.getGenre());
         int releaseYear = video.getReleaseYear();
-        if(releaseYear > -1)
-            releaseYearVideoTextField.setText(String.valueOf(releaseYear));
-        else
-            releaseYearVideoTextField.setText("");
-	locationVideoTextField.setText(video.getLocation());
-	borrowedToVideoTextField.setText(video.getLentTo());
-	borrowDayVideoComboBox.setSelectedIndex(video.getLendDay());
-	borrowMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
-        int borrowYear = video.getLendYear();
-        if(borrowYear > -1)
-            borrowYearVideoTextField.setText(String.valueOf(borrowYear));
-        else
-            borrowYearVideoTextField.setText("");
-	borrowedUntilDayVideoComboBox.setSelectedIndex(video.getLendUntilDay());
-	borrowedUntilMonthVideoComboBox.setSelectedIndex(video.getLendUntilMonth());
-        int borrowedUntilYear = video.getLendUntilYear();
-        if(borrowedUntilYear > -1)
-            borrowedUntilYearVideoTextField.setText(String.valueOf(borrowedUntilYear));
-        else
-            borrowedUntilYearVideoTextField.setText("");
-        
-	switch (video.getRating()) {
-	    case 1:
-		oneRatingpointVideoRadioButton.setSelected(true);
-		break;
-	    case 2:
-		twoRatingpointsVideoRadioButton.setSelected(true);
-		break;
-	    case 3:
-		threeRatingpointsVideoRadioButton.setSelected(true);
-		break;
-	    default:
-		oneRatingpointVideoRadioButton.setSelected(false);
-		twoRatingpointsVideoRadioButton.setSelected(false);
-		threeRatingpointsVideoRadioButton.setSelected(false);
-	}
-	descriptionVideoTextArea.setText(video.getDescription());
+        if (releaseYear > -1) {
+            releaseYearVideoComboBox.setSelectedItem(releaseYear);
+        } else {
+            releaseYearVideoComboBox.setSelectedItem("");
+        }
+        locationVideoTextField.setText(video.getLocation());
+        lentToVideoTextField.setText(video.getLentTo());
+        lentDayVideoComboBox.setSelectedIndex(video.getLendDay());
+        lentMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
+        int lentYear = video.getLendYear();
+        if (lentYear > -1) {
+            lentYearVideoComboBox.setSelectedItem(lentYear);
+        } else {
+            lentYearVideoComboBox.setSelectedItem("");
+        }
+        lentUntilDayVideoComboBox.setSelectedIndex(video.getLendUntilDay());
+        lentUntilMonthVideoComboBox.setSelectedIndex(video.getLendUntilMonth());
+        int lentUntilYear = video.getLendUntilYear();
+        if (lentUntilYear > -1) {
+            lentUntilYearVideoComboBox.setSelectedItem(lentYear);
+        } else {
+            lentUntilYearVideoComboBox.setSelectedItem("");
+        }
+
+        switch (video.getRating()) {
+            case 1:
+                ratingOneVideoRadioButton.setSelected(true);
+                break;
+            case 2:
+                ratingOneVideoRadioButton.setSelected(true);
+                break;
+            case 3:
+                ratingOneVideoRadioButton.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("Illegal Rating Value");
+        }
+        descriptionVideoTextArea.setText(video.getDescription());
         annotationVideoTextArea.setText(video.getComment());
     }
 
 
     public void setBookItemInformation(Book book) throws NonValidYearException {
-	String title = titleBookTextField.getText().trim();
-	String author = authorBookTextField.getText().trim();
-	String language = languageBookTextField.getText().trim();
-	String isbn = isbnBookTextField.getText().trim();   //TODO Ueberpruefen!?!?
-	String ean = eanBookTextField.getText().trim();	    //TODO Ueberpruefen!?!?
-	String genre = genreBookTextField.getText().trim();
-	String releaseYear = releaseYearBookTextField.getText().trim();
-	String location = locationBookTextField.getText().trim();
-	String lendTo = borrowedToBookTextField.getText().trim();
-	int lendDay = borrowDayBookComboBox.getSelectedIndex();
-	int lendMonth = borrowMonthBookComboBox.getSelectedIndex();
-	String lendYear = borrowYearBookTextField.getText().trim();
-	int lendUntilDay = borrowedUntilDayBookComboBox.getSelectedIndex();
-	int lendUntilMonth = borrowedUntilMonthBookComboBox.getSelectedIndex();
-	String lendUntilYear = borrowedUntilYearBookTextField.getText().trim();
-	String description = descriptionBookTextArea.getText().trim();
-	String annotation = annotationBookTextArea.getText().trim();
+        String title = titleBookTextField.getText().trim();
+        String author = authorBookTextField.getText().trim();
+        String language = languageBookTextField.getText().trim();
+        String isbn = isbnBookTextField.getText().trim();   //TODO Ueberpruefen!?!?
+        String ean = eanBookTextField.getText().trim();	    //TODO Ueberpruefen!?!?
+        String genre = genreBookTextField.getText().trim();
+        Object selectedReleaseYear = releaseYearBookComboBox.getSelectedItem();
+        String releaseYear = "";
+        if (selectedReleaseYear != null) {
+            releaseYear = selectedReleaseYear.toString().trim();
+        }
+        String location = locationBookTextField.getText().trim();
+        String lendTo = lentToBookTextField.getText().trim();
+        int lendDay = lentDayBookComboBox.getSelectedIndex();
+        int lendMonth = lentMonthBookComboBox.getSelectedIndex();
+        Object selectedLentYear = lentYearBookComboBox.getSelectedItem();
+        String lentYear = "";
+        if (selectedLentYear != null) {
+            lentYear = selectedLentYear.toString().trim();
+        }
+        int lendUntilDay = lentUntilDayBookComboBox.getSelectedIndex();
+        int lendUntilMonth = lentUntilMonthBookComboBox.getSelectedIndex();
+        Object selectedLentUntilYear = lentUntilYearBookComboBox.getSelectedItem();
+        String lentUntilYear = "";
+        if (selectedLentUntilYear != null) {
+            lentUntilYear = selectedLentUntilYear.toString().trim();
+        }
+        String description = descriptionBookTextArea.getText().trim();
+        String annotation = annotationBookTextArea.getText().trim();
 
-	//Rating
-	int rating = 0;
-	if(oneRatingpointBookRadioButton.isSelected())
-	    rating = 1;
-	else
-	    if(twoRatingpointsBookRadioButton.isSelected())
-		rating = 2;
-	    else
-		if(threeRatingpointsBookRadioButton.isSelected())
-		    rating = 3;
+        //Rating
+        int rating = 0;
+        if (ratingOneBookRadioButton.isSelected()) {
+            rating = 1;
+        } else if (ratingTwoBookRadioButton.isSelected()) {
+            rating = 2;
+        } else if (ratingThreeBookRadioButton.isSelected()) {
+            rating = 3;
+        }
 
-	//year Test
-	    int ry = TestUtils.validYear(releaseYear);
-	    int ly = TestUtils.validYear(lendYear);
-	    int luy = TestUtils.validYear(lendUntilYear);
-	    book.setTitle(title);
-	    book.setAuthor(author);
-	    book.setLanguage(language);
-	    book.setIsbn(isbn);
-	    book.setEan(ean);
-	    book.setGenre(genre);
-	    book.setReleaseYear(ry);
-	    book.setLocation(location);
-	    book.setLendTo(lendTo);
-	    book.setLendDay(lendDay);
-	    book.setLendMonth(lendMonth);
-	    book.setLendYear(ly);
-	    book.setLendUntilDay(lendUntilDay);
-	    book.setLendUntilMonth(lendUntilMonth);
-	    book.setLendUntilYear(luy);
-	    book.setRating(rating);
-	    book.setDescription(description);
-	    book.setComment(annotation);
-            book.updateObservers();
+        //year Test
+        int ry = TestUtils.validYear(releaseYear);
+        int ly = TestUtils.validYear(lentYear);
+        int luy = TestUtils.validYear(lentUntilYear);
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setLanguage(language);
+        book.setIsbn(isbn);
+        book.setEan(ean);
+        book.setGenre(genre);
+        book.setReleaseYear(ry);
+        book.setLocation(location);
+        book.setLendTo(lendTo);
+        book.setLendDay(lendDay);
+        book.setLendMonth(lendMonth);
+        book.setLendYear(ly);
+        book.setLendUntilDay(lendUntilDay);
+        book.setLendUntilMonth(lendUntilMonth);
+        book.setLendUntilYear(luy);
+        book.setRating(rating);
+        book.setDescription(description);
+        book.setComment(annotation);
+        book.updateObservers();
     }
 
-    public void setMusicItemInformation(Music music) throws NonValidYearException{
-	String title = titleMusicTextField.getText().trim();
-	String artist = artistMusicTextField.getText().trim();
-	Object selectedType = typeMusicComboBox.getSelectedItem();
+    public void setMusicItemInformation(Music music) throws NonValidYearException {
+        String title = titleMusicTextField.getText().trim();
+        String artist = artistMusicTextField.getText().trim();
+        Object selectedType = typeMusicComboBox.getSelectedItem();
         String type = null;
-        if(selectedType != null)
+        if (selectedType != null) {
             type = selectedType.toString().trim();
+        }
         Object selectedFormat = formatMusicComboBox.getSelectedItem();
         String format = null;
-        if(selectedFormat != null)
+        if (selectedFormat != null) {
             format = selectedFormat.toString().trim();
-	String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
-	String genre = genreMusicTextField.getText().trim();
-	String releaseYear = releaseYearMusicTextField.getText().trim();
-	String location = locationMusicTextField.getText().trim();
-	String lendTo = borrowedToMusicTextField.getText().trim();
-	int lendDay = borrowDayMusicComboBox.getSelectedIndex();
-	int lendMonth = borrowMonthMusicComboBox.getSelectedIndex();
-	String lendYear = borrowYearMusicTextField.getText().trim();
-	int lendUntilDay = borrowedUntilDayMusicComboBox.getSelectedIndex();
-	int lendUntilMonth = borrowedUntilMonthMusicComboBox.getSelectedIndex();
-	String lendUntilYear = borrowedUntilYearMusicTextField.getText().trim();
-	String description = descriptionMusicTextArea.getText().trim();
-	String annotation = annotationMusicTextArea.getText().trim();
+        }
+        String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
+        String genre = genreMusicTextField.getText().trim();
+        Object selectedReleaseYear = releaseYearMusicComboBox.getSelectedItem();
+        String releaseYear = "";
+        if (selectedReleaseYear != null) {
+            releaseYear = selectedReleaseYear.toString().trim();
+        }
+        String location = locationMusicTextField.getText().trim();
+        String lendTo = lentToMusicTextField.getText().trim();
+        int lendDay = lentDayMusicComboBox.getSelectedIndex();
+        int lendMonth = lentMonthMusicComboBox.getSelectedIndex();
+        Object selectedLentYear = lentYearMusicComboBox.getSelectedItem();
+        String lentYear = "";
+        if (selectedLentYear != null) {
+            lentYear = selectedLentYear.toString().trim();
+        }
+        int lendUntilDay = lentUntilDayMusicComboBox.getSelectedIndex();
+        int lendUntilMonth = lentUntilMonthMusicComboBox.getSelectedIndex();
+        Object selectedLentUntilYear = lentUntilYearMusicComboBox.getSelectedItem();
+        String lentUntilYear = "";
+        if (selectedLentUntilYear != null) {
+            lentUntilYear = selectedLentUntilYear.toString().trim();
+        }
+        String description = descriptionMusicTextArea.getText().trim();
+        String annotation = annotationMusicTextArea.getText().trim();
 
-	//Rating
-	int rating = 0;
-	if(oneRatingpointMusicRadioButton.isSelected())
-	    rating = 1;
-	else
-	    if(twoRatingpointsMusicRadioButton.isSelected())
-		rating = 2;
-	    else
-		if(threeRatingpointsMusicRadioButton.isSelected())
-		    rating = 3;
+        //Rating
+        int rating = 0;
+        if (ratingOneMusicRadioButton.isSelected()) {
+            rating = 1;
+        } else if (ratingOneMusicRadioButton.isSelected()) {
+            rating = 2;
+        } else if (ratingOneMusicRadioButton.isSelected()) {
+            rating = 3;
+        }
 
-	//year Test
-	    int ry = TestUtils.validYear(releaseYear);
-	    int ly = TestUtils.validYear(lendYear);
-	    int luy = TestUtils.validYear(lendUntilYear);
-	    music.setTitle(title);
-	    music.setInterpreter(artist);
-	    music.setType(type);
-	    music.setFormat(format);
-	    music.setEan(ean);
-	    music.setGenre(genre);
-	    music.setReleaseYear(ry);
-	    music.setLocation(location);
-	    music.setLendTo(lendTo);
-	    music.setLendDay(lendDay);
-	    music.setLendMonth(lendMonth);
-	    music.setLendYear(ly);
-	    music.setLendUntilDay(lendUntilDay);
-	    music.setLendUntilMonth(lendUntilMonth);
-	    music.setLendUntilYear(luy);
-	    music.setRating(rating);
-	    music.setDescription(description);
-	    music.setComment(annotation);
-            music.updateObservers();
+        //year Test
+        int ry = TestUtils.validYear(releaseYear);
+        int ly = TestUtils.validYear(lentYear);
+        int luy = TestUtils.validYear(lentUntilYear);
+        music.setTitle(title);
+        music.setInterpreter(artist);
+        music.setType(type);
+        music.setFormat(format);
+        music.setEan(ean);
+        music.setGenre(genre);
+        music.setReleaseYear(ry);
+        music.setLocation(location);
+        music.setLendTo(lendTo);
+        music.setLendDay(lendDay);
+        music.setLendMonth(lendMonth);
+        music.setLendYear(ly);
+        music.setLendUntilDay(lendUntilDay);
+        music.setLendUntilMonth(lendUntilMonth);
+        music.setLendUntilYear(luy);
+        music.setRating(rating);
+        music.setDescription(description);
+        music.setComment(annotation);
+        music.updateObservers();
 
     }
 
@@ -731,34 +761,46 @@ public class MainFrame extends javax.swing.JFrame {
             format = selectedFormat.toString().trim();
 	String ean = eanVideoTextField.getText().trim();    //TODO Ueberpruefen!?!?
 	String genre = genreVideoTextField.getText().trim();
-	String releaseYear = releaseYearVideoTextField.getText().trim();
+        Object selectedReleaseYear = releaseYearVideoComboBox.getSelectedItem();
+        String releaseYear = "";
+        if (selectedReleaseYear != null) {
+            releaseYear = selectedReleaseYear.toString().trim();
+        }
 	String location = locationVideoTextField.getText().trim();
-	String lendTo = borrowedToVideoTextField.getText().trim();
-	int lendDay = borrowDayVideoComboBox.getSelectedIndex();
-	int lendMonth = borrowMonthVideoComboBox.getSelectedIndex();
-	String lendYear = borrowYearVideoTextField.getText().trim();
-	int lendUntilDay = borrowedUntilDayVideoComboBox.getSelectedIndex();
-	int lendUntilMonth = borrowedUntilMonthVideoComboBox.getSelectedIndex();
-	String lendUntilYear = borrowedUntilYearVideoTextField.getText().trim();
+	String lendTo = lentToVideoTextField.getText().trim();
+	int lendDay = lentDayVideoComboBox.getSelectedIndex();
+	int lendMonth = lentMonthVideoComboBox.getSelectedIndex();
+        Object selectedLentYear = lentYearVideoComboBox.getSelectedItem();
+        String lentYear = "";
+        if (selectedLentYear != null) {
+            lentYear = selectedLentYear.toString().trim();
+        }
+	int lendUntilDay = lentUntilDayVideoComboBox.getSelectedIndex();
+	int lendUntilMonth = lentUntilMonthVideoComboBox.getSelectedIndex();
+        Object selectedLentUntilYear = lentUntilYearVideoComboBox.getSelectedItem();
+        String lentUntilYear = "";
+        if (selectedLentUntilYear != null) {
+            lentUntilYear = selectedLentUntilYear.toString().trim();
+        }
 	String description = descriptionVideoTextArea.getText().trim();
 	String annotation = annotationVideoTextArea.getText().trim();
 
 	//Rating
 	int rating = 0;
-	if(oneRatingpointVideoRadioButton.isSelected())
+	if(ratingOneVideoRadioButton.isSelected())
 	    rating = 1;
 	else
-	    if(twoRatingpointsVideoRadioButton.isSelected())
+	    if(ratingOneVideoRadioButton.isSelected())
 		rating = 2;
 	    else
-		if(threeRatingpointsVideoRadioButton.isSelected())
+		if(ratingOneVideoRadioButton.isSelected())
 		    rating = 3;
 
 	//year Test
 
 	    int ry = TestUtils.validYear(releaseYear);
-	    int ly = TestUtils.validYear(lendYear);
-	    int luy = TestUtils.validYear(lendUntilYear);
+	    int ly = TestUtils.validYear(lentYear);
+	    int luy = TestUtils.validYear(lentUntilYear);
 	    video.setTitle(title);
 	    video.setDirector(director);
 	    video.setActors(actors);
@@ -1011,8 +1053,8 @@ public class MainFrame extends javax.swing.JFrame {
         descriptionVideoLabel = new javax.swing.JLabel();
         annotationVideoLabel = new javax.swing.JLabel();
         titleVideoTextField = new javax.swing.JTextField();
-        authorVideoTextField = new javax.swing.JTextField();
-        languageVideoTextField = new javax.swing.JTextField();
+        directorVideoTextField = new javax.swing.JTextField();
+        actorsVideoTextField = new javax.swing.JTextField();
         eanVideoTextField = new javax.swing.JTextField();
         genreVideoTextField = new javax.swing.JTextField();
         releaseYearVideoComboBox = new javax.swing.JComboBox();
@@ -1107,7 +1149,7 @@ public class MainFrame extends javax.swing.JFrame {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1107, Short.MAX_VALUE)
+            .addGap(0, 1114, Short.MAX_VALUE)
         );
         statusPanelLayout.setVerticalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1148,14 +1190,14 @@ public class MainFrame extends javax.swing.JFrame {
             overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(overviewScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
+                .addComponent(overviewScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE)
                 .addContainerGap())
         );
         overviewPanelLayout.setVerticalGroup(
             overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(overviewScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                .addComponent(overviewScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1212,7 +1254,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sortBookAuthorButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortBookLanguageButton)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         sortPanelBooksLayout.setVerticalGroup(
             sortPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1234,9 +1276,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(sortPanelBooks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bookCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                    .addComponent(bookCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                     .addGroup(viewBookPanelLayout.createSequentialGroup()
-                        .addComponent(viewBookComboBox, 0, 391, Short.MAX_VALUE)
+                        .addComponent(viewBookComboBox, 0, 397, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addBookButton)))
                 .addContainerGap())
@@ -1247,7 +1289,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(sortPanelBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bookCardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addComponent(bookCardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(addBookButton)
@@ -1317,6 +1359,7 @@ public class MainFrame extends javax.swing.JFrame {
         deleteBookButton.setText("Löschen");
 
         saveBookButton.setText("Speichern");
+        saveBookButton.setName("save book button"); // NOI18N
 
         descriptionBookTextArea.setColumns(20);
         descriptionBookTextArea.setRows(5);
@@ -1338,7 +1381,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(itemBookPanelLayout.createSequentialGroup()
                                 .addComponent(titleBookLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(titleBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
+                                .addComponent(titleBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
                             .addGroup(itemBookPanelLayout.createSequentialGroup()
                                 .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1380,14 +1423,14 @@ public class MainFrame extends javax.swing.JFrame {
                                                 .addComponent(ratingThreeBookRadioButton)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(ratingNoneBookRadioButton))
-                                            .addComponent(locationBookTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(locationBookTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                                             .addComponent(releaseYearBookComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(eanBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(authorBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(isbnBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(languageBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(genreBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(lentToBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))))))
+                                            .addComponent(eanBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                            .addComponent(authorBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                            .addComponent(isbnBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                            .addComponent(languageBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                            .addComponent(genreBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                            .addComponent(lentToBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))))))
                         .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemBookPanelLayout.createSequentialGroup()
                         .addComponent(saveBookButton)
@@ -1396,13 +1439,13 @@ public class MainFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(descriptionBookLabel)
-                        .addContainerGap(436, Short.MAX_VALUE))
+                        .addContainerGap(456, Short.MAX_VALUE))
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(itemBookPanelLayout.createSequentialGroup()
                         .addComponent(annotationBookLabel)
-                        .addContainerGap(451, Short.MAX_VALUE))
+                        .addContainerGap(466, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemBookPanelLayout.createSequentialGroup()
                         .addComponent(annotationBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -1500,7 +1543,7 @@ public class MainFrame extends javax.swing.JFrame {
         bookPanelLayout.setHorizontalGroup(
             bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
-                .addComponent(viewBookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                .addComponent(viewBookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hideBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1512,9 +1555,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(viewBookPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(hideBookButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(itemBookScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
+                    .addComponent(viewBookPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                    .addComponent(hideBookButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                    .addComponent(itemBookScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1563,7 +1606,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sortMusicInterpeterButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortMusicTypeButton)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         sortPanelMusicLayout.setVerticalGroup(
             sortPanelMusicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1584,9 +1627,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewMusicPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(viewMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(musicCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                    .addComponent(musicCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                     .addGroup(viewMusicPanelLayout.createSequentialGroup()
-                        .addComponent(viewMusicComboBox, 0, 391, Short.MAX_VALUE)
+                        .addComponent(viewMusicComboBox, 0, 397, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addMusicButton))
                     .addComponent(sortPanelMusic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1598,7 +1641,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(sortPanelMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(musicCardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addComponent(musicCardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(viewMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(addMusicButton)
@@ -1668,6 +1711,7 @@ public class MainFrame extends javax.swing.JFrame {
         deleteMusicButton.setText("Löschen");
 
         saveMusicButton.setText("Speichern");
+        saveMusicButton.setName("save music button"); // NOI18N
 
         descriptionMusicTextArea.setColumns(20);
         descriptionMusicTextArea.setRows(5);
@@ -1689,7 +1733,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(itemMusicPanelLayout.createSequentialGroup()
                                 .addComponent(titleMusicLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(titleMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
+                                .addComponent(titleMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
                             .addGroup(itemMusicPanelLayout.createSequentialGroup()
                                 .addComponent(coverMusicLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1729,14 +1773,14 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addComponent(ratingThreeMusicRadioButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(ratingNoneMusicRadioButton))
-                                    .addComponent(locationMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                    .addComponent(locationMusicTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                                     .addComponent(releaseYearMusicComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(eanMusicTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(artistMusicTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(genreMusicTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(lentToMusicTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(typeMusicComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 257, Short.MAX_VALUE)
-                                    .addComponent(formatMusicComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 257, Short.MAX_VALUE))))
+                                    .addComponent(eanMusicTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(artistMusicTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(genreMusicTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(lentToMusicTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(typeMusicComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 292, Short.MAX_VALUE)
+                                    .addComponent(formatMusicComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 292, Short.MAX_VALUE))))
                         .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemMusicPanelLayout.createSequentialGroup()
                         .addComponent(saveMusicButton)
@@ -1745,13 +1789,13 @@ public class MainFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(itemMusicPanelLayout.createSequentialGroup()
                         .addComponent(descriptionMusicLabel)
-                        .addContainerGap(436, Short.MAX_VALUE))
+                        .addContainerGap(456, Short.MAX_VALUE))
                     .addGroup(itemMusicPanelLayout.createSequentialGroup()
                         .addComponent(descriptionMusicScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(itemMusicPanelLayout.createSequentialGroup()
                         .addComponent(annotationMusicLabel)
-                        .addContainerGap(451, Short.MAX_VALUE))
+                        .addContainerGap(466, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemMusicPanelLayout.createSequentialGroup()
                         .addComponent(annotationMusicScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -1861,8 +1905,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(musicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(viewMusicPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(hideMusicButton, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(itemMusicScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
+                    .addComponent(hideMusicButton, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                    .addComponent(itemMusicScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1909,7 +1953,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sortVideoRegisseurButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortVideoActorsButton)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         sortPanelVideoLayout.setVerticalGroup(
             sortPanelVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1930,10 +1974,10 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewVideoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(viewVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(videoCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                    .addComponent(videoCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                     .addComponent(sortPanelVideo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(viewVideoPanelLayout.createSequentialGroup()
-                        .addComponent(viewVideoComboBox, 0, 391, Short.MAX_VALUE)
+                        .addComponent(viewVideoComboBox, 0, 397, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addVideoButton)))
                 .addContainerGap())
@@ -1944,7 +1988,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(sortPanelVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(videoCardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addComponent(videoCardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(viewVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(addVideoButton)
@@ -2014,6 +2058,7 @@ public class MainFrame extends javax.swing.JFrame {
         deleteVideoButton.setText("Löschen");
 
         saveVideoButton.setText("Speichern");
+        saveVideoButton.setName("save video button"); // NOI18N
 
         descriptionVideoTextArea.setColumns(20);
         descriptionVideoTextArea.setRows(5);
@@ -2035,7 +2080,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(itemVideoPanelLayout.createSequentialGroup()
                                 .addComponent(titleVideoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(titleVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
+                                .addComponent(titleVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
                             .addGroup(itemVideoPanelLayout.createSequentialGroup()
                                 .addComponent(coverVideoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2075,14 +2120,14 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addComponent(ratingThreeVideoRadioButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(ratingNoneVideoRadioButton))
-                                    .addComponent(locationVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                    .addComponent(locationVideoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                                     .addComponent(releaseYearVideoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(eanVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(authorVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(languageVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(genreVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(lentToVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                    .addComponent(formatVideoComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 257, Short.MAX_VALUE))))
+                                    .addComponent(eanVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(directorVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(actorsVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(genreVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(lentToVideoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(formatVideoComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 292, Short.MAX_VALUE))))
                         .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemVideoPanelLayout.createSequentialGroup()
                         .addComponent(saveVideoButton)
@@ -2091,13 +2136,13 @@ public class MainFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addComponent(descriptionVideoLabel)
-                        .addContainerGap(436, Short.MAX_VALUE))
+                        .addContainerGap(456, Short.MAX_VALUE))
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addComponent(descriptionVideoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addComponent(annotationVideoLabel)
-                        .addContainerGap(451, Short.MAX_VALUE))
+                        .addContainerGap(466, Short.MAX_VALUE))
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addComponent(annotationVideoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -2115,11 +2160,11 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(directorVideoLabel)
-                            .addComponent(authorVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(directorVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(actorsVideoLabel)
-                            .addComponent(languageVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(actorsVideoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(itemVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(formatVideoLabel)
@@ -2207,8 +2252,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(videoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(viewVideoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(hideVideoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(itemVideoScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
+                    .addComponent(hideVideoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                    .addComponent(itemVideoScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -2225,7 +2270,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(restorePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
+                    .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE)
                     .addGroup(restorePanelLayout.createSequentialGroup()
                         .addComponent(restoreItemButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2236,7 +2281,7 @@ public class MainFrame extends javax.swing.JFrame {
             restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, restorePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(restoreItemButton)
@@ -2254,7 +2299,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(headPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(statusPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE))
+                    .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1116, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -2284,6 +2329,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutButton;
     private javax.swing.JLabel actorsVideoLabel;
+    private javax.swing.JTextField actorsVideoTextField;
     private javax.swing.JButton addBookButton;
     private javax.swing.JButton addMusicButton;
     private javax.swing.JButton addVideoButton;
@@ -2300,7 +2346,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField artistMusicTextField;
     private javax.swing.JLabel authorBookLabel;
     private javax.swing.JTextField authorBookTextField;
-    private javax.swing.JTextField authorVideoTextField;
     private javax.swing.JPanel bookCardPanel;
     private javax.swing.JPanel bookPanel;
     private javax.swing.ButtonGroup bookRatingButtonGroup;
@@ -2322,6 +2367,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane descriptionVideoScrollPane;
     private javax.swing.JTextArea descriptionVideoTextArea;
     private javax.swing.JLabel directorVideoLabel;
+    private javax.swing.JTextField directorVideoTextField;
     private javax.swing.JLabel eanBookLabel;
     private javax.swing.JTextField eanBookTextField;
     private javax.swing.JLabel eanMusicLabel;
@@ -2354,7 +2400,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemVideoScrollPane;
     private javax.swing.JLabel languageBookLabel;
     private javax.swing.JTextField languageBookTextField;
-    private javax.swing.JTextField languageVideoTextField;
     private javax.swing.JComboBox languagesComboBox;
     private javax.swing.JCheckBox lentBookCheckBox;
     private javax.swing.JLabel lentBookLabel;
