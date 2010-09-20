@@ -24,6 +24,7 @@ public class HideActionListener implements ActionListener{
         Object source = e.getSource();
         if(source instanceof JButton){
             JButton button = (JButton)source;
+            mvb.unselectLists();
             if(button.getName().equals("hide book")){
                 mvb.showBookItem(false);
             } else {
@@ -35,7 +36,6 @@ public class HideActionListener implements ActionListener{
                     }
                 }
             }
-            mvb.unselectLists();
         }
     }
 

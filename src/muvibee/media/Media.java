@@ -8,9 +8,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
+import muvibee.db.DBInsertor;
 
 public abstract class Media extends Observable {
 
+    private int ID;
     private String title = "";
     private String ean = "";
     private String genre = "";
@@ -59,7 +61,15 @@ public abstract class Media extends Observable {
 
     //TODO equals
     public void insertIntoDB() {
-        //DBInsertor.insertIntoDB(this);
+        DBInsertor.insertIntoDB(this);
+    }
+
+    public int getID() {
+        return this.ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getTitle() {

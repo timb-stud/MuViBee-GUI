@@ -8,8 +8,11 @@ package muvibee;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionListener;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -26,6 +29,8 @@ import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
 import muvibee.utils.SortTypes;
+import util.deleteditemlist.DeletedItemEntry;
+import util.deleteditemlist.DeletedItemsList;
 
 /**
  *
@@ -647,12 +652,15 @@ public class MuViBee {
         }else {
             filterVideoList.removeSort(SortTypes.ACTORS);
         }
+        filterBookList.updateObserver();
+        filterMusicList.updateObserver();
+        filterVideoList.updateObserver();
     }
 
     public int getLentToBook() {
         int sum = 0;
         for (Book b: bookList) {
-            if (!b.getLentTo().isEmpty()) {
+            if (b.isIsLent()) {
                 sum++;
             }
         }
@@ -662,7 +670,7 @@ public class MuViBee {
     public int getLentToMusic() {
         int sum = 0;
         for (Music m: musicList) {
-            if (!m.getLentTo().isEmpty()) {
+            if (m.isIsLent()) {
                 sum++;
             }
         }
@@ -672,7 +680,7 @@ public class MuViBee {
     public int getLentToVideo() {
         int sum = 0;
         for (Video v: videoList) {
-            if (!v.getLentTo().isEmpty()) {
+            if (v.isIsLent()) {
                 sum++;
             }
         }
@@ -723,5 +731,18 @@ public class MuViBee {
             }
         }
         return sum;
+    }
+
+    public DeletedItemsList getDeletedList() {
+        return mainFrame.getDeletedList();
+    }
+    
+
+    public void fillCurrentDeletedMedia(DeletedItemsList deletedList) {
+        Media[] medias = new Media[deletedList.getSelectedValues().length];
+        for (int i = 0; i < medias.length; i++) {
+            medias[i] = ((DeletedItemEntry)deletedList.getSelectedValues()[i]).getMedia();
+        }
+        setCurrentDeletedMedia(medias);
     }
 }

@@ -16,14 +16,12 @@ import muvibee.utils.SortTypes;
  * @author bline
  */
 public class BookList extends MediaList {
-
     @Override
     public boolean add(Media m) {
         boolean succ = list.add(m);
         resort();
         m.addObserver(this);
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
         return succ;
     }
 
@@ -31,8 +29,7 @@ public class BookList extends MediaList {
     public void addAll(Collection c) {
         list.addAll(c);
         resort();
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
     }
 
     public void sortByAuthor() {
@@ -44,10 +41,16 @@ public class BookList extends MediaList {
                 return b1.getAuthor().compareTo(b2.getAuthor());
             }
         });
+<<<<<<< HEAD
         if (!sortedBy.contains(SortTypes.AUTHOR))
             sortedBy.add(SortTypes.AUTHOR);
         this.setChanged();
         this.notifyObservers();
+=======
+        if (!sortedBy.contains(SortTypes.AUTHOR)) {
+            sortedBy.add(SortTypes.AUTHOR);
+        }
+>>>>>>> c0c0f1c9c79aa7d3a285aaa57f8625caa7e9bb45
     }
 
     public void sortByLanguage() {
@@ -59,16 +62,22 @@ public class BookList extends MediaList {
                 return (b1.getLanguage()).compareTo(b2.getLanguage());
             }
         });
+<<<<<<< HEAD
         if (!sortedBy.contains(SortTypes.LANGUAGE))
             sortedBy.add(SortTypes.LANGUAGE);
         this.setChanged();
         this.notifyObservers();
+=======
+        if (!sortedBy.contains(SortTypes.LANGUAGE)) {
+            sortedBy.add(SortTypes.LANGUAGE);
+        }
+>>>>>>> c0c0f1c9c79aa7d3a285aaa57f8625caa7e9bb45
     }
 
     @Override
     public boolean resort() {
         if (super.resort()) {
-            for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
+            for (SortTypes st : sortedBy) {
                 switch (st) {
                     case AUTHOR:
                         sortByAuthor();
@@ -79,8 +88,8 @@ public class BookList extends MediaList {
                     default:
                         sortByTitle();
                         return true;
+                    }
                 }
-            }
         }
         return false;
     }

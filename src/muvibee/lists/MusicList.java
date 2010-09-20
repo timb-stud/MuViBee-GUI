@@ -18,8 +18,7 @@ public class MusicList extends MediaList {
         boolean succ = list.add(m);
         resort();
         m.addObserver(this);
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
         return succ;
     }
 
@@ -27,8 +26,7 @@ public class MusicList extends MediaList {
     public void addAll(Collection c) {
         list.addAll(c);
         resort();
-        this.setChanged();
-        this.notifyObservers();
+        updateObserver();
     }
     public void sortByType() {
         Collections.sort(list, new Comparator() {
@@ -39,8 +37,14 @@ public class MusicList extends MediaList {
                 return m1.getType().compareTo(m2.getType());
             }
         });
+<<<<<<< HEAD
         if (!sortedBy.contains(SortTypes.TYPE))
             sortedBy.add(SortTypes.TYPE);
+=======
+        if (!sortedBy.contains(SortTypes.TYPE)) {
+            sortedBy.add(SortTypes.TYPE);
+        }
+>>>>>>> c0c0f1c9c79aa7d3a285aaa57f8625caa7e9bb45
     }
 
     public void sortByInterpreter() {
@@ -52,8 +56,14 @@ public class MusicList extends MediaList {
                 return m1.getInterpreter().compareTo(m2.getInterpreter());
             }
         });
+<<<<<<< HEAD
         if (!sortedBy.contains(SortTypes.INTERPRETER))
             sortedBy.add(SortTypes.INTERPRETER);
+=======
+        if (!sortedBy.contains(SortTypes.INTERPRETER)) {
+            sortedBy.add(SortTypes.INTERPRETER);
+        }
+>>>>>>> c0c0f1c9c79aa7d3a285aaa57f8625caa7e9bb45
     }
 
     public void sortByFormat() {
@@ -65,8 +75,14 @@ public class MusicList extends MediaList {
                 return m1.getFormat().compareTo(m2.getFormat());
             }
         });
+<<<<<<< HEAD
         if (!sortedBy.contains(SortTypes.FORMAT))
             sortedBy.add(SortTypes.FORMAT);
+=======
+        if (!sortedBy.contains(SortTypes.FORMAT)) {
+            sortedBy.add(SortTypes.FORMAT);
+        }
+>>>>>>> c0c0f1c9c79aa7d3a285aaa57f8625caa7e9bb45
     }
 
 
@@ -75,23 +91,23 @@ public class MusicList extends MediaList {
     @Override
     public boolean resort() {
         if (super.resort()) {
-            for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
+            for (SortTypes st : sortedBy) {
                 switch (st) {
-                    case TYPE:
-                        sortByType();
-                        break;
-                    case INTERPRETER:
-                        sortByInterpreter();
-                        break;
-                    case FORMAT:
-                        sortByFormat();
-                        break;
-                    default:
-                        sortByTitle();
-                        return true;
+                        case TYPE:
+                            sortByType();
+                            break;
+                        case INTERPRETER:
+                            sortByInterpreter();
+                            break;
+                        case FORMAT:
+                            sortByFormat();
+                            break;
+                        default:
+                            sortByTitle();
+                            return true;
+                    }
                 }
             }
-        }
         return false;
     }
 }
