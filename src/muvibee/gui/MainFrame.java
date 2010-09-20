@@ -1033,8 +1033,6 @@ public class MainFrame extends javax.swing.JFrame {
         descriptionVideoTextArea = new javax.swing.JTextArea();
         annotationVideoScrollPane = new javax.swing.JScrollPane();
         annotationVideoTextArea = new javax.swing.JTextArea();
-        descriptionVideoScrollPane1 = new javax.swing.JScrollPane();
-        descriptionVideoTextArea1 = new javax.swing.JTextArea();
         formatVideoComboBox = new javax.swing.JComboBox();
         hideVideoButton = new javax.swing.JButton();
         restorePanel = new javax.swing.JPanel();
@@ -2011,10 +2009,6 @@ public class MainFrame extends javax.swing.JFrame {
         annotationVideoTextArea.setRows(5);
         annotationVideoScrollPane.setViewportView(annotationVideoTextArea);
 
-        descriptionVideoTextArea1.setColumns(20);
-        descriptionVideoTextArea1.setRows(5);
-        descriptionVideoScrollPane1.setViewportView(descriptionVideoTextArea1);
-
         javax.swing.GroupLayout itemVideoPanelLayout = new javax.swing.GroupLayout(itemVideoPanel);
         itemVideoPanel.setLayout(itemVideoPanelLayout);
         itemVideoPanelLayout.setHorizontalGroup(
@@ -2090,11 +2084,8 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
                         .addComponent(annotationVideoLabel)
                         .addContainerGap(451, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemVideoPanelLayout.createSequentialGroup()
-                        .addComponent(annotationVideoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
-                        .addContainerGap())
                     .addGroup(itemVideoPanelLayout.createSequentialGroup()
-                        .addComponent(descriptionVideoScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                        .addComponent(annotationVideoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         itemVideoPanelLayout.setVerticalGroup(
@@ -2171,8 +2162,6 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(descriptionVideoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descriptionVideoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descriptionVideoScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(annotationVideoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2317,9 +2306,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea descriptionMusicTextArea;
     private javax.swing.JLabel descriptionVideoLabel;
     private javax.swing.JScrollPane descriptionVideoScrollPane;
-    private javax.swing.JScrollPane descriptionVideoScrollPane1;
     private javax.swing.JTextArea descriptionVideoTextArea;
-    private javax.swing.JTextArea descriptionVideoTextArea1;
     private javax.swing.JLabel directorVideoLabel;
     private javax.swing.JLabel eanBookLabel;
     private javax.swing.JTextField eanBookTextField;
