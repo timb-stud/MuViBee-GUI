@@ -628,6 +628,15 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 
+    public String getSelected(JComboBox cb){
+        Object selected = cb.getSelectedItem();
+        if (selected != null) {
+            return selected.toString().trim();
+        }else{
+            return "";
+        }
+    }
+
     public void setBookItemInformation(Book book) throws IllegalYearException{
         String title = titleBookTextField.getText().trim();
         String author = authorBookTextField.getText().trim();
@@ -683,16 +692,8 @@ public class MainFrame extends javax.swing.JFrame {
     public void setMusicItemInformation(Music music) throws IllegalYearException {
         String title = titleMusicTextField.getText().trim();
         String artist = artistMusicTextField.getText().trim();
-        Object selectedType = typeMusicComboBox.getSelectedItem();
-        String type = null;
-        if (selectedType != null) {
-            type = selectedType.toString().trim();
-        }
-        Object selectedFormat = formatMusicComboBox.getSelectedItem();
-        String format = null;
-        if (selectedFormat != null) {
-            format = selectedFormat.toString().trim();
-        }
+        String type = getSelected(typeMusicComboBox);
+        String format = getSelected(formatMusicComboBox);
         String ean = eanMusicTextField.getText().trim();    //TODO Ueberpruefen!?!?
         String genre = genreMusicTextField.getText().trim();
         int releaseYear = getYear(releaseYearMusicComboBox);
@@ -745,11 +746,7 @@ public class MainFrame extends javax.swing.JFrame {
         String title = titleVideoTextField.getText().trim();
         String director = directorVideoTextField.getText().trim();
         String actors = actorsVideoTextField.getText().trim();
-        Object selectedFormat = formatVideoComboBox.getSelectedItem();
-        String format = null;
-        if (selectedFormat != null) {
-            format = selectedFormat.toString().trim();
-        }
+        String format = getSelected(formatVideoComboBox);
         String ean = eanVideoTextField.getText().trim();    //TODO Ueberpruefen!?!?
         String genre = genreVideoTextField.getText().trim();
         int releaseYear = getYear(releaseYearVideoComboBox);
