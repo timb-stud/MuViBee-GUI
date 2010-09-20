@@ -235,6 +235,30 @@ public class MainFrame extends javax.swing.JFrame {
 	lentDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
 	lentUntilDayVideoComboBox.setModel(new DefaultComboBoxModel(days));
 
+        //init years ComboBoxes
+        String[] years = new String[64];
+        years[0] = "";
+        for(int i=1;i<years.length;i++)
+            years[i] = String.valueOf(2013 - i);
+        releaseYearBookComboBox.setModel(new DefaultComboBoxModel(years));
+        releaseYearBookComboBox.setSelectedIndex(0);
+        releaseYearMusicComboBox.setModel(new DefaultComboBoxModel(years));
+        releaseYearMusicComboBox.setSelectedIndex(0);
+        releaseYearVideoComboBox.setModel(new DefaultComboBoxModel(years));
+        releaseYearVideoComboBox.setSelectedIndex(0);
+        lentYearBookComboBox.setModel(new DefaultComboBoxModel(years));
+        lentYearBookComboBox.setSelectedIndex(0);
+        lentYearMusicComboBox.setModel(new DefaultComboBoxModel(years));
+        lentYearMusicComboBox.setSelectedIndex(0);
+        lentYearVideoComboBox.setModel(new DefaultComboBoxModel(years));
+        lentYearVideoComboBox.setSelectedIndex(0);
+        lentUntilYearBookComboBox.setModel(new DefaultComboBoxModel(years));
+        lentUntilYearBookComboBox.setSelectedIndex(0);
+        lentUntilYearMusicComboBox.setModel(new DefaultComboBoxModel(years));
+        lentUntilYearBookComboBox.setSelectedIndex(0);
+        lentUntilYearVideoComboBox.setModel(new DefaultComboBoxModel(years));
+        lentUntilYearBookComboBox.setSelectedIndex(0);
+
         DefaultComboBoxModel cbBooksModel = new DefaultComboBoxModel();
         cbBooksModel.addElement(coverDetailsListBookScrollPane);
         cbBooksModel.addElement(coverListBookScrollPane);
@@ -388,12 +412,23 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setBackgroundAt(3, Color.GREEN);
 
         String day = bundle.getString("dayComboBox");
-        updateDayComboBoxLabel(lentDayBookComboBox, day);
-        updateDayComboBoxLabel(lentUntilDayBookComboBox, day);
-        updateDayComboBoxLabel(lentDayMusicComboBox, day);
-        updateDayComboBoxLabel(lentUntilDayMusicComboBox, day);
-        updateDayComboBoxLabel(lentDayVideoComboBox, day);
-        updateDayComboBoxLabel(lentUntilDayVideoComboBox, day);
+        updateComboBoxLabel(lentDayBookComboBox, day);
+        updateComboBoxLabel(lentUntilDayBookComboBox, day);
+        updateComboBoxLabel(lentDayMusicComboBox, day);
+        updateComboBoxLabel(lentUntilDayMusicComboBox, day);
+        updateComboBoxLabel(lentDayVideoComboBox, day);
+        updateComboBoxLabel(lentUntilDayVideoComboBox, day);
+
+        String year = bundle.getString("yearComboBox");
+        updateComboBoxLabel(releaseYearBookComboBox, year);
+        updateComboBoxLabel(releaseYearMusicComboBox, year);
+        updateComboBoxLabel(releaseYearVideoComboBox, year);
+        updateComboBoxLabel(lentYearBookComboBox, year);
+        updateComboBoxLabel(lentYearMusicComboBox, year);
+        updateComboBoxLabel(lentYearVideoComboBox, year);
+        updateComboBoxLabel(lentUntilYearBookComboBox, year);
+        updateComboBoxLabel(lentUntilYearMusicComboBox, year);
+        updateComboBoxLabel(lentUntilYearVideoComboBox, year);
 
         
 	String[] months = new String[13];
@@ -410,21 +445,18 @@ public class MainFrame extends javax.swing.JFrame {
         months[10] = bundle.getString("octoberComboBox");
         months[11] = bundle.getString("novemberComboBox");
         months[12] = bundle.getString("decemberComboBox");
-	updateMonthComboBoxLabels(lentMonthBookComboBox, months);
-	updateMonthComboBoxLabels(lentUntilMonthBookComboBox, months);
-	updateMonthComboBoxLabels(lentMonthMusicComboBox, months);
-	updateMonthComboBoxLabels(lentUntilMonthMusicComboBox, months);
-	updateMonthComboBoxLabels(lentMonthVideoComboBox, months);
-	updateMonthComboBoxLabels(lentUntilMonthVideoComboBox, months);
+	updateComboBoxLabels(lentMonthBookComboBox, months);
+	updateComboBoxLabels(lentUntilMonthBookComboBox, months);
+	updateComboBoxLabels(lentMonthMusicComboBox, months);
+	updateComboBoxLabels(lentUntilMonthMusicComboBox, months);
+	updateComboBoxLabels(lentMonthVideoComboBox, months);
+	updateComboBoxLabels(lentUntilMonthVideoComboBox, months);
 
-
-        Object selectedItem = typeMusicComboBox.getSelectedItem();
-        typeMusicComboBox.removeAllItems();
-        typeMusicComboBox.addItem(bundle.getString("album"));
-        typeMusicComboBox.addItem(bundle.getString("single"));
-        typeMusicComboBox.addItem(bundle.getString("sampler"));
-        typeMusicComboBox.setSelectedItem(selectedItem);
-
+        String[] musicTypes = new String[3];
+        musicTypes[0] = bundle.getString("album");
+        musicTypes[1] = bundle.getString("sampler");
+        musicTypes[2] = bundle.getString("single");
+        updateComboBoxLabels(typeMusicComboBox, musicTypes);
 
 	String[] musicFormats = new String[3];
         musicFormats[0] = bundle.getString("cd");
@@ -434,8 +466,8 @@ public class MainFrame extends javax.swing.JFrame {
         videoFormats[0] = bundle.getString("cd/dvd");
         videoFormats[1] = bundle.getString("blu-ray");
         videoFormats[2] = bundle.getString("vhs");
-	updateFormatComboBox(formatMusicComboBox, musicFormats);
-	updateFormatComboBox(formatVideoComboBox, videoFormats);
+	updateComboBoxLabels(formatMusicComboBox, musicFormats);
+	updateComboBoxLabels(formatVideoComboBox, videoFormats);
 
     }
 
@@ -850,28 +882,19 @@ public class MainFrame extends javax.swing.JFrame {
         searchTextField.setText("");
     }
 
-    public void updateDayComboBoxLabel(JComboBox cb, String label){
+    public void updateComboBoxLabel(JComboBox cb, String label){
         int selectedIndex = cb.getSelectedIndex();
         cb.removeItemAt(0);
         cb.insertItemAt(label, 0);
         cb.setSelectedIndex(selectedIndex);
     }
 
-    public void updateMonthComboBoxLabels(JComboBox cb, String[] months){
+    public void updateComboBoxLabels(JComboBox cb, String[] months){
         int selectedIndex = cb.getSelectedIndex();
         cb.removeAllItems();
         for(int i=0; i<months.length; i++)
             cb.addItem(months[i]);
         cb.setSelectedIndex(selectedIndex);
-    }
-
-    public void updateFormatComboBox(JComboBox cb, String[] formats){
-        Object selectedItem = cb.getSelectedItem();
-        cb.removeAllItems();
-        for(int i=0; i< formats.length; i++){
-            cb.addItem(formats[i]);
-        }
-        cb.setSelectedItem(selectedItem);
     }
 
     /** This method is called from within the constructor to
