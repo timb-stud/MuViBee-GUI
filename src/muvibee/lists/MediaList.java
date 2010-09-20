@@ -23,11 +23,11 @@ import muvibee.utils.SortTypes;
 public class MediaList extends Observable implements Observer {
 
     LinkedList<Media> list;
-    SortTypes sortedBy;
+    LinkedList<SortTypes> sortedBy;
 
     public MediaList() {
         list = new LinkedList<Media>();
-        sortedBy = sortedBy.TITLE;
+        sortedBy.add(SortTypes.TITLE);
     }
 
     public boolean add(Media m) {
@@ -76,7 +76,7 @@ public class MediaList extends Observable implements Observer {
                 return m1.getTitle().compareTo(m2.getTitle());
             }
         });
-        sortedBy = sortedBy.TITLE;
+        sortedBy.add(SortTypes.TITLE);
         this.setChanged();
         this.notifyObservers();
     }
@@ -90,7 +90,7 @@ public class MediaList extends Observable implements Observer {
                 return m1.getGenre().compareTo(m2.getGenre());
             }
         });
-        sortedBy = sortedBy.GENRE;
+        sortedBy.add(SortTypes.GENRE);
         this.setChanged();
         this.notifyObservers();
     }
@@ -104,7 +104,7 @@ public class MediaList extends Observable implements Observer {
                 return compareInt(m1.getReleaseYear(), (m2.getReleaseYear()));
             }
         });
-        sortedBy = sortedBy.YEAR;
+        sortedBy.add(SortTypes.YEAR);
         this.setChanged();
         this.notifyObservers();
     }
@@ -118,7 +118,7 @@ public class MediaList extends Observable implements Observer {
                 return m1.getLocation().compareTo(m2.getLocation());
             }
         });
-        sortedBy = sortedBy.LOCATION;
+        sortedBy.add(SortTypes.LOCATION);
         this.setChanged();
         this.notifyObservers();
     }
@@ -132,7 +132,7 @@ public class MediaList extends Observable implements Observer {
                 return m1.getLentTo().compareTo(m2.getLentTo());
             }
         });
-        sortedBy = sortedBy.LENTTO;
+        sortedBy.add(SortTypes.LENTTO);
         this.setChanged();
         this.notifyObservers();
     }
@@ -146,7 +146,7 @@ public class MediaList extends Observable implements Observer {
                 return compareInt(m1.getRating(), (m2.getRating()));
             }
         });
-        sortedBy = sortedBy.RATING;
+        sortedBy.add(SortTypes.RATING);
         this.setChanged();
         this.notifyObservers();
     }
@@ -162,28 +162,35 @@ public class MediaList extends Observable implements Observer {
     }
 
     boolean resort() {
-        switch (sortedBy) {
-            case TITLE:
-                sortByTitle();
-                break;
-            case YEAR:
-                sortByReleaseYear();
-                break;
-            case GENRE:
-                sortByGenre();
-                break;
-            case RATING:
-                sortByRating();
-                break;
-            case LOCATION:
-                sortByLocation();
-                break;
-            case LENTTO:
-                sortByLentTo();
-                break;
-            default:
-                return true;
+        for (SortTypes st : sortedBy) {
+            switch (st) {
+                case TITLE:
+                    sortByTitle();
+                    break;
+                case YEAR:
+                    sortByReleaseYear();
+                    break;
+                case GENRE:
+                    sortByGenre();
+                    break;
+                case RATING:
+                    sortByRating();
+                    break;
+                case LOCATION:
+                    sortByLocation();
+                    break;
+                case LENTTO:
+                    sortByLentTo();
+                    break;
+                default:
+                    return true;
+            }
         }
         return false;
     }
+
+    public LinkedList<SortTypes> getSortedBy() {
+        return sortedBy;
+    }
+    
 }

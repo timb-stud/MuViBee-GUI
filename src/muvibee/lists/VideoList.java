@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import muvibee.media.Media;
 import muvibee.media.Video;
+import muvibee.utils.SortTypes;
 
 public class VideoList extends MediaList {
     @Override
@@ -37,7 +38,7 @@ public class VideoList extends MediaList {
                 return (v1.getDirector().compareTo(v2.getDirector()));
             }
         });
-        sortedBy = sortedBy.DIRECTOR;
+        sortedBy.add(SortTypes.DIRECTOR);
     }
 
     public void sortByActors() {
@@ -49,7 +50,7 @@ public class VideoList extends MediaList {
                 return v1.getActors().compareTo(v2.getActors());
             }
         });
-        sortedBy = sortedBy.ACTORS;
+        sortedBy.add(SortTypes.ACTORS);
     }
 
     public void sortByFormat() {
@@ -61,25 +62,27 @@ public class VideoList extends MediaList {
                 return m1.getFormat().compareTo(m2.getFormat());
             }
         });
-        sortedBy = sortedBy.FORMAT;
+        sortedBy.add(SortTypes.FORMAT);
     }
 
     @Override
     public boolean resort() {
         if (super.resort()) {
-            switch (sortedBy) {
-                case DIRECTOR:
-                    sortByDirector();
-                    break;
-                case ACTORS:
-                    sortByActors();
-                    break;
-                case FORMAT:
-                    sortByFormat();
-                    break;
-                default:
-                    sortByTitle();
-                    return true;
+            for (SortTypes st : sortedBy) {
+                switch (st) {
+                    case DIRECTOR:
+                        sortByDirector();
+                        break;
+                    case ACTORS:
+                        sortByActors();
+                        break;
+                    case FORMAT:
+                        sortByFormat();
+                        break;
+                    default:
+                        sortByTitle();
+                        return true;
+                }
             }
         }
         return false;

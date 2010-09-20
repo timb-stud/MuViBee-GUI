@@ -4,8 +4,11 @@
  */
 package util.tree;
 
+import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
+import javax.print.attribute.standard.MediaSize.Other;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
@@ -25,14 +28,14 @@ import muvibee.utils.SortTypes;
  */
 public class PrioTree extends JTree implements Observer {
 
-    private final String OTHER = "sonstige";
-
     Node root ;
     Node lastAdded;
     TreeModel treeModel;
+    MuViBee mvb;
 
     public PrioTree(final MuViBee muvibee) {
         super();
+        this.mvb = muvibee;
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
@@ -67,7 +70,9 @@ public class PrioTree extends JTree implements Observer {
     }
 
 
-    public void createTree(MediaList mediaList, SortTypes[] sortedBy) {
+    public void createTree(MediaList mediaList, LinkedList<SortTypes> sortedBy) {
+        ResourceBundle bundle = ResourceBundle.getBundle(mvb.getMainBundlePath());
+        final String OTHER = bundle.getString("OTHER_PRIO_TREE");
         Object o = null;
         Node child;
 
@@ -87,11 +92,23 @@ public class PrioTree extends JTree implements Observer {
                     case RATING:
                         o = m.getRating();
                         break;
-                    case LOCATION:
-                        o = m.getLocation();
+//                    case LOCATION:
+//                        o = m.getLocation();
+//                        break;
+//                    case LENTTO:
+//                        o = m.getLentTo();
+//                        break;
+                    case LANGUAGE:
+                        o = ((Book) m).getLanguage();
                         break;
-                    case LENTTO:
-                        o = m.getLentTo();
+                    case FORMAT:
+                        if (m instanceof Music)
+                            o = ((Music) m).getFormat();
+                        else
+                            o = ((Video) m).getFormat();
+                        break;
+                    case DIRECTOR:
+                        o = ((Video)m).getDirector();
                         break;
                     default:
                        o = m.getTitle();
@@ -116,13 +133,8 @@ public class PrioTree extends JTree implements Observer {
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
 
-        SortTypes[] sortedBy;
-        if (o == null)
-           sortedBy = new SortTypes[]{SortTypes.GENRE, SortTypes.YEAR, SortTypes.TITLE };
-        else
-           sortedBy =  (SortTypes[]) o;
-
         MediaList mediaList = ((MediaList) list);
+        LinkedList<SortTypes> sortedBy = mediaList.getSortedBy();
         createTree(mediaList,sortedBy);
     }
 }
