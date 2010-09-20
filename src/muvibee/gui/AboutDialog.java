@@ -35,12 +35,13 @@ public class AboutDialog extends JDialog{
         JPanel panel = new JPanel(new BorderLayout());
         JButton b = new JButton("Close");
         final JEditorPane ep = new JEditorPane();
-        JScrollPane sb = new JScrollPane(ep);
+//        JScrollPane sb = new JScrollPane(ep);
 
         ep.setEditable(false);
         getContentPane().add(panel);
         panel.add(b, BorderLayout.SOUTH);
-        panel.add(sb);
+        panel.add(ep);
+//        panel.add(sb);
 
         b.addActionListener(new ActionListener() {
             @Override
@@ -51,8 +52,7 @@ public class AboutDialog extends JDialog{
         });
 
         try {
-            System.out.println();
-            ep.setPage(getClass().getResource("../../Resources/HTML/about.html"));
+            ep.setPage(getClass().getClassLoader().getResource("/Resources/HTML/about.html"));
         } catch (IOException e) {
             e.printStackTrace();
         }
