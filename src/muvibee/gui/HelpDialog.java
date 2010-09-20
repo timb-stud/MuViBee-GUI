@@ -24,11 +24,11 @@ public class HelpDialog extends JDialog {
         setSize(500, 500);
 //        setLocationRelativeTo(null);
 
-        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
-        String close = bundle.getString("close");
+//        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
+//        String close = bundle.getString("close");
 
         JPanel panel = new JPanel(new BorderLayout());
-        JButton b = new JButton(close);
+        JButton b = new JButton("close");
         final JEditorPane ep = new JEditorPane();
         JScrollPane sb = new JScrollPane(ep);
 

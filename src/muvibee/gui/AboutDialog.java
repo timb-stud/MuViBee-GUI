@@ -31,15 +31,15 @@ public class AboutDialog extends JDialog{
     public AboutDialog(JFrame parent) {
         super(parent, "Help Dialog", true);
 
-        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
-        String close = bundle.getString("close");
+//        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
+//        String close = bundle.getString("close");
 
         final JDialog dialog = this;
         setSize(300, 300);
 //        setLocationRelativeTo(null);
 
         JPanel panel = new JPanel(new BorderLayout());
-        JButton b = new JButton(close);
+        JButton b = new JButton("close");
         final JEditorPane ep = new JEditorPane();
 //        JScrollPane sb = new JScrollPane(ep);
 

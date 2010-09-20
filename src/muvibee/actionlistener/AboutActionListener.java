@@ -22,10 +22,7 @@ public class AboutActionListener implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        Object o = e.getSource();
-        if (o instanceof JButton) {
             mvb.showAboutDialog();
-        }
     }
 
 }
