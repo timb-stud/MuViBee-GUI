@@ -11,8 +11,8 @@ public class Video extends Media {
     public Video() {
     }
 
-    public Video(String title, String ean, String releaseYear, BufferedImage cover, String binding, String actors, String director) {
-        super(title, ean, releaseYear, cover);
+    public Video(String title, String ean, String releaseYear, BufferedImage cover, String binding, String actors, String director, String description) {
+        super(title, ean, releaseYear, cover, description);
         if (actors != null) {
             this.actors = actors;
         }

@@ -11,8 +11,8 @@ public class Music extends Media {
     public Music() {
     }
 
-    public Music(String title, String ean, String releaseYear, BufferedImage cover, String interpreter, String binding) {
-        super(title, ean, releaseYear, cover);
+    public Music(String title, String ean, String releaseYear, BufferedImage cover, String interpreter, String binding, String description) {
+        super(title, ean, releaseYear, cover, description);
         this.interpreter = interpreter;
         if (binding != null) {
             if (binding.contains("LP")) {

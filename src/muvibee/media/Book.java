@@ -11,8 +11,8 @@ public class Book extends Media {
     public Book() {
     }
 
-    public Book(String title, String ean, String releaseYear, BufferedImage cover, String author, String isbn, String language) {
-        super(title, ean, releaseYear, cover);
+    public Book(String title, String ean, String releaseYear, BufferedImage cover, String author, String isbn, String language, String description) {
+        super(title, ean, releaseYear, cover, description);
         this.author = author;
         this.isbn = isbn;
         this.language = language;

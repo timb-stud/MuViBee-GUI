@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 
 public abstract class Media extends Observable {
 
@@ -32,14 +33,23 @@ public abstract class Media extends Observable {
     public Media() {
     }
 
-    public Media(String title, String ean, String releaseYear, BufferedImage cover) {
+    public Media(String title, String ean, String releaseYear, BufferedImage cover, String description) {
         this.title = title;
         this.ean = ean;
         if (releaseYear.indexOf("-") != -1) {
             releaseYear = releaseYear.substring(0, releaseYear.indexOf("-"));
         }
+        if (description != null) {
+            this.description = description;
+        }
         this.releaseYear = Integer.parseInt(releaseYear);
         this.cover = cover;
+    }
+
+    public String test(String description) {
+        String test = description;
+        description.replaceAll("<>", "");
+        return test;
     }
 
     public void updateObservers() {
