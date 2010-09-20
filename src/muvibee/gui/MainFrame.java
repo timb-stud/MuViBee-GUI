@@ -879,49 +879,49 @@ public class MainFrame extends javax.swing.JFrame {
         sortBookAuthorButton = new javax.swing.JToggleButton();
         sortBookLanguageButton = new javax.swing.JToggleButton();
         itemBookScrollPane = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField7 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jTextField8 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
-        jComboBox5 = new javax.swing.JComboBox();
-        jComboBox6 = new javax.swing.JComboBox();
-        jComboBox7 = new javax.swing.JComboBox();
-        jLabel14 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        itemBookPanel = new javax.swing.JPanel();
+        coverBookLabel = new javax.swing.JLabel();
+        titleBookLabel = new javax.swing.JLabel();
+        authorBookLabel = new javax.swing.JLabel();
+        languageBookLabel = new javax.swing.JLabel();
+        isbnBookLabel = new javax.swing.JLabel();
+        eanBookLabel = new javax.swing.JLabel();
+        genreBookLabel = new javax.swing.JLabel();
+        releaseYearBookLabel = new javax.swing.JLabel();
+        locationBookLabel = new javax.swing.JLabel();
+        lentBookLabel = new javax.swing.JLabel();
+        lentToBookLabel = new javax.swing.JLabel();
+        lentDateBookLabel = new javax.swing.JLabel();
+        lentUntilDateBookLabel = new javax.swing.JLabel();
+        ratingBookLabel = new javax.swing.JLabel();
+        descriptionBookLabel = new javax.swing.JLabel();
+        annotationBookLabel = new javax.swing.JLabel();
+        titleBookTextField = new javax.swing.JTextField();
+        authorBookTextField = new javax.swing.JTextField();
+        languageBookTextField = new javax.swing.JTextField();
+        isbnBookTextField = new javax.swing.JTextField();
+        eanBookTextField = new javax.swing.JTextField();
+        genreBookTextField = new javax.swing.JTextField();
+        releaseYearBookComboBox = new javax.swing.JComboBox();
+        locationBookTextField = new javax.swing.JTextField();
+        lentBookCheckBox = new javax.swing.JCheckBox();
+        lentToBookTextField = new javax.swing.JTextField();
+        lentDayBookComboBox = new javax.swing.JComboBox();
+        lentMonthBookComboBox = new javax.swing.JComboBox();
+        lentYearBookComboBox = new javax.swing.JComboBox();
+        lentUntilDayBookComboBox = new javax.swing.JComboBox();
+        lentUntilMonthBookComboBox = new javax.swing.JComboBox();
+        lentUntilYearBookComboBox = new javax.swing.JComboBox();
+        ratingOneBookRadioButton = new javax.swing.JRadioButton();
+        ratingTwoBookRadioButton = new javax.swing.JRadioButton();
+        ratingThreeBookRadioButton = new javax.swing.JRadioButton();
+        ratingNoneBookRadioButton = new javax.swing.JRadioButton();
+        deleteButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        descriptionBookScrollPane = new javax.swing.JScrollPane();
+        descriptionBookTextArea = new javax.swing.JTextArea();
+        annotationBookScrollPane = new javax.swing.JScrollPane();
+        annotationBookTextArea = new javax.swing.JTextArea();
         hideBookButton = new javax.swing.JButton();
         musicPanel = new javax.swing.JPanel();
         viewMusicPanel = new javax.swing.JPanel();
@@ -1167,236 +1167,236 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setText("Titel");
+        coverBookLabel.setText("Cover");
+        coverBookLabel.setPreferredSize(new java.awt.Dimension(120, 150));
 
-        jLabel2.setText("Cover");
-        jLabel2.setPreferredSize(new java.awt.Dimension(120, 150));
+        titleBookLabel.setText("Titel");
 
-        jLabel3.setText("Autor");
+        authorBookLabel.setText("Autor");
 
-        jLabel4.setText("Sprache");
+        languageBookLabel.setText("Sprache");
 
-        jLabel5.setText("ISBN");
+        isbnBookLabel.setText("ISBN");
 
-        jLabel6.setText("EAN");
+        eanBookLabel.setText("EAN");
 
-        jLabel7.setText("Genre");
+        genreBookLabel.setText("Genre");
 
-        jLabel8.setText("Erscheinungsjahr");
+        releaseYearBookLabel.setText("Erscheinungsjahr");
 
-        jLabel9.setText("Standort");
+        locationBookLabel.setText("Standort");
 
-        jLabel10.setText("Verliehen");
+        lentBookLabel.setText("Verliehen");
 
-        jLabel11.setText("Verliehen an");
+        lentToBookLabel.setText("Verliehen an");
 
-        jLabel12.setText("Verliehen am");
+        lentDateBookLabel.setText("Verliehen am");
 
-        jLabel13.setText("Verliehen bis");
+        lentUntilDateBookLabel.setText("Verliehen bis");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
+        ratingBookLabel.setText("Bewertung");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tag" }));
+        descriptionBookLabel.setText("Beschreibung");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monat" }));
+        annotationBookLabel.setText("Kommentar");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
+        releaseYearBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tag" }));
+        lentDayBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tag" }));
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monat" }));
+        lentMonthBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monat" }));
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
+        lentYearBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
 
-        jLabel14.setText("Bewertung");
+        lentUntilDayBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tag" }));
 
-        jRadioButton1.setText("1");
+        lentUntilMonthBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monat" }));
 
-        jRadioButton2.setText("2");
+        lentUntilYearBookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jahr" }));
 
-        jRadioButton3.setText("3");
+        ratingOneBookRadioButton.setText("1");
 
-        jRadioButton4.setText("keine");
+        ratingTwoBookRadioButton.setText("2");
 
-        jButton1.setText("Löschen");
+        ratingThreeBookRadioButton.setText("3");
 
-        jButton2.setText("Speichern");
+        ratingNoneBookRadioButton.setText("keine");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        deleteButton.setText("Löschen");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        saveButton.setText("Speichern");
 
-        jLabel15.setText("Beschreibung");
+        descriptionBookTextArea.setColumns(20);
+        descriptionBookTextArea.setRows(5);
+        descriptionBookScrollPane.setViewportView(descriptionBookTextArea);
 
-        jLabel16.setText("Kommentar");
+        annotationBookTextArea.setColumns(20);
+        annotationBookTextArea.setRows(5);
+        annotationBookScrollPane.setViewportView(annotationBookTextArea);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout itemBookPanelLayout = new javax.swing.GroupLayout(itemBookPanel);
+        itemBookPanel.setLayout(itemBookPanelLayout);
+        itemBookPanelLayout.setHorizontalGroup(
+            itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(itemBookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                .addComponent(titleBookLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(titleBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
+                            .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel13))
+                                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(languageBookLabel)
+                                    .addComponent(releaseYearBookLabel)
+                                    .addComponent(locationBookLabel)
+                                    .addComponent(authorBookLabel)
+                                    .addComponent(isbnBookLabel)
+                                    .addComponent(eanBookLabel)
+                                    .addComponent(genreBookLabel)
+                                    .addComponent(ratingBookLabel)
+                                    .addComponent(lentBookLabel)
+                                    .addComponent(lentToBookLabel)
+                                    .addComponent(lentDateBookLabel)
+                                    .addComponent(lentUntilDateBookLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                        .addComponent(lentUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lentUntilMonthBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lentUntilYearBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(itemBookPanelLayout.createSequentialGroup()
+                                            .addComponent(lentDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lentMonthBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jRadioButton1)
+                                            .addComponent(lentYearBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lentBookCheckBox, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, itemBookPanelLayout.createSequentialGroup()
+                                                .addComponent(ratingOneBookRadioButton)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton2)
+                                                .addComponent(ratingTwoBookRadioButton)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton3)
+                                                .addComponent(ratingThreeBookRadioButton)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton4))
-                                            .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))))))
+                                                .addComponent(ratingNoneBookRadioButton))
+                                            .addComponent(locationBookTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(releaseYearBookComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(eanBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(authorBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(isbnBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(languageBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(genreBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(lentToBookTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))))))
                         .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemBookPanelLayout.createSequentialGroup()
+                        .addComponent(saveButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(deleteButton)
                         .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
+                        .addComponent(descriptionBookLabel)
                         .addContainerGap(436, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
+                        .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
+                        .addComponent(annotationBookLabel)
                         .addContainerGap(451, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemBookPanelLayout.createSequentialGroup()
+                        .addComponent(annotationBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                         .addContainerGap())))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        itemBookPanelLayout.setVerticalGroup(
+            itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(itemBookPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleBookLabel)
+                    .addComponent(titleBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(coverBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(itemBookPanelLayout.createSequentialGroup()
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(authorBookLabel)
+                            .addComponent(authorBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(languageBookLabel)
+                            .addComponent(languageBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(isbnBookLabel)
+                            .addComponent(isbnBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(eanBookLabel)
+                            .addComponent(eanBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(genreBookLabel)
+                            .addComponent(genreBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(releaseYearBookLabel)
+                            .addComponent(releaseYearBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(locationBookLabel)
+                            .addComponent(locationBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ratingBookLabel)
+                    .addComponent(ratingOneBookRadioButton)
+                    .addComponent(ratingTwoBookRadioButton)
+                    .addComponent(ratingThreeBookRadioButton)
+                    .addComponent(ratingNoneBookRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(jCheckBox1))
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lentBookLabel)
+                    .addComponent(lentBookCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lentToBookLabel)
+                    .addComponent(lentToBookTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lentDateBookLabel)
+                    .addComponent(lentDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lentMonthBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lentYearBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lentUntilDateBookLabel)
+                    .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lentUntilDayBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lentUntilMonthBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lentUntilYearBookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(itemBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteButton)
+                    .addComponent(saveButton))
                 .addGap(11, 11, 11)
-                .addComponent(jLabel15)
+                .addComponent(descriptionBookLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descriptionBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel16)
+                .addComponent(annotationBookLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(annotationBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        itemBookScrollPane.setViewportView(jPanel1);
+        itemBookScrollPane.setViewportView(itemBookPanel);
 
         hideBookButton.setFont(new java.awt.Font("Tahoma", 1, 11));
         hideBookButton.setText(">");
@@ -1729,71 +1729,69 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton addMusicButton;
     private javax.swing.JButton addVideoButton;
     private javax.swing.JButton advancedSearchButton;
+    private javax.swing.JLabel annotationBookLabel;
+    private javax.swing.JScrollPane annotationBookScrollPane;
+    private javax.swing.JTextArea annotationBookTextArea;
+    private javax.swing.JLabel authorBookLabel;
+    private javax.swing.JTextField authorBookTextField;
     private javax.swing.JPanel bookCardPanel;
     private javax.swing.JPanel bookPanel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel coverBookLabel;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton deleteItemButton;
     private javax.swing.JButton deleteSearchButton;
+    private javax.swing.JLabel descriptionBookLabel;
+    private javax.swing.JScrollPane descriptionBookScrollPane;
+    private javax.swing.JTextArea descriptionBookTextArea;
+    private javax.swing.JLabel eanBookLabel;
+    private javax.swing.JTextField eanBookTextField;
+    private javax.swing.JLabel genreBookLabel;
+    private javax.swing.JTextField genreBookTextField;
     private javax.swing.JPanel headPanel;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton hideBookButton;
     private javax.swing.JButton hideMusicButton;
     private javax.swing.JButton hideVideoButton;
+    private javax.swing.JLabel isbnBookLabel;
+    private javax.swing.JTextField isbnBookTextField;
+    private javax.swing.JPanel itemBookPanel;
     private javax.swing.JScrollPane itemBookScrollPane;
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JScrollPane itemVideoScrollPane;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JComboBox jComboBox6;
-    private javax.swing.JComboBox jComboBox7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel languageBookLabel;
+    private javax.swing.JTextField languageBookTextField;
     private javax.swing.JComboBox languagesComboBox;
+    private javax.swing.JCheckBox lentBookCheckBox;
+    private javax.swing.JLabel lentBookLabel;
+    private javax.swing.JLabel lentDateBookLabel;
+    private javax.swing.JComboBox lentDayBookComboBox;
+    private javax.swing.JComboBox lentMonthBookComboBox;
+    private javax.swing.JLabel lentToBookLabel;
+    private javax.swing.JTextField lentToBookTextField;
+    private javax.swing.JLabel lentUntilDateBookLabel;
+    private javax.swing.JComboBox lentUntilDayBookComboBox;
+    private javax.swing.JComboBox lentUntilMonthBookComboBox;
+    private javax.swing.JComboBox lentUntilYearBookComboBox;
+    private javax.swing.JComboBox lentYearBookComboBox;
+    private javax.swing.JLabel locationBookLabel;
+    private javax.swing.JTextField locationBookTextField;
     private javax.swing.JPanel musicCardPanel;
     private javax.swing.JPanel musicPanel;
     private javax.swing.JPanel overviewPanel;
     private javax.swing.JScrollPane overviewScrollPane;
     private javax.swing.JTable overviewTable;
+    private javax.swing.JLabel ratingBookLabel;
+    private javax.swing.JRadioButton ratingNoneBookRadioButton;
+    private javax.swing.JRadioButton ratingOneBookRadioButton;
+    private javax.swing.JRadioButton ratingThreeBookRadioButton;
+    private javax.swing.JRadioButton ratingTwoBookRadioButton;
+    private javax.swing.JComboBox releaseYearBookComboBox;
+    private javax.swing.JLabel releaseYearBookLabel;
     private javax.swing.JButton restoreItemButton;
     private javax.swing.JScrollPane restoreItemsScrollpane;
     private javax.swing.JPanel restorePanel;
+    private javax.swing.JButton saveButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JToggleButton sortBookAuthorButton;
@@ -1816,6 +1814,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton sortVideoTitleButton;
     private javax.swing.JPanel statusPanel;
     private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JLabel titleBookLabel;
+    private javax.swing.JTextField titleBookTextField;
     private javax.swing.JPanel videoCardPanel;
     private javax.swing.JPanel videoPanel;
     private javax.swing.JComboBox viewBookComboBox;
