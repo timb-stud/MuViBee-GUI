@@ -24,6 +24,7 @@ import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
 import muvibee.utils.NonValidYearException;
+import muvibee.utils.SortTypes;
 
 /**
  *
@@ -554,48 +555,78 @@ public class MuViBee {
     public void sortLists() {
         if (sortBookByTitle == 1) {
             filterBookList.sortByTitle();
+        } else {
+            filterBookList.removeSort(SortTypes.TITLE);
         }
         if (sortBookByGenre == 1) {
             filterBookList.sortByGenre();
+        }else {
+            filterBookList.removeSort(SortTypes.GENRE);
         }
         if (sortBookByRating == 1) {
             filterBookList.sortByRating();
+        }else {
+            filterBookList.removeSort(SortTypes.RATING);
         }
         if (sortMusicByTitle == 1) {
             filterMusicList.sortByTitle();
+        }else {
+            filterMusicList.removeSort(SortTypes.TITLE);
         }
         if (sortMusicByGenre == 1) {
             filterMusicList.sortByGenre();
+        }else {
+            filterMusicList.removeSort(SortTypes.GENRE);
         }
         if (sortMusicByRating == 1) {
             filterMusicList.sortByRating();
+        }else {
+            filterMusicList.removeSort(SortTypes.RATING);
         }
         if (sortVideoByTitle == 1) {
             filterVideoList.sortByTitle();
+        }else {
+            filterVideoList.removeSort(SortTypes.TITLE);
         }
         if (sortVideoByGenre == 1) {
             filterVideoList.sortByGenre();
+        }else {
+            filterVideoList.removeSort(SortTypes.GENRE);
         }
         if (sortVideoByRating == 1) {
             filterVideoList.sortByRating();
+        }else {
+            filterVideoList.removeSort(SortTypes.RATING);
         }
         if (sortBookByAuthor == 1) {
             filterBookList.sortByAuthor();
+        }else {
+            filterBookList.removeSort(SortTypes.AUTHOR);
         }
         if (sortBookByLanguage == 1) {
             filterBookList.sortByLanguage();
+        }else {
+            filterBookList.removeSort(SortTypes.LANGUAGE);
         }
         if (sortMusicByType == 1) {
             filterMusicList.sortByType();
+        }else {
+            filterMusicList.removeSort(SortTypes.TYPE);
         }
         if (sortMusicByInterpreter == 1) {
             filterMusicList.sortByInterpreter();
+        }else {
+            filterMusicList.removeSort(SortTypes.INTERPRETER);
         }
         if (sortVideoByRegisseur == 1) {
             filterVideoList.sortByDirector();
+        }else {
+            filterVideoList.removeSort(SortTypes.REGISSEUR);
         }
         if (sortVideoByActors == 1) {
             filterVideoList.sortByActors();
+        }else {
+            filterVideoList.removeSort(SortTypes.ACTORS);
         }
     }
 
