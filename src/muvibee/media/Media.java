@@ -7,9 +7,12 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
+import muvibee.db.DBInsertor;
 
 public abstract class Media extends Observable {
 
+    private int ID;
     private String title = "";
     private String ean = "";
     private String genre = "";
@@ -32,14 +35,23 @@ public abstract class Media extends Observable {
     public Media() {
     }
 
-    public Media(String title, String ean, String releaseYear, BufferedImage cover) {
+    public Media(String title, String ean, String releaseYear, BufferedImage cover, String description) {
         this.title = title;
         this.ean = ean;
         if (releaseYear.indexOf("-") != -1) {
             releaseYear = releaseYear.substring(0, releaseYear.indexOf("-"));
         }
+        if (description != null) {
+            this.description = description;
+        }
         this.releaseYear = Integer.parseInt(releaseYear);
         this.cover = cover;
+    }
+
+    public String test(String description) {
+        String test = description;
+        description.replaceAll("<>", "");
+        return test;
     }
 
     public void updateObservers() {
@@ -49,7 +61,15 @@ public abstract class Media extends Observable {
 
     //TODO equals
     public void insertIntoDB() {
-        //DBInsertor.insertIntoDB(this);
+        DBInsertor.insertIntoDB(this);
+    }
+
+    public int getID() {
+        return this.ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getTitle() {
@@ -112,6 +132,18 @@ public abstract class Media extends Observable {
         return lendDay;
     }
 
+    public String getLendDate() {
+        return this.lendYear + "-" + this.lendMonth + "-" + this.lendDay;
+    }
+
+    public void setLendDate(String date) {
+        String[] zerlegt = new String[3];
+        zerlegt = date.split("-");
+        this.lendYear = Integer.parseInt(zerlegt[0]);
+        this.lendMonth = Integer.parseInt(zerlegt[1]);
+        this.lendDay = Integer.parseInt(zerlegt[2]);
+    }
+
     public void setLendDay(int lendDay) {
         this.lendDay = lendDay;
     }
@@ -126,6 +158,18 @@ public abstract class Media extends Observable {
 
     public int getLendUntilDay() {
         return lendUntilDay;
+    }
+
+    public String getLendUntiDate() {
+        return this.lendUntilYear + "-" + this.lendUntilMonth + "-" + this.lendUntilDay;
+    }
+
+    public void setLendUntilDate(String date) {
+        String[] zerlegt = new String[3];
+        zerlegt = date.split("-");
+        this.lendUntilYear = Integer.parseInt(zerlegt[0]);
+        this.lendUntilMonth = Integer.parseInt(zerlegt[1]);
+        this.lendUntilDay = Integer.parseInt(zerlegt[2]);
     }
 
     public void setLendUntilDay(int lendUntilDay) {
