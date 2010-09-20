@@ -58,9 +58,10 @@ public class PrioTree extends JTree implements Observer {
     private boolean containsChild (Node child){
         int to = lastAdded.getChildCount();
         for (int i = 0; i < to; i++){
-               if (((Node)lastAdded.getChildAt(i)).equals(child)){
+               if (((Node)(lastAdded.getChildAt(i))).equals(child)){
+                   lastAdded = (Node) lastAdded.getChildAt(i);
                    return true;
-            }
+              }
         }
         return false;
     }
@@ -103,8 +104,8 @@ public class PrioTree extends JTree implements Observer {
 
                 if (!(containsChild(child))){
                     lastAdded.add(child);
+                    lastAdded = child;
                 }
-                lastAdded = child;
             }
         }
     }
