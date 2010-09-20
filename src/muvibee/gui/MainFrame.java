@@ -1272,7 +1272,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        itemBookPanel.setPreferredSize(new java.awt.Dimension(500, 759));
+        itemBookPanel.setPreferredSize(new java.awt.Dimension(500, 880));
 
         coverBookLabel.setText("Cover");
         coverBookLabel.setPreferredSize(new java.awt.Dimension(120, 150));
@@ -1506,7 +1506,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(annotationBookLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(annotationBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         itemBookScrollPane.setViewportView(itemBookPanel);
@@ -1627,7 +1627,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        itemMusicPanel.setPreferredSize(new java.awt.Dimension(500, 759));
+        itemMusicPanel.setPreferredSize(new java.awt.Dimension(500, 880));
 
         coverMusicLabel.setText("Cover");
         coverMusicLabel.setPreferredSize(new java.awt.Dimension(120, 150));
@@ -1859,7 +1859,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(annotationMusicLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(annotationMusicScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         itemMusicScrollPane.setViewportView(itemMusicPanel);
@@ -1977,7 +1977,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        itemVideoPanel.setPreferredSize(new java.awt.Dimension(500, 759));
+        itemVideoPanel.setPreferredSize(new java.awt.Dimension(500, 880));
 
         coverVideoLabel.setText("Cover");
         coverVideoLabel.setPreferredSize(new java.awt.Dimension(120, 150));
@@ -2209,7 +2209,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(annotationVideoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(annotationVideoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         itemVideoScrollPane.setViewportView(itemVideoPanel);
