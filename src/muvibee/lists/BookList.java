@@ -65,8 +65,8 @@ public class BookList extends MediaList {
 
     @Override
     public boolean resort() {
-        for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
-            if (super.resort()) {
+        if (super.resort()) {
+            for (SortTypes st : sortedBy.toArray(new SortTypes[0])) {
                 switch (st) {
                     case AUTHOR:
                         sortByAuthor();
