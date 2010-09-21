@@ -75,16 +75,6 @@ public class MuViBee {
 
     public MuViBee() {
         final MuViBee mvb = this;
-
-        filterBookList = new BookList();
-        filterMusicList = new MusicList();
-        filterVideoList = new VideoList();
-        deletedMediaList = new MediaList();
-        expiredMediaList = new MediaList();
-
-
-
-
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
@@ -92,6 +82,12 @@ public class MuViBee {
                 mainFrame.setVisible(true);
             }
         });
+
+        filterBookList = new BookList();
+        filterMusicList = new MusicList();
+        filterVideoList = new VideoList();
+        deletedMediaList = new MediaList();
+        expiredMediaList = new MediaList();
 
         bookList = DBSelector.getBookList(false, null);
         musicList = DBSelector.getMusicList(false, null);
