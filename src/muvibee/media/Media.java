@@ -7,11 +7,11 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.JLabel;
 import muvibee.db.DBInsertor;
 
 public abstract class Media extends Observable {
 
+    private final String COVER_PATH = "data/images/";
     private int ID;
     private String title = "";
     private String ean = "";
@@ -33,25 +33,11 @@ public abstract class Media extends Observable {
     private boolean isDeleted;
 
     public Media() {
-    }
-
-    public Media(String title, String ean, String releaseYear, BufferedImage cover, String description) {
-        this.title = title;
-        this.ean = ean;
-        if (releaseYear.indexOf("-") != -1) {
-            releaseYear = releaseYear.substring(0, releaseYear.indexOf("-"));
+        try {
+            this.cover = ImageIO.read(new File(COVER_PATH + "default_cover.jpg"));
+        } catch (IOException ex) {
+            throw new RuntimeException("Das default Cover wird nicht auf der Festplatte gefunden");
         }
-        if (description != null) {
-            this.description = description;
-        }
-        this.releaseYear = Integer.parseInt(releaseYear);
-        this.cover = cover;
-    }
-
-    public String test(String description) {
-        String test = description;
-        description.replaceAll("<>", "");
-        return test;
     }
 
     public void updateObservers() {
@@ -59,7 +45,6 @@ public abstract class Media extends Observable {
         notifyObservers();
     }
 
-    //TODO equals
     public void insertIntoDB() {
         DBInsertor.insertIntoDB(this);
     }
@@ -133,7 +118,14 @@ public abstract class Media extends Observable {
     }
 
     public String getLendDate() {
-        return this.lendYear + "-" + this.lendMonth + "-" + this.lendDay;
+        String day = String.valueOf(this.lendDay);
+        String month = String.valueOf(this.lendMonth);
+        if (this.lendDay < 10) {
+            day = "0" + this.lendDay;
+        } else if  (this.lendMonth < 10) {
+            month = "0" + this.lendMonth;
+        }
+        return this.lendYear + "-" + month + "-" + day;
     }
 
     public void setLendDate(String date) {
@@ -161,7 +153,14 @@ public abstract class Media extends Observable {
     }
 
     public String getLendUntilDate() {
-        return this.lendUntilYear + "-" + this.lendUntilMonth + "-" + this.lendUntilDay;
+        String day = String.valueOf(this.lendUntilDay);
+        String month = String.valueOf(this.lendUntilMonth);
+        if (this.lendUntilDay < 10) {
+            day = "0" + this.lendUntilDay;
+        } else if  (this.lendUntilMonth < 10) {
+            month = "0" + this.lendUntilMonth;
+        }
+        return this.lendUntilYear + "-" + month + "-" + day;
     }
 
     public void setLendUntilDate(String date) {
