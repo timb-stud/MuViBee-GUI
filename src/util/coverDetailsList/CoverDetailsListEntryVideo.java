@@ -2,6 +2,11 @@ package util.coverDetailsList;
 
 import muvibee.media.Video;
 
+/**
+ * Spezialisierte für Videos. Super Klasse ist CoverDetailsListEntry
+ * @author Christian Rech
+ */
+
 @SuppressWarnings("serial")
 public class CoverDetailsListEntryVideo extends CoverDetailsListEntry{
 

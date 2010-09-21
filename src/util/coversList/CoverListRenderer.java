@@ -2,53 +2,36 @@ package util.coversList;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
 import javax.swing.BorderFactory;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.Border;
+
+/**
+ * CellRenderer für CoverList Ansicht
+ * @author Lucian Schneider
+ */
 
 @SuppressWarnings("serial")
 public class CoverListRenderer extends JLabel implements ListCellRenderer {
 
-	
-	protected static enum rendererType {SIMPLE_LIST, ICON_LIST, DETAIL_ICON_LIST, TREE_VIEW};
-		
-	
-	public CoverListRenderer(rendererType type) {
-		
-		switch (type) {
-		
-		case SIMPLE_LIST :
-			setOpaque(true);
-	        Border listGap = BorderFactory.createLineBorder(Color.GREEN, 1);
-	        this.setBorder(listGap);
-			break;
-			
-		case ICON_LIST :
-			setOpaque(true);
+        /**
+         * Setzt Boder für Darstellung
+         */
+	public CoverListRenderer() {
+		setOpaque(true);
 	        Border compound = BorderFactory.createCompoundBorder(
 	        		BorderFactory.createRaisedBevelBorder(), BorderFactory.createLoweredBevelBorder());
 	        Border iconGap = BorderFactory.createCompoundBorder(
 	        		BorderFactory.createLineBorder(Color.WHITE, 5), compound);
 	        this.setBorder(iconGap);
-			break;
-		
-		case DETAIL_ICON_LIST :
-			setOpaque(true);
-			final Color HIGHLIGHT_COLOR = new Color(200, 0, 225);
-			final Border selectedBorder = BorderFactory.createLineBorder(HIGHLIGHT_COLOR, 2);
-			final Border normalBorder = BorderFactory.createEmptyBorder();
-//			this.
-			break;
-				
-		}
-		
 	}
+		
 
+        /**
+         *  Setzt verhalten der einzelnen Elemente fest
+         */
 	@Override
 	public Component getListCellRendererComponent(JList list,
 	        Object value,
@@ -65,28 +48,6 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
                     }
 		}
 		
-//		// Simple List
-//		if (value instanceof Entry) {
-//                    Entry entry = (Entry) value;
-//                    if (entry != null) {
-//                            setText(entry.getTitle() + " | " + entry.getAuthor());
-//                            setFont(list.getFont().deriveFont(Font.BOLD, 14));
-//                    }
-//		}
-//
-		// Detailed Icon List
-//		if (value instanceof ListEntry) {
-//			Component le = (ListEntry) value;
-//	    	le = (JComponent) value;
-	    	
-//	    	if(isSelected) 
-//	    		le.setBorder(selectedBorder);
-//			else 
-//				le.setBorder(normalBorder);
-//		    
-//		    return le;
-//		}
-		
             if (isSelected) {
               setBackground(Color.cyan);
               setForeground(Color.white);
@@ -94,7 +55,6 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
               setBackground(Color.white);
               setForeground(Color.black);
             }
-
             return this;
 	}
 	
