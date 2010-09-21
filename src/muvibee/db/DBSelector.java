@@ -35,7 +35,7 @@ import muvibee.media.Video;
  * videoList 	= dbs.getVideoList();
  * 
  * Testklasse:
- * trash.TestDBSelects
+ * db.test.TestDBSelects
  *
  */
 
