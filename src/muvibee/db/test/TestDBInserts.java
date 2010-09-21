@@ -21,8 +21,8 @@ public class TestDBInserts {
 	public static void main(String[] args) {
 
 		Book b = new Book();
-                b.setID(1);
-                b.setTitle("Buchtitel ID 1");
+                b.setID(3);
+                b.setTitle("Buchtitel ID 3 UPDATED");
 		BufferedImage bi1 = new BufferedImage(1, 2, 3);
                 b.setCover(bi1);
 		b.setLendDate("2010-11-10");
@@ -32,8 +32,8 @@ public class TestDBInserts {
                 System.out.println("----------------------------");
                 
 		Music m = new Music();
-                m.setID(-1);
-                m.setTitle("Musiktitel ID -1");
+                m.setID(1);
+                m.setTitle("Musiktitel ID 1 Update");
                 BufferedImage bi2 = new BufferedImage(4, 5, 6);
                 m.setCover(bi2);
 		m.setLendDate("2010-11-10");

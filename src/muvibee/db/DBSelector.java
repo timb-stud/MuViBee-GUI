@@ -108,7 +108,9 @@ public class DBSelector {
                     BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
                     b.setCover(cover);
                 } catch (IIOException e){
-                    throw new RuntimeException("Bild nicht gefunden: " + rs.getString(13));
+                    BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
+                    System.out.println("Bild nicht gefunden: " + rs.getString(13));
+                    b.setCover(cover);
                 }
                 b.setAuthor(rs.getString(14));
                 b.setLanguage(rs.getString(15));
@@ -138,7 +140,9 @@ public class DBSelector {
                     BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
                     m.setCover(cover);
                 } catch (IIOException e){
-                    throw new RuntimeException("Bild nicht gefunden: " + rs.getString(13));
+                    BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
+                    System.out.println("Bild nicht gefunden: " + rs.getString(13));
+                    m.setCover(cover);
                 }
                 m.setFormat(rs.getString(14));
                 m.setInterpreter(rs.getString(15));
@@ -168,7 +172,9 @@ public class DBSelector {
                     BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
                     v.setCover(cover);
                 } catch (IIOException e){
-                    throw new RuntimeException("Bild nicht gefunden: " + rs.getString(13));
+                    BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
+                    System.out.println("Bild nicht gefunden: " + rs.getString(13));
+                    v.setCover(cover);
                 }
                 v.setFormat(rs.getString(14));
                 v.setDirector(rs.getString(15));
