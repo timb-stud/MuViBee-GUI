@@ -665,7 +665,7 @@ public class MuViBee {
     public int getLentToBook() {
         int sum = 0;
         for (Book b: bookList) {
-            if (b.isIsLent()) {
+            if (b.isLent()) {
                 sum++;
             }
         }
@@ -675,7 +675,7 @@ public class MuViBee {
     public int getLentToMusic() {
         int sum = 0;
         for (Music m: musicList) {
-            if (m.isIsLent()) {
+            if (m.isLent()) {
                 sum++;
             }
         }
@@ -685,7 +685,7 @@ public class MuViBee {
     public int getLentToVideo() {
         int sum = 0;
         for (Video v: videoList) {
-            if (v.isIsLent()) {
+            if (v.isLent()) {
                 sum++;
             }
         }

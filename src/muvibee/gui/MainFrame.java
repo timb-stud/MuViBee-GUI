@@ -542,7 +542,7 @@ public class MainFrame extends javax.swing.JFrame {
         genreBookTextField.setText(book.getGenre());
         setYear(book.getReleaseYear(), releaseYearBookComboBox);
         locationBookTextField.setText(book.getLocation());
-        lentBookCheckBox.setSelected(book.isIsLent());
+        lentBookCheckBox.setSelected(book.isLent());
         lentToBookTextField.setText(book.getLentTo());
         lentDayBookComboBox.setSelectedIndex(book.getLendDay());
         lentMonthBookComboBox.setSelectedIndex(book.getLendMonth());
@@ -583,7 +583,7 @@ public class MainFrame extends javax.swing.JFrame {
         genreMusicTextField.setText(music.getGenre());
         setYear(music.getReleaseYear(), releaseYearMusicComboBox);
         locationMusicTextField.setText(music.getLocation());
-        lentMusicCheckBox.setSelected(music.isIsLent());
+        lentMusicCheckBox.setSelected(music.isLent());
         lentToMusicTextField.setText(music.getLentTo());
         lentDayMusicComboBox.setSelectedIndex(music.getLendDay());
         lentMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
@@ -622,7 +622,7 @@ public class MainFrame extends javax.swing.JFrame {
         genreVideoTextField.setText(video.getGenre());
         setYear(video.getReleaseYear(), releaseYearVideoComboBox);
         locationVideoTextField.setText(video.getLocation());
-        lentVideoCheckBox.setSelected(video.isIsLent());
+        lentVideoCheckBox.setSelected(video.isLent());
         lentToVideoTextField.setText(video.getLentTo());
         lentDayVideoComboBox.setSelectedIndex(video.getLendDay());
         lentMonthVideoComboBox.setSelectedIndex(video.getLendMonth());

@@ -34,7 +34,10 @@ public class ExpiredItemsList extends JList implements Observer{
 	        addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
                             if(evt.getValueIsAdjusting()){
-                                muvibee.showSelectedMediaItem(((ExpiredItemEntry)getSelectedValue()).getMedia());
+                                if (getSelectedValue() != null) {
+                                    muvibee.showSelectedMediaItem(((ExpiredItemEntry)getSelectedValue()).getMedia());
+                                }
+                                muvibee.getExpiredList().clearSelection();
                             }
 	        	}
 	        });
