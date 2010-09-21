@@ -4,6 +4,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import muvibee.media.Book;
+import muvibee.media.Media;
+import muvibee.media.Music;
+import muvibee.media.Video;
 
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
