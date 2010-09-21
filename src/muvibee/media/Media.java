@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import muvibee.db.DBInsertor;
-import muvibee.db.DBUpdater;
+import muvibee.db.DBUtil;
 
 public abstract class Media extends Observable {
 
@@ -60,11 +60,11 @@ public abstract class Media extends Observable {
     }
 
     public void updateDB() {
-        DBUpdater.dbUpdate(this);
+        DBUtil.dbUpdate(this);
     }
 
     public void deleteDB() {
-        DBUpdater.dbDelete(this);
+        DBUtil.dbDelete(this);
     }
 
     public int getID() {
