@@ -287,6 +287,7 @@ public class MuViBee {
         if (!bookList.contains(currentBook)) {
             filterBookList.add(currentBook);
             bookList.add(currentBook);
+            currentBook.updateDB();
         }
     }
 
@@ -294,6 +295,7 @@ public class MuViBee {
 	if(!musicList.contains(currentMusic)){
 	    filterMusicList.add(currentMusic);
             musicList.add(currentMusic);
+            currentMusic.updateDB();
 	}
     }
 
@@ -301,6 +303,7 @@ public class MuViBee {
         if (!videoList.contains(currentVideo)) {
             filterVideoList.add(currentVideo);
             videoList.add(currentVideo);
+            currentVideo.updateDB();
         }
     }
 

@@ -43,4 +43,12 @@ public class Video extends Media {
     public void setActors(String actor) {
         this.actors = actor;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()
+         + "\n Format: " + format
+         + "\n Director: " + director
+         + "\n Actors: " + actors;
+    }
 }

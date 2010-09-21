@@ -45,4 +45,12 @@ public class Book extends Media {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()
+         + "\n Author: " + author
+         + "\n Language: " + language
+         + "\n ISBN: " + isbn;
+    }
 }
