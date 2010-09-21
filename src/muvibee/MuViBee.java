@@ -374,6 +374,7 @@ public class MuViBee {
     public void resetSearch() {
         mainFrame.resetSearch();
         resetFilterLists();
+        setListsColor(Color.white);
     }
 
     public void resetFilterLists() {
