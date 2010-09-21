@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import javax.imageio.IIOException;
 
 import javax.imageio.ImageIO;
 
@@ -103,8 +104,12 @@ public class DBSelector {
                 b.setRating(rs.getInt(10));
                 b.setDescription(rs.getString(11));
                 b.setComment(rs.getString(12));
-                BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
-                b.setCover(cover);
+                try {
+                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    b.setCover(cover);
+                } catch (IIOException e){
+                    throw new RuntimeException("Bild nicht gefunden: " + rs.getString(13));
+                }
                 b.setAuthor(rs.getString(14));
                 b.setLanguage(rs.getString(15));
                 b.setLanguage(rs.getString(16));
@@ -129,8 +134,12 @@ public class DBSelector {
                 m.setRating(rs.getInt(10));
                 m.setDescription(rs.getString(11));
                 m.setComment(rs.getString(12));
-                BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
-                m.setCover(cover);
+                try {
+                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    m.setCover(cover);
+                } catch (IIOException e){
+                    throw new RuntimeException("Bild nicht gefunden: " + rs.getString(13));
+                }
                 m.setFormat(rs.getString(14));
                 m.setInterpreter(rs.getString(15));
                 m.setType(rs.getString(16));
@@ -155,8 +164,12 @@ public class DBSelector {
                 v.setRating(rs.getInt(10));
                 v.setDescription(rs.getString(11));
                 v.setComment(rs.getString(12));
-                BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
-                v.setCover(cover);
+                try {
+                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    v.setCover(cover);
+                } catch (IIOException e){
+                    throw new RuntimeException("Bild nicht gefunden: " + rs.getString(13));
+                }
                 v.setFormat(rs.getString(14));
                 v.setDirector(rs.getString(15));
                 v.setActors(rs.getString(16));
