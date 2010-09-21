@@ -85,7 +85,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     }
 
     public final void reloadLabels(){
-        ResourceBundle bundle = ResourceBundle.getBundle(mvb.getMainBundlePath());
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
 
         mediaPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("mediaPanelASD")));
         bookPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("bookPanelASD")));

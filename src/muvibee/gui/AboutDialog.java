@@ -8,6 +8,7 @@ package muvibee.gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import javax.swing.Box;
@@ -20,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import javax.swing.text.html.HTMLEditorKit;
 import muvibee.MuViBee;
 
 /**
@@ -28,25 +30,28 @@ import muvibee.MuViBee;
  */
 public class AboutDialog extends JDialog{
 
-    public AboutDialog(JFrame parent) {
-        super(parent, "Help Dialog", true);
+    public AboutDialog(JFrame parent) throws IOException {
+        super(parent, ResourceBundle.getBundle(MuViBee.mainBundlePath).getString("aboutDialog"), true);
 
-//        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
-//        String close = bundle.getString("close");
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+        String close = bundle.getString("close");
 
         final JDialog dialog = this;
         setSize(300, 300);
 //        setLocationRelativeTo(null);
 
         JPanel panel = new JPanel(new BorderLayout());
-        JButton b = new JButton("close");
-        final JEditorPane ep = new JEditorPane();
+        JButton b = new JButton(close);
 //        JScrollPane sb = new JScrollPane(ep);
 
-        ep.setEditable(false);
+
+        final JEditorPane htmlPane = new JEditorPane();
+        htmlPane.setEditorKit(new HTMLEditorKit());
+        htmlPane.setEditable(false);
+
         getContentPane().add(panel);
         panel.add(b, BorderLayout.SOUTH);
-        panel.add(ep);
+        panel.add(htmlPane);
 //        panel.add(sb);
 
         b.addActionListener(new ActionListener() {
@@ -58,17 +63,17 @@ public class AboutDialog extends JDialog{
         });
 
         try {
-            ep.setPage(getClass().getClassLoader().getResource("/Resources/HTML/about.html"));
+            htmlPane.setPage("about.html");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ep.addHyperlinkListener(new HyperlinkListener() {
+        htmlPane.addHyperlinkListener(new HyperlinkListener() {
             @Override
             public void hyperlinkUpdate(HyperlinkEvent arg0) {
                 if (arg0.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
                     try {
-                        ep.setPage(arg0.getURL());
+                        htmlPane.setPage(arg0.getURL());
                     } catch (IOException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
