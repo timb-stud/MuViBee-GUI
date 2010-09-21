@@ -191,9 +191,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="overviewScrollPane" pref="1091" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="expiredPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="overviewScrollPane" alignment="0" pref="1091" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -202,7 +205,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="overviewScrollPane" pref="474" max="32767" attributes="0"/>
+                      <Component id="overviewScrollPane" min="-2" pref="217" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="expiredPanel" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -254,6 +259,50 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="       new javax.swing.JTable(){&#xd;&#xa;            //prepareRenderer &#xfc;berschreiben:&#xd;&#xa;            @Override public Component prepareRenderer(final TableCellRenderer renderer,&#xd;&#xa;            final int row, final int column) {&#xd;&#xa;                Component c = super.prepareRenderer(renderer, row, column);&#xd;&#xa;                if(c instanceof javax.swing.JLabel){&#xd;&#xa;                    javax.swing.JLabel label = (javax.swing.JLabel)c;&#xd;&#xa;                    label.setHorizontalAlignment(javax.swing.JLabel.LEFT);&#xd;&#xa;                    label.setHorizontalAlignment(javax.swing.JLabel.CENTER);&#xd;&#xa;                }&#xd;&#xa;                return c;&#xd;&#xa;            }&#xd;&#xa;        };"/>
                   </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="expiredPanel">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="&#xdc;berf&#xe4;llige Medien"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="expiredScrollPane" alignment="0" pref="1059" max="32767" attributes="0"/>
+                              <Component id="deleteExpiredButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="expiredScrollPane" pref="195" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="deleteExpiredButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="expiredScrollPane">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                </Container>
+                <Component class="javax.swing.JButton" name="deleteExpiredButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
