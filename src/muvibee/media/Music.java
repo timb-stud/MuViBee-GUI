@@ -10,17 +10,6 @@ public class Music extends Media {
         super();
     }
 
-//@Thomas diese ueberpruefung muss in die EAN klasse und dann format mit der set methode gesetzt werden
-//    if (binding != null) {
-//        if (binding.contains("LP")) {
-//        this.format = "LP";
-//        } else if (binding.contains("Hörkassette") || binding.contains("Musikkassette")) {
-//            this.format = "Cassette";
-//        } else {
-//            this.format = "CD";
-//        }
-//    }
-
     @Override
     public boolean matches(String str) {
         return super.matches(str) || format.contains(str) || interpreter.contains(str) || type.contains(str);

@@ -10,19 +10,6 @@ public class Video extends Media {
         super();
     }
 
-//@Thomas selbes wie in Music Klasse.
-//    if (binding != null) {
-//        if (binding.equals("Videokassette")) {
-//            this.format = "vhs";
-//        } else {
-//            if (binding.contains("Blu-ray")) {
-//                this.format = "blu-ray";
-//            } else {
-//                this.format = "cd/dvd";
-//            }
-//        }
-//    }
-
     @Override
     public boolean matches(String str) {
         return super.matches(str) || format.contains(str) || director.contains(str) || actors.contains(str);
