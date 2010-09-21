@@ -86,6 +86,30 @@ public class MuViBee {
         bookList = DBSelector.getBookList(false, null);
         musicList = DBSelector.getMusicList(false, null);
         videoList = DBSelector.getVideoList(false, null);
+        for (Book b : bookList) {
+            if (b.isDeleted()) {
+                deletedMediaList.add(b);
+            }
+            if (b.isLent()) {
+                expiredMediaList.add(b);
+            }
+        }
+        for (Music m : musicList) {
+            if (m.isDeleted()) {
+                deletedMediaList.add(m);
+            }
+            if (m.isLent()) {
+                expiredMediaList.add(m);
+            }
+        }
+        for (Video v : videoList) {
+            if (v.isDeleted()) {
+                deletedMediaList.add(v);
+            }
+            if (v.isLent()) {
+                expiredMediaList.add(v);
+            }
+        }
         filterBookList.addAll(bookList);
         filterMusicList.addAll(musicList);
         filterVideoList.addAll(videoList);
