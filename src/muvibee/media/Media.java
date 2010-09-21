@@ -16,16 +16,16 @@ public abstract class Media extends Observable {
     private String title = "";
     private String ean = "";
     private String genre = "";
-    private int releaseYear = -1;
+    private int releaseYear = 0;
     private String location = "";
     private boolean isLent = false;
     private String lentTo = "";
     private int lendDay = 0;
     private int lendMonth = 0;
-    private int lendYear = -1;
+    private int lendYear = 0;
     private int lendUntilDay = 0;
     private int lendUntilMonth = 0;
-    private int lendUntilYear = -1;
+    private int lendUntilYear = 0;
     private int rating = 0;
     private String description = "";
     private String comment = "";
@@ -102,7 +102,7 @@ public abstract class Media extends Observable {
         this.location = location;
     }
 
-    public boolean isIsLent() {
+    public boolean isLent() {
         return isLent;
     }
 
@@ -130,15 +130,24 @@ public abstract class Media extends Observable {
         } else if  (this.lendMonth < 10) {
             month = "0" + this.lendMonth;
         }
+        if (this.lendYear == 0) {
+            return null;
+        }
         return this.lendYear + "-" + month + "-" + day;
     }
 
     public void setLendDate(String date) {
-        String[] zerlegt = new String[3];
-        zerlegt = date.split("-");
-        this.lendYear = Integer.parseInt(zerlegt[0]);
-        this.lendMonth = Integer.parseInt(zerlegt[1]);
-        this.lendDay = Integer.parseInt(zerlegt[2]);
+        if(date == null) {
+            this.lendYear = 0;
+            this.lendMonth = 0;
+            this.lendDay = 0;
+        } else {
+            String[] zerlegt = new String[3];
+            zerlegt = date.split("-");
+            this.lendYear = Integer.parseInt(zerlegt[0]);
+            this.lendMonth = Integer.parseInt(zerlegt[1]);
+            this.lendDay = Integer.parseInt(zerlegt[2]);
+        }
     }
 
     public void setLendDay(int lendDay) {
@@ -165,15 +174,24 @@ public abstract class Media extends Observable {
         } else if  (this.lendUntilMonth < 10) {
             month = "0" + this.lendUntilMonth;
         }
+        if (this.lendUntilYear == 0) {
+            return null;
+        }
         return this.lendUntilYear + "-" + month + "-" + day;
     }
 
     public void setLendUntilDate(String date) {
-        String[] zerlegt = new String[3];
-        zerlegt = date.split("-");
-        this.lendUntilYear = Integer.parseInt(zerlegt[0]);
-        this.lendUntilMonth = Integer.parseInt(zerlegt[1]);
-        this.lendUntilDay = Integer.parseInt(zerlegt[2]);
+        if(date == null) {
+            this.lendYear = 0;
+            this.lendMonth = 0;
+            this.lendDay = 0;
+        } else {
+            String[] zerlegt = new String[3];
+            zerlegt = date.split("-");
+            this.lendUntilYear = Integer.parseInt(zerlegt[0]);
+            this.lendUntilMonth = Integer.parseInt(zerlegt[1]);
+            this.lendUntilDay = Integer.parseInt(zerlegt[2]);
+        }
     }
 
     public void setLendUntilDay(int lendUntilDay) {
@@ -290,6 +308,27 @@ public abstract class Media extends Observable {
 
     @Override
     public String toString() {
-        return "ID " + ID + " : " + title;
+        return
+           "\n ID: " + this.ID
+         + "\n Titel: " + this.title
+         + "\n EAN: " + this.ean
+         + "\n Genre: " + this.genre
+         + "\n ReleaseYear: " + this.releaseYear
+         + "\n Location: " + this.location
+         + "\n isLent: " + this.isLent
+         + "\n lendDay: " + this.lendDay
+         + "\n lendMonth: " + this.lendMonth
+         + "\n lendYear: " + this.lendYear
+         + "\n LendDate: " + this.getLendDate()
+         + "\n LendTo: " + this.lentTo
+         + "\n lendUntilDay: " + this.lendUntilDay
+         + "\n lendUntilMonth: " + this.lendUntilMonth
+         + "\n lendUntilYear: " + this.lendUntilYear
+         + "\n LendUntilDate: " + this.getLendUntilDate()
+         + "\n Rating: " + this.rating
+         + "\n Description: " + this.description
+         + "\n Comment: " + this.comment
+         + "\n Cover: " + this.cover.toString()
+         + "\n isDeleted: " + this.isDeleted;
     }
 }

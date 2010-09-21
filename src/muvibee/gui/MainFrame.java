@@ -46,8 +46,10 @@ import muvibee.media.Video;
 import muvibee.utils.ResizeImageIcon;
 import util.coversList.CoverList;
 import util.coverDetailsList.*;
+import util.coversList.CoverListEntry;
 import util.deleteditemlist.DeletedItemsList;
 import util.detailsList.*;
+import util.expiredList.ExpiredItemsList;
 import util.tree.PrioTree;
 
 
@@ -58,10 +60,12 @@ import util.tree.PrioTree;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    /**
-     * Erstellt Delete Liste und setzt diese in die GUI
-     * @param mvb
-     */
+    private void createExpiredList(MuViBee mvb) {
+        eil = new ExpiredItemsList(mvb);
+        mvb.getExpiredMediaList().addObserver(eil);
+        expiredScrollPane.setViewportView(eil);
+    }
+
     private void createDeletedList(MuViBee mvb) {
         dil = new DeletedItemsList(mvb);
         mvb.getDeletedMediaList().addObserver(dil);
@@ -157,7 +161,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     /** Creates new form MainFrame */
     public MainFrame(MuViBee mvb) {
-        setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - 600, Toolkit.getDefaultToolkit().getScreenSize().height/2 - 300);
+        setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - 580, Toolkit.getDefaultToolkit().getScreenSize().height/2 - 350);
         try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -237,6 +241,7 @@ public class MainFrame extends javax.swing.JFrame {
         createTree(mvb);
         createDetailsTable(mvb);
         createDeletedList(mvb);
+        createExpiredList(mvb);
 
         itemBookScrollPane.setVisible(false);
         itemMusicScrollPane.setVisible(false);
@@ -418,6 +423,8 @@ public class MainFrame extends javax.swing.JFrame {
         int deletedMusic = mvb.getNumberOfDeletedMusic();
         int deletedVideos = mvb.getNumberOfDeletedVideos();
 
+        mvb.addExpiredMedia();
+
 
         overviewTable.getModel().setValueAt(numberBooks, 0, 1);
         overviewTable.getModel().setValueAt(numberMusic, 1, 1);
@@ -428,6 +435,8 @@ public class MainFrame extends javax.swing.JFrame {
         overviewTable.getModel().setValueAt(deletedBooks, 0, 3);
         overviewTable.getModel().setValueAt(deletedMusic, 1, 3);
         overviewTable.getModel().setValueAt(deletedVideos, 2, 3);
+
+
     }
 
     public final void reloadLabels(String bundlePath){
@@ -516,7 +525,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void setYear(int year, JComboBox cb){
-        if(year > -1){
+        if(year > 0){
             cb.setSelectedItem(String.valueOf(year));
         }else{
             cb.setSelectedIndex(0);
@@ -533,7 +542,7 @@ public class MainFrame extends javax.swing.JFrame {
         genreBookTextField.setText(book.getGenre());
         setYear(book.getReleaseYear(), releaseYearBookComboBox);
         locationBookTextField.setText(book.getLocation());
-        lentBookCheckBox.setSelected(book.isIsLent());
+        lentBookCheckBox.setSelected(book.isLent());
         lentToBookTextField.setText(book.getLentTo());
         lentDayBookComboBox.setSelectedIndex(book.getLendDay());
         lentMonthBookComboBox.setSelectedIndex(book.getLendMonth());
@@ -574,7 +583,7 @@ public class MainFrame extends javax.swing.JFrame {
         genreMusicTextField.setText(music.getGenre());
         setYear(music.getReleaseYear(), releaseYearMusicComboBox);
         locationMusicTextField.setText(music.getLocation());
-        lentMusicCheckBox.setSelected(music.isIsLent());
+        lentMusicCheckBox.setSelected(music.isLent());
         lentToMusicTextField.setText(music.getLentTo());
         lentDayMusicComboBox.setSelectedIndex(music.getLendDay());
         lentMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
@@ -613,7 +622,7 @@ public class MainFrame extends javax.swing.JFrame {
         genreVideoTextField.setText(video.getGenre());
         setYear(video.getReleaseYear(), releaseYearVideoComboBox);
         locationVideoTextField.setText(video.getLocation());
-        lentVideoCheckBox.setSelected(video.isIsLent());
+        lentVideoCheckBox.setSelected(video.isLent());
         lentToVideoTextField.setText(video.getLentTo());
         lentDayVideoComboBox.setSelectedIndex(video.getLendDay());
         lentMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
@@ -644,7 +653,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     public int getYear(JComboBox cb) throws IllegalYearException {
         if(cb.getSelectedIndex() == 0)
-            return -1;
+            return 0;
         Object selectedYear = cb.getSelectedItem();
         String yearS = "";
         if (selectedYear != null) {
@@ -908,6 +917,8 @@ public class MainFrame extends javax.swing.JFrame {
                 return c;
             }
         };
+        expiredPanel = new javax.swing.JPanel();
+        expiredScrollPane = new javax.swing.JScrollPane();
         bookPanel = new javax.swing.JPanel();
         viewBookPanel = new javax.swing.JPanel();
         viewBookComboBox = new javax.swing.JComboBox();
@@ -1159,7 +1170,7 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setName("add video button"); // NOI18N
 
         overviewTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        overviewTable.setFont(new java.awt.Font("Plantagenet Cherokee", 0, 24)); // NOI18N
+        overviewTable.setFont(new java.awt.Font("Plantagenet Cherokee", 0, 24));
         overviewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Bücher", "", null, null},
@@ -1184,20 +1195,42 @@ public class MainFrame extends javax.swing.JFrame {
         overviewTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
         overviewScrollPane.setViewportView(overviewTable);
 
+        expiredPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Überfällige Medien"));
+
+        javax.swing.GroupLayout expiredPanelLayout = new javax.swing.GroupLayout(expiredPanel);
+        expiredPanel.setLayout(expiredPanelLayout);
+        expiredPanelLayout.setHorizontalGroup(
+            expiredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(expiredPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(expiredScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1059, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        expiredPanelLayout.setVerticalGroup(
+            expiredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(expiredPanelLayout.createSequentialGroup()
+                .addComponent(expiredScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout overviewPanelLayout = new javax.swing.GroupLayout(overviewPanel);
         overviewPanel.setLayout(overviewPanelLayout);
         overviewPanelLayout.setHorizontalGroup(
             overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(overviewPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, overviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(overviewScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE)
+                .addGroup(overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(expiredPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(overviewScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE))
                 .addContainerGap())
         );
         overviewPanelLayout.setVerticalGroup(
             overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(overviewScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                .addComponent(overviewScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(expiredPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2411,6 +2444,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField eanMusicTextField;
     private javax.swing.JLabel eanVideoLabel;
     private javax.swing.JTextField eanVideoTextField;
+    private javax.swing.JPanel expiredPanel;
+    private javax.swing.JScrollPane expiredScrollPane;
     private javax.swing.JButton finalDeleteEverythingButton;
     private javax.swing.JButton finalDeleteItemButton;
     private javax.swing.JComboBox formatMusicComboBox;
@@ -2582,10 +2617,12 @@ public class MainFrame extends javax.swing.JFrame {
     private DetailsTable detailsTableMusic;
     private DetailsTable detailsTableVideo;
     private DeletedItemsList dil;
+    private ExpiredItemsList eil;
 
     public DeletedItemsList getDeletedList() {
         return dil;
     }
+
 
     public void deleteSearchButtonSetVisible(boolean b) {
         deleteSearchButton.setVisible(b);
@@ -2608,6 +2645,44 @@ public class MainFrame extends javax.swing.JFrame {
         prioTreeMusic.setBackground(color);
         prioTreeVideo.setBackground(color);
     }
+
+    public void selectBookTabAndAndCell(int index) {
+        tabbedPane.getModel().setSelectedIndex(1);
+        coverDetailsBookList.setSelectedIndex(index);
+        detailsTableBook.getSelectionModel().setSelectionInterval(index, index);
+        coverListBook.setSelectedIndex(index);
+        coverDetailsListBookScrollPane.getViewport().setViewPosition(new java.awt.Point(0,(((CoverDetailsListEntry)coverDetailsBookList.getModel().getElementAt(0)).getySize()*index)));
+        coverListBookScrollPane.getViewport().setViewPosition(new java.awt.Point(0,(((CoverListEntry)coverListBook.getModel().getElementAt(0)).getySize()*index)));
+        detailsListBookScrollPane.getViewport().setViewPosition(new java.awt.Point(0,30*index));
+        treeBookScrollPane.getViewport().setViewPosition(new java.awt.Point(0,30*index));
+    }
+
+    public void selectMusicTabAndAndCell(int index) {
+        tabbedPane.getModel().setSelectedIndex(2);
+        coverDetailsMusicList.setSelectedIndex(index);
+        detailsTableMusic.getSelectionModel().setSelectionInterval(index, index);
+        coverListMusic.setSelectedIndex(index);
+        coverDetailsListMusicScrollPane.getViewport().setViewPosition(new java.awt.Point(0,(((CoverDetailsListEntry)coverDetailsMusicList.getModel().getElementAt(0)).getySize()*index)));
+        coverListMusicScrollPane.getViewport().setViewPosition(new java.awt.Point(0,(((CoverListEntry)coverListMusic.getModel().getElementAt(0)).getySize()*index)));
+        detailsListMusicScrollPane.getViewport().setViewPosition(new java.awt.Point(0,30*index));
+        treeMusicScrollPane.getViewport().setViewPosition(new java.awt.Point(0,30*index));
+    }
+
+    public void selectVideoTabAndAndCell(int index) {
+        tabbedPane.getModel().setSelectedIndex(3);
+        coverDetailsVideoList.setSelectedIndex(index);
+        detailsTableVideo.getSelectionModel().setSelectionInterval(index, index);
+        coverListVideo.setSelectedIndex(index);
+        coverDetailsListVideoScrollPane.getViewport().setViewPosition(new java.awt.Point(0,(((CoverDetailsListEntry)coverDetailsVideoList.getModel().getElementAt(0)).getySize()*index)));
+        coverListVideoScrollPane.getViewport().setViewPosition(new java.awt.Point(0,(((CoverListEntry)coverListVideo.getModel().getElementAt(0)).getySize()*index)));
+        detailsListVideoScrollPane.getViewport().setViewPosition(new java.awt.Point(0,30*index));
+        treeVideoScrollPane.getViewport().setViewPosition(new java.awt.Point(0,30*index));
+    }
+
+    public ExpiredItemsList getExpiredList() {
+        return eil;
+    }
+
 
 
 

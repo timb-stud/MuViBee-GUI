@@ -7,12 +7,15 @@ package muvibee;
 
 
 import java.awt.Color;
-import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import muvibee.db.DBSelector;
 import muvibee.gui.AboutDialog;
 import muvibee.gui.AdvancedSearchDialog;
 import muvibee.gui.HelpDialog;
@@ -28,6 +31,7 @@ import muvibee.media.Video;
 import muvibee.utils.SortTypes;
 import util.deleteditemlist.DeletedItemEntry;
 import util.deleteditemlist.DeletedItemsList;
+import util.expiredList.ExpiredItemsList;
 
 /**
  *
@@ -41,6 +45,7 @@ public class MuViBee {
     private MusicList filterMusicList;
     private VideoList filterVideoList;
     private MediaList deletedMediaList;
+    private MediaList expiredMediaList;
 
     private MainFrame mainFrame;
     private Book currentBook;
@@ -76,10 +81,41 @@ public class MuViBee {
         filterMusicList = new MusicList();
         filterVideoList = new VideoList();
         deletedMediaList = new MediaList();
+        expiredMediaList = new MediaList();
 
-        bookList = new LinkedList<Book>();
-        musicList = new LinkedList<Music>();
-        videoList = new LinkedList<Video>();
+        bookList = DBSelector.getBookList(false, null);
+        musicList = DBSelector.getMusicList(false, null);
+        videoList = DBSelector.getVideoList(false, null);
+        for (Book b : bookList) {
+            if (b.isDeleted()) {
+                deletedMediaList.add(b);
+            }
+            if (b.isLent()) {
+                expiredMediaList.add(b);
+            }
+        }
+        for (Music m : musicList) {
+            if (m.isDeleted()) {
+                deletedMediaList.add(m);
+            }
+            if (m.isLent()) {
+                expiredMediaList.add(m);
+            }
+        }
+        for (Video v : videoList) {
+            if (v.isDeleted()) {
+                deletedMediaList.add(v);
+            }
+            if (v.isLent()) {
+                expiredMediaList.add(v);
+            }
+        }
+        filterBookList.addAll(bookList);
+        filterMusicList.addAll(musicList);
+        filterVideoList.addAll(videoList);
+        deletedMediaList.addAll(DBSelector.getBookList(true, null));
+        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
+        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
 
         SwingUtilities.invokeLater(new Runnable() {
 
@@ -278,6 +314,7 @@ public class MuViBee {
         if (!bookList.contains(currentBook)) {
             filterBookList.add(currentBook);
             bookList.add(currentBook);
+            currentBook.updateDB();
         }
     }
 
@@ -285,6 +322,7 @@ public class MuViBee {
 	if(!musicList.contains(currentMusic)){
 	    filterMusicList.add(currentMusic);
             musicList.add(currentMusic);
+            currentMusic.updateDB();
 	}
     }
 
@@ -292,13 +330,17 @@ public class MuViBee {
         if (!videoList.contains(currentVideo)) {
             filterVideoList.add(currentVideo);
             videoList.add(currentVideo);
+            currentVideo.updateDB();
         }
     }
 
     public void removeCurrentBookFromBookLists() {
         if (bookList.remove(currentBook)) {
+            expiredMediaList.remove(currentBook);
             deletedMediaList.add(currentBook);
             filterBookList.remove(currentBook);
+            currentBook.setDeleted(true);
+            currentBook.updateDB();
             currentBook = null;
             showBookItem(false);
         }
@@ -306,8 +348,11 @@ public class MuViBee {
 
     public void removeCurrentMusicFromMusicLists() {
         if (musicList.remove(currentMusic)) {
+            expiredMediaList.remove(currentMusic);
             deletedMediaList.add(currentMusic);
             filterMusicList.remove(currentMusic);
+            currentMusic.setDeleted(true);
+            currentMusic.updateDB();
             currentMusic = null;
             showMusicItem(false);
         }
@@ -315,8 +360,11 @@ public class MuViBee {
 
     public void removeCurrentVideoFromVideoLists() {
         if (videoList.remove(currentVideo)) {
+            expiredMediaList.remove(currentVideo);
             deletedMediaList.add(currentVideo);
             filterVideoList.remove(currentVideo);
+            currentVideo.setDeleted(true);
+            currentVideo.updateDB();
             currentVideo = null;
             showVideoItem(false);
         }
@@ -325,6 +373,7 @@ public class MuViBee {
     public void removeCurrentDeletedMediaFromDeletedList() {
         for (Media m : currentDeletedMediaList) {
             deletedMediaList.remove(m);
+            m.deleteDB();
             m = null;
         }
     }
@@ -346,6 +395,8 @@ public class MuViBee {
                 }
             }
             deletedMediaList.remove(m);
+            m.setDeleted(false);
+            m.updateDB();
             m = null;
         }
     }
@@ -650,7 +701,7 @@ public class MuViBee {
     public int getLentToBook() {
         int sum = 0;
         for (Book b: bookList) {
-            if (b.isIsLent()) {
+            if (b.isLent()) {
                 sum++;
             }
         }
@@ -660,7 +711,7 @@ public class MuViBee {
     public int getLentToMusic() {
         int sum = 0;
         for (Music m: musicList) {
-            if (m.isIsLent()) {
+            if (m.isLent()) {
                 sum++;
             }
         }
@@ -670,7 +721,7 @@ public class MuViBee {
     public int getLentToVideo() {
         int sum = 0;
         for (Video v: videoList) {
-            if (v.isIsLent()) {
+            if (v.isLent()) {
                 sum++;
             }
         }
@@ -726,6 +777,10 @@ public class MuViBee {
     public DeletedItemsList getDeletedList() {
         return mainFrame.getDeletedList();
     }
+
+    public MediaList getExpiredMediaList() {
+        return expiredMediaList;
+    }
     
 
     public void fillCurrentDeletedMedia(DeletedItemsList deletedList) {
@@ -743,4 +798,85 @@ public class MuViBee {
     public void setListsColor(Color color) {
         mainFrame.setListsColor(color);
     }
+
+    public void addExpiredMedia() {
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyy");
+        try {
+            for (Book b : bookList) {
+                if (b.getLendUntilDay() == 0 || b.getLendUntilMonth() == 0 || b.getLendUntilYear() == 0) continue;
+                String bookDate = b.getLendUntilDay() + "." + b.getLendUntilMonth() + "." + b.getLendUntilYear();
+                if (df.parse(bookDate).before(Calendar.getInstance().getTime())) {
+                    if (!expiredMediaList.contains(b)){
+                        expiredMediaList.add(b);
+                    }
+                } else {
+                    if (expiredMediaList.contains(b)) {
+                        expiredMediaList.remove(b);
+                    }
+                }
+            }
+            for (Music m : musicList) {
+                if (m.getLendUntilDay() == 0 || m.getLendUntilMonth() == 0 || m.getLendUntilYear() == 0) continue;
+                String musicDate = m.getLendUntilDay() + "." + m.getLendUntilMonth() + "." + m.getLendUntilYear();
+                if (df.parse(musicDate).before(Calendar.getInstance().getTime())) {
+                    if (!expiredMediaList.contains(m)) {
+                        expiredMediaList.add(m);
+                    }
+                } else {
+                    if (expiredMediaList.contains(m)) {
+                        expiredMediaList.remove(m);
+                    }
+                }
+            }
+            for (Video v : videoList) {
+                if (v.getLendUntilDay() == 0 || v.getLendUntilMonth() == 0 || v.getLendUntilYear() == 0) continue;
+                String videoDate = v.getLendUntilDay() + "." + v.getLendUntilMonth() + "." + v.getLendUntilYear();
+                if (df.parse(videoDate).before(Calendar.getInstance().getTime())) {
+                    if (!expiredMediaList.contains(v)) {
+                        expiredMediaList.add(v);
+                    }
+                } else {
+                    if (expiredMediaList.contains(v)) {
+                        expiredMediaList.remove(v);
+                    }
+                }
+            }
+        } catch (ParseException ex) {}
+   }
+
+    public void showSelectedMediaItem(Media media) {
+            int index = -1;
+            for (Media m : filterBookList.getList()) {
+                index++;
+                if (m == media) {
+                    mainFrame.selectBookTabAndAndCell(index);
+                    setCurrentBook((Book)m);
+                    return;
+                }
+            }
+            index = -1;
+            for (Media m : filterMusicList.getList()) {
+                index++;
+                if (m == media) {
+                    mainFrame.selectMusicTabAndAndCell(index);
+                    setCurrentMusic((Music)m);
+                    return;
+                }
+            }
+            index = -1;
+            for (Media m : filterVideoList.getList()) {
+                index++;
+                if (m == media) {
+                    mainFrame.selectVideoTabAndAndCell(index);
+                    setCurrentVideo((Video)m);
+                    return;
+                }
+            }
+    }
+
+    public ExpiredItemsList getExpiredList() {
+        return mainFrame.getExpiredList();
+    }
+        
+    
 }

@@ -134,7 +134,7 @@ public class EAN {
                 if (xmlStreamReader.getLocalName().equals("ReleaseDate")) {
                     releaseYear = xmlStreamReader.getElementText();
                 }
-                if (releaseYear.contains("-") && releaseYear != null) {
+                if (releaseYear != null && releaseYear.contains("-")) {
                     releaseYear = releaseYear.substring(0, releaseYear.indexOf("-"));
                 }
                 if (xmlStreamReader.getLocalName().equals("EAN")) {

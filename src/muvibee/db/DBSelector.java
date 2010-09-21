@@ -31,9 +31,9 @@ import muvibee.media.Video;
  * LinkedList<Book> bookList;
  * LinkedList<Music> musicList;
  * LinkedList<Video> videoList;
- * bookList 	= dbs.getBookList();
- * musicList 	= dbs.getMusicList();
- * videoList 	= dbs.getVideoList();
+ * bookList 	= DBSelector.getBookList([false|true], String orderBy);
+ * musicList 	= DBSelector.getMusicList([false|true], String orderBy);
+ * videoList 	= DBSelector.getVideoList([false|true], String orderBy);
  * 
  * Testklasse:
  * db.test.TestDBSelects
@@ -41,6 +41,7 @@ import muvibee.media.Video;
  */
 
 public class DBSelector {
+        private final static String COVER_PATH          = "data/images/";
 	private final static String SQL_GET_BOOKS  	= "SELECT * FROM books WHERE isdeleted = ? ";
 	private final static String SQL_GET_MUSIC  	= "SELECT * FROM music WHERE isdeleted = ? ";
 	private final static String SQL_GET_VIDEOS      = "SELECT * FROM video WHERE isdeleted = ? ";
@@ -52,11 +53,24 @@ public class DBSelector {
 	private static LinkedList<Music> musicList;
 	private static LinkedList<Video> videoList;
 	
-	public DBSelector(Boolean deleted, String orderBy) {
-		selectMedia(deleted, orderBy);
+//	public DBSelector(Boolean deleted, String orderBy) {
+//		selectMedia(deleted, orderBy);
+//	}
+
+        public static LinkedList<Book> getBookList(Boolean deleted, String orderBy) {
+            selectMedia(deleted, orderBy);
+            return bookList;
+	}
+	public static LinkedList<Music> getMusicList(Boolean deleted, String orderBy) {
+            selectMedia(deleted, orderBy);
+            return musicList;
+	}
+	public static LinkedList<Video> getVideoList(Boolean deleted, String orderBy) {
+            selectMedia(deleted, orderBy);
+            return videoList;
 	}
 	
-	public void selectMedia(Boolean isDeleted, String orderBy) {
+	private static void selectMedia(Boolean isDeleted, String orderBy) {
             try {
                 if (orderBy == null || orderBy.compareTo("") == 0
                                     || orderBy.compareTo(" ") == 0
@@ -88,7 +102,7 @@ public class DBSelector {
 		
 	}
 
-	private void CreateBookList(ResultSet rs) throws SQLException, IOException {
+	private static void CreateBookList(ResultSet rs) throws SQLException, IOException {
             bookList = new LinkedList<Book>();
             while (rs.next()) {
                 Book b = new Book();
@@ -105,22 +119,22 @@ public class DBSelector {
                 b.setDescription(rs.getString(11));
                 b.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     b.setCover(cover);
                 } catch (IIOException e){
-                    BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + "default_cover.jpg"));
                     System.out.println("Bild nicht gefunden: " + rs.getString(13));
                     b.setCover(cover);
                 }
                 b.setAuthor(rs.getString(14));
                 b.setLanguage(rs.getString(15));
-                b.setLanguage(rs.getString(16));
+                b.setIsbn(rs.getString(16));
                 b.setDeleted(rs.getBoolean(17));
                 bookList.add(b);
 
             }
 	}
-	private void CreateMusicList(ResultSet rs) throws SQLException, IOException {
+	private static void CreateMusicList(ResultSet rs) throws SQLException, IOException {
             musicList = new LinkedList<Music>();
             while (rs.next()) {
                 Music m = new Music();
@@ -137,7 +151,7 @@ public class DBSelector {
                 m.setDescription(rs.getString(11));
                 m.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     m.setCover(cover);
                 } catch (IIOException e){
                     BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
@@ -152,7 +166,7 @@ public class DBSelector {
 
             }
 	}
-	private void CreateVideoList(ResultSet rs) throws SQLException, IOException {
+	private static void CreateVideoList(ResultSet rs) throws SQLException, IOException {
             videoList = new LinkedList<Video>();
             while (rs.next()) {
                 Video v = new Video();
@@ -169,7 +183,7 @@ public class DBSelector {
                 v.setDescription(rs.getString(11));
                 v.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     v.setCover(cover);
                 } catch (IIOException e){
                     BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
@@ -183,16 +197,4 @@ public class DBSelector {
                 videoList.add(v);
             }
 	}
-
-	public static LinkedList<Book> getBookList() {
-		return bookList;
-	}
-	public static LinkedList<Music> getMusicList() {
-		return musicList;
-	}
-	public static LinkedList<Video> getVideoList() {
-		return videoList;
-	}
-	
-
 }
