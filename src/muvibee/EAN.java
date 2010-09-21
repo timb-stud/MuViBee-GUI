@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import javax.imageio.ImageIO;
-import javax.swing.text.html.HTML;
 import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -163,19 +162,59 @@ public class EAN {
         xmlStreamReader.close();
         if (error == null) {
             if (productGroup.equals("DVD") || productGroup.equals("Video")) {
-                Video v = new Video(title, ean, releaseYear, cover, binding, actor, director, description);
+                Video v = new Video();
+                String format = null;
+                if (binding != null) {
+                    if (binding.equals("Videokassette")) {
+                        format = "VHS";
+                    } else if (binding.contains("Blu-ray")) {
+                        format = "Blu-ray";
+                    } else {
+                        format = "CD/DVD";
+                    }
+                }
+                v.setTitle(title);
+                v.setEan(ean);
+                v.setReleaseYear(Integer.parseInt(releaseYear));
+                v.setCover(cover);
+                v.setFormat(format);
+                v.setActors(actor);
+                v.setDirector(director);
+                v.setDescription(description);
                 System.out.println("EAN_FOUND");
                 return v;
-            } else if (productGroup.equals("Music")) {
-                Music m = new Music(title, ean, releaseYear, cover, artist, binding, description);
-                System.out.println("EAN_FOUND");
-                return m;
-            } else if (productGroup.equals("Book") && (binding.equals("Hörkassette") || binding.contains("Musikkassette"))) {
-                Music m = new Music(title, ean, releaseYear, cover, artist, binding, description);
+            } else if ((productGroup.equals("Music")) ||
+                       (productGroup.equals("Book") && (binding.equals("Hörkassette") || binding.contains("Musikkassette")))) {
+                Music m = new Music ();
+                String format = null;
+                m.setTitle(title);
+                m.setEan(ean);
+                m.setReleaseYear(Integer.parseInt(releaseYear));
+                m.setCover(cover);
+                m.setInterpreter(artist);
+                if (binding != null) {
+                    if (binding.contains("LP")) {
+                        format = "LP";
+                    } else if (binding.contains("Hörkassette") || binding.contains("Musikkassette")) {
+                        format = "Kassette";
+                    } else {
+                        format = "CD";
+                    }
+                }
+                m.setFormat(format);
+                m.setDescription(description);
                 System.out.println("EAN_FOUND");
                 return m;
             } else if (productGroup.equals("Book")) {
-                Book b = new Book(title, ean, releaseYear, cover, author, isbn, language, description);
+                Book b = new Book();
+                b.setTitle(title);
+                b.setEan(ean);
+                b.setReleaseYear(Integer.parseInt(releaseYear));
+                b.setCover(cover);
+                b.setAuthor(author);
+                b.setIsbn(isbn);
+                b.setLanguage(language);
+                b.setDescription(description);
                 System.out.println("EAN_FOUND");
                 return b;
             } else {
