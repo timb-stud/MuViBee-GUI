@@ -15,6 +15,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 import muvibee.MuViBee;
 import muvibee.lists.MediaList;
 import muvibee.media.Book;
@@ -44,7 +45,9 @@ public class PrioTree extends JTree implements Observer {
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
-        expandRow(1);
+        expandRow(2);
+//        setRootVisible(false);
+        expandPath(new TreePath(root.getPath()));
 
         addTreeSelectionListener(new TreeSelectionListener() {
             public void valueChanged(TreeSelectionEvent e) {
@@ -151,9 +154,16 @@ public class PrioTree extends JTree implements Observer {
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
+        expandRow(2);
+//        setRootVisible(false);
+        expandPath(new TreePath(root.getPath()));
 
         MediaList mediaList = ((MediaList) list);
         ArrayList<SortTypes> sortedBy = mediaList.getSortedBy();
+        if (!sortedBy.contains(SortTypes.TITLE))
+            sortedBy.add(SortTypes.TITLE);
+//        if (!sortedBy.contains(SortTypes.GENRE))
+//            sortedBy.add(SortTypes.GENRE);
         createTree(mediaList,sortedBy);
     }
 }
