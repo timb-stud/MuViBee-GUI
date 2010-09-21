@@ -21,7 +21,7 @@ import muvibee.media.Video;
  */
 
 public class DBUpdater {
-	
+	private final static String COVER_PATH       = "data/images/";
 	private final static String SQL_UPDATE_BOOK  = "UPDATE books SET (title, ean, genre, year, location, lendto, lenddate, backdate, rating, description, comment, cover, author, language, isbn, isdeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE ID = ?";
 	private final static String SQL_UPDATE_MUSIC = "UPDATE music SET (title, ean, genre, year, location, lendto, lenddate, backdate, rating, description, comment, cover, format, interpreter, type, isdeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE ID = ?";
 	private final static String SQL_UPDATE_VIDEO = "UPDATE videos SET (title, ean, genre, year, location, lendto, lenddate, backdate, rating, description, comment, cover, format, director, actor, isdeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE ID = ?";
@@ -129,14 +129,13 @@ public class DBUpdater {
         }
 
 	private static String imageWriteToFile(BufferedImage i)  {
-            String path = "data/images/" + i.hashCode() + ".jpg";
-            File f = new File(path);
+            File f = new File(COVER_PATH + i.hashCode() + ".jpg");
             try {
                     ImageIO.write(i, "jpg", f);
             } catch (IOException e) {
                     e.printStackTrace();
             }
-            return path;
+            return String.valueOf(i.hashCode());
          }
 
 	private static void updateMediaDB(Media m) {
