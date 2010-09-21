@@ -30,7 +30,7 @@ import muvibee.MuViBee;
  */
 public class AboutDialog extends JDialog{
 
-    public AboutDialog(JFrame parent) throws IOException {
+    public AboutDialog(JFrame parent) {
         super(parent, ResourceBundle.getBundle(MuViBee.mainBundlePath).getString("aboutDialog"), true);
 
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);

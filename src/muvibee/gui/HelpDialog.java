@@ -46,7 +46,7 @@ public class HelpDialog extends JDialog {
         });
 
         try {
-            ep.setPage(getClass().getResource("/Resources/HTML/help.html"));
+            ep.setPage(getClass().getResource("../../muvibee/resources/HTML/about.html"));
         } catch (IOException e) {
             e.printStackTrace();
         }
