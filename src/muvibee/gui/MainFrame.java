@@ -190,7 +190,7 @@ public class MainFrame extends javax.swing.JFrame {
             // handle exception
         } 
         initComponents();
-        setOverviewInformation(mvb);
+        //setOverviewInformation(mvb);
         coverDetailsListBookScrollPane = new JScrollPane();
         detailsListBookScrollPane = new JScrollPane();
         coverListBookScrollPane = new JScrollPane();

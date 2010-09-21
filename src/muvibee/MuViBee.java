@@ -76,46 +76,14 @@ public class MuViBee {
     public MuViBee() {
         final MuViBee mvb = this;
 
-        //TODO adapterklasse für listen. siehe unten
         filterBookList = new BookList();
         filterMusicList = new MusicList();
         filterVideoList = new VideoList();
         deletedMediaList = new MediaList();
         expiredMediaList = new MediaList();
 
-        bookList = DBSelector.getBookList(false, null);
-        musicList = DBSelector.getMusicList(false, null);
-        videoList = DBSelector.getVideoList(false, null);
-        for (Book b : bookList) {
-            if (b.isDeleted()) {
-                deletedMediaList.add(b);
-            }
-            if (b.isLent()) {
-                expiredMediaList.add(b);
-            }
-        }
-        for (Music m : musicList) {
-            if (m.isDeleted()) {
-                deletedMediaList.add(m);
-            }
-            if (m.isLent()) {
-                expiredMediaList.add(m);
-            }
-        }
-        for (Video v : videoList) {
-            if (v.isDeleted()) {
-                deletedMediaList.add(v);
-            }
-            if (v.isLent()) {
-                expiredMediaList.add(v);
-            }
-        }
-        filterBookList.addAll(bookList);
-        filterMusicList.addAll(musicList);
-        filterVideoList.addAll(videoList);
-        deletedMediaList.addAll(DBSelector.getBookList(true, null));
-        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
-        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
+
+
 
         SwingUtilities.invokeLater(new Runnable() {
 
@@ -124,6 +92,19 @@ public class MuViBee {
                 mainFrame.setVisible(true);
             }
         });
+
+        bookList = DBSelector.getBookList(false, null);
+        musicList = DBSelector.getMusicList(false, null);
+        videoList = DBSelector.getVideoList(false, null);
+
+
+        filterBookList.addAll(bookList);
+        filterMusicList.addAll(musicList);
+        filterVideoList.addAll(videoList);
+        deletedMediaList.addAll(DBSelector.getBookList(true, null));
+        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
+        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
+        setOverviewInformation();
     }
 
     public int showSignOverFrame(){
