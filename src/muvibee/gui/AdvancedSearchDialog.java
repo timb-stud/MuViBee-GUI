@@ -8,7 +8,6 @@
  *
  * Created on Sep 16, 2010, 10:39:25 PM
  */
-
 package muvibee.gui;
 
 import java.util.ResourceBundle;
@@ -27,34 +26,36 @@ import muvibee.media.Video;
  * @author tim
  */
 public class AdvancedSearchDialog extends javax.swing.JDialog {
+
     /** A return status code - returned if Cancel button has been pressed */
     public static final int RET_CANCEL = 0;
     /** A return status code - returned if OK button has been pressed */
     public static final int RET_OK = 1;
     public static final int RET_ILLEGAL_YEAR = -1;
-
     private Book book;
     private Music music;
     private Video video;
     private MuViBee mvb;
 
-    public AdvancedSearchDialog(java.awt.Frame parent,String title, boolean modal, MuViBee mvb){
+    public AdvancedSearchDialog(java.awt.Frame parent, String title, boolean modal, MuViBee mvb) {
         super(parent, title, modal);
         this.mvb = mvb;
         initComponents();
 
         String[] days = new String[32];
         days[0] = "";
-	for(int i=1; i<32;i++)
-	    days[i] = String.valueOf(i);
-	lentDayComboBox.setModel(new DefaultComboBoxModel(days));
+        for (int i = 1; i < 32; i++) {
+            days[i] = String.valueOf(i);
+        }
+        lentDayComboBox.setModel(new DefaultComboBoxModel(days));
         lentUntilDayComboBox.setModel(new DefaultComboBoxModel(days));
         String[] emptyArray = {""};
         lentMonthComboBox.setModel(new DefaultComboBoxModel(emptyArray));
         lentUntilMonthComboBox.setModel(new DefaultComboBoxModel(emptyArray));
         String[] years = new String[63];
-        for(int i=0;i<years.length;i++)
+        for (int i = 0; i < years.length; i++) {
             years[i] = String.valueOf(2012 - i);
+        }
         releaseYearComboBox.setModel(new DefaultComboBoxModel(years));
         releaseYearComboBox.setSelectedIndex(-1);
         lentYearComboBox.setModel(new DefaultComboBoxModel(years));
@@ -63,7 +64,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         lentUntilYearComboBox.setSelectedIndex(-1);
 
         setLentFieldsEnabled(false);
-        
+
         reloadLabels();
     }
 
@@ -84,14 +85,14 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         return video;
     }
 
-    public final void reloadLabels(){
+    public final void reloadLabels() {
         ResourceBundle bundle = ResourceBundle.getBundle(mvb.getMainBundlePath());
 
         mediaPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("mediaPanelASD")));
         bookPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("bookPanelASD")));
         musicPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("musicPanelASD")));
         videoPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("videoPanelASD")));
-        
+
         titleLabel.setText(bundle.getString("titleLabel"));
         ratingLabel.setText(bundle.getString("ratingLabel"));
         eanLabel.setText(bundle.getString("eanLabel"));
@@ -114,7 +115,6 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         actorsLabel.setText(bundle.getString("actorsLabel"));
         videoFormatLabel.setText(bundle.getString("formatLabel"));
 
-        ratingNoneRadioButton.setSelected(true);
         ratingNoneRadioButton.setText(bundle.getString("noRating"));
 
         String day = bundle.getString("dayComboBox");
@@ -137,7 +137,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         months[12] = bundle.getString("decemberComboBox");
 
         updateComboBoxLabels(lentMonthComboBox, months);
-	updateComboBoxLabels(lentUntilMonthComboBox, months);
+        updateComboBoxLabels(lentUntilMonthComboBox, months);
 
         String[] types = new String[3];
         types[0] = bundle.getString("album");
@@ -145,34 +145,35 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         types[2] = bundle.getString("single");
         updateComboBoxLabels(typeComboBox, types);
 
-	String[] musicFormats = new String[3];
+        String[] musicFormats = new String[3];
         musicFormats[0] = bundle.getString("cd");
         musicFormats[1] = bundle.getString("lp");
         musicFormats[2] = bundle.getString("cassette");
-	String[] videoFormats = new String[3];
+        String[] videoFormats = new String[3];
         videoFormats[0] = bundle.getString("cd/dvd");
         videoFormats[1] = bundle.getString("blu-ray");
         videoFormats[2] = bundle.getString("vhs");
-	updateComboBoxLabels(musicFormatComboBox, musicFormats);
-	updateComboBoxLabels(videoFormatComboBox, videoFormats);
+        updateComboBoxLabels(musicFormatComboBox, musicFormats);
+        updateComboBoxLabels(videoFormatComboBox, videoFormats);
     }
 
-    public void updateComboBoxLabel(JComboBox cb, String label){
+    public void updateComboBoxLabel(JComboBox cb, String label) {
         int selectedIndex = cb.getSelectedIndex();
         cb.removeItemAt(0);
         cb.insertItemAt(label, 0);
         cb.setSelectedIndex(selectedIndex);
     }
 
-    public void updateComboBoxLabels(JComboBox cb, String[] labels){
+    public void updateComboBoxLabels(JComboBox cb, String[] labels) {
         int selectedIndex = cb.getSelectedIndex();
         cb.removeAllItems();
-        for(int i=0; i<labels.length; i++)
+        for (int i = 0; i < labels.length; i++) {
             cb.addItem(labels[i]);
+        }
         cb.setSelectedIndex(selectedIndex);
     }
 
-    public void setLentFieldsEnabled(boolean b){
+    public final void setLentFieldsEnabled(boolean b) {
         lentToLabel.setEnabled(b);
         lentToTextField.setEnabled(b);
         lentDateLabel.setEnabled(b);
@@ -185,18 +186,30 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         lentUntilYearComboBox.setEnabled(b);
     }
 
-        public int getYear(JComboBox cb) throws IllegalYearException {
-        if(cb.getSelectedIndex() == 0)
+    public int getYear(JComboBox cb) throws IllegalYearException {
+        if (cb.getSelectedIndex() == 0) {
             return -1;
-        Object selectedYear = cb.getSelectedItem();
-        String yearS = "";
-        if (selectedYear != null) {
-            yearS = selectedYear.toString().trim();
         }
-        try{
-            return Integer.parseInt(yearS);
-        }catch(NumberFormatException e){
+        Object selectedYear = cb.getSelectedItem();
+        String year = "";
+        if (selectedYear != null) {
+            year = selectedYear.toString().trim();
+        }
+        if(year.isEmpty())
+            return -1;
+        try {
+            return Integer.parseInt(year);
+        } catch (NumberFormatException e) {
             throw new IllegalYearException();
+        }
+    }
+
+    public String getSelected(JComboBox cb) {
+        Object selected = cb.getSelectedItem();
+        if (selected != null) {
+            return selected.toString().trim();
+        } else {
+            return "";
         }
     }
 
@@ -669,12 +682,14 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         String annotation = annotationTextField.getText().trim();
 
         //Rating
-        int rating = 0;
-        if (ratingOneRadioButton.isSelected()) {
+        int rating = -1;
+        if(ratingNoneRadioButton.isSelected()){
+            rating = 0;
+        }else if (ratingOneRadioButton.isSelected()) {
             rating = 1;
-        } else if (ratingOneRadioButton.isSelected()) {
+        } else if (ratingTwoRadioButton.isSelected()) {
             rating = 2;
-        } else if (ratingOneRadioButton.isSelected()) {
+        } else if (ratingThreeRadioButton.isSelected()) {
             rating = 3;
         }
 
@@ -683,24 +698,11 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         String isbn = isbnTextField.getText().trim();   //TODO Ueberpruefen!?!?
 
         String artist = artistTextField.getText().trim();
-        Object selectedType = typeComboBox.getSelectedItem();
-        String type = "";
-        if (selectedType != null) {
-            type = selectedType.toString().trim();
-        }
-        Object selectedMusicFormat = musicFormatComboBox.getSelectedItem();
-        String musicFormat = "";
-        if (selectedMusicFormat != null) {
-            musicFormat = selectedMusicFormat.toString().trim();
-        }
-
+        String type = getSelected(typeComboBox);
+        String musicFormat = getSelected(musicFormatComboBox);
         String director = directorTextField.getText().trim();
         String actors = actorsTextField.getText().trim();
-        Object selectedVideoFormat = videoFormatComboBox.getSelectedItem();
-        String videoFormat = "";
-        if (selectedVideoFormat != null) {
-            videoFormat = selectedVideoFormat.toString().trim();
-        }
+        String videoFormat = getSelected(videoFormatComboBox);
 
         int releaseYear = -1;
         int lentYear = -1;
@@ -712,6 +714,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             lentUntilYear = getYear(lentUntilYearComboBox);
         } catch (IllegalYearException e) {
             returnCode = RET_ILLEGAL_YEAR;
+            return;
         }
         book = new Book();
         book.setTitle(title);
@@ -781,8 +784,8 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
 
     private void isLentCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isLentCheckBoxActionPerformed
         Object o = evt.getSource();
-        if(o instanceof JCheckBox){
-            JCheckBox checkBox = (JCheckBox)o;
+        if (o instanceof JCheckBox) {
+            JCheckBox checkBox = (JCheckBox) o;
             setLentFieldsEnabled(checkBox.isSelected());
         }
     }//GEN-LAST:event_isLentCheckBoxActionPerformed
@@ -792,7 +795,6 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         setVisible(false);
         dispose();
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel actorsLabel;
     private javax.swing.JTextField actorsTextField;
@@ -851,6 +853,5 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
     private javax.swing.JLabel videoFormatLabel;
     private javax.swing.JPanel videoPanel;
     // End of variables declaration//GEN-END:variables
-
     private int returnStatus = RET_CANCEL;
 }
