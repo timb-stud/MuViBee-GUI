@@ -14,7 +14,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import muvibee.actionlistener.AddActionListener;
@@ -24,8 +28,11 @@ import muvibee.actionlistener.SaveActionListener;
 import muvibee.actionlistener.RestoreListener;
 import muvibee.actionlistener.DeleteListener;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.Icon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -262,6 +269,30 @@ public class MainFrame extends javax.swing.JFrame {
         String[] languages = {"en", "de", "ro","ru", "tr"};
         ComboBoxModel cbm = new DefaultComboBoxModel(languages);
         languagesComboBox.setModel(cbm);
+
+            languagesComboBox.setRenderer(new DefaultListCellRenderer(){
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                String flag = "../../muvibee/resources/flag/default_flag.gif";
+                try {
+                    if (((String)value).equals("en"))
+                        flag = "../../muvibee/resources/flag/usa_flag.gif";
+                    else if (((String)value).equals("de"))
+                        flag = "../../muvibee/resources/flag/de_flag.jpg";
+                    else if (((String)value).equals("ru"))
+                        flag = "../../muvibee/resources/flag/ru_flag.gif";
+                    else if (((String)value).equals("tr"))
+                        flag = "../../muvibee/resources/flag/tr_flag.gif";
+                    else if (((String)value).equals("ro"))
+                        flag = "../../muvibee/resources/flag/ro_flag.gif";
+
+                    label.setIcon(ResizeImageIcon.resizeIcon(24, 20, ImageIO.read(getClass().getResource(flag))));
+                } catch (IOException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                return label;
+            }
+        });
 
         //init dayComboBoxes
 	String[] days = new String[32];
