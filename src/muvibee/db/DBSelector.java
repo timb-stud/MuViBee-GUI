@@ -31,9 +31,9 @@ import muvibee.media.Video;
  * LinkedList<Book> bookList;
  * LinkedList<Music> musicList;
  * LinkedList<Video> videoList;
- * bookList 	= dbs.getBookList();
- * musicList 	= dbs.getMusicList();
- * videoList 	= dbs.getVideoList();
+ * bookList 	= DBSelector.getBookList([false|true], String orderBy);
+ * musicList 	= DBSelector.getMusicList([false|true], String orderBy);
+ * videoList 	= DBSelector.getVideoList([false|true], String orderBy);
  * 
  * Testklasse:
  * db.test.TestDBSelects
