@@ -742,4 +742,8 @@ public class MuViBee {
     public void showDeleteSearchButton(boolean b) {
         mainFrame.deleteSearchButtonSetVisible(b);
     }
+
+    public void setListsColor(Color color) {
+        mainFrame.setListsColor(color);
+    }
 }

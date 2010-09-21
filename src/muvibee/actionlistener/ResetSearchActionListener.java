@@ -5,6 +5,7 @@
 
 package muvibee.actionlistener;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import muvibee.MuViBee;
@@ -22,6 +23,7 @@ public class ResetSearchActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         mvb.showDeleteSearchButton(false);
         mvb.resetSearch();
+        mvb.setListsColor(Color.white);
     }
 
 }

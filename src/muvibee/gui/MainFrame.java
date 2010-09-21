@@ -1139,7 +1139,7 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setName("add video button"); // NOI18N
 
         overviewTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        overviewTable.setFont(new java.awt.Font("Plantagenet Cherokee", 0, 24));
+        overviewTable.setFont(new java.awt.Font("Plantagenet Cherokee", 0, 24)); // NOI18N
         overviewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Bücher", "", null, null},
@@ -1158,7 +1158,7 @@ public class MainFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        overviewTable.setColumnSelectionAllowed(true);
+        overviewTable.setCellSelectionEnabled(true);
         overviewTable.setRowHeight(64);
         overviewTable.setSelectionBackground(new java.awt.Color(235, 232, 238));
         overviewTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
@@ -2569,6 +2569,24 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void deleteSearchButtonSetVisible(boolean b) {
         deleteSearchButton.setVisible(b);
+    }
+
+    public void setListsColor(Color color) {
+        detailsTableBook.setBackground(color);
+        detailsTableMusic.setBackground(color);
+        detailsTableVideo.setBackground(color);
+
+        coverDetailsBookList.setBackground(color);
+        coverDetailsMusicList.setBackground(color);
+        coverDetailsVideoList.setBackground(color);
+
+        coverListBook.setBackground(color);
+        coverListMusic.setBackground(color);
+        coverListVideo.setBackground(color);
+
+        prioTreeBook.setBackground(color);
+        prioTreeMusic.setBackground(color);
+        prioTreeVideo.setBackground(color);
     }
 
 

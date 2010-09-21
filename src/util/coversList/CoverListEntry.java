@@ -18,6 +18,7 @@ public class CoverListEntry extends JLabel {
         private int ySize = 100;
 
         public CoverListEntry(Media media) {
+            setOpaque(false);
             this.media = media;
             if (media.getCover() != null)
                 this.icon = ResizeImageIcon.resizeIcon(90, 100, media.getCover());
