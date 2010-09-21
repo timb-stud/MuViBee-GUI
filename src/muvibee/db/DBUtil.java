@@ -21,7 +21,7 @@ import muvibee.media.Video;
  */
 
 public class DBUtil {
-	
+	private final static String COVER_PATH = "data/images/";
 	private final static String SQL_UPDATE_BOOK  = "UPDATE books SET title = ?, ean = ?, genre = ?, year = ?,"
                 + " location = ?, lendto = ?, lenddate = ?, backdate = ?, rating = ?, description = ?,"
                 + " comment = ?, cover = ?,"
@@ -50,7 +50,6 @@ public class DBUtil {
         private final static String SQL_DELETE_VIDEO = "DELETE FROM video WHERE ID = ?";
 
 	private static Connection con = null;
-
 		
 	public static void dbUpdate(Media m) {
             if (m.getID() == -1) {
@@ -124,7 +123,6 @@ public class DBUtil {
             ps.setBoolean(16, m.isDeleted());
             ps.executeUpdate();
             System.out.println("Music added");
-
 	}
 
 	private static void insertVideo(Video v) throws SQLException {
@@ -150,14 +148,14 @@ public class DBUtil {
         }
 
 	private static String imageWriteToFile(BufferedImage i)  {
-            String path = "data/images/" + i.hashCode() + ".jpg";
+            String path = COVER_PATH + i.hashCode() + ".jpg";
             File f = new File(path);
             try {
                     ImageIO.write(i, "jpg", f);
             } catch (IOException e) {
                     e.printStackTrace();
             }
-            return path;
+            return String.valueOf(i.hashCode());
          }
 
 	private static void updateMediaDB(Media m) {
@@ -185,7 +183,7 @@ public class DBUtil {
                 ps.setInt(9, m.getRating());
                 ps.setString(10, m.getDescription());
                 ps.setString(11, m.getComment());
-		ps.setString(12, ("data/images/" + m.getCover().hashCode() + ".jpg"));
+		ps.setString(12, (String.valueOf(m.getCover().hashCode())));
                 if (m instanceof Book) {
                         ps.setString(13, ((Book)m).getAuthor());
                         ps.setString(14, ((Book)m).getLanguage());
@@ -208,7 +206,6 @@ public class DBUtil {
                 con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException e) {
                 e.printStackTrace();
-
             }
 	
 	}
