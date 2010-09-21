@@ -64,10 +64,8 @@ public class DBUtil {
 	public static void dbUpdate(Media m) {
             if (m.getID() == -1) {
                 insertMediaDB(m);
-                System.out.println("INSERT NEW");
             } else {
                 updateMediaDB(m);
-                System.out.println("UPDATE OLD");
             }
 	}
 
@@ -110,7 +108,6 @@ public class DBUtil {
             ps.setString(15, b.getIsbn());
             ps.setBoolean(16, b.isDeleted());
             ps.executeUpdate();
-            System.out.println("Book added");
             b.setID(getMaxBookID());
 	}
 
@@ -133,7 +130,6 @@ public class DBUtil {
             ps.setString(15, m.getType());
             ps.setBoolean(16, m.isDeleted());
             ps.executeUpdate();
-            System.out.println("Music added");
             m.setID(getMaxMusicID());
 	}
 
@@ -156,7 +152,6 @@ public class DBUtil {
             ps.setString(15, v.getActors());
             ps.setBoolean(16, v.isDeleted());
             ps.executeUpdate();
-            System.out.println("Video added");
             v.setID(getMaxVideoID());
         }
 
@@ -184,7 +179,6 @@ public class DBUtil {
                 if (m instanceof Video) {
                     ps = con.prepareStatement(SQL_UPDATE_VIDEO);
                 }
-                System.out.println(ps.toString());
                 ps.setString(1, m.getTitle());
                 ps.setString(2, m.getEan());
                 ps.setString(3, m.getGenre());
@@ -214,7 +208,6 @@ public class DBUtil {
                 }
                 ps.setBoolean(16, m.isDeleted());
                 ps.setInt(17, m.getID());
-                System.out.println(ps.toString());
                 ps.executeUpdate();
                 con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException e) {
