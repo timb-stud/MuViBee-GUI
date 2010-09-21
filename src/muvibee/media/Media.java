@@ -102,7 +102,7 @@ public abstract class Media extends Observable {
         this.location = location;
     }
 
-    public boolean isIsLent() {
+    public boolean isLent() {
         return isLent;
     }
 
@@ -308,6 +308,27 @@ public abstract class Media extends Observable {
 
     @Override
     public String toString() {
-        return "ID " + ID + " : " + title;
+        return
+           "\n ID: " + this.ID
+         + "\n Titel: " + this.title
+         + "\n EAN: " + this.ean
+         + "\n Genre: " + this.genre
+         + "\n ReleaseYear: " + this.releaseYear
+         + "\n Location: " + this.location
+         + "\n isLent: " + this.isLent
+         + "\n lendDay: " + this.lendDay
+         + "\n lendMonth: " + this.lendMonth
+         + "\n lendYear: " + this.lendYear
+         + "\n LendDate: " + this.getLendDate()
+         + "\n LendTo: " + this.lentTo
+         + "\n lendUntilDay: " + this.lendUntilDay
+         + "\n lendUntilMonth: " + this.lendUntilMonth
+         + "\n lendUntilYear: " + this.lendUntilYear
+         + "\n LendUntilDate: " + this.getLendUntilDate()
+         + "\n Rating: " + this.rating
+         + "\n Description: " + this.description
+         + "\n Comment: " + this.comment
+         + "\n Cover: " + this.cover.toString()
+         + "\n isDeleted: " + this.isDeleted;
     }
 }
