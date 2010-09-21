@@ -75,8 +75,14 @@ public class MuViBee {
 
     public MuViBee() {
         final MuViBee mvb = this;
+        SwingUtilities.invokeLater(new Runnable() {
 
-        //TODO adapterklasse für listen. siehe unten
+            public void run() {
+                mainFrame = new MainFrame(mvb);
+                mainFrame.setVisible(true);
+            }
+        });
+
         filterBookList = new BookList();
         filterMusicList = new MusicList();
         filterVideoList = new VideoList();
@@ -86,44 +92,15 @@ public class MuViBee {
         bookList = DBSelector.getBookList(false, null);
         musicList = DBSelector.getMusicList(false, null);
         videoList = DBSelector.getVideoList(false, null);
-        for (Book b : bookList) {
-            if (b.isDeleted()) {
-                deletedMediaList.add(b);
-            }
-            if (b.isLent()) {
-                expiredMediaList.add(b);
-            }
-        }
-        for (Music m : musicList) {
-            if (m.isDeleted()) {
-                deletedMediaList.add(m);
-            }
-            if (m.isLent()) {
-                expiredMediaList.add(m);
-            }
-        }
-        for (Video v : videoList) {
-            if (v.isDeleted()) {
-                deletedMediaList.add(v);
-            }
-            if (v.isLent()) {
-                expiredMediaList.add(v);
-            }
-        }
+
+
         filterBookList.addAll(bookList);
         filterMusicList.addAll(musicList);
         filterVideoList.addAll(videoList);
         deletedMediaList.addAll(DBSelector.getBookList(true, null));
         deletedMediaList.addAll(DBSelector.getMusicList(true, null));
         deletedMediaList.addAll(DBSelector.getVideoList(true, null));
-
-        SwingUtilities.invokeLater(new Runnable() {
-
-            public void run() {
-                mainFrame = new MainFrame(mvb);
-                mainFrame.setVisible(true);
-            }
-        });
+        setOverviewInformation();
     }
 
     public int showSignOverFrame(){
