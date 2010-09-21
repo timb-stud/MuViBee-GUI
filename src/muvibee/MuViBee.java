@@ -7,15 +7,11 @@ package muvibee;
 
 
 import java.awt.Color;
-import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -87,13 +83,12 @@ public class MuViBee {
         deletedMediaList = new MediaList();
         expiredMediaList = new MediaList();
 
-        bookList = new LinkedList<Book>();
-        musicList = new LinkedList<Music>();
-        videoList = new LinkedList<Video>();
-
         bookList = DBSelector.getBookList(false, null);
         musicList = DBSelector.getMusicList(false, null);
         videoList = DBSelector.getVideoList(false, null);
+        filterBookList.addAll(bookList);
+        filterMusicList.addAll(musicList);
+        filterVideoList.addAll(videoList);
         deletedMediaList.addAll(DBSelector.getBookList(true, null));
         deletedMediaList.addAll(DBSelector.getMusicList(true, null));
         deletedMediaList.addAll(DBSelector.getVideoList(true, null));
@@ -320,6 +315,8 @@ public class MuViBee {
             expiredMediaList.remove(currentBook);
             deletedMediaList.add(currentBook);
             filterBookList.remove(currentBook);
+            currentBook.setDeleted(true);
+            currentBook.updateDB();
             currentBook = null;
             showBookItem(false);
         }
@@ -330,6 +327,8 @@ public class MuViBee {
             expiredMediaList.remove(currentMusic);
             deletedMediaList.add(currentMusic);
             filterMusicList.remove(currentMusic);
+            currentMusic.setDeleted(true);
+            currentMusic.updateDB();
             currentMusic = null;
             showMusicItem(false);
         }
@@ -340,6 +339,8 @@ public class MuViBee {
             expiredMediaList.remove(currentVideo);
             deletedMediaList.add(currentVideo);
             filterVideoList.remove(currentVideo);
+            currentVideo.setDeleted(true);
+            currentVideo.updateDB();
             currentVideo = null;
             showVideoItem(false);
         }
@@ -348,6 +349,7 @@ public class MuViBee {
     public void removeCurrentDeletedMediaFromDeletedList() {
         for (Media m : currentDeletedMediaList) {
             deletedMediaList.remove(m);
+            m.deleteDB();
             m = null;
         }
     }
@@ -369,6 +371,8 @@ public class MuViBee {
                 }
             }
             deletedMediaList.remove(m);
+            m.setDeleted(false);
+            m.updateDB();
             m = null;
         }
     }
