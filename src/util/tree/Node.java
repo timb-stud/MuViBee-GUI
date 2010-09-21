@@ -9,8 +9,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import muvibee.media.Media;
 
 /**
- *
- * @author Christian
+ * Knoten welche in PrioTree aufgenommen wird
+ * @author Christian Rech
  */
 public class Node extends DefaultMutableTreeNode{
 

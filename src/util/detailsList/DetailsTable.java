@@ -20,13 +20,17 @@ import muvibee.media.Music;
 import muvibee.media.Video;
 
 /**
- *
- * @author Christian
+ * Erstellt DetailsTable Ansicht
+ * @author Christian Rech
  */
 public class DetailsTable extends JTable implements Observer{
     DefaultTableModel dtm;
     MediaList mediaList;
 
+    /**
+     * Kümmert sich um Tablemodel und fügt Selectionlistner hinzu
+     * @param muvibee
+     */
     public DetailsTable(final MuViBee muvibee) {
         super();
         dtm = new DefaultTableModel();
@@ -54,11 +58,21 @@ public class DetailsTable extends JTable implements Observer{
 
     }
 
+    /**
+     * Sorgt dafür, dass Tabellenzellen nicht editirbar sind
+     * @param row
+     * @param col
+     * @return liefert immer false
+     */
     @Override
     public boolean isCellEditable(int row, int col){
         return false;
     }
 
+    /**
+     * Fühlt die Tabelle mit den Daten von MediaList
+     * @param mediaList
+     */
     private void setColumnData(MediaList mediaList){
         String[] title = new String[mediaList.getList().size()];
         String[] mediaSpecial = new String[mediaList.getList().size()];
@@ -93,6 +107,12 @@ public class DetailsTable extends JTable implements Observer{
         dtm.addColumn("Location", location);
     }
 
+    /**
+     * Observer Pattern: Löscht aktuelle Liste und erstellt neue
+     * @param list
+     * @param arg
+     */
+    @Override
     public void update(Observable list, Object arg) {
         mediaList = ((MediaList) list);
         dtm = new DefaultTableModel();

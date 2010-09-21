@@ -1,7 +1,5 @@
 package muvibee.media;
 
-import java.awt.image.BufferedImage;
-
 public class Music extends Media {
 
     private String format = "";
@@ -9,20 +7,7 @@ public class Music extends Media {
     private String type = "";
 
     public Music() {
-    }
-
-    public Music(String title, String ean, String releaseYear, BufferedImage cover, String interpreter, String binding, String description) {
-        super(title, ean, releaseYear, cover, description);
-        this.interpreter = interpreter;
-        if (binding != null) {
-            if (binding.contains("LP")) {
-                this.format = "LP";
-            } else if (binding.contains("Hörkassette") || binding.contains("Musikkassette")) {
-                this.format = "Cassette";
-            } else {
-                this.format = "CD";
-            }
-        }
+        super();
     }
 
     @Override

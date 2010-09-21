@@ -16,12 +16,20 @@ import muvibee.lists.MediaList;
 
 import muvibee.media.*;
 
+/**
+ * Erstellt und verwaltet die Cover Details Ansicht
+ * @author Christian Rech
+ */
+
 @SuppressWarnings("serial")
 public class CoverDetailsList extends JList implements Observer{
 	DefaultListModel  listModel;
 	CoverDetailsListRenderer lcr;
 
-
+        /**
+         * Erstellt eine Liste, setz darauf ein ListModel und erstellt für die Liste ein SelectionListener
+         * @param muvibee - Ausgewähltes Objekt wird an die Klasse MuViBee üergeben
+         */
 	public CoverDetailsList(final MuViBee muvibee) {	
 		listModel = new DefaultListModel();
 		lcr = new CoverDetailsListRenderer();
@@ -47,12 +55,13 @@ public class CoverDetailsList extends JList implements Observer{
                             }
 	        	}
 	        });
- 	        
-	      //  setPreferredSize(new Dimension(150,0));
-
 	}
 	
-	
+
+        /**
+         * Dient zum Hinzufügen eines Elements in die Liste
+         * @param entry - Hinzuzufügendes Element
+         */
 	private void listAdd(CoverDetailsListEntry entry){
 		listModel.addElement(entry);
 		validate();
@@ -61,6 +70,11 @@ public class CoverDetailsList extends JList implements Observer{
 	}
 
 
+        /**
+         * Observer Pattern: Löscht komplette Liste und erzeugt neue
+         * @param list - neue Liste mit Elementen
+         * @param o - ist immer NULL. Wird nicht verwendet
+         */
         @Override
 	public void update(Observable list, Object o) {
             LinkedList<Media> mList = ((MediaList) list).getList();

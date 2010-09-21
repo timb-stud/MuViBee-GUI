@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 import muvibee.MuViBee;
 
 /**
- *
- * @author Christian
+ * ActionListner für Über Knopf
+ * @author Christian Rech
  */
 public class AboutActionListener implements ActionListener{
     private MuViBee mvb;

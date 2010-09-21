@@ -24,8 +24,8 @@ import muvibee.media.Video;
 import muvibee.utils.SortTypes;
 
 /**
- *
- * @author christian
+ * Erstellt Baum Ansicht
+ * @author Christian Rech
  */
 public class PrioTree extends JTree implements Observer {
 
@@ -34,6 +34,10 @@ public class PrioTree extends JTree implements Observer {
     TreeModel treeModel;
     MuViBee mvb;
 
+    /**
+     * Erstellt Tree mit TreeModel und fügt Selectionlistner hinzu
+     * @param muvibee
+     */
     public PrioTree(final MuViBee muvibee) {
         super();
         this.mvb = muvibee;
@@ -58,7 +62,11 @@ public class PrioTree extends JTree implements Observer {
         });
     }
 
-
+    /**
+     * Prüft ob Kind bereits auf auf aktueller Ebene vorhanden ist
+     * @param child
+     * @return
+     */
     private boolean containsChild (Node child){
         int to = lastAdded.getChildCount();
         for (int i = 0; i < to; i++){
@@ -71,6 +79,11 @@ public class PrioTree extends JTree implements Observer {
     }
 
 
+    /**
+     * Erstellt Baum nach vorgegebeber Sortierung
+     * @param mediaList
+     * @param sortedBy
+     */
     public void createTree(MediaList mediaList,ArrayList<SortTypes> sortedBy) {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         final String OTHER = bundle.getString("other_PrioTree");
@@ -128,6 +141,11 @@ public class PrioTree extends JTree implements Observer {
         }
     }
 
+    /**
+     * Observer Pattern: Löscht aktuellen Baum und erstellt neuen
+     * @param list
+     * @param o
+     */
     @Override
     public void update(Observable list, Object o) {
         root = new Node("Root", null);

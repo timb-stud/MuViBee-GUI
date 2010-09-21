@@ -1,7 +1,5 @@
 package muvibee.media;
 
-import java.awt.image.BufferedImage;
-
 public class Video extends Media {
 
     private String format = "";
@@ -9,27 +7,7 @@ public class Video extends Media {
     private String actors = "";
 
     public Video() {
-    }
-
-    public Video(String title, String ean, String releaseYear, BufferedImage cover, String binding, String actors, String director, String description) {
-        super(title, ean, releaseYear, cover, description);
-        if (actors != null) {
-            this.actors = actors;
-        }
-        if (director != null) {
-            this.director = director;
-        }
-        if (binding != null) {
-            if (binding.equals("Videokassette")) {
-                this.format = "vhs";
-            } else {
-                if (binding.contains("Blu-ray")) {
-                    this.format = "blu-ray";
-                } else {
-                    this.format = "cd/dvd";
-                }
-            }
-        }
+        super();
     }
 
     @Override
