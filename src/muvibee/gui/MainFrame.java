@@ -157,13 +157,11 @@ public class MainFrame extends javax.swing.JFrame {
         prioTreeBook.clearSelection();
         prioTreeMusic.clearSelection();
         prioTreeVideo.clearSelection();
-
-        eil.clearSelection();
     }
 
     /** Creates new form MainFrame */
     public MainFrame(MuViBee mvb) {
-        setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - 600, Toolkit.getDefaultToolkit().getScreenSize().height/2 - 300);
+        setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - 580, Toolkit.getDefaultToolkit().getScreenSize().height/2 - 350);
         try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -921,7 +919,6 @@ public class MainFrame extends javax.swing.JFrame {
         };
         expiredPanel = new javax.swing.JPanel();
         expiredScrollPane = new javax.swing.JScrollPane();
-        deleteExpiredButton = new javax.swing.JButton();
         bookPanel = new javax.swing.JPanel();
         viewBookPanel = new javax.swing.JPanel();
         viewBookComboBox = new javax.swing.JComboBox();
@@ -1173,7 +1170,7 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setName("add video button"); // NOI18N
 
         overviewTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        overviewTable.setFont(new java.awt.Font("Plantagenet Cherokee", 0, 24)); // NOI18N
+        overviewTable.setFont(new java.awt.Font("Plantagenet Cherokee", 0, 24));
         overviewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Bücher", "", null, null},
@@ -1200,25 +1197,20 @@ public class MainFrame extends javax.swing.JFrame {
 
         expiredPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Überfällige Medien"));
 
-        deleteExpiredButton.setText("Löschen");
-
         javax.swing.GroupLayout expiredPanelLayout = new javax.swing.GroupLayout(expiredPanel);
         expiredPanel.setLayout(expiredPanelLayout);
         expiredPanelLayout.setHorizontalGroup(
             expiredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(expiredPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(expiredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(expiredScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1059, Short.MAX_VALUE)
-                    .addComponent(deleteExpiredButton))
+                .addComponent(expiredScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1059, Short.MAX_VALUE)
                 .addContainerGap())
         );
         expiredPanelLayout.setVerticalGroup(
             expiredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, expiredPanelLayout.createSequentialGroup()
-                .addComponent(expiredScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteExpiredButton))
+            .addGroup(expiredPanelLayout.createSequentialGroup()
+                .addComponent(expiredScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout overviewPanelLayout = new javax.swing.GroupLayout(overviewPanel);
@@ -1236,7 +1228,7 @@ public class MainFrame extends javax.swing.JFrame {
             overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(overviewScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(overviewScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(expiredPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -2432,7 +2424,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel coverMusicLabel;
     private javax.swing.JLabel coverVideoLabel;
     private javax.swing.JButton deleteBookButton;
-    private javax.swing.JButton deleteExpiredButton;
     private javax.swing.JButton deleteMusicButton;
     private javax.swing.JButton deleteSearchButton;
     private javax.swing.JButton deleteVideoButton;
@@ -2686,6 +2677,10 @@ public class MainFrame extends javax.swing.JFrame {
         coverListVideoScrollPane.getViewport().setViewPosition(new java.awt.Point(0,(((CoverListEntry)coverListVideo.getModel().getElementAt(0)).getySize()*index)));
         detailsListVideoScrollPane.getViewport().setViewPosition(new java.awt.Point(0,30*index));
         treeVideoScrollPane.getViewport().setViewPosition(new java.awt.Point(0,30*index));
+    }
+
+    public ExpiredItemsList getExpiredList() {
+        return eil;
     }
 
 

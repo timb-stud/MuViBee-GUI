@@ -834,6 +834,10 @@ public class MuViBee {
                 }
             }
     }
+
+    public ExpiredItemsList getExpiredList() {
+        return mainFrame.getExpiredList();
+    }
         
     
 }
