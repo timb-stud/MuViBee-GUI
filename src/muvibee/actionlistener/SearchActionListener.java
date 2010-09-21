@@ -5,6 +5,7 @@
 
 package muvibee.actionlistener;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -33,6 +34,7 @@ public class SearchActionListener implements ActionListener{
                 }
             }
             mvb.showDeleteSearchButton(true);
+            mvb.setListsColor(new Color(200,214,219));
         }
     }
 
