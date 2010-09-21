@@ -1,9 +1,11 @@
 package muvibee.ean;
 
+import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
@@ -70,12 +72,12 @@ public class EANDates {
 		media.setDescription(description);
 		media.setEan(ean);
 
-		loadImage(ean);
+		loadImage(ean, media);
 
 		return media;
 	}
 
-	private static void loadImage(String ean) throws IOException {
+	private static void loadImage(String ean, Media media) throws IOException {
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
 		TagNode[] previewImage = node.getElementsByAttValue("id",
@@ -84,6 +86,9 @@ public class EANDates {
 		String coverSource = (previewImage[0].getOriginalSource());
 		coverSource = coverSource.substring(coverSource.indexOf("http:"));
 		coverSource = coverSource.substring(0, coverSource.indexOf(".jpg") + 4);
+
+                BufferedImage image = ImageIO.read(new URL(coverSource));
+		media.setCover(image);
 
 		URL url_cover = new URL(coverSource);
 		InputStream inputStr = url_cover.openStream();
@@ -95,7 +100,7 @@ public class EANDates {
 		}
 	}
 
-	public Book getBookData(String ean) throws IOException {
+	public static Book getBookData(String ean) throws IOException {
 		Book book = new Book();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -116,7 +121,7 @@ public class EANDates {
 		return book;
 	}
 
-	public Music getMusicData(String ean) throws IOException {
+	public static Music getMusicData(String ean) throws IOException {
 		Music music = new Music();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -136,7 +141,7 @@ public class EANDates {
 		return music;
 	}
 
-	public Video getVideoData(String ean) throws IOException {
+	public static Video getVideoData(String ean) throws IOException {
 		Video video = new Video();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -157,7 +162,7 @@ public class EANDates {
 		return video;
 	}
 
-	private String interpreterFix(TagNode[] interpreterNode) {
+	private static String interpreterFix(TagNode[] interpreterNode) {
 		String s = interpreterNode[0].getText().toString();
 		s = s.substring(s.indexOf("Interpret"));
 		if (s.contains("bol.de")) {
@@ -171,7 +176,7 @@ public class EANDates {
 		return s;
 	}
 
-	private static void setProxy(String proxy, String port) {
+	public static void setProxy(String proxy, String port) {
 		System.getProperties().put("proxySet", "true");
 		System.getProperties().put("proxyHost", proxy);
 		System.getProperties().put("proxyPort", port);
@@ -179,7 +184,7 @@ public class EANDates {
 
 	public static void main(String[] args) throws IOException {
 		EANDates eanDates = new EANDates();
-		setProxy("www-proxy.htw-saarland.de", "3128");
+//		setProxy("www-proxy.htw-saarland.de", "3128");
 		// System.out.println(eanDates.getBookData("9783446235922"));
 		// System.out.println(eanDates.getMusicData("0602527394527"));
 		// System.out.println(eanDates.getVideoData("5050582778090"));

@@ -7,9 +7,12 @@ package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JButton;
 import muvibee.EAN;
 import muvibee.MuViBee;
+import muvibee.ean.EANDates;
+import muvibee.gui.StatusBarModel;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
@@ -41,7 +44,13 @@ public class AddActionListener implements ActionListener {
                         if(ean == null){
                             return ;
                         }
-                        book = (Book)EAN.searchEan(ean); //TODO getBook(ean);
+                        try {
+                            EANDates.setProxy("www-proxy.htw-saarland.de", "3128");
+                            book = EANDates.getBookData(ean);
+                        } catch (IOException ex) {
+                            StatusBarModel.getInstance().setFailMessage("Connection error!");
+                            return;
+                        }
                     }else{
                         book = new Book();
                     }
