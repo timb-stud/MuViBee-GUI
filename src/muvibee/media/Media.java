@@ -63,6 +63,10 @@ public abstract class Media extends Observable {
         DBUpdater.dbUpdate(this);
     }
 
+    public void deleteDB() {
+        DBUpdater.dbDelete(this);
+    }
+
     public int getID() {
         return this.ID;
     }
