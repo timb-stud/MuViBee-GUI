@@ -66,7 +66,7 @@ public class MuViBee {
     private int sortVideoByActors = 0;
     private int sortVideoByRegisseur = 0;
 
-    private String mainBundlePath = "muvibee.resources.MuViBee";
+    public static String mainBundlePath = "muvibee.resources.MuViBee";
 
     public MuViBee() {
         final MuViBee mvb = this;
@@ -159,7 +159,6 @@ public class MuViBee {
             StatusBarModel.getInstance().setFailMessage(bundle.getString("illegalYear"));
         }else{
             if(returnStatus == AdvancedSearchDialog.RET_OK){
-                mainFrame.getDeleteSearchButton().setForeground(Color.red);
                 Book b = dialog.getBook();
                 Music m = dialog.getMusic();
                 Video v = dialog.getVideo();
@@ -367,19 +366,15 @@ public class MuViBee {
         return deletedMediaList;
     }
 
-    public String getMainBundlePath() {
-        return mainBundlePath;
-    }
-
     public static void main(String args[]) {
         MuViBee mvb = new MuViBee();
     }
 
     public void resetSearch() {
-        mainFrame.getDeleteSearchButton().setForeground(Color.BLACK);
-        mainFrame.getDeleteSearchButton().setFont(new Font(Font.SANS_SERIF,Font.PLAIN,10));
         mainFrame.resetSearch();
         resetFilterLists();
+        setListsColor(Color.white);
+        mainFrame.deleteSearchButtonSetVisible(false);
     }
 
     public void resetFilterLists() {
@@ -394,8 +389,6 @@ public class MuViBee {
     }
 
     public void search() {
-        mainFrame.getDeleteSearchButton().setForeground(Color.red);
-        mainFrame.getDeleteSearchButton().setFont(new Font(Font.SANS_SERIF,Font.BOLD,13));
         String str = mainFrame.getSearchString();
         resetFilterLists();
         for (Book b : bookList) {
@@ -741,5 +734,13 @@ public class MuViBee {
             medias[i] = ((DeletedItemEntry)deletedList.getSelectedValues()[i]).getMedia();
         }
         setCurrentDeletedMedia(medias);
+    }
+
+    public void showDeleteSearchButton(boolean b) {
+        mainFrame.deleteSearchButtonSetVisible(b);
+    }
+
+    public void setListsColor(Color color) {
+        mainFrame.setListsColor(color);
     }
 }

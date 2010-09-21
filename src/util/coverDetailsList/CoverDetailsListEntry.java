@@ -24,6 +24,7 @@ public class CoverDetailsListEntry extends JPanel{
         private int ySize = 80;
 	
 	public CoverDetailsListEntry(Media media, String special) {
+                setOpaque(false);
                 if (media.getCover() != null)
                     this.icon = ResizeImageIcon.resizeIcon(70, 80, media.getCover());
                 else
@@ -49,7 +50,7 @@ public class CoverDetailsListEntry extends JPanel{
 		JLabel titleLbl = new JLabel(title);
 		info1_title.add(titleLbl);
                 info1_title.add(info1Lbl);
-                info1_title.setBackground(Color.white);
+                info1_title.setOpaque(false);
 		add(info1_title);
 	}
 	

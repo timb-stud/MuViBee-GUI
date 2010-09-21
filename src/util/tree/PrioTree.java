@@ -72,7 +72,7 @@ public class PrioTree extends JTree implements Observer {
 
 
     public void createTree(MediaList mediaList,ArrayList<SortTypes> sortedBy) {
-        ResourceBundle bundle = ResourceBundle.getBundle(mvb.getMainBundlePath());
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         final String OTHER = bundle.getString("other_PrioTree");
         Object o = null;
         Node child;

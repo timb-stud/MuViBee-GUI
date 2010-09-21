@@ -7,12 +7,12 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import muvibee.db.DBInsertor;
+import muvibee.db.DBUpdater;
 
 public abstract class Media extends Observable {
 
     private final String COVER_PATH = "data/images/";
-    private int ID;
+    private int ID = -1;
     private String title = "";
     private String ean = "";
     private String genre = "";
@@ -45,8 +45,9 @@ public abstract class Media extends Observable {
         notifyObservers();
     }
 
-    public void insertIntoDB() {
-        DBInsertor.insertIntoDB(this);
+
+    public void updateDB() {
+        DBUpdater.dbUpdate(this);
     }
 
     public int getID() {
@@ -254,7 +255,24 @@ public abstract class Media extends Observable {
     }
 
     public boolean matches(Media m){
-        return title.contains(m.title) && ean.contains(m.ean)
+        System.out.println("Title: " +title.contains(m.title));
+        System.out.println("ean: " + ean.contains(m.ean));
+        System.out.println("genre:" + genre.contains(m.genre));
+        System.out.println("releaseYear: " + (releaseYear == m.releaseYear));
+        System.out.println("location: " + location.contains(m.location));
+        System.out.println("islent:"  + (isLent == m.isLent));
+        System.out.println("lentto: " + lentTo.contains(m.lentTo));
+        if(rating == -1 || m.rating == -1){
+            return title.contains(m.title) && ean.contains(m.ean)
+                && genre.contains(m.genre) && releaseYear == m.releaseYear
+                && location.contains(m.location) && isLent == m.isLent
+                && lentTo.contains(m.lentTo)
+                && lendDay == m.lendDay && lendMonth == m.getLendMonth()
+                && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
+                && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear
+                && comment.contains(m.comment);
+        }else{
+            return title.contains(m.title) && ean.contains(m.ean)
                 && genre.contains(m.genre) && releaseYear == m.releaseYear
                 && location.contains(m.location) && isLent == m.isLent
                 && lentTo.contains(m.lentTo)
@@ -262,10 +280,12 @@ public abstract class Media extends Observable {
                 && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
                 && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear
                 && rating == m.rating && comment.contains(m.comment);
+        }
+        
     }
 
     @Override
     public String toString() {
-        return title;
+        return "ID " + ID + " : " + title;
     }
 }

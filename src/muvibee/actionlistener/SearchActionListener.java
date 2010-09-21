@@ -33,6 +33,8 @@ public class SearchActionListener implements ActionListener{
                     mvb.showAdvancedSearchDialog();
                 }
             }
+            mvb.showDeleteSearchButton(true);
+            mvb.setListsColor(new Color(200,214,219));
         }
     }
 

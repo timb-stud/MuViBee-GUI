@@ -24,11 +24,11 @@ public class HelpDialog extends JDialog {
         setSize(500, 500);
 //        setLocationRelativeTo(null);
 
-//        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.getMainBundlePath());
-//        String close = bundle.getString("close");
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+        String close = bundle.getString("close");
 
         JPanel panel = new JPanel(new BorderLayout());
-        JButton b = new JButton("close");
+        JButton b = new JButton(close);
         final JEditorPane ep = new JEditorPane();
         JScrollPane sb = new JScrollPane(ep);
 
@@ -46,7 +46,7 @@ public class HelpDialog extends JDialog {
         });
 
         try {
-            ep.setPage(getClass().getResource("/Resources/HTML/help.html"));
+            ep.setPage(getClass().getResource("../../muvibee/resources/HTML/help.html"));
         } catch (IOException e) {
             e.printStackTrace();
         }
