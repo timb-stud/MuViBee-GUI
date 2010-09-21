@@ -87,13 +87,12 @@ public class MuViBee {
         deletedMediaList = new MediaList();
         expiredMediaList = new MediaList();
 
-        bookList = new LinkedList<Book>();
-        musicList = new LinkedList<Music>();
-        videoList = new LinkedList<Video>();
-
         bookList = DBSelector.getBookList(false, null);
         musicList = DBSelector.getMusicList(false, null);
         videoList = DBSelector.getVideoList(false, null);
+        filterBookList.addAll(bookList);
+        filterMusicList.addAll(musicList);
+        filterVideoList.addAll(videoList);
         deletedMediaList.addAll(DBSelector.getBookList(true, null));
         deletedMediaList.addAll(DBSelector.getMusicList(true, null));
         deletedMediaList.addAll(DBSelector.getVideoList(true, null));
