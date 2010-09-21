@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import muvibee.media.Book;
@@ -21,6 +22,9 @@ import muvibee.media.Video;
  */
 
 public class DBUtil {
+        private final static String GET_IMAGE_HASH_BOOK = "SELECT cover FROM books WHERE ID = ?";
+        private final static String GET_IMAGE_HASH_MUSIC = "SELECT cover FROM music WHERE ID = ?";
+        private final static String GET_IMAGE_HASH_VIDEO = "SELECT cover FROM video WHERE ID = ?";
 	private final static String COVER_PATH = "data/images/";
 	private final static String SQL_UPDATE_BOOK  = "UPDATE books SET title = ?, ean = ?, genre = ?, year = ?,"
                 + " location = ?, lendto = ?, lenddate = ?, backdate = ?, rating = ?, description = ?,"
@@ -214,16 +218,26 @@ public class DBUtil {
         public static void dbDelete(Media m) {
             try {
                 con = DBConnector.getConnection();
+                PreparedStatement select_hash = null;
                 PreparedStatement ps = null;
                 if (m instanceof Book) {
+                    select_hash = con.prepareStatement(GET_IMAGE_HASH_BOOK);
                     ps = con.prepareStatement(SQL_DELETE_BOOK);
                 }
                 if (m instanceof Music) {
+                    select_hash = con.prepareStatement(GET_IMAGE_HASH_MUSIC);
                     ps = con.prepareStatement(SQL_DELETE_MUSIC);
                 }
                 if (m instanceof Video) {
+                    select_hash = con.prepareStatement(GET_IMAGE_HASH_VIDEO);
                     ps = con.prepareStatement(SQL_DELETE_VIDEO);
                 }
+                select_hash.setInt(1, m.getID());
+                ResultSet rs = select_hash.executeQuery();
+                rs.next();
+                int hash_cover = rs.getInt(1);
+                File f = new File(COVER_PATH + hash_cover + ".jpg");
+                f.delete();
                 ps.setInt(1, m.getID());
                 ps.execute();
                 con.prepareStatement("SHUTDOWN").execute();
