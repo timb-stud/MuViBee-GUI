@@ -6,7 +6,10 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import muvibee.media.Book;
 import muvibee.media.Media;
@@ -45,9 +48,13 @@ public class DBUtil {
                 + " lendto, lenddate, backdate, rating, description, comment, cover, format, director, actor,"
                 + " isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        private final static String SQL_DELETE_BOOK = "DELETE FROM books WHERE ID = ?";
-        private final static String SQL_DELETE_MUSIC = "DELETE FROM music WHERE ID = ?";
-        private final static String SQL_DELETE_VIDEO = "DELETE FROM video WHERE ID = ?";
+        private final static String SQL_DELETE_BOOK     = "DELETE FROM books WHERE ID = ?";
+        private final static String SQL_DELETE_MUSIC    = "DELETE FROM music WHERE ID = ?";
+        private final static String SQL_DELETE_VIDEO    = "DELETE FROM video WHERE ID = ?";
+
+        private final static String SQL_MAXID_BOOK      = "SELECT MAX(ID) FROM books";
+        private final static String SQL_MAXID_MUSIC     = "SELECT MAX(ID) FROM music";
+        private final static String SQL_MAXID_VIDEO     = "SELECT MAX(ID) FROM video";
 
 	private static Connection con = null;
 		
@@ -101,6 +108,7 @@ public class DBUtil {
             ps.setBoolean(16, b.isDeleted());
             ps.executeUpdate();
             System.out.println("Book added");
+            b.setID(getMaxBookID());
 	}
 
 	private static void insertMusic(Music m) throws SQLException {
@@ -123,6 +131,7 @@ public class DBUtil {
             ps.setBoolean(16, m.isDeleted());
             ps.executeUpdate();
             System.out.println("Music added");
+            m.setID(getMaxMusicID());
 	}
 
 	private static void insertVideo(Video v) throws SQLException {
@@ -145,6 +154,7 @@ public class DBUtil {
             ps.setBoolean(16, v.isDeleted());
             ps.executeUpdate();
             System.out.println("Video added");
+            v.setID(getMaxVideoID());
         }
 
 	private static String imageWriteToFile(BufferedImage i)  {
@@ -207,9 +217,7 @@ public class DBUtil {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-	
 	}
-
 
         public static void dbDelete(Media m) {
             try {
@@ -230,5 +238,55 @@ public class DBUtil {
             } catch (SQLException e) {
                     e.printStackTrace();
             }
+        }
+
+        private static int getMaxBookID () {
+            int maxBookID = -1;
+            try {
+                con = DBConnector.getConnection();
+                PreparedStatement ps = null;
+                ps = con.prepareStatement(SQL_MAXID_BOOK);
+                ResultSet rs = null;
+                rs=ps.executeQuery();
+                rs.next();
+                maxBookID = rs.getInt(1);
+                con.prepareStatement("SHUTDOWN").execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return maxBookID;
+        }
+        private static int getMaxMusicID () {
+            int maxMusicID = -1;
+            try {
+                con = DBConnector.getConnection();
+                PreparedStatement ps = null;
+                ps = con.prepareStatement(SQL_MAXID_BOOK);
+                ResultSet rs = null;
+                rs=ps.executeQuery();
+                rs.next();
+                maxMusicID = rs.getInt(1);
+                con.prepareStatement("SHUTDOWN").execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return maxMusicID;
+        }
+
+        private static int getMaxVideoID () {
+            int maxVideoID = -1;
+            try {
+                con = DBConnector.getConnection();
+                PreparedStatement ps = null;
+                ps = con.prepareStatement(SQL_MAXID_VIDEO);
+                ResultSet rs = null;
+                rs=ps.executeQuery();
+                rs.next();
+                maxVideoID = rs.getInt(1);
+                con.prepareStatement("SHUTDOWN").execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return maxVideoID;
         }
 }
