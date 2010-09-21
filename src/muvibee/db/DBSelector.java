@@ -119,7 +119,7 @@ public class DBSelector {
                 b.setDescription(rs.getString(11));
                 b.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     b.setCover(cover);
                 } catch (IIOException e){
                     BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
@@ -151,7 +151,7 @@ public class DBSelector {
                 m.setDescription(rs.getString(11));
                 m.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     m.setCover(cover);
                 } catch (IIOException e){
                     BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
@@ -183,7 +183,7 @@ public class DBSelector {
                 v.setDescription(rs.getString(11));
                 v.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     v.setCover(cover);
                 } catch (IIOException e){
                     BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
