@@ -41,6 +41,7 @@ import muvibee.media.Video;
  */
 
 public class DBSelector {
+        private final static String COVER_PATH          = "data/images/";
 	private final static String SQL_GET_BOOKS  	= "SELECT * FROM books WHERE isdeleted = ? ";
 	private final static String SQL_GET_MUSIC  	= "SELECT * FROM music WHERE isdeleted = ? ";
 	private final static String SQL_GET_VIDEOS      = "SELECT * FROM video WHERE isdeleted = ? ";
@@ -118,7 +119,7 @@ public class DBSelector {
                 b.setDescription(rs.getString(11));
                 b.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13)));
                     b.setCover(cover);
                 } catch (IIOException e){
                     BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
@@ -150,7 +151,7 @@ public class DBSelector {
                 m.setDescription(rs.getString(11));
                 m.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13)));
                     m.setCover(cover);
                 } catch (IIOException e){
                     BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
@@ -182,7 +183,7 @@ public class DBSelector {
                 v.setDescription(rs.getString(11));
                 v.setComment(rs.getString(12));
                 try {
-                    BufferedImage cover = ImageIO.read(new File (rs.getString(13)));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13)));
                     v.setCover(cover);
                 } catch (IIOException e){
                     BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
@@ -196,8 +197,4 @@ public class DBSelector {
                 videoList.add(v);
             }
 	}
-
-	
-	
-
 }
