@@ -52,11 +52,24 @@ public class DBSelector {
 	private static LinkedList<Music> musicList;
 	private static LinkedList<Video> videoList;
 	
-	public DBSelector(Boolean deleted, String orderBy) {
-		selectMedia(deleted, orderBy);
+//	public DBSelector(Boolean deleted, String orderBy) {
+//		selectMedia(deleted, orderBy);
+//	}
+
+        public static LinkedList<Book> getBookList(Boolean deleted, String orderBy) {
+            selectMedia(deleted, orderBy);
+            return bookList;
+	}
+	public static LinkedList<Music> getMusicList(Boolean deleted, String orderBy) {
+            selectMedia(deleted, orderBy);
+            return musicList;
+	}
+	public static LinkedList<Video> getVideoList(Boolean deleted, String orderBy) {
+            selectMedia(deleted, orderBy);
+            return videoList;
 	}
 	
-	public void selectMedia(Boolean isDeleted, String orderBy) {
+	private static void selectMedia(Boolean isDeleted, String orderBy) {
             try {
                 if (orderBy == null || orderBy.compareTo("") == 0
                                     || orderBy.compareTo(" ") == 0
@@ -88,7 +101,7 @@ public class DBSelector {
 		
 	}
 
-	private void CreateBookList(ResultSet rs) throws SQLException, IOException {
+	private static void CreateBookList(ResultSet rs) throws SQLException, IOException {
             bookList = new LinkedList<Book>();
             while (rs.next()) {
                 Book b = new Book();
@@ -114,13 +127,13 @@ public class DBSelector {
                 }
                 b.setAuthor(rs.getString(14));
                 b.setLanguage(rs.getString(15));
-                b.setLanguage(rs.getString(16));
+                b.setIsbn(rs.getString(16));
                 b.setDeleted(rs.getBoolean(17));
                 bookList.add(b);
 
             }
 	}
-	private void CreateMusicList(ResultSet rs) throws SQLException, IOException {
+	private static void CreateMusicList(ResultSet rs) throws SQLException, IOException {
             musicList = new LinkedList<Music>();
             while (rs.next()) {
                 Music m = new Music();
@@ -152,7 +165,7 @@ public class DBSelector {
 
             }
 	}
-	private void CreateVideoList(ResultSet rs) throws SQLException, IOException {
+	private static void CreateVideoList(ResultSet rs) throws SQLException, IOException {
             videoList = new LinkedList<Video>();
             while (rs.next()) {
                 Video v = new Video();
@@ -184,15 +197,7 @@ public class DBSelector {
             }
 	}
 
-	public static LinkedList<Book> getBookList() {
-		return bookList;
-	}
-	public static LinkedList<Music> getMusicList() {
-		return musicList;
-	}
-	public static LinkedList<Video> getVideoList() {
-		return videoList;
-	}
+	
 	
 
 }

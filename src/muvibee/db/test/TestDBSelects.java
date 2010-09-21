@@ -22,14 +22,13 @@ public class TestDBSelects {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		DBSelector dbs = new DBSelector(false, null);
 		LinkedList<Book> bookList;
 		LinkedList<Music> musicList;
 		LinkedList<Video> videoList;
 
-		bookList 	= dbs.getBookList();
-		musicList 	= dbs.getMusicList();
-		videoList 	= dbs.getVideoList();
+		bookList 	= DBSelector.getBookList(false, null);
+		musicList 	= DBSelector.getMusicList(false, null);
+		videoList 	= DBSelector.getVideoList(false, null);
 
 		for (Book book : bookList) {
 			System.out.println("Books: " + book.toString());
