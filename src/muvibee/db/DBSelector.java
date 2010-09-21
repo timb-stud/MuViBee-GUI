@@ -122,7 +122,7 @@ public class DBSelector {
                     BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     b.setCover(cover);
                 } catch (IIOException e){
-                    BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
+                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + "default_cover.jpg"));
                     System.out.println("Bild nicht gefunden: " + rs.getString(13));
                     b.setCover(cover);
                 }
