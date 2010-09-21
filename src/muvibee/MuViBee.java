@@ -8,11 +8,8 @@ package muvibee;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
-import javax.swing.JList;
-import javax.swing.event.ListSelectionListener;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -375,8 +372,6 @@ public class MuViBee {
     }
 
     public void resetSearch() {
-        mainFrame.getDeleteSearchButton().setForeground(Color.BLACK);
-        mainFrame.getDeleteSearchButton().setFont(new Font(Font.SANS_SERIF,Font.PLAIN,10));
         mainFrame.resetSearch();
         resetFilterLists();
     }
@@ -393,8 +388,6 @@ public class MuViBee {
     }
 
     public void search() {
-        mainFrame.getDeleteSearchButton().setForeground(Color.red);
-        mainFrame.getDeleteSearchButton().setFont(new Font(Font.SANS_SERIF,Font.BOLD,13));
         String str = mainFrame.getSearchString();
         resetFilterLists();
         for (Book b : bookList) {
@@ -740,5 +733,13 @@ public class MuViBee {
             medias[i] = ((DeletedItemEntry)deletedList.getSelectedValues()[i]).getMedia();
         }
         setCurrentDeletedMedia(medias);
+    }
+
+    public void showDeleteSearchButton(boolean b) {
+        mainFrame.deleteSearchButtonSetVisible(b);
+    }
+
+    public void setListsColor(Color color) {
+        mainFrame.setListsColor(color);
     }
 }

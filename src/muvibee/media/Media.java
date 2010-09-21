@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import muvibee.db.DBInsertor;
+import muvibee.db.DBUpdater;
 
 public abstract class Media extends Observable {
 
@@ -59,9 +60,8 @@ public abstract class Media extends Observable {
         notifyObservers();
     }
 
-    //TODO equals
-    public void insertIntoDB() {
-        DBInsertor.insertIntoDB(this);
+    public void updateDB() {
+        DBUpdater.dbUpdate(this);
     }
 
     public int getID() {
@@ -267,6 +267,6 @@ public abstract class Media extends Observable {
 
     @Override
     public String toString() {
-        return title;
+        return "ID " + ID + " : " + title;
     }
 }

@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
@@ -23,21 +22,21 @@ public class DBInsertor {
 	private static Connection con = null;
 
 	public static void insertIntoDB(Media m) {
-		try {
-			con = DBConnector.getConnection();
-			if (m instanceof Book) {
-                            insertBook((Book)m);
-			}
-			if (m instanceof Music) {
-                            insertMusic((Music)m);
-			}
-			if (m instanceof Video) {
-                            insertVideo((Video)m);
-			}
-			con.prepareStatement("SHUTDOWN").execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			con = DBConnector.getConnection();
+//			if (m instanceof Book) {
+//                            insertBook((Book)m);
+//			}
+//			if (m instanceof Music) {
+//                            insertMusic((Music)m);
+//			}
+//			if (m instanceof Video) {
+//                            insertVideo((Video)m);
+//			}
+//			con.prepareStatement("SHUTDOWN").execute();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	private static void insertBook(Book b) throws SQLException {
@@ -63,7 +62,6 @@ public class DBInsertor {
 	}
 
 	private static void insertMusic(Music m) throws SQLException {
-
             PreparedStatement ps = con.prepareStatement(SQL_INSERT_MUSIC);
             ps.setString(1, m.getTitle());
             ps.setString(2, m.getEan());
@@ -87,7 +85,7 @@ public class DBInsertor {
 	}
 
 	private static void insertVideo(Video v) throws SQLException {
-	PreparedStatement ps = con.prepareStatement(SQL_INSERT_MUSIC);
+            PreparedStatement ps = con.prepareStatement(SQL_INSERT_VIDEO);
             ps.setString(1, v.getTitle());
             ps.setString(2, v.getEan());
             ps.setString(3, v.getGenre());
