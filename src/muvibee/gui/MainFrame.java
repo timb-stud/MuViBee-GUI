@@ -58,12 +58,20 @@ import util.tree.PrioTree;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    /**
+     * Erstellt Delete Liste und setzt diese in die GUI
+     * @param mvb
+     */
     private void createDeletedList(MuViBee mvb) {
         dil = new DeletedItemsList(mvb);
         mvb.getDeletedMediaList().addObserver(dil);
         restoreItemsScrollpane.setViewportView(dil);
     }
-    
+
+    /**
+     * Erstellt Cover Liste und setzt diese in die GUI
+     * @param mvb
+     */
     private void createCoverList(MuViBee mvb){
         coverListBook = new CoverList(mvb);
         mvb.getBookList().addObserver(coverListBook);
@@ -77,6 +85,10 @@ public class MainFrame extends javax.swing.JFrame {
         coverListVideoScrollPane.setViewportView(coverListVideo);
     }
 
+        /**
+     * Erstellt Tree und setzt diese in die GUI
+     * @param mvb
+     */
     private void createTree(MuViBee mvb){
         prioTreeBook = new PrioTree(mvb);
         mvb.getBookList().addObserver(prioTreeBook);
@@ -91,6 +103,10 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
+    /**
+     * Erstellt Details Table und setzt diese in die GUI
+     * @param mvb
+     */
     private void createDetailsTable(MuViBee mvb){
         detailsTableBook = new DetailsTable(mvb);
         mvb.getBookList().addObserver(detailsTableBook);
@@ -104,6 +120,10 @@ public class MainFrame extends javax.swing.JFrame {
         detailsListVideoScrollPane.setViewportView(detailsTableVideo);
     }
 
+    /**
+     * Erstellt Cover Details Liste und setzt diese in die GUI
+     * @param mvb
+     */
     private void createCoverDetailsList(MuViBee mvb){
         coverDetailsBookList = new CoverDetailsList(mvb);
         mvb.getBookList().addObserver(coverDetailsBookList);

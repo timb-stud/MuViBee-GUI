@@ -1,16 +1,11 @@
 package util.coversList;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -21,18 +16,25 @@ import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
 
-
+/**
+ * Erstellt List für Cover Ansicht
+ * @author Lucian Schneider, Christian Rech
+ */
 public class CoverList extends JList implements Observer{
 
 	DefaultListModel listModel;
-	
+
+        /**
+         * Kümmert sich um Aufbau der Liste und fügt SelectionListner hinzu
+         * @param muvibee
+         */
 	public CoverList(final MuViBee muvibee) {
 		listModel = new DefaultListModel();
 	   	setModel(listModel);
 	   	setLayoutOrientation(JList.HORIZONTAL_WRAP);
 	   	setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		CoverListRenderer cr = new CoverListRenderer(CoverListRenderer.rendererType.ICON_LIST);
+		CoverListRenderer cr = new CoverListRenderer();
 		cr.setPreferredSize(new Dimension(100, 120));
 		setCellRenderer(cr);
 		setVisibleRowCount(-1);
@@ -53,7 +55,11 @@ public class CoverList extends JList implements Observer{
 	        	}
 	        });
 	}
-	
+
+        /**
+         * Kümmert sich ums hinzufügen eines Elements
+         * @param entry
+         */
 	private void listAdd(CoverListEntry entry){
 		listModel.addElement(entry);
 		validate();
@@ -62,6 +68,12 @@ public class CoverList extends JList implements Observer{
 	}
 
 
+        /**
+         * Observer Pattern: Wird aufgerufen sobald sich MediaList verändert.
+         * Löscht liste und erzeugt neue
+         * @param list - neue Liste
+         * @param o - ist leer
+         */
         @Override
 	public void update(Observable list, Object o) {
             LinkedList<Media> mList = ((MediaList) list).getList();

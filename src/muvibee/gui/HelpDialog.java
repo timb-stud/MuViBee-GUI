@@ -13,16 +13,15 @@ import java.util.ResourceBundle;
 import muvibee.MuViBee;
 
 /**
- *
- * @author Christian
+ * Erstellt Help Dialog und ladet HTML Datei mit Daten
+ * @author Christian Rech, Stanislav Tartakowski
  */
 public class HelpDialog extends JDialog {
 
     public HelpDialog(JFrame parent) {
-        super(parent, "Help Dialog", true);
+        super(parent, ResourceBundle.getBundle(MuViBee.mainBundlePath).getString("helpDialog"), true);
         final JDialog dialog = this;
         setSize(500, 500);
-//        setLocationRelativeTo(null);
 
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String close = bundle.getString("close");
@@ -58,7 +57,6 @@ public class HelpDialog extends JDialog {
                     try {
                         ep.setPage(arg0.getURL());
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }

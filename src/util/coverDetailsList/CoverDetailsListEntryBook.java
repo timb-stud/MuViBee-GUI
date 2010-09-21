@@ -2,6 +2,11 @@ package util.coverDetailsList;
 
 import muvibee.media.Book;
 
+/**
+ * Spezialisierte für Bücher. Super Klasse ist CoverDetailsListEntry
+ * @author Christian Rech
+ */
+
 @SuppressWarnings("serial")
 public class CoverDetailsListEntryBook extends CoverDetailsListEntry{
 

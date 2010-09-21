@@ -6,8 +6,8 @@
 package muvibee.utils;
 
 /**
- *
- * @author christian
+ * Enum Klasse für mögliche Sortierungen
+ * @author Christian Rech
  */
 public enum SortTypes {
      DIRECTOR,
