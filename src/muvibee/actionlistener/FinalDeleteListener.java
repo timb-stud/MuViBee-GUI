@@ -21,9 +21,6 @@ public class FinalDeleteListener implements ActionListener{
         this.mvb = mvb;
     }
 
-
-
-
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() instanceof JButton) {
            JButton b = (JButton) e.getSource();

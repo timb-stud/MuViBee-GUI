@@ -20,6 +20,7 @@ public class ResetSearchActionListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        mvb.showDeleteSearchButton(false);
         mvb.resetSearch();
     }
 

@@ -226,6 +226,8 @@ public class MainFrame extends javax.swing.JFrame {
         hideMusicButton.setVisible(false);
         hideVideoButton.setVisible(false);
 
+        deleteSearchButton.setVisible(false);
+
         //init languageComboBox
         languagesComboBox.addActionListener(new LanguageActionListener(mvb));
         String[] languages = {"en", "de", "ro","ru", "tr"};
@@ -2563,6 +2565,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     public DeletedItemsList getDeletedList() {
         return dil;
+    }
+
+    public void deleteSearchButtonSetVisible(boolean b) {
+        deleteSearchButton.setVisible(b);
     }
 
 
