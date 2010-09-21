@@ -83,6 +83,7 @@ public class DBUtil {
 
         private static void insertBook(Book b) throws SQLException {
             PreparedStatement ps = con.prepareStatement(SQL_INSERT_BOOK);
+            System.out.println(b.toString());
             ps.setString(1, b.getTitle());
             ps.setString(2, b.getEan());
             ps.setString(3, b.getGenre());
