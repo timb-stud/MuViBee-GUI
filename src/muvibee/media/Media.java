@@ -13,7 +13,7 @@ import muvibee.db.DBUpdater;
 
 public abstract class Media extends Observable {
 
-    private int ID;
+    private int ID = -1;
     private String title = "";
     private String ean = "";
     private String genre = "";
