@@ -382,7 +382,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        reloadLabels(mvb.getMainBundlePath());
+        reloadLabels(MuViBee.mainBundlePath);
     }
 
     public final void setOverviewInformation(MuViBee mvb) {

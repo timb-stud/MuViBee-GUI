@@ -66,7 +66,7 @@ public class MuViBee {
     private int sortVideoByActors = 0;
     private int sortVideoByRegisseur = 0;
 
-    private String mainBundlePath = "muvibee.resources.MuViBee";
+    public static String mainBundlePath = "muvibee.resources.MuViBee";
 
     public MuViBee() {
         final MuViBee mvb = this;
@@ -365,10 +365,6 @@ public class MuViBee {
 
     public MediaList getDeletedMediaList() {
         return deletedMediaList;
-    }
-
-    public String getMainBundlePath() {
-        return mainBundlePath;
     }
 
     public static void main(String args[]) {

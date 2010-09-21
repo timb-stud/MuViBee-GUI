@@ -34,7 +34,7 @@ public class SearchActionListener implements ActionListener{
                 }
             }
             mvb.showDeleteSearchButton(true);
-            mvb.setListsColor(Color.YELLOW);
+            mvb.setListsColor(new Color(200,214,219));
         }
     }
 
