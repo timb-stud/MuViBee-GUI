@@ -148,7 +148,7 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                          <Component id="lentToTextField" pref="350" max="32767" attributes="1"/>
+                                          <Component id="lentToTextField" pref="358" max="32767" attributes="1"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
@@ -170,7 +170,7 @@
                                   <Component id="isLentLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                   <Component id="isLentCheckBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="325" max="32767" attributes="0"/>
+                                  <EmptySpace pref="341" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -442,7 +442,7 @@
                       <Component id="isbnTextField" alignment="0" max="32767" attributes="1"/>
                       <Component id="authorTextField" alignment="0" min="-2" pref="160" max="-2" attributes="1"/>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

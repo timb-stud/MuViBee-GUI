@@ -63,7 +63,7 @@ public class AboutDialog extends JDialog{
         });
 
         try {
-            htmlPane.setPage("about.html");
+            htmlPane.setPage(getClass().getResource("../../muvibee/resources/HTML/about.html"));
         } catch (IOException e) {
             e.printStackTrace();
         }

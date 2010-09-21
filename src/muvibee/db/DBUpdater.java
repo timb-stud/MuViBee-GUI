@@ -36,8 +36,10 @@ public class DBUpdater {
 	public static void dbUpdate(Media m) {
             if (m.getID() == -1) {
                 insertMediaDB(m);
+                System.out.println("INSERT NEW");
             } else {
                 updateMediaDB(m);
+                System.out.println("UPDATE OLD");
             }
 	}
 
