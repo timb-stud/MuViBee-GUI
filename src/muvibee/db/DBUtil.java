@@ -184,7 +184,7 @@ public class DBUtil {
                 ps.setInt(9, m.getRating());
                 ps.setString(10, m.getDescription());
                 ps.setString(11, m.getComment());
-                ps.setString(12, ("data/images/default.jpg"));
+                ps.setString(12, ("data/images/default_cover.jpg"));
 //			ps.setString(12, ("data/images/" + m.getCover().hashCode() + ".jpg"));
                 if (m instanceof Book) {
                         ps.setString(13, ((Book)m).getAuthor());
