@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import muvibee.db.DBSelector;
 import muvibee.gui.AboutDialog;
 import muvibee.gui.AdvancedSearchDialog;
 import muvibee.gui.HelpDialog;
@@ -89,6 +90,13 @@ public class MuViBee {
         bookList = new LinkedList<Book>();
         musicList = new LinkedList<Music>();
         videoList = new LinkedList<Video>();
+
+        bookList = DBSelector.getBookList(false, null);
+        musicList = DBSelector.getMusicList(false, null);
+        videoList = DBSelector.getVideoList(false, null);
+        deletedMediaList.addAll(DBSelector.getBookList(true, null));
+        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
+        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
 
         SwingUtilities.invokeLater(new Runnable() {
 
