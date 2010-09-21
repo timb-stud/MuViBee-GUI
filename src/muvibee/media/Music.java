@@ -47,8 +47,8 @@ public class Music extends Media {
     @Override
     public String toString() {
         return super.toString()
-         + " Format: " + format
-         + " Interpreter: " + interpreter
-         + " Type: " + type;
+         + "\n Format: " + format
+         + "\n Interpreter: " + interpreter
+         + "\n Type: " + type;
     }
 }

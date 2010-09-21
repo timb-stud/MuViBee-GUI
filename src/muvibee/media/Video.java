@@ -47,8 +47,8 @@ public class Video extends Media {
     @Override
     public String toString() {
         return super.toString()
-         + " Format: " + format
-         + " Director: " + director
-         + " Actors: " + actors;
+         + "\n Format: " + format
+         + "\n Director: " + director
+         + "\n Actors: " + actors;
     }
 }

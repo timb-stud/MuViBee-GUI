@@ -49,8 +49,8 @@ public class Book extends Media {
     @Override
     public String toString() {
         return super.toString()
-         + " Author: " + author
-         + " Language: " + language
-         + " ISBN: " + isbn;
+         + "\n Author: " + author
+         + "\n Language: " + language
+         + "\n ISBN: " + isbn;
     }
 }
