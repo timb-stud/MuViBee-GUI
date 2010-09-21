@@ -159,7 +159,6 @@ public class MuViBee {
             StatusBarModel.getInstance().setFailMessage(bundle.getString("illegalYear"));
         }else{
             if(returnStatus == AdvancedSearchDialog.RET_OK){
-                mainFrame.getDeleteSearchButton().setForeground(Color.red);
                 Book b = dialog.getBook();
                 Music m = dialog.getMusic();
                 Video v = dialog.getVideo();
@@ -375,6 +374,7 @@ public class MuViBee {
         mainFrame.resetSearch();
         resetFilterLists();
         setListsColor(Color.white);
+        mainFrame.deleteSearchButtonSetVisible(false);
     }
 
     public void resetFilterLists() {
