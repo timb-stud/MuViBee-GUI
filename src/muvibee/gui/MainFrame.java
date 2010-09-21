@@ -318,7 +318,8 @@ public class MainFrame extends javax.swing.JFrame {
         deleteVideoButton.addActionListener(dl);
 
         FinalDeleteListener fdl = new FinalDeleteListener(mvb);
-        deleteItemButton.addActionListener(fdl);
+        finalDeleteItemButton.addActionListener(fdl);
+        finalDeleteEverythingButton.addActionListener(fdl);
 
         RestoreListener rl = new RestoreListener(mvb);
         restoreItemButton.addActionListener(rl);
@@ -1055,9 +1056,11 @@ public class MainFrame extends javax.swing.JFrame {
         hideVideoButton = new javax.swing.JButton();
         restorePanel = new javax.swing.JPanel();
         restoreItemButton = new javax.swing.JButton();
-        deleteItemButton = new javax.swing.JButton();
+        finalDeleteItemButton = new javax.swing.JButton();
         restoreItemsScrollpane = new javax.swing.JScrollPane();
         restoreEverythingButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        finalDeleteEverythingButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MuViBee");
@@ -2246,10 +2249,21 @@ public class MainFrame extends javax.swing.JFrame {
         restoreItemButton.setText("Wiederhestellen");
         restoreItemButton.setName("restore"); // NOI18N
 
-        deleteItemButton.setText("Endgültig löschen");
+        finalDeleteItemButton.setText("Endgültig löschen");
+        finalDeleteItemButton.setName("final delete"); // NOI18N
 
         restoreEverythingButton.setText("Alles wiederherstellen");
         restoreEverythingButton.setName("restore everything"); // NOI18N
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        finalDeleteEverythingButton.setText("Alles löschen");
+        finalDeleteEverythingButton.setName("final delete everything"); // NOI18N
+        finalDeleteEverythingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalDeleteEverythingButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout restorePanelLayout = new javax.swing.GroupLayout(restorePanel);
         restorePanel.setLayout(restorePanelLayout);
@@ -2262,21 +2276,28 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(restorePanelLayout.createSequentialGroup()
                         .addComponent(restoreItemButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(restoreEverythingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(finalDeleteItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(restoreEverythingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(finalDeleteEverythingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         restorePanelLayout.setVerticalGroup(
             restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, restorePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(restoreItemButton)
-                    .addComponent(deleteItemButton)
-                    .addComponent(restoreEverythingButton)))
+                .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(restoreEverythingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(finalDeleteEverythingButton))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(restoreItemButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(finalDeleteItemButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         tabbedPane.addTab("Wiederherstellen", restorePanel);
@@ -2316,6 +2337,10 @@ public class MainFrame extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowActivated
 
+    private void finalDeleteEverythingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalDeleteEverythingButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_finalDeleteEverythingButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutButton;
@@ -2344,7 +2369,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel coverMusicLabel;
     private javax.swing.JLabel coverVideoLabel;
     private javax.swing.JButton deleteBookButton;
-    private javax.swing.JButton deleteItemButton;
     private javax.swing.JButton deleteMusicButton;
     private javax.swing.JButton deleteSearchButton;
     private javax.swing.JButton deleteVideoButton;
@@ -2365,6 +2389,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField eanMusicTextField;
     private javax.swing.JLabel eanVideoLabel;
     private javax.swing.JTextField eanVideoTextField;
+    private javax.swing.JButton finalDeleteEverythingButton;
+    private javax.swing.JButton finalDeleteItemButton;
     private javax.swing.JComboBox formatMusicComboBox;
     private javax.swing.JLabel formatMusicLabel;
     private javax.swing.JComboBox formatVideoComboBox;
@@ -2389,6 +2415,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane itemMusicScrollPane;
     private javax.swing.JPanel itemVideoPanel;
     private javax.swing.JScrollPane itemVideoScrollPane;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel languageBookLabel;
     private javax.swing.JTextField languageBookTextField;
     private javax.swing.JComboBox languagesComboBox;

@@ -8,11 +8,8 @@ package muvibee;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
-import javax.swing.JList;
-import javax.swing.event.ListSelectionListener;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;

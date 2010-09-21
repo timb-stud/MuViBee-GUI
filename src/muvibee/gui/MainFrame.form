@@ -2271,9 +2271,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="restoreItemButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="restoreEverythingButton" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="finalDeleteItemButton" min="-2" pref="137" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jSeparator1" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="restoreEverythingButton" min="-2" pref="158" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="deleteItemButton" min="-2" pref="137" max="-2" attributes="0"/>
+                              <Component id="finalDeleteEverythingButton" min="-2" pref="136" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -2284,12 +2288,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="restoreItemsScrollpane" pref="444" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="restoreItemButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleteItemButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="restoreEverythingButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="restoreItemsScrollpane" pref="456" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="restoreEverythingButton" alignment="3" max="32767" attributes="1"/>
+                              <Component id="finalDeleteEverythingButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jSeparator1" alignment="0" max="32767" attributes="1"/>
+                          <Component id="restoreItemButton" alignment="0" max="32767" attributes="1"/>
+                          <Component id="finalDeleteItemButton" alignment="0" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
@@ -2302,9 +2310,10 @@
                 <Property name="name" type="java.lang.String" value="restore" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="deleteItemButton">
+            <Component class="javax.swing.JButton" name="finalDeleteItemButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Endg&#xfc;ltig l&#xf6;schen"/>
+                <Property name="name" type="java.lang.String" value="final delete" noResource="true"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="restoreItemsScrollpane">
@@ -2316,6 +2325,20 @@
                 <Property name="text" type="java.lang.String" value="Alles wiederherstellen"/>
                 <Property name="name" type="java.lang.String" value="restore everything" noResource="true"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator1">
+              <Properties>
+                <Property name="orientation" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="finalDeleteEverythingButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alles l&#xf6;schen"/>
+                <Property name="name" type="java.lang.String" value="final delete everything" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="finalDeleteEverythingButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
