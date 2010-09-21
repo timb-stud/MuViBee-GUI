@@ -2,6 +2,11 @@ package util.coverDetailsList;
 
 import muvibee.media.Music;
 
+/**
+ * Spezialisierte für Musik. Super Klasse ist CoverDetailsListEntry
+ * @author Christian Rech
+ */
+
 @SuppressWarnings("serial")
 public class CoverDetailsListEntryMusic extends CoverDetailsListEntry{
 

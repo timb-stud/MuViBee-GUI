@@ -7,12 +7,11 @@ package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import muvibee.MuViBee;
 
 /**
- *
- * @author Christian
+ * Actionlisterner für Hilfe Knopf
+ * @author Christian Rech
  */
 public class HelpActionListener implements ActionListener{
     private MuViBee mvb;

@@ -1,15 +1,14 @@
 package util.coversList;
 
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import muvibee.media.Media;
 import muvibee.utils.ResizeImageIcon;
 
+/**
+ * Erstellt ein Label und fügt diesem ein Cover hinzu
+ * @author Lucian Schneider, Christian Rech
+ */
 @SuppressWarnings("serial")
 public class CoverListEntry extends JLabel {
 
@@ -25,7 +24,7 @@ public class CoverListEntry extends JLabel {
                 this.icon = null;
 	}
 
-
+  //------(Getter & Setter )----->
         public Media getMedia() {
             return media;
         }

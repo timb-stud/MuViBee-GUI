@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author christian
+ * Dient dazu um ein Bild in vorgebene Größe zu ändern
+ * @author Christian Rech
  */
 public class ResizeImageIcon {
 
