@@ -462,6 +462,16 @@ public class MuViBee {
         mainFrame.reloadLabels(mainBundlePath);
     }
 
+
+    public void sortedByBook(){
+        StringBuilder sb = new StringBuilder();
+        for (SortTypes st : filterBookList.getSortedBy()){
+            sb.append(st.toString()).append(" --> ");
+        }
+        mainFrame.getSortPanelBooks().setName(sb.toString());
+    }
+
+
     public void sortBooksByTitle() {
         if (sortBookByTitle == 0) {
             sortBookByTitle = 1;

@@ -24,6 +24,7 @@ public class SortActionListener implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if(source instanceof JToggleButton){
+            mvb.sortedByBook();
             JToggleButton button = (JToggleButton)source;
             if(button.getName().equals("sort book title")){
                 mvb.sortBooksByTitle();
