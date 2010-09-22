@@ -271,9 +271,10 @@ public abstract class Media extends Observable {
 
     //TODO monate/tage vergleich
     public boolean matches(String str) {
-        return title.toLowerCase().contains(str.toLowerCase()) || genre.toLowerCase().contains(str.toLowerCase())
-                || location.toLowerCase().contains(str.toLowerCase()) || lentTo.toLowerCase().contains(str.toLowerCase())
-                || description.toLowerCase().contains(str.toLowerCase()) || comment.toLowerCase().contains(str.toLowerCase());
+        str = str.toLowerCase();
+        return title.toLowerCase().contains(str) || genre.toLowerCase().contains(str)
+                || location.toLowerCase().contains(str) || lentTo.toLowerCase().contains(str)
+                || description.toLowerCase().contains(str) || comment.toLowerCase().contains(str);
     }
 
     public boolean matches(Media m){

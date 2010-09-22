@@ -12,12 +12,16 @@ public class Music extends Media {
 
     @Override
     public boolean matches(String str) {
-        return super.matches(str) || format.contains(str) || interpreter.contains(str) || type.contains(str);
+        str = str.toLowerCase();
+        return super.matches(str) || format.toLowerCase().contains(str)
+                || interpreter.toLowerCase().contains(str)
+                || type.toLowerCase().contains(str);
     }
 
     public boolean matches(Music m){
-        return super.matches(m) && format.contains(m.format)
-                && interpreter.contains(m.interpreter) && type.contains(m.type);
+        return super.matches(m) && format.toLowerCase().contains(m.format.toLowerCase())
+                && interpreter.toLowerCase().contains(m.interpreter.toLowerCase())
+                && type.toLowerCase().contains(m.type.toLowerCase());
     }
 
     public String getFormat() {
