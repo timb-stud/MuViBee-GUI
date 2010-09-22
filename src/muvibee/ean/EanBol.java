@@ -113,7 +113,7 @@ public class EanBol {
 		return book;
 	}
 
-	public Music getMusicData(String ean) throws IOException {
+	public static Music getMusicData(String ean) throws IOException {
 		Music music = new Music();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -133,7 +133,7 @@ public class EanBol {
 		return music;
 	}
 
-	public Video getVideoData(String ean) throws IOException {
+	public static Video getVideoData(String ean) throws IOException {
 		Video video = new Video();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -174,7 +174,7 @@ public class EanBol {
 		}
 	}
 
-	private String interpreterFix(TagNode[] interpreterNode) {
+	private static String interpreterFix(TagNode[] interpreterNode) {
 		String s = interpreterNode[0].getText().toString();
 		s = s.substring(s.indexOf("Interpret"));
 		if (s.contains("bol.de")) {
