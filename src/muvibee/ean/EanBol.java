@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+
 import javax.imageio.ImageIO;
 import muvibee.media.Book;
 import muvibee.media.Media;
@@ -52,20 +53,11 @@ public class EanBol {
 		String ean = eanNode[0].getText().toString();
 		TagNode[] yearOfReleaseNode = node.getElementsByAttValue("class",
 				"value pm_veroeffentlichungsdatum", true, true);
-		if (yearOfReleaseNode[0].getText().toString().contains(".")) {
-			String releaseYear = yearOfReleaseNode[0].getText().toString();
-			releaseYear = releaseYear.replaceAll("[.]", "");
-			releaseYear = releaseYear.substring(4, releaseYear.length());
-			yearOfRelease = Integer.parseInt(releaseYear);
-		} else {
-			yearOfRelease = Integer.parseInt(yearOfReleaseNode[0].getText()
-					.toString().replaceAll("[a-zA-Z]", "").trim());
-		}
+		yearOfRelease = parseReleaseYear(yearOfReleaseNode);
 		TagNode[] genreNode = node.getElementsByAttValue("class",
 				"value pm_stilrichtung", true, true);
 		if (genreNode.length != 0)
 			genre = genreNode[0].getText().toString();
-
 		media.setTitle(title);
 		media.setReleaseYear(yearOfRelease);
 		media.setGenre(genre);
@@ -87,11 +79,11 @@ public class EanBol {
 		coverSource = coverSource.substring(coverSource.indexOf("http:"));
 		coverSource = coverSource.substring(0, coverSource.indexOf(".jpg") + 4);
 
-                BufferedImage image = ImageIO.read(new URL(coverSource));
-		media.setCover(image);
-
 		URL url_cover = new URL(coverSource);
 		InputStream inputStr = url_cover.openStream();
+
+		BufferedImage image = ImageIO.read(new URL(coverSource));
+		media.setCover(image);
 		FileOutputStream fos = new FileOutputStream(
 				"C:/Dokumente und Einstellungen/volkan g�kkaya/Desktop/test.jpeg");
 		int temp = -1;
@@ -121,7 +113,7 @@ public class EanBol {
 		return book;
 	}
 
-	public static Music getMusicData(String ean) throws IOException {
+	public Music getMusicData(String ean) throws IOException {
 		Music music = new Music();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -141,7 +133,7 @@ public class EanBol {
 		return music;
 	}
 
-	public static Video getVideoData(String ean) throws IOException {
+	public Video getVideoData(String ean) throws IOException {
 		Video video = new Video();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -162,7 +154,27 @@ public class EanBol {
 		return video;
 	}
 
-	private static String interpreterFix(TagNode[] interpreterNode) {
+	private static int parseReleaseYear(TagNode[] releaseYearNode) {
+		int yearOfRelease;
+
+		if (releaseYearNode[0].getText().toString().contains(".")) {
+			String releaseYear = releaseYearNode[0].getText().toString();
+			releaseYear = releaseYear.replaceAll("[.]", "");
+			releaseYear = releaseYear.substring(4, releaseYear.length());
+			yearOfRelease = Integer.parseInt(releaseYear);
+			return yearOfRelease;
+		} else {
+			String releaseYear = releaseYearNode[0].getText().toString();
+			releaseYear = releaseYear.replaceAll("&#228", "");
+			releaseYear = releaseYear.replaceAll("[a-zA-Z]", "");
+			releaseYear = releaseYear.replaceAll(" ", "");
+			releaseYear = releaseYear.replaceAll(";", "");
+			yearOfRelease = Integer.parseInt(releaseYear.trim());
+			return yearOfRelease;
+		}
+	}
+
+	private String interpreterFix(TagNode[] interpreterNode) {
 		String s = interpreterNode[0].getText().toString();
 		s = s.substring(s.indexOf("Interpret"));
 		if (s.contains("bol.de")) {
@@ -180,13 +192,5 @@ public class EanBol {
 		System.getProperties().put("proxySet", "true");
 		System.getProperties().put("proxyHost", proxy);
 		System.getProperties().put("proxyPort", port);
-	}
-
-	public static void main(String[] args) throws IOException {
-		EanBol eanDates = new EanBol();
-//		setProxy("www-proxy.htw-saarland.de", "3128");
-		// System.out.println(eanDates.getBookData("9783446235922"));
-		// System.out.println(eanDates.getMusicData("0602527394527"));
-		// System.out.println(eanDates.getVideoData("5050582778090"));
 	}
 }
