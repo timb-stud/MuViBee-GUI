@@ -3,4 +3,3 @@ dist
 nbproject/private
 data/database/muvibee.properties
 muvibee.properties
-hsqldb.jar
