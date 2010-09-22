@@ -240,7 +240,8 @@ public class DBUtil {
                 select_hash.setInt(1, m.getID());
                 ResultSet rs = select_hash.executeQuery();
                 rs.next();
-                int hash_cover = rs.getInt(1);
+                System.out.println(rs.toString());
+                String hash_cover = rs.getString(1);
                 System.out.println(COVER_PATH + hash_cover + ".jpg von ID " + m.getID());
                 File f = new File(COVER_PATH + hash_cover + ".jpg");
                 f.delete();
