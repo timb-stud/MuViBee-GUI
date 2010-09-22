@@ -149,9 +149,7 @@ public class DBSelector {
                     BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     b.setCover(cover);
                 } catch (IIOException e){
-                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + "default_cover.jpg"));
-                    System.out.println("Bild nicht gefunden: " + rs.getString(13));
-                    b.setCover(cover);
+                    b.setCover(Book.defaultCover);
                 }
                 b.setAuthor(rs.getString(14));
                 b.setLanguage(rs.getString(15));
@@ -181,9 +179,7 @@ public class DBSelector {
                     BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     m.setCover(cover);
                 } catch (IIOException e){
-                    BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
-                    System.out.println("Bild nicht gefunden: " + rs.getString(13));
-                    m.setCover(cover);
+                    m.setCover(Music.defaultCover);
                 }
                 m.setFormat(rs.getString(14));
                 m.setInterpreter(rs.getString(15));
@@ -213,9 +209,7 @@ public class DBSelector {
                     BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
                     v.setCover(cover);
                 } catch (IIOException e){
-                    BufferedImage cover = ImageIO.read(new File ("data/images/default_cover.jpg"));
-                    System.out.println("Bild nicht gefunden: " + rs.getString(13));
-                    v.setCover(cover);
+                    v.setCover(Video.defaultCover);
                 }
                 v.setFormat(rs.getString(14));
                 v.setDirector(rs.getString(15));
