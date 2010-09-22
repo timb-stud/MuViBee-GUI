@@ -31,15 +31,15 @@ public class DBUtil {
 	private final static String COVER_PATH = "data/images/";
 	private final static String SQL_UPDATE_BOOK  = "UPDATE book SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
                 + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
-                + " comment = ?, cover = ?,"
+                + " comment = ?,"
                 + " author = ?, language = ?, isbn = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 	private final static String SQL_UPDATE_MUSIC = "UPDATE music SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
                 + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
-                + " comment = ?, cover = ?,"
+                + " comment = ?,"
                 + " format = ?, interpreter = ?, type = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 	private final static String SQL_UPDATE_VIDEO = "UPDATE video SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
                 + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
-                + " comment = ?, cover = ?,"
+                + " comment = ?,"
                 + " format = ?, director = ?, actor = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 
         private final static String SQL_INSERT_BOOK  = "INSERT INTO book (ID, title, ean, genre, releaseyear, location,"
@@ -194,25 +194,25 @@ public class DBUtil {
                 ps.setInt(9, m.getRating());
                 ps.setString(10, m.getDescription());
                 ps.setString(11, m.getComment());
-		ps.setString(12, (String.valueOf(m.getCover().hashCode())));
+//		ps.setString(12, (String.valueOf(m.getCover().hashCode())));
                 if (m instanceof Book) {
-                        ps.setString(13, ((Book)m).getAuthor());
-                        ps.setString(14, ((Book)m).getLanguage());
-                        ps.setString(15, ((Book)m).getIsbn());
+                        ps.setString(12, ((Book)m).getAuthor());
+                        ps.setString(13, ((Book)m).getLanguage());
+                        ps.setString(14, ((Book)m).getIsbn());
                 }
                 if (m instanceof Music) {
-                        ps.setString(13, ((Music)m).getFormat());
-                        ps.setString(14, ((Music)m).getInterpreter());
-                        ps.setString(15, ((Music)m).getType());
+                        ps.setString(12, ((Music)m).getFormat());
+                        ps.setString(13, ((Music)m).getInterpreter());
+                        ps.setString(14, ((Music)m).getType());
                 }
                 if (m instanceof Video) {
-                        ps.setString(13, ((Video)m).getFormat());
-                        ps.setString(14, ((Video)m).getDirector());
-                        ps.setString(15, ((Video)m).getActors());
+                        ps.setString(12, ((Video)m).getFormat());
+                        ps.setString(13, ((Video)m).getDirector());
+                        ps.setString(14, ((Video)m).getActors());
                 }
-                ps.setBoolean(16, m.isDeleted());
-                ps.setBoolean(17, m.isLent());
-                ps.setInt(18, m.getID());
+                ps.setBoolean(15, m.isDeleted());
+                ps.setBoolean(16, m.isLent());
+                ps.setInt(17, m.getID());
                 ps.executeUpdate();
                 con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException e) {
@@ -238,9 +238,9 @@ public class DBUtil {
                     ps = con.prepareStatement(SQL_DELETE_VIDEO);
                 }
                 select_hash.setInt(1, m.getID());
+                System.out.println(select_hash.toString());
                 ResultSet rs = select_hash.executeQuery();
                 rs.next();
-                System.out.println(rs.toString());
                 String hash_cover = rs.getString(1);
                 System.out.println(COVER_PATH + hash_cover + ".jpg von ID " + m.getID());
                 File f = new File(COVER_PATH + hash_cover + ".jpg");

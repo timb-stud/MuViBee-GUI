@@ -325,6 +325,7 @@ public abstract class Media extends Observable {
          + "\n Description: " + this.description
          + "\n Comment: " + this.comment
          + "\n Cover: " + this.cover.toString()
-         + "\n isDeleted: " + this.isDeleted;
+         + "\n isDeleted: " + this.isDeleted
+         + "\n isLent: " + this.isLent;
     }
 }
