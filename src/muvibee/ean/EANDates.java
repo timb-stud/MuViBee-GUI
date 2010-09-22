@@ -1,13 +1,16 @@
 package muvibee.ean;
 
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import muvibee.media.Book;
+import muvibee.media.Media;
+import muvibee.media.Music;
+import muvibee.media.Video;
 
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
@@ -89,7 +92,7 @@ public class EANDates {
 		}
 	}
 
-	public Book getBookData(String ean) throws IOException {
+	public static Book getBookData(String ean) throws IOException {
 		Book book = new Book();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -110,7 +113,7 @@ public class EANDates {
 		return book;
 	}
 
-	public Music getMusicData(String ean) throws IOException {
+	public static Music getMusicData(String ean) throws IOException {
 		Music music = new Music();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -130,7 +133,7 @@ public class EANDates {
 		return music;
 	}
 
-	public Video getVideoData(String ean) throws IOException {
+	public static Video getVideoData(String ean) throws IOException {
 		Video video = new Video();
 		URL url = new URL(preEAN + ean + postEAN);
 		TagNode node = cleaner.clean(url);
@@ -171,7 +174,7 @@ public class EANDates {
 		}
 	}
 
-	private String interpreterFix(TagNode[] interpreterNode) {
+	private static String interpreterFix(TagNode[] interpreterNode) {
 		String s = interpreterNode[0].getText().toString();
 		s = s.substring(s.indexOf("Interpret"));
 		if (s.contains("bol.de")) {
@@ -185,7 +188,7 @@ public class EANDates {
 		return s;
 	}
 
-	private static void setProxy(String proxy, String port) {
+	public static void setProxy(String proxy, String port) {
 		System.getProperties().put("proxySet", "true");
 		System.getProperties().put("proxyHost", proxy);
 		System.getProperties().put("proxyPort", port);
