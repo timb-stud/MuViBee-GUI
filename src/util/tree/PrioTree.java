@@ -45,7 +45,8 @@ public class PrioTree extends JTree implements Observer {
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
-        expandRow(2);
+//        expandRow(2);
+        expandPath((getPathForRow(0)));
 //        setRootVisible(false);
         expandPath(new TreePath(root.getPath()));
 
@@ -157,19 +158,18 @@ public class PrioTree extends JTree implements Observer {
      */
     @Override
     public void update(Observable list, Object o) {
+        DynamicUtilTreeNode r;
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
         expandRow(2);
 //        setRootVisible(false);
-        expandPath(new TreePath(root.getPath()));
+        expandPath((getPathForRow(0)));
 
         MediaList mediaList = ((MediaList) list);
         ArrayList<SortTypes> sortedBy = mediaList.getSortedBy();
         if (!sortedBy.contains(SortTypes.TITLE))
             sortedBy.add(SortTypes.TITLE);
-//        if (!sortedBy.contains(SortTypes.GENRE))
-//            sortedBy.add(SortTypes.GENRE);
         createTree(mediaList,sortedBy);
     }
 }
