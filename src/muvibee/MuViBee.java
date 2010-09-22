@@ -7,6 +7,10 @@ package muvibee;
 
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -79,28 +83,37 @@ public class MuViBee {
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
+                filterBookList = new BookList();
+                filterMusicList = new MusicList();
+                filterVideoList = new VideoList();
+                deletedMediaList = new MediaList();
+                expiredMediaList = new MediaList();
+
+
+
                 mainFrame = new MainFrame(mvb);
                 mainFrame.setVisible(true);
-                setOverviewInformation();
+
+                (new Thread() {
+                    @Override
+                    public void run() {
+                        bookList = DBSelector.getBookList(false, null);
+                        musicList = DBSelector.getMusicList(false, null);
+                        videoList = DBSelector.getVideoList(false, null);
+
+                        filterBookList.addAll(bookList);
+                        filterMusicList.addAll(musicList);
+                        filterVideoList.addAll(videoList);
+                        deletedMediaList.addAll(DBSelector.getBookList(true, null));
+                        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
+                        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
+                        setOverviewInformation();
+                    }
+                }).start();
+                
             }
         });
-        filterBookList = new BookList();
-        filterMusicList = new MusicList();
-        filterVideoList = new VideoList();
-        deletedMediaList = new MediaList();
-        expiredMediaList = new MediaList();
 
-        bookList = DBSelector.getBookList(false, null);
-        musicList = DBSelector.getMusicList(false, null);
-        videoList = DBSelector.getVideoList(false, null);
-
-
-        filterBookList.addAll(bookList);
-        filterMusicList.addAll(musicList);
-        filterVideoList.addAll(videoList);
-        deletedMediaList.addAll(DBSelector.getBookList(true, null));
-        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
-        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
     }
 
     public int showSignOverFrame(){
@@ -291,7 +304,7 @@ public class MuViBee {
         if (!bookList.contains(currentBook)) {
             filterBookList.add(currentBook);
             bookList.add(currentBook);
-            currentBook.updateDB();
+            currentBook.updateDB(); //eigentlich müsste das in eigenem Thread ablaufen
         }
     }
 
