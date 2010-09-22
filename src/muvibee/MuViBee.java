@@ -73,6 +73,7 @@ public class MuViBee {
 
     public static String mainBundlePath = "muvibee.resources.MuViBee";
 
+
     public MuViBee() {
         final MuViBee mvb = this;
         SwingUtilities.invokeLater(new Runnable() {
@@ -82,7 +83,6 @@ public class MuViBee {
                 mainFrame.setVisible(true);
             }
         });
-
         filterBookList = new BookList();
         filterMusicList = new MusicList();
         filterVideoList = new VideoList();

@@ -27,7 +27,9 @@ public class BookList extends MediaList {
 
     @Override
     public void addAll(Collection c) {
-        list.addAll(c);
+        for (Object o : c) {
+            add((Book)o);
+        }
         resort();
         updateObserver();
     }

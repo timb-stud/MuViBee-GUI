@@ -23,7 +23,9 @@ public class VideoList extends MediaList {
 
     @Override
     public void addAll(Collection c) {
-        list.addAll(c);
+        for (Object o : c) {
+            add((Video)o);
+        }
         resort();
         updateObserver();
     }

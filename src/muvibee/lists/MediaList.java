@@ -39,7 +39,9 @@ public class MediaList extends Observable implements Observer {
     }
 
     public void addAll(Collection c) {
-        list.addAll(c);
+        for (Object o : c) {
+            add((Media)o);
+        }
         resort();
         updateObserver();
     }

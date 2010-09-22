@@ -24,7 +24,9 @@ public class MusicList extends MediaList {
 
     @Override
     public void addAll(Collection c) {
-        list.addAll(c);
+        for (Object o : c) {
+            add((Music)o);
+        }
         resort();
         updateObserver();
     }
