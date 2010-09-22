@@ -1,5 +1,6 @@
 build
 dist
 nbproject/private
-data
+data/database/muvibee.properties
+muvibee.properties
 hsqldb.jar
