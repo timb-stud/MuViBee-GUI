@@ -6,6 +6,12 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import muvibee.gui.StatusBarModel;
 
+/**
+ * @author Yassir Klos
+ * Music-Klasse erbt von Media und erstellt ein Music-Objekt
+ * Man ruft den Konstruktor ohne Argumente auf
+ * Atribute muessen mit getter/setter Methoden abgerufen und gesetzt werden
+ */
 public class Music extends Media {
 
     private String format = "";
@@ -13,6 +19,9 @@ public class Music extends Media {
     private String type = "";
     public static BufferedImage defaultCover;
 
+     /**
+     * Konstruktor, erstellt Music-Objekt und weist das Standard-Cover zu.
+     */
     public Music() {
         if (defaultCover == null) {
             try {

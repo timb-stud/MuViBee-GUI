@@ -17,7 +17,7 @@ import muvibee.media.Music;
 import muvibee.media.Video;
 
 /**
- * @author tobiaslana
+ * @author Tobias Lana
  * 
  * Klasse erwartet beim Aufruf einen Parameter
  * Boolean deleted steuert ob geloeschte Daten selektiert werden oder nicht XOR !!
@@ -70,13 +70,6 @@ public class DBSelector {
         public static int SORT_V_FORMAT     = 14;
         public static int SORT_V_DIRECTOR   = 15;
         public static int SORT_V_ACTORS     = 16;
-        
-
-        
-	
-//	public DBSelector(Boolean deleted, String orderBy) {
-//		selectMedia(deleted, orderBy);
-//	}
 
         public static LinkedList<Book> getBookList(Boolean deleted, int[] orderBy) {
             selectMedia(deleted, orderBy);
@@ -189,6 +182,7 @@ public class DBSelector {
 
             }
 	}
+
 	private static void CreateVideoList(ResultSet rs) throws SQLException, IOException {
             videoList = new LinkedList<Video>();
             while (rs.next()) {
