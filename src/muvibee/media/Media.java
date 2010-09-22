@@ -114,7 +114,7 @@ public abstract class Media extends Observable {
         return lentTo;
     }
 
-    public void setLendTo(String lendTo) {
+    public void setLentTo(String lendTo) {
         this.lentTo = lendTo;
     }
 

@@ -15,7 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import muvibee.IllegalYearException;
+import muvibee.IllegalDateException;
 import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
@@ -186,7 +186,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         lentUntilYearComboBox.setEnabled(b);
     }
 
-    public int getYear(JComboBox cb) throws IllegalYearException {
+    public int getYear(JComboBox cb) throws IllegalDateException {
         if (cb.getSelectedIndex() == 0) {
             return -1;
         }
@@ -200,7 +200,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         try {
             return Integer.parseInt(year);
         } catch (NumberFormatException e) {
-            throw new IllegalYearException();
+            throw new IllegalDateException();
         }
     }
 
@@ -712,7 +712,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             releaseYear = getYear(releaseYearComboBox);
             lentYear = getYear(lentYearComboBox);
             lentUntilYear = getYear(lentUntilYearComboBox);
-        } catch (IllegalYearException e) {
+        } catch (IllegalDateException e) {
             returnCode = RET_ILLEGAL_YEAR;
             return;
         }
@@ -726,7 +726,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         book.setReleaseYear(releaseYear);
         book.setLocation(location);
         book.setIsLent(isLent);
-        book.setLendTo(lendTo);
+        book.setLentTo(lendTo);
         book.setLentDay(lendDay);
         book.setLentMonth(lendMonth);
         book.setLentYear(lentYear);
@@ -747,7 +747,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         music.setReleaseYear(releaseYear);
         music.setLocation(location);
         music.setIsLent(isLent);
-        music.setLendTo(lendTo);
+        music.setLentTo(lendTo);
         music.setLentDay(lendDay);
         music.setLentMonth(lendMonth);
         music.setLentYear(lentYear);
@@ -768,7 +768,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         video.setReleaseYear(releaseYear);
         video.setLocation(location);
         video.setIsLent(isLent);
-        video.setLendTo(lendTo);
+        video.setLentTo(lendTo);
         video.setLentDay(lendDay);
         video.setLentMonth(lendMonth);
         video.setLentYear(lentUntilYear);

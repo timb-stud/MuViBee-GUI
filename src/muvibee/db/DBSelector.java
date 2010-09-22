@@ -112,7 +112,7 @@ public class DBSelector {
                 b.setGenre(rs.getString(4));
                 b.setReleaseYear(rs.getInt(5));
                 b.setLocation(rs.getString(6));
-                b.setLendTo(rs.getString(7));
+                b.setLentTo(rs.getString(7));
                 b.setLentDate(rs.getString(8));
                 b.setLentUntilDate(rs.getString(9));
                 b.setRating(rs.getInt(10));
@@ -144,7 +144,7 @@ public class DBSelector {
                 m.setGenre(rs.getString(4));
                 m.setReleaseYear(rs.getInt(5));
                 m.setLocation(rs.getString(6));
-                m.setLendTo(rs.getString(7));
+                m.setLentTo(rs.getString(7));
                 m.setLentDate(rs.getString(8));
                 m.setLentUntilDate(rs.getString(9));
                 m.setRating(rs.getInt(10));
@@ -176,7 +176,7 @@ public class DBSelector {
                 v.setGenre(rs.getString(4));
                 v.setReleaseYear(rs.getInt(5));
                 v.setLocation(rs.getString(6));
-                v.setLendTo(rs.getString(7));
+                v.setLentTo(rs.getString(7));
                 v.setLentDate(rs.getString(8));
                 v.setLentUntilDate(rs.getString(9));
                 v.setRating(rs.getInt(10));

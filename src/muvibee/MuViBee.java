@@ -245,7 +245,7 @@ public class MuViBee {
         currentDeletedMediaList = medias;
     }
 
-    public boolean setCurrentBookItemInformation() throws IllegalYearException {
+    public boolean setCurrentBookItemInformation() throws IllegalDateException {
         if (bookList.contains(currentBook)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setBookItemInformation(currentBook);
@@ -260,7 +260,7 @@ public class MuViBee {
         return false;
     }
 
-    public boolean setCurrentMusicItemInformation() throws IllegalYearException {
+    public boolean setCurrentMusicItemInformation() throws IllegalDateException {
         if (musicList.contains(currentMusic)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setMusicItemInformation(currentMusic);
@@ -275,7 +275,7 @@ public class MuViBee {
         return false;
     }
 
-    public boolean setCurrentVideoItemInformation() throws IllegalYearException {
+    public boolean setCurrentVideoItemInformation() throws IllegalDateException {
         if (videoList.contains(currentVideo)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setVideoItemInformation(currentVideo);
@@ -305,6 +305,7 @@ public class MuViBee {
             musicList.add(currentMusic);
         }
         currentMusic.updateDB();
+        StatusBarModel.getInstance().setSuccessMessage("Gespeichert");
     }
 
     public void addCurrentVideoToVideoLists() {
@@ -313,6 +314,7 @@ public class MuViBee {
             videoList.add(currentVideo);
         }
         currentVideo.updateDB();
+        StatusBarModel.getInstance().setSuccessMessage("Gespeichert");
     }
 
     public void removeCurrentBookFromBookLists() {
@@ -324,6 +326,7 @@ public class MuViBee {
             currentBook.updateDB();
             currentBook = null;
             showBookItem(false);
+            StatusBarModel.getInstance().setSuccessMessage("Im Papierkorb");
         }
     }
 
@@ -336,6 +339,7 @@ public class MuViBee {
             currentMusic.updateDB();
             currentMusic = null;
             showMusicItem(false);
+            StatusBarModel.getInstance().setSuccessMessage("Im Papierkorb");
         }
     }
 
@@ -348,6 +352,7 @@ public class MuViBee {
             currentVideo.updateDB();
             currentVideo = null;
             showVideoItem(false);
+            StatusBarModel.getInstance().setSuccessMessage("Im Papierkorb");
         }
     }
 
@@ -357,6 +362,7 @@ public class MuViBee {
             m.deleteDB();
             m = null;
         }
+        StatusBarModel.getInstance().setSuccessMessage("Gelöscht");
     }
 
     public void restoreCurrentDeletedMedia() {
@@ -379,6 +385,7 @@ public class MuViBee {
             m.setDeleted(false);
             m.updateDB();
             m = null;
+            StatusBarModel.getInstance().setSuccessMessage("Wiederhergestellt");
         }
     }
 
@@ -407,6 +414,7 @@ public class MuViBee {
         resetFilterLists();
         setListsColor(Color.white);
         mainFrame.deleteSearchButtonSetVisible(false);
+        StatusBarModel.getInstance().setSuccessMessage("Suche zurückgesetzt");
     }
 
     public void resetFilterLists() {
