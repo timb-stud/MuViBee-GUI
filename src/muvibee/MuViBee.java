@@ -455,7 +455,7 @@ public class MuViBee {
         mainFrame.reloadLabels(mainBundlePath);
     }
 
-    
+
 
     public int getLentToBook() {
         int sum = 0;
