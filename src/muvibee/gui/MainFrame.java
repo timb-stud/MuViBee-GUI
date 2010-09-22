@@ -38,6 +38,7 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.TableCellRenderer;
 import muvibee.IllegalDateException;
 import muvibee.MuViBee;
@@ -550,6 +551,105 @@ public class MainFrame extends javax.swing.JFrame {
 	updateComboBoxLabels(formatMusicComboBox, musicFormats);
 	updateComboBoxLabels(formatVideoComboBox, videoFormats);
 
+        ((TitledBorder)expiredPanel.getBorder()).setTitle(bundle.getString("expiredMedia"));
+        restoreEverythingButton.setText(bundle.getString("restoreEverything"));
+        restoreItemButton.setText(bundle.getString("restore"));
+        finalDeleteEverythingButton.setText(bundle.getString("deleteEverything"));
+        finalDeleteItemButton.setText(bundle.getString("finalDelete"));
+        addBookButton.setText(bundle.getString("add"));
+        addMusicButton.setText(bundle.getString("add"));
+        addVideoButton.setText(bundle.getString("add"));
+        deleteBookButton.setText(bundle.getString("delete"));
+        deleteMusicButton.setText(bundle.getString("delete"));
+        deleteVideoButton.setText(bundle.getString("delete"));
+        saveBookButton.setText(bundle.getString("save"));
+        saveMusicButton.setText(bundle.getString("save"));
+        saveVideoButton.setText(bundle.getString("save"));
+        ratingNoneBookRadioButton.setText(bundle.getString("noRating"));
+        ratingNoneMusicRadioButton.setText(bundle.getString("noRating"));
+        ratingNoneVideoRadioButton.setText(bundle.getString("noRating"));
+
+        ((TitledBorder)sortPanelBooks.getBorder()).setTitle(bundle.getString("sortBy"));
+        ((TitledBorder)sortPanelMusic.getBorder()).setTitle(bundle.getString("sortBy"));
+        ((TitledBorder)sortPanelVideo.getBorder()).setTitle(bundle.getString("sortBy"));
+        sortBookAuthorButton.setText(bundle.getString("authorLabel"));
+        sortBookGenreButton.setText(bundle.getString("genreLabel"));
+        sortBookLanguageButton.setText(bundle.getString("languageLabel"));
+        sortBookRatingButton.setText(bundle.getString("ratingLabel"));
+        sortBookTitleButton.setText(bundle.getString("titleLabel"));
+
+        ((TitledBorder)sortPanelMusic.getBorder()).setTitle(bundle.getString("sortBy"));
+        ((TitledBorder)sortPanelMusic.getBorder()).setTitle(bundle.getString("sortBy"));
+        ((TitledBorder)sortPanelVideo.getBorder()).setTitle(bundle.getString("sortBy"));
+        sortMusicInterpeterButton.setText(bundle.getString("artistLabel"));
+        sortMusicGenreButton.setText(bundle.getString("genreLabel"));
+        sortMusicTypeButton.setText(bundle.getString("typeLabel"));
+        sortMusicRatingButton.setText(bundle.getString("ratingLabel"));
+        sortMusicTitleButton.setText(bundle.getString("titleLabel"));
+
+        ((TitledBorder)sortPanelVideo.getBorder()).setTitle(bundle.getString("sortBy"));
+        ((TitledBorder)sortPanelVideo.getBorder()).setTitle(bundle.getString("sortBy"));
+        ((TitledBorder)sortPanelVideo.getBorder()).setTitle(bundle.getString("sortBy"));
+        sortVideoActorsButton.setText(bundle.getString("actorsLabel"));
+        sortVideoGenreButton.setText(bundle.getString("genreLabel"));
+        sortVideoRegisseurButton.setText(bundle.getString("directorLabel"));
+        sortVideoRatingButton.setText(bundle.getString("ratingLabel"));
+        sortVideoTitleButton.setText(bundle.getString("titleLabel"));
+
+        overviewTable.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("media"));
+        overviewTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("number"));
+        overviewTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("lent"));
+        overviewTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("deleted"));
+
+        titleBookLabel.setText(bundle.getString("titleLabel"));
+        eanBookLabel.setText(bundle.getString("ean"));
+        genreBookLabel.setText(bundle.getString("genreLabel"));
+        releaseYearBookLabel.setText(bundle.getString("releaseYearLabel"));
+        locationBookLabel.setText(bundle.getString("locationLabel"));
+        ratingBookLabel.setText(bundle.getString("ratingLabel"));
+        lentBookLabel.setText(bundle.getString("lent"));
+        lentToBookLabel.setText(bundle.getString("lentToLabel"));
+        lentDateBookLabel.setText(bundle.getString("lentDateLabel"));
+        lentUntilDateBookLabel.setText(bundle.getString("lentUntilDateLabel"));
+
+        titleMusicLabel.setText(bundle.getString("titleLabel"));
+        eanMusicLabel.setText(bundle.getString("ean"));
+        genreMusicLabel.setText(bundle.getString("genreLabel"));
+        releaseYearMusicLabel.setText(bundle.getString("releaseYearLabel"));
+        locationMusicLabel.setText(bundle.getString("locationLabel"));
+        ratingMusicLabel.setText(bundle.getString("ratingLabel"));
+        lentMusicLabel.setText(bundle.getString("lent"));
+        lentToMusicLabel.setText(bundle.getString("lentToLabel"));
+        lentDateMusicLabel.setText(bundle.getString("lentDateLabel"));
+        lentUntilDateMusicLabel.setText(bundle.getString("lentUntilDateLabel"));
+
+        titleVideoLabel.setText(bundle.getString("titleLabel"));
+        eanVideoLabel.setText(bundle.getString("eanLabel"));
+        genreVideoLabel.setText(bundle.getString("genreLabel"));
+        releaseYearVideoLabel.setText(bundle.getString("releaseYearLabel"));
+        locationVideoLabel.setText(bundle.getString("locationLabel"));
+        ratingVideoLabel.setText(bundle.getString("ratingLabel"));
+        lentVideoLabel.setText(bundle.getString("lent"));
+        lentToVideoLabel.setText(bundle.getString("lentToLabel"));
+        lentDateVideoLabel.setText(bundle.getString("lentDateLabel"));
+        lentUntilDateVideoLabel.setText(bundle.getString("lentUntilDateLabel"));
+
+        authorBookLabel.setText(bundle.getString("authorLabel"));
+        languageBookLabel.setText(bundle.getString("languageLabel"));
+        isbnBookLabel.setText(bundle.getString("isbn"));
+
+        interpretMusicLabel.setText(bundle.getString("artistLabel"));
+        typeMusicLabel.setText(bundle.getString("typeLabel"));
+        formatMusicLabel.setText(bundle.getString("formatLabel"));
+
+        directorVideoLabel.setText(bundle.getString("directorLabel"));
+        actorsVideoLabel.setText(bundle.getString("actorsLabel"));
+        formatVideoLabel.setText(bundle.getString("formatLabel"));
+
+
+
+        
+        
     }
 
     public void setCover(BufferedImage cover, JLabel label){
