@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import muvibee.gui.StatusBarModel;
 import muvibee.media.Book;
 import muvibee.media.Media;
 
