@@ -26,49 +26,34 @@ public class SortActionListener implements ActionListener{
         if(source instanceof JToggleButton){
             JToggleButton button = (JToggleButton)source;
             if(button.getName().equals("sort book title")){
-                mvb.sortBooksByTitle();
             } else {
                 if (button.getName().equals("sort book genre")) {
-                    mvb.sortBooksByGenre();
                 } else {
                     if (button.getName().equals("sort book rating")) {
-                        mvb.sortBooksByRating();
                     } else {
                         if (button.getName().equals("sort music title")) {
-                            mvb.sortMusicByTitle();
                         } else {
                             if (button.getName().equals("sort music genre")) {
-                                mvb.sortMusicByGenre();
                             } else {
                                 if (button.getName().equals("sort music rating")) {
-                                    mvb.sortMusicByRating();
                                 } else {
                                     if (button.getName().equals("sort video title")) {
-                                        mvb.sortVideoByTitle();
                                     } else {
                                         if (button.getName().equals("sort video genre")) {
-                                            mvb.sortVideoByGenre();
                                         } else {
                                             if (button.getName().equals("sort video rating")) {
-                                                mvb.sortVideoByRating();
                                             } else {
                                                 if (button.getName().equals("sort book author")) {
-                                                    mvb.sortBookByAuthor();
                                                 } else {
                                                     if (button.getName().equals("sort book language")) {
-                                                        mvb.sortBookByLanguage();
                                                     } else {
                                                         if (button.getName().equals("sort music type")) {
-                                                            mvb.sortMusicByType();
                                                         } else {
                                                             if (button.getName().equals("sort music interpreter")) {
-                                                                mvb.sortMusicByInterpreter();
                                                             } else {
                                                                 if (button.getName().equals("sort video regisseur")) {
-                                                                    mvb.sortVideoByRegisseur();
                                                                 } else {
                                                                     if (button.getName().equals("sort video actors")) {
-                                                                        mvb.sortVideoByActors();
                                                                     }
                                                                 }
                                                             }

@@ -5,11 +5,9 @@
 package util.tree;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-import javax.print.attribute.standard.MediaSize.Other;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
@@ -159,11 +157,11 @@ public class PrioTree extends JTree implements Observer {
         expandPath(new TreePath(root.getPath()));
 
         MediaList mediaList = ((MediaList) list);
-        ArrayList<SortTypes> sortedBy = mediaList.getSortedBy();
-        if (!sortedBy.contains(SortTypes.TITLE))
-            sortedBy.add(SortTypes.TITLE);
+//        ArrayList<SortTypes> sortedBy = mediaList.getSortedBy();
+      //  if (!sortedBy.contains(SortTypes.TITLE))
+       //     sortedBy.add(SortTypes.TITLE);
 //        if (!sortedBy.contains(SortTypes.GENRE))
 //            sortedBy.add(SortTypes.GENRE);
-        createTree(mediaList,sortedBy);
+       // createTree(mediaList,sortedBy);
     }
 }
