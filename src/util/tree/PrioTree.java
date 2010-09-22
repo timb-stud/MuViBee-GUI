@@ -118,6 +118,9 @@ public class PrioTree extends JTree implements Observer {
                     case LANGUAGE:
                         o = ((Book) m).getLanguage();
                         break;
+                    case AUTHOR:
+                        o = ((Book) m).getAuthor();
+                        break;
                     case FORMAT:
                         if (m instanceof Music)
                             o = ((Music) m).getFormat();
@@ -126,6 +129,9 @@ public class PrioTree extends JTree implements Observer {
                         break;
                     case DIRECTOR:
                         o = ((Video)m).getDirector();
+                        break;
+                    case INTERPRETER:
+                        o = ((Music)m).getInterpreter();
                         break;
                     default:
                        o = m.getTitle();

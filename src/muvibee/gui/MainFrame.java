@@ -954,6 +954,15 @@ public class MainFrame extends javax.swing.JFrame {
         return sortPanelBooks;
     }
 
+    public JPanel getSortPanelMusic() {
+        return sortPanelMusic;
+    }
+
+    public JPanel getSortPanelVideo() {
+        return sortPanelVideo;
+    }
+
+
     public JButton getDeleteSearchButton() {
         return deleteSearchButton;
     }
