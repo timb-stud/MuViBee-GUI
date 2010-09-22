@@ -94,14 +94,14 @@ public class DBSelector {
 	private static void selectMedia(Boolean isDeleted, int[] orderBy) {
             String orderBySQL;
             try {
-                if (orderBy.length == 0) {
+                if (orderBy == null || orderBy.length == 0) {
                     orderBySQL = SQL_ORDER_BY;
                 } else {
                     orderBySQL = " ORDER BY ";
                     for (int i : orderBy) {
                         orderBySQL = orderBySQL + i + ", ";
                     }
-                    orderBySQL = orderBySQL.substring(0, orderBySQL.length()-2);
+                    orderBySQL = orderBySQL.substring(0, orderBySQL.length()-3);
                 }
                 con = DBConnector.getConnection();
                 PreparedStatement psBook = null;
