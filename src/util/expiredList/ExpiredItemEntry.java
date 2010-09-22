@@ -36,7 +36,7 @@ public class ExpiredItemEntry extends JPanel{
             label.setIcon(icon);
             add(label, BorderLayout.WEST);
 
-            JLabel text = new JLabel(" " + "title" + ": " + media.getTitle() + ", Genre: " + media.getGenre() + ", Jahr: " + media.getLendYear() + ", und so weiter");
+            JLabel text = new JLabel(" " + "title" + ": " + media.getTitle() + ", Genre: " + media.getGenre() + ", Jahr: " + media.getLentYear() + ", und so weiter");
             add(text, BorderLayout.CENTER);
 	}
 

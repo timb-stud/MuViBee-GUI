@@ -791,10 +791,10 @@ public class MuViBee {
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyy");
         try {
             for (Book b : bookList) {
-                if (b.getLendUntilDay() == 0 || b.getLendUntilMonth() == 0 || b.getLendUntilYear() == 0) {
+                if (b.getLentUntilDay() == 0 || b.getLentUntilMonth() == 0 || b.getLentUntilYear() == 0) {
                     continue;
                 }
-                String bookDate = b.getLendUntilDay() + "." + b.getLendUntilMonth() + "." + b.getLendUntilYear();
+                String bookDate = b.getLentUntilDay() + "." + b.getLentUntilMonth() + "." + b.getLentUntilYear();
                 if (df.parse(bookDate).before(Calendar.getInstance().getTime())) {
                     if (!expiredMediaList.contains(b)) {
                         expiredMediaList.add(b);
@@ -806,10 +806,10 @@ public class MuViBee {
                 }
             }
             for (Music m : musicList) {
-                if (m.getLendUntilDay() == 0 || m.getLendUntilMonth() == 0 || m.getLendUntilYear() == 0) {
+                if (m.getLentUntilDay() == 0 || m.getLentUntilMonth() == 0 || m.getLentUntilYear() == 0) {
                     continue;
                 }
-                String musicDate = m.getLendUntilDay() + "." + m.getLendUntilMonth() + "." + m.getLendUntilYear();
+                String musicDate = m.getLentUntilDay() + "." + m.getLentUntilMonth() + "." + m.getLentUntilYear();
                 if (df.parse(musicDate).before(Calendar.getInstance().getTime())) {
                     if (!expiredMediaList.contains(m)) {
                         expiredMediaList.add(m);
@@ -821,10 +821,10 @@ public class MuViBee {
                 }
             }
             for (Video v : videoList) {
-                if (v.getLendUntilDay() == 0 || v.getLendUntilMonth() == 0 || v.getLendUntilYear() == 0) {
+                if (v.getLentUntilDay() == 0 || v.getLentUntilMonth() == 0 || v.getLentUntilYear() == 0) {
                     continue;
                 }
-                String videoDate = v.getLendUntilDay() + "." + v.getLendUntilMonth() + "." + v.getLendUntilYear();
+                String videoDate = v.getLentUntilDay() + "." + v.getLentUntilMonth() + "." + v.getLentUntilYear();
                 if (df.parse(videoDate).before(Calendar.getInstance().getTime())) {
                     if (!expiredMediaList.contains(v)) {
                         expiredMediaList.add(v);

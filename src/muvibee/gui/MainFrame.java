@@ -579,12 +579,12 @@ public class MainFrame extends javax.swing.JFrame {
         locationBookTextField.setText(book.getLocation());
         lentBookCheckBox.setSelected(book.isLent());
         lentToBookTextField.setText(book.getLentTo());
-        lentDayBookComboBox.setSelectedIndex(book.getLendDay());
-        lentMonthBookComboBox.setSelectedIndex(book.getLendMonth());
-        setYear(book.getLendYear(), lentYearBookComboBox);
-        lentUntilDayBookComboBox.setSelectedIndex(book.getLendUntilDay());
-        lentUntilMonthBookComboBox.setSelectedIndex(book.getLendUntilMonth());
-        setYear(book.getLendUntilYear(), lentUntilYearBookComboBox);
+        lentDayBookComboBox.setSelectedIndex(book.getLentDay());
+        lentMonthBookComboBox.setSelectedIndex(book.getLentMonth());
+        setYear(book.getLentYear(), lentYearBookComboBox);
+        lentUntilDayBookComboBox.setSelectedIndex(book.getLentUntilDay());
+        lentUntilMonthBookComboBox.setSelectedIndex(book.getLentUntilMonth());
+        setYear(book.getLentUntilYear(), lentUntilYearBookComboBox);
 
         switch (book.getRating()) {
             case 0:
@@ -620,12 +620,12 @@ public class MainFrame extends javax.swing.JFrame {
         locationMusicTextField.setText(music.getLocation());
         lentMusicCheckBox.setSelected(music.isLent());
         lentToMusicTextField.setText(music.getLentTo());
-        lentDayMusicComboBox.setSelectedIndex(music.getLendDay());
-        lentMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
-        setYear(music.getLendYear(), lentYearMusicComboBox);
-        lentUntilDayMusicComboBox.setSelectedIndex(music.getLendUntilDay());
-        lentUntilMonthMusicComboBox.setSelectedIndex(music.getLendUntilMonth());
-        setYear(music.getLendUntilYear(), lentUntilYearMusicComboBox);
+        lentDayMusicComboBox.setSelectedIndex(music.getLentDay());
+        lentMonthMusicComboBox.setSelectedIndex(music.getLentMonth());
+        setYear(music.getLentYear(), lentYearMusicComboBox);
+        lentUntilDayMusicComboBox.setSelectedIndex(music.getLentUntilDay());
+        lentUntilMonthMusicComboBox.setSelectedIndex(music.getLentUntilMonth());
+        setYear(music.getLentUntilYear(), lentUntilYearMusicComboBox);
 
         switch (music.getRating()) {
             case 0:
@@ -659,12 +659,12 @@ public class MainFrame extends javax.swing.JFrame {
         locationVideoTextField.setText(video.getLocation());
         lentVideoCheckBox.setSelected(video.isLent());
         lentToVideoTextField.setText(video.getLentTo());
-        lentDayVideoComboBox.setSelectedIndex(video.getLendDay());
-        lentMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
-        setYear(video.getLendYear(), lentYearVideoComboBox);
-        lentUntilDayVideoComboBox.setSelectedIndex(video.getLendUntilDay());
-        lentUntilMonthVideoComboBox.setSelectedIndex(video.getLendUntilMonth());
-        setYear(video.getLendUntilYear(), lentUntilYearVideoComboBox);
+        lentDayVideoComboBox.setSelectedIndex(video.getLentDay());
+        lentMonthVideoComboBox.setSelectedIndex(video.getLentMonth());
+        setYear(video.getLentYear(), lentYearVideoComboBox);
+        lentUntilDayVideoComboBox.setSelectedIndex(video.getLentUntilDay());
+        lentUntilMonthVideoComboBox.setSelectedIndex(video.getLentUntilMonth());
+        setYear(video.getLentUntilYear(), lentUntilYearVideoComboBox);
 
         switch (video.getRating()) {
             case 0:
@@ -781,13 +781,13 @@ public class MainFrame extends javax.swing.JFrame {
         book.setReleaseYear(releaseYear);
         book.setLocation(location);
         book.setIsLent(lent);
-        book.setLendTo(lentTo);
-        book.setLendDay(lentDay);
-        book.setLendMonth(lentMonth);
-        book.setLendYear(lentYear);
-        book.setLendUntilDay(lentUntilDay);
-        book.setLendUntilMonth(lentUntilMonth);
-        book.setLendUntilYear(lentUntilYear);
+        book.setLentTo(lentTo);
+        book.setLentDay(lentDay);
+        book.setLentMonth(lentMonth);
+        book.setLentYear(lentYear);
+        book.setLentUntilDay(lentUntilDay);
+        book.setLentUntilMonth(lentUntilMonth);
+        book.setLentUntilYear(lentUntilYear);
         book.setRating(rating);
         book.setDescription(description);
         book.setComment(annotation);
@@ -841,13 +841,13 @@ public class MainFrame extends javax.swing.JFrame {
         music.setReleaseYear(releaseYear);
         music.setLocation(location);
         music.setIsLent(lent);
-        music.setLendTo(lentTo);
-        music.setLendDay(lentDay);
-        music.setLendMonth(lentMonth);
-        music.setLendYear(lentYear);
-        music.setLendUntilDay(lentUntilDay);
-        music.setLendUntilMonth(lentUntilMonth);
-        music.setLendUntilYear(lentUntilYear);
+        music.setLentTo(lentTo);
+        music.setLentDay(lentDay);
+        music.setLentMonth(lentMonth);
+        music.setLentYear(lentYear);
+        music.setLentUntilDay(lentUntilDay);
+        music.setLentUntilMonth(lentUntilMonth);
+        music.setLentUntilYear(lentUntilYear);
         music.setRating(rating);
         music.setDescription(description);
         music.setComment(annotation);
@@ -904,13 +904,13 @@ public class MainFrame extends javax.swing.JFrame {
         video.setReleaseYear(releaseYear);
         video.setLocation(location);
         video.setIsLent(lent);
-        video.setLendTo(lentTo);
-        video.setLendDay(lentDay);
-        video.setLendMonth(lentMonth);
-        video.setLendYear(lentYear);
-        video.setLendUntilDay(lentUntilDay);
-        video.setLendUntilMonth(lentUntilMonth);
-        video.setLendUntilYear(lentUntilYear);
+        video.setLentTo(lentTo);
+        video.setLentDay(lentDay);
+        video.setLentMonth(lentMonth);
+        video.setLentYear(lentYear);
+        video.setLentUntilDay(lentUntilDay);
+        video.setLentUntilMonth(lentUntilMonth);
+        video.setLentUntilYear(lentUntilYear);
         video.setRating(rating);
         video.setDescription(description);
         video.setComment(annotation);
