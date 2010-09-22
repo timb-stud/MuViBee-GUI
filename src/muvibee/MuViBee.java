@@ -2,15 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package muvibee;
 
-
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -42,6 +36,7 @@ import util.expiredList.ExpiredItemsList;
  * @author bline
  */
 public class MuViBee {
+
     private LinkedList<Book> bookList;
     private LinkedList<Music> musicList;
     private LinkedList<Video> videoList;
@@ -50,33 +45,27 @@ public class MuViBee {
     private VideoList filterVideoList;
     private MediaList deletedMediaList;
     private MediaList expiredMediaList;
-
     private MainFrame mainFrame;
     private Book currentBook;
     private Music currentMusic;
     private Video currentVideo;
     private Media[] currentDeletedMediaList;
-
     private int sortBookByTitle = 0;
     private int sortBookByGenre = 0;
     private int sortBookByRating = 0;
     private int sortBookByAuthor = 0;
     private int sortBookByLanguage = 0;
-
     private int sortMusicByTitle = 0;
     private int sortMusicByGenre = 0;
     private int sortMusicByRating = 0;
     private int sortMusicByType = 0;
     private int sortMusicByInterpreter = 0;
-
     private int sortVideoByTitle = 0;
     private int sortVideoByGenre = 0;
     private int sortVideoByRating = 0;
     private int sortVideoByActors = 0;
     private int sortVideoByRegisseur = 0;
-
     public static String mainBundlePath = "muvibee.resources.MuViBee";
-
 
     public MuViBee() {
         final MuViBee mvb = this;
@@ -95,6 +84,7 @@ public class MuViBee {
                 mainFrame.setVisible(true);
 
                 (new Thread() {
+
                     @Override
                     public void run() {
                         bookList = DBSelector.getBookList(false, null);
@@ -110,81 +100,81 @@ public class MuViBee {
                         setOverviewInformation();
                     }
                 }).start();
-                
+
             }
         });
 
     }
 
-    public int showSignOverFrame(){
+    public int showSignOverFrame() {
         return JOptionPane.showConfirmDialog(mainFrame,
-                    "Möchten Sie die Änderungen speichern ?",
-                    "Bitte wählen",
-                    JOptionPane.YES_NO_OPTION);
+                "Möchten Sie die Änderungen speichern ?",
+                "Bitte wählen",
+                JOptionPane.YES_NO_OPTION);
     }
 
-    public int showSelfEANDecisionFrame(){
+    public int showSelfEANDecisionFrame() {
         Object[] options = {"EAN", "Selbst"};
 
         return JOptionPane.showOptionDialog(mainFrame,
-                    "Wollen Sie das Medium selbst anlegen oder per EAN ?",
-                    "Bitte wählen",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[0]);
+                "Wollen Sie das Medium selbst anlegen oder per EAN ?",
+                "Bitte wählen",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
     }
 
-        public int showSaveChangeDecisionFrame(){
+    public int showSaveChangeDecisionFrame() {
         Object[] options = {"Ändern", "Abbrechen"};
 
         return JOptionPane.showOptionDialog(mainFrame,
-                    "Wollen Sie das Medium ändern ?",
-                    "Bitte wählen",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[0]);
+                "Wollen Sie das Medium ändern ?",
+                "Bitte wählen",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
     }
 
-    public int showSaveAddDecisionFrame(){
+    public int showSaveAddDecisionFrame() {
         Object[] options = {"Hinzufügen", "Abbrechen"};
 
         return JOptionPane.showOptionDialog(mainFrame,
-                    "Wollen Sie das Medium hinzufügen ?",
-                    "Bitte wählen",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[0]);
+                "Wollen Sie das Medium hinzufügen ?",
+                "Bitte wählen",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
     }
 
-    public String showEanInputFrame(){
-        return (String)JOptionPane.showInputDialog(
-                    mainFrame,
-                    "Bitte EAN eingeben:"
-                    + "",
-                    "Customized Dialog",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    null,
-                    "");
+    public String showEanInputFrame() {
+        return (String) JOptionPane.showInputDialog(
+                mainFrame,
+                "Bitte EAN eingeben:"
+                + "",
+                "Customized Dialog",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                null,
+                "");
     }
 
-    public void showAdvancedSearchDialog(){
+    public void showAdvancedSearchDialog() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
-        AdvancedSearchDialog dialog = new AdvancedSearchDialog(mainFrame, 
+        AdvancedSearchDialog dialog = new AdvancedSearchDialog(mainFrame,
                 bundle.getString("advancedSearchDialogTitle"), true, this);
         dialog.setLocationRelativeTo(mainFrame);
         dialog.setVisible(true);
         int returnStatus = dialog.getReturnStatus();
-        if(returnStatus == AdvancedSearchDialog.RET_ILLEGAL_YEAR){
+        if (returnStatus == AdvancedSearchDialog.RET_ILLEGAL_YEAR) {
             StatusBarModel.getInstance().setFailMessage(bundle.getString("illegalYear"));
-        }else{
-            if(returnStatus == AdvancedSearchDialog.RET_OK){
+        } else {
+            if (returnStatus == AdvancedSearchDialog.RET_OK) {
                 Book b = dialog.getBook();
                 Music m = dialog.getMusic();
                 Video v = dialog.getVideo();
@@ -193,24 +183,23 @@ public class MuViBee {
         }
     }
 
-
-    public void showAboutDialog(){
+    public void showAboutDialog() {
         AboutDialog dialog = new AboutDialog(mainFrame);
         dialog.setLocationRelativeTo(mainFrame);
         dialog.setVisible(true);
     }
 
-    public void showHelpDialog(){
+    public void showHelpDialog() {
         HelpDialog helpDialog = new HelpDialog(mainFrame);
         helpDialog.setLocationRelativeTo(mainFrame);
         helpDialog.setVisible(true);
     }
 
-    private void setBookItem(){
+    private void setBookItem() {
         mainFrame.setBookItem(currentBook);
     }
 
-    private void setMusicItem(){
+    private void setMusicItem() {
         mainFrame.setMusicItem(currentMusic);
     }
 
@@ -225,6 +214,7 @@ public class MuViBee {
     public void showMusicItem(boolean b) {
         mainFrame.musicItemSetVisible(b);
     }
+
     public void showVideoItem(boolean b) {
         mainFrame.videoItemSetVisible(b);
     }
@@ -238,7 +228,7 @@ public class MuViBee {
         setBookItem();
         showBookItem(true);
     }
-    
+
     public void setCurrentMusic(Music music) {
         currentMusic = music;
         setMusicItem();
@@ -254,7 +244,7 @@ public class MuViBee {
     public void setCurrentDeletedMedia(Media[] medias) {
         currentDeletedMediaList = medias;
     }
-    
+
     public boolean setCurrentBookItemInformation() throws IllegalYearException {
         if (bookList.contains(currentBook)) {
             if (showSaveChangeDecisionFrame() == 0) {
@@ -271,7 +261,7 @@ public class MuViBee {
     }
 
     public boolean setCurrentMusicItemInformation() throws IllegalYearException {
-	if (musicList.contains(currentMusic)) {
+        if (musicList.contains(currentMusic)) {
             if (showSaveChangeDecisionFrame() == 0) {
                 mainFrame.setMusicItemInformation(currentMusic);
                 return true;
@@ -308,12 +298,12 @@ public class MuViBee {
         }
     }
 
-    public void addCurrentMusicToMusicLists(){
-	if(!musicList.contains(currentMusic)){
-	    filterMusicList.add(currentMusic);
+    public void addCurrentMusicToMusicLists() {
+        if (!musicList.contains(currentMusic)) {
+            filterMusicList.add(currentMusic);
             musicList.add(currentMusic);
             currentMusic.updateDB();
-	}
+        }
     }
 
     public void addCurrentVideoToVideoLists() {
@@ -359,7 +349,7 @@ public class MuViBee {
             showVideoItem(false);
         }
     }
-    
+
     public void removeCurrentDeletedMediaFromDeletedList() {
         for (Media m : currentDeletedMediaList) {
             deletedMediaList.remove(m);
@@ -449,7 +439,7 @@ public class MuViBee {
         }
     }
 
-    public void advancedSearch(Book book, Music music, Video video){
+    public void advancedSearch(Book book, Music music, Video video) {
         resetFilterLists();
         for (Book b : bookList) {
             if (!b.matches(book)) {
@@ -468,7 +458,7 @@ public class MuViBee {
         }
     }
 
-    public void reloadLabels(){
+    public void reloadLabels() {
         mainFrame.reloadLabels(mainBundlePath);
     }
 
@@ -615,72 +605,72 @@ public class MuViBee {
         }
         if (sortBookByGenre == 1) {
             filterBookList.sortByGenre();
-        }else {
+        } else {
             filterBookList.removeSort(SortTypes.GENRE);
         }
         if (sortBookByRating == 1) {
             filterBookList.sortByRating();
-        }else {
+        } else {
             filterBookList.removeSort(SortTypes.RATING);
         }
         if (sortMusicByTitle == 1) {
             filterMusicList.sortByTitle();
-        }else {
+        } else {
             filterMusicList.removeSort(SortTypes.TITLE);
         }
         if (sortMusicByGenre == 1) {
             filterMusicList.sortByGenre();
-        }else {
+        } else {
             filterMusicList.removeSort(SortTypes.GENRE);
         }
         if (sortMusicByRating == 1) {
             filterMusicList.sortByRating();
-        }else {
+        } else {
             filterMusicList.removeSort(SortTypes.RATING);
         }
         if (sortVideoByTitle == 1) {
             filterVideoList.sortByTitle();
-        }else {
+        } else {
             filterVideoList.removeSort(SortTypes.TITLE);
         }
         if (sortVideoByGenre == 1) {
             filterVideoList.sortByGenre();
-        }else {
+        } else {
             filterVideoList.removeSort(SortTypes.GENRE);
         }
         if (sortVideoByRating == 1) {
             filterVideoList.sortByRating();
-        }else {
+        } else {
             filterVideoList.removeSort(SortTypes.RATING);
         }
         if (sortBookByAuthor == 1) {
             filterBookList.sortByAuthor();
-        }else {
+        } else {
             filterBookList.removeSort(SortTypes.AUTHOR);
         }
         if (sortBookByLanguage == 1) {
             filterBookList.sortByLanguage();
-        }else {
+        } else {
             filterBookList.removeSort(SortTypes.LANGUAGE);
         }
         if (sortMusicByType == 1) {
             filterMusicList.sortByType();
-        }else {
+        } else {
             filterMusicList.removeSort(SortTypes.TYPE);
         }
         if (sortMusicByInterpreter == 1) {
             filterMusicList.sortByInterpreter();
-        }else {
+        } else {
             filterMusicList.removeSort(SortTypes.INTERPRETER);
         }
         if (sortVideoByRegisseur == 1) {
             filterVideoList.sortByDirector();
-        }else {
+        } else {
             filterVideoList.removeSort(SortTypes.REGISSEUR);
         }
         if (sortVideoByActors == 1) {
             filterVideoList.sortByActors();
-        }else {
+        } else {
             filterVideoList.removeSort(SortTypes.ACTORS);
         }
         filterBookList.updateObserver();
@@ -690,7 +680,7 @@ public class MuViBee {
 
     public int getLentToBook() {
         int sum = 0;
-        for (Book b: bookList) {
+        for (Book b : bookList) {
             if (b.isLent()) {
                 sum++;
             }
@@ -700,7 +690,7 @@ public class MuViBee {
 
     public int getLentToMusic() {
         int sum = 0;
-        for (Music m: musicList) {
+        for (Music m : musicList) {
             if (m.isLent()) {
                 sum++;
             }
@@ -710,7 +700,7 @@ public class MuViBee {
 
     public int getLentToVideo() {
         int sum = 0;
-        for (Video v: videoList) {
+        for (Video v : videoList) {
             if (v.isLent()) {
                 sum++;
             }
@@ -771,12 +761,11 @@ public class MuViBee {
     public MediaList getExpiredMediaList() {
         return expiredMediaList;
     }
-    
 
     public void fillCurrentDeletedMedia(DeletedItemsList deletedList) {
         Media[] medias = new Media[deletedList.getSelectedValues().length];
         for (int i = 0; i < medias.length; i++) {
-            medias[i] = ((DeletedItemEntry)deletedList.getSelectedValues()[i]).getMedia();
+            medias[i] = ((DeletedItemEntry) deletedList.getSelectedValues()[i]).getMedia();
         }
         setCurrentDeletedMedia(medias);
     }
@@ -793,10 +782,12 @@ public class MuViBee {
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyy");
         try {
             for (Book b : bookList) {
-                if (b.getLendUntilDay() == 0 || b.getLendUntilMonth() == 0 || b.getLendUntilYear() == 0) continue;
+                if (b.getLendUntilDay() == 0 || b.getLendUntilMonth() == 0 || b.getLendUntilYear() == 0) {
+                    continue;
+                }
                 String bookDate = b.getLendUntilDay() + "." + b.getLendUntilMonth() + "." + b.getLendUntilYear();
                 if (df.parse(bookDate).before(Calendar.getInstance().getTime())) {
-                    if (!expiredMediaList.contains(b)){
+                    if (!expiredMediaList.contains(b)) {
                         expiredMediaList.add(b);
                     }
                 } else {
@@ -806,7 +797,9 @@ public class MuViBee {
                 }
             }
             for (Music m : musicList) {
-                if (m.getLendUntilDay() == 0 || m.getLendUntilMonth() == 0 || m.getLendUntilYear() == 0) continue;
+                if (m.getLendUntilDay() == 0 || m.getLendUntilMonth() == 0 || m.getLendUntilYear() == 0) {
+                    continue;
+                }
                 String musicDate = m.getLendUntilDay() + "." + m.getLendUntilMonth() + "." + m.getLendUntilYear();
                 if (df.parse(musicDate).before(Calendar.getInstance().getTime())) {
                     if (!expiredMediaList.contains(m)) {
@@ -819,7 +812,9 @@ public class MuViBee {
                 }
             }
             for (Video v : videoList) {
-                if (v.getLendUntilDay() == 0 || v.getLendUntilMonth() == 0 || v.getLendUntilYear() == 0) continue;
+                if (v.getLendUntilDay() == 0 || v.getLendUntilMonth() == 0 || v.getLendUntilYear() == 0) {
+                    continue;
+                }
                 String videoDate = v.getLendUntilDay() + "." + v.getLendUntilMonth() + "." + v.getLendUntilYear();
                 if (df.parse(videoDate).before(Calendar.getInstance().getTime())) {
                     if (!expiredMediaList.contains(v)) {
@@ -831,42 +826,41 @@ public class MuViBee {
                     }
                 }
             }
-        } catch (ParseException ex) {}
-   }
+        } catch (ParseException ex) {
+        }
+    }
 
     public void showSelectedMediaItem(Media media) {
-            int index = -1;
-            for (Media m : filterBookList.getList()) {
-                index++;
-                if (m == media) {
-                    mainFrame.selectBookTabAndAndCell(index);
-                    setCurrentBook((Book)m);
-                    return;
-                }
+        int index = -1;
+        for (Media m : filterBookList.getList()) {
+            index++;
+            if (m == media) {
+                mainFrame.selectBookTabAndAndCell(index);
+                setCurrentBook((Book) m);
+                return;
             }
-            index = -1;
-            for (Media m : filterMusicList.getList()) {
-                index++;
-                if (m == media) {
-                    mainFrame.selectMusicTabAndAndCell(index);
-                    setCurrentMusic((Music)m);
-                    return;
-                }
+        }
+        index = -1;
+        for (Media m : filterMusicList.getList()) {
+            index++;
+            if (m == media) {
+                mainFrame.selectMusicTabAndAndCell(index);
+                setCurrentMusic((Music) m);
+                return;
             }
-            index = -1;
-            for (Media m : filterVideoList.getList()) {
-                index++;
-                if (m == media) {
-                    mainFrame.selectVideoTabAndAndCell(index);
-                    setCurrentVideo((Video)m);
-                    return;
-                }
+        }
+        index = -1;
+        for (Media m : filterVideoList.getList()) {
+            index++;
+            if (m == media) {
+                mainFrame.selectVideoTabAndAndCell(index);
+                setCurrentVideo((Video) m);
+                return;
             }
+        }
     }
 
     public ExpiredItemsList getExpiredList() {
         return mainFrame.getExpiredList();
     }
-        
-    
 }
