@@ -93,18 +93,20 @@ public class MuViBee {
     }
 
     public int showSignOverFrame() {
+        ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         return JOptionPane.showConfirmDialog(mainFrame,
-                "Möchten Sie die Änderungen speichern ?",
-                "Bitte wählen",
+                bundle.getString("want_to_save"),
+                bundle.getString("pleaseChoose"),
                 JOptionPane.YES_NO_OPTION);
     }
 
     public int showSelfEANDecisionFrame() {
-        Object[] options = {"EAN", "Selbst"};
+        ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
+        Object[] options = {bundle.getString("ean"), bundle.getString("self")};
 
         return JOptionPane.showOptionDialog(mainFrame,
-                "Wollen Sie das Medium selbst anlegen oder per EAN ?",
-                "Bitte wählen",
+                bundle.getString("want_self_ean"),
+                bundle.getString("pleaseChoose"),
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -113,11 +115,12 @@ public class MuViBee {
     }
 
     public int showSaveChangeDecisionFrame() {
-        Object[] options = {"Ändern", "Abbrechen"};
+        ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
+        Object[] options = {bundle.getString("change"), bundle.getString("cancel")};
 
         return JOptionPane.showOptionDialog(mainFrame,
-                "Wollen Sie das Medium ändern ?",
-                "Bitte wählen",
+                bundle.getString("want_to_change"),
+                bundle.getString("pleaseChoose"),
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -126,11 +129,12 @@ public class MuViBee {
     }
 
     public int showSaveAddDecisionFrame() {
-        Object[] options = {"Hinzufügen", "Abbrechen"};
+        ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
+        Object[] options = {bundle.getString("add"), bundle.getString("cancel")};
 
         return JOptionPane.showOptionDialog(mainFrame,
-                "Wollen Sie das Medium hinzufügen ?",
-                "Bitte wählen",
+                bundle.getString("want_to_add"),
+                bundle.getString("pleaseChoose"),
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -139,9 +143,10 @@ public class MuViBee {
     }
 
     public String showEanInputFrame() {
+        ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         return (String) JOptionPane.showInputDialog(
                 mainFrame,
-                "Bitte EAN eingeben:"
+                bundle.getString("insert_ean")
                 + "",
                 "Customized Dialog",
                 JOptionPane.PLAIN_MESSAGE,
@@ -279,33 +284,37 @@ public class MuViBee {
     }
 
     public void addCurrentBookToBookLists() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (!bookList.contains(currentBook)) {
             filterBookList.add(currentBook);
             bookList.add(currentBook);
         } 
-        currentBook.updateDB(); //eigentlich müsste das in eigenem Thread ablaufen
-        StatusBarModel.getInstance().setSuccessMessage("Gespeichert");
+        currentBook.updateDB();
+        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
     public void addCurrentMusicToMusicLists() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (!musicList.contains(currentMusic)) {
             filterMusicList.add(currentMusic);
             musicList.add(currentMusic);
         }
         currentMusic.updateDB();
-        StatusBarModel.getInstance().setSuccessMessage("Gespeichert");
+        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
     public void addCurrentVideoToVideoLists() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (!videoList.contains(currentVideo)) {
             filterVideoList.add(currentVideo);
             videoList.add(currentVideo);
         }
         currentVideo.updateDB();
-        StatusBarModel.getInstance().setSuccessMessage("Gespeichert");
+        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
     public void removeCurrentBookFromBookLists() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (bookList.remove(currentBook)) {
             expiredMediaList.remove(currentBook);
             deletedMediaList.add(currentBook);
@@ -314,11 +323,12 @@ public class MuViBee {
             currentBook.updateDB();
             currentBook = null;
             showBookItem(false);
-            StatusBarModel.getInstance().setSuccessMessage("Im Papierkorb");
+            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("inBin"));
         }
     }
 
     public void removeCurrentMusicFromMusicLists() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (musicList.remove(currentMusic)) {
             expiredMediaList.remove(currentMusic);
             deletedMediaList.add(currentMusic);
@@ -327,11 +337,12 @@ public class MuViBee {
             currentMusic.updateDB();
             currentMusic = null;
             showMusicItem(false);
-            StatusBarModel.getInstance().setSuccessMessage("Im Papierkorb");
+            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("inBin"));
         }
     }
 
     public void removeCurrentVideoFromVideoLists() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (videoList.remove(currentVideo)) {
             expiredMediaList.remove(currentVideo);
             deletedMediaList.add(currentVideo);
@@ -340,20 +351,22 @@ public class MuViBee {
             currentVideo.updateDB();
             currentVideo = null;
             showVideoItem(false);
-            StatusBarModel.getInstance().setSuccessMessage("Im Papierkorb");
+            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("inBin"));
         }
     }
 
     public void removeCurrentDeletedMediaFromDeletedList() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         for (Media m : currentDeletedMediaList) {
             deletedMediaList.remove(m);
             m.deleteDB();
             m = null;
         }
-        StatusBarModel.getInstance().setSuccessMessage("Gelöscht");
+        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
     }
 
     public void restoreCurrentDeletedMedia() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         for (Media m : currentDeletedMediaList) {
             if (m instanceof Book) {
                 filterBookList.add(m);
@@ -373,7 +386,7 @@ public class MuViBee {
             m.setDeleted(false);
             m.updateDB();
             m = null;
-            StatusBarModel.getInstance().setSuccessMessage("Wiederhergestellt");
+            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
         }
     }
 
