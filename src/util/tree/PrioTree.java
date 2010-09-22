@@ -5,11 +5,9 @@
 package util.tree;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-import javax.print.attribute.standard.MediaSize.Other;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
