@@ -196,7 +196,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             year = selectedYear.toString().trim();
         }
         if(year.isEmpty())
-            return -1;
+            return 0;
         try {
             return Integer.parseInt(year);
         } catch (NumberFormatException e) {

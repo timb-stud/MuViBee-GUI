@@ -271,9 +271,9 @@ public abstract class Media extends Observable {
 
     //TODO monate/tage vergleich
     public boolean matches(String str) {
-        return title.contains(str) || genre.contains(str) 
-                || location.contains(str) || lentTo.contains(str)
-                || description.contains(str) || comment.contains(str);
+        return title.toLowerCase().contains(str.toLowerCase()) || genre.toLowerCase().contains(str.toLowerCase())
+                || location.toLowerCase().contains(str.toLowerCase()) || lentTo.toLowerCase().contains(str.toLowerCase())
+                || description.toLowerCase().contains(str.toLowerCase()) || comment.toLowerCase().contains(str.toLowerCase());
     }
 
     public boolean matches(Media m){
@@ -285,23 +285,23 @@ public abstract class Media extends Observable {
         System.out.println("islent:"  + (isLent == m.isLent));
         System.out.println("lentto: " + lentTo.contains(m.lentTo));
         if(rating == -1 || m.rating == -1){
-            return title.contains(m.title) && ean.contains(m.ean)
-                && genre.contains(m.genre) && releaseYear == m.releaseYear
-                && location.contains(m.location) && isLent == m.isLent
-                && lentTo.contains(m.lentTo)
+            return title.toLowerCase().contains(m.title.toLowerCase()) && ean.toLowerCase().contains(m.ean.toLowerCase())
+                && genre.toLowerCase().contains(m.genre.toLowerCase()) && releaseYear == m.releaseYear
+                && location.toLowerCase().contains(m.location.toLowerCase()) && isLent == m.isLent
+                && lentTo.toLowerCase().contains(m.lentTo.toLowerCase())
                 && lendDay == m.lendDay && lendMonth == m.getLendMonth()
                 && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
                 && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear
-                && comment.contains(m.comment);
+                && comment.toLowerCase().contains(m.comment.toLowerCase());
         }else{
-            return title.contains(m.title) && ean.contains(m.ean)
-                && genre.contains(m.genre) && releaseYear == m.releaseYear
-                && location.contains(m.location) && isLent == m.isLent
-                && lentTo.contains(m.lentTo)
+            return title.toLowerCase().contains(m.title.toLowerCase()) && ean.toLowerCase().contains(m.ean.toLowerCase())
+                && genre.toLowerCase().contains(m.genre.toLowerCase()) && releaseYear == m.releaseYear
+                && location.toLowerCase().contains(m.location.toLowerCase()) && isLent == m.isLent
+                && lentTo.toLowerCase().contains(m.lentTo.toLowerCase())
                 && lendDay == m.lendDay && lendMonth == m.getLendMonth()
                 && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
                 && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear
-                && rating == m.rating && comment.contains(m.comment);
+                && rating == m.rating && comment.toLowerCase().contains(m.comment.toLowerCase());
         }
         
     }
