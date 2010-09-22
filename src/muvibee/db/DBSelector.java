@@ -26,7 +26,7 @@ import muvibee.media.Video;
  * 
  * 
  * Aufruf:
- * orderBy im Format "ORDER BY title, author, ID"
+ * orderBy als IntegerArray. Mit Werten von SORT_XX
  * LinkedList<Book> bookList;
  * LinkedList<Music> musicList;
  * LinkedList<Video> videoList;
@@ -109,7 +109,13 @@ public class DBSelector {
             return videoList;
 	}
 
-
+        /*
+         * Methode selektiert alle
+         * Buecher
+         * aus der Datenbank -> erstellt daraus Objekte und fuegt diese der
+         * Buchliste
+         * hinzu
+         */
 	private static void createBookList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
             bookList = new LinkedList<Book>();
             String orderBySQL = orderByIntToString(orderBy);
@@ -149,7 +155,14 @@ public class DBSelector {
                 e.printStackTrace();
             }
         }
-        
+
+        /*
+         * Methode selektiert alle
+         * Musikelemente
+         * aus der Datenbank -> erstellt daraus Objekte und fuegt diese der
+         * Musikliste
+         * hinzu
+         */
 	private static void createMusicList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
             musicList = new LinkedList<Music>();
             String orderBySQL = orderByIntToString(orderBy);
@@ -190,6 +203,13 @@ public class DBSelector {
             }
         }
 
+        /*
+         * Methode selektiert alle
+         * Videos
+         * aus der Datenbank -> erstellt daraus Objekte und fuegt diese der
+         * Videoliste
+         * hinzu
+         */
 	private static void createVideoList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
             videoList = new LinkedList<Video>();
             String orderBySQL = orderByIntToString(orderBy);
@@ -229,7 +249,10 @@ public class DBSelector {
                 e.printStackTrace();
             }	
         }
-        
+
+        /*
+         * Methode wandelt ParamterArray in String fuer den SQL Befehl um
+         */
         private static String orderByIntToString (int[] orderBy) {
             String orderBySQL;
             if (orderBy == null || orderBy.length == 0) {
