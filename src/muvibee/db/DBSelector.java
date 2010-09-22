@@ -155,6 +155,7 @@ public class DBSelector {
                 b.setLanguage(rs.getString(15));
                 b.setIsbn(rs.getString(16));
                 b.setDeleted(rs.getBoolean(17));
+                b.setIsLent(rs.getBoolean(18));
                 bookList.add(b);
 
             }
@@ -185,6 +186,7 @@ public class DBSelector {
                 m.setInterpreter(rs.getString(15));
                 m.setType(rs.getString(16));
                 m.setDeleted(rs.getBoolean(17));
+                m.setIsLent(rs.getBoolean(18));
                 musicList.add(m);
 
             }
@@ -215,6 +217,7 @@ public class DBSelector {
                 v.setDirector(rs.getString(15));
                 v.setActors(rs.getString(16));
                 v.setDeleted(rs.getBoolean(17));
+                v.setIsLent(rs.getBoolean(18));
                 videoList.add(v);
             }
 	}
