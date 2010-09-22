@@ -24,38 +24,38 @@ import muvibee.media.Video;
  */
 
 public class DBUtil {
-        private final static String GET_IMAGE_HASH_BOOK = "SELECT cover FROM books WHERE ID = ?";
+        private final static String GET_IMAGE_HASH_BOOK = "SELECT cover FROM book WHERE ID = ?";
         private final static String GET_IMAGE_HASH_MUSIC = "SELECT cover FROM music WHERE ID = ?";
         private final static String GET_IMAGE_HASH_VIDEO = "SELECT cover FROM video WHERE ID = ?";
 	private final static String COVER_PATH = "data/images/";
-	private final static String SQL_UPDATE_BOOK  = "UPDATE books SET title = ?, ean = ?, genre = ?, year = ?,"
-                + " location = ?, lendto = ?, lenddate = ?, backdate = ?, rating = ?, description = ?,"
+	private final static String SQL_UPDATE_BOOK  = "UPDATE book SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
+                + " location = ?, lentto = ?, lentdate = ?, lentunitldate = ?, rating = ?, description = ?,"
                 + " comment = ?, cover = ?,"
-                + " author = ?, language = ?, isbn = ?, isdeleted = ? WHERE ID = ?";
-	private final static String SQL_UPDATE_MUSIC = "UPDATE music SET title = ?, ean = ?, genre = ?, year = ?,"
-                + " location = ?, lendto = ?, lenddate = ?, backdate = ?, rating = ?, description = ?,"
+                + " author = ?, language = ?, isbn = ?, isdeleted = ?, islent WHERE ID = ?";
+	private final static String SQL_UPDATE_MUSIC = "UPDATE music SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
+                + " location = ?, lentto = ?, lentdate = ?, lentunitldate = ?, rating = ?, description = ?,"
                 + " comment = ?, cover = ?,"
-                + " format = ?, interpreter = ?, type = ?, isdeleted = ? WHERE ID = ?";
-	private final static String SQL_UPDATE_VIDEO = "UPDATE video SET title = ?, ean = ?, genre = ?, year = ?,"
-                + " location = ?, lendto = ?, lenddate = ?, backdate = ?, rating = ?, description = ?,"
+                + " format = ?, interpreter = ?, type = ?, isdeleted = ?, islent WHERE ID = ?";
+	private final static String SQL_UPDATE_VIDEO = "UPDATE video SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
+                + " location = ?, lentto = ?, lentdate = ?, lentunitldate = ?, rating = ?, description = ?,"
                 + " comment = ?, cover = ?,"
-                + " format = ?, director = ?, actor = ?, isdeleted = ? WHERE ID = ?";
+                + " format = ?, director = ?, actor = ?, isdeleted = ?, islent WHERE ID = ?";
 
-        private final static String SQL_INSERT_BOOK  = "INSERT INTO books (ID, title, ean, genre, year, location,"
-                + " lendto, lenddate, backdate, rating, description, comment, cover, author, language, isbn,"
-                + " isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final static String SQL_INSERT_MUSIC = "INSERT INTO music (ID, title, ean, genre, year, location,"
-                + " lendto, lenddate, backdate, rating, description, comment, cover, format, interpreter, type,"
-                + " isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final static String SQL_INSERT_VIDEO = "INSERT INTO video (ID, title, ean, genre, year, location,"
-                + " lendto, lenddate, backdate, rating, description, comment, cover, format, director, actor,"
-                + " isdeleted) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        private final static String SQL_INSERT_BOOK  = "INSERT INTO book (ID, title, ean, genre, releaseyear, location,"
+                + " lentto, lentdate, lentuntildate, rating, description, comment, cover, author, language, isbn,"
+                + " isdeleted, islent) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final static String SQL_INSERT_MUSIC = "INSERT INTO music (ID, title, ean, genre, releaseyear, location,"
+                + " lentto, lentdate, lentuntildate, rating, description, comment, cover, format, interpreter, type,"
+                + " isdeleted, islent) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final static String SQL_INSERT_VIDEO = "INSERT INTO video (ID, title, ean, genre, releaseyear, location,"
+                + " lentto, lentdate, lentuntildate, rating, description, comment, cover, format, director, actor,"
+                + " isdeleted, islent) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        private final static String SQL_DELETE_BOOK     = "DELETE FROM books WHERE ID = ?";
+        private final static String SQL_DELETE_BOOK     = "DELETE FROM book  WHERE ID = ?";
         private final static String SQL_DELETE_MUSIC    = "DELETE FROM music WHERE ID = ?";
         private final static String SQL_DELETE_VIDEO    = "DELETE FROM video WHERE ID = ?";
 
-        private final static String SQL_MAXID_BOOK      = "SELECT MAX(ID) FROM books";
+        private final static String SQL_MAXID_BOOK      = "SELECT MAX(ID) FROM book";
         private final static String SQL_MAXID_MUSIC     = "SELECT MAX(ID) FROM music";
         private final static String SQL_MAXID_VIDEO     = "SELECT MAX(ID) FROM video";
 
@@ -97,8 +97,8 @@ public class DBUtil {
             ps.setInt(4, b.getReleaseYear());
             ps.setString(5, b.getLocation());
             ps.setString(6, b.getLentTo());
-            ps.setString(7, b.getLendDate());
-            ps.setString(8, b.getLendUntilDate());
+            ps.setString(7, b.getLentDate());
+            ps.setString(8, b.getLentUntilDate());
             ps.setInt(9, b.getRating());
             ps.setString(10, b.getDescription());
             ps.setString(11, b.getComment());
@@ -107,6 +107,7 @@ public class DBUtil {
             ps.setString(14, b.getLanguage());
             ps.setString(15, b.getIsbn());
             ps.setBoolean(16, b.isDeleted());
+            ps.setBoolean(17, b.isLent());
             ps.executeUpdate();
             b.setID(getMaxBookID());
 	}
@@ -119,8 +120,8 @@ public class DBUtil {
             ps.setInt(4, m.getReleaseYear());
             ps.setString(5, m.getLocation());
             ps.setString(6, m.getLentTo());
-            ps.setString(7, m.getLendDate());
-            ps.setString(8, m.getLendUntilDate());
+            ps.setString(7, m.getLentDate());
+            ps.setString(8, m.getLentUntilDate());
             ps.setInt(9, m.getRating());
             ps.setString(10, m.getDescription());
             ps.setString(11, m.getComment());
@@ -129,6 +130,7 @@ public class DBUtil {
             ps.setString(14, m.getInterpreter());
             ps.setString(15, m.getType());
             ps.setBoolean(16, m.isDeleted());
+            ps.setBoolean(17, m.isLent());
             ps.executeUpdate();
             m.setID(getMaxMusicID());
 	}
@@ -141,8 +143,8 @@ public class DBUtil {
             ps.setInt(4, v.getReleaseYear());
             ps.setString(5, v.getLocation());
             ps.setString(6, v.getLentTo());
-            ps.setString(7, v.getLendDate());
-            ps.setString(8, v.getLendUntilDate());
+            ps.setString(7, v.getLentDate());
+            ps.setString(8, v.getLentUntilDate());
             ps.setInt(9, v.getRating());
             ps.setString(10, v.getDescription());
             ps.setString(11, v.getComment());
@@ -151,6 +153,7 @@ public class DBUtil {
             ps.setString(14, v.getDirector());
             ps.setString(15, v.getActors());
             ps.setBoolean(16, v.isDeleted());
+            ps.setBoolean(17, v.isLent());
             ps.executeUpdate();
             v.setID(getMaxVideoID());
         }
@@ -185,8 +188,8 @@ public class DBUtil {
                 ps.setInt(4, m.getReleaseYear());
                 ps.setString(5, m.getLocation());
                 ps.setString(6, m.getLentTo());
-                ps.setString(7, m.getLendDate());
-                ps.setString(8, m.getLendUntilDate());
+                ps.setString(7, m.getLentDate());
+                ps.setString(8, m.getLentUntilDate());
                 ps.setInt(9, m.getRating());
                 ps.setString(10, m.getDescription());
                 ps.setString(11, m.getComment());
@@ -207,7 +210,8 @@ public class DBUtil {
                         ps.setString(15, ((Video)m).getActors());
                 }
                 ps.setBoolean(16, m.isDeleted());
-                ps.setInt(17, m.getID());
+                ps.setBoolean(17, m.isLent());
+                ps.setInt(18, m.getID());
                 ps.executeUpdate();
                 con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException e) {

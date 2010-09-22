@@ -18,19 +18,19 @@ public abstract class Media extends Observable {
     private String genre = "";
     private int releaseYear = 0;
     private String location = "";
-    private boolean isLent = false;
     private String lentTo = "";
-    private int lendDay = 0;
-    private int lendMonth = 0;
-    private int lendYear = 0;
-    private int lendUntilDay = 0;
-    private int lendUntilMonth = 0;
-    private int lendUntilYear = 0;
+    private int lentDay = 0;
+    private int lentMonth = 0;
+    private int lentYear = 0;
+    private int lentUntilDay = 0;
+    private int lentUntilMonth = 0;
+    private int lentUntilYear = 0;
     private int rating = 0;
     private String description = "";
     private String comment = "";
     private BufferedImage cover;
     private boolean isDeleted;
+    private boolean isLent = false;
 
     public Media() {
         try {
@@ -118,108 +118,108 @@ public abstract class Media extends Observable {
         this.lentTo = lendTo;
     }
 
-    public int getLendDay() {
-        return lendDay;
+    public int getLentDay() {
+        return lentDay;
     }
 
-    public String getLendDate() {
-        String day = String.valueOf(this.lendDay);
-        String month = String.valueOf(this.lendMonth);
-        if (this.lendDay < 10) {
-            day = "0" + this.lendDay;
-        } else if  (this.lendMonth < 10) {
-            month = "0" + this.lendMonth;
+    public String getLentDate() {
+        String day = String.valueOf(this.lentDay);
+        String month = String.valueOf(this.lentMonth);
+        if (this.lentDay < 10) {
+            day = "0" + this.lentDay;
+        } else if  (this.lentMonth < 10) {
+            month = "0" + this.lentMonth;
         }
-        if (this.lendYear == 0) {
+        if (this.lentYear == 0) {
             return null;
         }
-        return this.lendYear + "-" + month + "-" + day;
+        return this.lentYear + "-" + month + "-" + day;
     }
 
-    public void setLendDate(String date) {
+    public void setLentDate(String date) {
         if(date == null) {
-            this.lendYear = 0;
-            this.lendMonth = 0;
-            this.lendDay = 0;
+            this.lentYear = 0;
+            this.lentMonth = 0;
+            this.lentDay = 0;
         } else {
             String[] zerlegt = new String[3];
             zerlegt = date.split("-");
-            this.lendYear = Integer.parseInt(zerlegt[0]);
-            this.lendMonth = Integer.parseInt(zerlegt[1]);
-            this.lendDay = Integer.parseInt(zerlegt[2]);
+            this.lentYear = Integer.parseInt(zerlegt[0]);
+            this.lentMonth = Integer.parseInt(zerlegt[1]);
+            this.lentDay = Integer.parseInt(zerlegt[2]);
         }
     }
 
-    public void setLendDay(int lendDay) {
-        this.lendDay = lendDay;
+    public void setLentDay(int lendDay) {
+        this.lentDay = lendDay;
     }
 
-    public int getLendMonth() {
-        return lendMonth;
+    public int getLentMonth() {
+        return lentMonth;
     }
 
-    public void setLendMonth(int lendMonth) {
-        this.lendMonth = lendMonth;
+    public void setLentMonth(int lendMonth) {
+        this.lentMonth = lendMonth;
     }
 
-    public int getLendUntilDay() {
-        return lendUntilDay;
+    public int getLentUntilDay() {
+        return lentUntilDay;
     }
 
-    public String getLendUntilDate() {
-        String day = String.valueOf(this.lendUntilDay);
-        String month = String.valueOf(this.lendUntilMonth);
-        if (this.lendUntilDay < 10) {
-            day = "0" + this.lendUntilDay;
-        } else if  (this.lendUntilMonth < 10) {
-            month = "0" + this.lendUntilMonth;
+    public String getLentUntilDate() {
+        String day = String.valueOf(this.lentUntilDay);
+        String month = String.valueOf(this.lentUntilMonth);
+        if (this.lentUntilDay < 10) {
+            day = "0" + this.lentUntilDay;
+        } else if  (this.lentUntilMonth < 10) {
+            month = "0" + this.lentUntilMonth;
         }
-        if (this.lendUntilYear == 0) {
+        if (this.lentUntilYear == 0) {
             return null;
         }
-        return this.lendUntilYear + "-" + month + "-" + day;
+        return this.lentUntilYear + "-" + month + "-" + day;
     }
 
-    public void setLendUntilDate(String date) {
+    public void setLentUntilDate(String date) {
         if(date == null) {
-            this.lendYear = 0;
-            this.lendMonth = 0;
-            this.lendDay = 0;
+            this.lentYear = 0;
+            this.lentMonth = 0;
+            this.lentDay = 0;
         } else {
             String[] zerlegt = new String[3];
             zerlegt = date.split("-");
-            this.lendUntilYear = Integer.parseInt(zerlegt[0]);
-            this.lendUntilMonth = Integer.parseInt(zerlegt[1]);
-            this.lendUntilDay = Integer.parseInt(zerlegt[2]);
+            this.lentUntilYear = Integer.parseInt(zerlegt[0]);
+            this.lentUntilMonth = Integer.parseInt(zerlegt[1]);
+            this.lentUntilDay = Integer.parseInt(zerlegt[2]);
         }
     }
 
-    public void setLendUntilDay(int lendUntilDay) {
-        this.lendUntilDay = lendUntilDay;
+    public void setLentUntilDay(int lendUntilDay) {
+        this.lentUntilDay = lendUntilDay;
     }
 
-    public int getLendUntilMonth() {
-        return lendUntilMonth;
+    public int getLentUntilMonth() {
+        return lentUntilMonth;
     }
 
-    public void setLendUntilMonth(int lendUntilMonth) {
-        this.lendUntilMonth = lendUntilMonth;
+    public void setLentUntilMonth(int lendUntilMonth) {
+        this.lentUntilMonth = lendUntilMonth;
     }
 
-    public int getLendUntilYear() {
-        return lendUntilYear;
+    public int getLentUntilYear() {
+        return lentUntilYear;
     }
 
-    public void setLendUntilYear(int lendUntilYear) {
-        this.lendUntilYear = lendUntilYear;
+    public void setLentUntilYear(int lendUntilYear) {
+        this.lentUntilYear = lendUntilYear;
     }
 
-    public int getLendYear() {
-        return lendYear;
+    public int getLentYear() {
+        return lentYear;
     }
 
-    public void setLendYear(int lendYear) {
-        this.lendYear = lendYear;
+    public void setLentYear(int lendYear) {
+        this.lentYear = lendYear;
     }
 
     public int getRating() {
@@ -290,18 +290,18 @@ public abstract class Media extends Observable {
                 && genre.toLowerCase().contains(m.genre.toLowerCase()) && releaseYear == m.releaseYear
                 && location.toLowerCase().contains(m.location.toLowerCase()) && isLent == m.isLent
                 && lentTo.toLowerCase().contains(m.lentTo.toLowerCase())
-                && lendDay == m.lendDay && lendMonth == m.getLendMonth()
-                && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
-                && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear
+                && lentDay == m.lentDay && lentMonth == m.getLentMonth()
+                && lentYear == m.lentYear && lentUntilDay == m.lentUntilDay
+                && lentUntilMonth == m.lentUntilMonth && lentUntilYear == m.lentUntilYear
                 && comment.toLowerCase().contains(m.comment.toLowerCase());
         }else{
             return title.toLowerCase().contains(m.title.toLowerCase()) && ean.toLowerCase().contains(m.ean.toLowerCase())
                 && genre.toLowerCase().contains(m.genre.toLowerCase()) && releaseYear == m.releaseYear
                 && location.toLowerCase().contains(m.location.toLowerCase()) && isLent == m.isLent
                 && lentTo.toLowerCase().contains(m.lentTo.toLowerCase())
-                && lendDay == m.lendDay && lendMonth == m.getLendMonth()
-                && lendYear == m.lendYear && lendUntilDay == m.lendUntilDay
-                && lendUntilMonth == m.lendUntilMonth && lendUntilYear == m.lendUntilYear
+                && lentDay == m.lentDay && lentMonth == m.getLentMonth()
+                && lentYear == m.lentYear && lentUntilDay == m.lentUntilDay
+                && lentUntilMonth == m.lentUntilMonth && lentUntilYear == m.lentUntilYear
                 && rating == m.rating && comment.toLowerCase().contains(m.comment.toLowerCase());
         }
         
@@ -317,15 +317,15 @@ public abstract class Media extends Observable {
          + "\n ReleaseYear: " + this.releaseYear
          + "\n Location: " + this.location
          + "\n isLent: " + this.isLent
-         + "\n lendDay: " + this.lendDay
-         + "\n lendMonth: " + this.lendMonth
-         + "\n lendYear: " + this.lendYear
-         + "\n LendDate: " + this.getLendDate()
-         + "\n LendTo: " + this.lentTo
-         + "\n lendUntilDay: " + this.lendUntilDay
-         + "\n lendUntilMonth: " + this.lendUntilMonth
-         + "\n lendUntilYear: " + this.lendUntilYear
-         + "\n LendUntilDate: " + this.getLendUntilDate()
+         + "\n lentDay: " + this.lentDay
+         + "\n lentMonth: " + this.lentMonth
+         + "\n lentYear: " + this.lentYear
+         + "\n LentDate: " + this.getLentDate()
+         + "\n LentTo: " + this.lentTo
+         + "\n lentUntilDay: " + this.lentUntilDay
+         + "\n lentUntilMonth: " + this.lentUntilMonth
+         + "\n lentUntilYear: " + this.lentUntilYear
+         + "\n LentUntilDate: " + this.getLentUntilDate()
          + "\n Rating: " + this.rating
          + "\n Description: " + this.description
          + "\n Comment: " + this.comment

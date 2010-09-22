@@ -42,7 +42,7 @@ import muvibee.media.Video;
 
 public class DBSelector {
         private final static String COVER_PATH          = "data/images/";
-	private final static String SQL_GET_BOOKS  	= "SELECT * FROM books WHERE isdeleted = ? ";
+	private final static String SQL_GET_BOOKS  	= "SELECT * FROM book  WHERE isdeleted = ? ";
 	private final static String SQL_GET_MUSIC  	= "SELECT * FROM music WHERE isdeleted = ? ";
 	private final static String SQL_GET_VIDEOS      = "SELECT * FROM video WHERE isdeleted = ? ";
 	private final static String SQL_ORDER_BY	= " ORDER BY title";
@@ -113,8 +113,8 @@ public class DBSelector {
                 b.setReleaseYear(rs.getInt(5));
                 b.setLocation(rs.getString(6));
                 b.setLendTo(rs.getString(7));
-                b.setLendDate(rs.getString(8));
-                b.setLendUntilDate(rs.getString(9));
+                b.setLentDate(rs.getString(8));
+                b.setLentUntilDate(rs.getString(9));
                 b.setRating(rs.getInt(10));
                 b.setDescription(rs.getString(11));
                 b.setComment(rs.getString(12));
@@ -145,8 +145,8 @@ public class DBSelector {
                 m.setReleaseYear(rs.getInt(5));
                 m.setLocation(rs.getString(6));
                 m.setLendTo(rs.getString(7));
-                m.setLendDate(rs.getString(8));
-                m.setLendUntilDate(rs.getString(9));
+                m.setLentDate(rs.getString(8));
+                m.setLentUntilDate(rs.getString(9));
                 m.setRating(rs.getInt(10));
                 m.setDescription(rs.getString(11));
                 m.setComment(rs.getString(12));
@@ -177,8 +177,8 @@ public class DBSelector {
                 v.setReleaseYear(rs.getInt(5));
                 v.setLocation(rs.getString(6));
                 v.setLendTo(rs.getString(7));
-                v.setLendDate(rs.getString(8));
-                v.setLendUntilDate(rs.getString(9));
+                v.setLentDate(rs.getString(8));
+                v.setLentUntilDate(rs.getString(9));
                 v.setRating(rs.getInt(10));
                 v.setDescription(rs.getString(11));
                 v.setComment(rs.getString(12));

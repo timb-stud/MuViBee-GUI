@@ -579,12 +579,12 @@ public class MainFrame extends javax.swing.JFrame {
         locationBookTextField.setText(book.getLocation());
         lentBookCheckBox.setSelected(book.isLent());
         lentToBookTextField.setText(book.getLentTo());
-        lentDayBookComboBox.setSelectedIndex(book.getLendDay());
-        lentMonthBookComboBox.setSelectedIndex(book.getLendMonth());
-        setYear(book.getLendYear(), lentYearBookComboBox);
-        lentUntilDayBookComboBox.setSelectedIndex(book.getLendUntilDay());
-        lentUntilMonthBookComboBox.setSelectedIndex(book.getLendUntilMonth());
-        setYear(book.getLendUntilYear(), lentUntilYearBookComboBox);
+        lentDayBookComboBox.setSelectedIndex(book.getLentDay());
+        lentMonthBookComboBox.setSelectedIndex(book.getLentMonth());
+        setYear(book.getLentYear(), lentYearBookComboBox);
+        lentUntilDayBookComboBox.setSelectedIndex(book.getLentUntilDay());
+        lentUntilMonthBookComboBox.setSelectedIndex(book.getLentUntilMonth());
+        setYear(book.getLentUntilYear(), lentUntilYearBookComboBox);
 
         switch (book.getRating()) {
             case 0:
@@ -620,12 +620,12 @@ public class MainFrame extends javax.swing.JFrame {
         locationMusicTextField.setText(music.getLocation());
         lentMusicCheckBox.setSelected(music.isLent());
         lentToMusicTextField.setText(music.getLentTo());
-        lentDayMusicComboBox.setSelectedIndex(music.getLendDay());
-        lentMonthMusicComboBox.setSelectedIndex(music.getLendMonth());
-        setYear(music.getLendYear(), lentYearMusicComboBox);
-        lentUntilDayMusicComboBox.setSelectedIndex(music.getLendUntilDay());
-        lentUntilMonthMusicComboBox.setSelectedIndex(music.getLendUntilMonth());
-        setYear(music.getLendUntilYear(), lentUntilYearMusicComboBox);
+        lentDayMusicComboBox.setSelectedIndex(music.getLentDay());
+        lentMonthMusicComboBox.setSelectedIndex(music.getLentMonth());
+        setYear(music.getLentYear(), lentYearMusicComboBox);
+        lentUntilDayMusicComboBox.setSelectedIndex(music.getLentUntilDay());
+        lentUntilMonthMusicComboBox.setSelectedIndex(music.getLentUntilMonth());
+        setYear(music.getLentUntilYear(), lentUntilYearMusicComboBox);
 
         switch (music.getRating()) {
             case 0:
@@ -659,12 +659,12 @@ public class MainFrame extends javax.swing.JFrame {
         locationVideoTextField.setText(video.getLocation());
         lentVideoCheckBox.setSelected(video.isLent());
         lentToVideoTextField.setText(video.getLentTo());
-        lentDayVideoComboBox.setSelectedIndex(video.getLendDay());
-        lentMonthVideoComboBox.setSelectedIndex(video.getLendMonth());
-        setYear(video.getLendYear(), lentYearVideoComboBox);
-        lentUntilDayVideoComboBox.setSelectedIndex(video.getLendUntilDay());
-        lentUntilMonthVideoComboBox.setSelectedIndex(video.getLendUntilMonth());
-        setYear(video.getLendUntilYear(), lentUntilYearVideoComboBox);
+        lentDayVideoComboBox.setSelectedIndex(video.getLentDay());
+        lentMonthVideoComboBox.setSelectedIndex(video.getLentMonth());
+        setYear(video.getLentYear(), lentYearVideoComboBox);
+        lentUntilDayVideoComboBox.setSelectedIndex(video.getLentUntilDay());
+        lentUntilMonthVideoComboBox.setSelectedIndex(video.getLentUntilMonth());
+        setYear(video.getLentUntilYear(), lentUntilYearVideoComboBox);
 
         switch (video.getRating()) {
             case 0:
@@ -750,12 +750,12 @@ public class MainFrame extends javax.swing.JFrame {
         book.setLocation(location);
         book.setIsLent(lent);
         book.setLendTo(lendTo);
-        book.setLendDay(lendDay);
-        book.setLendMonth(lendMonth);
-        book.setLendYear(lentYear);
-        book.setLendUntilDay(lendUntilDay);
-        book.setLendUntilMonth(lendUntilMonth);
-        book.setLendUntilYear(lentUntilYear);
+        book.setLentDay(lendDay);
+        book.setLentMonth(lendMonth);
+        book.setLentYear(lentYear);
+        book.setLentUntilDay(lendUntilDay);
+        book.setLentUntilMonth(lendUntilMonth);
+        book.setLentUntilYear(lentUntilYear);
         book.setRating(rating);
         book.setDescription(description);
         book.setComment(annotation);
@@ -802,12 +802,12 @@ public class MainFrame extends javax.swing.JFrame {
         music.setLocation(location);
         music.setIsLent(lent);
         music.setLendTo(lendTo);
-        music.setLendDay(lendDay);
-        music.setLendMonth(lendMonth);
-        music.setLendYear(lentYear);
-        music.setLendUntilDay(lendUntilDay);
-        music.setLendUntilMonth(lendUntilMonth);
-        music.setLendUntilYear(lentUntilYear);
+        music.setLentDay(lendDay);
+        music.setLentMonth(lendMonth);
+        music.setLentYear(lentYear);
+        music.setLentUntilDay(lendUntilDay);
+        music.setLentUntilMonth(lendUntilMonth);
+        music.setLentUntilYear(lentUntilYear);
         music.setRating(rating);
         music.setDescription(description);
         music.setComment(annotation);
@@ -856,12 +856,12 @@ public class MainFrame extends javax.swing.JFrame {
         video.setLocation(location);
         video.setIsLent(lent);
         video.setLendTo(lendTo);
-        video.setLendDay(lendDay);
-        video.setLendMonth(lendMonth);
-        video.setLendYear(lentYear);
-        video.setLendUntilDay(lendUntilDay);
-        video.setLendUntilMonth(lendUntilMonth);
-        video.setLendUntilYear(lentUntilYear);
+        video.setLentDay(lendDay);
+        video.setLentMonth(lendMonth);
+        video.setLentYear(lentYear);
+        video.setLentUntilDay(lendUntilDay);
+        video.setLentUntilMonth(lendUntilMonth);
+        video.setLentUntilYear(lentUntilYear);
         video.setRating(rating);
         video.setDescription(description);
         video.setComment(annotation);
