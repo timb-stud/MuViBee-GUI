@@ -294,24 +294,25 @@ public class MuViBee {
         if (!bookList.contains(currentBook)) {
             filterBookList.add(currentBook);
             bookList.add(currentBook);
-            currentBook.updateDB(); //eigentlich müsste das in eigenem Thread ablaufen
-        }
+        } 
+        currentBook.updateDB(); //eigentlich müsste das in eigenem Thread ablaufen
+        StatusBarModel.getInstance().setSuccessMessage("Gespeichert");
     }
 
     public void addCurrentMusicToMusicLists() {
         if (!musicList.contains(currentMusic)) {
             filterMusicList.add(currentMusic);
             musicList.add(currentMusic);
-            currentMusic.updateDB();
         }
+        currentMusic.updateDB();
     }
 
     public void addCurrentVideoToVideoLists() {
         if (!videoList.contains(currentVideo)) {
             filterVideoList.add(currentVideo);
             videoList.add(currentVideo);
-            currentVideo.updateDB();
         }
+        currentVideo.updateDB();
     }
 
     public void removeCurrentBookFromBookLists() {

@@ -1,4 +1,4 @@
-package muvibee;
+package muvibee.ean;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -17,27 +17,21 @@ import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
 
-public class EAN {
+public class EanAmazon {
 
-    private EAN() {
+    private EanAmazon() {
     }
 
-    public static Media searchEan(String ean) {
+    public static Media searchEan(String ean) throws IOException{
         long eanLong = checkEan(ean);
         try {
             InputStream inputStream = request(eanLong);
             return checkRequest(inputStream);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (XMLStreamException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } catch (FactoryConfigurationError e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     private static long checkEan(String inData) {
