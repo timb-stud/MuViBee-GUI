@@ -94,7 +94,7 @@ public class DBSelector {
                     for (int i : orderBy) {
                         orderBySQL = orderBySQL + i + ", ";
                     }
-                    orderBySQL = orderBySQL.substring(0, orderBySQL.length()-3);
+                    orderBySQL = orderBySQL.substring(0, orderBySQL.length()-2);
                 }
                 con = DBConnector.getConnection();
                 PreparedStatement psBook = null;

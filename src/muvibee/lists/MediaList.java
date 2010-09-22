@@ -6,8 +6,6 @@ package muvibee.lists;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
@@ -64,6 +62,11 @@ public class MediaList extends Observable implements Observer {
         boolean succ = list.remove(m);
         updateObserver();
         return succ;
+    }
+
+    public void clear(){
+        list.clear();
+        updateObserver();
     }
 
     public void updateObserver() {
