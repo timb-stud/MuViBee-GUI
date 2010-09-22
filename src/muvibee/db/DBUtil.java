@@ -238,15 +238,13 @@ public class DBUtil {
                     ps = con.prepareStatement(SQL_DELETE_VIDEO);
                 }
                 select_hash.setInt(1, m.getID());
-                System.out.println(select_hash.toString());
                 ResultSet rs = select_hash.executeQuery();
                 rs.next();
                 String hash_cover = rs.getString(1);
-                System.out.println(COVER_PATH + hash_cover + ".jpg von ID " + m.getID());
                 File f = new File(COVER_PATH + hash_cover + ".jpg");
                 f.delete();
                 ps.setInt(1, m.getID());
-                ps.execute();
+                ps.executeUpdate();
                 con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException e) {
                     e.printStackTrace();
