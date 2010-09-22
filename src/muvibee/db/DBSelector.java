@@ -17,7 +17,7 @@ import muvibee.media.Music;
 import muvibee.media.Video;
 
 /**
- * @author tobiaslana
+ * @author Tobias Lana
  * 
  * Klasse erwartet beim Aufruf einen Parameter
  * Boolean deleted steuert ob geloeschte Daten selektiert werden oder nicht XOR !!
@@ -52,38 +52,58 @@ public class DBSelector {
 	private static LinkedList<Book> bookList;
 	private static LinkedList<Music> musicList;
 	private static LinkedList<Video> videoList;
-	
-//	public DBSelector(Boolean deleted, String orderBy) {
-//		selectMedia(deleted, orderBy);
-//	}
+        
+        // Media
+        public static int SORT_TITLE        = 2;
+        public static int SORT_EAN          = 3;
+        public static int SORT_GENRE        = 4;
+        public static int SORT_RELEASEYEAR  = 5;
+        public static int SORT_RATING       = 10;
+        // individuell Book
+        public static int SORT_B_AUTHOR     = 14;
+        public static int SORT_B_LANGUAGE   = 15;
+        // individuell Music
+        public static int SORT_M_FORMAT     = 14;
+        public static int SORT_M_INTERPRETER= 15;
+        public static int SORT_M_TYPE       = 16;
+        // individuell Video
+        public static int SORT_V_FORMAT     = 14;
+        public static int SORT_V_DIRECTOR   = 15;
+        public static int SORT_V_ACTORS     = 16;
 
-        public static LinkedList<Book> getBookList(Boolean deleted, String orderBy) {
+        public static LinkedList<Book> getBookList(Boolean deleted, int[] orderBy) {
             selectMedia(deleted, orderBy);
             return bookList;
 	}
-	public static LinkedList<Music> getMusicList(Boolean deleted, String orderBy) {
+	public static LinkedList<Music> getMusicList(Boolean deleted, int[] orderBy) {
             selectMedia(deleted, orderBy);
             return musicList;
 	}
-	public static LinkedList<Video> getVideoList(Boolean deleted, String orderBy) {
+	public static LinkedList<Video> getVideoList(Boolean deleted, int[] orderBy) {
             selectMedia(deleted, orderBy);
             return videoList;
 	}
 	
-	private static void selectMedia(Boolean isDeleted, String orderBy) {
+	private static void selectMedia(Boolean isDeleted, int[] orderBy) {
+            String orderBySQL;
             try {
-                if (orderBy == null || orderBy.compareTo("") == 0
-                                    || orderBy.compareTo(" ") == 0
-                                    || orderBy.compareTo("none") == 0) {
-                        orderBy = SQL_ORDER_BY;
+                if (orderBy == null || orderBy.length == 0) {
+                    orderBySQL = SQL_ORDER_BY;
+                } else {
+                    orderBySQL = " ORDER BY ";
+                    for (int i : orderBy) {
+                        orderBySQL = orderBySQL + i + ", ";
+                    }
+                    orderBySQL = orderBySQL.substring(0, orderBySQL.length()-3);
                 }
                 con = DBConnector.getConnection();
                 PreparedStatement psBook = null;
                 PreparedStatement psMusic = null;
                 PreparedStatement psVideo = null;
-                psBook 	= con.prepareStatement(SQL_GET_BOOKS + orderBy);
-                psMusic = con.prepareStatement(SQL_GET_MUSIC + orderBy);
-                psVideo = con.prepareStatement(SQL_GET_VIDEOS + orderBy);
+
+                psBook 	= con.prepareStatement(SQL_GET_BOOKS + orderBySQL);
+                psMusic = con.prepareStatement(SQL_GET_MUSIC + orderBySQL);
+                psVideo = con.prepareStatement(SQL_GET_VIDEOS + orderBySQL);
                 psBook.setBoolean(1, isDeleted);
                 psMusic.setBoolean(1, isDeleted);
                 psVideo.setBoolean(1, isDeleted);
@@ -128,6 +148,7 @@ public class DBSelector {
                 b.setLanguage(rs.getString(15));
                 b.setIsbn(rs.getString(16));
                 b.setDeleted(rs.getBoolean(17));
+                b.setIsLent(rs.getBoolean(18));
                 bookList.add(b);
 
             }
@@ -158,10 +179,12 @@ public class DBSelector {
                 m.setInterpreter(rs.getString(15));
                 m.setType(rs.getString(16));
                 m.setDeleted(rs.getBoolean(17));
+                m.setIsLent(rs.getBoolean(18));
                 musicList.add(m);
 
             }
 	}
+
 	private static void CreateVideoList(ResultSet rs) throws SQLException, IOException {
             videoList = new LinkedList<Video>();
             while (rs.next()) {
@@ -188,6 +211,7 @@ public class DBSelector {
                 v.setDirector(rs.getString(15));
                 v.setActors(rs.getString(16));
                 v.setDeleted(rs.getBoolean(17));
+                v.setIsLent(rs.getBoolean(18));
                 videoList.add(v);
             }
 	}

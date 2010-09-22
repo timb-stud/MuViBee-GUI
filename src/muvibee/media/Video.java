@@ -6,6 +6,12 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import muvibee.gui.StatusBarModel;
 
+/**
+ * @author Yassir Klos
+ * Video-Klasse erbt von Media und erstellt ein Video-Objekt
+ * Man ruft den Konstruktor ohne Argumente auf
+ * Atribute muessen mit getter/setter Methoden abgerufen und gesetzt werden
+ */
 public class Video extends Media {
 
     private String format = "";
@@ -13,6 +19,9 @@ public class Video extends Media {
     private String actors = "";
     public static BufferedImage defaultCover;
 
+     /**
+     * Konstruktor, erstellt Video-Objekt und weist das Standard-Cover zu.
+     */
     public Video() {
         if (defaultCover == null) {
             try {

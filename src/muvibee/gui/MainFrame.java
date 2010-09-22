@@ -764,9 +764,9 @@ public class MainFrame extends javax.swing.JFrame {
             rating = 3;
         }
 
-        if(isEmptyOrDate(lentDay, lentMonth, lentYear))
+        if(!isEmptyOrDate(lentDay, lentMonth, lentYear))
             throw new IllegalDateException("Ungüliges Ausleihdatum");
-        if(isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
+        if(!isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
             throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
 
         if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
@@ -825,9 +825,9 @@ public class MainFrame extends javax.swing.JFrame {
             rating = 3;
         }
 
-        if(isEmptyOrDate(lentDay, lentMonth, lentYear))
+        if(!isEmptyOrDate(lentDay, lentMonth, lentYear))
             throw new IllegalDateException("Ungüliges Ausleihdatum");
-        if(isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
+        if(!isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
             throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
 
         if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
@@ -887,9 +887,9 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
 
-        if(isEmptyOrDate(lentDay, lentMonth, lentYear))
+        if(!isEmptyOrDate(lentDay, lentMonth, lentYear))
             throw new IllegalDateException("Ungüliges Ausleihdatum");
-        if(isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
+        if(!isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
             throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
 
         if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))

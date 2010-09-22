@@ -1,6 +1,5 @@
 package muvibee.db;
 
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import muvibee.gui.StatusBarModel;
 import muvibee.media.Book;
 import muvibee.media.Media;
 
@@ -20,8 +18,11 @@ import muvibee.media.Video;
 
 
 /**
- * @author tobiaslana
- * erwartet Media Opbjekt und schreibt alle Attribute der ID in die Datenbank
+ * @author Tobias Lana, Yassir Klos
+ * Klasse erwartet Media Objekt
+ * dbUpdate: schreibt alle Attribute der ID in die Datenbank
+ * dbDelete: loescht den Datensatz aus der Datenbank und das zugehoerige Cover aus dem Images-Ordner
+ *
  */
 
 public class DBUtil {
@@ -31,15 +32,15 @@ public class DBUtil {
 	private final static String COVER_PATH = "data/images/";
 	private final static String SQL_UPDATE_BOOK  = "UPDATE book SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
                 + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
-                + " comment = ?, cover = ?,"
+                + " comment = ?,"
                 + " author = ?, language = ?, isbn = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 	private final static String SQL_UPDATE_MUSIC = "UPDATE music SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
                 + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
-                + " comment = ?, cover = ?,"
+                + " comment = ?,"
                 + " format = ?, interpreter = ?, type = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 	private final static String SQL_UPDATE_VIDEO = "UPDATE video SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
                 + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
-                + " comment = ?, cover = ?,"
+                + " comment = ?,"
                 + " format = ?, director = ?, actor = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 
         private final static String SQL_INSERT_BOOK  = "INSERT INTO book (ID, title, ean, genre, releaseyear, location,"
@@ -61,7 +62,11 @@ public class DBUtil {
         private final static String SQL_MAXID_VIDEO     = "SELECT MAX(ID) FROM video";
 
 	private static Connection con = null;
-		
+
+        /**
+         * @param m Media-Objekt
+         * Wenn ID des Objektes -1 ist wird ein neuer Datensatz in der Datenbank angelegt, ansonsten wird bestehender Datensatz geupdated
+         */
 	public static void dbUpdate(Media m) {
             if (m.getID() == -1) {
                 insertMediaDB(m);
@@ -194,25 +199,25 @@ public class DBUtil {
                 ps.setInt(9, m.getRating());
                 ps.setString(10, m.getDescription());
                 ps.setString(11, m.getComment());
-		ps.setString(12, (String.valueOf(m.getCover().hashCode())));
+//		ps.setString(12, (String.valueOf(m.getCover().hashCode())));
                 if (m instanceof Book) {
-                        ps.setString(13, ((Book)m).getAuthor());
-                        ps.setString(14, ((Book)m).getLanguage());
-                        ps.setString(15, ((Book)m).getIsbn());
+                        ps.setString(12, ((Book)m).getAuthor());
+                        ps.setString(13, ((Book)m).getLanguage());
+                        ps.setString(14, ((Book)m).getIsbn());
                 }
                 if (m instanceof Music) {
-                        ps.setString(13, ((Music)m).getFormat());
-                        ps.setString(14, ((Music)m).getInterpreter());
-                        ps.setString(15, ((Music)m).getType());
+                        ps.setString(12, ((Music)m).getFormat());
+                        ps.setString(13, ((Music)m).getInterpreter());
+                        ps.setString(14, ((Music)m).getType());
                 }
                 if (m instanceof Video) {
-                        ps.setString(13, ((Video)m).getFormat());
-                        ps.setString(14, ((Video)m).getDirector());
-                        ps.setString(15, ((Video)m).getActors());
+                        ps.setString(12, ((Video)m).getFormat());
+                        ps.setString(13, ((Video)m).getDirector());
+                        ps.setString(14, ((Video)m).getActors());
                 }
-                ps.setBoolean(16, m.isDeleted());
-                ps.setBoolean(17, m.isLent());
-                ps.setInt(18, m.getID());
+                ps.setBoolean(15, m.isDeleted());
+                ps.setBoolean(16, m.isLent());
+                ps.setInt(17, m.getID());
                 ps.executeUpdate();
                 con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException e) {
@@ -240,18 +245,21 @@ public class DBUtil {
                 select_hash.setInt(1, m.getID());
                 ResultSet rs = select_hash.executeQuery();
                 rs.next();
-                int hash_cover = rs.getInt(1);
-                System.out.println(COVER_PATH + hash_cover + ".jpg von ID " + m.getID());
+                String hash_cover = rs.getString(1);
                 File f = new File(COVER_PATH + hash_cover + ".jpg");
                 f.delete();
                 ps.setInt(1, m.getID());
-                ps.execute();
+                ps.executeUpdate();
                 con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException e) {
                     e.printStackTrace();
             }
         }
 
+        /**
+         * Selektiert den zuletzt eingetragenen Datensatz aus der Datenbanktabelle Book
+         * @return ID des zuletzt hinzugefuegten Datensatz
+         */
         private static int getMaxBookID () {
             int maxBookID = -1;
             try {
@@ -268,6 +276,11 @@ public class DBUtil {
             }
             return maxBookID;
         }
+
+         /**
+         * Selektiert den zuletzt eingetragenen Datensatz aus der Datenbanktabelle Music
+         * @return ID des zuletzt hinzugefuegten Datensatz
+         */
         private static int getMaxMusicID () {
             int maxMusicID = -1;
             try {
@@ -285,6 +298,10 @@ public class DBUtil {
             return maxMusicID;
         }
 
+         /**
+         * Selektiert den zuletzt eingetragenen Datensatz aus der Datenbanktabelle Video
+         * @return ID des zuletzt hinzugefuegten Datensatz
+         */
         private static int getMaxVideoID () {
             int maxVideoID = -1;
             try {

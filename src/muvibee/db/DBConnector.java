@@ -6,15 +6,15 @@ import java.sql.SQLException;
 
 /**
  * @author Yassir Klos, Tobias Lana
+ * Klasse stellt eine Verbindung mit der internen HSQL Datenbank her
+ * Die HSQL Datenbank-Files liegen relativ zum Laufzeitverzeichnis im Ordner data/database
+ *
  */
 public class DBConnector {
 
 	/**
-	 * Erstellt eine Verbindung mit der internen HSQL Datenbank
-	 * 
 	 * @return Connection
 	 * @throws SQLException
-	 * @throws MySQLException
 	 */
 	public static Connection getConnection() throws SQLException {
         try {

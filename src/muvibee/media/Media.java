@@ -9,6 +9,11 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import muvibee.db.DBUtil;
 
+/**
+ * @author Yassir Klos
+ * Abstrakte Klasse Media gibt Methoden und Atribute vor,
+ * die von Book/Music/Video geerbt werden bzw. implementiert werden muessen
+ */
 public abstract class Media extends Observable {
 
     private int ID = -1;
@@ -122,7 +127,8 @@ public abstract class Media extends Observable {
         String month = String.valueOf(this.lentMonth);
         if (this.lentDay < 10) {
             day = "0" + this.lentDay;
-        } else if  (this.lentMonth < 10) {
+        }
+        if  (this.lentMonth < 10) {
             month = "0" + this.lentMonth;
         }
         if (this.lentYear == 0) {
@@ -166,7 +172,8 @@ public abstract class Media extends Observable {
         String month = String.valueOf(this.lentUntilMonth);
         if (this.lentUntilDay < 10) {
             day = "0" + this.lentUntilDay;
-        } else if  (this.lentUntilMonth < 10) {
+        }
+        if  (this.lentUntilMonth < 10) {
             month = "0" + this.lentUntilMonth;
         }
         if (this.lentUntilYear == 0) {
@@ -325,6 +332,7 @@ public abstract class Media extends Observable {
          + "\n Description: " + this.description
          + "\n Comment: " + this.comment
          + "\n Cover: " + this.cover.toString()
-         + "\n isDeleted: " + this.isDeleted;
+         + "\n isDeleted: " + this.isDeleted
+         + "\n isLent: " + this.isLent;
     }
 }
