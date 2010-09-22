@@ -14,7 +14,7 @@ import muvibee.media.Video;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
 
-public class EANDates {
+public class EanBol {
 
 	static String preEAN = "http://www.bol.de/shop/home/suche/?fi=&st=&sa=&sr=&sv=&svb=&ssw=&si=&sk=&sd=&sre=&sq=";
 	static String postEAN = "&forward=weiter&sswg=ANY#pm_features";
@@ -183,7 +183,7 @@ public class EANDates {
 	}
 
 	public static void main(String[] args) throws IOException {
-		EANDates eanDates = new EANDates();
+		EanBol eanDates = new EanBol();
 //		setProxy("www-proxy.htw-saarland.de", "3128");
 		// System.out.println(eanDates.getBookData("9783446235922"));
 		// System.out.println(eanDates.getMusicData("0602527394527"));
