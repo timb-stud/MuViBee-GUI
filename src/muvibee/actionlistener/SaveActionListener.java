@@ -8,7 +8,7 @@ package muvibee.actionlistener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import muvibee.IllegalYearException;
+import muvibee.IllegalDateException;
 import muvibee.MuViBee;
 import muvibee.gui.StatusBarModel;
 
@@ -32,8 +32,9 @@ public class SaveActionListener implements ActionListener {
                     if (!mvb.setCurrentBookItemInformation()) {
                         return;
                     }
-                } catch (IllegalYearException ex) {
-                    StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
+                } catch (IllegalDateException ex) {
+                    StatusBarModel.getInstance().setFailMessage(ex.getMessage());
+                    return;
                 }
                 mvb.addCurrentBookToBookLists();
             } else {
@@ -42,8 +43,8 @@ public class SaveActionListener implements ActionListener {
                         if (!mvb.setCurrentMusicItemInformation()) {
                             return;
                         }
-                    } catch (IllegalYearException ex) {
-                        StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
+                    } catch (IllegalDateException ex) {
+                        StatusBarModel.getInstance().setFailMessage(ex.getMessage());
                     }
 		    mvb.addCurrentMusicToMusicLists();
                 } else {
@@ -52,8 +53,8 @@ public class SaveActionListener implements ActionListener {
                             if (!mvb.setCurrentVideoItemInformation()) {
                                 return;
                             }
-                        } catch (IllegalYearException ex) {
-                            StatusBarModel.getInstance().setFailMessage("Uengueltiges Jahr");
+                        } catch (IllegalDateException ex) {
+                            StatusBarModel.getInstance().setFailMessage(ex.getMessage());
                         }
                         mvb.addCurrentVideoToVideoLists();
                     }

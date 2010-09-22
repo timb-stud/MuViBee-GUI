@@ -15,7 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import muvibee.IllegalYearException;
+import muvibee.IllegalDateException;
 import muvibee.MuViBee;
 import muvibee.media.Book;
 import muvibee.media.Music;
@@ -186,7 +186,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         lentUntilYearComboBox.setEnabled(b);
     }
 
-    public int getYear(JComboBox cb) throws IllegalYearException {
+    public int getYear(JComboBox cb) throws IllegalDateException {
         if (cb.getSelectedIndex() == 0) {
             return -1;
         }
@@ -200,7 +200,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         try {
             return Integer.parseInt(year);
         } catch (NumberFormatException e) {
-            throw new IllegalYearException();
+            throw new IllegalDateException();
         }
     }
 
@@ -712,7 +712,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
             releaseYear = getYear(releaseYearComboBox);
             lentYear = getYear(lentYearComboBox);
             lentUntilYear = getYear(lentUntilYearComboBox);
-        } catch (IllegalYearException e) {
+        } catch (IllegalDateException e) {
             returnCode = RET_ILLEGAL_YEAR;
             return;
         }

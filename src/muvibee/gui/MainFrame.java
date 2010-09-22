@@ -38,7 +38,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.TableCellRenderer;
-import muvibee.IllegalYearException;
+import muvibee.IllegalDateException;
 import muvibee.MuViBee;
 import muvibee.actionlistener.AboutActionListener;
 import muvibee.actionlistener.HelpActionListener;
@@ -686,7 +686,7 @@ public class MainFrame extends javax.swing.JFrame {
         annotationVideoTextArea.setText(video.getComment());
     }
 
-    public int getYear(JComboBox cb) throws IllegalYearException {
+    public int getYear(JComboBox cb) throws IllegalDateException {
         if(cb.getSelectedIndex() == 0)
             return 0;
         Object selectedYear = cb.getSelectedItem();
@@ -697,7 +697,7 @@ public class MainFrame extends javax.swing.JFrame {
         try{
             return Integer.parseInt(yearS);
         }catch(NumberFormatException e){
-            throw new IllegalYearException();
+            throw new IllegalDateException("Ungültiges Jahr");
         }
     }
 
@@ -710,7 +710,30 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 
-    public void setBookItemInformation(Book book) throws IllegalYearException{
+    public boolean isEmptyOrDate(int day, int month, int year){
+        return (day > 0 && month > 0 && year > 0) || (day == 0 && month == 0 && year == 0);
+    }
+
+    public boolean correctLentDates(int lentDay, int lentMonth, int lentYear, int lentUntilDay, int lentUntilMonth, int lentUntilYear) {
+        if (lentUntilYear < lentYear) {
+            return false;
+        } else {
+            if (lentUntilYear == lentYear) {
+                if (lentUntilMonth < lentMonth) {
+                    return false;
+                } else {
+                    if (lentUntilMonth == lentMonth) {
+                        if (lentUntilDay < lentDay) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public void setBookItemInformation(Book book) throws IllegalDateException{
         String title = titleBookTextField.getText().trim();
         String author = authorBookTextField.getText().trim();
         String language = languageBookTextField.getText().trim();
@@ -720,12 +743,12 @@ public class MainFrame extends javax.swing.JFrame {
         int releaseYear = getYear(releaseYearBookComboBox);
         String location = locationBookTextField.getText().trim();
         boolean lent = lentBookCheckBox.isSelected();
-        String lendTo = lentToBookTextField.getText().trim();
-        int lendDay = lentDayBookComboBox.getSelectedIndex();
-        int lendMonth = lentMonthBookComboBox.getSelectedIndex();
+        String lentTo = lentToBookTextField.getText().trim();
+        int lentDay = lentDayBookComboBox.getSelectedIndex();
+        int lentMonth = lentMonthBookComboBox.getSelectedIndex();
         int lentYear = getYear(lentYearBookComboBox);
-        int lendUntilDay = lentUntilDayBookComboBox.getSelectedIndex();
-        int lendUntilMonth = lentUntilMonthBookComboBox.getSelectedIndex();
+        int lentUntilDay = lentUntilDayBookComboBox.getSelectedIndex();
+        int lentUntilMonth = lentUntilMonthBookComboBox.getSelectedIndex();
         int lentUntilYear = getYear(lentUntilYearBookComboBox);
         String description = descriptionBookTextArea.getText().trim();
         String annotation = annotationBookTextArea.getText().trim();
@@ -740,6 +763,15 @@ public class MainFrame extends javax.swing.JFrame {
             rating = 3;
         }
 
+        if(isEmptyOrDate(lentDay, lentMonth, lentYear))
+            throw new IllegalDateException("Ungüliges Ausleihdatum");
+        if(isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
+
+        if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException("Ungüliges Ausgeliehen von/bis");
+
+
         book.setTitle(title);
         book.setAuthor(author);
         book.setLanguage(language);
@@ -749,12 +781,12 @@ public class MainFrame extends javax.swing.JFrame {
         book.setReleaseYear(releaseYear);
         book.setLocation(location);
         book.setIsLent(lent);
-        book.setLendTo(lendTo);
-        book.setLendDay(lendDay);
-        book.setLendMonth(lendMonth);
+        book.setLendTo(lentTo);
+        book.setLendDay(lentDay);
+        book.setLendMonth(lentMonth);
         book.setLendYear(lentYear);
-        book.setLendUntilDay(lendUntilDay);
-        book.setLendUntilMonth(lendUntilMonth);
+        book.setLendUntilDay(lentUntilDay);
+        book.setLendUntilMonth(lentUntilMonth);
         book.setLendUntilYear(lentUntilYear);
         book.setRating(rating);
         book.setDescription(description);
@@ -762,7 +794,7 @@ public class MainFrame extends javax.swing.JFrame {
         book.updateObservers();
     }
 
-    public void setMusicItemInformation(Music music) throws IllegalYearException {
+    public void setMusicItemInformation(Music music) throws IllegalDateException {
         String title = titleMusicTextField.getText().trim();
         String artist = artistMusicTextField.getText().trim();
         String type = getSelected(typeMusicComboBox);
@@ -772,12 +804,12 @@ public class MainFrame extends javax.swing.JFrame {
         int releaseYear = getYear(releaseYearMusicComboBox);
         String location = locationMusicTextField.getText().trim();
         boolean lent = lentMusicCheckBox.isSelected();
-        String lendTo = lentToMusicTextField.getText().trim();
-        int lendDay = lentDayMusicComboBox.getSelectedIndex();
-        int lendMonth = lentMonthMusicComboBox.getSelectedIndex();
+        String lentTo = lentToMusicTextField.getText().trim();
+        int lentDay = lentDayMusicComboBox.getSelectedIndex();
+        int lentMonth = lentMonthMusicComboBox.getSelectedIndex();
         int lentYear = getYear(lentYearMusicComboBox);
-        int lendUntilDay = lentUntilDayMusicComboBox.getSelectedIndex();
-        int lendUntilMonth = lentUntilMonthMusicComboBox.getSelectedIndex();
+        int lentUntilDay = lentUntilDayMusicComboBox.getSelectedIndex();
+        int lentUntilMonth = lentUntilMonthMusicComboBox.getSelectedIndex();
         int lentUntilYear = getYear(lentUntilYearMusicComboBox);
         String description = descriptionMusicTextArea.getText().trim();
         String annotation = annotationMusicTextArea.getText().trim();
@@ -792,6 +824,14 @@ public class MainFrame extends javax.swing.JFrame {
             rating = 3;
         }
 
+        if(isEmptyOrDate(lentDay, lentMonth, lentYear))
+            throw new IllegalDateException("Ungüliges Ausleihdatum");
+        if(isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
+
+        if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException("Ungüliges Ausgeliehen von/bis");
+        
         music.setTitle(title);
         music.setInterpreter(artist);
         music.setType(type);
@@ -801,12 +841,12 @@ public class MainFrame extends javax.swing.JFrame {
         music.setReleaseYear(releaseYear);
         music.setLocation(location);
         music.setIsLent(lent);
-        music.setLendTo(lendTo);
-        music.setLendDay(lendDay);
-        music.setLendMonth(lendMonth);
+        music.setLendTo(lentTo);
+        music.setLendDay(lentDay);
+        music.setLendMonth(lentMonth);
         music.setLendYear(lentYear);
-        music.setLendUntilDay(lendUntilDay);
-        music.setLendUntilMonth(lendUntilMonth);
+        music.setLendUntilDay(lentUntilDay);
+        music.setLendUntilMonth(lentUntilMonth);
         music.setLendUntilYear(lentUntilYear);
         music.setRating(rating);
         music.setDescription(description);
@@ -815,7 +855,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    public void setVideoItemInformation(Video video) throws IllegalYearException {
+    public void setVideoItemInformation(Video video) throws IllegalDateException {
         String title = titleVideoTextField.getText().trim();
         String director = directorVideoTextField.getText().trim();
         String actors = actorsVideoTextField.getText().trim();
@@ -825,12 +865,12 @@ public class MainFrame extends javax.swing.JFrame {
         int releaseYear = getYear(releaseYearVideoComboBox);
         String location = locationVideoTextField.getText().trim();
         boolean lent = lentVideoCheckBox.isSelected();
-        String lendTo = lentToVideoTextField.getText().trim();
-        int lendDay = lentDayVideoComboBox.getSelectedIndex();
-        int lendMonth = lentMonthVideoComboBox.getSelectedIndex();
+        String lentTo = lentToVideoTextField.getText().trim();
+        int lentDay = lentDayVideoComboBox.getSelectedIndex();
+        int lentMonth = lentMonthVideoComboBox.getSelectedIndex();
         int lentYear = getYear(lentYearVideoComboBox);
-        int lendUntilDay = lentUntilDayVideoComboBox.getSelectedIndex();
-        int lendUntilMonth = lentUntilMonthVideoComboBox.getSelectedIndex();
+        int lentUntilDay = lentUntilDayVideoComboBox.getSelectedIndex();
+        int lentUntilMonth = lentUntilMonthVideoComboBox.getSelectedIndex();
         int lentUntilYear = getYear(lentUntilYearVideoComboBox);
         String description = descriptionVideoTextArea.getText().trim();
         String annotation = annotationVideoTextArea.getText().trim();
@@ -846,6 +886,15 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
 
+        if(isEmptyOrDate(lentDay, lentMonth, lentYear))
+            throw new IllegalDateException("Ungüliges Ausleihdatum");
+        if(isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
+
+        if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException("Ungüliges Ausgeliehen von/bis");
+
+        
         video.setTitle(title);
         video.setDirector(director);
         video.setActors(actors);
@@ -855,12 +904,12 @@ public class MainFrame extends javax.swing.JFrame {
         video.setReleaseYear(releaseYear);
         video.setLocation(location);
         video.setIsLent(lent);
-        video.setLendTo(lendTo);
-        video.setLendDay(lendDay);
-        video.setLendMonth(lendMonth);
+        video.setLendTo(lentTo);
+        video.setLendDay(lentDay);
+        video.setLendMonth(lentMonth);
         video.setLendYear(lentYear);
-        video.setLendUntilDay(lendUntilDay);
-        video.setLendUntilMonth(lendUntilMonth);
+        video.setLendUntilDay(lentUntilDay);
+        video.setLendUntilMonth(lentUntilMonth);
         video.setLendUntilYear(lentUntilYear);
         video.setRating(rating);
         video.setDescription(description);
