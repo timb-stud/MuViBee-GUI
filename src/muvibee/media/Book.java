@@ -12,12 +12,16 @@ public class Book extends Media {
 
     @Override
     public boolean matches(String str) {
-        return super.matches(str) || author.contains(str) || language.contains(str);
+        str = str.toLowerCase();
+        return super.matches(str) || author.toLowerCase().contains(str)
+                || language.toLowerCase().contains(str)
+                || isbn.toLowerCase().contains(str);
     }
 
     public boolean matches(Book b){
-        return super.matches(b) && author.contains(b.author)
-                && language.contains(b.language) && isbn.contains(b.isbn);
+        return super.matches(b) && author.toLowerCase().contains(b.author.toLowerCase())
+                && language.toLowerCase().contains(b.language.toLowerCase())
+                && isbn.toLowerCase().contains(b.isbn.toLowerCase());
     }
 
     //TODO equals

@@ -12,12 +12,16 @@ public class Video extends Media {
 
     @Override
     public boolean matches(String str) {
-        return super.matches(str) || format.contains(str) || director.contains(str) || actors.contains(str);
+        str = str.toLowerCase();
+        return super.matches(str) || format.toLowerCase().contains(str)
+                || director.toLowerCase().contains(str)
+                || actors.toLowerCase().contains(str);
     }
 
     public boolean matches(Video v){
-        return super.matches(v) && format.contains(v.format)
-                && director.contains(v.director) && actors.contains(v.actors);
+        return super.matches(v) && format.toLowerCase().contains(v.format.toLowerCase())
+                && director.toLowerCase().contains(v.director.toLowerCase())
+                && actors.toLowerCase().contains(v.actors.toLowerCase());
     }
 
     public String getFormat() {
