@@ -26,14 +26,13 @@ import muvibee.media.Video;
  * 
  * 
  * Aufruf:
- * DBSelector dbs = new DBSelector([false|true], String orderBy);
  * orderBy im Format "ORDER BY title, author, ID"
  * LinkedList<Book> bookList;
  * LinkedList<Music> musicList;
  * LinkedList<Video> videoList;
- * bookList 	= DBSelector.getBookList([false|true], String orderBy);
- * musicList 	= DBSelector.getMusicList([false|true], String orderBy);
- * videoList 	= DBSelector.getVideoList([false|true], String orderBy);
+ * bookList 	= DBSelector.getBookList([false|true], int[] orderBy);
+ * musicList 	= DBSelector.getMusicList([false|true], int[] orderBy);
+ * videoList 	= DBSelector.getVideoList([false|true], int[] orderBy);
  * 
  * Testklasse:
  * db.test.TestDBSelects
@@ -72,22 +71,168 @@ public class DBSelector {
         public static int SORT_V_ACTORS     = 16;
 
         public static LinkedList<Book> getBookList(Boolean deleted, int[] orderBy) {
-            selectMedia(deleted, orderBy);
+            try {
+                con = DBConnector.getConnection();
+                createBookList(deleted, orderBy);
+                con.prepareStatement("SHUTDOWN").execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return bookList;
 	}
+        
 	public static LinkedList<Music> getMusicList(Boolean deleted, int[] orderBy) {
-            selectMedia(deleted, orderBy);
+            try {
+                con = DBConnector.getConnection();
+                createMusicList(deleted, orderBy);
+                con.prepareStatement("SHUTDOWN").execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return musicList;
 	}
+        
 	public static LinkedList<Video> getVideoList(Boolean deleted, int[] orderBy) {
-            selectMedia(deleted, orderBy);
+            try {
+                con = DBConnector.getConnection();
+                createVideoList(deleted, orderBy);
+                con.prepareStatement("SHUTDOWN").execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return videoList;
 	}
-	
-	private static void selectMedia(Boolean isDeleted, int[] orderBy) {
-            String orderBySQL;
+
+
+	private static void createBookList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
+            bookList = new LinkedList<Book>();
+            String orderBySQL = orderByIntToString(orderBy);
             try {
-                if (orderBy == null || orderBy.length == 0) {
+                PreparedStatement psBook = null;
+                psBook 	= con.prepareStatement(SQL_GET_BOOKS + orderBySQL);
+                psBook.setBoolean(1, isDeleted);
+                ResultSet rsBook = psBook.executeQuery();
+                while (rsBook.next()) {
+                    Book b = new Book();
+                    b.setID(rsBook.getInt(1));
+                    b.setTitle(rsBook.getString(2));
+                    b.setEan(rsBook.getString(3));
+                    b.setGenre(rsBook.getString(4));
+                    b.setReleaseYear(rsBook.getInt(5));
+                    b.setLocation(rsBook.getString(6));
+                    b.setLentTo(rsBook.getString(7));
+                    b.setLentDate(rsBook.getString(8));
+                    b.setLentUntilDate(rsBook.getString(9));
+                    b.setRating(rsBook.getInt(10));
+                    b.setDescription(rsBook.getString(11));
+                    b.setComment(rsBook.getString(12));
+                    try {
+                        BufferedImage cover = ImageIO.read(new File (COVER_PATH + rsBook.getString(13) + ".jpg"));
+                        b.setCover(cover);
+                    } catch (IIOException e){
+                        b.setCover(Book.defaultCover);
+                    }
+                    b.setAuthor(rsBook.getString(14));
+                    b.setLanguage(rsBook.getString(15));
+                    b.setIsbn(rsBook.getString(16));
+                    b.setDeleted(rsBook.getBoolean(17));
+                    b.setIsLent(rsBook.getBoolean(18));
+                    bookList.add(b);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        
+	private static void createMusicList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
+            musicList = new LinkedList<Music>();
+            String orderBySQL = orderByIntToString(orderBy);
+            try {
+                PreparedStatement psMusic = null;
+                psMusic = con.prepareStatement(SQL_GET_MUSIC + orderBySQL);
+                psMusic.setBoolean(1, isDeleted);
+                ResultSet rsMusic = psMusic.executeQuery();
+                while (rsMusic.next()) {
+                    Music m = new Music();
+                    m.setID(rsMusic.getInt(1));
+                    m.setTitle(rsMusic.getString(2));
+                    m.setEan(rsMusic.getString(3));
+                    m.setGenre(rsMusic.getString(4));
+                    m.setReleaseYear(rsMusic.getInt(5));
+                    m.setLocation(rsMusic.getString(6));
+                    m.setLentTo(rsMusic.getString(7));
+                    m.setLentDate(rsMusic.getString(8));
+                    m.setLentUntilDate(rsMusic.getString(9));
+                    m.setRating(rsMusic.getInt(10));
+                    m.setDescription(rsMusic.getString(11));
+                    m.setComment(rsMusic.getString(12));
+                    try {
+                        BufferedImage cover = ImageIO.read(new File (COVER_PATH + rsMusic.getString(13) + ".jpg"));
+                        m.setCover(cover);
+                    } catch (IIOException e){
+                        m.setCover(Music.defaultCover);
+                    }
+                    m.setFormat(rsMusic.getString(14));
+                    m.setInterpreter(rsMusic.getString(15));
+                    m.setType(rsMusic.getString(16));
+                    m.setDeleted(rsMusic.getBoolean(17));
+                    m.setIsLent(rsMusic.getBoolean(18));
+                    musicList.add(m);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+	private static void createVideoList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
+            videoList = new LinkedList<Video>();
+            String orderBySQL = orderByIntToString(orderBy);
+            try {
+                PreparedStatement psVideo = null;
+                psVideo = con.prepareStatement(SQL_GET_VIDEOS + orderBySQL);
+                psVideo.setBoolean(1, isDeleted);
+                ResultSet rsVideo = psVideo.executeQuery();
+                while (rsVideo.next()) {
+                    Video v = new Video();
+                    v.setID(rsVideo.getInt(1));
+                    v.setTitle(rsVideo.getString(2));
+                    v.setEan(rsVideo.getString(3));
+                    v.setGenre(rsVideo.getString(4));
+                    v.setReleaseYear(rsVideo.getInt(5));
+                    v.setLocation(rsVideo.getString(6));
+                    v.setLentTo(rsVideo.getString(7));
+                    v.setLentDate(rsVideo.getString(8));
+                    v.setLentUntilDate(rsVideo.getString(9));
+                    v.setRating(rsVideo.getInt(10));
+                    v.setDescription(rsVideo.getString(11));
+                    v.setComment(rsVideo.getString(12));
+                    try {
+                        BufferedImage cover = ImageIO.read(new File (COVER_PATH + rsVideo.getString(13) + ".jpg"));
+                        v.setCover(cover);
+                    } catch (IIOException e){
+                        v.setCover(Video.defaultCover);
+                    }
+                    v.setFormat(rsVideo.getString(14));
+                    v.setDirector(rsVideo.getString(15));
+                    v.setActors(rsVideo.getString(16));
+                    v.setDeleted(rsVideo.getBoolean(17));
+                    v.setIsLent(rsVideo.getBoolean(18));
+                    videoList.add(v);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }	
+        }
+        
+        private static String orderByIntToString (int[] orderBy) {
+            String orderBySQL;
+            if (orderBy == null || orderBy.length == 0) {
                     orderBySQL = SQL_ORDER_BY;
                 } else {
                     orderBySQL = " ORDER BY ";
@@ -95,124 +240,7 @@ public class DBSelector {
                         orderBySQL = orderBySQL + i + ", ";
                     }
                     orderBySQL = orderBySQL.substring(0, orderBySQL.length()-2);
-                }
-                con = DBConnector.getConnection();
-                PreparedStatement psBook = null;
-                PreparedStatement psMusic = null;
-                PreparedStatement psVideo = null;
-
-                psBook 	= con.prepareStatement(SQL_GET_BOOKS + orderBySQL);
-                psMusic = con.prepareStatement(SQL_GET_MUSIC + orderBySQL);
-                psVideo = con.prepareStatement(SQL_GET_VIDEOS + orderBySQL);
-                psBook.setBoolean(1, isDeleted);
-                psMusic.setBoolean(1, isDeleted);
-                psVideo.setBoolean(1, isDeleted);
-                ResultSet rsBook = psBook.executeQuery();
-                ResultSet rsMusic = psMusic.executeQuery();
-                ResultSet rsVideo = psVideo.executeQuery();
-                CreateBookList(rsBook);
-                CreateMusicList(rsMusic);
-                CreateVideoList(rsVideo);
-                con.prepareStatement("SHUTDOWN").execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-		
-	}
-
-	private static void CreateBookList(ResultSet rs) throws SQLException, IOException {
-            bookList = new LinkedList<Book>();
-            while (rs.next()) {
-                Book b = new Book();
-                b.setID(rs.getInt(1));
-                b.setTitle(rs.getString(2));
-                b.setEan(rs.getString(3));
-                b.setGenre(rs.getString(4));
-                b.setReleaseYear(rs.getInt(5));
-                b.setLocation(rs.getString(6));
-                b.setLentTo(rs.getString(7));
-                b.setLentDate(rs.getString(8));
-                b.setLentUntilDate(rs.getString(9));
-                b.setRating(rs.getInt(10));
-                b.setDescription(rs.getString(11));
-                b.setComment(rs.getString(12));
-                try {
-                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
-                    b.setCover(cover);
-                } catch (IIOException e){
-                    b.setCover(Book.defaultCover);
-                }
-                b.setAuthor(rs.getString(14));
-                b.setLanguage(rs.getString(15));
-                b.setIsbn(rs.getString(16));
-                b.setDeleted(rs.getBoolean(17));
-                b.setIsLent(rs.getBoolean(18));
-                bookList.add(b);
-
-            }
-	}
-	private static void CreateMusicList(ResultSet rs) throws SQLException, IOException {
-            musicList = new LinkedList<Music>();
-            while (rs.next()) {
-                Music m = new Music();
-                m.setID(rs.getInt(1));
-                m.setTitle(rs.getString(2));
-                m.setEan(rs.getString(3));
-                m.setGenre(rs.getString(4));
-                m.setReleaseYear(rs.getInt(5));
-                m.setLocation(rs.getString(6));
-                m.setLentTo(rs.getString(7));
-                m.setLentDate(rs.getString(8));
-                m.setLentUntilDate(rs.getString(9));
-                m.setRating(rs.getInt(10));
-                m.setDescription(rs.getString(11));
-                m.setComment(rs.getString(12));
-                try {
-                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
-                    m.setCover(cover);
-                } catch (IIOException e){
-                    m.setCover(Music.defaultCover);
-                }
-                m.setFormat(rs.getString(14));
-                m.setInterpreter(rs.getString(15));
-                m.setType(rs.getString(16));
-                m.setDeleted(rs.getBoolean(17));
-                m.setIsLent(rs.getBoolean(18));
-                musicList.add(m);
-
-            }
-	}
-
-	private static void CreateVideoList(ResultSet rs) throws SQLException, IOException {
-            videoList = new LinkedList<Video>();
-            while (rs.next()) {
-                Video v = new Video();
-                v.setID(rs.getInt(1));
-                v.setTitle(rs.getString(2));
-                v.setEan(rs.getString(3));
-                v.setGenre(rs.getString(4));
-                v.setReleaseYear(rs.getInt(5));
-                v.setLocation(rs.getString(6));
-                v.setLentTo(rs.getString(7));
-                v.setLentDate(rs.getString(8));
-                v.setLentUntilDate(rs.getString(9));
-                v.setRating(rs.getInt(10));
-                v.setDescription(rs.getString(11));
-                v.setComment(rs.getString(12));
-                try {
-                    BufferedImage cover = ImageIO.read(new File (COVER_PATH + rs.getString(13) + ".jpg"));
-                    v.setCover(cover);
-                } catch (IIOException e){
-                    v.setCover(Video.defaultCover);
-                }
-                v.setFormat(rs.getString(14));
-                v.setDirector(rs.getString(15));
-                v.setActors(rs.getString(16));
-                v.setDeleted(rs.getBoolean(17));
-                v.setIsLent(rs.getBoolean(18));
-                videoList.add(v);
-            }
-	}
+            return orderBySQL;
+        }
 }
