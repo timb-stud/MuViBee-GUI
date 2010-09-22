@@ -572,6 +572,14 @@ public class MainFrame extends javax.swing.JFrame {
         ratingNoneMusicRadioButton.setText(bundle.getString("noRating"));
         ratingNoneVideoRadioButton.setText(bundle.getString("noRating"));
 
+        descriptionBookLabel.setText(bundle.getString("descriptionLabel"));
+        descriptionMusicLabel.setText(bundle.getString("descriptionLabel"));
+        descriptionVideoLabel.setText(bundle.getString("descriptionLabel"));
+
+        annotationBookLabel.setText(bundle.getString("annotationLabel"));
+        annotationMusicLabel.setText(bundle.getString("annotationLabel"));
+        annotationVideoLabel.setText(bundle.getString("annotationLabel"));
+
         ((TitledBorder)sortPanelBooks.getBorder()).setTitle(bundle.getString("sortBy"));
         ((TitledBorder)sortPanelMusic.getBorder()).setTitle(bundle.getString("sortBy"));
         ((TitledBorder)sortPanelVideo.getBorder()).setTitle(bundle.getString("sortBy"));
