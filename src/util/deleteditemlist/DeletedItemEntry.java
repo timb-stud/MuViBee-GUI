@@ -3,6 +3,7 @@ package util.deleteditemlist;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -28,16 +29,16 @@ public class DeletedItemEntry extends JPanel{
             // |       |             |
             // | Icon  | Titel, usw  |
             // |_______|_____________|
-            setLayout(new BorderLayout());
+            setLayout(new GridLayout(1,1, 0,0));
             setPreferredSize(new Dimension(300, ySize));
             setBackground(Color.yellow);
             
             JLabel label = new JLabel();
             label.setIcon(icon);
-            add(label, BorderLayout.WEST);
+            add(label);
 
             JLabel text = new JLabel(" " + "title" + ": " + media.getTitle() + ", Genre: " + media.getGenre() + ", Jahr: " + media.getReleaseYear() + ", und so weiter");
-            add(text, BorderLayout.CENTER);
+            add(text);
 	}
 
     public Media getMedia() {

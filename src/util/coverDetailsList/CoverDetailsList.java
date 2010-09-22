@@ -1,4 +1,3 @@
-
 package util.coverDetailsList;
 
 import java.awt.Dimension;
@@ -20,75 +19,74 @@ import muvibee.media.*;
  * Erstellt und verwaltet die Cover Details Ansicht
  * @author Christian Rech
  */
-
 @SuppressWarnings("serial")
-public class CoverDetailsList extends JList implements Observer{
-	DefaultListModel  listModel;
-	CoverDetailsListRenderer lcr;
+public class CoverDetailsList extends JList implements Observer {
 
-        /**
-         * Erstellt eine Liste, setz darauf ein ListModel und erstellt für die Liste ein SelectionListener
-         * @param muvibee - Ausgewähltes Objekt wird an die Klasse MuViBee üergeben
-         */
-	public CoverDetailsList(final MuViBee muvibee) {	
-		listModel = new DefaultListModel();
-		lcr = new CoverDetailsListRenderer();
+    DefaultListModel listModel;
+    CoverDetailsListRenderer lcr;
 
-                setModel(listModel);
- 	        setCellRenderer(lcr);
- 	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
- 	        setLayoutOrientation(JList.VERTICAL);
- 	        setVisibleRowCount(10);
- 	        
-	        addListSelectionListener(new ListSelectionListener() {
-	        	public void valueChanged(ListSelectionEvent evt){
-                            if(evt.getValueIsAdjusting()){
-                                Object object = listModel.getElementAt(getSelectedIndex());
-                                if (object instanceof CoverDetailsListEntryBook) {
-                                    muvibee.setCurrentBook(((CoverDetailsListEntryBook) object).getBook());
-                                } else if (object instanceof CoverDetailsListEntryMusic) {
-                                    muvibee.setCurrentMusic(((CoverDetailsListEntryMusic) object).getMusic());
-                                } else if ( object instanceof CoverDetailsListEntryVideo) {
-                                    muvibee.setCurrentVideo(((CoverDetailsListEntryVideo) object).getVideo());
+    /**
+     * Erstellt eine Liste, setz darauf ein ListModel und erstellt für die Liste ein SelectionListener
+     * @param muvibee - Ausgewähltes Objekt wird an die Klasse MuViBee üergeben
+     */
+    public CoverDetailsList(final MuViBee muvibee) {
+        listModel = new DefaultListModel();
+        lcr = new CoverDetailsListRenderer();
 
-                                }
-                            }
-	        	}
-	        });
-	}
-	
+        setModel(listModel);
+        setCellRenderer(lcr);
+        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setLayoutOrientation(JList.VERTICAL);
+        setVisibleRowCount(10);
 
-        /**
-         * Dient zum Hinzufügen eines Elements in die Liste
-         * @param entry - Hinzuzufügendes Element
-         */
-	private void listAdd(CoverDetailsListEntry entry){
-		listModel.addElement(entry);
-		validate();
-                setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
-	}
+        addListSelectionListener(new ListSelectionListener() {
 
+            public void valueChanged(ListSelectionEvent evt) {
+                if (evt.getValueIsAdjusting()) {
+                    Object object = listModel.getElementAt(getSelectedIndex());
+                    if (object instanceof CoverDetailsListEntryBook) {
+                        muvibee.setCurrentBook(((CoverDetailsListEntryBook) object).getBook());
+                    } else if (object instanceof CoverDetailsListEntryMusic) {
+                        muvibee.setCurrentMusic(((CoverDetailsListEntryMusic) object).getMusic());
+                    } else if (object instanceof CoverDetailsListEntryVideo) {
+                        muvibee.setCurrentVideo(((CoverDetailsListEntryVideo) object).getVideo());
 
-        /**
-         * Observer Pattern: Löscht komplette Liste und erzeugt neue
-         * @param list - neue Liste mit Elementen
-         * @param o - ist immer NULL. Wird nicht verwendet
-         */
-        @Override
-	public void update(Observable list, Object o) {
-            LinkedList<Media> mList = ((MediaList) list).getList();
-            listModel.clear();
-
-            for (Media m : mList){
-                if (m instanceof Book)
-			listAdd(new CoverDetailsListEntryBook((Book)m));
-		else if (m instanceof Video)
-			listAdd(new CoverDetailsListEntryVideo((Video) m));
-		else if (m instanceof Music)
-			listAdd(new CoverDetailsListEntryMusic((Music) m));
-                else
-                    System.out.println("nix von allem");
+                    }
+                }
             }
-	}
-}
+        });
+    }
 
+    /**
+     * Dient zum Hinzufügen eines Elements in die Liste
+     * @param entry - Hinzuzufügendes Element
+     */
+    private void listAdd(CoverDetailsListEntry entry) {
+        listModel.addElement(entry);
+        validate();
+        setPreferredSize(new Dimension(150, entry.getySize() * listModel.getSize()));
+    }
+
+    /**
+     * Observer Pattern: Löscht komplette Liste und erzeugt neue
+     * @param list - neue Liste mit Elementen
+     * @param o - ist immer NULL. Wird nicht verwendet
+     */
+    @Override
+    public void update(Observable list, Object o) {
+        LinkedList<Media> mList = ((MediaList) list).getList();
+        listModel.clear();
+
+        for (Media m : mList) {
+            if (m instanceof Book) {
+                listAdd(new CoverDetailsListEntryBook((Book) m));
+            } else if (m instanceof Video) {
+                listAdd(new CoverDetailsListEntryVideo((Video) m));
+            } else if (m instanceof Music) {
+                listAdd(new CoverDetailsListEntryMusic((Music) m));
+            } else {
+                System.out.println("nix von allem");
+            }
+        }
+    }
+}
