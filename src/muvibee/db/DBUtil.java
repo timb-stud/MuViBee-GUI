@@ -30,17 +30,17 @@ public class DBUtil {
         private final static String GET_IMAGE_HASH_VIDEO = "SELECT cover FROM video WHERE ID = ?";
 	private final static String COVER_PATH = "data/images/";
 	private final static String SQL_UPDATE_BOOK  = "UPDATE book SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
-                + " location = ?, lentto = ?, lentdate = ?, lentunitldate = ?, rating = ?, description = ?,"
+                + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
                 + " comment = ?, cover = ?,"
-                + " author = ?, language = ?, isbn = ?, isdeleted = ?, islent WHERE ID = ?";
+                + " author = ?, language = ?, isbn = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 	private final static String SQL_UPDATE_MUSIC = "UPDATE music SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
-                + " location = ?, lentto = ?, lentdate = ?, lentunitldate = ?, rating = ?, description = ?,"
+                + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
                 + " comment = ?, cover = ?,"
-                + " format = ?, interpreter = ?, type = ?, isdeleted = ?, islent WHERE ID = ?";
+                + " format = ?, interpreter = ?, type = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 	private final static String SQL_UPDATE_VIDEO = "UPDATE video SET title = ?, ean = ?, genre = ?, releaseyear = ?,"
-                + " location = ?, lentto = ?, lentdate = ?, lentunitldate = ?, rating = ?, description = ?,"
+                + " location = ?, lentto = ?, lentdate = ?, lentuntildate = ?, rating = ?, description = ?,"
                 + " comment = ?, cover = ?,"
-                + " format = ?, director = ?, actor = ?, isdeleted = ?, islent WHERE ID = ?";
+                + " format = ?, director = ?, actor = ?, isdeleted = ?, islent = ? WHERE ID = ?";
 
         private final static String SQL_INSERT_BOOK  = "INSERT INTO book (ID, title, ean, genre, releaseyear, location,"
                 + " lentto, lentdate, lentuntildate, rating, description, comment, cover, author, language, isbn,"
@@ -241,6 +241,7 @@ public class DBUtil {
                 ResultSet rs = select_hash.executeQuery();
                 rs.next();
                 int hash_cover = rs.getInt(1);
+                System.out.println(COVER_PATH + hash_cover + ".jpg von ID " + m.getID());
                 File f = new File(COVER_PATH + hash_cover + ".jpg");
                 f.delete();
                 ps.setInt(1, m.getID());
