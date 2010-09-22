@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
@@ -454,6 +455,9 @@ public class MuViBee {
     }
 
     public static void main(String args[]) {
+        Locale locale = Locale.getDefault();
+        Locale.setDefault(Locale.ENGLISH);
+
         MuViBee mvb = new MuViBee();
     }
 
