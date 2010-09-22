@@ -471,6 +471,67 @@ public class MuViBee {
         mainFrame.reloadLabels(mainBundlePath);
     }
 
+
+    private String getSortName(SortTypes sortBy){
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                switch (sortBy){
+                    case TITLE :
+                        return bundle.getString("titleLabel");
+                    case YEAR :
+                        return bundle.getString("releaseYearLabel");
+                    case GENRE:
+                        return bundle.getString("genreLabel");
+                    case RATING:
+                        return bundle.getString("ratingLabel");
+                    case LANGUAGE:
+                        return bundle.getString("languageLabel");
+                    case FORMAT:
+                        return bundle.getString("formatLabel");
+                    case DIRECTOR:
+                        return bundle.getString("directorLabel");
+                    case AUTHOR:
+                        return bundle.getString("authorLabel");
+                    case INTERPRETER:
+                        return bundle.getString("artistLabel");
+                    default:
+                       return bundle.getString("n/a");
+                }
+    }
+
+    public void sortedByBook(){
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+        StringBuilder sb = new StringBuilder(bundle.getString("newSortedBy"));
+        for (SortTypes sortBy : filterBookList.getSortedBy()){
+            sb.append(getSortName(sortBy));
+            sb.append(" --> ");
+        }
+        mainFrame.getSortPanelBooks().setToolTipText(sb.toString());
+        StatusBarModel.getInstance().setSuccessMessage(sb.toString());
+    }
+
+    public void sortedByMusic() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+        StringBuilder sb = new StringBuilder(bundle.getString("newSortedBy"));
+        for (SortTypes sortBy : filterMusicList.getSortedBy()) {
+            sb.append(getSortName(sortBy));
+            sb.append(" --> ");
+        }
+        mainFrame.getSortPanelMusic().setToolTipText(sb.toString());
+        StatusBarModel.getInstance().setSuccessMessage(sb.toString());
+    }
+
+    public void sortedByVideo() {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+        StringBuilder sb = new StringBuilder(bundle.getString("newSortedBy"));
+        for (SortTypes sortBy : filterVideoList.getSortedBy()) {
+            sb.append(getSortName(sortBy));
+            sb.append(" --> ");
+        }
+        mainFrame.getSortPanelVideo().setToolTipText(sb.toString());
+        StatusBarModel.getInstance().setSuccessMessage(sb.toString());
+    }
+
+
     public void sortBooksByTitle() {
         if (sortBookByTitle == 0) {
             sortBookByTitle = 1;

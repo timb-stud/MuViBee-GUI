@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import muvibee.actionlistener.AddActionListener;
 import muvibee.actionlistener.ComboBoxActionListener;
 import muvibee.actionlistener.FinalDeleteListener;
@@ -997,6 +998,19 @@ public class MainFrame extends javax.swing.JFrame {
             cb.addItem(months[i]);
         cb.setSelectedIndex(selectedIndex);
     }
+
+    public JPanel getSortPanelBooks() {
+        return sortPanelBooks;
+    }
+
+    public JPanel getSortPanelMusic() {
+        return sortPanelMusic;
+    }
+
+    public JPanel getSortPanelVideo() {
+        return sortPanelVideo;
+    }
+
 
     public JButton getDeleteSearchButton() {
         return deleteSearchButton;
