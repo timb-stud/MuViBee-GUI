@@ -149,7 +149,7 @@ public class MuViBee {
                 "");
     }
 
-    public void showAdvancedSearchDialog() {
+    public boolean showAdvancedSearchDialog() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         AdvancedSearchDialog dialog = new AdvancedSearchDialog(mainFrame,
                 bundle.getString("advancedSearchDialogTitle"), true, this);
@@ -164,8 +164,10 @@ public class MuViBee {
                 Music m = dialog.getMusic();
                 Video v = dialog.getVideo();
                 advancedSearch(b, m, v);
+                return true;
             }
         }
+        return false;
     }
 
     public void showAboutDialog() {

@@ -30,7 +30,7 @@ public class SearchActionListener implements ActionListener{
                 mvb.search();
             }else{
                 if(button.getName().equals("advancedSearchButton")){
-                    mvb.showAdvancedSearchDialog();
+                    if (!mvb.showAdvancedSearchDialog()) return;
                 }
             }
             mvb.showDeleteSearchButton(true);
