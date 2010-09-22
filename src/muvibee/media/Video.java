@@ -1,5 +1,10 @@
 package muvibee.media;
 
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import muvibee.gui.StatusBarModel;
+
 public class Video extends Media {
 
     private String format = "";
@@ -7,7 +12,12 @@ public class Video extends Media {
     private String actors = "";
 
     public Video() {
-        super();
+         try {
+            URL imgURL = getClass().getResource("resources/default_video_cover.jpg");
+            this.setCover(ImageIO.read(imgURL));
+        } catch (IOException ex) {
+            StatusBarModel.getInstance().setFailMessage("default music cover not found");
+        }
     }
 
     @Override

@@ -1,5 +1,10 @@
 package muvibee.media;
 
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import muvibee.gui.StatusBarModel;
+
 public class Book extends Media {
 
     private String author;
@@ -7,7 +12,12 @@ public class Book extends Media {
     private String isbn;
 
     public Book() {
-        super();
+        try {
+            URL imgURL = getClass().getResource("resources/default_book_cover.jpg");
+            this.setCover(ImageIO.read(imgURL));
+        } catch (IOException ex) {
+            StatusBarModel.getInstance().setFailMessage("default book cover not found");
+        }
     }
 
     @Override

@@ -33,11 +33,7 @@ public abstract class Media extends Observable {
     private boolean isLent = false;
 
     public Media() {
-        try {
-            this.cover = ImageIO.read(new File(COVER_PATH + "default_cover.jpg"));
-        } catch (IOException ex) {
-            throw new RuntimeException("Das default Cover wird nicht auf der Festplatte gefunden");
-        }
+
     }
 
     public void updateObservers() {
