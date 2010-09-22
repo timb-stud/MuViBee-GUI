@@ -1,5 +1,6 @@
 package muvibee.media;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
@@ -10,14 +11,18 @@ public class Music extends Media {
     private String format = "";
     private String interpreter = "";
     private String type = "";
+    public static BufferedImage defaultCover;
 
     public Music() {
-        try {
-            URL imgURL = getClass().getResource("resources/default_music_cover.jpg");
-            this.setCover(ImageIO.read(imgURL));
-        } catch (IOException ex) {
-            StatusBarModel.getInstance().setFailMessage("default music cover not found");
+        if (defaultCover == null) {
+            try {
+                URL imgURL = getClass().getResource("resources/default_music_cover.png");
+                defaultCover = ImageIO.read(imgURL);
+            } catch (IOException ex) {
+                StatusBarModel.getInstance().setFailMessage("default music cover not found");
+            }
         }
+        super.setCover(defaultCover);
     }
 
     @Override

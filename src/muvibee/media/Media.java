@@ -11,7 +11,6 @@ import muvibee.db.DBUtil;
 
 public abstract class Media extends Observable {
 
-    private final String COVER_PATH = "data/images/";
     private int ID = -1;
     private String title = "";
     private String ean = "";
