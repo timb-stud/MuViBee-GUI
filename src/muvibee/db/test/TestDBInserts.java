@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
-import muvibee.EAN;
+import muvibee.ean.EanAmazon;
 
 public class TestDBInserts {
 
@@ -23,23 +23,23 @@ public class TestDBInserts {
 
             //Illuminati Buch EAN
             Book b1 = new Book();
-            b1 = (Book) EAN.searchEan("9783404148660");
+            b1 = (Book) EanAmazon.searchEan("9783404148660");
             b1.updateDB();
             //Schindlers Liste Buch
             Book b2 = new Book();
-            b2 = (Book) EAN.searchEan("9783570300046");
+            b2 = (Book) EanAmazon.searchEan("9783570300046");
             b2.updateDB();
             // Schindlers Liste Movie
             Video v1 = new Video();
-            v1 = (Video) EAN.searchEan("5050582207804");
+            v1 = (Video) EanAmazon.searchEan("5050582207804");
             v1.updateDB();
             // Beverly Hills Cop
             Video v2 = new Video();
-            v2 = (Video) EAN.searchEan("4010884538366");
+            v2 = (Video) EanAmazon.searchEan("4010884538366");
             v2.updateDB();
             // Bravo Hits 65 CD
             Music m1 = new Music();
-            m1 = (Music) EAN.searchEan("0886974796626");
+            m1 = (Music) EanAmazon.searchEan("0886974796626");
             m1.updateDB();
 //                Book b1 = new Book();
 //                // Illuminati
