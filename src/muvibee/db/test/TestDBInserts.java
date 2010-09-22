@@ -32,6 +32,10 @@ public class TestDBInserts {
             Book b2 = new Book();
             b2 = (Book) EanAmazon.searchEan("9783570300046");
             b2.updateDB();
+            // Deutschland schafft sich ab
+            Book b3 = new Book();
+            b3 = (Book) EanAmazon.searchEan("9783421044303");
+            b3.updateDB();
             // Schindlers Liste Movie
             Video v1 = new Video();
             v1 = (Video) EanAmazon.searchEan("5050582207804");
@@ -44,42 +48,15 @@ public class TestDBInserts {
             Music m1 = new Music();
             m1 = (Music) EanAmazon.searchEan("0886974796626");
             m1.updateDB();
-            //                Book b1 = new Book();
-            //                // Illuminati
-            //                b1 = (Book) EAN.searchEan("9783404148660");
-            //                b1.updateDB();
-            //		Book b = new Book();
-            //                b.setID(3);
-            //                b.setTitle("Buchtitel ID 3 UPDATED");
-            //		BufferedImage bi1 = new BufferedImage(1, 2, 3);
-            //                b.setCover(bi1);
-            //		b.setLendDate("2010-11-10");
-            //		b.setLendUntilDate("2010-10-10");
-            //		System.out.println(b.toString());
-            //		b.updateDB();
-            //                System.out.println("----------------------------");
-            //
-            //		Music m = new Music();
-            //                m.setID(1);
-            //                m.setTitle("Musiktitel ID 1 Update");
-            //                BufferedImage bi2 = new BufferedImage(4, 5, 6);
-            //                m.setCover(bi2);
-            //		m.setLendDate("2010-11-10");
-            //		m.setLendUntilDate("2010-10-10");
-            //		System.out.println(m.toString());
-            //		m.updateDB();
-            //                System.out.println("----------------------------");
-            //
-            //
-            //		Video v = new Video();
-            //                v.setTitle("Videotitel");
-            //		BufferedImage bi3 = new BufferedImage(7, 8, 9);
-            //		v.setCover(bi3);
-            //		v.setLendDate("2010-11-10");
-            //		v.setLendUntilDate("2010-10-10");
-            //		System.out.println(v.toString());
-            //		v.updateDB();
-            //                System.out.println("----------------------------");
+            // The Dome
+            Music m2 = new Music();
+            m2 = (Music) EanAmazon.searchEan("0743218979620");
+            m2.updateDB();
+            // The Dome 2008
+            Music m3 = new Music();
+            m3 = (Music) EanAmazon.searchEan("9120008375465");
+            m3.updateDB();
+            
         } catch (IOException ex) {
             Logger.getLogger(TestDBInserts.class.getName()).log(Level.SEVERE, null, ex);
         }

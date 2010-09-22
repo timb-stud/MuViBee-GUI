@@ -9,6 +9,11 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import muvibee.db.DBUtil;
 
+/**
+ * @author Yassir Klos
+ * Abstrakte Klasse Media gibt Methoden und Atribute vor,
+ * die von Book/Music/Video geerbt werden bzw. implementiert werden muessen
+ */
 public abstract class Media extends Observable {
 
     private int ID = -1;

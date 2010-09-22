@@ -6,6 +6,12 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import muvibee.gui.StatusBarModel;
 
+/**
+ * @author Yassir Klos
+ * Buch-Klasse erbt von Media und erstellt ein Buch-Objekt
+ * Man ruft den Konstruktor ohne Argumente auf
+ * Atribute muessen mit getter/setter Methoden abgerufen und gesetzt werden
+ */
 public class Book extends Media {
 
     private String author;
@@ -13,6 +19,9 @@ public class Book extends Media {
     private String isbn;
     public static  BufferedImage defaultCover;
 
+     /**
+     * Konstruktor, erstellt Buch-Objekt und weist das Standard-Cover zu.
+     */
     public Book() {
         if (defaultCover == null) {
             try {
@@ -38,8 +47,6 @@ public class Book extends Media {
                 && language.toLowerCase().contains(b.language.toLowerCase())
                 && isbn.toLowerCase().contains(b.isbn.toLowerCase());
     }
-
-    //TODO equals
 
     public String getAuthor() {
         return author;

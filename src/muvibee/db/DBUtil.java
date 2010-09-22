@@ -1,6 +1,5 @@
 package muvibee.db;
 
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import muvibee.gui.StatusBarModel;
 import muvibee.media.Book;
 import muvibee.media.Media;
 
@@ -20,8 +18,11 @@ import muvibee.media.Video;
 
 
 /**
- * @author tobiaslana
- * erwartet Media Opbjekt und schreibt alle Attribute der ID in die Datenbank
+ * @author Tobias Lana, Yassir Klos
+ * Klasse erwartet Media Objekt
+ * dbUpdate: schreibt alle Attribute der ID in die Datenbank
+ * dbDelete: loescht den Datensatz aus der Datenbank und das zugehoerige Cover aus dem Images-Ordner
+ *
  */
 
 public class DBUtil {
@@ -61,7 +62,11 @@ public class DBUtil {
         private final static String SQL_MAXID_VIDEO     = "SELECT MAX(ID) FROM video";
 
 	private static Connection con = null;
-		
+
+        /**
+         * @param m Media-Objekt
+         * Wenn ID des Objektes -1 ist wird ein neuer Datensatz in der Datenbank angelegt, ansonsten wird bestehender Datensatz geupdated
+         */
 	public static void dbUpdate(Media m) {
             if (m.getID() == -1) {
                 insertMediaDB(m);
@@ -251,6 +256,10 @@ public class DBUtil {
             }
         }
 
+        /**
+         * Selektiert den zuletzt eingetragenen Datensatz aus der Datenbanktabelle Book
+         * @return ID des zuletzt hinzugefuegten Datensatz
+         */
         private static int getMaxBookID () {
             int maxBookID = -1;
             try {
@@ -267,6 +276,11 @@ public class DBUtil {
             }
             return maxBookID;
         }
+
+         /**
+         * Selektiert den zuletzt eingetragenen Datensatz aus der Datenbanktabelle Music
+         * @return ID des zuletzt hinzugefuegten Datensatz
+         */
         private static int getMaxMusicID () {
             int maxMusicID = -1;
             try {
@@ -284,6 +298,10 @@ public class DBUtil {
             return maxMusicID;
         }
 
+         /**
+         * Selektiert den zuletzt eingetragenen Datensatz aus der Datenbanktabelle Video
+         * @return ID des zuletzt hinzugefuegten Datensatz
+         */
         private static int getMaxVideoID () {
             int maxVideoID = -1;
             try {
