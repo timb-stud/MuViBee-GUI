@@ -69,6 +69,12 @@ public class SortActionListener implements ActionListener{
                     }
                 }
             }
+            if (button.getName().contains("book"))
+                    mvb.sortedByBook();
+            else if (button.getName().contains("music"))
+                    mvb.sortedByMusic();
+            else if (button.getName().contains("video"))
+                    mvb.sortedByVideo();
         }
     }
 
