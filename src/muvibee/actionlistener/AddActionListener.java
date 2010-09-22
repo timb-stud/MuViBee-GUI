@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JButton;
-import muvibee.ean.EanAmazon;
 import muvibee.MuViBee;
 import muvibee.ean.EanBol;
 import muvibee.gui.StatusBarModel;
@@ -45,7 +44,6 @@ public class AddActionListener implements ActionListener {
                             return ;
                         }
                         try {
-                            EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                             book = EanBol.getBookData(ean);
                             StatusBarModel.getInstance().setSuccessMessage("EAN/ISBN found");
                         } catch (IOException ex) {
@@ -65,7 +63,6 @@ public class AddActionListener implements ActionListener {
                                 return;
                             }
                             try {
-                                EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                                 music = EanBol.getMusicData(ean);
                                 StatusBarModel.getInstance().setSuccessMessage("EAN found");
                             } catch (IOException ex) {
@@ -85,7 +82,6 @@ public class AddActionListener implements ActionListener {
                                     return;
                                 }
                                 try {
-                                    EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                                     video = EanBol.getVideoData(ean);
                                     StatusBarModel.getInstance().setSuccessMessage("EAN/ISBN found");
                                 } catch (IOException ex) {

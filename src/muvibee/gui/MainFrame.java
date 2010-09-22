@@ -30,7 +30,6 @@ import muvibee.actionlistener.RestoreListener;
 import muvibee.actionlistener.DeleteListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -68,6 +67,9 @@ import util.tree.PrioTree;
  * @author bline
  */
 public class MainFrame extends javax.swing.JFrame {
+
+    MuViBee mvb;
+
 
     private void createExpiredList(MuViBee mvb) {
         eil = new ExpiredItemsList(mvb);
@@ -170,6 +172,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     /** Creates new form MainFrame */
     public MainFrame(MuViBee mvb) {
+        this.mvb = mvb;
         setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - 580, Toolkit.getDefaultToolkit().getScreenSize().height/2 - 350);
         try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -817,11 +820,15 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 
-    public boolean isEmptyOrDate(int day, int month, int year){
-        return (day > 0 && month > 0 && year > 0) || (day == 0 && month == 0 && year == 0);
+    public boolean isEmptyDate(int day, int month, int year){
+        return (day == 0 && month == 0 && year == 0);
     }
 
-    public boolean correctLentDates(int lentDay, int lentMonth, int lentYear, int lentUntilDay, int lentUntilMonth, int lentUntilYear) {
+    public boolean isDate(int day, int month,int year){
+        return (day > 0 && month > 0 && year > 0);
+    }
+
+    public boolean isCorrectLentOrder(int lentDay, int lentMonth, int lentYear, int lentUntilDay, int lentUntilMonth, int lentUntilYear) {
         if (lentUntilYear < lentYear) {
             return false;
         } else {
@@ -841,6 +848,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void setBookItemInformation(Book book) throws IllegalDateException{
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String title = titleBookTextField.getText().trim();
         String author = authorBookTextField.getText().trim();
         String language = languageBookTextField.getText().trim();
@@ -870,13 +878,15 @@ public class MainFrame extends javax.swing.JFrame {
             rating = 3;
         }
 
-        if(!isEmptyOrDate(lentDay, lentMonth, lentYear))
-            throw new IllegalDateException("Ungüliges Ausleihdatum");
-        if(!isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
-            throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
+        if(!(isEmptyDate(lentDay, lentMonth, lentYear) || isDate(lentDay, lentMonth, lentYear)))
+            throw new IllegalDateException(bundle.getString("invalidLentDateSTATUS"));
+        if(!(isEmptyDate(lentDay, lentMonth, lentYear) || isDate(lentDay, lentMonth, lentYear)))
+            throw new IllegalDateException(bundle.getString("invalidLentUntilDateSTATUS"));
 
-        if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
-            throw new IllegalDateException("Ungüliges Ausgeliehen von/bis");
+        if(isDate(lentDay, lentMonth, lentYear)
+                && isDate(lentUntilDay, lentUntilMonth, lentUntilYear)
+                && !isCorrectLentOrder(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException(bundle.getString("invalidLentDateOrderSTATUS"));
 
 
         book.setTitle(title);
@@ -902,6 +912,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void setMusicItemInformation(Music music) throws IllegalDateException {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String title = titleMusicTextField.getText().trim();
         String artist = artistMusicTextField.getText().trim();
         String type = getSelected(typeMusicComboBox);
@@ -931,13 +942,15 @@ public class MainFrame extends javax.swing.JFrame {
             rating = 3;
         }
 
-        if(!isEmptyOrDate(lentDay, lentMonth, lentYear))
-            throw new IllegalDateException("Ungüliges Ausleihdatum");
-        if(!isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
-            throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
+        if(!(isEmptyDate(lentDay, lentMonth, lentYear) || isDate(lentDay, lentMonth, lentYear)))
+            throw new IllegalDateException(bundle.getString("invalidLentDateSTATUS"));
+        if(!(isEmptyDate(lentDay, lentMonth, lentYear) || isDate(lentDay, lentMonth, lentYear)))
+            throw new IllegalDateException(bundle.getString("invalidLentUntilDateSTATUS"));
 
-        if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
-            throw new IllegalDateException("Ungüliges Ausgeliehen von/bis");
+        if(isDate(lentDay, lentMonth, lentYear)
+                && isDate(lentUntilDay, lentUntilMonth, lentUntilYear)
+                && !isCorrectLentOrder(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException(bundle.getString("invalidLentDateOrderSTATUS"));
         
         music.setTitle(title);
         music.setInterpreter(artist);
@@ -963,6 +976,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void setVideoItemInformation(Video video) throws IllegalDateException {
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String title = titleVideoTextField.getText().trim();
         String director = directorVideoTextField.getText().trim();
         String actors = actorsVideoTextField.getText().trim();
@@ -993,13 +1007,15 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
 
-        if(!isEmptyOrDate(lentDay, lentMonth, lentYear))
-            throw new IllegalDateException("Ungüliges Ausleihdatum");
-        if(!isEmptyOrDate(lentUntilDay, lentUntilMonth, lentUntilYear))
-            throw new IllegalDateException("Ungüliges Ausgeliehen bis Datum");
+        if(!(isEmptyDate(lentDay, lentMonth, lentYear) || isDate(lentDay, lentMonth, lentYear)))
+            throw new IllegalDateException(bundle.getString("invalidLentDateSTATUS"));
+        if(!(isEmptyDate(lentDay, lentMonth, lentYear) || isDate(lentDay, lentMonth, lentYear)))
+            throw new IllegalDateException(bundle.getString("invalidLentUntilDateSTATUS"));
 
-        if(!correctLentDates(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
-            throw new IllegalDateException("Ungüliges Ausgeliehen von/bis");
+        if(isDate(lentDay, lentMonth, lentYear)
+                && isDate(lentUntilDay, lentUntilMonth, lentUntilYear)
+                && !isCorrectLentOrder(lentDay, lentMonth, lentYear, lentUntilDay, lentUntilMonth, lentUntilYear))
+            throw new IllegalDateException(bundle.getString("invalidLentDateOrderSTATUS"));
 
         
         video.setTitle(title);
