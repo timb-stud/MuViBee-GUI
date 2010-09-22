@@ -609,7 +609,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         overviewTable.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("media"));
         overviewTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("number"));
-        overviewTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("lent"));
+        overviewTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("lentLabel"));
         overviewTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("deleted"));
 
         titleBookLabel.setText(bundle.getString("titleLabel"));
@@ -618,7 +618,7 @@ public class MainFrame extends javax.swing.JFrame {
         releaseYearBookLabel.setText(bundle.getString("releaseYearLabel"));
         locationBookLabel.setText(bundle.getString("locationLabel"));
         ratingBookLabel.setText(bundle.getString("ratingLabel"));
-        lentBookLabel.setText(bundle.getString("lent"));
+        lentBookLabel.setText(bundle.getString("lentLabel"));
         lentToBookLabel.setText(bundle.getString("lentToLabel"));
         lentDateBookLabel.setText(bundle.getString("lentDateLabel"));
         lentUntilDateBookLabel.setText(bundle.getString("lentUntilDateLabel"));
@@ -629,7 +629,7 @@ public class MainFrame extends javax.swing.JFrame {
         releaseYearMusicLabel.setText(bundle.getString("releaseYearLabel"));
         locationMusicLabel.setText(bundle.getString("locationLabel"));
         ratingMusicLabel.setText(bundle.getString("ratingLabel"));
-        lentMusicLabel.setText(bundle.getString("lent"));
+        lentMusicLabel.setText(bundle.getString("lentLabel"));
         lentToMusicLabel.setText(bundle.getString("lentToLabel"));
         lentDateMusicLabel.setText(bundle.getString("lentDateLabel"));
         lentUntilDateMusicLabel.setText(bundle.getString("lentUntilDateLabel"));
@@ -640,7 +640,7 @@ public class MainFrame extends javax.swing.JFrame {
         releaseYearVideoLabel.setText(bundle.getString("releaseYearLabel"));
         locationVideoLabel.setText(bundle.getString("locationLabel"));
         ratingVideoLabel.setText(bundle.getString("ratingLabel"));
-        lentVideoLabel.setText(bundle.getString("lent"));
+        lentVideoLabel.setText(bundle.getString("lentLabel"));
         lentToVideoLabel.setText(bundle.getString("lentToLabel"));
         lentDateVideoLabel.setText(bundle.getString("lentDateLabel"));
         lentUntilDateVideoLabel.setText(bundle.getString("lentUntilDateLabel"));
@@ -656,11 +656,6 @@ public class MainFrame extends javax.swing.JFrame {
         directorVideoLabel.setText(bundle.getString("directorLabel"));
         actorsVideoLabel.setText(bundle.getString("actorsLabel"));
         formatVideoLabel.setText(bundle.getString("formatLabel"));
-
-
-
-        
-        
     }
 
     public void setCover(BufferedImage cover, JLabel label){

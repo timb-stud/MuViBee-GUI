@@ -98,7 +98,7 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         eanLabel.setText(bundle.getString("eanLabel"));
         genreLabel.setText(bundle.getString("genreLabel"));
         releaseYearLabel.setText(bundle.getString("releaseYearLabel"));
-        isLentLabel.setText(bundle.getString("isLentLabel"));
+        isLentLabel.setText(bundle.getString("lentLabel"));
         lentToLabel.setText(bundle.getString("lentToLabel"));
         lentDateLabel.setText(bundle.getString("lentDateLabel"));
         lentUntilDateLabel.setText(bundle.getString("lentUntilDateLabel"));
