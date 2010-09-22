@@ -81,6 +81,7 @@ public class MuViBee {
             public void run() {
                 mainFrame = new MainFrame(mvb);
                 mainFrame.setVisible(true);
+                setOverviewInformation();
             }
         });
         filterBookList = new BookList();
@@ -100,7 +101,6 @@ public class MuViBee {
         deletedMediaList.addAll(DBSelector.getBookList(true, null));
         deletedMediaList.addAll(DBSelector.getMusicList(true, null));
         deletedMediaList.addAll(DBSelector.getVideoList(true, null));
-        setOverviewInformation();
     }
 
     public int showSignOverFrame(){
