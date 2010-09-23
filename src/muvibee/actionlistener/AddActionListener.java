@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JButton;
 import muvibee.MuViBee;
+import muvibee.ean.EAN;
 import muvibee.ean.EanBol;
 import muvibee.gui.StatusBarModel;
 import muvibee.media.Book;
@@ -95,7 +96,7 @@ public class AddActionListener implements ActionListener {
                                 }
                                 try {
                                     EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
-                                    video = EanBol.getVideoData(ean);
+                                    video = EAN.getVideoData(ean);
                                     StatusBarModel.getInstance().setSuccessMessage("EAN/ISBN found");
                                 } catch (muvibee.ean.NoResultException ex) {
                                     StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt keine Treffer. Bitte überprüfen Sie Ihre Eingabe");

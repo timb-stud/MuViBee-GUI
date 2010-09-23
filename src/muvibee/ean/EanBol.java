@@ -206,7 +206,7 @@ public class EanBol {
         checkEan(node);
         String artikelTyp = getArtikelType(node);
 
-        if (!artikelTyp.equalsIgnoreCase("dvd")) {
+        if (!artikelTyp.equalsIgnoreCase("dvd") && !artikelTyp.equalsIgnoreCase("bluray")) {
             throw new IOException(
                     "Das Ergebnis für diese EAN ist kein Video-Media  !(Format(DVD oder Blu-Ray))  Bitte überprüfen Sie Ihre Eingabe");
         } else {
@@ -292,5 +292,4 @@ public class EanBol {
         System.getProperties().put("proxyHost", proxy);
         System.getProperties().put("proxyPort", port);
     }
-
 }
