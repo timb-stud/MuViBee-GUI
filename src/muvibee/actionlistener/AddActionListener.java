@@ -10,7 +10,6 @@ import java.io.IOException;
 import javax.swing.JButton;
 import muvibee.MuViBee;
 import muvibee.ean.EanBol;
-import muvibee.ean.NoAcceptableResultException;
 import muvibee.gui.StatusBarModel;
 import muvibee.media.Book;
 import muvibee.media.Music;
@@ -46,8 +45,11 @@ public class AddActionListener implements ActionListener {
                             EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                             book = muvibee.ean.EAN.getBookData(ean);
                             StatusBarModel.getInstance().setSuccessMessage("EAN/ISBN found");
-                        } catch (NoAcceptableResultException ex) {
-                            StatusBarModel.getInstance().setFailMessage(muvibee.ean.NoAcceptableResultException.getFehlerMeldung());
+                        } catch (muvibee.ean.NoResultException ex) {
+                            StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt keine Treffer. Bitte überprüfen Sie Ihre Eingabe");
+                            return;
+                        } catch (muvibee.ean.MoreThanOneResultException ex) {
+                            StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt es mehrere Treffer. Bitte geben Sie eine eindeutige EAN ein.");
                             return;
                         } catch (IOException ioex) {
                             StatusBarModel.getInstance().setFailMessage("Connection error!");
@@ -69,8 +71,11 @@ public class AddActionListener implements ActionListener {
                                 EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                                 music = muvibee.ean.EAN.getMusicData(ean);
                                 StatusBarModel.getInstance().setSuccessMessage("EAN found");
-                            } catch (NoAcceptableResultException ex) {
-                                StatusBarModel.getInstance().setFailMessage(muvibee.ean.NoAcceptableResultException.getFehlerMeldung());
+                            } catch (muvibee.ean.NoResultException ex) {
+                                StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt keine Treffer. Bitte überprüfen Sie Ihre Eingabe");
+                                return;
+                            } catch (muvibee.ean.MoreThanOneResultException ex) {
+                                StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt es mehrere Treffer. Bitte geben Sie eine eindeutige EAN ein.");
                                 return;
                             } catch (IOException ex) {
                                 StatusBarModel.getInstance().setFailMessage("Connection error!");
@@ -92,8 +97,11 @@ public class AddActionListener implements ActionListener {
                                     EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                                     video = EanBol.getVideoData(ean);
                                     StatusBarModel.getInstance().setSuccessMessage("EAN/ISBN found");
-                                } catch (NoAcceptableResultException ex1) {
-                                    StatusBarModel.getInstance().setFailMessage(muvibee.ean.NoAcceptableResultException.getFehlerMeldung());
+                                } catch (muvibee.ean.NoResultException ex) {
+                                    StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt keine Treffer. Bitte überprüfen Sie Ihre Eingabe");
+                                    return;
+                                } catch (muvibee.ean.MoreThanOneResultException ex) {
+                                    StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt es mehrere Treffer. Bitte geben Sie eine eindeutige EAN ein.");
                                     return;
                                 } catch (IOException ex2) {
                                     StatusBarModel.getInstance().setFailMessage("Connection error!");
