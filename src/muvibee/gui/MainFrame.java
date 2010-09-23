@@ -278,18 +278,18 @@ public class MainFrame extends javax.swing.JFrame {
             languagesComboBox.setRenderer(new DefaultListCellRenderer(){
             public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                String flag = "../../muvibee/resources/flag/default_flag.gif";
+                String flag = "";
                 try {
                     if (((String)value).equals("en"))
-                        flag = "../../muvibee/resources/flag/usa_flag.gif";
+                        flag = "../../muvibee/gui/resources/flags/gb.png";
                     else if (((String)value).equals("de"))
-                        flag = "../../muvibee/resources/flag/de_flag.jpg";
+                        flag = "../../muvibee/gui/resources/flags/de.png";
                     else if (((String)value).equals("ru"))
-                        flag = "../../muvibee/resources/flag/ru_flag.gif";
+                        flag = "../../muvibee/gui/resources/flags/ru.png";
                     else if (((String)value).equals("tr"))
-                        flag = "../../muvibee/resources/flag/tr_flag.gif";
+                        flag = "../../muvibee/gui/resources/flags/tr.png";
                     else if (((String)value).equals("ro"))
-                        flag = "../../muvibee/resources/flag/ro_flag.gif";
+                        flag = "../../muvibee/gui/resources/flags/ro.png";
 
                     label.setIcon(ResizeImageIcon.resizeIcon(24, 20, ImageIO.read(getClass().getResource(flag))));
                 } catch (IOException ex) {
