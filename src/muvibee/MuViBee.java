@@ -285,31 +285,28 @@ public class MuViBee {
 
     public void addCurrentBookToBookLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-        if (!bookList.contains(currentBook)) {
-            filterBookList.add(currentBook);
-            bookList.add(currentBook);
-        } 
         currentBook.updateDB();
+        bookList = DBSelector.getBookList(false, null);
+        filterBookList.clear();
+        filterBookList.addAll(bookList);
         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
     public void addCurrentMusicToMusicLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-        if (!musicList.contains(currentMusic)) {
-            filterMusicList.add(currentMusic);
-            musicList.add(currentMusic);
-        }
         currentMusic.updateDB();
+        musicList = DBSelector.getMusicList(false, null);
+        filterMusicList.clear();
+        filterMusicList.addAll(musicList);
         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
     public void addCurrentVideoToVideoLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-        if (!videoList.contains(currentVideo)) {
-            filterVideoList.add(currentVideo);
-            videoList.add(currentVideo);
-        }
         currentVideo.updateDB();
+        videoList = DBSelector.getVideoList(false, null);
+        filterVideoList.clear();
+        filterVideoList.addAll(videoList);
         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
