@@ -7,6 +7,7 @@ package muvibee.gui;
 
 import java.awt.Color;
 import java.util.Observable;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -16,6 +17,7 @@ public class StatusBarModel extends Observable{
     private static StatusBarModel uniqueInstance;
     private String message;
     private Color color;
+    private ImageIcon ii;
 
     private StatusBarModel(){};
 
@@ -27,6 +29,7 @@ public class StatusBarModel extends Observable{
     }
 
     public void setSuccessMessage(String message) {
+        ii = MainFrame.createImageIcon("gui/resources/icons/success.png");
         this.message = message;
         this.setChanged();
         color = new Color(0, 255, 20, 100); //green
@@ -34,6 +37,7 @@ public class StatusBarModel extends Observable{
     }
 
     public void setFailMessage(String message) {
+        ii = MainFrame.createImageIcon("gui/resources/icons/error.png");
         this.message = message;
         this.setChanged();
         color = new Color(255, 0, 20, 100); //red
@@ -56,5 +60,8 @@ public class StatusBarModel extends Observable{
         return color;
     }
 
- 
+    public ImageIcon getIcon() {
+        return ii;
+    }
+
 }
