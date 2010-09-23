@@ -1,8 +1,15 @@
 package muvibee.ean;
 
-class NoAcceptableResultException extends Exception {
+public class NoAcceptableResultException extends Exception {
 
-	public NoAcceptableResultException(String fehlermeldung) {
-		super(fehlermeldung);
-	}
+    static String fehlerMeldung;
+
+    public NoAcceptableResultException(String fehlermeldung) {
+        super(fehlermeldung);
+        this.fehlerMeldung = fehlermeldung;
+    }
+
+    public static String getFehlerMeldung() {
+        return fehlerMeldung;
+    }
 }

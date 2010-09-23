@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -138,8 +139,8 @@ public class EanBol {
         }
     }
 
-    public static Book getBookData(String ean) throws IOException,
-            NoAcceptableResultException {
+    public static Book getBookData(String ean) throws
+            NoAcceptableResultException, MalformedURLException, IOException {
         Book book = new Book();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -168,8 +169,8 @@ public class EanBol {
         }
     }
 
-    public static Music getMusicData(String ean) throws IOException,
-            NoAcceptableResultException {
+    public static Music getMusicData(String ean) throws
+            NoAcceptableResultException, MalformedURLException, IOException {
         Music music = new Music();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -197,8 +198,8 @@ public class EanBol {
         }
     }
 
-    public static Video getVideoData(String ean) throws IOException,
-            NoAcceptableResultException {
+    public static Video getVideoData(String ean) throws
+            NoAcceptableResultException, MalformedURLException, IOException {
         Video video = new Video();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
