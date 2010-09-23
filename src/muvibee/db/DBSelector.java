@@ -1,21 +1,3 @@
-package muvibee.db;
-
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.LinkedList;
-import javax.imageio.IIOException;
-
-import javax.imageio.ImageIO;
-
-import muvibee.media.Book;
-import muvibee.media.Music;
-import muvibee.media.Video;
-
 /**
  * @author Tobias Lana
  * 
@@ -39,6 +21,27 @@ import muvibee.media.Video;
  *
  */
 
+package muvibee.db;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import javax.imageio.IIOException;
+
+import javax.imageio.ImageIO;
+
+import muvibee.media.Book;
+import muvibee.media.Music;
+import muvibee.media.Video;
+import muvibee.utils.SortTypes;
+
+
+
 public class DBSelector {
         private final static String COVER_PATH          = "data/images/";
 	private final static String SQL_GET_BOOKS  	= "SELECT * FROM book  WHERE isdeleted = ? ";
@@ -52,25 +55,7 @@ public class DBSelector {
 	private static LinkedList<Music> musicList;
 	private static LinkedList<Video> videoList;
         
-        // Media
-        public static int SORT_TITLE        = 2;
-        public static int SORT_EAN          = 3;
-        public static int SORT_GENRE        = 4;
-        public static int SORT_RELEASEYEAR  = 5;
-        public static int SORT_RATING       = 10;
-        // individuell Book
-        public static int SORT_B_AUTHOR     = 14;
-        public static int SORT_B_LANGUAGE   = 15;
-        // individuell Music
-        public static int SORT_M_FORMAT     = 14;
-        public static int SORT_M_INTERPRETER= 15;
-        public static int SORT_M_TYPE       = 16;
-        // individuell Video
-        public static int SORT_V_FORMAT     = 14;
-        public static int SORT_V_DIRECTOR   = 15;
-        public static int SORT_V_ACTORS     = 16;
-
-        public static LinkedList<Book> getBookList(Boolean deleted, int[] orderBy) {
+        public static LinkedList<Book> getBookList(Boolean deleted, SortTypes[] orderBy) {
             try {
                 con = DBConnector.getConnection();
                 createBookList(deleted, orderBy);
@@ -83,7 +68,7 @@ public class DBSelector {
             return bookList;
 	}
         
-	public static LinkedList<Music> getMusicList(Boolean deleted, int[] orderBy) {
+	public static LinkedList<Music> getMusicList(Boolean deleted, SortTypes[] orderBy) {
             try {
                 con = DBConnector.getConnection();
                 createMusicList(deleted, orderBy);
@@ -96,7 +81,7 @@ public class DBSelector {
             return musicList;
 	}
         
-	public static LinkedList<Video> getVideoList(Boolean deleted, int[] orderBy) {
+	public static LinkedList<Video> getVideoList(Boolean deleted, SortTypes[] orderBy) {
             try {
                 con = DBConnector.getConnection();
                 createVideoList(deleted, orderBy);
@@ -116,7 +101,7 @@ public class DBSelector {
          * Buchliste
          * hinzu
          */
-	private static void createBookList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
+	private static void createBookList(Boolean isDeleted, SortTypes[] orderBy) throws SQLException, IOException {
             bookList = new LinkedList<Book>();
             String orderBySQL = orderByIntToString(orderBy);
             try {
@@ -163,7 +148,7 @@ public class DBSelector {
          * Musikliste
          * hinzu
          */
-	private static void createMusicList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
+	private static void createMusicList(Boolean isDeleted, SortTypes[] orderBy) throws SQLException, IOException {
             musicList = new LinkedList<Music>();
             String orderBySQL = orderByIntToString(orderBy);
             try {
@@ -210,7 +195,7 @@ public class DBSelector {
          * Videoliste
          * hinzu
          */
-	private static void createVideoList(Boolean isDeleted, int[] orderBy) throws SQLException, IOException {
+	private static void createVideoList(Boolean isDeleted, SortTypes[] orderBy) throws SQLException, IOException {
             videoList = new LinkedList<Video>();
             String orderBySQL = orderByIntToString(orderBy);
             try {
@@ -253,14 +238,34 @@ public class DBSelector {
         /*
          * Methode wandelt ParamterArray in String fuer den SQL Befehl um
          */
-        private static String orderByIntToString (int[] orderBy) {
+        private static String orderByIntToString (SortTypes[] orderBy) {
             String orderBySQL;
+            
             if (orderBy == null || orderBy.length == 0) {
                     orderBySQL = SQL_ORDER_BY;
                 } else {
                     orderBySQL = " ORDER BY ";
-                    for (int i : orderBy) {
-                        orderBySQL = orderBySQL + i + ", ";
+                    for (SortTypes st : orderBy) {
+                        switch (st) {
+                            case TITLE:
+                                orderBySQL = orderBySQL + 2 + ", ";
+                            case GENRE:
+                                orderBySQL = orderBySQL + 4 + ", ";
+                            case RATING:
+                                orderBySQL = orderBySQL + 10 + ", ";
+                            case RELEASEYEAR:
+                                orderBySQL = orderBySQL + 5 + ", ";
+                            case AUTHOR:
+                                orderBySQL = orderBySQL + 14 + ", ";
+                            case LANGUAGE:
+                                orderBySQL = orderBySQL + 15 + ", ";
+                            case ARTIST:
+                                orderBySQL = orderBySQL + 15 + ", ";
+                            case FORMAT:
+                                orderBySQL = orderBySQL + 14 + ", ";
+                            case DIRECTOR:
+                                orderBySQL = orderBySQL + 15 + ", ";
+                        }
                     }
                     orderBySQL = orderBySQL.substring(0, orderBySQL.length()-2);
             }
