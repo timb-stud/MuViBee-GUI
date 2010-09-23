@@ -68,17 +68,23 @@ public class DBUtil {
          * Wenn ID des Objektes -1 ist wird ein neuer Datensatz in der Datenbank angelegt, ansonsten wird bestehender Datensatz geupdated
          */
 	public static void dbUpdate(Media m) {
-            if (m.getID() == -1) {
-                insertMediaDB(m);
-            } else {
-                updateMediaDB(m);
+            try {
+                con = DBConnector.getConnection();
+                if (m.getID() == -1) {
+                    insertMediaDB(m);
+                } else {
+                    updateMediaDB(m);
+                }
+                con.prepareStatement("SHUTDOWN").execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
             }
+
 	}
 
 
         private static void insertMediaDB(Media m) {
 		try {
-			con = DBConnector.getConnection();
 			if (m instanceof Book) {
                             insertBook((Book)m);
 			}
@@ -88,7 +94,6 @@ public class DBUtil {
 			if (m instanceof Video) {
                             insertVideo((Video)m);
 			}
-			con.prepareStatement("SHUTDOWN").execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -177,7 +182,6 @@ public class DBUtil {
 
 	private static void updateMediaDB(Media m) {
             try {
-                con = DBConnector.getConnection();
                 PreparedStatement ps = null;
                 if (m instanceof Book) {
                     ps = con.prepareStatement(SQL_UPDATE_BOOK);
@@ -219,7 +223,6 @@ public class DBUtil {
                 ps.setBoolean(16, m.isLent());
                 ps.setInt(17, m.getID());
                 ps.executeUpdate();
-                con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -263,14 +266,12 @@ public class DBUtil {
         private static int getMaxBookID () {
             int maxBookID = -1;
             try {
-                con = DBConnector.getConnection();
                 PreparedStatement ps = null;
                 ps = con.prepareStatement(SQL_MAXID_BOOK);
                 ResultSet rs = null;
                 rs=ps.executeQuery();
                 rs.next();
                 maxBookID = rs.getInt(1);
-                con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException ex) {
                 Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -284,14 +285,12 @@ public class DBUtil {
         private static int getMaxMusicID () {
             int maxMusicID = -1;
             try {
-                con = DBConnector.getConnection();
                 PreparedStatement ps = null;
                 ps = con.prepareStatement(SQL_MAXID_BOOK);
                 ResultSet rs = null;
                 rs=ps.executeQuery();
                 rs.next();
                 maxMusicID = rs.getInt(1);
-                con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException ex) {
                 Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -305,14 +304,12 @@ public class DBUtil {
         private static int getMaxVideoID () {
             int maxVideoID = -1;
             try {
-                con = DBConnector.getConnection();
                 PreparedStatement ps = null;
                 ps = con.prepareStatement(SQL_MAXID_VIDEO);
                 ResultSet rs = null;
                 rs=ps.executeQuery();
                 rs.next();
                 maxVideoID = rs.getInt(1);
-                con.prepareStatement("SHUTDOWN").execute();
             } catch (SQLException ex) {
                 Logger.getLogger(DBUtil.class.getName()).log(Level.SEVERE, null, ex);
             }
