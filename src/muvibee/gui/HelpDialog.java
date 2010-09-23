@@ -21,7 +21,7 @@ public class HelpDialog extends JDialog {
     public HelpDialog(JFrame parent) {
         super(parent, ResourceBundle.getBundle(MuViBee.mainBundlePath).getString("helpDialog"), true);
         final JDialog dialog = this;
-        setSize(500, 500);
+        setSize(900, 900);
 
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String close = bundle.getString("close");
