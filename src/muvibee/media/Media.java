@@ -1,12 +1,7 @@
 package muvibee.media;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Observable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import muvibee.db.DBUtil;
 
 /**

@@ -47,4 +47,10 @@ public class EAN {
             return (muvibee.media.Video) EanAmazon.searchEan(ean);
         }
     }
+
+    public static void setProxy(String proxy, String port) {
+        System.getProperties().put("proxySet", "true");
+        System.getProperties().put("proxyHost", proxy);
+        System.getProperties().put("proxyPort", port);
+    }
 }

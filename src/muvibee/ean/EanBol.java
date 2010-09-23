@@ -27,10 +27,10 @@ public class EanBol {
     static HtmlCleaner cleaner = new HtmlCleaner();
 
     private static Media getData(TagNode node, Media media) throws IOException {
-        String title;
+        String title = "";
         String genre = "";
-        String description;
-        int yearOfRelease;
+        String description = "";
+        int yearOfRelease = 0;
 
         TagNode[] titleNode = node.getElementsByAttValue("class", "pm_titel",
                 true, true);
@@ -77,7 +77,7 @@ public class EanBol {
     }
 
     private static String getDescription(TagNode[] descriptionNode) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         boolean hasDescription = false;
         int j = 0;
 
@@ -279,11 +279,5 @@ public class EanBol {
         s = s.substring(s.indexOf("\n"));
         s = s.replaceAll("\n", "");
         return s;
-    }
-
-    public static void setProxy(String proxy, String port) {
-        System.getProperties().put("proxySet", "true");
-        System.getProperties().put("proxyHost", proxy);
-        System.getProperties().put("proxyPort", port);
     }
 }
