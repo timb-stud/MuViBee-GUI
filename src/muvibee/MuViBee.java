@@ -495,17 +495,17 @@ public class MuViBee {
         String str = mainFrame.getSearchString();
         resetFilterLists();
         for (Book b : bookList) {
-            if (!b.matches(str)) {
+            if (!b.sortMatches(str)) {
                 filterBookList.remove(b);
             }
         }
         for (Music m : musicList) {
-            if (!m.matches(str)) {
+            if (!m.sortMatches(str)) {
                 filterMusicList.remove(m);
             }
         }
         for (Video v : videoList) {
-            if (!v.matches(str)) {
+            if (!v.sortMatches(str)) {
                 filterVideoList.remove(v);
             }
         }
@@ -514,17 +514,17 @@ public class MuViBee {
     public void advancedSearch(Book book, Music music, Video video) {
         resetFilterLists();
         for (Book b : bookList) {
-            if (!b.matches(book)) {
+            if (!b.sortMatches(book)) {
                 filterBookList.remove(b);
             }
         }
         for (Music m : musicList) {
-            if (!m.matches(music)) {
+            if (!m.sortMatches(music)) {
                 filterMusicList.remove(m);
             }
         }
         for (Video v : videoList) {
-            if (!v.matches(video)) {
+            if (!v.sortMatches(video)) {
                 filterVideoList.remove(v);
             }
         }

@@ -259,42 +259,42 @@ public abstract class Media extends Observable {
         this.isDeleted = isDeleted;
     }
 
-    //TODO monate/tage vergleich
-    public boolean matches(String str) {
+
+    /**
+     * Vergleicht einen Suchstring mit einem Media Objekt.
+     * @param str
+     * @return
+     */
+    public boolean sortMatches(String str) {
         str = str.toLowerCase();
         return title.toLowerCase().contains(str) || genre.toLowerCase().contains(str)
                 || location.toLowerCase().contains(str) || lentTo.toLowerCase().contains(str)
                 || description.toLowerCase().contains(str) || comment.toLowerCase().contains(str);
     }
 
-    public boolean matches(Media m){
-        System.out.println("Title: " +title.contains(m.title));
-        System.out.println("ean: " + ean.contains(m.ean));
-        System.out.println("genre:" + genre.contains(m.genre));
-        System.out.println("releaseYear: " + (releaseYear == m.releaseYear));
-        System.out.println("location: " + location.contains(m.location));
-        System.out.println("islent:"  + (isLent == m.isLent));
-        System.out.println("lentto: " + lentTo.contains(m.lentTo));
-        if(rating == -1 || m.rating == -1){
-            return title.toLowerCase().contains(m.title.toLowerCase()) && ean.toLowerCase().contains(m.ean.toLowerCase())
-                && genre.toLowerCase().contains(m.genre.toLowerCase()) && releaseYear == m.releaseYear
-                && location.toLowerCase().contains(m.location.toLowerCase()) && isLent == m.isLent
+    /**
+     * Vergleicht ein Media Objekt mit einem such Media Objekt.
+     * Und gibt zurück ob ein such Media Objekt zu einem Media Objekt passt.
+     * Standard initialisierte Attribute des such Media Objekts werden nicht beruecksichtigt.
+     * @param m
+     * @return true wenn das such Media Objekt zu diesem hier passt.
+     */
+    public boolean sortMatches(Media m){
+        return title.toLowerCase().contains(m.title.toLowerCase())
+                && ean.toLowerCase().contains(m.ean.toLowerCase())
+                && genre.toLowerCase().contains(m.genre.toLowerCase())
+                && (releaseYear == m.releaseYear || m.releaseYear == 0)
+                && location.toLowerCase().contains(m.location.toLowerCase())
+                && (rating == m.rating || m.rating == -1)
+                && isLent == m.isLent
                 && lentTo.toLowerCase().contains(m.lentTo.toLowerCase())
-                && lentDay == m.lentDay && lentMonth == m.getLentMonth()
-                && lentYear == m.lentYear && lentUntilDay == m.lentUntilDay
-                && lentUntilMonth == m.lentUntilMonth && lentUntilYear == m.lentUntilYear
+                && (lentDay == m.lentDay || m.lentDay == 0)
+                && (lentMonth == m.lentMonth || m.lentMonth == 0)
+                && (lentYear == m.lentYear || m.lentYear == 0)
+                && (lentUntilDay == m.lentUntilDay || m.lentUntilDay == 0)
+                && (lentUntilMonth == m.lentUntilMonth || m.lentUntilMonth == 0)
+                && (lentUntilYear == m.lentUntilYear || m.lentUntilYear == 0)
                 && comment.toLowerCase().contains(m.comment.toLowerCase());
-        }else{
-            return title.toLowerCase().contains(m.title.toLowerCase()) && ean.toLowerCase().contains(m.ean.toLowerCase())
-                && genre.toLowerCase().contains(m.genre.toLowerCase()) && releaseYear == m.releaseYear
-                && location.toLowerCase().contains(m.location.toLowerCase()) && isLent == m.isLent
-                && lentTo.toLowerCase().contains(m.lentTo.toLowerCase())
-                && lentDay == m.lentDay && lentMonth == m.getLentMonth()
-                && lentYear == m.lentYear && lentUntilDay == m.lentUntilDay
-                && lentUntilMonth == m.lentUntilMonth && lentUntilYear == m.lentUntilYear
-                && rating == m.rating && comment.toLowerCase().contains(m.comment.toLowerCase());
-        }
-        
     }
 
     @Override
