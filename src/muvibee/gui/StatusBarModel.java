@@ -29,21 +29,22 @@ public class StatusBarModel extends Observable{
     public void setSuccessMessage(String message) {
         this.message = message;
         this.setChanged();
-        color = new Color(0.0f, 1.0f, 0.0f, 0.2f); //green
+        color = new Color(0, 255, 20, 100); //green
         this.notifyObservers();
     }
 
     public void setFailMessage(String message) {
         this.message = message;
         this.setChanged();
-        color = new Color(1.0f, 0.0f, 0.0f, 0.2f); //red
+        color = new Color(255, 0, 20, 100); //red
         this.notifyObservers();
     }
 
     public void reset() {
         this.message = "";
         this.setChanged();
-        color = new Color(0.8f, 0.8f, 0.8f, 0.2f); //gray - TODO System Color
+        color = (Color.GRAY); //gray - TODO System Color
+//        color = new Color(0.6f, 0.6f, 0.6f, 0.2f); //gray - TODO System Color
         this.notifyObservers();
     }
 

@@ -99,7 +99,7 @@ public class PrioTree extends JTree implements Observer {
                     case TITLE :
                         o = m.getTitle();
                         break;
-                    case YEAR :
+                    case RELEASEYEAR :
                         o = m.getReleaseYear();
                         break;
                     case GENRE:
@@ -129,7 +129,7 @@ public class PrioTree extends JTree implements Observer {
                     case DIRECTOR:
                         o = ((Video)m).getDirector();
                         break;
-                    case INTERPRETER:
+                    case ARTIST:
                         o = ((Music)m).getInterpreter();
                         break;
                     default:

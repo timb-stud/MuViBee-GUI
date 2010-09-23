@@ -5,6 +5,7 @@
 package muvibee.ean;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Locale;
 
 /**
@@ -16,15 +17,14 @@ public class EAN {
     public EAN() {
     }
 
-    public static void getEanDates(String ean) throws IOException {
-        if (Locale.getDefault().equals(Locale.GERMAN)) {
-            EanBol.getBookData(ean);
-        } else {
-            EanAmazon.searchEan(ean);
-        }
-    }
-
-    public static muvibee.media.Book getBookData(String ean) throws IOException {
+//    public static void getEanDates(String ean) throws IOException, NoAcceptableResultException {
+//        if (Locale.getDefault().equals(Locale.GERMAN)) {
+//            EanBol.getBookData(ean);
+//        } else {
+//            EanAmazon.searchEan(ean);
+//        }
+//    }
+    public static muvibee.media.Book getBookData(String ean) throws NoAcceptableResultException, MalformedURLException, IOException {
         if (Locale.getDefault().equals(Locale.GERMAN)) {
             return EanBol.getBookData(ean);
         } else {
@@ -32,7 +32,7 @@ public class EAN {
         }
     }
 
-    public static muvibee.media.Music getMusicData(String ean) throws IOException {
+    public static muvibee.media.Music getMusicData(String ean) throws NoAcceptableResultException, MalformedURLException, IOException {
         if (Locale.getDefault().equals(Locale.GERMAN)) {
             return EanBol.getMusicData(ean);
         } else {
@@ -40,7 +40,7 @@ public class EAN {
         }
     }
 
-    public static muvibee.media.Video getVideoData(String ean) throws IOException {
+    public static muvibee.media.Video getVideoData(String ean) throws NoAcceptableResultException, MalformedURLException, IOException {
         if (Locale.getDefault().equals(Locale.GERMAN)) {
             return EanBol.getVideoData(ean);
         } else {
