@@ -90,7 +90,6 @@ public class SortBookActionListener implements ActionListener{
         ml.clear();
         LinkedList<Book> bookList = DBSelector.getBookList(false, orderList.toArray(new SortTypes[0]));
         ml.addAll((bookList));
-        ml.updateObserver();
     }
 
 }

@@ -91,6 +91,5 @@ public class SortVideoActionListener implements ActionListener{
         ml.clear();
         LinkedList<Video> videoList = DBSelector.getVideoList(false, orderList.toArray(new SortTypes[0]));
         ml.addAll((videoList));
-        ml.updateObserver();
     }
 }

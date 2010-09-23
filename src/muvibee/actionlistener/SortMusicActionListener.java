@@ -91,7 +91,6 @@ public class SortMusicActionListener implements ActionListener{
         ml.clear();
         LinkedList<Music> musicList = DBSelector.getMusicList(false, orderList.toArray(new SortTypes[0]));
         ml.addAll((musicList));
-        ml.updateObserver();
     }
 
 }
