@@ -48,6 +48,7 @@ public class StatusBarModel extends Observable{
 
     public void reset() {
         this.message = "";
+        ii = null;
         this.setChanged();
         color = (Color.GRAY); //gray - TODO System Color
         this.notifyObservers();

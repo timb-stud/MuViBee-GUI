@@ -140,7 +140,7 @@ public class EanBol {
     }
 
     public static Book getBookData(String ean) throws
-            NoAcceptableResultException, MalformedURLException, IOException {
+            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
         Book book = new Book();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -170,7 +170,7 @@ public class EanBol {
     }
 
     public static Music getMusicData(String ean) throws
-            NoAcceptableResultException, MalformedURLException, IOException {
+            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
         Music music = new Music();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -199,7 +199,7 @@ public class EanBol {
     }
 
     public static Video getVideoData(String ean) throws
-            NoAcceptableResultException, MalformedURLException, IOException {
+            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
         Video video = new Video();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -228,8 +228,8 @@ public class EanBol {
         }
     }
 
-    private static void checkEan(TagNode node)
-            throws NoAcceptableResultException {
+    private static void checkEan(TagNode node) throws NoResultException,
+            MoreThanOneResultException {
 
         TagNode[] rubrikNode = node.getElementsByAttValue("class",
                 "seo_tag hd_pagetitle", true, true);
@@ -237,12 +237,17 @@ public class EanBol {
                 "seo_tag", true, true);
 
         if (rubrikNode.length != 0) {
-            throw new NoAcceptableResultException(
-                    "Zu dieser EAN gibt es mehrere Treffer");
+            throw new NoResultException("");
         } else if (advancedSearchNode.length != 0) {
-            throw new NoAcceptableResultException(
-                    "Zu dieser EAN gibt keine Treffer. Bitte überprüfen Sie Ihre Eingabe");
+            for (int i = 0; i < advancedSearchNode.length; i++) {
+                if (advancedSearchNode[i].getText().toString().trim().contains("Erweiterte Suche")) {
+                    throw new MoreThanOneResultException("");
+                } else {
+                    return;
+                }
+            }
         }
+        return;
     }
 
     private static int parseReleaseYear(TagNode[] releaseYearNode) {
@@ -287,4 +292,5 @@ public class EanBol {
         System.getProperties().put("proxyHost", proxy);
         System.getProperties().put("proxyPort", port);
     }
+
 }
