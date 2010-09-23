@@ -29,6 +29,7 @@ public class StatusBarModel extends Observable{
     }
 
     public void setSuccessMessage(String message) {
+        reset();
         ii = MainFrame.createImageIcon("gui/resources/icons/success.png");
         this.message = message;
         this.setChanged();
@@ -37,6 +38,7 @@ public class StatusBarModel extends Observable{
     }
 
     public void setFailMessage(String message) {
+        reset();
         ii = MainFrame.createImageIcon("gui/resources/icons/error.png");
         this.message = message;
         this.setChanged();
@@ -48,7 +50,6 @@ public class StatusBarModel extends Observable{
         this.message = "";
         this.setChanged();
         color = (Color.GRAY); //gray - TODO System Color
-//        color = new Color(0.6f, 0.6f, 0.6f, 0.2f); //gray - TODO System Color
         this.notifyObservers();
     }
 
