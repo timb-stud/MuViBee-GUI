@@ -396,7 +396,7 @@ public class MuViBee {
                 switch (sortBy){
                     case TITLE :
                         return bundle.getString("titleLabel");
-                    case YEAR :
+                    case RELEASEYEAR :
                         return bundle.getString("releaseYearLabel");
                     case GENRE:
                         return bundle.getString("genreLabel");
@@ -409,7 +409,7 @@ public class MuViBee {
                     case DIRECTOR:
                         return bundle.getString("directorLabel");
                     case AUTHOR:
-                    case INTERPRETER:
+                    case ARTIST:
                         return bundle.getString("artistLabel");
                     default:
                        return bundle.getString("n/a");
