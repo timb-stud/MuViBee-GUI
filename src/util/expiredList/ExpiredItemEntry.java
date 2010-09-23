@@ -3,10 +3,12 @@ package util.expiredList;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import muvibee.MuViBee;
 
 import muvibee.media.Media;
 import muvibee.utils.ResizeImageIcon;
@@ -17,6 +19,7 @@ public class ExpiredItemEntry extends JPanel{
     private int ySize = 80;
 
 	public ExpiredItemEntry(Media media) {
+            ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
             this.media = media;
             ImageIcon icon;
             if (media.getCover() != null)
@@ -36,7 +39,7 @@ public class ExpiredItemEntry extends JPanel{
             label.setIcon(icon);
             add(label, BorderLayout.WEST);
 
-            JLabel text = new JLabel(" " + "title" + ": " + media.getTitle() + ", Genre: " + media.getGenre() + ", Jahr: " + media.getLentYear() + ", und so weiter");
+            JLabel text = new JLabel(" " + bundle.getString("titleLabel") + ": " + media.getTitle() + ", " + bundle.getString("genreLabel") + ": " + media.getGenre() + ", " + bundle.getString("yearComboBox") + ": " + media.getLentYear());
             add(text, BorderLayout.CENTER);
 	}
 
