@@ -70,25 +70,27 @@ public class SortBookActionListener implements ActionListener{
                                 } else {
                                     orderList.remove(SortTypes.LANGUAGE);
                                 }
+                            }else{
+                                if (tb.getName().equals("sort book release year")) {
+                                    if (tb.isSelected()) {
+                                        if (!orderList.contains(SortTypes.RELEASEYEAR)) {
+                                            orderList.add(SortTypes.RELEASEYEAR);
+                                        }
+                                    } else {
+                                        orderList.remove(SortTypes.RELEASEYEAR);
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
-//        MediaList ml = mvb.getBookList();
-//        ml.clear();
-//        LinkedList<Book> bookList = DBSelector.getBookList(false, orderList.toArray(new SortTypes[0]));
-//        ml.addAll((bookList));
-//        ml.updateObserver();
+        MediaList ml = mvb.getBookList();
+        ml.clear();
+        LinkedList<Book> bookList = DBSelector.getBookList(false, orderList.toArray(new SortTypes[0]));
+        ml.addAll((bookList));
+        ml.updateObserver();
     }
-
-    private int[] toIntArray(ArrayList<Integer> list){
-        int[] result = new int[list.size()];
-        for(int i=0; i<list.size();i++)
-            result[i] = list.get(i);
-        return result;
-    }
-
 
 }

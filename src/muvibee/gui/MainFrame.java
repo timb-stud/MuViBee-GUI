@@ -47,7 +47,9 @@ import muvibee.actionlistener.HideActionListener;
 import muvibee.actionlistener.ResetSearchActionListener;
 import muvibee.actionlistener.LanguageActionListener;
 import muvibee.actionlistener.SearchActionListener;
-import muvibee.actionlistener.SortActionListener;
+import muvibee.actionlistener.SortBookActionListener;
+import muvibee.actionlistener.SortMusicActionListener;
+import muvibee.actionlistener.SortVideoActionListener;
 import muvibee.media.Book;
 import muvibee.media.Music;
 import muvibee.media.Video;
@@ -410,24 +412,26 @@ public class MainFrame extends javax.swing.JFrame {
         hideMusicButton.addActionListener(hal);
         hideVideoButton.addActionListener(hal);
 
-        SortActionListener sortal = new SortActionListener(mvb);
-        sortBookTitleButton.addActionListener(sortal);
-        sortBookGenreButton.addActionListener(sortal);
-        sortBookRatingButton.addActionListener(sortal);
-        sortBookAuthorButton.addActionListener(sortal);
-        sortBookLanguageButton.addActionListener(sortal);
+        SortBookActionListener sbal = new SortBookActionListener(mvb);
+        sortBookTitleButton.addActionListener(sbal);
+        sortBookGenreButton.addActionListener(sbal);
+        sortBookRatingButton.addActionListener(sbal);
+        sortBookAuthorButton.addActionListener(sbal);
+        sortBookLanguageButton.addActionListener(sbal);
 
-        sortMusicTitleButton.addActionListener(sortal);
-        sortMusicGenreButton.addActionListener(sortal);
-        sortMusicRatingButton.addActionListener(sortal);
-        sortMusicArtistButton.addActionListener(sortal);
-        sortMusicFormatButton.addActionListener(sortal);
+        SortMusicActionListener smal = new SortMusicActionListener(mvb);
+        sortMusicTitleButton.addActionListener(smal);
+        sortMusicGenreButton.addActionListener(smal);
+        sortMusicRatingButton.addActionListener(smal);
+        sortMusicArtistButton.addActionListener(smal);
+        sortMusicFormatButton.addActionListener(smal);
 
-        sortVideoTitleButton.addActionListener(sortal);
-        sortVideoGenreButton.addActionListener(sortal);
-        sortVideoRatingButton.addActionListener(sortal);
-        sortVideoDirectorButton.addActionListener(sortal);
-        sortVideoFormatButton.addActionListener(sortal);
+        SortVideoActionListener sval = new SortVideoActionListener(mvb);
+        sortVideoTitleButton.addActionListener(sval);
+        sortVideoGenreButton.addActionListener(sval);
+        sortVideoRatingButton.addActionListener(sval);
+        sortVideoDirectorButton.addActionListener(sval);
+        sortVideoFormatButton.addActionListener(sval);
         
         StatusBar sb = new StatusBar(StatusBarModel.getInstance());
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);

@@ -54,22 +54,32 @@ public class SortMusicActionListener implements ActionListener{
                             orderList.remove(SortTypes.RATING);
                         }
                     }else{
-                        if(tb.getName().equals("sort music type")){
+                        if(tb.getName().equals("sort music format")){
                             if (tb.isSelected()) {
-                                if (!orderList.contains(SortTypes.TYPE)) {
-                                    orderList.add(SortTypes.TYPE);
+                                if (!orderList.contains(SortTypes.FORMAT)) {
+                                    orderList.add(SortTypes.FORMAT);
                                 }
                             } else {
-                                orderList.remove(SortTypes.TYPE);
+                                orderList.remove(SortTypes.FORMAT);
                             }
                         }else{
-                            if(tb.getName().equals("sort music interpreter")){
+                            if(tb.getName().equals("sort music artist")){
                                 if (tb.isSelected()) {
-                                    if (!orderList.contains(SortTypes.INTERPRETER)) {
-                                        orderList.add(SortTypes.INTERPRETER);
+                                    if (!orderList.contains(SortTypes.ARTIST)) {
+                                        orderList.add(SortTypes.ARTIST);
                                     }
                                 } else {
-                                    orderList.remove(SortTypes.INTERPRETER);
+                                    orderList.remove(SortTypes.ARTIST);
+                                }
+                            }else{
+                                if (tb.getName().equals("sort music release year")) {
+                                    if (tb.isSelected()) {
+                                        if (!orderList.contains(SortTypes.RELEASEYEAR)) {
+                                            orderList.add(SortTypes.RELEASEYEAR);
+                                        }
+                                    } else {
+                                        orderList.remove(SortTypes.RELEASEYEAR);
+                                    }
                                 }
                             }
                         }
@@ -77,11 +87,11 @@ public class SortMusicActionListener implements ActionListener{
                 }
             }
         }
-//        MediaList ml = mvb.getMusicList();
-//        ml.clear();
-//        LinkedList<Music> bookList = DBSelector.getBookList(false, orderList.toArray(new SortTypes[0]));
-//        ml.addAll((bookList));
-//        ml.updateObserver();
+        MediaList ml = mvb.getMusicList();
+        ml.clear();
+        LinkedList<Music> musicList = DBSelector.getMusicList(false, orderList.toArray(new SortTypes[0]));
+        ml.addAll((musicList));
+        ml.updateObserver();
     }
 
 }

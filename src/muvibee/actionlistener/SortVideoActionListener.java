@@ -54,7 +54,7 @@ public class SortVideoActionListener implements ActionListener{
                             orderList.remove(SortTypes.RATING);
                         }
                     }else{
-                        if(tb.getName().equals("sort video regisseur")){
+                        if(tb.getName().equals("sort video director")){
                             if (tb.isSelected()) {
                                 if (!orderList.contains(SortTypes.DIRECTOR)) {
                                     orderList.add(SortTypes.DIRECTOR);
@@ -63,13 +63,23 @@ public class SortVideoActionListener implements ActionListener{
                                 orderList.remove(SortTypes.DIRECTOR);
                             }
                         }else{
-                            if(tb.getName().equals("sort video actors")){
+                            if(tb.getName().equals("sort video format")){
                                 if (tb.isSelected()) {
-                                    if (!orderList.contains(SortTypes.ACTORS)) {
-                                        orderList.add(SortTypes.ACTORS);
+                                    if (!orderList.contains(SortTypes.FORMAT)) {
+                                        orderList.add(SortTypes.FORMAT);
                                     }
                                 } else {
-                                    orderList.remove(SortTypes.ACTORS);
+                                    orderList.remove(SortTypes.FORMAT);
+                                }
+                            }else{
+                                if (tb.getName().equals("sort video release year")) {
+                                    if (tb.isSelected()) {
+                                        if (!orderList.contains(SortTypes.RELEASEYEAR)) {
+                                            orderList.add(SortTypes.RELEASEYEAR);
+                                        }
+                                    } else {
+                                        orderList.remove(SortTypes.RELEASEYEAR);
+                                    }
                                 }
                             }
                         }
@@ -77,10 +87,10 @@ public class SortVideoActionListener implements ActionListener{
                 }
             }
         }
-//        MediaList ml = mvb.getVideoList();
-//        ml.clear();
-//        LinkedList<Video> bookList = DBSelector.getBookList(false, orderList.toArray(new SortTypes[0]));
-//        ml.addAll((bookList));
-//        ml.updateObserver();
+        MediaList ml = mvb.getVideoList();
+        ml.clear();
+        LinkedList<Video> videoList = DBSelector.getVideoList(false, orderList.toArray(new SortTypes[0]));
+        ml.addAll((videoList));
+        ml.updateObserver();
     }
 }
