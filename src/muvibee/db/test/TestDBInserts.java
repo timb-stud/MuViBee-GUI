@@ -10,7 +10,6 @@ package muvibee.db.test;
  * @author tobiaslana
  */
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,10 +51,14 @@ public class TestDBInserts {
             Music m2 = new Music();
             m2 = (Music) EanAmazon.searchEan("0743218979620");
             m2.updateDB();
-            // The Dome 2008
+            // Paolo Nutini
             Music m3 = new Music();
-            m3 = (Music) EanAmazon.searchEan("9120008375465");
+            m3 = (Music) EanAmazon.searchEan("0825646901371");
             m3.updateDB();
+            // AC DC
+            Music m4 = new Music();
+            m4 = (Music) EanAmazon.searchEan("07567964272");
+            m4.updateDB();
             
         } catch (IOException ex) {
             Logger.getLogger(TestDBInserts.class.getName()).log(Level.SEVERE, null, ex);
