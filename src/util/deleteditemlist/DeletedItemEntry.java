@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import muvibee.MuViBee;
 
 import muvibee.media.Media;
 import muvibee.utils.ResizeImageIcon;
@@ -18,6 +20,7 @@ public class DeletedItemEntry extends JPanel{
     private int ySize = 80;
 
 	public DeletedItemEntry(Media media) {
+            ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
             this.media = media;
             ImageIcon icon;
             if (media.getCover() != null)
@@ -37,7 +40,7 @@ public class DeletedItemEntry extends JPanel{
             label.setIcon(icon);
             add(label);
 
-            JLabel text = new JLabel(" " + "title" + ": " + media.getTitle() + ", Genre: " + media.getGenre() + ", Jahr: " + media.getReleaseYear() + ", und so weiter");
+             JLabel text = new JLabel(" " + bundle.getString("titleLabel") + ": " + media.getTitle() + ", " + bundle.getString("genreLabel") + ": " + media.getGenre() + ", " + bundle.getString("yearComboBox") + ": " + media.getLentYear());
             add(text);
 	}
 
