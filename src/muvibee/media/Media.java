@@ -253,14 +253,7 @@ public abstract class Media extends Observable {
     }
 
     public void setCover(BufferedImage cover) {
-        if (cover != null)
             this.cover = cover;
-        else
-            try {
-                this.cover = ImageIO.read(new File("resources/Biene.png"));
-            } catch (IOException ex) {
-                Logger.getLogger(Media.class.getName()).log(Level.SEVERE, null, ex);
-            }
     }
 
     public boolean isDeleted() {
