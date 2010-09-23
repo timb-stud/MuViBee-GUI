@@ -63,18 +63,18 @@ public class EanAmazon {
 
     private static Media checkRequest(InputStream inputStream) throws XMLStreamException, FactoryConfigurationError, MalformedURLException, IOException {
         String error = null;
-        String title = null;
-        String artist = null;
-        String author = null;
-        String actor = null;
-        String director = null;
-        String isbn = null;
-        String language = null;
-        String productGroup = null;
+        String title = "";
+        String artist = "";
+        String author = "";
+        String actor = "";
+        String director = "";
+        String isbn = "";
+        String language = "";
+        String productGroup = "";
         String releaseYear = null;
-        String ean = null;
+        String ean = "";
         String binding = null;
-        String description = null;
+        String description = "";
         BufferedImage cover = null;
 
         XMLStreamReader xmlStreamReader = XMLInputFactory.newInstance().createXMLStreamReader(inputStream);
@@ -97,14 +97,14 @@ public class EanAmazon {
                     author = xmlStreamReader.getElementText();
                 }
                 if (xmlStreamReader.getLocalName().equals("Actor")) {
-                    if (actor == null) {
+                    if (actor.isEmpty()) {
                         actor = xmlStreamReader.getElementText();
                     } else {
                         actor = actor + ", " + xmlStreamReader.getElementText();
                     }
                 }
                 if (xmlStreamReader.getLocalName().equals("Director")) {
-                    if (director == null) {
+                    if (director.isEmpty()) {
                         director = xmlStreamReader.getElementText();
                     } else {
                         director = director + ", " + xmlStreamReader.getElementText();
@@ -138,7 +138,7 @@ public class EanAmazon {
                     binding = xmlStreamReader.getElementText();
                 }
                 if (xmlStreamReader.getLocalName().equals("Content")) {
-                    if (description == null) {
+                    if (description.isEmpty()) {
                         description = xmlStreamReader.getElementText();
                     } else {
                         description = description + xmlStreamReader.getElementText();
@@ -160,7 +160,7 @@ public class EanAmazon {
         if (error == null) {
             if (productGroup.equals("DVD") || productGroup.equals("Video")) {
                 Video v = new Video();
-                String format = null;
+                String format = "";
                 if (binding != null) {
                     if (binding.equals("Videokassette")) {
                         format = "VHS";
@@ -183,7 +183,7 @@ public class EanAmazon {
             } else if ((productGroup.equals("Music")) ||
                        (productGroup.equals("Book") && (binding.equals("Hörkassette") || binding.contains("Musikkassette")))) {
                 Music m = new Music ();
-                String format = null;
+                String format = "";
                 m.setTitle(title);
                 m.setEan(ean);
                 m.setReleaseYear(Integer.parseInt(releaseYear));
