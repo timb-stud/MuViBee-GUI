@@ -65,7 +65,8 @@ public class DBUtil {
 
         /**
          * @param m Media-Objekt
-         * Wenn ID des Objektes -1 ist wird ein neuer Datensatz in der Datenbank angelegt, ansonsten wird bestehender Datensatz geupdated
+         * Wenn ID des Objektes -1 ist wird ein neuer Datensatz in der Datenbank angelegt,
+         * ansonsten wird bestehender Datensatz geupdated
          */
 	public static void dbUpdate(Media m) {
             try {
