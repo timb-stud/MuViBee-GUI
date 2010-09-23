@@ -10,20 +10,13 @@ package muvibee.utils;
  * @author Christian Rech
  */
 public enum SortTypes {
-     DIRECTOR,
-     LANGUAGE,
-     TITLE,
-     FORMAT,
-     INTERPRETER,
-     TYPE,
-     ISBN, //
-     EAN, //
-     ACTORS,
-     REGISSEUR,
-     YEAR,
-     GENRE,
-     LOCATION,
-     LENTTO,
-     RATING,
-     AUTHOR
+    TITLE,
+    GENRE,
+    RATING,
+    RELEASEYEAR,
+    AUTHOR,
+    LANGUAGE,
+    ARTIST,
+    FORMAT,
+    DIRECTOR
 }
