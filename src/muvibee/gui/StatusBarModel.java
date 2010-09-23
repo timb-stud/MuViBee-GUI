@@ -33,7 +33,7 @@ public class StatusBarModel extends Observable{
         ii = MainFrame.createImageIcon("gui/resources/icons/success.png");
         this.message = message;
         this.setChanged();
-        color = new Color(0, 255, 20, 100); //green
+        color = Color.green; //green  //Transparenz führt zu Fehlern
         this.notifyObservers();
     }
 
@@ -42,7 +42,7 @@ public class StatusBarModel extends Observable{
         ii = MainFrame.createImageIcon("gui/resources/icons/error.png");
         this.message = message;
         this.setChanged();
-        color = new Color(255, 0, 20, 100); //red
+        color = Color.red; //red //Transparenz führt zu Fehlern
         this.notifyObservers();
     }
 
