@@ -46,7 +46,7 @@ public class AddActionListener implements ActionListener {
                         try {
                             EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                             book = muvibee.ean.EAN.getBookData(ean);
-                            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_not_found"));
+                            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
                         } catch (muvibee.ean.NoResultException ex) {
                             StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
                             return;
@@ -54,7 +54,7 @@ public class AddActionListener implements ActionListener {
                             StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
                             return;
                         } catch (IOException ioex) {
-                            StatusBarModel.getInstance().setFailMessage("Connection error!");
+                            StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
                             return;
                         }
                     } else {
@@ -72,15 +72,15 @@ public class AddActionListener implements ActionListener {
                             try {
                                 EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                                 music = muvibee.ean.EAN.getMusicData(ean);
-                                StatusBarModel.getInstance().setSuccessMessage("EAN found");
+                                StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
                             } catch (muvibee.ean.NoResultException ex) {
-                                StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt keine Treffer. Bitte überprüfen Sie Ihre Eingabe");
+                                StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
                                 return;
                             } catch (muvibee.ean.MoreThanOneResultException ex) {
-                                StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt es mehrere Treffer. Bitte geben Sie eine eindeutige EAN ein.");
+                                StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
                                 return;
                             } catch (IOException ex) {
-                                StatusBarModel.getInstance().setFailMessage("Connection error!");
+                                StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
                                 return;
                             }
                         } else {
@@ -98,15 +98,15 @@ public class AddActionListener implements ActionListener {
                                 try {
                                     EanBol.setProxy("www-proxy.htw-saarland.de", "3128");
                                     video = EanBol.getVideoData(ean);
-                                    StatusBarModel.getInstance().setSuccessMessage("EAN/ISBN found");
+                                    StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
                                 } catch (muvibee.ean.NoResultException ex) {
-                                    StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt keine Treffer. Bitte überprüfen Sie Ihre Eingabe");
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
                                     return;
                                 } catch (muvibee.ean.MoreThanOneResultException ex) {
-                                    StatusBarModel.getInstance().setFailMessage("Zu dieser EAN gibt es mehrere Treffer. Bitte geben Sie eine eindeutige EAN ein.");
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
                                     return;
                                 } catch (IOException ex2) {
-                                    StatusBarModel.getInstance().setFailMessage("Connection error!");
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
                                     return;
                                 }
                             } else {
