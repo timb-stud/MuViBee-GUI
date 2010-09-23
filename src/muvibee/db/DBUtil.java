@@ -96,7 +96,6 @@ public class DBUtil {
 
         private static void insertBook(Book b) throws SQLException {
             PreparedStatement ps = con.prepareStatement(SQL_INSERT_BOOK);
-            System.out.println(b.toString());
             ps.setString(1, b.getTitle());
             ps.setString(2, b.getEan());
             ps.setString(3, b.getGenre());
@@ -108,7 +107,11 @@ public class DBUtil {
             ps.setInt(9, b.getRating());
             ps.setString(10, b.getDescription());
             ps.setString(11, b.getComment());
-            ps.setString(12, imageWriteToFile(b.getCover()));
+            if (b.getCover() != Book.defaultCover) {
+                ps.setString(12, imageWriteToFile(b.getCover()));
+            } else {
+                ps.setString(12, "null");
+            }
             ps.setString(13, b.getAuthor());
             ps.setString(14, b.getLanguage());
             ps.setString(15, b.getIsbn());
@@ -131,7 +134,11 @@ public class DBUtil {
             ps.setInt(9, m.getRating());
             ps.setString(10, m.getDescription());
             ps.setString(11, m.getComment());
-            ps.setString(12, imageWriteToFile(m.getCover()));
+            if (m.getCover() != Music.defaultCover) {
+                ps.setString(12, imageWriteToFile(m.getCover()));
+            } else {
+                ps.setString(12, "null");
+            }
             ps.setString(13, m.getFormat());
             ps.setString(14, m.getInterpreter());
             ps.setString(15, m.getType());
@@ -154,7 +161,11 @@ public class DBUtil {
             ps.setInt(9, v.getRating());
             ps.setString(10, v.getDescription());
             ps.setString(11, v.getComment());
-            ps.setString(12, imageWriteToFile(v.getCover()));
+            if (v.getCover() != Video.defaultCover) {
+                ps.setString(12, imageWriteToFile(v.getCover()));
+            } else {
+                ps.setString(12, "null");
+            }
             ps.setString(13, v.getFormat());
             ps.setString(14, v.getDirector());
             ps.setString(15, v.getActors());
@@ -164,15 +175,15 @@ public class DBUtil {
             v.setID(getMaxVideoID());
         }
 
-	private static String imageWriteToFile(BufferedImage i)  {
-            String path = COVER_PATH + i.hashCode() + ".jpg";
+	private static String imageWriteToFile(BufferedImage bi)  {
+            String path = COVER_PATH + bi.hashCode() + ".jpg";
             File f = new File(path);
             try {
-                    ImageIO.write(i, "jpg", f);
+                    ImageIO.write(bi, "jpg", f);
             } catch (IOException e) {
                     e.printStackTrace();
             }
-            return String.valueOf(i.hashCode());
+            return String.valueOf(bi.hashCode());
          }
 
 	private static void updateMediaDB(Media m) {
