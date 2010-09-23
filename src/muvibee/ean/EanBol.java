@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -139,10 +138,12 @@ public class EanBol {
         }
     }
 
-    public static Book getBookData(String ean) throws IOException {
+    public static Book getBookData(String ean) throws IOException,
+            NoAcceptableResultException {
         Book book = new Book();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
+        checkEan(node);
         String artikelTyp = getArtikelType(node);
 
         if (!artikelTyp.equalsIgnoreCase("book")) {
@@ -167,11 +168,14 @@ public class EanBol {
         }
     }
 
-    public static Music getMusicData(String ean) throws IOException {
+    public static Music getMusicData(String ean) throws IOException,
+            NoAcceptableResultException {
         Music music = new Music();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
+        checkEan(node);
         String artikelTyp = getArtikelType(node);
+
         if (!artikelTyp.equalsIgnoreCase("cd")) {
             throw new IOException(
                     "Das Ergebnis für diese EAN ist keine Musik! Bitte überprüfen Sie Ihre Eingabe");
@@ -193,11 +197,14 @@ public class EanBol {
         }
     }
 
-    public static Video getVideoData(String ean) throws IOException {
+    public static Video getVideoData(String ean) throws IOException,
+            NoAcceptableResultException {
         Video video = new Video();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
+        checkEan(node);
         String artikelTyp = getArtikelType(node);
+
         if (!artikelTyp.equalsIgnoreCase("dvd")) {
             throw new IOException(
                     "Das Ergebnis für diese EAN ist kein Video-Media  !(Format(DVD oder Blu-Ray))  Bitte überprüfen Sie Ihre Eingabe");
@@ -217,6 +224,23 @@ public class EanBol {
             video.setActors(actors);
             video.setEan(ean);
             return video;
+        }
+    }
+
+    private static void checkEan(TagNode node)
+            throws NoAcceptableResultException {
+
+        TagNode[] rubrikNode = node.getElementsByAttValue("class",
+                "seo_tag hd_pagetitle", true, true);
+        TagNode[] advancedSearchNode = node.getElementsByAttValue("class",
+                "seo_tag", true, true);
+
+        if (rubrikNode.length != 0) {
+            throw new NoAcceptableResultException(
+                    "Zu dieser EAN gibt es mehrere Treffer");
+        } else if (advancedSearchNode.length != 0) {
+            throw new NoAcceptableResultException(
+                    "Zu dieser EAN gibt keine Treffer. Bitte überprüfen Sie Ihre Eingabe");
         }
     }
 
