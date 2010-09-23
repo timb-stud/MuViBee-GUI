@@ -74,12 +74,6 @@ public class EanBol {
 
         BufferedImage image = ImageIO.read(new URL(coverSource));
         media.setCover(image);
-        FileOutputStream fos = new FileOutputStream(
-                "C:/Dokumente und Einstellungen/volkan gökkaya/Desktop/test.jpeg");
-        int temp = -1;
-        while ((temp = inputStr.read()) != -1) {
-            fos.write(temp);
-        }
     }
 
     private static String getDescription(TagNode[] descriptionNode) {
