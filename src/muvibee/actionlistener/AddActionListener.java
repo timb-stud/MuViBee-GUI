@@ -54,6 +54,9 @@ public class AddActionListener implements ActionListener {
                         } catch (muvibee.ean.MoreThanOneResultException ex) {
                             StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
                             return;
+                        } catch (muvibee.ean.WrongArticleTypeException ex) {
+                            StatusBarModel.getInstance().setFailMessage(bundle.getString("Artikeltyp der EAN passt nicht zum Artikeltyp von dem von Ihenen gewaehlten Media"));
+                            return;
                         } catch (IOException ioex) {
                             StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
                             return;
@@ -80,6 +83,9 @@ public class AddActionListener implements ActionListener {
                             } catch (muvibee.ean.MoreThanOneResultException ex) {
                                 StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
                                 return;
+                            } catch (muvibee.ean.WrongArticleTypeException ex) {
+                                StatusBarModel.getInstance().setFailMessage(bundle.getString("Artikeltyp der EAN passt nicht zum Artikeltyp von dem von Ihenen gewaehlten Media"));
+                                return;
                             } catch (IOException ex) {
                                 StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
                                 return;
@@ -105,6 +111,9 @@ public class AddActionListener implements ActionListener {
                                     return;
                                 } catch (muvibee.ean.MoreThanOneResultException ex) {
                                     StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
+                                    return;
+                                } catch (muvibee.ean.WrongArticleTypeException ex) {
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("Artikeltyp der EAN passt nicht zum Artikeltyp von dem von Ihenen gewaehlten Media"));
                                     return;
                                 } catch (IOException ex2) {
                                     StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
