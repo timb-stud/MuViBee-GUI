@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * MainFrame.java
  *
  * Created on 03.09.2010, 08:57:34
@@ -312,29 +307,29 @@ public class MainFrame extends javax.swing.JFrame {
         ComboBoxModel cbm = new DefaultComboBoxModel(languages);
         languagesComboBox.setModel(cbm);
 
-            languagesComboBox.setRenderer(new DefaultListCellRenderer(){
-            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                String flag = "";
-                try {
-                    if (((String)value).equals("en"))
-                        flag = "../../muvibee/gui/resources/flags/gb.png";
-                    else if (((String)value).equals("de"))
-                        flag = "../../muvibee/gui/resources/flags/de.png";
-                    else if (((String)value).equals("ru"))
-                        flag = "../../muvibee/gui/resources/flags/ru.png";
-                    else if (((String)value).equals("tr"))
-                        flag = "../../muvibee/gui/resources/flags/tr.png";
-                    else if (((String)value).equals("ro"))
-                        flag = "../../muvibee/gui/resources/flags/ro.png";
-
-                    label.setIcon(ResizeImageIcon.resizeIcon(24, 20, ImageIO.read(getClass().getResource(flag))));
-                } catch (IOException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                return label;
-            }
-        });
+//            languagesComboBox.setRenderer(new DefaultListCellRenderer(){
+//            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+//                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+//                String flag = "";
+//                try {
+//                    if (((String)value).equals("en"))
+//                        flag = "../../muvibee/gui/resources/flags/gb.png";
+//                    else if (((String)value).equals("de"))
+//                        flag = "../../muvibee/gui/resources/flags/de.png";
+//                    else if (((String)value).equals("ru"))
+//                        flag = "../../muvibee/gui/resources/flags/ru.png";
+//                    else if (((String)value).equals("tr"))
+//                        flag = "../../muvibee/gui/resources/flags/tr.png";
+//                    else if (((String)value).equals("ro"))
+//                        flag = "../../muvibee/gui/resources/flags/ro.png";
+//
+//                    label.setIcon(ResizeImageIcon.resizeIcon(24, 20, ImageIO.read(getClass().getResource(flag))));
+//                } catch (IOException ex) {
+//                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                return label;
+//            }
+//        });
 
         //init dayComboBoxes
 	String[] days = new String[32];

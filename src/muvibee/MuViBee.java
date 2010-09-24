@@ -5,6 +5,8 @@
 package muvibee;
 
 import java.awt.Color;
+import java.io.File;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -52,9 +54,15 @@ public class MuViBee {
     private Video currentVideo;
     private Media[] currentDeletedMediaList;
     public static String mainBundlePath = "muvibee.resources.MuViBee";
+    public static String PATH;
 
     public MuViBee() {
         final MuViBee mvb = this;
+        URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+        File file = new File(url.getPath());
+        PATH = file.getParentFile().getParent();
+        System.out.println("path:" + PATH);
+
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
