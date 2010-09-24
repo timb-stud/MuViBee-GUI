@@ -100,6 +100,7 @@ public class MuViBee {
 
 
                 mainFrame = new MainFrame(mvb);
+                mainFrame.setLanguage(settings.getLanguage());
                 mainFrame.setVisible(true);
 
                 (new Thread() {

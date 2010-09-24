@@ -58,7 +58,7 @@ import util.tree.PrioTree;
  *
  * @author bline
  */
-public class MainFrame extends javax.swing.JFrame {
+public final class MainFrame extends javax.swing.JFrame {
 
     MuViBee mvb;
 
@@ -3037,7 +3037,20 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
+    public void setLanguage(String lang){
+        if(isLanguage(lang))
+            languagesComboBox.setSelectedItem(lang);
+        else
+            languagesComboBox.setSelectedItem("en");
+    }
 
+    public boolean isLanguage(String lang){
+        for(int i=0; i<languagesComboBox.getItemCount(); i++){
+            if(lang.equals(languagesComboBox.getItemAt(i)))
+                    return true;
+        }
+        return false;
+    }
 
 
 
