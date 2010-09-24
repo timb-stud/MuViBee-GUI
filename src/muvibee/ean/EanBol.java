@@ -1,7 +1,6 @@
 package muvibee.ean;
 
 import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -25,6 +24,9 @@ public class EanBol {
     static String preEAN = "http://www.bol.de/shop/home/suche/?fi=&st=&sa=&sr=&sv=&svb=&ssw=&si=&sk=&sd=&sre=&sq=";
     static String postEAN = "&forward=weiter&sswg=ANY#pm_features";
     static HtmlCleaner cleaner = new HtmlCleaner();
+    static final String noVideo = "Das Ergebnis für diese EAN ist kein Video-Media  !(Format(DVD oder Blu-Ray))  Bitte überprüfen Sie Ihre Eingabe";
+    static final String noMusic = "Das Ergebnis für diese EAN ist keine Musik! Bitte überprüfen Sie Ihre Eingabe";
+    static final String noBook = "Das Ergebnis für diese EAN ist kein Buch! Bitte überprüfen Sie Ihre Eingabe";
 
     private static Media getData(TagNode node, Media media) throws IOException {
         String title = "";
@@ -77,26 +79,37 @@ public class EanBol {
     }
 
     private static String getDescription(TagNode[] descriptionNode) {
+        boolean hasShortDescription = false;
         StringBuilder sb = new StringBuilder();
         boolean hasDescription = false;
         int j = 0;
-
+        int k = 0;
         for (int i = 0; i < descriptionNode.length; i++) {
             if ((descriptionNode[i].getChildTags()[0].getOriginalSource()).contains("hd hd_content_box")) {
                 if (descriptionNode[i].getChildTags()[0].getChildTags()[0].getOriginalSource().contains("kurzbeschreibung")) {
 
-                    hasDescription = true;
+                    hasShortDescription = true;
                     j = i;
+                    break;
+                }
+                if (descriptionNode[i].getChildTags()[0].getChildTags()[0].getOriginalSource().contains("beschreibung")) {
+
+                    hasDescription = true;
+                    k = i;
                     break;
                 }
             }
         }
-        if (!hasDescription) {
+        if (!hasDescription && !hasShortDescription) {
             return "";
-        } else {
+        } else if (hasShortDescription) {
             sb.append(descriptionNode[j].getChildTags()[1].getText().toString().trim());
             return sb.toString();
+        } else {
+            sb.append(descriptionNode[k].getChildTags()[1].getText().toString().trim());
+            return sb.toString();
         }
+
     }
 
     private static String getArtikelType(TagNode node) {
@@ -134,7 +147,7 @@ public class EanBol {
     }
 
     public static Book getBookData(String ean) throws
-            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
+            NoResultException, MalformedURLException, IOException, MoreThanOneResultException, WrongArticleTypeException {
         Book book = new Book();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -142,8 +155,7 @@ public class EanBol {
         String artikelTyp = getArtikelType(node);
 
         if (!artikelTyp.equalsIgnoreCase("book")) {
-            throw new IOException(
-                    "Das Ergebnis für diese EAN ist kein Buch! Bitte überprüfen Sie Ihre Eingabe");
+            throw new WrongArticleTypeException(noBook);
         } else {
             book = (Book) getData(node, book);
             TagNode[] authorNode = node.getElementsByAttValue("class",
@@ -164,7 +176,7 @@ public class EanBol {
     }
 
     public static Music getMusicData(String ean) throws
-            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
+            NoResultException, MalformedURLException, IOException, MoreThanOneResultException, WrongArticleTypeException {
         Music music = new Music();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -172,8 +184,7 @@ public class EanBol {
         String artikelTyp = getArtikelType(node);
 
         if (!artikelTyp.equalsIgnoreCase("cd")) {
-            throw new IOException(
-                    "Das Ergebnis für diese EAN ist keine Musik! Bitte überprüfen Sie Ihre Eingabe");
+            throw new WrongArticleTypeException(noMusic);
         } else {
             music = (Music) getData(node, music);
 
@@ -193,7 +204,7 @@ public class EanBol {
     }
 
     public static Video getVideoData(String ean) throws
-            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
+            NoResultException, MalformedURLException, MoreThanOneResultException, WrongArticleTypeException, IOException {
         Video video = new Video();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -201,8 +212,7 @@ public class EanBol {
         String artikelTyp = getArtikelType(node);
 
         if (!artikelTyp.equalsIgnoreCase("dvd") && !artikelTyp.equalsIgnoreCase("bluray")) {
-            throw new IOException(
-                    "Das Ergebnis für diese EAN ist kein Video-Media  !(Format(DVD oder Blu-Ray))  Bitte überprüfen Sie Ihre Eingabe");
+            throw new WrongArticleTypeException(noVideo);
         } else {
             video = (Video) getData(node, video);
 

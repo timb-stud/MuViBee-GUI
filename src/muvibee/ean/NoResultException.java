@@ -6,8 +6,6 @@ package muvibee.ean;
  */
 public class NoResultException extends Exception {
 
-    static String fehlerMeldung;
-
     public NoResultException(String fehlermeldung) {
         super(fehlermeldung);
     }
