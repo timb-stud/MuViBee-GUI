@@ -6,7 +6,9 @@ package muvibee;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -60,7 +62,11 @@ public class MuViBee {
         final MuViBee mvb = this;
         URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
         File file = new File(url.getPath());
-        PATH = file.getParentFile().getParent();
+        PATH = file.getParentFile().getParentFile().toURI().getPath();
+        try {
+            PATH = URLDecoder.decode(PATH, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+        }
         System.out.println("path:" + PATH);
 
         SwingUtilities.invokeLater(new Runnable() {
