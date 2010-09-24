@@ -145,7 +145,7 @@ public class EanAmazon {
                     }
                 }
                 if (xmlStreamReader.getLocalName().equals("URL")) {
-                    if (i == 1) {
+                    if (i == 2) {
                         String urlCover = xmlStreamReader.getElementText();
                         URL url_cover = new URL(urlCover);
                         cover = ImageIO.read(url_cover);
