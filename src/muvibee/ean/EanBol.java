@@ -14,6 +14,7 @@ import muvibee.media.Video;
 
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -241,17 +242,18 @@ public class EanBol {
                 "seo_tag", true, true);
 
         if (rubrikNode.length != 0) {
-            throw new NoResultException("");
+            throw new MoreThanOneResultException("");
         } else if (advancedSearchNode.length != 0) {
             for (int i = 0; i < advancedSearchNode.length; i++) {
                 if (advancedSearchNode[i].getText().toString().trim().contains("Erweiterte Suche")) {
-                    throw new MoreThanOneResultException("");
-                } else {
-                    return;
+                    System.out.println(advancedSearchNode[i].getOriginalSource().toString());
+                    throw new NoResultException("");
                 }
+
             }
+            return;
         }
-        return;
+
     }
 
     private static int parseReleaseYear(TagNode[] releaseYearNode) {
