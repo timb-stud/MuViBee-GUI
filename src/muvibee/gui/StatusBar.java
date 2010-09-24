@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package muvibee.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -39,7 +31,6 @@ public class StatusBar extends JPanel implements Observer{
     public void update(Observable o, Object arg) {
         pRight.setBackground(((StatusBarModel)o).getColor());
         pLeft.setBackground(((StatusBarModel)o).getColor());
-        iconLabel.setIcon(((StatusBarModel)o).getIcon());
         messageLabel.setText(((StatusBarModel)o).getMessage());
     }
 }
