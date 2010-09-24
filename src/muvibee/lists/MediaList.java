@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package muvibee.lists;
 
 import java.util.ArrayList;
@@ -30,6 +26,10 @@ public class MediaList extends Observable implements Observer {
 
     public ArrayList<SortTypes> getSortedBy() {
         return sortedBy;
+    }
+
+    public void setSortedBy(ArrayList<SortTypes> sortedBy) {
+        this.sortedBy = sortedBy;
     }
 
     public boolean add(Media m) {

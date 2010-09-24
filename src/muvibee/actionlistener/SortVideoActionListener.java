@@ -90,6 +90,7 @@ public class SortVideoActionListener implements ActionListener{
         MediaList ml = mvb.getVideoList();
         ml.clear();
         LinkedList<Video> videoList = DBSelector.getVideoList(false, orderList.toArray(new SortTypes[0]));
+        ml.setSortedBy(orderList);
         ml.addAll((videoList));
     }
 }
