@@ -21,7 +21,7 @@ public class EAN {
         if (Locale.getDefault().equals(Locale.GERMAN)) {
             return EanBol.getBookData(ean);
         } else {
-            return (muvibee.media.Book) EanAmazon.searchEan(ean);
+            return (muvibee.media.Book) EanAmazon.searchEan(ean, "book");
         }
     }
 
@@ -29,7 +29,7 @@ public class EAN {
         if (Locale.getDefault().equals(Locale.GERMAN)) {
             return EanBol.getMusicData(ean);
         } else {
-            return (muvibee.media.Music) EanAmazon.searchEan(ean);
+            return (muvibee.media.Music) EanAmazon.searchEan(ean, "music");
         }
     }
 
@@ -37,7 +37,7 @@ public class EAN {
         if (Locale.getDefault().equals(Locale.GERMAN)) {
             return EanBol.getVideoData(ean);
         } else {
-            return (muvibee.media.Video) EanAmazon.searchEan(ean);
+            return (muvibee.media.Video) EanAmazon.searchEan(ean, "video");
         }
     }
 

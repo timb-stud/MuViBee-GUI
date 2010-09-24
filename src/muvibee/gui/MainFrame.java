@@ -697,7 +697,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setCover(BufferedImage cover, JLabel label){
         if (cover != null) {
-            label.setIcon(ResizeImageIcon.resizeIcon(140, 160, cover));
+            label.setIcon(ResizeImageIcon.resizeIcon(120, 150, cover));
         } else {
             label.setIcon(null);
         }

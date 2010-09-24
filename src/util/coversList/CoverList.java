@@ -35,7 +35,7 @@ public class CoverList extends JList implements Observer{
 	   	setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		CoverListRenderer cr = new CoverListRenderer();
-		cr.setPreferredSize(new Dimension(100, 120));
+		cr.setPreferredSize(new Dimension(120, 140));
 		setCellRenderer(cr);
 		setVisibleRowCount(-1);
 
@@ -64,7 +64,7 @@ public class CoverList extends JList implements Observer{
 		listModel.addElement(entry);
 		validate();
                //getParent().getParent().getParent().repaint();
-                setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
+                setPreferredSize(new Dimension(120, 140));
 	}
 
 

@@ -22,11 +22,11 @@ public class EanAmazon {
     private EanAmazon() {
     }
 
-    public static Media searchEan(String ean) throws IOException{
+    public static Media searchEan(String ean, String type) throws IOException, NoResultException, WrongArticleTypeException{
         long eanLong = checkEan(ean);
         try {
             InputStream inputStream = request(eanLong);
-            return checkRequest(inputStream);
+            return checkRequest(inputStream, type);
         } catch (XMLStreamException e) {
             throw new RuntimeException(e);
         } catch (FactoryConfigurationError e) {
@@ -47,7 +47,7 @@ public class EanAmazon {
     }
 
     private static InputStream request(long ean) throws IOException {
-        URL url = new URL("http://de.free.apisigning.com/onca/xml"
+        URL url = new URL("http://co.uk.free.apisigning.com/onca/xml"
                 + "?Service=AWSECommerceService"
                 + "&AWSAccessKeyId=0000"
                 + "&Operation=ItemLookup"
@@ -61,7 +61,7 @@ public class EanAmazon {
         return conn.getInputStream();
     }
 
-    private static Media checkRequest(InputStream inputStream) throws XMLStreamException, FactoryConfigurationError, MalformedURLException, IOException {
+    private static Media checkRequest(InputStream inputStream, String type) throws XMLStreamException, FactoryConfigurationError, MalformedURLException, IOException, NoResultException, WrongArticleTypeException {
         String error = null;
         String title = "";
         String artist = "";
@@ -157,8 +157,13 @@ public class EanAmazon {
             }
         }
         xmlStreamReader.close();
+
+        if (!description.equals("")) {
+            description = replaceHTMLTags(description);
+        }
+        
         if (error == null) {
-            if (productGroup.equals("DVD") || productGroup.equals("Video")) {
+            if ((productGroup.equals("DVD") || productGroup.equals("Video")) && type.equals("video")) {
                 Video v = new Video();
                 String format = "";
                 if (binding != null) {
@@ -180,8 +185,9 @@ public class EanAmazon {
                 v.setDescription(description);
                 System.out.println("EAN_FOUND");
                 return v;
-            } else if ((productGroup.equals("Music")) ||
-                       (productGroup.equals("Book") && (binding.equals("Hörkassette") || binding.contains("Musikkassette")))) {
+            } else if (((productGroup.equals("Music")) ||
+                       (productGroup.equals("Book") && (binding.equals("Hörkassette") || binding.contains("Musikkassette"))))
+                       && type.equals("music")) {
                 Music m = new Music ();
                 String format = "";
                 m.setTitle(title);
@@ -202,7 +208,7 @@ public class EanAmazon {
                 m.setDescription(description);
                 System.out.println("EAN_FOUND");
                 return m;
-            } else if (productGroup.equals("Book")) {
+            } else if (productGroup.equals("Book") && type.equals("book")) {
                 Book b = new Book();
                 b.setTitle(title);
                 b.setEan(ean);
@@ -215,11 +221,44 @@ public class EanAmazon {
                 System.out.println("EAN_FOUND");
                 return b;
             } else {
-                System.out.println("FALSE_EAN_MEDIA");
+                throw new WrongArticleTypeException("");
             }
         } else {
-            System.out.println("FALSE_EAN");
+            throw new NoResultException("");
         }
-        return null;
+    }
+
+    private static String replaceHTMLTags(String description) {
+        description = description.replaceAll("<i>", "");
+        description = description.replaceAll("</i>", "");
+        description = description.replaceAll("<b>", "");
+        description = description.replaceAll("</b>", "");
+        description = description.replaceAll("<u>", "");
+        description = description.replaceAll("</u>", "");
+        description = description.replaceAll("<I>", "");
+        description = description.replaceAll("</I>", "");
+        description = description.replaceAll("<p>", "\n\n");
+        description = description.replaceAll("</p>", "\n");
+        description = description.replaceAll("<br>", "");
+        description = description.replaceAll("<br />", "\n");
+        description = description.replaceAll("<em>", "");
+        description = description.replaceAll("</em>", "");
+        if (description.indexOf("<img") != -1) {
+            String temp = description.substring(description.indexOf("<img"));
+            System.out.println(temp);
+            temp = temp.substring(0, temp.indexOf(">") + 1);
+            System.out.println(temp);
+            description = description.replaceAll(temp, "");
+        }
+
+        if (description.indexOf("<table") != -1) {
+            String temp = description.substring(description.indexOf("<table"));
+            System.out.println(temp);
+            temp = temp.substring(0, temp.indexOf("</table>") + 8);
+            System.out.println(temp);
+            description = description.replaceAll(temp, "");
+        }
+
+        return description;
     }
 }
