@@ -17,13 +17,6 @@ public class EAN {
     public EAN() {
     }
 
-//    public static void getEanDates(String ean) throws IOException, NoAcceptableResultException {
-//        if (Locale.getDefault().equals(Locale.GERMAN)) {
-//            EanBol.getBookData(ean);
-//        } else {
-//            EanAmazon.searchEan(ean);
-//        }
-//    }
     public static muvibee.media.Book getBookData(String ean) throws NoResultException, MalformedURLException, IOException, MoreThanOneResultException, WrongArticleTypeException {
         if (Locale.getDefault().equals(Locale.GERMAN)) {
             return EanBol.getBookData(ean);
@@ -46,5 +39,11 @@ public class EAN {
         } else {
             return (muvibee.media.Video) EanAmazon.searchEan(ean);
         }
+    }
+
+    public static void setProxy(String proxy, String port) {
+        System.getProperties().put("proxySet", "true");
+        System.getProperties().put("proxyHost", proxy);
+        System.getProperties().put("proxyPort", port);
     }
 }

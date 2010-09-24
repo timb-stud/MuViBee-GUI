@@ -35,15 +35,15 @@ public class Music extends Media {
     }
 
     @Override
-    public boolean matches(String str) {
+    public boolean sortMatches(String str) {
         str = str.toLowerCase();
-        return super.matches(str) || format.toLowerCase().contains(str)
+        return super.sortMatches(str) || format.toLowerCase().contains(str)
                 || interpreter.toLowerCase().contains(str)
                 || type.toLowerCase().contains(str);
     }
 
-    public boolean matches(Music m){
-        return super.matches(m) && format.toLowerCase().contains(m.format.toLowerCase())
+    public boolean sortMatches(Music m){
+        return super.sortMatches(m) && format.toLowerCase().contains(m.format.toLowerCase())
                 && interpreter.toLowerCase().contains(m.interpreter.toLowerCase())
                 && type.toLowerCase().contains(m.type.toLowerCase());
     }

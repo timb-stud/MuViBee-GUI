@@ -35,15 +35,15 @@ public class Video extends Media {
     }
 
     @Override
-    public boolean matches(String str) {
+    public boolean sortMatches(String str) {
         str = str.toLowerCase();
-        return super.matches(str) || format.toLowerCase().contains(str)
+        return super.sortMatches(str) || format.toLowerCase().contains(str)
                 || director.toLowerCase().contains(str)
                 || actors.toLowerCase().contains(str);
     }
 
-    public boolean matches(Video v){
-        return super.matches(v) && format.toLowerCase().contains(v.format.toLowerCase())
+    public boolean sortMatches(Video v){
+        return super.sortMatches(v) && format.toLowerCase().contains(v.format.toLowerCase())
                 && director.toLowerCase().contains(v.director.toLowerCase())
                 && actors.toLowerCase().contains(v.actors.toLowerCase());
     }

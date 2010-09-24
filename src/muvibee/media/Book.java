@@ -35,15 +35,15 @@ public class Book extends Media {
     }
 
     @Override
-    public boolean matches(String str) {
+    public boolean sortMatches(String str) {
         str = str.toLowerCase();
-        return super.matches(str) || author.toLowerCase().contains(str)
+        return super.sortMatches(str) || author.toLowerCase().contains(str)
                 || language.toLowerCase().contains(str)
                 || isbn.toLowerCase().contains(str);
     }
 
-    public boolean matches(Book b){
-        return super.matches(b) && author.toLowerCase().contains(b.author.toLowerCase())
+    public boolean sortMatches(Book b){
+        return super.sortMatches(b) && author.toLowerCase().contains(b.author.toLowerCase())
                 && language.toLowerCase().contains(b.language.toLowerCase())
                 && isbn.toLowerCase().contains(b.isbn.toLowerCase());
     }
