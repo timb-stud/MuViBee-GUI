@@ -44,7 +44,6 @@ public class AddActionListener implements ActionListener {
                             return;
                         }
                         try {
-                            EAN.setProxy("www-proxy.htw-saarland.de", "3128");
                             book = EAN.getBookData(ean);
                             StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
                         } catch (muvibee.ean.NoResultException ex) {
@@ -73,7 +72,6 @@ public class AddActionListener implements ActionListener {
                                 return;
                             }
                             try {
-                                EAN.setProxy("www-proxy.htw-saarland.de", "3128");
                                 music = muvibee.ean.EAN.getMusicData(ean);
                                 StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
                             } catch (muvibee.ean.NoResultException ex) {
@@ -102,7 +100,6 @@ public class AddActionListener implements ActionListener {
                                     return;
                                 }
                                 try {
-                                    EAN.setProxy("www-proxy.htw-saarland.de", "3128");
                                     video = EAN.getVideoData(ean);
                                     StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
                                 } catch (muvibee.ean.NoResultException ex) {

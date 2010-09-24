@@ -12,10 +12,14 @@ import java.util.Properties;
  */
 public class Settings{
     private Properties properties = new Properties();
-    private static File file = new File("muvibee.settings");
+    private File file;
     private static String languageKey = "language";
     private static String proxyHostKey = "proxyHost";
     private static String proxyPortKey = "proxyPort";
+
+    public Settings(String path) {
+        file = new File(path + "muvibee.settings");
+    }
 
     public void load() throws IOException{
         if(!file.createNewFile()){

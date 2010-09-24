@@ -41,8 +41,11 @@ public class EAN {
         }
     }
 
-    public static void setProxy(String proxy, String port) {
-        System.getProperties().put("proxySet", "true");
+    public static void setProxy(boolean proxySet, String proxy, String port) {
+        if(proxySet)
+            System.getProperties().put("proxySet", "true");
+        else
+            System.getProperties().put("proxySet", "true");
         System.getProperties().put("proxyHost", proxy);
         System.getProperties().put("proxyPort", port);
     }

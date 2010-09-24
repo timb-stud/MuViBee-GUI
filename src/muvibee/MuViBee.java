@@ -6,6 +6,7 @@ package muvibee;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -19,6 +20,7 @@ import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import muvibee.db.DBSelector;
+import muvibee.ean.EAN;
 import muvibee.gui.AboutDialog;
 import muvibee.gui.AdvancedSearchDialog;
 import muvibee.gui.HelpDialog;
@@ -31,6 +33,7 @@ import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
+import muvibee.utils.Settings;
 import muvibee.utils.SortTypes;
 import util.deleteditemlist.DeletedItemEntry;
 import util.deleteditemlist.DeletedItemsList;
@@ -57,6 +60,7 @@ public class MuViBee {
     private Media[] currentDeletedMediaList;
     public static String mainBundlePath = "muvibee.resources.MuViBee";
     public static String PATH;
+    private Settings settings;
 
     public MuViBee() {
         final MuViBee mvb = this;
@@ -68,6 +72,20 @@ public class MuViBee {
         } catch (UnsupportedEncodingException ex) {
         }
         System.out.println("path:" + PATH);
+
+        settings = new Settings(PATH);
+        try {
+            settings.load();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(mainFrame, "Unable to read the settings file.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        String proxyHost = settings.getProxyHost();
+        String proxyPort = settings.getProxyPort();
+        if(proxyHost == null || proxyPort == null)
+            EAN.setProxy(false, PATH, PATH);
+        else
+            EAN.setProxy(true, PATH, PATH);
+        
 
         SwingUtilities.invokeLater(new Runnable() {
 
@@ -735,4 +753,9 @@ public class MuViBee {
     public ExpiredItemsList getExpiredList() {
         return mainFrame.getExpiredList();
     }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
 }
