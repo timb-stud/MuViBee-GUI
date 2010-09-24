@@ -17,11 +17,26 @@ import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
 
+/**
+ * Die Klasse wird benutzt um anhand einer eingegebenen EAN die restlichen Daten mit Hilfe von Amazon automatisch zu beschaffen
+ *
+ * @author Thomas Altmeyer
+ */
 public class EanAmazon {
 
+    /**
+     * Standardkonstruktor
+     */
     private EanAmazon() {
     }
 
+    /**
+     * Sucht nach einer EAN in Amazon und liefert dann ein Media zurück oder wirft eine Exception
+     *
+     * @param ean eingegebene EAN
+     * @param type Type nach dem gesucht werden soll
+     * @return Media das angelegt werden soll
+     */
     public static Media searchEan(String ean, String type) throws IOException, NoResultException, WrongArticleTypeException{
         long eanLong = checkEan(ean);
         try {
@@ -34,6 +49,12 @@ public class EanAmazon {
         }
     }
 
+    /**
+     * Prüft ob die eingegeben EAN nur aus Zahlen besteht
+     *
+     * @param inData eingebebene EAN
+     * @return wenn kein Fehler die EAN, wenn nicht eine -1
+     */
     private static long checkEan(String inData) {
         long result = -1;
         inData = inData.replaceAll("-", "");
@@ -46,6 +67,12 @@ public class EanAmazon {
         return result;
     }
 
+    /**
+     * Baut den http Request zusammen und baut eine Connection auf
+     *
+     * @param ean EAN nach der gesucht werden soll
+     * @return Stream Antwort Stream von Amazon im XML-Format
+     */
     private static InputStream request(long ean) throws IOException {
         URL url = new URL("http://co.uk.free.apisigning.com/onca/xml"
                 + "?Service=AWSECommerceService"
@@ -61,6 +88,13 @@ public class EanAmazon {
         return conn.getInputStream();
     }
 
+    /**
+     * Wertet den Amazon Request aus und setzt die Eingeschafter der Media's oder werft eine Exception
+     *
+     * @param inputStream Antwort Stream von Amazon im XML-Format
+     * @param type Type nach dem gesucht wird
+     * @return Objekt das erstellt werden soll
+     */
     private static Media checkRequest(InputStream inputStream, String type) throws XMLStreamException, FactoryConfigurationError, MalformedURLException, IOException, NoResultException, WrongArticleTypeException {
         String error = null;
         String title = "";
@@ -228,6 +262,12 @@ public class EanAmazon {
         }
     }
 
+    /**
+     * Ersetzt die HTML Tags aus dem Amazon Request durch Java verständlich Tags
+     *
+     * @param description Text der ersetzt werden soll
+     * @return Gibt den verständlichen Text zurück
+     */
     private static String replaceHTMLTags(String description) {
         description = description.replaceAll("<i>", "");
         description = description.replaceAll("</i>", "");
