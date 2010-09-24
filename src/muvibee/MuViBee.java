@@ -66,7 +66,8 @@ public class MuViBee {
         final MuViBee mvb = this;
         URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
         File file = new File(url.getPath());
-        PATH = file.getParentFile().getParentFile().toURI().getPath();
+        PATH = file.getParentFile().getParentFile().toURI().getPath(); // keine jar
+//        PATH = file.getParentFile().toURI().getPath(); //JAR
         try {
             PATH = URLDecoder.decode(PATH, "UTF-8");
         } catch (UnsupportedEncodingException ex) {
