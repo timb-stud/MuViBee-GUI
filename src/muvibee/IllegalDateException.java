@@ -1,13 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package muvibee;
 
 /**
- *
- * @author tim
+ * Wird bei einem nicht korrekten Datum geworfen.
+ * 
+ * @author Tim Bartsch
  */
 public class IllegalDateException extends Exception{
 

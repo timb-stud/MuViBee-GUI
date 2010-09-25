@@ -28,10 +28,6 @@ public class MediaList extends Observable implements Observer {
         return sortedBy;
     }
 
-    public void setSortedBy(ArrayList<SortTypes> sortedBy) {
-        this.sortedBy = sortedBy;
-    }
-
     public boolean add(Media m) {
         boolean succ = list.add(m);
         m.addObserver(this);
