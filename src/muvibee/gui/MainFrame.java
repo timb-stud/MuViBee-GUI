@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
+import javax.sound.midi.MidiDevice.Info;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -28,9 +29,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableCellRenderer;
 import muvibee.IllegalDateException;
@@ -181,33 +179,7 @@ public final class MainFrame extends javax.swing.JFrame {
     public MainFrame(MuViBee mvb) {
         this.mvb = mvb;
         setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - 580, Toolkit.getDefaultToolkit().getScreenSize().height/2 - 350);
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (UnsupportedLookAndFeelException e) {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
-                    try {
-                        UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    } catch (ClassNotFoundException ex) {
-                    } catch (InstantiationException ex) {
-                    } catch (IllegalAccessException ex) {
-                    } catch (UnsupportedLookAndFeelException ex) {
-                    }
-                }
-            }
-        } catch (ClassNotFoundException e) {
-            // handle exception
-        } catch (InstantiationException e) {
-            // handle exception
-        } catch (IllegalAccessException e) {
-            // handle exception
-        } 
+        LookAndFeelChanger.changeLookAndFeel("Nimbus", this);
         initComponents();
 
         setIconImage(createImageIcon("gui/resources/icons/biene.png").getImage());
@@ -523,10 +495,6 @@ public final class MainFrame extends javax.swing.JFrame {
         tabbedPane.setTitleAt(2, bundle.getString("musikTab"));
         tabbedPane.setTitleAt(3, bundle.getString("videoTab"));
         tabbedPane.setTitleAt(4, bundle.getString("restoreTab"));
-
-        tabbedPane.setBackgroundAt(1, Color.CYAN);
-        tabbedPane.setBackgroundAt(2, Color.RED);
-        tabbedPane.setBackgroundAt(3, Color.GREEN);
 
         String day = bundle.getString("dayComboBox");
         updateComboBoxLabel(lentDayBookComboBox, day);
