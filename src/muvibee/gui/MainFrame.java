@@ -645,7 +645,7 @@ public final class MainFrame extends javax.swing.JFrame {
         overviewTable.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("media"));
         overviewTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("number"));
         overviewTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("lentLabel"));
-        overviewTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("deleted"));
+        overviewTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("inTrashBin"));
 
         titleBookLabel.setText(bundle.getString("titleLabel"));
         eanBookLabel.setText(bundle.getString("ean"));
