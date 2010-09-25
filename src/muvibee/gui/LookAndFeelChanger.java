@@ -7,10 +7,19 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+/**
+ * Aendert den look and feel
+ * @author Tim Bartsch
+ */
 public class LookAndFeelChanger {
 	
 	private LookAndFeelChanger() {}
-	
+
+        /**
+         * Aendert den look and feel
+         * @param lnfName
+         * @param component
+         */
 	public static void changeLookAndFeel(String lnfName, Component component){
 		try {
 			for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
