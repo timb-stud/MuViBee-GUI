@@ -10,7 +10,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
@@ -98,29 +97,21 @@ public class MuViBee {
                 deletedMediaList = new MediaList();
                 expiredMediaList = new MediaList();
 
-
-
                 mainFrame = new MainFrame(mvb);
                 mainFrame.setLanguage(settings.getLanguage());
+
+                bookList = DBSelector.getBookList(false, null);
+                musicList = DBSelector.getMusicList(false, null);
+                videoList = DBSelector.getVideoList(false, null);
+
+                filterBookList.addAll(bookList);
+                filterMusicList.addAll(musicList);
+                filterVideoList.addAll(videoList);
+                deletedMediaList.addAll(DBSelector.getBookList(true, null));
+                deletedMediaList.addAll(DBSelector.getMusicList(true, null));
+                deletedMediaList.addAll(DBSelector.getVideoList(true, null));
+                setOverviewInformation();
                 mainFrame.setVisible(true);
-
-                (new Thread() {
-
-                    @Override
-                    public void run() {
-                        bookList = DBSelector.getBookList(false, null);
-                        musicList = DBSelector.getMusicList(false, null);
-                        videoList = DBSelector.getVideoList(false, null);
-
-                        filterBookList.addAll(bookList);
-                        filterMusicList.addAll(musicList);
-                        filterVideoList.addAll(videoList);
-                        deletedMediaList.addAll(DBSelector.getBookList(true, null));
-                        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
-                        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
-                        setOverviewInformation();
-                    }
-                }).start();
 
             }
         });
