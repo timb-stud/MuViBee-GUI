@@ -28,7 +28,7 @@ public class AboutDialog extends JDialog{
         String close = bundle.getString("close");
 
         final JDialog dialog = this;
-        setSize(300, 300);
+        setSize(700, 500);
 
         JPanel panel = new JPanel(new BorderLayout());
         JButton b = new JButton(close);
