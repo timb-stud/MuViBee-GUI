@@ -12,6 +12,8 @@ import java.awt.event.WindowListener;
 import javax.swing.JDialog;
 import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
+import javax.swing.plaf.ProgressBarUI;
+import javax.swing.plaf.multi.MultiProgressBarUI;
 import muvibee.MuViBee;
 import muvibee.db.DBSelector;
 
@@ -27,8 +29,9 @@ public class LoadDialog extends JDialog {
         getContentPane().setLayout(new BorderLayout());
         getContentPane().setSize(100, 30);
         sb = new JProgressBar(0, 11);
+        sb.setStringPainted(true);
         getContentPane().add(sb, BorderLayout.CENTER);
-        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         setLocation(getLocation().x - 100, getLocation().y - 30);
         pack();
