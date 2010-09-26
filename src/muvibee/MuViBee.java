@@ -100,39 +100,11 @@ public class MuViBee {
 
                 mainFrame = new MainFrame(mvb);
                 mainFrame.setVisible(true);
+                mainFrame.setLanguage(settings.getLanguage());
                 (new Thread() {
                     @Override
                     public void run() {
-                        LoadDialog ld = new LoadDialog();
-                        ld.setLocationRelativeTo(mainFrame);
-                        ld.setVisible(true);
-                        ld.setAlwaysOnTop(true);
-                        mainFrame.setLanguage(settings.getLanguage());
-                        ld.incBar();
-
-
-                        bookList = DBSelector.getBookList(false, null);
-                        ld.incBar();
-                        musicList = DBSelector.getMusicList(false, null);
-                        ld.incBar();
-                        videoList = DBSelector.getVideoList(false, null);
-                        ld.incBar();
-
-                        filterBookList.addAll(bookList);
-                        ld.incBar();
-                        filterMusicList.addAll(musicList);
-                        ld.incBar();
-                        filterVideoList.addAll(videoList);
-                        ld.incBar();
-                        deletedMediaList.addAll(DBSelector.getBookList(true, null));
-                        ld.incBar();
-                        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
-                        ld.incBar();
-                        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
-                        ld.incBar();
-                        setOverviewInformation();
-                        ld.incBar();
-                        ld.dispose();
+                        LoadDialog ld = new LoadDialog(mainFrame, "Please wait", true, mvb);
                     }
                 }).start();
 
@@ -621,15 +593,15 @@ public class MuViBee {
         StatusBarModel.getInstance().setSuccessMessage(sb.toString());
     }
 
-    public MediaList getBookList() {
+    public MediaList getFilterBookList() {
         return filterBookList;
     }
 
-    public MediaList getMusicList() {
+    public MediaList getFilterMusicList() {
         return filterMusicList;
     }
 
-    public MediaList getVideoList() {
+    public MediaList getFilterVideoList() {
         return filterVideoList;
     }
 
@@ -909,4 +881,34 @@ public class MuViBee {
     public static void main(String args[]) {
         MuViBee mvb = new MuViBee();
     }
+
+    public LinkedList<Book> getBookList() {
+        return bookList;
+    }
+
+    public LinkedList<Music> getMusicList() {
+        return musicList;
+    }
+
+    public LinkedList<Video> getVideoList() {
+        return videoList;
+    }
+
+    public MainFrame getMainFrame() {
+        return mainFrame;
+    }
+
+    public void setBookList(LinkedList<Book> bookList) {
+        this.bookList = bookList;
+    }
+
+    public void setMusicList(LinkedList<Music> musicList) {
+        this.musicList = musicList;
+    }
+
+    public void setVideoList(LinkedList<Video> videoList) {
+        this.videoList = videoList;
+    }
+    
+
 }

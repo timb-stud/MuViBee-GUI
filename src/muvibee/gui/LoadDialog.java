@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import javax.swing.JDialog;
 import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
+import muvibee.MuViBee;
+import muvibee.db.DBSelector;
 
 /**
  *
@@ -17,13 +19,22 @@ import javax.swing.SwingUtilities;
 public class LoadDialog extends JDialog {
     JProgressBar sb;
 
-    public LoadDialog() {
-        setLayout(new BorderLayout());
-        setSize(100, 30);
+    public LoadDialog(MainFrame mainFrame, String string, boolean b, final MuViBee mvb) {
+        super(mainFrame, string, b);
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().setSize(100, 30);
         sb = new JProgressBar(0, 11);
-        add(sb, BorderLayout.CENTER);
+        getContentPane().add(sb, BorderLayout.CENTER);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
         pack();
+        (new Thread() {
+            @Override
+            public void run() {
+                doWork(mvb);
+            }
+        }).start();
+        setVisible(true);
     }
 
     public void incBar() {
@@ -36,8 +47,28 @@ public class LoadDialog extends JDialog {
 
     }
 
-//    public static void main(String[] args) {
-//        LoadDialog l = new LoadDialog();
-//        l.setVisible(true);
-//    }
+    private void doWork(MuViBee mvb) {
+        incBar();
+        mvb.setBookList(DBSelector.getBookList(false, null));
+        incBar();
+        mvb.setMusicList(DBSelector.getMusicList(false, null));
+        incBar();
+        mvb.setVideoList(DBSelector.getVideoList(false, null));
+        incBar();
+        mvb.getFilterBookList().addAll(mvb.getBookList());
+        incBar();
+        mvb.getFilterMusicList().addAll(mvb.getMusicList());
+        incBar();
+        mvb.getFilterVideoList().addAll(mvb.getVideoList());
+        incBar();
+        mvb.getDeletedMediaList().addAll(DBSelector.getBookList(true, null));
+        incBar();
+        mvb.getDeletedMediaList().addAll(DBSelector.getMusicList(true, null));
+        incBar();
+        mvb.getDeletedMediaList().addAll(DBSelector.getVideoList(true, null));
+        incBar();
+        mvb.setOverviewInformation();
+        incBar();
+        setVisible(false);
+    }
 }

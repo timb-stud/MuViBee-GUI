@@ -87,7 +87,7 @@ public class SortVideoActionListener implements ActionListener{
                 }
             }
         }
-        MediaList ml = mvb.getVideoList();
+        MediaList ml = mvb.getFilterVideoList();
         ml.clear();
         LinkedList<Video> videoList = DBSelector.getVideoList(false, orderList.toArray(new SortTypes[0]));
         ArrayList<SortTypes> sortBy = ml.getSortedBy();

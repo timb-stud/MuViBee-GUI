@@ -83,11 +83,11 @@ public final class MainFrame extends javax.swing.JFrame {
      */
     private void createCoverList(MuViBee mvb){
         coverListBook = new CoverList(mvb);
-        mvb.getBookList().addObserver(coverListBook);
+        mvb.getFilterBookList().addObserver(coverListBook);
         coverListMusic = new CoverList(mvb);
-        mvb.getMusicList().addObserver(coverListMusic);
+        mvb.getFilterMusicList().addObserver(coverListMusic);
         coverListVideo = new CoverList(mvb);
-        mvb.getVideoList().addObserver(coverListVideo);
+        mvb.getFilterVideoList().addObserver(coverListVideo);
 
         coverListBookScrollPane.setViewportView(coverListBook);
         coverListMusicScrollPane.setViewportView(coverListMusic);
@@ -100,11 +100,11 @@ public final class MainFrame extends javax.swing.JFrame {
      */
     private void createTree(MuViBee mvb){
         prioTreeBook = new PrioTree(mvb);
-        mvb.getBookList().addObserver(prioTreeBook);
+        mvb.getFilterBookList().addObserver(prioTreeBook);
         prioTreeMusic = new PrioTree(mvb);
-        mvb.getMusicList().addObserver(prioTreeMusic);
+        mvb.getFilterMusicList().addObserver(prioTreeMusic);
         prioTreeVideo = new PrioTree(mvb);
-        mvb.getVideoList().addObserver(prioTreeVideo);
+        mvb.getFilterVideoList().addObserver(prioTreeVideo);
 
         treeBookScrollPane.setViewportView(prioTreeBook);
         treeMusicScrollPane.setViewportView(prioTreeMusic);
@@ -118,11 +118,11 @@ public final class MainFrame extends javax.swing.JFrame {
      */
     private void createDetailsTable(MuViBee mvb){
         detailsTableBook = new DetailsTable(mvb);
-        mvb.getBookList().addObserver(detailsTableBook);
+        mvb.getFilterBookList().addObserver(detailsTableBook);
         detailsTableMusic = new DetailsTable(mvb);
-        mvb.getMusicList().addObserver(detailsTableMusic);
+        mvb.getFilterMusicList().addObserver(detailsTableMusic);
         detailsTableVideo = new DetailsTable(mvb);
-        mvb.getVideoList().addObserver(detailsTableVideo);
+        mvb.getFilterVideoList().addObserver(detailsTableVideo);
 
         detailsListBookScrollPane.setViewportView(detailsTableBook);
         detailsListMusicScrollPane.setViewportView(detailsTableMusic);
@@ -135,11 +135,11 @@ public final class MainFrame extends javax.swing.JFrame {
      */
     private void createCoverDetailsList(MuViBee mvb){
         coverDetailsBookList = new CoverDetailsList(mvb);
-        mvb.getBookList().addObserver(coverDetailsBookList);
+        mvb.getFilterBookList().addObserver(coverDetailsBookList);
         coverDetailsMusicList = new CoverDetailsList(mvb);
-        mvb.getMusicList().addObserver(coverDetailsMusicList);
+        mvb.getFilterMusicList().addObserver(coverDetailsMusicList);
         coverDetailsVideoList = new CoverDetailsList(mvb);
-        mvb.getVideoList().addObserver(coverDetailsVideoList);
+        mvb.getFilterVideoList().addObserver(coverDetailsVideoList);
 
         coverDetailsListBookScrollPane.setViewportView(coverDetailsBookList);
         coverDetailsListMusicScrollPane.setViewportView(coverDetailsMusicList);

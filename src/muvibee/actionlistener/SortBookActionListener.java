@@ -86,7 +86,7 @@ public class SortBookActionListener implements ActionListener{
                 }
             }
         }
-        MediaList ml = mvb.getBookList();
+        MediaList ml = mvb.getFilterBookList();
         ml.clear();
         LinkedList<Book> bookList = DBSelector.getBookList(false, orderList.toArray(new SortTypes[0]));
         ArrayList<SortTypes> sortBy = ml.getSortedBy();
