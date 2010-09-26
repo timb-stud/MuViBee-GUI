@@ -31,6 +31,7 @@ public class LoadDialog extends JDialog {
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         pack();
+        
         addWindowListener(new WindowAdapter() {
 
             @Override
@@ -52,7 +53,7 @@ public class LoadDialog extends JDialog {
     }
 
     private void startLoading(final MuViBee mvb) {
-       (new Thread() {
+        (new Thread() {
             @Override
             public void run() {
                 mvb.setBookList(DBSelector.getBookList(false, null));

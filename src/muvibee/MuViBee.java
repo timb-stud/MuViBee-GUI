@@ -99,17 +99,9 @@ public class MuViBee {
                 expiredMediaList = new MediaList();
 
                 mainFrame = new MainFrame(mvb);
-                mainFrame.setVisible(true);
                 mainFrame.setLanguage(settings.getLanguage());
-                (new Thread() {
-                    @Override
-                    public void run() {
-                        new LoadDialog(mainFrame, "Please wait", true, mvb);
-                    }
-                }).start();
-
-
-
+                mainFrame.setVisible(true);
+                new LoadDialog(mainFrame, "Please wait", true, mvb);
             }
         });
 
