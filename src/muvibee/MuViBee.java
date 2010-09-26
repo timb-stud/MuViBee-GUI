@@ -107,7 +107,6 @@ public class MuViBee {
                         ld.setLocationRelativeTo(mainFrame);
                         ld.setVisible(true);
                         ld.setAlwaysOnTop(true);
-                        ld.setModal(true);
                         mainFrame.setLanguage(settings.getLanguage());
                         ld.incBar();
 

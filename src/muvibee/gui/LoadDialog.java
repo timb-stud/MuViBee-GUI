@@ -8,7 +8,7 @@ package muvibee.gui;
 import java.awt.BorderLayout;
 import javax.swing.JDialog;
 import javax.swing.JProgressBar;
-import javax.swing.JScrollBar;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -27,7 +27,13 @@ public class LoadDialog extends JDialog {
     }
 
     public void incBar() {
-        sb.setValue(sb.getValue() + 1);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                sb.setValue(sb.getValue() + 1);
+            }
+        });
+
     }
 
 //    public static void main(String[] args) {
