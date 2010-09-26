@@ -19,6 +19,7 @@ import muvibee.ean.EAN;
 import muvibee.gui.AboutDialog;
 import muvibee.gui.AdvancedSearchDialog;
 import muvibee.gui.HelpDialog;
+import muvibee.gui.LoadDialog;
 import muvibee.gui.StatusBarModel;
 import muvibee.lists.BookList;
 import muvibee.lists.MediaList;
@@ -98,20 +99,45 @@ public class MuViBee {
                 expiredMediaList = new MediaList();
 
                 mainFrame = new MainFrame(mvb);
-                mainFrame.setLanguage(settings.getLanguage());
-
-                bookList = DBSelector.getBookList(false, null);
-                musicList = DBSelector.getMusicList(false, null);
-                videoList = DBSelector.getVideoList(false, null);
-
-                filterBookList.addAll(bookList);
-                filterMusicList.addAll(musicList);
-                filterVideoList.addAll(videoList);
-                deletedMediaList.addAll(DBSelector.getBookList(true, null));
-                deletedMediaList.addAll(DBSelector.getMusicList(true, null));
-                deletedMediaList.addAll(DBSelector.getVideoList(true, null));
-                setOverviewInformation();
                 mainFrame.setVisible(true);
+                (new Thread() {
+                    @Override
+                    public void run() {
+                        LoadDialog ld = new LoadDialog();
+                        ld.setLocationRelativeTo(mainFrame);
+                        ld.setVisible(true);
+                        ld.setAlwaysOnTop(true);
+                        ld.setModal(true);
+                        mainFrame.setLanguage(settings.getLanguage());
+                        ld.incBar();
+
+
+                        bookList = DBSelector.getBookList(false, null);
+                        ld.incBar();
+                        musicList = DBSelector.getMusicList(false, null);
+                        ld.incBar();
+                        videoList = DBSelector.getVideoList(false, null);
+                        ld.incBar();
+
+                        filterBookList.addAll(bookList);
+                        ld.incBar();
+                        filterMusicList.addAll(musicList);
+                        ld.incBar();
+                        filterVideoList.addAll(videoList);
+                        ld.incBar();
+                        deletedMediaList.addAll(DBSelector.getBookList(true, null));
+                        ld.incBar();
+                        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
+                        ld.incBar();
+                        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
+                        ld.incBar();
+                        setOverviewInformation();
+                        ld.incBar();
+                        ld.dispose();
+                    }
+                }).start();
+
+
 
             }
         });
