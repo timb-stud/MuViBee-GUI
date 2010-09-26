@@ -52,9 +52,9 @@ public class LoadDialog extends JDialog {
     }
 
     private void startLoading(final MuViBee mvb) {
-       //(new Thread() {
-           // @Override
-           // public void run() {
+       (new Thread() {
+            @Override
+            public void run() {
                 mvb.setBookList(DBSelector.getBookList(false, null));
                 incBar();
                 mvb.setMusicList(DBSelector.getMusicList(false, null));
@@ -75,7 +75,7 @@ public class LoadDialog extends JDialog {
                 incBar();
                 mvb.setOverviewInformation();
                 setVisible(false);
-          //  }
-       // }).start();
+            }
+        }).start();
     }
 }
