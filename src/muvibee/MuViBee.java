@@ -104,7 +104,7 @@ public class MuViBee {
                 (new Thread() {
                     @Override
                     public void run() {
-                        LoadDialog ld = new LoadDialog(mainFrame, "Please wait", true, mvb);
+                        new LoadDialog(mainFrame, "Please wait", true, mvb);
                     }
                 }).start();
 
