@@ -794,10 +794,10 @@ public final class MainFrame extends javax.swing.JFrame {
                 ratingOneVideoRadioButton.setSelected(true);
                 break;
             case 2:
-                ratingOneVideoRadioButton.setSelected(true);
+                ratingTwoVideoRadioButton.setSelected(true);
                 break;
             case 3:
-                ratingOneVideoRadioButton.setSelected(true);
+                ratingThreeVideoRadioButton.setSelected(true);
                 break;
             default:
                 throw new RuntimeException("Illegal Rating Value");
@@ -946,9 +946,9 @@ public final class MainFrame extends javax.swing.JFrame {
         int rating = 0;
         if (ratingOneMusicRadioButton.isSelected()) {
             rating = 1;
-        } else if (ratingOneMusicRadioButton.isSelected()) {
+        } else if (ratingTwoMusicRadioButton.isSelected()) {
             rating = 2;
-        } else if (ratingOneMusicRadioButton.isSelected()) {
+        } else if (ratingThreeMusicRadioButton.isSelected()) {
             rating = 3;
         }
 
@@ -1010,9 +1010,9 @@ public final class MainFrame extends javax.swing.JFrame {
         int rating = 0;
         if (ratingOneVideoRadioButton.isSelected()) {
             rating = 1;
-        } else if (ratingOneVideoRadioButton.isSelected()) {
+        } else if (ratingTwoVideoRadioButton.isSelected()) {
             rating = 2;
-        } else if (ratingOneVideoRadioButton.isSelected()) {
+        } else if (ratingThreeVideoRadioButton.isSelected()) {
             rating = 3;
         }
 
