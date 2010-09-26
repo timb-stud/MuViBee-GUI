@@ -30,6 +30,7 @@ public class LoadDialog extends JDialog {
         getContentPane().add(sb, BorderLayout.CENTER);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        setLocation(getLocation().x - 100, getLocation().y - 30);
         pack();
         
         addWindowListener(new WindowAdapter() {
