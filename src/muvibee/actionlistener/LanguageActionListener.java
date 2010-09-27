@@ -47,6 +47,10 @@ public class LanguageActionListener implements ActionListener{
                     }else{
                         if(lang.equals("tr")){
                             Locale.setDefault(new Locale("tr"));
+                        }else{
+                            if(lang.equals("ro")){
+                                Locale.setDefault(new Locale("ro"));
+                            }
                         }
 
                     }
