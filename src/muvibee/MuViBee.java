@@ -33,7 +33,7 @@ import muvibee.utils.Settings;
 import muvibee.utils.SortTypes;
 import muvibee.gui.deletedlist.DeletedItemEntry;
 import muvibee.gui.deletedlist.DeletedItemsList;
-import util.expiredList.ExpiredItemsList;
+import muvibee.gui.expiredlist.ExpiredItemsList;
 
 /**
  *

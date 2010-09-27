@@ -51,7 +51,7 @@ import muvibee.utils.ResizeImageIcon;
 import muvibee.gui.views.cover.CoverList;
 import muvibee.gui.views.cover.CoverListEntry;
 import muvibee.gui.deletedlist.DeletedItemsList;
-import util.expiredList.ExpiredItemsList;
+import muvibee.gui.expiredlist.ExpiredItemsList;
 import muvibee.gui.views.tree.PrioTree;
 
 
