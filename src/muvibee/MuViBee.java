@@ -106,6 +106,7 @@ public class MuViBee {
                 Runnable initListsCode = new Runnable() {
                    @Override
                    public void run() {
+
                         setBookList(DBSelector.getBookList(false, null));
                         pbd.incBar();
                         setMusicList(DBSelector.getMusicList(false, null));
@@ -126,7 +127,8 @@ public class MuViBee {
                         pbd.incBar();
                         setOverviewInformation();
                         pbd.stopProgressBar();
-                    }
+
+                   }
                 };
                 pbd.startProgressBar(initListsCode, 8);
             }
@@ -382,36 +384,72 @@ public class MuViBee {
      * Fuegt das currentBook zur bookList und filterBookList hinzu
      */
     public void addCurrentBookToBookLists() {
-        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-        currentBook.updateDB();
-        bookList = DBSelector.getBookList(false, null);
-        filterBookList.clear();
-        filterBookList.addAll(bookList);
-        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
+        Runnable runCode = new Runnable() {
+            @Override
+            public void run() {
+                final ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                currentBook.updateDB();
+                bookList = DBSelector.getBookList(false, null);
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        filterBookList.clear();
+                        filterBookList.addAll(bookList);
+                        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
+                        pbd.stopProgressBar();
+                    }
+                });
+
+            }
+        };
+        pbd.startProgressBar(runCode);
     }
 
     /**
      * Fuegt das currentMusic Objekt zur musicList und filterMusicList hinzu
      */
     public void addCurrentMusicToMusicLists() {
-        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-        currentMusic.updateDB();
-        musicList = DBSelector.getMusicList(false, null);
-        filterMusicList.clear();
-        filterMusicList.addAll(musicList);
-        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
+        Runnable runCode = new Runnable() {
+            @Override
+            public void run() {
+                final ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                currentMusic.updateDB();
+                musicList = DBSelector.getMusicList(false, null);
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        filterMusicList.clear();
+                        filterMusicList.addAll(musicList);
+                        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
+                        pbd.stopProgressBar();
+                    }
+                });
+
+            }
+        };
+        pbd.startProgressBar(runCode);
     }
 
     /**
      * Fuegt das currentVideo Objekt zur videoList und filterVideoList hinzu.
      */
     public void addCurrentVideoToVideoLists() {
-        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-        currentVideo.updateDB();
-        videoList = DBSelector.getVideoList(false, null);
-        filterVideoList.clear();
-        filterVideoList.addAll(videoList);
-        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
+        Runnable runCode = new Runnable() {
+            @Override
+            public void run() {
+                final ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                currentVideo.updateDB();
+                videoList = DBSelector.getVideoList(false, null);
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        filterVideoList.clear();
+                        filterVideoList.addAll(videoList);
+                        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
+                        pbd.stopProgressBar();
+                    }
+                });
+
+            }
+        };
+        pbd.startProgressBar(runCode);
     }
 
     /**
@@ -472,15 +510,15 @@ public class MuViBee {
         Runnable runCode = new Runnable() {
             @Override
             public void run() {
-                ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-                for (Media m : currentDeletedMediaList) {
-                    deletedMediaList.remove(m);
-                    m.deleteDB();
-                    m = null;
-                    pbd.incBar();
-                }
-                StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
-                pbd.stopProgressBar();
+                        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                        for (Media m : currentDeletedMediaList) {
+                            deletedMediaList.remove(m);
+                            m.deleteDB();
+                            m = null;
+                            pbd.incBar();
+                        }
+                        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
+                        pbd.stopProgressBar();
             }
         };
         int max = currentDeletedMediaList.length - 1;
@@ -494,30 +532,31 @@ public class MuViBee {
         Runnable runCode = new Runnable() {
             @Override
             public void run() {
-                for (Media m : currentDeletedMediaList) {
-                    if (m instanceof Book) {
-                        filterBookList.add(m);
-                        bookList.add((Book) m);
-                    } else {
-                        if (m instanceof Music) {
-                            filterMusicList.add(m);
-                            musicList.add((Music) m);
-                        } else {
-                            if (m instanceof Video) {
-                                filterVideoList.add(m);
-                                videoList.add((Video) m);
+
+                        for (Media m : currentDeletedMediaList) {
+                            if (m instanceof Book) {
+                                filterBookList.add(m);
+                                bookList.add((Book) m);
+                            } else {
+                                if (m instanceof Music) {
+                                    filterMusicList.add(m);
+                                    musicList.add((Music) m);
+                                } else {
+                                    if (m instanceof Video) {
+                                        filterVideoList.add(m);
+                                        videoList.add((Video) m);
+                                    }
+                                }
                             }
+                            deletedMediaList.remove(m);
+                            m.setDeleted(false);
+                            m.updateDB();
+                            m = null;
+                            pbd.incBar();
                         }
-                    }
-                    deletedMediaList.remove(m);
-                    m.setDeleted(false);
-                    m.updateDB();
-                    m = null;
-                    pbd.incBar();
-                }
-                ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-                StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
-                pbd.stopProgressBar();
+                        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
+                        pbd.stopProgressBar();
             }
         };
         int max = currentDeletedMediaList.length - 1;

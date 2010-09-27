@@ -11,7 +11,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JDialog;
 import javax.swing.JProgressBar;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -43,13 +42,7 @@ public class ProgressBarDialog extends JDialog {
     }
 
     public void incBar() {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                sb.setValue(sb.getValue() + 1);
-            }
-        });
-
+        sb.setValue(sb.getValue() + 1);
     }
     
     private void runCode() {
@@ -63,9 +56,18 @@ public class ProgressBarDialog extends JDialog {
 
     public void startProgressBar(Runnable runnableCode, int max) {
         this.runnableCode = runnableCode;
+        sb.setIndeterminate(false);
+        sb.setStringPainted(true);
         if (max == 0) max = 1;
         sb.setMaximum(max);
         sb.setMinimum(0);
+        setVisible(true);
+    }
+
+    public void startProgressBar(Runnable runnableCode) {
+        this.runnableCode = runnableCode;
+        sb.setStringPainted(false);
+        sb.setIndeterminate(true);
         setVisible(true);
     }
 }
