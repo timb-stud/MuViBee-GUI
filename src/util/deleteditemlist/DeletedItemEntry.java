@@ -34,7 +34,7 @@ public class DeletedItemEntry extends JPanel{
             // |_______|_____________|
             setLayout(new GridLayout(1,1, 0,0));
             setPreferredSize(new Dimension(300, ySize));
-            setBackground(Color.yellow);
+            setBackground(Color.lightGray);
             
             JLabel label = new JLabel();
             label.setIcon(icon);
