@@ -1,5 +1,5 @@
 
-package util.deleteditemlist;
+package muvibee.gui.deletedlist;
 import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Observable;

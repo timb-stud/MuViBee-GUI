@@ -1,4 +1,4 @@
-package util.deleteditemlist;
+package muvibee.gui.deletedlist;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

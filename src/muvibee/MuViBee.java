@@ -31,8 +31,8 @@ import muvibee.media.Music;
 import muvibee.media.Video;
 import muvibee.utils.Settings;
 import muvibee.utils.SortTypes;
-import util.deleteditemlist.DeletedItemEntry;
-import util.deleteditemlist.DeletedItemsList;
+import muvibee.gui.deletedlist.DeletedItemEntry;
+import muvibee.gui.deletedlist.DeletedItemsList;
 import util.expiredList.ExpiredItemsList;
 
 /**
