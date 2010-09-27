@@ -6,6 +6,7 @@
 package muvibee.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -26,14 +27,14 @@ public class LoadDialog extends JDialog {
 
     public LoadDialog(MainFrame mainFrame, String string, boolean b, final MuViBee mvb) {
         super(mainFrame, string, b);
+        setUndecorated(true);
         getContentPane().setLayout(new BorderLayout());
-        getContentPane().setSize(100, 30);
         sb = new JProgressBar(0, 11);
         sb.setStringPainted(true);
+        sb.setPreferredSize(new Dimension(500, 100));
         getContentPane().add(sb, BorderLayout.CENTER);
-        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLocation(getLocation().x - 100, getLocation().y - 30);
+        setLocation(getLocation().x - 250, getLocation().y - 50);
         pack();
         
         addWindowListener(new WindowAdapter() {

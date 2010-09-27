@@ -266,6 +266,7 @@ public abstract class Media extends Observable {
      * @return
      */
     public boolean sortMatches(String str) {
+        if (description == null) description = "";
         str = str.toLowerCase();
         return title.toLowerCase().contains(str) || genre.toLowerCase().contains(str)
                 || location.toLowerCase().contains(str) || lentTo.toLowerCase().contains(str)
@@ -280,6 +281,7 @@ public abstract class Media extends Observable {
      * @return true wenn das such Media Objekt zu diesem hier passt.
      */
     public boolean sortMatches(Media m){
+        if (description == null) description = "";
         return title.toLowerCase().contains(m.title.toLowerCase())
                 && ean.toLowerCase().contains(m.ean.toLowerCase())
                 && genre.toLowerCase().contains(m.genre.toLowerCase())
