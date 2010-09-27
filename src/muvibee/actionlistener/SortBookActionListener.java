@@ -17,7 +17,7 @@ import muvibee.utils.SortTypes;
  */
 public class SortBookActionListener implements ActionListener{
     MuViBee mvb;
-    ArrayList<SortTypes> orderList = new ArrayList<SortTypes>();
+    private ArrayList<SortTypes> orderList = new ArrayList<SortTypes>();
 
     public SortBookActionListener(MuViBee mvb) {
         this.mvb = mvb;
@@ -86,10 +86,14 @@ public class SortBookActionListener implements ActionListener{
                 }
             }
         }
-        MediaList ml = mvb.getBookList();
+        MediaList ml = mvb.getFilterBookList();
         ml.clear();
         LinkedList<Book> bookList = DBSelector.getBookList(false, orderList.toArray(new SortTypes[0]));
+        ArrayList<SortTypes> sortBy = ml.getSortedBy();
+        sortBy.clear();
+        sortBy.addAll(orderList);
         ml.addAll((bookList));
+        mvb.sortedByBook();
     }
 
 }

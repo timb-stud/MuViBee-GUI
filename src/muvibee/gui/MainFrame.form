@@ -12,6 +12,9 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="MuViBee"/>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1162, 686]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -39,7 +42,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="headPanel" alignment="1" max="32767" attributes="0"/>
                   <Component id="statusPanel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="tabbedPane" alignment="0" pref="1137" max="32767" attributes="0"/>
+                  <Component id="tabbedPane" alignment="0" pref="1144" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -69,12 +72,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="searchTextField" min="-2" pref="199" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="deleteSearchButton" min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="deleteSearchButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="searchButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="advancedSearchButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="506" max="32767" attributes="0"/>
+                  <EmptySpace pref="457" max="32767" attributes="0"/>
                   <Component id="languagesComboBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="helpButton" min="-2" max="-2" attributes="0"/>
@@ -142,7 +145,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="deleteSearchButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="X"/>
+            <Property name="text" type="java.lang.String" value="delete search"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -159,7 +162,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1135" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1142" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -195,7 +198,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="expiredPanel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="overviewScrollPane" alignment="0" pref="1109" max="32767" attributes="0"/>
+                          <Component id="overviewScrollPane" alignment="0" pref="1116" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -229,7 +232,7 @@
                       </Border>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Plantagenet Cherokee" size="24" style="0"/>
+                      <Font name="Arial" size="24" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="3">
@@ -276,7 +279,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="expiredScrollPane" pref="1073" max="32767" attributes="0"/>
+                          <Component id="expiredScrollPane" pref="1080" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -312,7 +315,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="viewBookPanel" pref="538" max="32767" attributes="0"/>
+                      <Component id="viewBookPanel" pref="545" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="hideBookButton" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -365,9 +368,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="sortPanelBooks" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bookCardPanel" alignment="0" pref="506" max="32767" attributes="0"/>
+                              <Component id="bookCardPanel" alignment="0" pref="513" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewBookComboBox" pref="419" max="32767" attributes="0"/>
+                                  <Component id="viewBookComboBox" pref="426" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -450,7 +453,7 @@
                               <Component id="sortBookRatingButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortBookReleaseYearToggleButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="54" max="32767" attributes="0"/>
+                              <EmptySpace pref="61" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1047,9 +1050,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="musicCardPanel" alignment="0" pref="506" max="32767" attributes="0"/>
+                              <Component id="musicCardPanel" alignment="0" pref="513" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewMusicComboBox" pref="419" max="32767" attributes="0"/>
+                                  <Component id="viewMusicComboBox" pref="426" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addMusicButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1127,7 +1130,7 @@
                               <Component id="sortMusicRatingButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortMusicReleaseYearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="68" max="32767" attributes="0"/>
+                              <EmptySpace pref="75" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1727,10 +1730,10 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="videoCardPanel" alignment="0" pref="506" max="32767" attributes="0"/>
+                              <Component id="videoCardPanel" alignment="0" pref="513" max="32767" attributes="0"/>
                               <Component id="sortPanelVideo" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewVideoComboBox" pref="419" max="32767" attributes="0"/>
+                                  <Component id="viewVideoComboBox" pref="426" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addVideoButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1801,7 +1804,7 @@
                               <Component id="sortVideoRatingButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortVideoReleaseYearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="61" max="32767" attributes="0"/>
+                              <EmptySpace pref="68" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2349,7 +2352,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="restoreItemsScrollpane" alignment="0" pref="1109" max="32767" attributes="0"/>
+                          <Component id="restoreItemsScrollpane" alignment="0" pref="1116" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="restoreItemButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>

@@ -7,9 +7,15 @@ package muvibee.actionlistener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import muvibee.MuViBee;
+import muvibee.gui.StatusBarModel;
+import muvibee.utils.Settings;
 
 /**
  *
@@ -47,6 +53,14 @@ public class LanguageActionListener implements ActionListener{
                 }
             }
             mvb.reloadLabels();
+            Settings settings = mvb.getSettings();
+            settings.setLanguage(lang);
+            try {
+                settings.save();
+            } catch (IOException ex) {
+                ResourceBundle bundle = ResourceBundle.getBundle(mvb.mainBundlePath);
+                StatusBarModel.getInstance().setFailMessage(bundle.getString("couldNotSaveLanguageSetting"));
+            }
         }
     }
 

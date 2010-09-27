@@ -17,16 +17,31 @@ import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
 
+/**
+ * Die Klasse wird benutzt um anhand einer eingegebenen EAN die restlichen Daten mit Hilfe von Amazon automatisch zu beschaffen
+ *
+ * @author Thomas Altmeyer
+ */
 public class EanAmazon {
 
+    /**
+     * Standardkonstruktor
+     */
     private EanAmazon() {
     }
 
-    public static Media searchEan(String ean) throws IOException{
+    /**
+     * Sucht nach einer EAN in Amazon und liefert dann ein Media zurück oder wirft eine Exception
+     *
+     * @param ean eingegebene EAN
+     * @param type Type nach dem gesucht werden soll
+     * @return Media das angelegt werden soll
+     */
+    public static Media searchEan(String ean, String type) throws IOException, NoResultException, WrongArticleTypeException{
         long eanLong = checkEan(ean);
         try {
             InputStream inputStream = request(eanLong);
-            return checkRequest(inputStream);
+            return checkRequest(inputStream, type);
         } catch (XMLStreamException e) {
             throw new RuntimeException(e);
         } catch (FactoryConfigurationError e) {
@@ -34,6 +49,12 @@ public class EanAmazon {
         }
     }
 
+    /**
+     * Prüft ob die eingegeben EAN nur aus Zahlen besteht
+     *
+     * @param inData eingebebene EAN
+     * @return wenn kein Fehler die EAN, wenn nicht eine -1
+     */
     private static long checkEan(String inData) {
         long result = -1;
         inData = inData.replaceAll("-", "");
@@ -46,8 +67,14 @@ public class EanAmazon {
         return result;
     }
 
+    /**
+     * Baut den http Request zusammen und baut eine Connection auf
+     *
+     * @param ean EAN nach der gesucht werden soll
+     * @return Stream Antwort Stream von Amazon im XML-Format
+     */
     private static InputStream request(long ean) throws IOException {
-        URL url = new URL("http://de.free.apisigning.com/onca/xml"
+        URL url = new URL("http://co.uk.free.apisigning.com/onca/xml"
                 + "?Service=AWSECommerceService"
                 + "&AWSAccessKeyId=0000"
                 + "&Operation=ItemLookup"
@@ -61,20 +88,27 @@ public class EanAmazon {
         return conn.getInputStream();
     }
 
-    private static Media checkRequest(InputStream inputStream) throws XMLStreamException, FactoryConfigurationError, MalformedURLException, IOException {
+    /**
+     * Wertet den Amazon Request aus und setzt die Eingeschafter der Media's oder werft eine Exception
+     *
+     * @param inputStream Antwort Stream von Amazon im XML-Format
+     * @param type Type nach dem gesucht wird
+     * @return Objekt das erstellt werden soll
+     */
+    private static Media checkRequest(InputStream inputStream, String type) throws XMLStreamException, FactoryConfigurationError, MalformedURLException, IOException, NoResultException, WrongArticleTypeException {
         String error = null;
-        String title = null;
-        String artist = null;
-        String author = null;
-        String actor = null;
-        String director = null;
-        String isbn = null;
-        String language = null;
-        String productGroup = null;
+        String title = "";
+        String artist = "";
+        String author = "";
+        String actor = "";
+        String director = "";
+        String isbn = "";
+        String language = "";
+        String productGroup = "";
         String releaseYear = null;
-        String ean = null;
+        String ean = "";
         String binding = null;
-        String description = null;
+        String description = "";
         BufferedImage cover = null;
 
         XMLStreamReader xmlStreamReader = XMLInputFactory.newInstance().createXMLStreamReader(inputStream);
@@ -97,14 +131,14 @@ public class EanAmazon {
                     author = xmlStreamReader.getElementText();
                 }
                 if (xmlStreamReader.getLocalName().equals("Actor")) {
-                    if (actor == null) {
+                    if (actor.isEmpty()) {
                         actor = xmlStreamReader.getElementText();
                     } else {
                         actor = actor + ", " + xmlStreamReader.getElementText();
                     }
                 }
                 if (xmlStreamReader.getLocalName().equals("Director")) {
-                    if (director == null) {
+                    if (director.isEmpty()) {
                         director = xmlStreamReader.getElementText();
                     } else {
                         director = director + ", " + xmlStreamReader.getElementText();
@@ -138,7 +172,7 @@ public class EanAmazon {
                     binding = xmlStreamReader.getElementText();
                 }
                 if (xmlStreamReader.getLocalName().equals("Content")) {
-                    if (description == null) {
+                    if (description.isEmpty()) {
                         description = xmlStreamReader.getElementText();
                     } else {
                         description = description + xmlStreamReader.getElementText();
@@ -157,10 +191,15 @@ public class EanAmazon {
             }
         }
         xmlStreamReader.close();
+
+        if (!description.equals("")) {
+            description = replaceHTMLTags(description);
+        }
+        
         if (error == null) {
-            if (productGroup.equals("DVD") || productGroup.equals("Video")) {
+            if ((productGroup.equals("DVD") || productGroup.equals("Video")) && type.equals("video")) {
                 Video v = new Video();
-                String format = null;
+                String format = "";
                 if (binding != null) {
                     if (binding.equals("Videokassette")) {
                         format = "VHS";
@@ -180,10 +219,11 @@ public class EanAmazon {
                 v.setDescription(description);
                 System.out.println("EAN_FOUND");
                 return v;
-            } else if ((productGroup.equals("Music")) ||
-                       (productGroup.equals("Book") && (binding.equals("Hörkassette") || binding.contains("Musikkassette")))) {
+            } else if (((productGroup.equals("Music")) ||
+                       (productGroup.equals("Book") && (binding.equals("Hörkassette") || binding.contains("Musikkassette"))))
+                       && type.equals("music")) {
                 Music m = new Music ();
-                String format = null;
+                String format = "";
                 m.setTitle(title);
                 m.setEan(ean);
                 m.setReleaseYear(Integer.parseInt(releaseYear));
@@ -202,7 +242,7 @@ public class EanAmazon {
                 m.setDescription(description);
                 System.out.println("EAN_FOUND");
                 return m;
-            } else if (productGroup.equals("Book")) {
+            } else if (productGroup.equals("Book") && type.equals("book")) {
                 Book b = new Book();
                 b.setTitle(title);
                 b.setEan(ean);
@@ -215,11 +255,50 @@ public class EanAmazon {
                 System.out.println("EAN_FOUND");
                 return b;
             } else {
-                System.out.println("FALSE_EAN_MEDIA");
+                throw new WrongArticleTypeException("");
             }
         } else {
-            System.out.println("FALSE_EAN");
+            throw new NoResultException("");
         }
-        return null;
+    }
+
+    /**
+     * Ersetzt die HTML Tags aus dem Amazon Request durch Java verständlich Tags
+     *
+     * @param description Text der ersetzt werden soll
+     * @return Gibt den verständlichen Text zurück
+     */
+    private static String replaceHTMLTags(String description) {
+        description = description.replaceAll("<i>", "");
+        description = description.replaceAll("</i>", "");
+        description = description.replaceAll("<b>", "");
+        description = description.replaceAll("</b>", "");
+        description = description.replaceAll("<u>", "");
+        description = description.replaceAll("</u>", "");
+        description = description.replaceAll("<I>", "");
+        description = description.replaceAll("</I>", "");
+        description = description.replaceAll("<p>", "\n\n");
+        description = description.replaceAll("</p>", "\n");
+        description = description.replaceAll("<br>", "");
+        description = description.replaceAll("<br />", "\n");
+        description = description.replaceAll("<em>", "");
+        description = description.replaceAll("</em>", "");
+        if (description.indexOf("<img") != -1) {
+            String temp = description.substring(description.indexOf("<img"));
+            System.out.println(temp);
+            temp = temp.substring(0, temp.indexOf(">") + 1);
+            System.out.println(temp);
+            description = description.replaceAll(temp, "");
+        }
+
+        if (description.indexOf("<table") != -1) {
+            String temp = description.substring(description.indexOf("<table"));
+            System.out.println(temp);
+            temp = temp.substring(0, temp.indexOf("</table>") + 8);
+            System.out.println(temp);
+            description = description.replaceAll(temp, "");
+        }
+
+        return description;
     }
 }

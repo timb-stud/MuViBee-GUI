@@ -1,23 +1,25 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package muvibee;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import muvibee.gui.MainFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import muvibee.db.DBSelector;
+import muvibee.ean.EAN;
 import muvibee.gui.AboutDialog;
 import muvibee.gui.AdvancedSearchDialog;
 import muvibee.gui.HelpDialog;
+import muvibee.gui.LoadDialog;
 import muvibee.gui.StatusBarModel;
 import muvibee.lists.BookList;
 import muvibee.lists.MediaList;
@@ -27,6 +29,7 @@ import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
+import muvibee.utils.Settings;
 import muvibee.utils.SortTypes;
 import util.deleteditemlist.DeletedItemEntry;
 import util.deleteditemlist.DeletedItemsList;
@@ -34,7 +37,7 @@ import util.expiredList.ExpiredItemsList;
 
 /**
  *
- * @author bline
+ * @author Stanislav Tartakowski, Tim Bartsch, Christian Rech
  */
 public class MuViBee {
 
@@ -52,9 +55,40 @@ public class MuViBee {
     private Video currentVideo;
     private Media[] currentDeletedMediaList;
     public static String mainBundlePath = "muvibee.resources.MuViBee";
+    public static String PATH;
+    private Settings settings;
 
+    /*
+     * Konstruktor der das mainFrame und die verschiedenen Listen mit hilfe der Datenbank initialisiert
+     * 
+     */
     public MuViBee() {
         final MuViBee mvb = this;
+        URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+        File file = new File(url.getPath());
+        PATH = file.getParentFile().getParentFile().toURI().getPath(); // Path beim starten aus Netbeans
+//        PATH = file.getParentFile().toURI().getPath();                // Path beim starten aus einem .jar file
+        try {
+            PATH = URLDecoder.decode(PATH, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+        }
+        System.out.println("path:" + PATH);
+
+        settings = new Settings(PATH);
+        try {
+            settings.load();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(mainFrame, "Unable to read the settings file.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        String proxyHost = settings.getProxyHost();
+        String proxyPort = settings.getProxyPort();
+        if (proxyHost == null || proxyPort == null) {
+            EAN.setProxy(false, PATH, PATH);
+        } else {
+            EAN.setProxy(true, PATH, PATH);
+        }
+
+
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
@@ -64,34 +98,19 @@ public class MuViBee {
                 deletedMediaList = new MediaList();
                 expiredMediaList = new MediaList();
 
-
-
                 mainFrame = new MainFrame(mvb);
+                mainFrame.setLanguage(settings.getLanguage());
                 mainFrame.setVisible(true);
-
-                (new Thread() {
-
-                    @Override
-                    public void run() {
-                        bookList = DBSelector.getBookList(false, null);
-                        musicList = DBSelector.getMusicList(false, null);
-                        videoList = DBSelector.getVideoList(false, null);
-
-                        filterBookList.addAll(bookList);
-                        filterMusicList.addAll(musicList);
-                        filterVideoList.addAll(videoList);
-                        deletedMediaList.addAll(DBSelector.getBookList(true, null));
-                        deletedMediaList.addAll(DBSelector.getMusicList(true, null));
-                        deletedMediaList.addAll(DBSelector.getVideoList(true, null));
-                        setOverviewInformation();
-                    }
-                }).start();
-
+                new LoadDialog(mainFrame, "Please wait", true, mvb);
             }
         });
 
     }
 
+    /**
+     * Dialog Fragt nach ob der Benutzer speichern will.
+     * @return
+     */
     public int showSignOverFrame() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         return JOptionPane.showConfirmDialog(mainFrame,
@@ -100,6 +119,11 @@ public class MuViBee {
                 JOptionPane.YES_NO_OPTION);
     }
 
+    /**
+     * Dialog fragt nach ob der Benutzer eine EAN eingeben oder
+     * den Datensatz selbst eintragen will.
+     * @return
+     */
     public int showSelfEANDecisionFrame() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         Object[] options = {bundle.getString("ean"), bundle.getString("self")};
@@ -114,6 +138,10 @@ public class MuViBee {
                 options[0]);
     }
 
+    /**
+     * Dialog fragt den Benutzer ob die Aenderungen gespeichert werden sollen.
+     * @return 
+     */
     public int showSaveChangeDecisionFrame() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         Object[] options = {bundle.getString("change"), bundle.getString("cancel")};
@@ -128,6 +156,10 @@ public class MuViBee {
                 options[0]);
     }
 
+    /**
+     * Dialog fragt ob der Benutzer ein Medium hinzufuegen will.
+     * @return
+     */
     public int showSaveAddDecisionFrame() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         Object[] options = {bundle.getString("add"), bundle.getString("cancel")};
@@ -142,6 +174,10 @@ public class MuViBee {
                 options[0]);
     }
 
+    /**
+     * Dialog fragt nach der EAN
+     * @return
+     */
     public String showEanInputFrame() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         return (String) JOptionPane.showInputDialog(
@@ -155,6 +191,10 @@ public class MuViBee {
                 "");
     }
 
+    /**
+     * Zeigt erweiterten Such Dialog
+     * @return
+     */
     public boolean showAdvancedSearchDialog() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
         AdvancedSearchDialog dialog = new AdvancedSearchDialog(mainFrame,
@@ -176,68 +216,119 @@ public class MuViBee {
         return false;
     }
 
+    /**
+     * Zeigt Abot Dialog
+     */
     public void showAboutDialog() {
         AboutDialog dialog = new AboutDialog(mainFrame);
         dialog.setLocationRelativeTo(mainFrame);
         dialog.setVisible(true);
     }
 
+    /**
+     * Zeigt Hilfe Dialog
+     */
     public void showHelpDialog() {
         HelpDialog helpDialog = new HelpDialog(mainFrame);
         helpDialog.setLocationRelativeTo(mainFrame);
         helpDialog.setVisible(true);
     }
 
+    /**
+     * Setzt das currentBook Objekt in das Book Item Panel
+     */
     private void setBookItem() {
         mainFrame.setBookItem(currentBook);
     }
 
+    /**
+     * Setzt das currentMusic Objekt in das Music Item Panel
+     */
     private void setMusicItem() {
         mainFrame.setMusicItem(currentMusic);
     }
 
+    /**
+     * Setzt das currentVideo Objekt in das Music Item Panel
+     */
     private void setVideoItem() {
         mainFrame.setVideoItem(currentVideo);
     }
 
+    /**
+     * Zeig das Book Item Panel
+     * @param b
+     */
     public void showBookItem(boolean b) {
         mainFrame.bookItemSetVisible(b);
     }
 
+    /**
+     * Zeig das Music Item Panel
+     * @param b
+     */
     public void showMusicItem(boolean b) {
         mainFrame.musicItemSetVisible(b);
     }
 
+    /**
+     * Zeig das Video Item Panel
+     * @param b
+     */
     public void showVideoItem(boolean b) {
         mainFrame.videoItemSetVisible(b);
     }
 
+    /**
+     * Deselektiert alle View Listen
+     */
     public void unselectLists() {
         mainFrame.unselectLists();
     }
 
+    /**
+     * Setze currentBook
+     * @param book
+     */
     public void setCurrentBook(Book book) {
         currentBook = book;
         setBookItem();
         showBookItem(true);
     }
 
+    /**
+     * Setze currentMusic
+     * @param book
+     */
     public void setCurrentMusic(Music music) {
         currentMusic = music;
         setMusicItem();
         showMusicItem(true);
     }
 
+    /**
+     * Setze currentBook
+     * @param book
+     */
     public void setCurrentVideo(Video video) {
         currentVideo = video;
         setVideoItem();
         showVideoItem(true);
     }
 
+    /**
+     * Setze die currentDeletedMedia List
+     * @param medias
+     */
     public void setCurrentDeletedMedia(Media[] medias) {
         currentDeletedMediaList = medias;
     }
 
+    /**
+     * Speichert die Eingaben in die GUI in das currentBook Objekt.
+     * @return
+     * @throws IllegalDateException
+     */
     public boolean setCurrentBookItemInformation() throws IllegalDateException {
         if (bookList.contains(currentBook)) {
             if (showSaveChangeDecisionFrame() == 0) {
@@ -253,6 +344,11 @@ public class MuViBee {
         return false;
     }
 
+    /**
+     * Speichert die Eingaben in die GUI in das currentMusic Objekt.
+     * @return
+     * @throws IllegalDateException
+     */
     public boolean setCurrentMusicItemInformation() throws IllegalDateException {
         if (musicList.contains(currentMusic)) {
             if (showSaveChangeDecisionFrame() == 0) {
@@ -268,6 +364,11 @@ public class MuViBee {
         return false;
     }
 
+    /**
+     * Speichert die Eingaben in die GUI in das currentVideo Objekt.
+     * @return
+     * @throws IllegalDateException
+     */
     public boolean setCurrentVideoItemInformation() throws IllegalDateException {
         if (videoList.contains(currentVideo)) {
             if (showSaveChangeDecisionFrame() == 0) {
@@ -283,6 +384,9 @@ public class MuViBee {
         return false;
     }
 
+    /**
+     * Fuegt das currentBook zur bookList und filterBookList hinzu
+     */
     public void addCurrentBookToBookLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         currentBook.updateDB();
@@ -292,6 +396,9 @@ public class MuViBee {
         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
+    /**
+     * Fuegt das currentMusic Objekt zur musicList und filterMusicList hinzu
+     */
     public void addCurrentMusicToMusicLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         currentMusic.updateDB();
@@ -301,6 +408,9 @@ public class MuViBee {
         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
+    /**
+     * Fuegt das currentVideo Objekt zur videoList und filterVideoList hinzu.
+     */
     public void addCurrentVideoToVideoLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         currentVideo.updateDB();
@@ -310,6 +420,9 @@ public class MuViBee {
         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
     }
 
+    /**
+     * Loescht das currentBook aus der bookList und filterBookList und fuegt es in die deletedMediaList ein
+     */
     public void removeCurrentBookFromBookLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (bookList.remove(currentBook)) {
@@ -324,6 +437,9 @@ public class MuViBee {
         }
     }
 
+    /**
+     * Loescht das currentMusic Objekt aus der musicList und filterMusicList und fuegt es in die deletedMediaList ein
+     */
     public void removeCurrentMusicFromMusicLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (musicList.remove(currentMusic)) {
@@ -338,6 +454,9 @@ public class MuViBee {
         }
     }
 
+    /**
+     * Loescht das currentVideo Objekt aus der videoList und filterVideoList und fuegt es in die deletedMediaList ein
+     */
     public void removeCurrentVideoFromVideoLists() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         if (videoList.remove(currentVideo)) {
@@ -352,6 +471,9 @@ public class MuViBee {
         }
     }
 
+    /**
+     * Loescht das currentDeletedMedia Objekt aus der deletedList.
+     */
     public void removeCurrentDeletedMediaFromDeletedList() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         for (Media m : currentDeletedMediaList) {
@@ -362,6 +484,9 @@ public class MuViBee {
         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
     }
 
+    /**
+     * Fuegt das currentDeletedMedia Objekt wieder in die list und filterList ein
+     */
     public void restoreCurrentDeletedMedia() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         for (Media m : currentDeletedMediaList) {
@@ -387,37 +512,44 @@ public class MuViBee {
         }
     }
 
-
-    private String getSortName(SortTypes sortBy){
+    /**
+     *
+     * @param sortBy
+     * @return soertier Name
+     */
+    private String getSortName(SortTypes sortBy) {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-                switch (sortBy){
-                    case TITLE :
-                        return bundle.getString("titleLabel");
-                    case RELEASEYEAR :
-                        return bundle.getString("releaseYearLabel");
-                    case GENRE:
-                        return bundle.getString("genreLabel");
-                    case RATING:
-                        return bundle.getString("ratingLabel");
-                    case LANGUAGE:
-                        return bundle.getString("languageLabel");
-                    case FORMAT:
-                        return bundle.getString("formatLabel");
-                    case DIRECTOR:
-                        return bundle.getString("directorLabel");
-                    case AUTHOR:
-                    case ARTIST:
-                        return bundle.getString("artistLabel");
-                    default:
-                       return bundle.getString("n/a");
-                }
+        switch (sortBy) {
+            case TITLE:
+                return bundle.getString("titleLabel");
+            case RELEASEYEAR:
+                return bundle.getString("releaseYearLabel");
+            case GENRE:
+                return bundle.getString("genreLabel");
+            case RATING:
+                return bundle.getString("ratingLabel");
+            case LANGUAGE:
+                return bundle.getString("languageLabel");
+            case FORMAT:
+                return bundle.getString("formatLabel");
+            case DIRECTOR:
+                return bundle.getString("directorLabel");
+            case AUTHOR:
+                return bundle.getString("authorLabel");
+            case ARTIST:
+                return bundle.getString("artistLabel");
+            default:
+                return bundle.getString("n/a");
+        }
     }
 
-    
-    public void sortedByBook(){
+    /**
+     * Schreibt Sortierreihenfolge in die StatusBar
+     */
+    public void sortedByBook() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         StringBuilder sb = new StringBuilder(bundle.getString("newSortedBy"));
-        for (SortTypes sortBy : filterBookList.getSortedBy()){
+        for (SortTypes sortBy : filterBookList.getSortedBy()) {
             sb.append(getSortName(sortBy));
             sb.append(" --> ");
         }
@@ -425,7 +557,9 @@ public class MuViBee {
         StatusBarModel.getInstance().setSuccessMessage(sb.toString());
     }
 
-
+    /**
+     * Schreibt Sortierreihenfolge in die StatusBar
+     */
     public void sortedByMusic() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         StringBuilder sb = new StringBuilder(bundle.getString("newSortedBy"));
@@ -437,7 +571,9 @@ public class MuViBee {
         StatusBarModel.getInstance().setSuccessMessage(sb.toString());
     }
 
-
+    /**
+     * Schreibt Sortierreihenfolge in die StatusBar
+     */
     public void sortedByVideo() {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         StringBuilder sb = new StringBuilder(bundle.getString("newSortedBy"));
@@ -449,16 +585,15 @@ public class MuViBee {
         StatusBarModel.getInstance().setSuccessMessage(sb.toString());
     }
 
-
-    public MediaList getBookList() {
+    public MediaList getFilterBookList() {
         return filterBookList;
     }
 
-    public MediaList getMusicList() {
+    public MediaList getFilterMusicList() {
         return filterMusicList;
     }
 
-    public MediaList getVideoList() {
+    public MediaList getFilterVideoList() {
         return filterVideoList;
     }
 
@@ -466,13 +601,9 @@ public class MuViBee {
         return deletedMediaList;
     }
 
-    public static void main(String args[]) {
-        Locale locale = Locale.getDefault();
-        Locale.setDefault(Locale.ENGLISH);
-
-        MuViBee mvb = new MuViBee();
-    }
-
+    /**
+     * Setze die Suche zurueck
+     */
     public void resetSearch() {
         mainFrame.resetSearch();
         resetFilterLists();
@@ -480,6 +611,9 @@ public class MuViBee {
         mainFrame.deleteSearchButtonSetVisible(false);
     }
 
+    /**
+     * setze die Filter Listen zurueck
+     */
     public void resetFilterLists() {
         filterBookList.getList().clear();
         filterBookList.addAll(bookList);
@@ -491,50 +625,60 @@ public class MuViBee {
         filterVideoList.addAll(videoList);
     }
 
+    /**
+     * Fuehre ein suche durch
+     */
     public void search() {
         String str = mainFrame.getSearchString();
         resetFilterLists();
         for (Book b : bookList) {
-            if (!b.matches(str)) {
+            if (!b.sortMatches(str)) {
                 filterBookList.remove(b);
             }
         }
         for (Music m : musicList) {
-            if (!m.matches(str)) {
+            if (!m.sortMatches(str)) {
                 filterMusicList.remove(m);
             }
         }
         for (Video v : videoList) {
-            if (!v.matches(str)) {
+            if (!v.sortMatches(str)) {
                 filterVideoList.remove(v);
             }
         }
     }
 
+    /**
+     * Fuehre eine erweiterte suche durch
+     * @param book
+     * @param music
+     * @param video
+     */
     public void advancedSearch(Book book, Music music, Video video) {
         resetFilterLists();
         for (Book b : bookList) {
-            if (!b.matches(book)) {
+            if (!b.sortMatches(book)) {
                 filterBookList.remove(b);
             }
         }
         for (Music m : musicList) {
-            if (!m.matches(music)) {
+            if (!m.sortMatches(music)) {
                 filterMusicList.remove(m);
             }
         }
         for (Video v : videoList) {
-            if (!v.matches(video)) {
+            if (!v.sortMatches(video)) {
                 filterVideoList.remove(v);
             }
         }
     }
 
+    /**
+     * Lade alle Labels neu
+     */
     public void reloadLabels() {
         mainFrame.reloadLabels(mainBundlePath);
     }
-
-
 
     public int getLentToBook() {
         int sum = 0;
@@ -721,4 +865,42 @@ public class MuViBee {
     public ExpiredItemsList getExpiredList() {
         return mainFrame.getExpiredList();
     }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public static void main(String args[]) {
+        MuViBee mvb = new MuViBee();
+    }
+
+    public LinkedList<Book> getBookList() {
+        return bookList;
+    }
+
+    public LinkedList<Music> getMusicList() {
+        return musicList;
+    }
+
+    public LinkedList<Video> getVideoList() {
+        return videoList;
+    }
+
+    public MainFrame getMainFrame() {
+        return mainFrame;
+    }
+
+    public void setBookList(LinkedList<Book> bookList) {
+        this.bookList = bookList;
+    }
+
+    public void setMusicList(LinkedList<Music> musicList) {
+        this.musicList = musicList;
+    }
+
+    public void setVideoList(LinkedList<Video> videoList) {
+        this.videoList = videoList;
+    }
+    
+
 }

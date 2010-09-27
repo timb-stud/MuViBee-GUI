@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * MainFrame.java
  *
  * Created on 03.09.2010, 08:57:34
@@ -16,8 +11,6 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
@@ -35,9 +28,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableCellRenderer;
 import muvibee.IllegalDateException;
@@ -69,7 +59,7 @@ import util.tree.PrioTree;
  *
  * @author bline
  */
-public class MainFrame extends javax.swing.JFrame {
+public final class MainFrame extends javax.swing.JFrame {
 
     MuViBee mvb;
 
@@ -92,11 +82,11 @@ public class MainFrame extends javax.swing.JFrame {
      */
     private void createCoverList(MuViBee mvb){
         coverListBook = new CoverList(mvb);
-        mvb.getBookList().addObserver(coverListBook);
+        mvb.getFilterBookList().addObserver(coverListBook);
         coverListMusic = new CoverList(mvb);
-        mvb.getMusicList().addObserver(coverListMusic);
+        mvb.getFilterMusicList().addObserver(coverListMusic);
         coverListVideo = new CoverList(mvb);
-        mvb.getVideoList().addObserver(coverListVideo);
+        mvb.getFilterVideoList().addObserver(coverListVideo);
 
         coverListBookScrollPane.setViewportView(coverListBook);
         coverListMusicScrollPane.setViewportView(coverListMusic);
@@ -109,11 +99,11 @@ public class MainFrame extends javax.swing.JFrame {
      */
     private void createTree(MuViBee mvb){
         prioTreeBook = new PrioTree(mvb);
-        mvb.getBookList().addObserver(prioTreeBook);
+        mvb.getFilterBookList().addObserver(prioTreeBook);
         prioTreeMusic = new PrioTree(mvb);
-        mvb.getMusicList().addObserver(prioTreeMusic);
+        mvb.getFilterMusicList().addObserver(prioTreeMusic);
         prioTreeVideo = new PrioTree(mvb);
-        mvb.getVideoList().addObserver(prioTreeVideo);
+        mvb.getFilterVideoList().addObserver(prioTreeVideo);
 
         treeBookScrollPane.setViewportView(prioTreeBook);
         treeMusicScrollPane.setViewportView(prioTreeMusic);
@@ -127,11 +117,11 @@ public class MainFrame extends javax.swing.JFrame {
      */
     private void createDetailsTable(MuViBee mvb){
         detailsTableBook = new DetailsTable(mvb);
-        mvb.getBookList().addObserver(detailsTableBook);
+        mvb.getFilterBookList().addObserver(detailsTableBook);
         detailsTableMusic = new DetailsTable(mvb);
-        mvb.getMusicList().addObserver(detailsTableMusic);
+        mvb.getFilterMusicList().addObserver(detailsTableMusic);
         detailsTableVideo = new DetailsTable(mvb);
-        mvb.getVideoList().addObserver(detailsTableVideo);
+        mvb.getFilterVideoList().addObserver(detailsTableVideo);
 
         detailsListBookScrollPane.setViewportView(detailsTableBook);
         detailsListMusicScrollPane.setViewportView(detailsTableMusic);
@@ -144,11 +134,11 @@ public class MainFrame extends javax.swing.JFrame {
      */
     private void createCoverDetailsList(MuViBee mvb){
         coverDetailsBookList = new CoverDetailsList(mvb);
-        mvb.getBookList().addObserver(coverDetailsBookList);
+        mvb.getFilterBookList().addObserver(coverDetailsBookList);
         coverDetailsMusicList = new CoverDetailsList(mvb);
-        mvb.getMusicList().addObserver(coverDetailsMusicList);
+        mvb.getFilterMusicList().addObserver(coverDetailsMusicList);
         coverDetailsVideoList = new CoverDetailsList(mvb);
-        mvb.getVideoList().addObserver(coverDetailsVideoList);
+        mvb.getFilterVideoList().addObserver(coverDetailsVideoList);
 
         coverDetailsListBookScrollPane.setViewportView(coverDetailsBookList);
         coverDetailsListMusicScrollPane.setViewportView(coverDetailsMusicList);
@@ -188,33 +178,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(MuViBee mvb) {
         this.mvb = mvb;
         setLocation(Toolkit.getDefaultToolkit().getScreenSize().width/2 - 580, Toolkit.getDefaultToolkit().getScreenSize().height/2 - 350);
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (UnsupportedLookAndFeelException e) {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
-                    try {
-                        UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    } catch (ClassNotFoundException ex) {
-                    } catch (InstantiationException ex) {
-                    } catch (IllegalAccessException ex) {
-                    } catch (UnsupportedLookAndFeelException ex) {
-                    }
-                }
-            }
-        } catch (ClassNotFoundException e) {
-            // handle exception
-        } catch (InstantiationException e) {
-            // handle exception
-        } catch (IllegalAccessException e) {
-            // handle exception
-        } 
+        LookAndFeelChanger.changeLookAndFeel("Nimbus", this);
         initComponents();
 
         setIconImage(createImageIcon("gui/resources/icons/biene.png").getImage());
@@ -313,24 +277,24 @@ public class MainFrame extends javax.swing.JFrame {
         languagesComboBox.setModel(cbm);
 
             languagesComboBox.setRenderer(new DefaultListCellRenderer(){
+            @Override
             public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                 String flag = "";
                 try {
                     if (((String)value).equals("en"))
-                        flag = "../../muvibee/gui/resources/flags/gb.png";
+                        flag = "resources/flags/gb.png";
                     else if (((String)value).equals("de"))
-                        flag = "../../muvibee/gui/resources/flags/de.png";
+                        flag = "resources/flags/de.png";
                     else if (((String)value).equals("ru"))
-                        flag = "../../muvibee/gui/resources/flags/ru.png";
+                        flag = "resources/flags/ru.png";
                     else if (((String)value).equals("tr"))
-                        flag = "../../muvibee/gui/resources/flags/tr.png";
+                        flag = "resources/flags/tr.png";
                     else if (((String)value).equals("ro"))
-                        flag = "../../muvibee/gui/resources/flags/ro.png";
+                        flag = "resources/flags/ro.png";
 
                     label.setIcon(ResizeImageIcon.resizeIcon(24, 20, ImageIO.read(getClass().getResource(flag))));
                 } catch (IOException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 return label;
             }
@@ -523,6 +487,7 @@ public class MainFrame extends javax.swing.JFrame {
         setTitle(bundle.getString("title"));
         searchButton.setText(bundle.getString("searchButton"));
         advancedSearchButton.setText(bundle.getString("advancedSearchButton"));
+        deleteSearchButton.setText(bundle.getString("deleteSearchButton"));
         helpButton.setText(bundle.getString("helpButton"));
         aboutButton.setText(bundle.getString("aboutButton"));
         tabbedPane.setTitleAt(0, bundle.getString("overviewTab"));
@@ -530,10 +495,6 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setTitleAt(2, bundle.getString("musikTab"));
         tabbedPane.setTitleAt(3, bundle.getString("videoTab"));
         tabbedPane.setTitleAt(4, bundle.getString("restoreTab"));
-
-        tabbedPane.setBackgroundAt(1, Color.CYAN);
-        tabbedPane.setBackgroundAt(2, Color.RED);
-        tabbedPane.setBackgroundAt(3, Color.GREEN);
 
         String day = bundle.getString("dayComboBox");
         updateComboBoxLabel(lentDayBookComboBox, day);
@@ -592,6 +553,10 @@ public class MainFrame extends javax.swing.JFrame {
         videoFormats[2] = bundle.getString("vhs");
 	updateComboBoxLabels(formatMusicComboBox, musicFormats);
 	updateComboBoxLabels(formatVideoComboBox, videoFormats);
+
+        overviewTable.setValueAt(bundle.getString("bookTab"), 0, 0);
+        overviewTable.setValueAt(bundle.getString("musikTab"), 1, 0);
+        overviewTable.setValueAt(bundle.getString("videoTab"), 2, 0);
 
         ((TitledBorder)expiredPanel.getBorder()).setTitle(bundle.getString("expiredMedia"));
         restoreEverythingButton.setText(bundle.getString("restoreEverything"));
@@ -652,7 +617,7 @@ public class MainFrame extends javax.swing.JFrame {
         overviewTable.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("media"));
         overviewTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("number"));
         overviewTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("lentLabel"));
-        overviewTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("deleted"));
+        overviewTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("inTrashBin"));
 
         titleBookLabel.setText(bundle.getString("titleLabel"));
         eanBookLabel.setText(bundle.getString("ean"));
@@ -702,7 +667,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setCover(BufferedImage cover, JLabel label){
         if (cover != null) {
-            label.setIcon(ResizeImageIcon.resizeIcon(140, 160, cover));
+            label.setIcon(ResizeImageIcon.resizeIcon(120, 150, cover));
         } else {
             label.setIcon(null);
         }
@@ -829,10 +794,10 @@ public class MainFrame extends javax.swing.JFrame {
                 ratingOneVideoRadioButton.setSelected(true);
                 break;
             case 2:
-                ratingOneVideoRadioButton.setSelected(true);
+                ratingTwoVideoRadioButton.setSelected(true);
                 break;
             case 3:
-                ratingOneVideoRadioButton.setSelected(true);
+                ratingThreeVideoRadioButton.setSelected(true);
                 break;
             default:
                 throw new RuntimeException("Illegal Rating Value");
@@ -981,9 +946,9 @@ public class MainFrame extends javax.swing.JFrame {
         int rating = 0;
         if (ratingOneMusicRadioButton.isSelected()) {
             rating = 1;
-        } else if (ratingOneMusicRadioButton.isSelected()) {
+        } else if (ratingTwoMusicRadioButton.isSelected()) {
             rating = 2;
-        } else if (ratingOneMusicRadioButton.isSelected()) {
+        } else if (ratingThreeMusicRadioButton.isSelected()) {
             rating = 3;
         }
 
@@ -1045,9 +1010,9 @@ public class MainFrame extends javax.swing.JFrame {
         int rating = 0;
         if (ratingOneVideoRadioButton.isSelected()) {
             rating = 1;
-        } else if (ratingOneVideoRadioButton.isSelected()) {
+        } else if (ratingTwoVideoRadioButton.isSelected()) {
             rating = 2;
-        } else if (ratingOneVideoRadioButton.isSelected()) {
+        } else if (ratingThreeVideoRadioButton.isSelected()) {
             rating = 3;
         }
 
@@ -1403,6 +1368,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MuViBee");
+        setMinimumSize(new java.awt.Dimension(1162, 686));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -1422,7 +1388,7 @@ public class MainFrame extends javax.swing.JFrame {
         advancedSearchButton.setText("Erweiterte Suche");
         advancedSearchButton.setName("advancedSearchButton"); // NOI18N
 
-        deleteSearchButton.setText("X");
+        deleteSearchButton.setText("delete search");
 
         javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
         headPanel.setLayout(headPanelLayout);
@@ -1432,12 +1398,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteSearchButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(advancedSearchButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 506, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
                 .addComponent(languagesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(helpButton)
@@ -1466,7 +1432,7 @@ public class MainFrame extends javax.swing.JFrame {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1135, Short.MAX_VALUE)
+            .addGap(0, 1142, Short.MAX_VALUE)
         );
         statusPanelLayout.setVerticalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1476,7 +1442,7 @@ public class MainFrame extends javax.swing.JFrame {
         tabbedPane.setName("add video button"); // NOI18N
 
         overviewTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        overviewTable.setFont(new java.awt.Font("Plantagenet Cherokee", 0, 24));
+        overviewTable.setFont(new java.awt.Font("Arial", 0, 24));
         overviewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Bücher", "", null, null},
@@ -1509,7 +1475,7 @@ public class MainFrame extends javax.swing.JFrame {
             expiredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(expiredPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(expiredScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
+                .addComponent(expiredScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE)
                 .addContainerGap())
         );
         expiredPanelLayout.setVerticalGroup(
@@ -1527,7 +1493,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(expiredPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(overviewScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE))
+                    .addComponent(overviewScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1116, Short.MAX_VALUE))
                 .addContainerGap())
         );
         overviewPanelLayout.setVerticalGroup(
@@ -1598,7 +1564,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sortBookRatingButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortBookReleaseYearToggleButton)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         sortPanelBooksLayout.setVerticalGroup(
             sortPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1621,9 +1587,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(viewBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(sortPanelBooks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bookCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                    .addComponent(bookCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                     .addGroup(viewBookPanelLayout.createSequentialGroup()
-                        .addComponent(viewBookComboBox, 0, 419, Short.MAX_VALUE)
+                        .addComponent(viewBookComboBox, 0, 426, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addBookButton)))
                 .addContainerGap())
@@ -1899,7 +1865,7 @@ public class MainFrame extends javax.swing.JFrame {
         bookPanelLayout.setHorizontalGroup(
             bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
-                .addComponent(viewBookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                .addComponent(viewBookPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hideBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1967,7 +1933,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sortMusicRatingButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortMusicReleaseYearButton)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         sortPanelMusicLayout.setVerticalGroup(
             sortPanelMusicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1989,9 +1955,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewMusicPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(viewMusicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(musicCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                    .addComponent(musicCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                     .addGroup(viewMusicPanelLayout.createSequentialGroup()
-                        .addComponent(viewMusicComboBox, 0, 419, Short.MAX_VALUE)
+                        .addComponent(viewMusicComboBox, 0, 426, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addMusicButton))
                     .addComponent(sortPanelMusic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2331,7 +2297,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sortVideoRatingButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortVideoReleaseYearButton)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         sortPanelVideoLayout.setVerticalGroup(
             sortPanelVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2353,10 +2319,10 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewVideoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(viewVideoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(videoCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                    .addComponent(videoCardPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                     .addComponent(sortPanelVideo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(viewVideoPanelLayout.createSequentialGroup()
-                        .addComponent(viewVideoComboBox, 0, 419, Short.MAX_VALUE)
+                        .addComponent(viewVideoComboBox, 0, 426, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addVideoButton)))
                 .addContainerGap())
@@ -2675,7 +2641,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(restorePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(restorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE)
+                    .addComponent(restoreItemsScrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 1116, Short.MAX_VALUE)
                     .addGroup(restorePanelLayout.createSequentialGroup()
                         .addComponent(restoreItemButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2714,7 +2680,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(headPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(statusPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1137, Short.MAX_VALUE))
+                    .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1144, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -3047,7 +3013,20 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
+    public void setLanguage(String lang){
+        if(isLanguage(lang))
+            languagesComboBox.setSelectedItem(lang);
+        else
+            languagesComboBox.setSelectedItem("en");
+    }
 
+    public boolean isLanguage(String lang){
+        for(int i=0; i<languagesComboBox.getItemCount(); i++){
+            if(lang.equals(languagesComboBox.getItemAt(i)))
+                    return true;
+        }
+        return false;
+    }
 
 
 

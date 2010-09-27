@@ -87,10 +87,14 @@ public class SortMusicActionListener implements ActionListener{
                 }
             }
         }
-        MediaList ml = mvb.getMusicList();
+        MediaList ml = mvb.getFilterMusicList();
         ml.clear();
         LinkedList<Music> musicList = DBSelector.getMusicList(false, orderList.toArray(new SortTypes[0]));
+        ArrayList<SortTypes> sortBy = ml.getSortedBy();
+        sortBy.clear();
+        sortBy.addAll(orderList);
         ml.addAll((musicList));
+        mvb.sortedByMusic();
     }
 
 }

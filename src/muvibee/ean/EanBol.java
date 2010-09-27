@@ -1,7 +1,6 @@
 package muvibee.ean;
 
 import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -25,12 +24,21 @@ public class EanBol {
     static String preEAN = "http://www.bol.de/shop/home/suche/?fi=&st=&sa=&sr=&sv=&svb=&ssw=&si=&sk=&sd=&sre=&sq=";
     static String postEAN = "&forward=weiter&sswg=ANY#pm_features";
     static HtmlCleaner cleaner = new HtmlCleaner();
+    static final String noVideo = "Das Ergebnis für diese EAN ist kein Video-Media  !(Format(DVD oder Blu-Ray))  Bitte überprüfen Sie Ihre Eingabe";
+    static final String noMusic = "Das Ergebnis für diese EAN ist keine Musik! Bitte überprüfen Sie Ihre Eingabe";
+    static final String noBook = "Das Ergebnis für diese EAN ist kein Buch! Bitte überprüfen Sie Ihre Eingabe";
 
+    /*
+     * Gets the Data for a Media Object, where it doesn ´t matter if the Media Object is a Book, Music or Video.
+     * @param node : The page in which the attributes is to be collected.
+     * @param media : media is the Object where the Attributes are saved into.
+     * @return A Media Object which has some attributes.
+     */
     private static Media getData(TagNode node, Media media) throws IOException {
-        String title;
+        String title = "";
         String genre = "";
-        String description;
-        int yearOfRelease;
+        String description = "";
+        int yearOfRelease = 0;
 
         TagNode[] titleNode = node.getElementsByAttValue("class", "pm_titel",
                 true, true);
@@ -58,7 +66,11 @@ public class EanBol {
 
         return media;
     }
-
+    /*
+     * This Method donwloads the image from the website.
+     * @param ean : The image of this ean will be downloaded
+     * @param media : The media Object in which the image is stored into.
+     */
     private static void loadImage(String ean, Media media) throws IOException {
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -75,30 +87,49 @@ public class EanBol {
         BufferedImage image = ImageIO.read(new URL(coverSource));
         media.setCover(image);
     }
-
+    /*
+     * This method takes the description Array from the page and causes it to the structure the media objects need.
+     * @param descriptionNode : The descriptionarray of the page
+     * @return The description if this media object as a String.
+     */
     private static String getDescription(TagNode[] descriptionNode) {
-        StringBuffer sb = new StringBuffer();
+        boolean hasShortDescription = false;
+        StringBuilder sb = new StringBuilder();
         boolean hasDescription = false;
         int j = 0;
-
+        int k = 0;
         for (int i = 0; i < descriptionNode.length; i++) {
             if ((descriptionNode[i].getChildTags()[0].getOriginalSource()).contains("hd hd_content_box")) {
                 if (descriptionNode[i].getChildTags()[0].getChildTags()[0].getOriginalSource().contains("kurzbeschreibung")) {
 
-                    hasDescription = true;
+                    hasShortDescription = true;
                     j = i;
+                    break;
+                }
+                if (descriptionNode[i].getChildTags()[0].getChildTags()[0].getOriginalSource().contains("beschreibung")) {
+
+                    hasDescription = true;
+                    k = i;
                     break;
                 }
             }
         }
-        if (!hasDescription) {
+        if (!hasDescription && !hasShortDescription) {
             return "";
-        } else {
+        } else if (hasShortDescription) {
             sb.append(descriptionNode[j].getChildTags()[1].getText().toString().trim());
             return sb.toString();
+        } else {
+            sb.append(descriptionNode[k].getChildTags()[1].getText().toString().trim());
+            return sb.toString();
         }
-    }
 
+    }
+    /*
+     * This method takes the articletype from the website.
+     * @param node : The page in whic the attributes is to be collected.
+     * @return The articletype as a String.
+     */
     private static String getArtikelType(TagNode node) {
 
         TagNode[] artikelTypeNode = node.getElementsByAttValue("class",
@@ -132,9 +163,13 @@ public class EanBol {
             }
         }
     }
-
+    /*
+     * This method fills the remaining data of an book - object in
+     * @param ean : the data of this ean will be stored in a book object
+     * @return Book Object
+     */
     public static Book getBookData(String ean) throws
-            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
+            NoResultException, MalformedURLException, IOException, MoreThanOneResultException, WrongArticleTypeException {
         Book book = new Book();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -142,8 +177,7 @@ public class EanBol {
         String artikelTyp = getArtikelType(node);
 
         if (!artikelTyp.equalsIgnoreCase("book")) {
-            throw new IOException(
-                    "Das Ergebnis für diese EAN ist kein Buch! Bitte überprüfen Sie Ihre Eingabe");
+            throw new WrongArticleTypeException(noBook);
         } else {
             book = (Book) getData(node, book);
             TagNode[] authorNode = node.getElementsByAttValue("class",
@@ -162,9 +196,13 @@ public class EanBol {
             return book;
         }
     }
-
+    /*
+     * This method fills the remaining data of an music - object in
+     * @param ean : the data of this ean will be stored in a music object
+     * @return Music Object
+     */
     public static Music getMusicData(String ean) throws
-            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
+            NoResultException, MalformedURLException, IOException, MoreThanOneResultException, WrongArticleTypeException {
         Music music = new Music();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -172,8 +210,7 @@ public class EanBol {
         String artikelTyp = getArtikelType(node);
 
         if (!artikelTyp.equalsIgnoreCase("cd")) {
-            throw new IOException(
-                    "Das Ergebnis für diese EAN ist keine Musik! Bitte überprüfen Sie Ihre Eingabe");
+            throw new WrongArticleTypeException(noMusic);
         } else {
             music = (Music) getData(node, music);
 
@@ -191,9 +228,13 @@ public class EanBol {
             return music;
         }
     }
-
+    /*
+     * This method fills the remaining data of an video - object in
+     * @param ean : the data of this ean will be stored in a video object
+     * @return Video Object
+     */
     public static Video getVideoData(String ean) throws
-            NoResultException, MalformedURLException, IOException, MoreThanOneResultException {
+            NoResultException, MalformedURLException, MoreThanOneResultException, WrongArticleTypeException, IOException {
         Video video = new Video();
         URL url = new URL(preEAN + ean + postEAN);
         TagNode node = cleaner.clean(url);
@@ -201,8 +242,7 @@ public class EanBol {
         String artikelTyp = getArtikelType(node);
 
         if (!artikelTyp.equalsIgnoreCase("dvd") && !artikelTyp.equalsIgnoreCase("bluray")) {
-            throw new IOException(
-                    "Das Ergebnis für diese EAN ist kein Video-Media  !(Format(DVD oder Blu-Ray))  Bitte überprüfen Sie Ihre Eingabe");
+            throw new WrongArticleTypeException(noVideo);
         } else {
             video = (Video) getData(node, video);
 
@@ -221,7 +261,10 @@ public class EanBol {
             return video;
         }
     }
-
+    /*
+     * This method checks if the ean returns no or more than one result.
+     * @param node : The page in which the attributes is to be collected.
+     */
     private static void checkEan(TagNode node) throws NoResultException,
             MoreThanOneResultException {
 
@@ -231,19 +274,24 @@ public class EanBol {
                 "seo_tag", true, true);
 
         if (rubrikNode.length != 0) {
-            throw new NoResultException("");
+            throw new MoreThanOneResultException("");
         } else if (advancedSearchNode.length != 0) {
             for (int i = 0; i < advancedSearchNode.length; i++) {
                 if (advancedSearchNode[i].getText().toString().trim().contains("Erweiterte Suche")) {
-                    throw new MoreThanOneResultException("");
-                } else {
-                    return;
+                    System.out.println(advancedSearchNode[i].getOriginalSource().toString());
+                    throw new NoResultException("");
                 }
-            }
-        }
-        return;
-    }
 
+            }
+            return;
+        }
+
+    }
+    /*
+     * This method takes from the date only the year
+     * @param releaseYearNode : the array with the releasedate
+     * @return releasedate as int
+     */
     private static int parseReleaseYear(TagNode[] releaseYearNode) {
         int yearOfRelease;
 
@@ -263,7 +311,11 @@ public class EanBol {
             return yearOfRelease;
         }
     }
-
+    /*
+     * This method takes the correct interpreter.
+     * @param interpreterNode : Array with all the Interpreterinformation
+     * @return Interpreter as String
+     */
     private static String interpreterFix(TagNode[] interpreterNode) {
         String s = interpreterNode[0].getText().toString();
         if (!s.contains("Interpret")) {
@@ -279,11 +331,5 @@ public class EanBol {
         s = s.substring(s.indexOf("\n"));
         s = s.replaceAll("\n", "");
         return s;
-    }
-
-    public static void setProxy(String proxy, String port) {
-        System.getProperties().put("proxySet", "true");
-        System.getProperties().put("proxyHost", proxy);
-        System.getProperties().put("proxyPort", port);
     }
 }

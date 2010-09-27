@@ -19,7 +19,7 @@ public class CoverListEntry extends JLabel {
         public CoverListEntry(Media media) {
             this.media = media;
             if (media.getCover() != null)
-                this.icon = ResizeImageIcon.resizeIcon(90, 100, media.getCover());
+                this.icon = ResizeImageIcon.resizeIcon(100, 120, media.getCover());
             else
                 this.icon = null;
 	}

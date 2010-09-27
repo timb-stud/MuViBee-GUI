@@ -43,7 +43,7 @@ public class CoverDetailsListEntry extends JPanel{
 		// |       | Info 1 |
 		// |_______|________|
                 
-		setLayout(new GridLayout(1,2, 0,0)); //antatt setLayout(new GridLayout(1,2, -360,0)); was is besser ?
+                setLayout(new GridLayout(1,2, -360,0)); //antatt setLayout(new GridLayout(1,2, 0,0)); was is besser ?
 		setPreferredSize(new Dimension(10, ySize));
                 setBackground(Color.white);
 		
