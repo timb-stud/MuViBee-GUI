@@ -15,11 +15,14 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 import muvibee.MuViBee;
+import muvibee.lists.BookList;
 import muvibee.lists.MediaList;
+import muvibee.lists.MusicList;
 import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
+import muvibee.utils.SortBy;
 import muvibee.utils.SortTypes;
 
 /**
@@ -156,7 +159,7 @@ public class PrioTree extends JTree implements Observer {
      */
     @Override
     public void update(Observable list, Object o) {
-        DynamicUtilTreeNode r;
+        ArrayList<SortTypes> sortedBy;
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
@@ -165,9 +168,16 @@ public class PrioTree extends JTree implements Observer {
         expandPath((getPathForRow(0)));
 
         MediaList mediaList = ((MediaList) list);
-        ArrayList<SortTypes> sortedBy = mediaList.getSortedBy();
-        if (!sortedBy.contains(SortTypes.TITLE))
-            sortedBy.add(SortTypes.TITLE);
-        createTree(mediaList,sortedBy);
+
+        if (mediaList instanceof BookList)
+            ;
+//            sortedBy = SortBy.getBookSortedBy();
+        else if (mediaList instanceof MusicList)
+            ;
+
+
+//        if (!sortedBy.contains(SortTypes.TITLE))
+//            sortedBy.add(SortTypes.TITLE);
+//        createTree(mediaList,sortedBy);
     }
 }

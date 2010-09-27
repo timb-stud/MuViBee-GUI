@@ -19,17 +19,10 @@ import muvibee.utils.SortTypes;
 public class MediaList extends Observable implements Observer {
 
     LinkedList<Media> list;
-    ArrayList<SortTypes> sortedBy;
 
     public MediaList() {
-        sortedBy = new ArrayList<SortTypes>();
+//        sortedBy = new ArrayList<SortTypes>();
         list = new LinkedList<Media>();
-        if (!sortedBy.contains(SortTypes.TITLE))
-            sortedBy.add(SortTypes.TITLE);
-    }
-
-    public ArrayList<SortTypes> getSortedBy() {
-        return sortedBy;
     }
 
     public boolean add(Media m) {
