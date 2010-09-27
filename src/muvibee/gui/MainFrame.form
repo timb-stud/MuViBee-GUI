@@ -42,7 +42,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="headPanel" alignment="1" max="32767" attributes="0"/>
                   <Component id="statusPanel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="tabbedPane" alignment="0" pref="1144" max="32767" attributes="0"/>
+                  <Component id="tabbedPane" alignment="0" pref="1149" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -162,7 +162,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1142" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1147" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -198,7 +198,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="expiredPanel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="overviewScrollPane" alignment="0" pref="1116" max="32767" attributes="0"/>
+                          <Component id="overviewScrollPane" alignment="0" pref="1124" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -250,7 +250,6 @@
                         <Column editable="false" title="Gel&#xf6;scht" type="java.lang.Object"/>
                       </Table>
                     </Property>
-                    <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                     <Property name="rowHeight" type="int" value="64"/>
                     <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ee" green="e8" red="eb" type="rgb"/>
@@ -259,6 +258,9 @@
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="overviewTableMouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="       new javax.swing.JTable(){&#xd;&#xa;            //prepareRenderer &#xfc;berschreiben:&#xd;&#xa;            @Override public Component prepareRenderer(final TableCellRenderer renderer,&#xd;&#xa;            final int row, final int column) {&#xd;&#xa;                Component c = super.prepareRenderer(renderer, row, column);&#xd;&#xa;                if(c instanceof javax.swing.JLabel){&#xd;&#xa;                    javax.swing.JLabel label = (javax.swing.JLabel)c;&#xd;&#xa;                    label.setHorizontalAlignment(javax.swing.JLabel.LEFT);&#xd;&#xa;                    label.setHorizontalAlignment(javax.swing.JLabel.CENTER);&#xd;&#xa;                }&#xd;&#xa;                return c;&#xd;&#xa;            }&#xd;&#xa;        };"/>
                   </AuxValues>
@@ -279,7 +281,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="expiredScrollPane" pref="1080" max="32767" attributes="0"/>
+                          <Component id="expiredScrollPane" pref="1092" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -287,7 +289,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="expiredScrollPane" pref="221" max="32767" attributes="0"/>
+                          <Component id="expiredScrollPane" pref="225" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -315,7 +317,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="viewBookPanel" pref="545" max="32767" attributes="0"/>
+                      <Component id="viewBookPanel" pref="551" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="hideBookButton" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -329,9 +331,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="viewBookPanel" alignment="0" pref="490" max="32767" attributes="0"/>
-                          <Component id="hideBookButton" alignment="0" pref="490" max="32767" attributes="0"/>
-                          <Component id="itemBookScrollPane" alignment="0" pref="490" max="32767" attributes="0"/>
+                          <Component id="viewBookPanel" alignment="0" pref="493" max="32767" attributes="0"/>
+                          <Component id="hideBookButton" alignment="0" pref="493" max="32767" attributes="0"/>
+                          <Component id="itemBookScrollPane" alignment="0" pref="493" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -368,9 +370,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="sortPanelBooks" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bookCardPanel" alignment="0" pref="513" max="32767" attributes="0"/>
+                              <Component id="bookCardPanel" alignment="0" pref="523" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewBookComboBox" pref="426" max="32767" attributes="0"/>
+                                  <Component id="viewBookComboBox" pref="430" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -385,7 +387,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="sortPanelBooks" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="bookCardPanel" pref="353" max="32767" attributes="0"/>
+                          <Component id="bookCardPanel" pref="367" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="addBookButton" min="-2" max="-2" attributes="0"/>
@@ -453,7 +455,7 @@
                               <Component id="sortBookRatingButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortBookReleaseYearToggleButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="61" max="32767" attributes="0"/>
+                              <EmptySpace pref="27" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -536,7 +538,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="titleBookLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="titleBookTextField" pref="471" max="32767" attributes="0"/>
+                                              <Component id="titleBookTextField" pref="483" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="coverBookLabel" min="-2" max="-2" attributes="0"/>
@@ -583,14 +585,14 @@
                                                               <EmptySpace max="-2" attributes="0"/>
                                                               <Component id="ratingNoneBookRadioButton" min="-2" max="-2" attributes="0"/>
                                                           </Group>
-                                                          <Component id="locationBookTextField" alignment="0" pref="256" max="32767" attributes="0"/>
+                                                          <Component id="locationBookTextField" alignment="0" pref="291" max="32767" attributes="0"/>
                                                           <Component id="releaseYearBookComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="eanBookTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                          <Component id="authorBookTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                          <Component id="isbnBookTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                          <Component id="languageBookTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                          <Component id="genreBookTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                          <Component id="lentToBookTextField" alignment="1" pref="256" max="32767" attributes="0"/>
+                                                          <Component id="eanBookTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                          <Component id="authorBookTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                          <Component id="isbnBookTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                          <Component id="languageBookTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                          <Component id="genreBookTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                          <Component id="lentToBookTextField" alignment="1" pref="291" max="32767" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -606,7 +608,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="descriptionBookLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="435" max="32767" attributes="0"/>
+                                      <EmptySpace pref="455" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="descriptionBookScrollPane" pref="509" max="32767" attributes="0"/>
@@ -614,7 +616,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="annotationBookLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="450" max="32767" attributes="0"/>
+                                      <EmptySpace pref="465" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="annotationBookScrollPane" pref="509" max="32767" attributes="0"/>
@@ -719,7 +721,7 @@
                               <Component id="annotationBookLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="annotationBookScrollPane" min="-2" pref="144" max="-2" attributes="0"/>
-                              <EmptySpace pref="58" max="32767" attributes="0"/>
+                              <EmptySpace pref="132" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1016,8 +1018,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="viewMusicPanel" alignment="1" max="32767" attributes="0"/>
-                          <Component id="hideMusicButton" alignment="0" pref="490" max="32767" attributes="0"/>
-                          <Component id="itemMusicScrollPane" alignment="1" pref="490" max="32767" attributes="0"/>
+                          <Component id="hideMusicButton" alignment="0" pref="493" max="32767" attributes="0"/>
+                          <Component id="itemMusicScrollPane" alignment="1" pref="493" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1050,9 +1052,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="musicCardPanel" alignment="0" pref="513" max="32767" attributes="0"/>
+                              <Component id="musicCardPanel" alignment="0" pref="523" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewMusicComboBox" pref="426" max="32767" attributes="0"/>
+                                  <Component id="viewMusicComboBox" pref="430" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addMusicButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1068,7 +1070,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="sortPanelMusic" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="musicCardPanel" pref="353" max="32767" attributes="0"/>
+                          <Component id="musicCardPanel" pref="367" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="addMusicButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1130,7 +1132,7 @@
                               <Component id="sortMusicRatingButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortMusicReleaseYearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="75" max="32767" attributes="0"/>
+                              <EmptySpace pref="35" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1213,7 +1215,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="titleMusicLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="titleMusicTextField" pref="471" max="32767" attributes="0"/>
+                                              <Component id="titleMusicTextField" pref="483" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="coverMusicLabel" min="-2" max="-2" attributes="0"/>
@@ -1258,14 +1260,14 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="ratingNoneMusicRadioButton" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="locationMusicTextField" alignment="0" pref="256" max="32767" attributes="0"/>
+                                                  <Component id="locationMusicTextField" alignment="0" pref="291" max="32767" attributes="0"/>
                                                   <Component id="releaseYearMusicComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="eanMusicTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                  <Component id="artistMusicTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                  <Component id="genreMusicTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                  <Component id="lentToMusicTextField" alignment="1" pref="256" max="32767" attributes="0"/>
-                                                  <Component id="typeMusicComboBox" alignment="1" pref="256" max="32767" attributes="0"/>
-                                                  <Component id="formatMusicComboBox" alignment="1" pref="256" max="32767" attributes="0"/>
+                                                  <Component id="eanMusicTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                  <Component id="artistMusicTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                  <Component id="genreMusicTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                  <Component id="lentToMusicTextField" alignment="1" pref="291" max="32767" attributes="0"/>
+                                                  <Component id="typeMusicComboBox" alignment="1" pref="291" max="32767" attributes="0"/>
+                                                  <Component id="formatMusicComboBox" alignment="1" pref="291" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1279,7 +1281,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="descriptionMusicLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="435" max="32767" attributes="0"/>
+                                      <EmptySpace pref="455" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="descriptionMusicScrollPane" pref="509" max="32767" attributes="0"/>
@@ -1287,7 +1289,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="annotationMusicLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="450" max="32767" attributes="0"/>
+                                      <EmptySpace pref="465" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="annotationMusicScrollPane" pref="509" max="32767" attributes="0"/>
@@ -1392,7 +1394,7 @@
                               <Component id="annotationMusicLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="annotationMusicScrollPane" min="-2" pref="144" max="-2" attributes="0"/>
-                              <EmptySpace pref="58" max="32767" attributes="0"/>
+                              <EmptySpace pref="132" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1696,8 +1698,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="viewVideoPanel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="hideVideoButton" alignment="1" pref="490" max="32767" attributes="0"/>
-                          <Component id="itemVideoScrollPane" alignment="0" pref="490" max="32767" attributes="0"/>
+                          <Component id="hideVideoButton" alignment="1" pref="493" max="32767" attributes="0"/>
+                          <Component id="itemVideoScrollPane" alignment="0" pref="493" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1730,10 +1732,10 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="videoCardPanel" alignment="0" pref="513" max="32767" attributes="0"/>
+                              <Component id="videoCardPanel" alignment="0" pref="523" max="32767" attributes="0"/>
                               <Component id="sortPanelVideo" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewVideoComboBox" pref="426" max="32767" attributes="0"/>
+                                  <Component id="viewVideoComboBox" pref="430" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addVideoButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1748,7 +1750,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="sortPanelVideo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="videoCardPanel" pref="353" max="32767" attributes="0"/>
+                          <Component id="videoCardPanel" pref="367" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="addVideoButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1804,7 +1806,7 @@
                               <Component id="sortVideoRatingButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortVideoReleaseYearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="68" max="32767" attributes="0"/>
+                              <EmptySpace pref="33" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1887,7 +1889,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="titleVideoLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="titleVideoTextField" pref="471" max="32767" attributes="0"/>
+                                              <Component id="titleVideoTextField" pref="483" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="coverVideoLabel" min="-2" max="-2" attributes="0"/>
@@ -1932,14 +1934,14 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="ratingNoneVideoRadioButton" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="locationVideoTextField" alignment="0" pref="256" max="32767" attributes="0"/>
+                                                  <Component id="locationVideoTextField" alignment="0" pref="291" max="32767" attributes="0"/>
                                                   <Component id="releaseYearVideoComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="eanVideoTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                  <Component id="directorVideoTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                  <Component id="actorsVideoTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                  <Component id="genreVideoTextField" alignment="1" pref="256" max="32767" attributes="1"/>
-                                                  <Component id="lentToVideoTextField" alignment="1" pref="256" max="32767" attributes="0"/>
-                                                  <Component id="formatVideoComboBox" alignment="1" pref="256" max="32767" attributes="0"/>
+                                                  <Component id="eanVideoTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                  <Component id="directorVideoTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                  <Component id="actorsVideoTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                  <Component id="genreVideoTextField" alignment="1" pref="291" max="32767" attributes="1"/>
+                                                  <Component id="lentToVideoTextField" alignment="1" pref="291" max="32767" attributes="0"/>
+                                                  <Component id="formatVideoComboBox" alignment="1" pref="291" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1953,7 +1955,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="descriptionVideoLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="435" max="32767" attributes="0"/>
+                                      <EmptySpace pref="455" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="descriptionVideoScrollPane" pref="509" max="32767" attributes="0"/>
@@ -1961,7 +1963,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="annotationVideoLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="450" max="32767" attributes="0"/>
+                                      <EmptySpace pref="465" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="annotationVideoScrollPane" pref="509" max="32767" attributes="0"/>
@@ -2066,7 +2068,7 @@
                               <Component id="annotationVideoLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="annotationVideoScrollPane" min="-2" pref="144" max="-2" attributes="0"/>
-                              <EmptySpace pref="58" max="32767" attributes="0"/>
+                              <EmptySpace pref="132" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2352,7 +2354,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="restoreItemsScrollpane" alignment="0" pref="1116" max="32767" attributes="0"/>
+                          <Component id="restoreItemsScrollpane" alignment="0" pref="1124" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="restoreItemButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -2373,7 +2375,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="restoreItemsScrollpane" pref="469" max="32767" attributes="0"/>
+                      <Component id="restoreItemsScrollpane" pref="475" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
