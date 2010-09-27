@@ -49,11 +49,10 @@ import muvibee.media.Music;
 import muvibee.media.Video;
 import muvibee.utils.ResizeImageIcon;
 import muvibee.gui.views.cover.CoverList;
-import util.coverDetailsList.*;
 import muvibee.gui.views.cover.CoverListEntry;
 import util.deleteditemlist.DeletedItemsList;
 import util.expiredList.ExpiredItemsList;
-import util.tree.PrioTree;
+import muvibee.gui.views.tree.PrioTree;
 
 
 

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package util.tree;
+package muvibee.gui.views.tree;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import muvibee.media.Media;

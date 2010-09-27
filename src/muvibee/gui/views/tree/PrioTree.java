@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package util.tree;
+package muvibee.gui.views.tree;
 
 import java.util.ArrayList;
 import java.util.Observable;
