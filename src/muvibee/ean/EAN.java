@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package muvibee.ean;
 
 import java.io.IOException;
@@ -66,10 +62,10 @@ public class EAN {
     public static void setProxy(boolean proxySet, String proxy, String port) {
         if (proxySet) {
             System.getProperties().put("proxySet", "true");
+            System.getProperties().put("proxyHost", proxy);
+            System.getProperties().put("proxyPort", port);
         } else {
-            System.getProperties().put("proxySet", "true");
+            System.getProperties().put("proxySet", "false");
         }
-        System.getProperties().put("proxyHost", proxy);
-        System.getProperties().put("proxyPort", port);
     }
 }
