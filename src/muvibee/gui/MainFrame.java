@@ -862,6 +862,7 @@ public final class MainFrame extends javax.swing.JFrame {
     public void setBookItemInformation(Book book) throws IllegalDateException{
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String title = titleBookTextField.getText().trim();
+        if (title.isEmpty()) throw new IllegalArgumentException(bundle.getString("title_empty"));
         String author = authorBookTextField.getText().trim();
         String language = languageBookTextField.getText().trim();
         String isbn = isbnBookTextField.getText().trim();   //TODO Ueberpruefen!?!?
@@ -926,6 +927,7 @@ public final class MainFrame extends javax.swing.JFrame {
     public void setMusicItemInformation(Music music) throws IllegalDateException {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String title = titleMusicTextField.getText().trim();
+        if (title.isEmpty()) throw new IllegalArgumentException(bundle.getString("title_empty"));
         String artist = artistMusicTextField.getText().trim();
         String type = getSelected(typeMusicComboBox);
         String format = getSelected(formatMusicComboBox);
@@ -990,6 +992,7 @@ public final class MainFrame extends javax.swing.JFrame {
     public void setVideoItemInformation(Video video) throws IllegalDateException {
         ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String title = titleVideoTextField.getText().trim();
+        if (title.isEmpty()) throw new IllegalArgumentException(bundle.getString("title_empty"));
         String director = directorVideoTextField.getText().trim();
         String actors = actorsVideoTextField.getText().trim();
         String format = getSelected(formatVideoComboBox);

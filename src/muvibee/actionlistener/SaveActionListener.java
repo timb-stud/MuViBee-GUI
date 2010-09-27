@@ -30,7 +30,7 @@ public class SaveActionListener implements ActionListener {
             if(button.getName().equals("save book button")){
                 try {
                     mvb.setCurrentBookItemInformation();
-                } catch (IllegalDateException ex) {
+                } catch (Exception ex) {
                     StatusBarModel.getInstance().setFailMessage(ex.getMessage());
                     return;
                 }
@@ -39,16 +39,18 @@ public class SaveActionListener implements ActionListener {
                 if(button.getName().equals("save music button")){
                     try {
                         mvb.setCurrentMusicItemInformation();
-                    } catch (IllegalDateException ex) {
+                    } catch (Exception ex) {
                         StatusBarModel.getInstance().setFailMessage(ex.getMessage());
+                        return;
                     }
 		    mvb.addCurrentMusicToMusicLists();
                 } else {
                     if(button.getName().equals("save video button")){
                         try {
                             mvb.setCurrentVideoItemInformation();
-                        } catch (IllegalDateException ex) {
+                        } catch (Exception ex) {
                             StatusBarModel.getInstance().setFailMessage(ex.getMessage());
+                            return;
                         }
                         mvb.addCurrentVideoToVideoLists();
                     }
