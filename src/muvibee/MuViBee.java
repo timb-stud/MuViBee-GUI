@@ -358,8 +358,20 @@ public class MuViBee {
      * @return
      * @throws IllegalDateException
      */
-    public void setCurrentBookItemInformation() throws IllegalDateException {
-        mainFrame.setBookItemInformation(currentBook);
+    public boolean setCurrentBookItemInformation() throws IllegalDateException {
+        if (bookList.contains(currentBook)) {
+            if (showSaveChangeDecisionFrame() == 0) {
+                mainFrame.setBookItemInformation(currentBook);
+                return true;
+            }
+        } else {
+            if (showSaveAddDecisionFrame() == 0) {
+                mainFrame.setBookItemInformation(currentBook);
+                return true;
+            }
+        }
+        return false;
+
     }
 
     /**
@@ -367,8 +379,19 @@ public class MuViBee {
      * @return
      * @throws IllegalDateException
      */
-    public void setCurrentMusicItemInformation() throws IllegalDateException {
-        mainFrame.setMusicItemInformation(currentMusic);
+    public boolean setCurrentMusicItemInformation() throws IllegalDateException {
+        if (musicList.contains(currentMusic)) {
+            if (showSaveChangeDecisionFrame() == 0) {
+                mainFrame.setMusicItemInformation(currentMusic);
+                return true;
+            }
+        } else {
+            if (showSaveAddDecisionFrame() == 0) {
+                mainFrame.setMusicItemInformation(currentMusic);
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -376,9 +399,21 @@ public class MuViBee {
      * @return
      * @throws IllegalDateException
      */
-    public void setCurrentVideoItemInformation() throws IllegalDateException {
-        mainFrame.setVideoItemInformation(currentVideo);
+    public boolean setCurrentVideoItemInformation() throws IllegalDateException {
+        if (videoList.contains(currentVideo)) {
+            if (showSaveChangeDecisionFrame() == 0) {
+                mainFrame.setVideoItemInformation(currentVideo);
+                return true;
+            }
+        } else {
+            if (showSaveAddDecisionFrame() == 0) {
+                mainFrame.setVideoItemInformation(currentVideo);
+                return true;
+            }
+        }
+        return false;
     }
+
 
     /**
      * Fuegt das currentBook zur bookList und filterBookList hinzu
@@ -510,15 +545,15 @@ public class MuViBee {
         Runnable runCode = new Runnable() {
             @Override
             public void run() {
-                        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-                        for (Media m : currentDeletedMediaList) {
-                            deletedMediaList.remove(m);
-                            m.deleteDB();
-                            m = null;
-                            pbd.incBar();
-                        }
-                        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
-                        pbd.stopProgressBar();
+                ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                for (Media m : currentDeletedMediaList) {
+                    deletedMediaList.remove(m);
+                    m.deleteDB();
+                    m = null;
+                    pbd.incBar();
+                }
+                StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
+                pbd.stopProgressBar();
             }
         };
         int max = currentDeletedMediaList.length - 1;
@@ -533,30 +568,30 @@ public class MuViBee {
             @Override
             public void run() {
 
-                        for (Media m : currentDeletedMediaList) {
-                            if (m instanceof Book) {
-                                filterBookList.add(m);
-                                bookList.add((Book) m);
-                            } else {
-                                if (m instanceof Music) {
-                                    filterMusicList.add(m);
-                                    musicList.add((Music) m);
-                                } else {
-                                    if (m instanceof Video) {
-                                        filterVideoList.add(m);
-                                        videoList.add((Video) m);
-                                    }
-                                }
+                for (Media m : currentDeletedMediaList) {
+                    if (m instanceof Book) {
+                        filterBookList.add(m);
+                        bookList.add((Book) m);
+                    } else {
+                        if (m instanceof Music) {
+                            filterMusicList.add(m);
+                            musicList.add((Music) m);
+                        } else {
+                            if (m instanceof Video) {
+                                filterVideoList.add(m);
+                                videoList.add((Video) m);
                             }
-                            deletedMediaList.remove(m);
-                            m.setDeleted(false);
-                            m.updateDB();
-                            m = null;
-                            pbd.incBar();
                         }
-                        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-                        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
-                        pbd.stopProgressBar();
+                    }
+                    deletedMediaList.remove(m);
+                    m.setDeleted(false);
+                    m.updateDB();
+                    m = null;
+                    pbd.incBar();
+                }
+                ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
+                pbd.stopProgressBar();
             }
         };
         int max = currentDeletedMediaList.length - 1;

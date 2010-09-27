@@ -79,4 +79,23 @@ public class Music extends Media {
          + "\n Interpreter: " + interpreter
          + "\n Type: " + type;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Music) {
+            Music b = (Music)obj;
+            if (super.equals(b) &&
+                this.format.equals(b.format) &&
+                this.interpreter.equals(b.interpreter) &&
+                this.type.equals(b.type)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
