@@ -22,7 +22,6 @@ import muvibee.media.Book;
 import muvibee.media.Media;
 import muvibee.media.Music;
 import muvibee.media.Video;
-import muvibee.utils.SortBy;
 import muvibee.utils.SortTypes;
 
 /**
