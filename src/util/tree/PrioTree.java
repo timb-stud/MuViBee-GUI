@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
@@ -45,10 +46,6 @@ public class PrioTree extends JTree implements Observer {
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
-//        expandRow(2);
-        expandPath((getPathForRow(0)));
-//        setRootVisible(false);
-        expandPath(new TreePath(root.getPath()));
 
         addTreeSelectionListener(new TreeSelectionListener() {
             public void valueChanged(TreeSelectionEvent e) {
@@ -149,6 +146,7 @@ public class PrioTree extends JTree implements Observer {
                 }
             }
         }
+        expandPath(new TreePath(root.getPath()));
     }
 
     /**
@@ -162,21 +160,12 @@ public class PrioTree extends JTree implements Observer {
         root = new Node("Root", null);
         treeModel = new DefaultTreeModel(root);
         setModel(treeModel);
-        expandRow(2);
-//        setRootVisible(false);
-        expandPath((getPathForRow(0)));
 
+        setRootVisible(false);
+        
         MediaList mediaList = ((MediaList) list);
+        sortedBy = mediaList.getSortedBy();
 
-        if (mediaList instanceof BookList)
-            ;
-//            sortedBy = SortBy.getBookSortedBy();
-        else if (mediaList instanceof MusicList)
-            ;
-
-
-//        if (!sortedBy.contains(SortTypes.TITLE))
-//            sortedBy.add(SortTypes.TITLE);
-//        createTree(mediaList,sortedBy);
+        createTree(mediaList,sortedBy);
     }
 }
