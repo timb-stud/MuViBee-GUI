@@ -14,7 +14,7 @@ import muvibee.MuViBee;
 import muvibee.lists.MediaList;
 
 import muvibee.media.*;
-import util.coverDetailsList.CoverDetailsListRenderer;
+import muvibee.gui.views.coverdetails.CoverDetailsListRenderer;
 
 @SuppressWarnings("serial")
 public class ExpiredItemsList extends JList implements Observer{

@@ -1,4 +1,4 @@
-package util.coverDetailsList;
+package muvibee.gui.views.coverdetails;
 
 import java.awt.Color;
 import java.awt.Dimension;

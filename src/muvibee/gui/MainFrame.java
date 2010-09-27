@@ -5,6 +5,8 @@
  */
 
 package muvibee.gui;
+import muvibee.gui.views.coverdetails.CoverDetailsList;
+import muvibee.gui.views.coverdetails.CoverDetailsListEntry;
 import muvibee.gui.views.details.DetailsTable;
 import java.awt.Color;
 import java.awt.Component;
