@@ -1,4 +1,4 @@
-package util.coversList;
+package muvibee.gui.views.cover;
 
 import java.awt.Color;
 import java.awt.Component;

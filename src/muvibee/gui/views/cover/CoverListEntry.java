@@ -1,4 +1,4 @@
-package util.coversList;
+package muvibee.gui.views.cover;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
