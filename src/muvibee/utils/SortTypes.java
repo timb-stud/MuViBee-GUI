@@ -5,6 +5,8 @@
 
 package muvibee.utils;
 
+import java.util.ArrayList;
+
 /**
  * Enum Klasse für mögliche Sortierungen
  * @author Christian Rech
@@ -20,3 +22,6 @@ public enum SortTypes {
     FORMAT,
     DIRECTOR
 }
+
+
+
