@@ -356,19 +356,8 @@ public class MuViBee {
      * @return
      * @throws IllegalDateException
      */
-    public boolean setCurrentBookItemInformation() throws IllegalDateException {
-        if (bookList.contains(currentBook)) {
-            if (showSaveChangeDecisionFrame() == 0) {
-                mainFrame.setBookItemInformation(currentBook);
-                return true;
-            }
-        } else {
-            if (showSaveAddDecisionFrame() == 0) {
-                mainFrame.setBookItemInformation(currentBook);
-                return true;
-            }
-        }
-        return false;
+    public void setCurrentBookItemInformation() throws IllegalDateException {
+        mainFrame.setBookItemInformation(currentBook);
     }
 
     /**
@@ -376,19 +365,8 @@ public class MuViBee {
      * @return
      * @throws IllegalDateException
      */
-    public boolean setCurrentMusicItemInformation() throws IllegalDateException {
-        if (musicList.contains(currentMusic)) {
-            if (showSaveChangeDecisionFrame() == 0) {
-                mainFrame.setMusicItemInformation(currentMusic);
-                return true;
-            }
-        } else {
-            if (showSaveAddDecisionFrame() == 0) {
-                mainFrame.setMusicItemInformation(currentMusic);
-                return true;
-            }
-        }
-        return false;
+    public void setCurrentMusicItemInformation() throws IllegalDateException {
+        mainFrame.setMusicItemInformation(currentMusic);
     }
 
     /**
@@ -396,19 +374,8 @@ public class MuViBee {
      * @return
      * @throws IllegalDateException
      */
-    public boolean setCurrentVideoItemInformation() throws IllegalDateException {
-        if (videoList.contains(currentVideo)) {
-            if (showSaveChangeDecisionFrame() == 0) {
-                mainFrame.setVideoItemInformation(currentVideo);
-                return true;
-            }
-        } else {
-            if (showSaveAddDecisionFrame() == 0) {
-                mainFrame.setVideoItemInformation(currentVideo);
-                return true;
-            }
-        }
-        return false;
+    public void setCurrentVideoItemInformation() throws IllegalDateException {
+        mainFrame.setVideoItemInformation(currentVideo);
     }
 
     /**
