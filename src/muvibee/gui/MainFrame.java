@@ -5,6 +5,7 @@
  */
 
 package muvibee.gui;
+import muvibee.gui.views.details.DetailsTable;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Toolkit;
@@ -49,7 +50,6 @@ import util.coversList.CoverList;
 import util.coverDetailsList.*;
 import util.coversList.CoverListEntry;
 import util.deleteditemlist.DeletedItemsList;
-import util.detailsList.*;
 import util.expiredList.ExpiredItemsList;
 import util.tree.PrioTree;
 

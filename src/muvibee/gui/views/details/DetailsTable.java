@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package util.detailsList;
+package muvibee.gui.views.details;
 
 import java.util.Observable;
 import java.util.Observer;
