@@ -874,7 +874,7 @@ public class MuViBee {
                     continue;
                 }
                 String bookDate = b.getLentUntilDay() + "." + b.getLentUntilMonth() + "." + b.getLentUntilYear();
-                if (df.parse(bookDate).before(Calendar.getInstance().getTime())) {
+                if (b.isLent() && df.parse(bookDate).before(Calendar.getInstance().getTime())) {
                     if (!expiredMediaList.contains(b)) {
                         expiredMediaList.add(b);
                     }
@@ -889,7 +889,7 @@ public class MuViBee {
                     continue;
                 }
                 String musicDate = m.getLentUntilDay() + "." + m.getLentUntilMonth() + "." + m.getLentUntilYear();
-                if (df.parse(musicDate).before(Calendar.getInstance().getTime())) {
+                if (m.isLent() && df.parse(musicDate).before(Calendar.getInstance().getTime())) {
                     if (!expiredMediaList.contains(m)) {
                         expiredMediaList.add(m);
                     }
@@ -904,7 +904,7 @@ public class MuViBee {
                     continue;
                 }
                 String videoDate = v.getLentUntilDay() + "." + v.getLentUntilMonth() + "." + v.getLentUntilYear();
-                if (df.parse(videoDate).before(Calendar.getInstance().getTime())) {
+                if (v.isLent() && df.parse(videoDate).before(Calendar.getInstance().getTime())) {
                     if (!expiredMediaList.contains(v)) {
                         expiredMediaList.add(v);
                     }
@@ -922,7 +922,7 @@ public class MuViBee {
         int index = -1;
         for (Media m : filterBookList.getList()) {
             index++;
-            if (m == media) {
+            if (m.equals(media)) {
                 mainFrame.selectBookTabAndAndCell(index);
                 setCurrentBook((Book) m);
                 return;
@@ -931,7 +931,7 @@ public class MuViBee {
         index = -1;
         for (Media m : filterMusicList.getList()) {
             index++;
-            if (m == media) {
+            if (m.equals(media)) {
                 mainFrame.selectMusicTabAndAndCell(index);
                 setCurrentMusic((Music) m);
                 return;
@@ -940,7 +940,7 @@ public class MuViBee {
         index = -1;
         for (Media m : filterVideoList.getList()) {
             index++;
-            if (m == media) {
+            if (m.equals(media)) {
                 mainFrame.selectVideoTabAndAndCell(index);
                 setCurrentVideo((Video) m);
                 return;

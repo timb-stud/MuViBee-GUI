@@ -82,16 +82,7 @@ public class Book extends Media {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Book) {
-            Book b = (Book)obj;
-            if (super.equals(b) &&
-                this.author.equals(b.author) &&
-                this.isbn.equals(b.isbn) &&
-                this.language.equals(b.language)) {
-                return true;
-            }
-        }
-        return false;
+        return super.equals(obj);
     }
 
     @Override

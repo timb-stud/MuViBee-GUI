@@ -332,23 +332,8 @@ public abstract class Media extends Observable {
     public boolean equals(Object obj) {
         if (obj instanceof Media) {
             Media m = (Media)obj;
-            if (this.ID == m.ID &&
-                this.comment.equals(m.comment) &&
-                this.description.equals(m.description) &&
-                this.ean.equals(m.ean) &&
-                this.genre.equals(m.genre) &&
-                this.lentDay == m.lentDay &&
-                this.lentMonth == m.lentMonth &&
-                this.lentTo.equals(m.lentTo) &&
-                this.lentUntilDay == m.lentUntilDay &&
-                this.lentUntilMonth == m.lentUntilMonth &&
-                this.lentUntilYear == m.lentUntilYear &&
-                this.lentYear == m.lentYear &&
-                this.location.equals(m.location) &&
-                this.rating == m.rating &&
-                this.releaseYear == m.releaseYear &&
-                this.title.equals(m.title)) {
-                    return true;
+            if (this.ID == m.ID) {
+                return true;
             }
 
         }

@@ -8,7 +8,6 @@ package muvibee.actionlistener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import muvibee.IllegalDateException;
 import muvibee.MuViBee;
 import muvibee.gui.StatusBarModel;
 

@@ -82,16 +82,7 @@ public class Video extends Media {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Video) {
-            Video b = (Video)obj;
-            if (super.equals(b) &&
-                this.format.equals(b.format) &&
-                this.actors.equals(b.actors) &&
-                this.director.equals(b.director)) {
-                return true;
-            }
-        }
-        return false;
+        return super.equals(obj);
     }
 
     @Override
