@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import muvibee.MuViBee;
 
@@ -45,7 +46,10 @@ public class HelpDialog extends JDialog {
         });
 
         try {
-            ep.setPage(getClass().getResource("resources/help/help.html"));
+            if(Locale.getDefault() == Locale.GERMAN)
+                ep.setPage(getClass().getResource("resources/help/help_de.html"));
+            else
+                ep.setPage(getClass().getResource("resources/help/help_de.html"));
         } catch (IOException e) {
             e.printStackTrace();
         }
