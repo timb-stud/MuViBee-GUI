@@ -19,7 +19,7 @@ import muvibee.ean.EAN;
 import muvibee.gui.AboutDialog;
 import muvibee.gui.AdvancedSearchDialog;
 import muvibee.gui.HelpDialog;
-import muvibee.gui.LoadDialog;
+import muvibee.gui.ProgressBarDialog;
 import muvibee.gui.StatusBarModel;
 import muvibee.lists.BookList;
 import muvibee.lists.MediaList;
@@ -57,6 +57,7 @@ public class MuViBee {
     public static String mainBundlePath = "muvibee.resources.MuViBee";
     public static String PATH;
     private Settings settings;
+    private ProgressBarDialog pbd;
 
     /*
      * Konstruktor der das mainFrame und die verschiedenen Listen mit hilfe der Datenbank initialisiert
@@ -101,7 +102,33 @@ public class MuViBee {
                 mainFrame = new MainFrame(mvb);
                 mainFrame.setLanguage(settings.getLanguage());
                 mainFrame.setVisible(true);
-                new LoadDialog(mainFrame, "Please wait", true, mvb);
+                pbd = new ProgressBarDialog(mainFrame, "Please wait", true);
+                Runnable initListsCode = new Runnable() {
+                   @Override
+                   public void run() {
+                        setBookList(DBSelector.getBookList(false, null));
+                        pbd.incBar();
+                        setMusicList(DBSelector.getMusicList(false, null));
+                        pbd.incBar();
+                        setVideoList(DBSelector.getVideoList(false, null));
+                        pbd.incBar();
+                        getFilterBookList().addAll(mvb.getBookList());
+                        pbd.incBar();
+                        getFilterMusicList().addAll(mvb.getMusicList());
+                        pbd.incBar();
+                        getFilterVideoList().addAll(mvb.getVideoList());
+                        pbd.incBar();
+                        getDeletedMediaList().addAll(DBSelector.getBookList(true, null));
+                        pbd.incBar();
+                        getDeletedMediaList().addAll(DBSelector.getMusicList(true, null));
+                        pbd.incBar();
+                        getDeletedMediaList().addAll(DBSelector.getVideoList(true, null));
+                        pbd.incBar();
+                        setOverviewInformation();
+                        pbd.stopProgressBar();
+                    }
+                };
+                pbd.startProgressBar(initListsCode, 8);
             }
         });
 
@@ -475,41 +502,59 @@ public class MuViBee {
      * Loescht das currentDeletedMedia Objekt aus der deletedList.
      */
     public void removeCurrentDeletedMediaFromDeletedList() {
-        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-        for (Media m : currentDeletedMediaList) {
-            deletedMediaList.remove(m);
-            m.deleteDB();
-            m = null;
-        }
-        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
+        Runnable runCode = new Runnable() {
+            @Override
+            public void run() {
+                ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                for (Media m : currentDeletedMediaList) {
+                    deletedMediaList.remove(m);
+                    m.deleteDB();
+                    m = null;
+                    pbd.incBar();
+                }
+                StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
+                pbd.stopProgressBar();
+            }
+        };
+        int max = currentDeletedMediaList.length - 1;
+        pbd.startProgressBar(runCode, max);
     }
 
     /**
      * Fuegt das currentDeletedMedia Objekt wieder in die list und filterList ein
      */
     public void restoreCurrentDeletedMedia() {
-        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
-        for (Media m : currentDeletedMediaList) {
-            if (m instanceof Book) {
-                filterBookList.add(m);
-                bookList.add((Book) m);
-            } else {
-                if (m instanceof Music) {
-                    filterMusicList.add(m);
-                    musicList.add((Music) m);
-                } else {
-                    if (m instanceof Video) {
-                        filterVideoList.add(m);
-                        videoList.add((Video) m);
+        Runnable runCode = new Runnable() {
+            @Override
+            public void run() {
+                for (Media m : currentDeletedMediaList) {
+                    if (m instanceof Book) {
+                        filterBookList.add(m);
+                        bookList.add((Book) m);
+                    } else {
+                        if (m instanceof Music) {
+                            filterMusicList.add(m);
+                            musicList.add((Music) m);
+                        } else {
+                            if (m instanceof Video) {
+                                filterVideoList.add(m);
+                                videoList.add((Video) m);
+                            }
+                        }
                     }
+                    deletedMediaList.remove(m);
+                    m.setDeleted(false);
+                    m.updateDB();
+                    m = null;
+                    pbd.incBar();
                 }
+                ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+                StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
+                pbd.stopProgressBar();
             }
-            deletedMediaList.remove(m);
-            m.setDeleted(false);
-            m.updateDB();
-            m = null;
-            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
-        }
+        };
+        int max = currentDeletedMediaList.length - 1;
+        pbd.startProgressBar(runCode, max);
     }
 
     /**
