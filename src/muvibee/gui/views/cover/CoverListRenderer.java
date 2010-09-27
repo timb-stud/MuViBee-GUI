@@ -49,7 +49,7 @@ public class CoverListRenderer extends JLabel implements ListCellRenderer {
 		}
 		
             if (isSelected) {
-              setBackground(Color.cyan);
+              setBackground(Color.BLUE);
               setForeground(Color.white);
             } else {
               setBackground(Color.white);

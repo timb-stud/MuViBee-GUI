@@ -7,6 +7,7 @@ package muvibee.gui.views.details;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -81,6 +82,7 @@ public class DetailsTable extends JTable implements Observer{
      * @param mediaList
      */
     private void setColumnData(MediaList mediaList){
+        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         String[] title = new String[mediaList.getList().size()];
         String[] mediaSpecial = new String[mediaList.getList().size()];
         String[] genre = new String[mediaList.getList().size()];
@@ -92,26 +94,26 @@ public class DetailsTable extends JTable implements Observer{
         for (Media m : mediaList.getList()){
             if (m instanceof Book) {
                 mediaSpecial[i] = ((Book) m).getAuthor();
-                special = "Author";
+                special = bundle.getString("authorLabel");
             } else if (m instanceof Music) {
                 mediaSpecial[i] = ((Music) m).getInterpreter();
-                special = "Interpreter";
+                special = bundle.getString("interpreterLabel");
             } else if (m instanceof Video) {
                 mediaSpecial[i] = ((Video) m).getActors();
-                special = "Actors";
+                special = bundle.getString("actorsLabel");
             }
 
             title[i] = m.getTitle();
             genre[i] = m.getGenre();
-            year[i] =  "" + m.getReleaseYear();
+            year[i] =  (m.getReleaseYear() != 0) ? "" + m.getReleaseYear(): "";
             location[i] = m.getLocation();
             i++;
         }
-        dtm.addColumn("Title", title);
+        dtm.addColumn(bundle.getString("titleLabel"), title);
         dtm.addColumn(special, mediaSpecial);
-        dtm.addColumn("Genre", genre);
-        dtm.addColumn("ReleaseYear", year);
-        dtm.addColumn("Location", location);
+        dtm.addColumn(bundle.getString("genreLabel"), genre);
+        dtm.addColumn(bundle.getString("releaseYearLabel"), year);
+        dtm.addColumn(bundle.getString("locationLabel"), location);
     }
 
     /**

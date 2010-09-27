@@ -16,7 +16,7 @@ import javax.swing.border.Border;
  * @author Christian Rech
  */
 public class CoverDetailsListRenderer implements ListCellRenderer {
-		private static final Color HIGHLIGHT_COLOR = new Color(200, 0, 225);
+		private static final Color HIGHLIGHT_COLOR = new Color(0, 0, 225);
 		Border selectedBorder = BorderFactory.createLineBorder(HIGHLIGHT_COLOR,2);
 		Border normalBorder = BorderFactory.createEmptyBorder();
 	    
