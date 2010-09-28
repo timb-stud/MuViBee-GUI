@@ -446,13 +446,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortBookTitleButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortBookAuthorButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortBookAuthorButton" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortBookLanguageButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortBookLanguageButton" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortBookGenreButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortBookRatingButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortBookGenreButton" min="-2" pref="101" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortBookReleaseYearToggleButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="27" max="32767" attributes="0"/>
@@ -465,10 +463,9 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="sortBookTitleButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sortBookAuthorButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sortBookLanguageButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sortBookGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sortBookRatingButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sortBookReleaseYearToggleButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortBookGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortBookLanguageButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -486,12 +483,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Genre"/>
                         <Property name="name" type="java.lang.String" value="sort book genre" noResource="true"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JToggleButton" name="sortBookRatingButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Bewertung"/>
-                        <Property name="name" type="java.lang.String" value="sort book rating" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JToggleButton" name="sortBookAuthorButton">
@@ -1125,11 +1116,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortMusicArtistButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortMusicFormatButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortMusicFormatButton" min="-2" pref="95" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortMusicGenreButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortMusicRatingButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortMusicGenreButton" min="-2" pref="102" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortMusicReleaseYearButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="35" max="32767" attributes="0"/>
@@ -1143,9 +1132,8 @@
                                   <Component id="sortMusicTitleButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sortMusicArtistButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sortMusicFormatButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sortMusicGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sortMusicRatingButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sortMusicReleaseYearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortMusicGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1163,12 +1151,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Genre"/>
                         <Property name="name" type="java.lang.String" value="sort music genre" noResource="true"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JToggleButton" name="sortMusicRatingButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Rating"/>
-                        <Property name="name" type="java.lang.String" value="sort music rating" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JToggleButton" name="sortMusicArtistButton">
@@ -1799,11 +1781,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortVideoDirectorButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortVideoFormatButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortVideoFormatButton" min="-2" pref="101" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortVideoGenreButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortVideoRatingButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortVideoGenreButton" min="-2" pref="96" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortVideoReleaseYearButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="33" max="32767" attributes="0"/>
@@ -1817,9 +1797,8 @@
                                   <Component id="sortVideoTitleButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sortVideoDirectorButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sortVideoFormatButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sortVideoGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sortVideoRatingButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sortVideoReleaseYearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortVideoGenreButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1837,12 +1816,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Genre"/>
                         <Property name="name" type="java.lang.String" value="sort video genre" noResource="true"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JToggleButton" name="sortVideoRatingButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Rating"/>
-                        <Property name="name" type="java.lang.String" value="sort video rating" noResource="true"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JToggleButton" name="sortVideoDirectorButton">

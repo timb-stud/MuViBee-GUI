@@ -49,7 +49,7 @@ public class HelpDialog extends JDialog {
             if(Locale.getDefault() == Locale.GERMAN)
                 ep.setPage(getClass().getResource("resources/help/help_de.html"));
             else
-                ep.setPage(getClass().getResource("resources/help/help_de.html"));
+                ep.setPage(getClass().getResource("resources/help/help_en.htm"));
         } catch (IOException e) {
             e.printStackTrace();
         }
