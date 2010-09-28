@@ -35,6 +35,7 @@ public class CoverDetailsList extends JList implements Observer {
 
         setModel(listModel);
         setCellRenderer(lcr);
+        setPrototypeCellValue(new CoverDetailsListEntry(new Book(), TOOL_TIP_TEXT_KEY));
         setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setLayoutOrientation(JList.VERTICAL);
         setVisibleRowCount(10);
@@ -63,8 +64,6 @@ public class CoverDetailsList extends JList implements Observer {
      */
     private void listAdd(CoverDetailsListEntry entry) {
         listModel.addElement(entry);
-        validate();
-        setPreferredSize(new Dimension(150, entry.getySize() * listModel.getSize()));
     }
 
     /**

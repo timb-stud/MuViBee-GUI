@@ -29,8 +29,6 @@ public class CoverList extends JList implements Observer{
          * @param muvibee
          */
 	public CoverList(final MuViBee muvibee) {
-                setPrototypeCellValue("Index 1234567890");
-
 		listModel = new DefaultListModel();
 	   	setModel(listModel);
 	   	setLayoutOrientation(JList.HORIZONTAL_WRAP);
@@ -39,6 +37,7 @@ public class CoverList extends JList implements Observer{
 		CoverListRenderer cr = new CoverListRenderer();
 		cr.setPreferredSize(new Dimension(120, 140));
 		setCellRenderer(cr);
+                setPrototypeCellValue(new CoverListEntry(new Book()));
 		setVisibleRowCount(-1);
 
                 addListSelectionListener(new ListSelectionListener() {
@@ -64,8 +63,6 @@ public class CoverList extends JList implements Observer{
          */
 	private void listAdd(CoverListEntry entry){
 		listModel.addElement(entry);
-		validate();
-               //getParent().getParent().getParent().repaint();
 	}
 
 
