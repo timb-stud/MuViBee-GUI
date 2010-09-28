@@ -67,8 +67,8 @@ public class MuViBee {
         final MuViBee mvb = this;
         URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
         File file = new File(url.getPath());
-        PATH = file.getParentFile().getParentFile().toURI().getPath(); // Path beim starten aus Netbeans
-//        PATH = file.getParentFile().toURI().getPath();                // Path beim starten aus einem .jar file
+//        PATH = file.getParentFile().getParentFile().toURI().getPath(); // Path beim starten aus Netbeans
+        PATH = file.getParentFile().toURI().getPath();                // Path beim starten aus einem .jar file
         try {
             PATH = URLDecoder.decode(PATH, "UTF-8");
         } catch (UnsupportedEncodingException ex) {
@@ -209,7 +209,7 @@ public class MuViBee {
      */
     public String showEanInputFrame() {
         ResourceBundle bundle = ResourceBundle.getBundle(mainBundlePath);
-        return (String) JOptionPane.showInputDialog(
+        String input = (String) JOptionPane.showInputDialog(
                 mainFrame,
                 bundle.getString("insert_ean")
                 + "",
@@ -218,6 +218,7 @@ public class MuViBee {
                 null,
                 null,
                 "");
+        return input.trim();
     }
 
     /**
