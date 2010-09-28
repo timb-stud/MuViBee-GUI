@@ -25,11 +25,13 @@ public class DeletedItemsList extends JList implements Observer{
 	public DeletedItemsList(final MuViBee muvibee) {
 		listModel = new DefaultListModel();
 		lcr = new CoverDetailsListRenderer();
- 	        setCellRenderer(lcr);
+                setModel(listModel);
+                setCellRenderer(lcr);
+                setPrototypeCellValue(new DeletedItemEntry(new Book()));
  	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
  	        setLayoutOrientation(JList.VERTICAL);
  	        setVisibleRowCount(10);
-                setModel(listModel);
+
 
 	        addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
@@ -40,15 +42,11 @@ public class DeletedItemsList extends JList implements Observer{
 	        });
 
                 getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-	        setPreferredSize(new Dimension(150,0));
 	}
 
 
 	private void listAdd(DeletedItemEntry entry){
             listModel.addElement(entry);
-            validate();
-            //getParent().getParent().getParent().repaint();
-            setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
 
