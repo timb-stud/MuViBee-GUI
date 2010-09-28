@@ -18,7 +18,7 @@ public class Settings{
     private static String proxyPortKey = "proxyPort";
 
     public Settings(String path) {
-        file = new File(path + "muvibee.settings");
+        file = new File("./muvibee.settings");
     }
 
     public void load() throws IOException{
