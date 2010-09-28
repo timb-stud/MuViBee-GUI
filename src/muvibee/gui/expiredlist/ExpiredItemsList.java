@@ -1,6 +1,7 @@
 
 package muvibee.gui.expiredlist;
 import java.awt.Dimension;
+import java.awt.event.ItemListener;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
@@ -25,11 +26,13 @@ public class ExpiredItemsList extends JList implements Observer{
 	public ExpiredItemsList(final MuViBee muvibee) {
 		listModel = new DefaultListModel();
 		lcr = new CoverDetailsListRenderer();
+                setModel(listModel);
  	        setCellRenderer(lcr);
+                setPrototypeCellValue(new ExpiredItemEntry(new Book()));
  	        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
  	        setLayoutOrientation(JList.VERTICAL);
  	        setVisibleRowCount(10);
-                setModel(listModel);
+
 
 	        addListSelectionListener(new ListSelectionListener() {
 	        	public void valueChanged(ListSelectionEvent evt){
@@ -43,14 +46,11 @@ public class ExpiredItemsList extends JList implements Observer{
 	        });
 
                 getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-	        setPreferredSize(new Dimension(150,0));
 	}
 
 
 	private void listAdd(ExpiredItemEntry entry){
             listModel.addElement(entry);
-            validate();
-            setPreferredSize(new Dimension(150, entry.getySize()*listModel.getSize()));
 	}
 
 
