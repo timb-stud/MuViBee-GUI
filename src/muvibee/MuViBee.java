@@ -84,9 +84,9 @@ public class MuViBee {
         String proxyHost = settings.getProxyHost();
         String proxyPort = settings.getProxyPort();
         if (proxyHost == null || proxyPort == null) {
-            EAN.setProxy(false, PATH, PATH);
+            EAN.setProxy(false, "", "");
         } else {
-            EAN.setProxy(true, PATH, PATH);
+            EAN.setProxy(true, proxyHost, proxyPort);
         }
 
 

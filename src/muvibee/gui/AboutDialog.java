@@ -36,12 +36,11 @@ public class AboutDialog extends JDialog{
         htmlPane.setEditable(false);
 
         JPanel panel = new JPanel(new BorderLayout());
-        JScrollPane scrollPane = new JScrollPane(htmlPane);
         JButton b = new JButton(close);
 
         getContentPane().add(panel);
         panel.add(b, BorderLayout.SOUTH);
-        panel.add(scrollPane);
+        panel.add(new JScrollPane(htmlPane));
 
         b.addActionListener(new ActionListener() {
             @Override

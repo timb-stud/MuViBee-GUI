@@ -415,7 +415,6 @@ public final class MainFrame extends javax.swing.JFrame {
         SortBookActionListener sbal = new SortBookActionListener(mvb);
         sortBookTitleButton.addActionListener(sbal);
         sortBookGenreButton.addActionListener(sbal);
-        sortBookRatingButton.addActionListener(sbal);
         sortBookAuthorButton.addActionListener(sbal);
         sortBookLanguageButton.addActionListener(sbal);
         sortBookReleaseYearToggleButton.addActionListener(sbal);
@@ -423,7 +422,6 @@ public final class MainFrame extends javax.swing.JFrame {
         SortMusicActionListener smal = new SortMusicActionListener(mvb);
         sortMusicTitleButton.addActionListener(smal);
         sortMusicGenreButton.addActionListener(smal);
-        sortMusicRatingButton.addActionListener(smal);
         sortMusicArtistButton.addActionListener(smal);
         sortMusicFormatButton.addActionListener(smal);
         sortMusicReleaseYearButton.addActionListener(smal);
@@ -431,7 +429,6 @@ public final class MainFrame extends javax.swing.JFrame {
         SortVideoActionListener sval = new SortVideoActionListener(mvb);
         sortVideoTitleButton.addActionListener(sval);
         sortVideoGenreButton.addActionListener(sval);
-        sortVideoRatingButton.addActionListener(sval);
         sortVideoDirectorButton.addActionListener(sval);
         sortVideoFormatButton.addActionListener(sval);
         sortVideoReleaseYearButton.addActionListener(sval);
@@ -596,7 +593,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortBookAuthorButton.setText(bundle.getString("authorLabel"));
         sortBookGenreButton.setText(bundle.getString("genreLabel"));
         sortBookLanguageButton.setText(bundle.getString("languageLabel"));
-        sortBookRatingButton.setText(bundle.getString("ratingLabel"));
         sortBookTitleButton.setText(bundle.getString("titleLabel"));
         sortBookReleaseYearToggleButton.setText(bundle.getString("releaseYearLabel"));
 
@@ -606,7 +602,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortMusicArtistButton.setText(bundle.getString("artistLabel"));
         sortMusicGenreButton.setText(bundle.getString("genreLabel"));
         sortMusicFormatButton.setText(bundle.getString("formatLabel"));
-        sortMusicRatingButton.setText(bundle.getString("ratingLabel"));
         sortMusicTitleButton.setText(bundle.getString("titleLabel"));
         sortMusicReleaseYearButton.setText(bundle.getString("releaseYearLabel"));
 
@@ -616,7 +611,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortVideoFormatButton.setText(bundle.getString("formatLabel"));
         sortVideoGenreButton.setText(bundle.getString("genreLabel"));
         sortVideoDirectorButton.setText(bundle.getString("directorLabel"));
-        sortVideoRatingButton.setText(bundle.getString("ratingLabel"));
         sortVideoTitleButton.setText(bundle.getString("titleLabel"));
         sortVideoReleaseYearButton.setText(bundle.getString("releaseYearLabel"));
 
@@ -1204,7 +1198,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortPanelBooks = new javax.swing.JPanel();
         sortBookTitleButton = new javax.swing.JToggleButton();
         sortBookGenreButton = new javax.swing.JToggleButton();
-        sortBookRatingButton = new javax.swing.JToggleButton();
         sortBookAuthorButton = new javax.swing.JToggleButton();
         sortBookLanguageButton = new javax.swing.JToggleButton();
         sortBookReleaseYearToggleButton = new javax.swing.JToggleButton();
@@ -1261,7 +1254,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortPanelMusic = new javax.swing.JPanel();
         sortMusicTitleButton = new javax.swing.JToggleButton();
         sortMusicGenreButton = new javax.swing.JToggleButton();
-        sortMusicRatingButton = new javax.swing.JToggleButton();
         sortMusicArtistButton = new javax.swing.JToggleButton();
         sortMusicFormatButton = new javax.swing.JToggleButton();
         sortMusicReleaseYearButton = new javax.swing.JToggleButton();
@@ -1318,7 +1310,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortPanelVideo = new javax.swing.JPanel();
         sortVideoTitleButton = new javax.swing.JToggleButton();
         sortVideoGenreButton = new javax.swing.JToggleButton();
-        sortVideoRatingButton = new javax.swing.JToggleButton();
         sortVideoDirectorButton = new javax.swing.JToggleButton();
         sortVideoFormatButton = new javax.swing.JToggleButton();
         sortVideoReleaseYearButton = new javax.swing.JToggleButton();
@@ -1451,7 +1442,7 @@ public final class MainFrame extends javax.swing.JFrame {
         tabbedPane.setName("add video button"); // NOI18N
 
         overviewTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        overviewTable.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        overviewTable.setFont(new java.awt.Font("Arial", 0, 24));
         overviewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Bücher", "", null, null},
@@ -1548,9 +1539,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortBookGenreButton.setText("Genre");
         sortBookGenreButton.setName("sort book genre"); // NOI18N
 
-        sortBookRatingButton.setText("Bewertung");
-        sortBookRatingButton.setName("sort book rating"); // NOI18N
-
         sortBookAuthorButton.setText("Autor");
         sortBookAuthorButton.setName("sort book author"); // NOI18N
 
@@ -1568,13 +1556,11 @@ public final class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(sortBookTitleButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortBookAuthorButton)
+                .addComponent(sortBookAuthorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortBookLanguageButton)
+                .addComponent(sortBookLanguageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortBookGenreButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortBookRatingButton)
+                .addComponent(sortBookGenreButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortBookReleaseYearToggleButton)
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -1585,10 +1571,9 @@ public final class MainFrame extends javax.swing.JFrame {
                 .addGroup(sortPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sortBookTitleButton)
                     .addComponent(sortBookAuthorButton)
-                    .addComponent(sortBookLanguageButton)
+                    .addComponent(sortBookReleaseYearToggleButton)
                     .addComponent(sortBookGenreButton)
-                    .addComponent(sortBookRatingButton)
-                    .addComponent(sortBookReleaseYearToggleButton))
+                    .addComponent(sortBookLanguageButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1917,9 +1902,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortMusicGenreButton.setText("Genre");
         sortMusicGenreButton.setName("sort music genre"); // NOI18N
 
-        sortMusicRatingButton.setText("Rating");
-        sortMusicRatingButton.setName("sort music rating"); // NOI18N
-
         sortMusicArtistButton.setText("Interpret");
         sortMusicArtistButton.setName("sort music artist"); // NOI18N
 
@@ -1939,11 +1921,9 @@ public final class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortMusicArtistButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortMusicFormatButton)
+                .addComponent(sortMusicFormatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortMusicGenreButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortMusicRatingButton)
+                .addComponent(sortMusicGenreButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortMusicReleaseYearButton)
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -1955,9 +1935,8 @@ public final class MainFrame extends javax.swing.JFrame {
                     .addComponent(sortMusicTitleButton)
                     .addComponent(sortMusicArtistButton)
                     .addComponent(sortMusicFormatButton)
-                    .addComponent(sortMusicGenreButton)
-                    .addComponent(sortMusicRatingButton)
-                    .addComponent(sortMusicReleaseYearButton))
+                    .addComponent(sortMusicReleaseYearButton)
+                    .addComponent(sortMusicGenreButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2281,9 +2260,6 @@ public final class MainFrame extends javax.swing.JFrame {
         sortVideoGenreButton.setText("Genre");
         sortVideoGenreButton.setName("sort video genre"); // NOI18N
 
-        sortVideoRatingButton.setText("Rating");
-        sortVideoRatingButton.setName("sort video rating"); // NOI18N
-
         sortVideoDirectorButton.setText("Regisseur");
         sortVideoDirectorButton.setName("sort video director"); // NOI18N
 
@@ -2303,11 +2279,9 @@ public final class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortVideoDirectorButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortVideoFormatButton)
+                .addComponent(sortVideoFormatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortVideoGenreButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortVideoRatingButton)
+                .addComponent(sortVideoGenreButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortVideoReleaseYearButton)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -2319,9 +2293,8 @@ public final class MainFrame extends javax.swing.JFrame {
                     .addComponent(sortVideoTitleButton)
                     .addComponent(sortVideoDirectorButton)
                     .addComponent(sortVideoFormatButton)
-                    .addComponent(sortVideoGenreButton)
-                    .addComponent(sortVideoRatingButton)
-                    .addComponent(sortVideoReleaseYearButton))
+                    .addComponent(sortVideoReleaseYearButton)
+                    .addComponent(sortVideoGenreButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2912,13 +2885,11 @@ public final class MainFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton sortBookAuthorButton;
     private javax.swing.JToggleButton sortBookGenreButton;
     private javax.swing.JToggleButton sortBookLanguageButton;
-    private javax.swing.JToggleButton sortBookRatingButton;
     private javax.swing.JToggleButton sortBookReleaseYearToggleButton;
     private javax.swing.JToggleButton sortBookTitleButton;
     private javax.swing.JToggleButton sortMusicArtistButton;
     private javax.swing.JToggleButton sortMusicFormatButton;
     private javax.swing.JToggleButton sortMusicGenreButton;
-    private javax.swing.JToggleButton sortMusicRatingButton;
     private javax.swing.JToggleButton sortMusicReleaseYearButton;
     private javax.swing.JToggleButton sortMusicTitleButton;
     private javax.swing.JPanel sortPanelBooks;
@@ -2927,7 +2898,6 @@ public final class MainFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton sortVideoDirectorButton;
     private javax.swing.JToggleButton sortVideoFormatButton;
     private javax.swing.JToggleButton sortVideoGenreButton;
-    private javax.swing.JToggleButton sortVideoRatingButton;
     private javax.swing.JToggleButton sortVideoReleaseYearButton;
     private javax.swing.JToggleButton sortVideoTitleButton;
     private javax.swing.JPanel statusPanel;

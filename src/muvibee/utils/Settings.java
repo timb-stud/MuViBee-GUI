@@ -31,7 +31,7 @@ public class Settings{
     public void save() throws IOException{
         if(!file.createNewFile()){
             FileOutputStream out = new FileOutputStream(file);
-            properties.store(out, "Kommentaraar");
+            properties.store(out, "MuViBee Settings");
         }
     }
 

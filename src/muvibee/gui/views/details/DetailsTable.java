@@ -97,7 +97,7 @@ public class DetailsTable extends JTable implements Observer{
                 special = bundle.getString("authorLabel");
             } else if (m instanceof Music) {
                 mediaSpecial[i] = ((Music) m).getInterpreter();
-                special = bundle.getString("interpreterLabel");
+                special = bundle.getString("actorsLabel");
             } else if (m instanceof Video) {
                 mediaSpecial[i] = ((Video) m).getActors();
                 special = bundle.getString("actorsLabel");
