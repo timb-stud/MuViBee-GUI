@@ -125,7 +125,7 @@ public class DBSelector {
                     b.setDescription(rsBook.getString(11));
                     b.setComment(rsBook.getString(12));
                     try {
-                        BufferedImage cover = ImageIO.read(new File (MuViBee.PATH + COVER_PATH + rsBook.getString(13) + ".jpg"));
+                        BufferedImage cover = ImageIO.read(new File (COVER_PATH + rsBook.getString(13) + ".jpg"));
                         b.setCover(cover);
                     } catch (IIOException e){
                         b.setCover(Book.defaultCover);
@@ -172,7 +172,7 @@ public class DBSelector {
                     m.setDescription(rsMusic.getString(11));
                     m.setComment(rsMusic.getString(12));
                     try {
-                        BufferedImage cover = ImageIO.read(new File (MuViBee.PATH + COVER_PATH + rsMusic.getString(13) + ".jpg"));
+                        BufferedImage cover = ImageIO.read(new File (COVER_PATH + rsMusic.getString(13) + ".jpg"));
                         m.setCover(cover);
                     } catch (IIOException e){
                         m.setCover(Music.defaultCover);
@@ -219,7 +219,7 @@ public class DBSelector {
                     v.setDescription(rsVideo.getString(11));
                     v.setComment(rsVideo.getString(12));
                     try {
-                        BufferedImage cover = ImageIO.read(new File (MuViBee.PATH + COVER_PATH + rsVideo.getString(13) + ".jpg"));
+                        BufferedImage cover = ImageIO.read(new File (COVER_PATH + rsVideo.getString(13) + ".jpg"));
                         v.setCover(cover);
                     } catch (IIOException e){
                         v.setCover(Video.defaultCover);
