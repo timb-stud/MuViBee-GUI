@@ -67,8 +67,8 @@ public class MuViBee {
         final MuViBee mvb = this;
         URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
         File file = new File(url.getPath());
-//        PATH = file.getParentFile().getParentFile().toURI().getPath(); // Path beim starten aus Netbeans
-        PATH = file.getParentFile().toURI().getPath();                // Path beim starten aus einem .jar file
+        PATH = file.getParentFile().getParentFile().toURI().getPath(); // Path beim starten aus Netbeans
+//        PATH = file.getParentFile().toURI().getPath();                // Path beim starten aus einem .jar file
         try {
             PATH = URLDecoder.decode(PATH, "UTF-8");
         } catch (UnsupportedEncodingException ex) {

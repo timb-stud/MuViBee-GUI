@@ -37,55 +37,65 @@ public class EanBol {
     private static Media getData(TagNode node, Media media) throws IOException {
         String title = "";
         String genre = "";
+        String ean = "";
         String description = "";
         int yearOfRelease = 0;
 
         TagNode[] titleNode = node.getElementsByAttValue("class", "pm_titel",
                 true, true);
-        title = titleNode[0].getText().toString();
+        if(titleNode.length > 0)
+            title = titleNode[0].getText().toString();
         TagNode[] descriptionNode = node.getElementsByAttValue("class",
                 "inner", true, true);
         description = getDescription(descriptionNode);
         TagNode[] eanNode = node.getElementsByAttValue("class", "value pm_ean",
                 true, true);
-        String ean = eanNode[0].getText().toString();
+        if(eanNode.length > 0)
+            ean = eanNode[0].getText().toString();
         TagNode[] yearOfReleaseNode = node.getElementsByAttValue("class",
                 "value pm_veroeffentlichungsdatum", true, true);
         yearOfRelease = parseReleaseYear(yearOfReleaseNode);
         TagNode[] genreNode = node.getElementsByAttValue("class",
                 "value pm_stilrichtung", true, true);
-        if (genreNode.length != 0) {
+        if (genreNode.length > 0)
             genre = genreNode[0].getText().toString();
-        }
         media.setTitle(title);
         media.setReleaseYear(yearOfRelease);
         media.setGenre(genre);
         media.setDescription(description);
         media.setEan(ean);
-        loadImage(ean, media);
-
+        BufferedImage cover = loadImage(node);
+        if(cover != null)
+            media.setCover(cover);
         return media;
     }
     /*
      * This Method donwloads the image from the website.
-     * @param ean : The image of this ean will be downloaded
-     * @param media : The media Object in which the image is stored into.
+     * @param node : The page in which the attribut is to be collected.
      */
-    private static void loadImage(String ean, Media media) throws IOException {
-        URL url = new URL(preEAN + ean + postEAN);
-        TagNode node = cleaner.clean(url);
+    private static BufferedImage loadImage(TagNode node) throws IOException {
         TagNode[] previewImage = node.getElementsByAttValue("id",
                 "previewImage", true, true);
 
-        String coverSource = (previewImage[0].getOriginalSource());
-        coverSource = coverSource.substring(coverSource.indexOf("http:"));
-        coverSource = coverSource.substring(0, coverSource.indexOf(".jpg") + 4);
-
-        URL url_cover = new URL(coverSource);
-        InputStream inputStr = url_cover.openStream();
-
-        BufferedImage image = ImageIO.read(new URL(coverSource));
-        media.setCover(image);
+        String coverSource;
+        if(previewImage.length > 0){
+            coverSource = (previewImage[0].getOriginalSource());
+            coverSource = coverSource.substring(coverSource.indexOf("http:"));
+            coverSource = coverSource.substring(0, coverSource.indexOf(".jpg") + 4);
+        }else{
+            TagNode[] eanNode = node.getElementsByAttValue("class", "value pm_ean",
+                true, true);
+            String ean = "";
+            if(eanNode.length > 0 )
+                ean = eanNode[0].getText().toString();
+            coverSource = "http://www.bic-media.com/dmrs/cover.do?isbn="+ ean + "&width=200";
+        }
+        try{
+            BufferedImage image = ImageIO.read(new URL(coverSource));
+            return image;
+        }catch(IOException e){
+            return null;
+        }
     }
     /*
      * This method takes the description Array from the page and causes it to the structure the media objects need.
@@ -180,19 +190,23 @@ public class EanBol {
             throw new WrongArticleTypeException(noBook);
         } else {
             book = (Book) getData(node, book);
-            TagNode[] authorNode = node.getElementsByAttValue("class",
-                    "b9_author arrow", true, true);
-            String author = authorNode[0].getText().toString();
-            TagNode[] languageNode = node.getElementsByAttValue("class",
-                    "value pm_produktsprache", true, true);
-            String language = languageNode[0].getText().toString();
-            TagNode[] isbnNode = node.getElementsByAttValue("class",
-                    "value pm_isbn", true, true);
-            String isbn = isbnNode[0].getText().toString();
+            TagNode[] authorNode = node.getElementsByAttValue("class", "b9_author arrow", true, true);
+            String author = "";
+            if(authorNode.length > 0)
+                author = authorNode[0].getText().toString();
+            TagNode[] languageNode = node.getElementsByAttValue("class", "value pm_produktsprache", true, true);
+            String language = "";
+            if(languageNode.length > 0)
+                    language = languageNode[0].getText().toString();
+            TagNode[] isbnNode = node.getElementsByAttValue("class", "value pm_isbn", true, true);
+            String isbn = "";
+            if(isbnNode.length > 0)
+                isbn = isbnNode[0].getText().toString();
 
             book.setAuthor(author);
             book.setLanguage(language);
             book.setIsbn(isbn);
+            book.setEan(ean);
             return book;
         }
     }
@@ -219,7 +233,9 @@ public class EanBol {
             TagNode[] typeNode = node.getElementsByAttValue("class",
                     "pm_mediumbezeichnung", true, true);
 
-            String type = typeNode[0].getText().toString();
+            String type = "";
+            if(typeNode.length > 0)
+                    type = typeNode[0].getText().toString();
             String interpreter = interpreterFix(interpreterNode);
 
             music.setType(type);
@@ -248,7 +264,9 @@ public class EanBol {
 
             TagNode[] directorNode = node.getElementsByAttValue("class",
                     "b9_author arrow", true, true);
-            String director = directorNode[0].getText().toString();
+            String director = "";
+            if (directorNode.length > 0)
+                director = directorNode[0].getText().toString();
             TagNode[] actorsNode = node.getElementsByAttValue("class",
                     "value pm_actors pm_readableName", true, true);
             String actors = "";
@@ -294,22 +312,24 @@ public class EanBol {
      */
     private static int parseReleaseYear(TagNode[] releaseYearNode) {
         int yearOfRelease;
-
-        if (releaseYearNode[0].getText().toString().contains(".")) {
-            String releaseYear = releaseYearNode[0].getText().toString();
-            releaseYear = releaseYear.replaceAll("[.]", "");
-            releaseYear = releaseYear.substring(4, releaseYear.length());
-            yearOfRelease = Integer.parseInt(releaseYear);
-            return yearOfRelease;
-        } else {
-            String releaseYear = releaseYearNode[0].getText().toString();
-            releaseYear = releaseYear.replaceAll("&#228", "");
-            releaseYear = releaseYear.replaceAll("[a-zA-Z]", "");
-            releaseYear = releaseYear.replaceAll(" ", "");
-            releaseYear = releaseYear.replaceAll(";", "");
-            yearOfRelease = Integer.parseInt(releaseYear.trim());
-            return yearOfRelease;
+        if (releaseYearNode.length > 0) {
+            if (releaseYearNode[0].getText().toString().contains(".")) {
+                String releaseYear = releaseYearNode[0].getText().toString();
+                releaseYear = releaseYear.replaceAll("[.]", "");
+                releaseYear = releaseYear.substring(4, releaseYear.length());
+                yearOfRelease = Integer.parseInt(releaseYear);
+                return yearOfRelease;
+            } else {
+                String releaseYear = releaseYearNode[0].getText().toString();
+                releaseYear = releaseYear.replaceAll("&#228", "");
+                releaseYear = releaseYear.replaceAll("[a-zA-Z]", "");
+                releaseYear = releaseYear.replaceAll(" ", "");
+                releaseYear = releaseYear.replaceAll(";", "");
+                yearOfRelease = Integer.parseInt(releaseYear.trim());
+                return yearOfRelease;
+            }
         }
+        return 0;
     }
     /*
      * This method takes the correct interpreter.
@@ -317,7 +337,9 @@ public class EanBol {
      * @return Interpreter as String
      */
     private static String interpreterFix(TagNode[] interpreterNode) {
-        String s = interpreterNode[0].getText().toString();
+        String s = "";
+        if(interpreterNode.length > 0)
+            s = interpreterNode[0].getText().toString();
         if (!s.contains("Interpret")) {
             return "";
         }
