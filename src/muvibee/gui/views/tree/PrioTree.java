@@ -166,6 +166,9 @@ public class PrioTree extends JTree implements Observer {
         MediaList mediaList = ((MediaList) list);
         sortedBy = mediaList.getSortedBy();
 
+        if (!sortedBy.contains(SortTypes.TITLE))
+            sortedBy.add(SortTypes.TITLE);
+
         createTree(mediaList,sortedBy);
     }
 }

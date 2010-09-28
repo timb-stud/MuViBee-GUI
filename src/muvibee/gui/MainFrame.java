@@ -418,6 +418,7 @@ public final class MainFrame extends javax.swing.JFrame {
         sortBookRatingButton.addActionListener(sbal);
         sortBookAuthorButton.addActionListener(sbal);
         sortBookLanguageButton.addActionListener(sbal);
+        sortBookReleaseYearToggleButton.addActionListener(sbal);
 
         SortMusicActionListener smal = new SortMusicActionListener(mvb);
         sortMusicTitleButton.addActionListener(smal);
@@ -425,6 +426,7 @@ public final class MainFrame extends javax.swing.JFrame {
         sortMusicRatingButton.addActionListener(smal);
         sortMusicArtistButton.addActionListener(smal);
         sortMusicFormatButton.addActionListener(smal);
+        sortMusicReleaseYearButton.addActionListener(smal);
 
         SortVideoActionListener sval = new SortVideoActionListener(mvb);
         sortVideoTitleButton.addActionListener(sval);
@@ -432,6 +434,7 @@ public final class MainFrame extends javax.swing.JFrame {
         sortVideoRatingButton.addActionListener(sval);
         sortVideoDirectorButton.addActionListener(sval);
         sortVideoFormatButton.addActionListener(sval);
+        sortVideoReleaseYearButton.addActionListener(sval);
         
         StatusBar sb = new StatusBar(StatusBarModel.getInstance());
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
