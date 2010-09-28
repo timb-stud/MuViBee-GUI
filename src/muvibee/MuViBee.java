@@ -55,7 +55,6 @@ public class MuViBee {
     private Video currentVideo;
     private Media[] currentDeletedMediaList;
     public static String mainBundlePath = "muvibee.resources.MuViBee";
-    public static String PATH;
     private Settings settings;
     private ProgressBarDialog pbd;
 
@@ -66,16 +65,7 @@ public class MuViBee {
     public MuViBee() {
         final MuViBee mvb = this;
         URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
-        File file = new File(url.getPath());
-        PATH = file.getParentFile().getParentFile().toURI().getPath(); // Path beim starten aus Netbeans
-//        PATH = file.getParentFile().toURI().getPath();                // Path beim starten aus einem .jar file
-        try {
-            PATH = URLDecoder.decode(PATH, "UTF-8");
-        } catch (UnsupportedEncodingException ex) {
-        }
-        System.out.println("path:" + PATH);
-
-        settings = new Settings(PATH);
+        settings = new Settings();
         try {
             settings.load();
         } catch (IOException ex) {

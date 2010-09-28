@@ -3,7 +3,6 @@ package muvibee.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import muvibee.MuViBee;
 
 /**
  * @author Yassir Klos, Tobias Lana
@@ -29,7 +28,7 @@ public class DBConnector {
         } catch (ClassNotFoundException e) {
         }
         //Connection con = DriverManager.getConnection("jdbc:hsqldb:file:./data/database/muvibee", "SA", "");
-        Connection con = DriverManager.getConnection("jdbc:hsqldb:file:" + MuViBee.PATH + "/data/database/muvibee", "SA", "");
+        Connection con = DriverManager.getConnection("jdbc:hsqldb:file:data/database/muvibee", "SA", "");
         con.setAutoCommit(true);
         return con;
     }

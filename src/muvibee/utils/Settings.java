@@ -17,7 +17,7 @@ public class Settings{
     private static String proxyHostKey = "proxyHost";
     private static String proxyPortKey = "proxyPort";
 
-    public Settings(String path) {
+    public Settings() {
         file = new File("./muvibee.settings");
     }
 
