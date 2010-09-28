@@ -2,6 +2,7 @@ package muvibee.gui.views.coverdetails;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
@@ -54,6 +55,10 @@ public class CoverDetailsListEntry extends JPanel{
 		JPanel info1_title = new JPanel(new GridLayout(2,1,0,-20));
 		JLabel info1Lbl = new JLabel(special);
 		JLabel titleLbl = new JLabel(title);
+
+                info1Lbl.setFont(new Font("Colibri", Font.PLAIN, 12));
+                titleLbl.setFont(new Font("Colibri", Font.BOLD, 15));
+
 		info1_title.add(titleLbl);
                 info1_title.add(info1Lbl);
                 info1_title.setOpaque(false);

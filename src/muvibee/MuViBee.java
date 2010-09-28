@@ -760,6 +760,7 @@ public class MuViBee {
         }
     }
 
+
     /**
      * Lade alle Labels neu
      */
@@ -767,7 +768,171 @@ public class MuViBee {
         mainFrame.reloadLabels(mainBundlePath);
     }
 
-    public int getLentToBook() {
+    /**
+     * fuegt Medium in current deleted media hinzu
+     * @param deletedList
+     */
+    public void fillCurrentDeletedMedia(DeletedItemsList deletedList) {
+        Media[] medias = new Media[deletedList.getSelectedValues().length];
+        for (int i = 0; i < medias.length; i++) {
+            medias[i] = ((DeletedItemEntry) deletedList.getSelectedValues()[i]).getMedia();
+        }
+        setCurrentDeletedMedia(medias);
+    }
+
+    /**
+     * sichbarkeit des Filter loeschen buttons
+     * @param b
+     */
+    public void showDeleteSearchButton(boolean b) {
+        mainFrame.deleteSearchButtonSetVisible(b);
+    }
+
+    /**
+     * Aendert Farbe der Liste
+     * @param color
+     */
+    public void setListsColor(Color color) {
+        mainFrame.setListsColor(color);
+    }
+
+    /**
+     * Fuegt ein ein Medium in die Ueberfaelligen Medien hinzu
+     */
+    public void addExpiredMedia() {
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyy");
+        try {
+            for (Book b : bookList) {
+                if (b.getLentUntilDay() == 0 || b.getLentUntilMonth() == 0 || b.getLentUntilYear() == 0) {
+                    continue;
+                }
+                String bookDate = b.getLentUntilDay() + "." + b.getLentUntilMonth() + "." + b.getLentUntilYear();
+                if (b.isLent() && df.parse(bookDate).before(Calendar.getInstance().getTime())) {
+                    if (!expiredMediaList.contains(b)) {
+                        expiredMediaList.add(b);
+                    }
+                } else {
+                    if (expiredMediaList.contains(b)) {
+                        expiredMediaList.remove(b);
+                    }
+                }
+            }
+            for (Music m : musicList) {
+                if (m.getLentUntilDay() == 0 || m.getLentUntilMonth() == 0 || m.getLentUntilYear() == 0) {
+                    continue;
+                }
+                String musicDate = m.getLentUntilDay() + "." + m.getLentUntilMonth() + "." + m.getLentUntilYear();
+                if (m.isLent() && df.parse(musicDate).before(Calendar.getInstance().getTime())) {
+                    if (!expiredMediaList.contains(m)) {
+                        expiredMediaList.add(m);
+                    }
+                } else {
+                    if (expiredMediaList.contains(m)) {
+                        expiredMediaList.remove(m);
+                    }
+                }
+            }
+            for (Video v : videoList) {
+                if (v.getLentUntilDay() == 0 || v.getLentUntilMonth() == 0 || v.getLentUntilYear() == 0) {
+                    continue;
+                }
+                String videoDate = v.getLentUntilDay() + "." + v.getLentUntilMonth() + "." + v.getLentUntilYear();
+                if (v.isLent() && df.parse(videoDate).before(Calendar.getInstance().getTime())) {
+                    if (!expiredMediaList.contains(v)) {
+                        expiredMediaList.add(v);
+                    }
+                } else {
+                    if (expiredMediaList.contains(v)) {
+                        expiredMediaList.remove(v);
+                    }
+                }
+            }
+        } catch (ParseException ex) {
+        }
+    }
+
+    /**
+     * Zeigt das ausgewaehlte Medien-Objekt
+     * @param media
+     */
+    public void showSelectedMediaItem(Media media) {
+        int index = -1;
+        for (Media m : filterBookList.getList()) {
+            index++;
+            if (m.equals(media)) {
+                mainFrame.selectBookTabAndAndCell(index);
+                setCurrentBook((Book) m);
+                return;
+            }
+        }
+        index = -1;
+        for (Media m : filterMusicList.getList()) {
+            index++;
+            if (m.equals(media)) {
+                mainFrame.selectMusicTabAndAndCell(index);
+                setCurrentMusic((Music) m);
+                return;
+            }
+        }
+        index = -1;
+        for (Media m : filterVideoList.getList()) {
+            index++;
+            if (m.equals(media)) {
+                mainFrame.selectVideoTabAndAndCell(index);
+                setCurrentVideo((Video) m);
+                return;
+            }
+        }
+    }
+
+
+    /**
+     * Main-Methode um Programm zu starten
+     * @param args
+     */
+    public static void main(String args[]) {
+        MuViBee mvb = new MuViBee();
+    }
+
+ //------( Setter & Getter )---->
+
+    public ExpiredItemsList getExpiredList() {
+        return mainFrame.getExpiredList();
+    }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public LinkedList<Book> getBookList() {
+        return bookList;
+    }
+
+    public LinkedList<Music> getMusicList() {
+        return musicList;
+    }
+
+    public LinkedList<Video> getVideoList() {
+        return videoList;
+    }
+
+    public MainFrame getMainFrame() {
+        return mainFrame;
+    }
+
+    public void setBookList(LinkedList<Book> bookList) {
+        this.bookList = bookList;
+    }
+
+    public void setMusicList(LinkedList<Music> musicList) {
+        this.musicList = musicList;
+    }
+
+    public void setVideoList(LinkedList<Video> videoList) {
+        this.videoList = videoList;
+    }
+
+        public int getLentToBook() {
         int sum = 0;
         for (Book b : bookList) {
             if (b.isLent()) {
@@ -851,143 +1016,6 @@ public class MuViBee {
         return expiredMediaList;
     }
 
-    public void fillCurrentDeletedMedia(DeletedItemsList deletedList) {
-        Media[] medias = new Media[deletedList.getSelectedValues().length];
-        for (int i = 0; i < medias.length; i++) {
-            medias[i] = ((DeletedItemEntry) deletedList.getSelectedValues()[i]).getMedia();
-        }
-        setCurrentDeletedMedia(medias);
-    }
-
-    public void showDeleteSearchButton(boolean b) {
-        mainFrame.deleteSearchButtonSetVisible(b);
-    }
-
-    public void setListsColor(Color color) {
-        mainFrame.setListsColor(color);
-    }
-
-    public void addExpiredMedia() {
-        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyy");
-        try {
-            for (Book b : bookList) {
-                if (b.getLentUntilDay() == 0 || b.getLentUntilMonth() == 0 || b.getLentUntilYear() == 0) {
-                    continue;
-                }
-                String bookDate = b.getLentUntilDay() + "." + b.getLentUntilMonth() + "." + b.getLentUntilYear();
-                if (b.isLent() && df.parse(bookDate).before(Calendar.getInstance().getTime())) {
-                    if (!expiredMediaList.contains(b)) {
-                        expiredMediaList.add(b);
-                    }
-                } else {
-                    if (expiredMediaList.contains(b)) {
-                        expiredMediaList.remove(b);
-                    }
-                }
-            }
-            for (Music m : musicList) {
-                if (m.getLentUntilDay() == 0 || m.getLentUntilMonth() == 0 || m.getLentUntilYear() == 0) {
-                    continue;
-                }
-                String musicDate = m.getLentUntilDay() + "." + m.getLentUntilMonth() + "." + m.getLentUntilYear();
-                if (m.isLent() && df.parse(musicDate).before(Calendar.getInstance().getTime())) {
-                    if (!expiredMediaList.contains(m)) {
-                        expiredMediaList.add(m);
-                    }
-                } else {
-                    if (expiredMediaList.contains(m)) {
-                        expiredMediaList.remove(m);
-                    }
-                }
-            }
-            for (Video v : videoList) {
-                if (v.getLentUntilDay() == 0 || v.getLentUntilMonth() == 0 || v.getLentUntilYear() == 0) {
-                    continue;
-                }
-                String videoDate = v.getLentUntilDay() + "." + v.getLentUntilMonth() + "." + v.getLentUntilYear();
-                if (v.isLent() && df.parse(videoDate).before(Calendar.getInstance().getTime())) {
-                    if (!expiredMediaList.contains(v)) {
-                        expiredMediaList.add(v);
-                    }
-                } else {
-                    if (expiredMediaList.contains(v)) {
-                        expiredMediaList.remove(v);
-                    }
-                }
-            }
-        } catch (ParseException ex) {
-        }
-    }
-
-    public void showSelectedMediaItem(Media media) {
-        int index = -1;
-        for (Media m : filterBookList.getList()) {
-            index++;
-            if (m.equals(media)) {
-                mainFrame.selectBookTabAndAndCell(index);
-                setCurrentBook((Book) m);
-                return;
-            }
-        }
-        index = -1;
-        for (Media m : filterMusicList.getList()) {
-            index++;
-            if (m.equals(media)) {
-                mainFrame.selectMusicTabAndAndCell(index);
-                setCurrentMusic((Music) m);
-                return;
-            }
-        }
-        index = -1;
-        for (Media m : filterVideoList.getList()) {
-            index++;
-            if (m.equals(media)) {
-                mainFrame.selectVideoTabAndAndCell(index);
-                setCurrentVideo((Video) m);
-                return;
-            }
-        }
-    }
-
-    public ExpiredItemsList getExpiredList() {
-        return mainFrame.getExpiredList();
-    }
-
-    public Settings getSettings() {
-        return settings;
-    }
-
-    public static void main(String args[]) {
-        MuViBee mvb = new MuViBee();
-    }
-
-    public LinkedList<Book> getBookList() {
-        return bookList;
-    }
-
-    public LinkedList<Music> getMusicList() {
-        return musicList;
-    }
-
-    public LinkedList<Video> getVideoList() {
-        return videoList;
-    }
-
-    public MainFrame getMainFrame() {
-        return mainFrame;
-    }
-
-    public void setBookList(LinkedList<Book> bookList) {
-        this.bookList = bookList;
-    }
-
-    public void setMusicList(LinkedList<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void setVideoList(LinkedList<Video> videoList) {
-        this.videoList = videoList;
-    }
-    
+ //------(end  Setter & Getter )---->
 
 }
