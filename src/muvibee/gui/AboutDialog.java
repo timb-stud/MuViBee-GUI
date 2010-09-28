@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.html.HTMLEditorKit;
@@ -30,17 +31,17 @@ public class AboutDialog extends JDialog{
         final JDialog dialog = this;
         setSize(700, 500);
 
-        JPanel panel = new JPanel(new BorderLayout());
-        JButton b = new JButton(close);
-
-
         final JEditorPane htmlPane = new JEditorPane();
         htmlPane.setEditorKit(new HTMLEditorKit());
         htmlPane.setEditable(false);
 
+        JPanel panel = new JPanel(new BorderLayout());
+        JScrollPane scrollPane = new JScrollPane(htmlPane);
+        JButton b = new JButton(close);
+
         getContentPane().add(panel);
         panel.add(b, BorderLayout.SOUTH);
-        panel.add(htmlPane);
+        panel.add(scrollPane);
 
         b.addActionListener(new ActionListener() {
             @Override
