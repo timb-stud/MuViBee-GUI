@@ -93,6 +93,9 @@ public class AdvancedSearchDialog extends javax.swing.JDialog {
         musicPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("musicPanelASD")));
         videoPanel.setBorder(BorderFactory.createTitledBorder(bundle.getString("videoPanelASD")));
 
+        cancelButton.setText(bundle.getString("cancel"));
+        searchButton.setText(bundle.getString("searchButton"));
+
         titleLabel.setText(bundle.getString("titleLabel"));
         ratingLabel.setText(bundle.getString("ratingLabel"));
         eanLabel.setText(bundle.getString("eanLabel"));
