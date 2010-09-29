@@ -51,8 +51,8 @@ public class ProgressBarDialog extends JDialog  {
         protected void done () {
             progress = 0;
             sb.setValue(0);
-            setVisible(false);
             task = new Task();
+            setVisible(false);
         }
 
         public void propertyChange(PropertyChangeEvent evt) {
