@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -50,11 +51,15 @@ public class AboutDialog extends JDialog{
             }
         });
 
-        try {
-            htmlPane.setPage(getClass().getResource("resources/about/about.html"));
+         try {
+            if(Locale.getDefault() == Locale.GERMAN)
+                htmlPane.setPage(getClass().getResource("resources/about/about_de.html"));
+            else
+                htmlPane.setPage(getClass().getResource("resources/about/about_en.html"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         htmlPane.addHyperlinkListener(new HyperlinkListener() {
             @Override

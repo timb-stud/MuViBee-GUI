@@ -97,7 +97,7 @@ public class DetailsTable extends JTable implements Observer{
                 special = bundle.getString("authorLabel");
             } else if (m instanceof Music) {
                 mediaSpecial[i] = ((Music) m).getInterpreter();
-                special = bundle.getString("actorsLabel");
+                special = bundle.getString("artistLabel");
             } else if (m instanceof Video) {
                 mediaSpecial[i] = ((Video) m).getActors();
                 special = bundle.getString("actorsLabel");
@@ -115,6 +115,7 @@ public class DetailsTable extends JTable implements Observer{
         dtm.addColumn(bundle.getString("releaseYearLabel"), year);
         dtm.addColumn(bundle.getString("locationLabel"), location);
     }
+
 
     /**
      * Observer Pattern: Löscht aktuelle Liste und erstellt neue
