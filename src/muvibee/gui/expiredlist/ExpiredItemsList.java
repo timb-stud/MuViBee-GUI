@@ -1,7 +1,5 @@
 
 package muvibee.gui.expiredlist;
-import java.awt.Dimension;
-import java.awt.event.ItemListener;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
