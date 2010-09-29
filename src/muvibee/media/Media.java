@@ -32,14 +32,12 @@ public abstract class Media extends Observable {
     private boolean isLent = false;
 
     public Media() {
-
     }
 
     public void updateObservers() {
         setChanged();
         notifyObservers();
     }
-
 
     public void updateDB() {
         DBUtil.dbUpdate(this);
@@ -123,7 +121,7 @@ public abstract class Media extends Observable {
         if (this.lentDay < 10) {
             day = "0" + this.lentDay;
         }
-        if  (this.lentMonth < 10) {
+        if (this.lentMonth < 10) {
             month = "0" + this.lentMonth;
         }
         if (this.lentYear == 0) {
@@ -133,7 +131,7 @@ public abstract class Media extends Observable {
     }
 
     public void setLentDate(String date) {
-        if(date == null) {
+        if (date == null) {
             this.lentYear = 0;
             this.lentMonth = 0;
             this.lentDay = 0;
@@ -168,7 +166,7 @@ public abstract class Media extends Observable {
         if (this.lentUntilDay < 10) {
             day = "0" + this.lentUntilDay;
         }
-        if  (this.lentUntilMonth < 10) {
+        if (this.lentUntilMonth < 10) {
             month = "0" + this.lentUntilMonth;
         }
         if (this.lentUntilYear == 0) {
@@ -178,7 +176,7 @@ public abstract class Media extends Observable {
     }
 
     public void setLentUntilDate(String date) {
-        if(date == null) {
+        if (date == null) {
             this.lentYear = 0;
             this.lentMonth = 0;
             this.lentDay = 0;
@@ -248,7 +246,7 @@ public abstract class Media extends Observable {
     }
 
     public void setCover(BufferedImage cover) {
-            this.cover = cover;
+        this.cover = cover;
     }
 
     public boolean isDeleted() {
@@ -259,14 +257,15 @@ public abstract class Media extends Observable {
         this.isDeleted = isDeleted;
     }
 
-
     /**
      * Vergleicht einen Suchstring mit einem Media Objekt.
      * @param str
      * @return
      */
     public boolean sortMatches(String str) {
-        if (description == null) description = "";
+        if (description == null) {
+            description = "";
+        }
         str = str.toLowerCase();
         return title.toLowerCase().contains(str) || genre.toLowerCase().contains(str)
                 || location.toLowerCase().contains(str) || lentTo.toLowerCase().contains(str)
@@ -280,8 +279,10 @@ public abstract class Media extends Observable {
      * @param m
      * @return true wenn das such Media Objekt zu diesem hier passt.
      */
-    public boolean sortMatches(Media m){
-        if (description == null) description = "";
+    public boolean sortMatches(Media m) {
+        if (description == null) {
+            description = "";
+        }
         return title.toLowerCase().contains(m.title.toLowerCase())
                 && ean.toLowerCase().contains(m.ean.toLowerCase())
                 && genre.toLowerCase().contains(m.genre.toLowerCase())
@@ -301,39 +302,40 @@ public abstract class Media extends Observable {
 
     @Override
     public String toString() {
-        return
-           "\n ID: " + this.ID
-         + "\n Titel: " + this.title
-         + "\n EAN: " + this.ean
-         + "\n Genre: " + this.genre
-         + "\n ReleaseYear: " + this.releaseYear
-         + "\n Location: " + this.location
-         + "\n isLent: " + this.isLent
-         + "\n lentDay: " + this.lentDay
-         + "\n lentMonth: " + this.lentMonth
-         + "\n lentYear: " + this.lentYear
-         + "\n LentDate: " + this.getLentDate()
-         + "\n LentTo: " + this.lentTo
-         + "\n lentUntilDay: " + this.lentUntilDay
-         + "\n lentUntilMonth: " + this.lentUntilMonth
-         + "\n lentUntilYear: " + this.lentUntilYear
-         + "\n LentUntilDate: " + this.getLentUntilDate()
-         + "\n Rating: " + this.rating
-         + "\n Description: " + this.description
-         + "\n Comment: " + this.comment
-         + "\n Cover: " + this.cover.toString()
-         + "\n isDeleted: " + this.isDeleted
-         + "\n isLent: " + this.isLent;
+        return "\n ID: " + this.ID
+                + "\n Titel: " + this.title
+                + "\n EAN: " + this.ean
+                + "\n Genre: " + this.genre
+                + "\n ReleaseYear: " + this.releaseYear
+                + "\n Location: " + this.location
+                + "\n isLent: " + this.isLent
+                + "\n lentDay: " + this.lentDay
+                + "\n lentMonth: " + this.lentMonth
+                + "\n lentYear: " + this.lentYear
+                + "\n LentDate: " + this.getLentDate()
+                + "\n LentTo: " + this.lentTo
+                + "\n lentUntilDay: " + this.lentUntilDay
+                + "\n lentUntilMonth: " + this.lentUntilMonth
+                + "\n lentUntilYear: " + this.lentUntilYear
+                + "\n LentUntilDate: " + this.getLentUntilDate()
+                + "\n Rating: " + this.rating
+                + "\n Description: " + this.description
+                + "\n Comment: " + this.comment
+                + "\n Cover: " + this.cover.toString()
+                + "\n isDeleted: " + this.isDeleted
+                + "\n isLent: " + this.isLent;
     }
-
-
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Media) {
-            Media m = (Media)obj;
+            Media m = (Media) obj;
             if (this.ID == m.ID) {
-                return true;
+                if (this instanceof Book && m instanceof Book
+                        || this instanceof Music && m instanceof Music
+                        || this instanceof Video && m instanceof Video) {
+                    return true;
+                }
             }
 
         }
@@ -346,6 +348,4 @@ public abstract class Media extends Observable {
         hash = 53 * hash + this.ID;
         return hash;
     }
-
-
 }
