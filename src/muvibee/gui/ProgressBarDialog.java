@@ -51,6 +51,7 @@ public class ProgressBarDialog extends JDialog  {
         protected void done () {
             progress = 0;
             sb.setValue(0);
+            setVisible(false);
             task = new Task();
         }
 
@@ -97,9 +98,6 @@ public class ProgressBarDialog extends JDialog  {
        task.execute();
     }
 
-    public void stopProgressBar() {
-        setVisible(false);
-    }
 
     public void startProgressBar(Runnable runnableCode, int max) {
         this.runnableCode = runnableCode;

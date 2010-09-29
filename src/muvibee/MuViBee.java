@@ -114,7 +114,6 @@ public class MuViBee {
                         getDeletedMediaList().addAll(DBSelector.getVideoList(true, null));
                         ProgressBarDialog.getInstance().incBar();
                         setOverviewInformation();
-                        ProgressBarDialog.getInstance().stopProgressBar();
 
                    }
                 };
@@ -422,7 +421,6 @@ public class MuViBee {
                         filterBookList.clear();
                         filterBookList.addAll(bookList);
                         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
-                        ProgressBarDialog.getInstance().stopProgressBar();
                     }
                 });
 
@@ -446,7 +444,6 @@ public class MuViBee {
                         filterMusicList.clear();
                         filterMusicList.addAll(musicList);
                         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
-                        ProgressBarDialog.getInstance().stopProgressBar();
                     }
                 });
 
@@ -470,7 +467,6 @@ public class MuViBee {
                         filterVideoList.clear();
                         filterVideoList.addAll(videoList);
                         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
-                        ProgressBarDialog.getInstance().stopProgressBar();
                     }
                 });
 
@@ -545,7 +541,6 @@ public class MuViBee {
                     ProgressBarDialog.getInstance().incBar();
                 }
                 StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
-                ProgressBarDialog.getInstance().stopProgressBar();
             }
         };
         int max = currentDeletedMediaList.length - 1;
@@ -583,7 +578,6 @@ public class MuViBee {
                 }
                 ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
                 StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
-                ProgressBarDialog.getInstance().stopProgressBar();
             }
         };
         int max = currentDeletedMediaList.length - 1;

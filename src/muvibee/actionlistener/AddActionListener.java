@@ -60,25 +60,19 @@ public class AddActionListener implements ActionListener {
                                 try {
                                     book = EAN.getBookData(ean);
                                     StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
-                                    ProgressBarDialog.getInstance().stopProgressBar();
                                 } catch (muvibee.ean.NoResultException ex) {
                                     StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
-                                    ProgressBarDialog.getInstance().stopProgressBar();
                                     return;
                                 } catch (muvibee.ean.MoreThanOneResultException ex) {
                                     StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
-                                    ProgressBarDialog.getInstance().stopProgressBar();
                                 } catch (muvibee.ean.WrongArticleTypeException ex) {
                                     StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
-                                    ProgressBarDialog.getInstance().stopProgressBar();
                                     return;
                                 } catch (IOException ioex) {
                                     StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                                    ProgressBarDialog.getInstance().stopProgressBar();
                                     return;
                                 } catch (Exception exc) {
                                     StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                                    ProgressBarDialog.getInstance().stopProgressBar();
                                     return;
                                 }
                             }
@@ -104,25 +98,19 @@ public class AddActionListener implements ActionListener {
                                     try {
                                         music = EAN.getMusicData(ean);
                                         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
-                                        ProgressBarDialog.getInstance().stopProgressBar();
                                     } catch (muvibee.ean.NoResultException ex) {
                                         StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
-                                        ProgressBarDialog.getInstance().stopProgressBar();
                                         return;
                                     } catch (muvibee.ean.MoreThanOneResultException ex) {
                                         StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
-                                        ProgressBarDialog.getInstance().stopProgressBar();
                                     } catch (muvibee.ean.WrongArticleTypeException ex) {
                                         StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
-                                        ProgressBarDialog.getInstance().stopProgressBar();
                                         return;
                                     } catch (IOException ioex) {
                                         StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                                        ProgressBarDialog.getInstance().stopProgressBar();
                                         return;
                                     } catch (Exception exc) {
                                         StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                                        ProgressBarDialog.getInstance().stopProgressBar();
                                         return;
                                     }
                                 }
@@ -148,25 +136,19 @@ public class AddActionListener implements ActionListener {
                                         try {
                                             video = EAN.getVideoData(ean);
                                             StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
-                                            ProgressBarDialog.getInstance().stopProgressBar();
                                         } catch (muvibee.ean.NoResultException ex) {
                                             StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
-                                            ProgressBarDialog.getInstance().stopProgressBar();
                                             return;
                                         } catch (muvibee.ean.MoreThanOneResultException ex) {
                                             StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
-                                            ProgressBarDialog.getInstance().stopProgressBar();
                                         } catch (muvibee.ean.WrongArticleTypeException ex) {
                                             StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
-                                            ProgressBarDialog.getInstance().stopProgressBar();
                                             return;
                                         } catch (IOException ioex) {
                                             StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                                            ProgressBarDialog.getInstance().stopProgressBar();
                                             return;
                                         } catch (Exception exc) {
                                             StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                                            ProgressBarDialog.getInstance().stopProgressBar();
                                             return;
                                         }
                                     }
