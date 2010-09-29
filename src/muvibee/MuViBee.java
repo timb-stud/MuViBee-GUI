@@ -206,7 +206,10 @@ public class MuViBee {
                 null,
                 null,
                 "");
-        return input == null ? null : input.trim();
+        if(input != null)
+            return input.trim();
+        else
+            return null;
     }
 
     /**
