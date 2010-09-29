@@ -7,22 +7,68 @@ package muvibee.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.JDialog;
 import javax.swing.JProgressBar;
-import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
 /**
  *
  * @author bline
  */
-public class ProgressBarDialog extends JDialog {
-    JProgressBar sb;
-    Runnable runnableCode;
+public class ProgressBarDialog extends JDialog  {
+    private JProgressBar sb;
+    private Runnable runnableCode;
+    private Task task;
+    private int progress;
+    private static ProgressBarDialog uniqueInstance;
 
-    public ProgressBarDialog(MainFrame mainFrame, String string, boolean b) {
-        super(mainFrame, string, b);
+    public static ProgressBarDialog getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new ProgressBarDialog();
+        }
+        return uniqueInstance;
+    }
+
+     private class Task extends SwingWorker<Void, Void> implements PropertyChangeListener{
+
+         public Task() {
+             addPropertyChangeListener(this);
+         }
+         
+        @Override
+        protected Void doInBackground() throws Exception {
+            runnableCode.run();
+            return null;
+        }
+
+        @Override
+        protected void done () {
+            progress = 0;
+            sb.setValue(0);
+            task = new Task();
+        }
+
+        public void propertyChange(PropertyChangeEvent evt) {
+            if ("progress".equals(evt.getPropertyName())) {
+                sb.setValue(progress);
+            }
+         }
+
+        public void incProgress() {
+            setProgress(++progress);
+        }
+
+     }
+
+    private ProgressBarDialog() {
+        setLocation(new Point(Toolkit.getDefaultToolkit().getScreenSize().width/2, Toolkit.getDefaultToolkit().getScreenSize().height/2));
+        setModal(true);
         setUndecorated(true);
         getContentPane().setLayout(new BorderLayout());
         sb = new JProgressBar(0, 11);
@@ -31,6 +77,7 @@ public class ProgressBarDialog extends JDialog {
         getContentPane().add(sb, BorderLayout.CENTER);
         setLocationRelativeTo(null);
         setLocation(getLocation().x - 250, getLocation().y - 50);
+        task = new Task();
         pack();
         
         addWindowListener(new WindowAdapter() {
@@ -43,27 +90,14 @@ public class ProgressBarDialog extends JDialog {
     }
 
     public void incBar() {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            public void run() {
-                sb.setValue(sb.getValue() + 1);
-            }
-
-        });
-
+       task.incProgress();
     }
     
     private void runCode() {
-        new Thread(runnableCode).start();
+       task.execute();
     }
 
     public void stopProgressBar() {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            public void run() {
-                sb.setValue(0);
-            }
-        });
         setVisible(false);
     }
 

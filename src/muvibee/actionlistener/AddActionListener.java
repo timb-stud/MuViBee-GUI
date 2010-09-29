@@ -7,10 +7,17 @@ package muvibee.actionlistener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import muvibee.MuViBee;
 import muvibee.ean.EAN;
+import muvibee.ean.MoreThanOneResultException;
+import muvibee.ean.NoResultException;
+import muvibee.ean.WrongArticleTypeException;
+import muvibee.gui.ProgressBarDialog;
 import muvibee.gui.StatusBarModel;
 import muvibee.media.Book;
 import muvibee.media.Music;
@@ -23,13 +30,17 @@ import muvibee.media.Video;
 public class AddActionListener implements ActionListener {
 
     private MuViBee mvb;
+    private Book book;
+    private Music music;
+    private Video video;
 
     public AddActionListener(MuViBee mvb) {
         this.mvb = mvb;
     }
 
+
     public void actionPerformed(ActionEvent e) {
-        ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
+        final ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
         Object source = e.getSource();
         if (source instanceof JButton) {
             JButton button = (JButton) source;
@@ -37,84 +48,131 @@ public class AddActionListener implements ActionListener {
             if (decision >= 0) {
                 mvb.resetSearch();
                 if (button.getName().equals("add book button")) {
-                    Book book;
+                    book = null;
                     if (decision == 0) {
-                        String ean = mvb.showEanInputFrame();
+                        final String ean = mvb.showEanInputFrame();
                         if (ean == null) {
                             return;
                         }
-                        try {
-                            book = EAN.getBookData(ean);
-                            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
-                        } catch (muvibee.ean.NoResultException ex) {
-                            StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
-                            return;
-                        } catch (muvibee.ean.MoreThanOneResultException ex) {
-                            StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
-                            return;
-                        } catch (muvibee.ean.WrongArticleTypeException ex) {
-                            StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
-                            return;
-                        } catch (IOException ioex) {
-                            StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                            return;
-                        }
+                        Runnable runCode = new Runnable() {
+
+                            public void run() {
+                                try {
+                                    book = EAN.getBookData(ean);
+                                    StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
+                                    ProgressBarDialog.getInstance().stopProgressBar();
+                                } catch (muvibee.ean.NoResultException ex) {
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
+                                    ProgressBarDialog.getInstance().stopProgressBar();
+                                    return;
+                                } catch (muvibee.ean.MoreThanOneResultException ex) {
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
+                                    ProgressBarDialog.getInstance().stopProgressBar();
+                                } catch (muvibee.ean.WrongArticleTypeException ex) {
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
+                                    ProgressBarDialog.getInstance().stopProgressBar();
+                                    return;
+                                } catch (IOException ioex) {
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
+                                    ProgressBarDialog.getInstance().stopProgressBar();
+                                    return;
+                                } catch (Exception exc) {
+                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
+                                    ProgressBarDialog.getInstance().stopProgressBar();
+                                    return;
+                                }
+                            }
+
+                        };
+                        ProgressBarDialog.getInstance().startProgressBar(runCode);
+                        if (book == null) return;
                     } else {
                         book = new Book();
                     }
                     mvb.setCurrentBook(book);
                 } else {
                     if (button.getName().equals("add music button")) {
-                        Music music;
+                        music = null;
                         if (decision == 0) {
-                            String ean = mvb.showEanInputFrame();
+                            final String ean = mvb.showEanInputFrame();
                             if (ean == null) {
                                 return;
                             }
-                            try {
-                                music = muvibee.ean.EAN.getMusicData(ean);
-                                StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
-                            } catch (muvibee.ean.NoResultException ex) {
-                                StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
-                                return;
-                            } catch (muvibee.ean.MoreThanOneResultException ex) {
-                                StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
-                                return;
-                            } catch (muvibee.ean.WrongArticleTypeException ex) {
-                                StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
-                                return;
-                            } catch (IOException ex) {
-                                StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                                return;
-                            }
+                            Runnable runCode = new Runnable() {
+
+                                public void run() {
+                                    try {
+                                        music = EAN.getMusicData(ean);
+                                        StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
+                                        ProgressBarDialog.getInstance().stopProgressBar();
+                                    } catch (muvibee.ean.NoResultException ex) {
+                                        StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
+                                        ProgressBarDialog.getInstance().stopProgressBar();
+                                        return;
+                                    } catch (muvibee.ean.MoreThanOneResultException ex) {
+                                        StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
+                                        ProgressBarDialog.getInstance().stopProgressBar();
+                                    } catch (muvibee.ean.WrongArticleTypeException ex) {
+                                        StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
+                                        ProgressBarDialog.getInstance().stopProgressBar();
+                                        return;
+                                    } catch (IOException ioex) {
+                                        StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
+                                        ProgressBarDialog.getInstance().stopProgressBar();
+                                        return;
+                                    } catch (Exception exc) {
+                                        StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
+                                        ProgressBarDialog.getInstance().stopProgressBar();
+                                        return;
+                                    }
+                                }
+
+                            };
+                            ProgressBarDialog.getInstance().startProgressBar(runCode);
+                            if (music == null) return;
                         } else {
                             music = new Music();
                         }
                         mvb.setCurrentMusic(music);
                     } else {
                         if (button.getName().equals("add video button")) {
-                            Video video;
+                            video = null;
                             if (decision == 0) {
-                                String ean = mvb.showEanInputFrame();
+                                final String ean = mvb.showEanInputFrame();
                                 if (ean == null) {
                                     return;
                                 }
-                                try {
-                                    video = EAN.getVideoData(ean);
-                                    StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
-                                } catch (muvibee.ean.NoResultException ex) {
-                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
-                                    return;
-                                } catch (muvibee.ean.MoreThanOneResultException ex) {
-                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
-                                    return;
-                                } catch (muvibee.ean.WrongArticleTypeException ex) {
-                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
-                                    return;
-                                } catch (IOException ex2) {
-                                    StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
-                                    return;
-                                }
+                                Runnable runCode = new Runnable() {
+
+                                    public void run() {
+                                        try {
+                                            video = EAN.getVideoData(ean);
+                                            StatusBarModel.getInstance().setSuccessMessage(bundle.getString("ean_found"));
+                                            ProgressBarDialog.getInstance().stopProgressBar();
+                                        } catch (muvibee.ean.NoResultException ex) {
+                                            StatusBarModel.getInstance().setFailMessage(bundle.getString("ean_not_found_retry"));
+                                            ProgressBarDialog.getInstance().stopProgressBar();
+                                            return;
+                                        } catch (muvibee.ean.MoreThanOneResultException ex) {
+                                            StatusBarModel.getInstance().setFailMessage(bundle.getString("many_eans_found_retry"));
+                                            ProgressBarDialog.getInstance().stopProgressBar();
+                                        } catch (muvibee.ean.WrongArticleTypeException ex) {
+                                            StatusBarModel.getInstance().setFailMessage(bundle.getString("fales_ean_type"));
+                                            ProgressBarDialog.getInstance().stopProgressBar();
+                                            return;
+                                        } catch (IOException ioex) {
+                                            StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
+                                            ProgressBarDialog.getInstance().stopProgressBar();
+                                            return;
+                                        } catch (Exception exc) {
+                                            StatusBarModel.getInstance().setFailMessage(bundle.getString("connectionError"));
+                                            ProgressBarDialog.getInstance().stopProgressBar();
+                                            return;
+                                        }
+                                    }
+                                };
+                                ProgressBarDialog.getInstance().startProgressBar(runCode);
+                                if (video == null) return;
                             } else {
                                 video = new Video();
                             }

@@ -56,7 +56,6 @@ public class MuViBee {
     private Media[] currentDeletedMediaList;
     public static String mainBundlePath = "muvibee.resources.MuViBee";
     private Settings settings;
-    private ProgressBarDialog pbd;
 
     /*
      * Konstruktor der das mainFrame und die verschiedenen Listen mit hilfe der Datenbank initialisiert
@@ -92,35 +91,34 @@ public class MuViBee {
                 mainFrame = new MainFrame(mvb);
                 mainFrame.setLanguage(settings.getLanguage());
                 mainFrame.setVisible(true);
-                pbd = new ProgressBarDialog(mainFrame, "Please wait", true);
                 Runnable initListsCode = new Runnable() {
                    @Override
                    public void run() {
 
                         setBookList(DBSelector.getBookList(false, null));
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         setMusicList(DBSelector.getMusicList(false, null));
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         setVideoList(DBSelector.getVideoList(false, null));
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         getFilterBookList().addAll(mvb.getBookList());
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         getFilterMusicList().addAll(mvb.getMusicList());
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         getFilterVideoList().addAll(mvb.getVideoList());
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         getDeletedMediaList().addAll(DBSelector.getBookList(true, null));
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         getDeletedMediaList().addAll(DBSelector.getMusicList(true, null));
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         getDeletedMediaList().addAll(DBSelector.getVideoList(true, null));
-                        pbd.incBar();
+                        ProgressBarDialog.getInstance().incBar();
                         setOverviewInformation();
-                        pbd.stopProgressBar();
+                        ProgressBarDialog.getInstance().stopProgressBar();
 
                    }
                 };
-                pbd.startProgressBar(initListsCode, 8);
+                ProgressBarDialog.getInstance().startProgressBar(initListsCode, 8);
             }
         });
 
@@ -208,7 +206,7 @@ public class MuViBee {
                 null,
                 null,
                 "");
-        return input.trim();
+        return input == null ? null : input.trim();
     }
 
     /**
@@ -421,13 +419,13 @@ public class MuViBee {
                         filterBookList.clear();
                         filterBookList.addAll(bookList);
                         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
-                        pbd.stopProgressBar();
+                        ProgressBarDialog.getInstance().stopProgressBar();
                     }
                 });
 
             }
         };
-        pbd.startProgressBar(runCode);
+        ProgressBarDialog.getInstance().startProgressBar(runCode);
     }
 
     /**
@@ -445,13 +443,13 @@ public class MuViBee {
                         filterMusicList.clear();
                         filterMusicList.addAll(musicList);
                         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
-                        pbd.stopProgressBar();
+                        ProgressBarDialog.getInstance().stopProgressBar();
                     }
                 });
 
             }
         };
-        pbd.startProgressBar(runCode);
+        ProgressBarDialog.getInstance().startProgressBar(runCode);
     }
 
     /**
@@ -469,13 +467,13 @@ public class MuViBee {
                         filterVideoList.clear();
                         filterVideoList.addAll(videoList);
                         StatusBarModel.getInstance().setSuccessMessage(bundle.getString("saved"));
-                        pbd.stopProgressBar();
+                        ProgressBarDialog.getInstance().stopProgressBar();
                     }
                 });
 
             }
         };
-        pbd.startProgressBar(runCode);
+        ProgressBarDialog.getInstance().startProgressBar(runCode);
     }
 
     /**
@@ -541,14 +539,14 @@ public class MuViBee {
                     deletedMediaList.remove(m);
                     m.deleteDB();
                     m = null;
-                    pbd.incBar();
+                    ProgressBarDialog.getInstance().incBar();
                 }
                 StatusBarModel.getInstance().setSuccessMessage(bundle.getString("deleted"));
-                pbd.stopProgressBar();
+                ProgressBarDialog.getInstance().stopProgressBar();
             }
         };
         int max = currentDeletedMediaList.length - 1;
-        pbd.startProgressBar(runCode, max);
+        ProgressBarDialog.getInstance().startProgressBar(runCode, max);
     }
 
     /**
@@ -578,15 +576,15 @@ public class MuViBee {
                     m.setDeleted(false);
                     m.updateDB();
                     m = null;
-                    pbd.incBar();
+                    ProgressBarDialog.getInstance().incBar();
                 }
                 ResourceBundle bundle = ResourceBundle.getBundle(MuViBee.mainBundlePath);
                 StatusBarModel.getInstance().setSuccessMessage(bundle.getString("restored"));
-                pbd.stopProgressBar();
+                ProgressBarDialog.getInstance().stopProgressBar();
             }
         };
         int max = currentDeletedMediaList.length - 1;
-        pbd.startProgressBar(runCode, max);
+        ProgressBarDialog.getInstance().startProgressBar(runCode, max);
     }
 
     /**
